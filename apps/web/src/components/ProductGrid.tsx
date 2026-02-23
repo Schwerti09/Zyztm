@@ -1,6 +1,8 @@
 import { useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 import { PRODUCTS } from '@zyztm/shared-types';
+import { useStore } from '../store/useStore';
+import { showToast } from './Toast';
 
 async function buyProduct(productId: string) {
   try {
@@ -14,6 +16,35 @@ async function buyProduct(productId: string) {
     else alert('Checkout nicht verfügbar. Bitte API konfigurieren.');
   } catch {
     alert('Demo-Modus: Kein Backend verbunden. In der Produktion wird Stripe verwendet!');
+  }
+}
+
+async function buyWithCoins(
+  productId: string,
+  email: string,
+  onSuccess: (remaining: number) => void,
+) {
+  if (!email) {
+    showToast({ type: 'error', message: 'Bitte zuerst E-Mail in der Live-Bar eintragen!' });
+    return;
+  }
+  try {
+    const res = await fetch('/api/coins/buy', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ productId, email }),
+    });
+    const data = await res.json();
+    if (res.ok) {
+      onSuccess(data.remainingCoins);
+      showToast({ type: 'success', message: `✅ ${data.product} mit ${data.coinsSpent} Coins gekauft!` });
+    } else if (res.status === 402) {
+      showToast({ type: 'error', message: `Zu wenig Coins! Benötigt: ${data.required}, Dein Stand: ${data.balance}` });
+    } else {
+      showToast({ type: 'error', message: data.error || 'Kauf fehlgeschlagen' });
+    }
+  } catch {
+    showToast({ type: 'error', message: 'Verbindungsfehler' });
   }
 }
 
@@ -35,7 +66,12 @@ const productVideos: Record<string, string> = {
   gaming_bundle: '/vids/produkt6.mp4',
 };
 
-function ProductCard({ product, index }: { product: (typeof PRODUCTS)[0]; index: number }) {
+function ProductCard({ product, index, userEmail, onCoinPurchase }: {
+  product: (typeof PRODUCTS)[0];
+  index: number;
+  userEmail: string;
+  onCoinPurchase: (remaining: number) => void;
+}) {
   const [hovered, setHovered] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
   const accentColor = rarityColors[product.category];
@@ -130,12 +166,21 @@ function ProductCard({ product, index }: { product: (typeof PRODUCTS)[0]; index:
             KAUFEN
           </button>
         </div>
+        <button
+          onClick={() => buyWithCoins(product.id, userEmail, onCoinPurchase)}
+          className="mt-3 w-full text-xs py-2 px-4 rounded border font-cyber tracking-widest transition-colors hover:bg-[#ff0055]/10"
+          style={{ borderColor: '#ff005550', color: '#ff0055' }}
+        >
+          💎 MIT COINS KAUFEN ({product.coinPrice} Coins)
+        </button>
       </div>
     </motion.div>
   );
 }
 
 export default function ProductGrid() {
+  const { userEmail, setCoins } = useStore();
+
   return (
     <section id="marketplace" className="py-20 px-6 relative">
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-neon-pink/3 to-transparent" />
@@ -154,7 +199,13 @@ export default function ProductGrid() {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {PRODUCTS.map((product, i) => (
-            <ProductCard key={product.id} product={product} index={i} />
+            <ProductCard
+              key={product.id}
+              product={product}
+              index={i}
+              userEmail={userEmail}
+              onCoinPurchase={setCoins}
+            />
           ))}
         </div>
 

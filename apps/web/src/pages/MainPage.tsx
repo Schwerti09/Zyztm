@@ -13,8 +13,11 @@ import Footer from '../components/Footer';
 import ParticleField from '../components/ParticleField';
 import Intro from '../components/Intro';
 import LaptopMockup from '../components/LaptopMockup';
+import { Toast, useToastController } from '../components/Toast';
 
 export default function MainPage() {
+  const { toasts, remove } = useToastController();
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -39,6 +42,7 @@ export default function MainPage() {
         </main>
         <Footer />
       </div>
+      <Toast toasts={toasts} onRemove={remove} />
     </div>
   );
 }

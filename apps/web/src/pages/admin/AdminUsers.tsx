@@ -5,6 +5,7 @@ interface User {
   id: string;
   email: string;
   credits: number;
+  coins: number;
   isBanned: boolean;
   createdAt: string;
 }
@@ -62,6 +63,19 @@ export default function AdminUsers() {
     onSuccess: () => queryClient.invalidateQueries({ queryKey: ['admin-users'] }),
   });
 
+  const coinsMutation = useMutation({
+    mutationFn: async ({ userId, amount, reason }: { userId: string; amount: number; reason: string }) => {
+      const res = await fetch('/api/admin/coins/give', {
+        method: 'POST',
+        headers: { 'x-admin-secret': adminSecret, 'Content-Type': 'application/json' },
+        body: JSON.stringify({ userId, amount, reason }),
+      });
+      if (!res.ok) throw new Error('Failed to give coins');
+      return res.json();
+    },
+    onSuccess: () => queryClient.invalidateQueries({ queryKey: ['admin-users'] }),
+  });
+
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
     setSearch(searchInput);
@@ -74,6 +88,16 @@ export default function AdminUsers() {
     const credits = parseInt(input, 10);
     if (isNaN(credits)) return alert('Invalid number');
     creditsMutation.mutate({ id: user.id, credits });
+  };
+
+  const handleGiveCoins = (user: User) => {
+    const amountStr = window.prompt(`Coins geben an ${user.email}:\nAnzahl:`);
+    if (amountStr === null) return;
+    const amount = parseInt(amountStr, 10);
+    if (isNaN(amount) || amount <= 0) return alert('Ungültige Zahl');
+    const reason = window.prompt('Grund (Pflichtfeld):');
+    if (!reason) return alert('Grund ist Pflichtfeld');
+    coinsMutation.mutate({ userId: user.id, amount, reason });
   };
 
   return (
@@ -101,7 +125,7 @@ export default function AdminUsers() {
             <table className="w-full text-sm">
               <thead>
                 <tr className="border-b border-neon-pink/30">
-                  {['Email', 'Credits', 'Status', 'Created', 'Actions'].map((h) => (
+                  {['Email', 'Credits', 'Coins', 'Status', 'Created', 'Actions'].map((h) => (
                     <th key={h} className="font-cyber text-xs text-neon-blue tracking-widest text-left px-4 py-3">
                       {h}
                     </th>
@@ -118,6 +142,9 @@ export default function AdminUsers() {
                   >
                     <td className="px-4 py-3 font-mono text-gray-300">{user.email}</td>
                     <td className="px-4 py-3 font-mono text-neon-gold">{user.credits}</td>
+                    <td className="px-4 py-3 font-mono font-bold" style={{ color: '#ff0055' }}>
+                      💎 {user.coins ?? 0}
+                    </td>
                     <td className="px-4 py-3">
                       <span
                         className={`font-cyber text-xs px-2 py-1 rounded ${
@@ -138,6 +165,12 @@ export default function AdminUsers() {
                         className="btn-secondary text-xs px-3 py-1"
                       >
                         CREDITS +
+                      </button>
+                      <button
+                        onClick={() => handleGiveCoins(user)}
+                        className="text-xs px-3 py-1 rounded font-cyber border transition-colors border-[#ff0055] text-[#ff0055] hover:bg-[#ff0055]/10"
+                      >
+                        💎 COINS +
                       </button>
                       <button
                         onClick={() => banMutation.mutate({ id: user.id, isBanned: !user.isBanned })}

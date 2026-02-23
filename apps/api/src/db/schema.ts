@@ -7,6 +7,8 @@ export const users = pgTable('users', {
   email: varchar('email', { length: 255 }).notNull().unique(),
   stripeCustomerId: varchar('stripe_customer_id', { length: 255 }).unique(),
   credits: integer('credits').default(0).notNull(),
+  coins: integer('coins').default(0).notNull(),
+  lastLogin: timestamp('last_login'),
   createdAt: timestamp('created_at').defaultNow().notNull(),
   isAdmin: boolean('is_admin').default(false).notNull(),
   isBanned: boolean('is_banned').default(false).notNull(),
@@ -49,5 +51,15 @@ export const pageViews = pgTable('page_views', {
   path: text('path').notNull(),
   userId: uuid('user_id'),
   sessionId: text('session_id'),
+  createdAt: timestamp('created_at').defaultNow().notNull(),
+});
+
+export const coinTransactions = pgTable('coin_transactions', {
+  id: uuid('id').defaultRandom().primaryKey(),
+  userId: uuid('user_id').references(() => users.id).notNull(),
+  amount: integer('amount').notNull(),
+  type: varchar('type', { length: 50 }).notNull(),
+  reason: text('reason'),
+  productId: varchar('product_id', { length: 255 }),
   createdAt: timestamp('created_at').defaultNow().notNull(),
 });
