@@ -14,6 +14,7 @@ import newsRouter from './routes/news';
 import adminRouter from './routes/admin/index';
 import coinsRouter from './routes/coins';
 import voteRouter from './routes/vote';
+import clipsRouter from './routes/clips';
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -44,6 +45,7 @@ app.use('/api/news', newsRouter);
 app.use('/api/admin', adminRouter);
 app.use('/api/coins', coinsRouter);
 app.use('/api/vote', voteRouter);
+app.use('/api/clips', clipsRouter);
 
 app.listen(PORT, () => {
   console.log(`🚀 Zyztm API running on port ${PORT}`);
