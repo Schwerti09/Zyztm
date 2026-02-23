@@ -1,20 +1,30 @@
-import { useState } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 export default function Intro() {
   const [showIntro, setShowIntro] = useState(() => {
     return !sessionStorage.getItem('intro-seen');
   });
+  const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-  const handleSkip = () => {
+  const handleSkip = useCallback(() => {
+    if (timerRef.current) clearTimeout(timerRef.current);
     sessionStorage.setItem('intro-seen', '1');
     setShowIntro(false);
-  };
+  }, []);
 
   const handleEnded = () => {
-    sessionStorage.setItem('intro-seen', '1');
-    setShowIntro(false);
+    handleSkip();
   };
+
+  useEffect(() => {
+    if (!showIntro) return;
+    // Auto-dismiss after 10 seconds
+    timerRef.current = setTimeout(handleSkip, 10000);
+    return () => {
+      if (timerRef.current) clearTimeout(timerRef.current);
+    };
+  }, [showIntro, handleSkip]);
 
   return (
     <AnimatePresence>
@@ -64,7 +74,11 @@ export default function Intro() {
             transition={{ delay: 1.5 }}
             onClick={handleSkip}
             className="absolute bottom-10 right-10 font-cyber text-sm tracking-widest px-6 py-3 border border-white/30 text-white/70 hover:text-white hover:border-white/60 transition-all duration-300 cursor-pointer"
-            style={{ background: 'rgba(0,0,0,0.5)' }}
+            style={{
+              background: 'rgba(0,0,0,0.5)',
+              backdropFilter: 'blur(8px)',
+              WebkitBackdropFilter: 'blur(8px)',
+            }}
           >
             ÜBERSPRINGEN ▶
           </motion.button>

@@ -91,4 +91,50 @@
     background: rgba(0, 242, 255, 0.1);
     box-shadow: 0 0 30px rgba(0, 242, 255, 0.5);
   }
+
+  .glitch-text {
+    position: relative;
+    animation: glitch-main 2s infinite;
+  }
+
+  .glitch-text::before,
+  .glitch-text::after {
+    content: attr(data-text);
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+  }
+
+  .glitch-text::before {
+    color: #ff0055;
+    animation: glitch-before 2s infinite;
+    clip-path: polygon(0 30%, 100% 30%, 100% 50%, 0 50%);
+  }
+
+  .glitch-text::after {
+    color: #00f2ff;
+    animation: glitch-after 2s infinite;
+    clip-path: polygon(0 60%, 100% 60%, 100% 75%, 0 75%);
+  }
+}
+
+@keyframes glitch-main {
+  0%, 90%, 100% { transform: none; }
+  91% { transform: skewX(-2deg); }
+  93% { transform: skewX(2deg); }
+  95% { transform: skewX(-1deg); }
+}
+
+@keyframes glitch-before {
+  0%, 88%, 100% { transform: none; opacity: 0; }
+  89% { transform: translate(-3px, 1px); opacity: 0.8; }
+  91% { transform: translate(3px, -1px); opacity: 0.8; }
+  93% { transform: translate(-2px, 2px); opacity: 0; }
+}
+
+@keyframes glitch-after {
+  0%, 90%, 100% { transform: none; opacity: 0; }
+  91% { transform: translate(3px, -2px); opacity: 0.8; }
+  93% { transform: translate(-3px, 1px); opacity: 0.8; }
+  95% { transform: translate(2px, -1px); opacity: 0; }
 }

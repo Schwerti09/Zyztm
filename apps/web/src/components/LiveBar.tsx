@@ -39,7 +39,12 @@ export default function LiveBar() {
         </div>
         <div className="hidden md:flex items-center gap-6">
           <span className="text-white/60">
-            NÄCHSTER STREAM: <span className="text-neon-blue font-bold">
+            NÄCHSTER STREAM:{' '}
+            <span
+              className="text-neon-blue font-bold glitch-text"
+              data-text={`${String(timeLeft.h).padStart(2,'0')}:${String(timeLeft.m).padStart(2,'0')}:${String(timeLeft.s).padStart(2,'0')}`}
+              style={{ textShadow: '0 0 8px #00f2ff, 0 0 20px #00f2ff' }}
+            >
               {String(timeLeft.h).padStart(2,'0')}:{String(timeLeft.m).padStart(2,'0')}:{String(timeLeft.s).padStart(2,'0')}
             </span>
           </span>

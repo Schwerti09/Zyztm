@@ -10,6 +10,7 @@ import ImageGallery from '../components/ImageGallery';
 import Footer from '../components/Footer';
 import ParticleField from '../components/ParticleField';
 import Intro from '../components/Intro';
+import LaptopMockup from '../components/LaptopMockup';
 
 export default function MainPage() {
   return (
@@ -20,6 +21,7 @@ export default function MainPage() {
         <LiveBar />
         <main className="pt-10">
           <HeroSection />
+          <LaptopMockup />
           <CreatorCode />
           <SocialHub />
           <ProductGrid />
