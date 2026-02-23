@@ -9,10 +9,12 @@ import NewsSection from '../components/NewsSection';
 import ImageGallery from '../components/ImageGallery';
 import Footer from '../components/Footer';
 import ParticleField from '../components/ParticleField';
+import Intro from '../components/Intro';
 
 export default function MainPage() {
   return (
     <div className="min-h-screen bg-bg-dark relative">
+      <Intro />
       <ParticleField />
       <div className="relative z-10">
         <LiveBar />
