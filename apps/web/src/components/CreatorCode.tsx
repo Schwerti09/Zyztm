@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 export default function CreatorCode() {
   const [copied, setCopied] = useState(false);
-  const code = 'ZYZTM';
+  const code = 'JOJOJO';
 
   const handleCopy = async () => {
     try {
@@ -53,7 +53,7 @@ export default function CreatorCode() {
             className="font-cyber text-2xl md:text-3xl font-black mb-2 text-neon-pink"
             style={{ textShadow: '0 0 10px #ff0055, 0 0 30px #ff0055, 0 0 60px #ff0055' }}
           >
-            ⚡ MEIN CREATOR CODE: ZYZTM ⚡
+            ⚡ MEIN CREATOR CODE: JOJOJO ⚡
           </h2>
 
           <p className="text-white/60 text-sm font-body mb-6">
