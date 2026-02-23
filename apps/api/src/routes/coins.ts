@@ -2,8 +2,8 @@ import { Router, Request, Response } from 'express';
 import { eq, sql } from 'drizzle-orm';
 import { z } from 'zod';
 import { db } from '../db';
-import { users, coinTransactions } from '../db/schema';
-import { PRODUCTS } from '@zyztm/shared-types';
+import { users, coinTransactions, purchases, voiceCredits, cardBoosterPacks } from '../db/schema';
+import { PRODUCTS, ALL_CARDS } from '@zyztm/shared-types';
 import { resolveUser } from '../utils/resolveUser';
 
 const router = Router();
@@ -112,6 +112,33 @@ router.post('/buy', async (req: Request, res: Response) => {
       reason: `Kauf: ${product.name}`,
       productId,
     });
+
+    await db.insert(purchases).values({
+      userId: user.id,
+      productId,
+      paymentMethod: 'coins',
+      amount: 0,
+      status: 'completed',
+    });
+
+    // Product delivery
+    if (productId === 'voice_pack') {
+      await db
+        .insert(voiceCredits)
+        .values({ userId: user.id, credits: 50 })
+        .onConflictDoUpdate({
+          target: voiceCredits.userId,
+          set: { credits: sql`${voiceCredits.credits} + 50`, lastUpdated: new Date() },
+        });
+    } else if (productId === 'card_booster') {
+      const pool = [...ALL_CARDS];
+      for (let i = pool.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [pool[i], pool[j]] = [pool[j], pool[i]];
+      }
+      const cards = pool.slice(0, 5);
+      await db.insert(cardBoosterPacks).values({ userId: user.id, cards });
+    }
 
     return res.json({
       success: true,
