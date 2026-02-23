@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import LiveBar from '../components/LiveBar';
 import HeroSection from '../components/HeroSection';
 import CreatorCode from '../components/CreatorCode';
@@ -13,6 +14,10 @@ import Intro from '../components/Intro';
 import LaptopMockup from '../components/LaptopMockup';
 
 export default function MainPage() {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <div className="min-h-screen bg-bg-dark relative">
       <Intro />
