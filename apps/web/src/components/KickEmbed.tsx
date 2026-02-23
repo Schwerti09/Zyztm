@@ -11,17 +11,9 @@ export default function KickEmbed() {
           className="text-center mb-6"
         >
           <div className="inline-flex items-center gap-2 mb-3">
-            <span
-              className="w-3 h-3 rounded-full animate-pulse"
-              style={{ background: '#53fc18', boxShadow: '0 0 10px #53fc18' }}
-            />
             <span className="font-cyber text-lg font-bold tracking-widest" style={{ color: '#53fc18' }}>
-              LIVE NOW
+              VIDEO
             </span>
-            <span
-              className="w-3 h-3 rounded-full animate-pulse"
-              style={{ background: '#53fc18', boxShadow: '0 0 10px #53fc18' }}
-            />
           </div>
           <h2 className="font-cyber text-3xl md:text-4xl font-bold text-white">
             ZYZTM AUF{' '}
@@ -44,8 +36,8 @@ export default function KickEmbed() {
         >
           <div className="aspect-video">
             <iframe
-              src="https://player.kick.com/zyztm"
-              title="Zyztm Live auf Kick"
+              src="https://player.kick.com/video/9cd91379-9608-4064-bb1f-720ceda4c0b0"
+              title="Zyztm auf Kick"
               allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media"
               allowFullScreen
               className="w-full h-full"
