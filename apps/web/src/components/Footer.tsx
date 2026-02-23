@@ -10,8 +10,13 @@ export default function Footer() {
           <div>
             <h4 className="font-cyber text-sm font-bold text-white mb-3 tracking-widest">SOCIALS</h4>
             <div className="space-y-2">
-              {['🟢 Kick', '📺 YouTube', '🎵 TikTok', '💬 Discord'].map((s) => (
-                <a key={s} href="#" className="block text-white/50 text-sm hover:text-neon-blue transition-colors">{s}</a>
+              {[
+                { label: '🟢 Kick', url: 'https://kick.com/zyztm' },
+                { label: '📺 YouTube', url: 'https://youtube.com/@Zyztm' },
+                { label: '🎵 TikTok', url: 'https://tiktok.com/@zyztm' },
+                { label: '💬 Discord', url: 'https://discord.gg/DEINLINK' },
+              ].map((s) => (
+                <a key={s.label} href={s.url} target="_blank" rel="noopener noreferrer" className="block text-white/50 text-sm hover:text-neon-blue transition-colors">{s.label}</a>
               ))}
             </div>
           </div>
