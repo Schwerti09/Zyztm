@@ -21,9 +21,9 @@ router.get('/latest', async (req: Request, res: Response) => {
         title: clips.title,
         thumbnail: clips.thumbnail,
         url: clips.url,
-        tiktokId: clips.tiktokId,
+        tiktok_id: clips.tiktokId,
         likes: clips.likes,
-        createdAt: clips.createdAt,
+        created_at: clips.createdAt,
       })
       .from(clips)
       .where(eq(clips.source, 'tiktok'))

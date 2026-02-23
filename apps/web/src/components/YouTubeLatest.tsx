@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 
 interface Video {
   videoId: string;
@@ -17,6 +17,7 @@ export default function YouTubeLatest() {
   const [videos, setVideos] = useState<Video[]>([]);
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
+  const [lightbox, setLightbox] = useState<Video | null>(null);
 
   useEffect(() => {
     fetch('/api/youtube/latest')
@@ -114,17 +115,15 @@ export default function YouTubeLatest() {
         ) : (
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
             {videos.map((v, i) => (
-              <motion.a
+              <motion.div
                 key={v.videoId}
-                href={v.url}
-                target="_blank"
-                rel="noopener noreferrer"
                 initial={{ opacity: 0, y: 40 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
                 whileHover={{ scale: 1.03, y: -5 }}
-                className="rounded-lg overflow-hidden no-underline block group"
+                onClick={() => setLightbox(v)}
+                className="rounded-lg overflow-hidden cursor-pointer group"
                 style={{
                   background: 'linear-gradient(135deg, rgba(13,17,23,0.75) 0%, rgba(10,12,21,0.80) 100%)',
                   backdropFilter: 'blur(16px)',
@@ -148,13 +147,74 @@ export default function YouTubeLatest() {
                   <p className="text-white text-sm font-body font-bold line-clamp-2 group-hover:text-red-400 transition-colors duration-300">
                     {v.title}
                   </p>
-                  <p className="text-red-500 text-xs font-cyber mt-1">YOUTUBE →</p>
+                  <p className="text-red-500 text-xs font-cyber mt-1">YOUTUBE ▶</p>
                 </div>
-              </motion.a>
+              </motion.div>
             ))}
           </div>
         )}
       </div>
+
+      {/* Lightbox */}
+      <AnimatePresence>
+        {lightbox && (
+          <motion.div
+            key="yt-lightbox"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-50 flex items-center justify-center p-4"
+            style={{ background: 'rgba(0,0,0,0.92)' }}
+            onClick={() => setLightbox(null)}
+          >
+            <motion.div
+              initial={{ scale: 0.85, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.85, opacity: 0 }}
+              transition={{ type: 'spring', stiffness: 260, damping: 22 }}
+              className="relative w-full max-w-3xl rounded-xl overflow-hidden"
+              style={{ border: '1px solid rgba(255,0,0,0.4)' }}
+              onClick={(e) => e.stopPropagation()}
+            >
+              <div className="aspect-video">
+                <iframe
+                  src={`https://www.youtube.com/embed/${lightbox.videoId}?autoplay=1`}
+                  title={lightbox.title}
+                  allow="autoplay; fullscreen; picture-in-picture"
+                  allowFullScreen
+                  className="w-full h-full"
+                  style={{ border: 'none' }}
+                />
+              </div>
+              <div
+                className="p-4 flex items-center justify-between gap-3"
+                style={{ background: 'rgba(3,5,10,0.95)' }}
+              >
+                <p className="text-white/80 text-sm line-clamp-1 flex-1">{lightbox.title}</p>
+                <div className="flex items-center gap-2 shrink-0">
+                  <a
+                    href={lightbox.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-xs font-cyber px-3 py-2 rounded border transition-all"
+                    style={{ borderColor: 'rgba(255,0,0,0.4)', color: '#ff4444' }}
+                    onClick={(e) => e.stopPropagation()}
+                  >
+                    YOUTUBE ↗
+                  </a>
+                  <button
+                    onClick={() => setLightbox(null)}
+                    className="text-white/50 hover:text-white text-lg px-1 transition-colors"
+                    aria-label="Schließen"
+                  >
+                    ✕
+                  </button>
+                </div>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 }
