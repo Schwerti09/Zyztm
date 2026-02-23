@@ -99,7 +99,8 @@ router.get('/', requireAdmin, async (req: Request, res: Response) => {
       .from(purchases)
       .where(condition);
 
-    res.json({ purchases: rows, total: totalRow?.count ?? 0, page, limit });
+    const total = totalRow?.count ?? 0;
+    res.json({ sales: rows, total, page, limit, totalPages: Math.ceil(total / limit) });
   } catch (err) {
     console.error(err);
     res.status(500).json({ error: 'Internal server error' });

@@ -4,15 +4,31 @@ import { motion } from 'framer-motion';
 export default function AdminLogin() {
   const [secret, setSecret] = useState('');
   const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!secret.trim()) {
       setError('Secret is required');
       return;
     }
-    localStorage.setItem('adminSecret', secret);
-    window.location.href = '/admin';
+    setLoading(true);
+    setError('');
+    try {
+      const res = await fetch('/api/admin/settings', {
+        headers: { 'x-admin-secret': secret },
+      });
+      if (!res.ok) {
+        setError('Invalid admin secret. Access denied.');
+        return;
+      }
+      localStorage.setItem('adminSecret', secret);
+      window.location.href = '/admin';
+    } catch {
+      setError('Connection error. Please try again.');
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -40,8 +56,8 @@ export default function AdminLogin() {
           {error && (
             <p className="text-red-400 text-sm font-mono">{error}</p>
           )}
-          <button type="submit" className="btn-primary mt-2">
-            AUTHENTICATE
+          <button type="submit" className="btn-primary mt-2" disabled={loading}>
+            {loading ? 'AUTHENTICATING...' : 'AUTHENTICATE'}
           </button>
         </form>
       </motion.div>

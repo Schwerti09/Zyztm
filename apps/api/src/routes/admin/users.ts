@@ -37,7 +37,8 @@ router.get('/', requireAdmin, async (req: Request, res: Response) => {
       .from(users)
       .where(conditions);
 
-    res.json({ users: rows, total: totalResult[0]?.count ?? 0, page, limit });
+    const total = totalResult[0]?.count ?? 0;
+    res.json({ users: rows, total, page, limit, totalPages: Math.ceil(total / limit) });
   } catch (err) {
     console.error(err);
     res.status(500).json({ error: 'Internal server error' });
