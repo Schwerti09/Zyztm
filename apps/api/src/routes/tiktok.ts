@@ -38,6 +38,31 @@ router.get('/latest', async (req: Request, res: Response) => {
   }
 });
 
+/** GET /api/tiktok/manual – manually seeded TikTok clips from DB */
+router.get('/manual', async (_req: Request, res: Response) => {
+  try {
+    const rows = await db
+      .select({
+        id: clips.id,
+        title: clips.title,
+        thumbnail: clips.thumbnail,
+        url: clips.url,
+        tiktok_id: clips.tiktokId,
+        likes: clips.likes,
+        created_at: clips.createdAt,
+      })
+      .from(clips)
+      .where(eq(clips.source, 'tiktok'))
+      .orderBy(desc(clips.createdAt))
+      .limit(12);
+
+    return res.json({ clips: rows });
+  } catch (err) {
+    console.error('[tiktok/manual]', err);
+    return res.json({ clips: [] });
+  }
+});
+
 /** POST /api/tiktok/like – like a TikTok clip (costs 1 JOJOJO Coin) */
 router.post('/like', async (req: Request, res: Response) => {
   const bodySchema = z.object({

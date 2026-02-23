@@ -41,6 +41,11 @@
   status = 200
 
 [[redirects]]
+  from = "/api/tiktok/manual"
+  to = "/.netlify/functions/tiktok-manual"
+  status = 200
+
+[[redirects]]
   from = "/api/tiktok/like"
   to = "/.netlify/functions/tiktok-like"
   status = 200
