@@ -4,7 +4,7 @@ services:
     environment:
       POSTGRES_DB: zyztm
       POSTGRES_USER: zyztm
-      POSTGRES_PASSWORD: zyztm_password
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
     ports:
       - "5432:5432"
     volumes:
@@ -15,7 +15,7 @@ services:
     ports:
       - "3000:3000"
     environment:
-      DATABASE_URL: postgresql://zyztm:zyztm_password@postgres:5432/zyztm
+      DATABASE_URL: postgresql://zyztm:${POSTGRES_PASSWORD}@postgres:5432/zyztm
     depends_on:
       - postgres
   

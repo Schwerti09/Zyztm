@@ -5,7 +5,11 @@ import { PRODUCTS } from '@zyztm/shared-types';
 
 const router = Router();
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || 'sk_test_placeholder', {
+if (!process.env.STRIPE_SECRET_KEY) {
+  throw new Error('STRIPE_SECRET_KEY environment variable is required');
+}
+
+const stripe = new Stripe(process.env.STRIPE_SECRET_KEY, {
   apiVersion: '2024-04-10',
 });
 
@@ -63,7 +67,7 @@ router.post('/webhook', async (req: Request, res: Response) => {
     event = stripe.webhooks.constructEvent(
       req.body,
       sig,
-      process.env.STRIPE_WEBHOOK_SECRET || 'whsec_placeholder'
+      process.env.STRIPE_WEBHOOK_SECRET || ''
     );
   } catch (err) {
     console.error('Webhook signature verification failed:', err);
