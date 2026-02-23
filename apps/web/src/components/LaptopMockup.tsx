@@ -264,7 +264,7 @@ export default function LaptopMockup() {
                   className="absolute inset-0"
                 >
                   <iframe
-                    src="https://www.youtube.com/embed/videoseries?list=UUyJ9OBiMrj2LMUeY7XVhbew&autoplay=0&rel=0&modestbranding=1"
+                    src="https://www.youtube.com/embed/videoseries?list=UUyJ9OBiMrj2LMUeY7XVhbew&autoplay=1&mute=1&rel=0&modestbranding=1"
                     title="Zyztm YouTube Kanal"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     allowFullScreen
