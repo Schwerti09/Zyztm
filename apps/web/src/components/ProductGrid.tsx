@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { PRODUCTS } from '@zyztm/shared-types';
 import { useStore } from '../store/useStore';
@@ -74,8 +74,31 @@ function ProductCard({ product, index, userEmail, onCoinPurchase }: {
 }) {
   const [hovered, setHovered] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
+  const [clipUrl, setClipUrl] = useState<string | null>(null);
+  const fetchingRef = useRef(false);
   const accentColor = rarityColors[product.category];
-  const videoSrc = productVideos[product.id];
+  // Static fallback video (used when no API clip is available)
+  const fallbackVideo = productVideos[product.id];
+
+  // Fetch a product-tagged clip on first hover
+  useEffect(() => {
+    if (!hovered || clipUrl !== null || fetchingRef.current) return;
+    fetchingRef.current = true;
+    fetch(`/api/clips/by-tag?tag=${encodeURIComponent(product.id)}`)
+      .then((r) => r.json())
+      .then((data) => {
+        if (!data.fallback && data.clip?.url) {
+          setClipUrl(data.clip.url);
+        } else {
+          // Use static fallback so we don't re-fetch
+          setClipUrl(fallbackVideo ?? '');
+        }
+      })
+      .catch(() => setClipUrl(fallbackVideo ?? ''))
+      .finally(() => { fetchingRef.current = false; });
+  }, [hovered, clipUrl, product.id, fallbackVideo]);
+
+  const videoSrc = clipUrl ?? fallbackVideo;
 
   const handleMouseEnter = () => {
     setHovered(true);
