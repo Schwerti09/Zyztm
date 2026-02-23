@@ -36,4 +36,4 @@
   schedule = "0 */6 * * *"
 
 [secrets]
-  omit_paths = [".env.example"]
+  omit_paths = ["**/.env.example", ".env.example"]

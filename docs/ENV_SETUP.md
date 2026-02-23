@@ -8,7 +8,8 @@ This document describes all required and optional environment variables for the 
 |---|---|
 | `DATABASE_URL` | PostgreSQL/Neon connection string, e.g. `postgresql://user:pass@host/db` |
 | `YOUTUBE_API_KEY` | Google Data API v3 key with YouTube Data access |
-| `YOUTUBE_CHANNEL_ID` | YouTube channel ID (default: `UCccyxYt6K8sqVMnppnzd4zQ`) |
+| `YOUTUBE_CHANNEL_ID` | YouTube channel ID for server-side functions |
+| `VITE_YOUTUBE_CHANNEL_ID` | YouTube channel ID for the frontend (set to the same value as `YOUTUBE_CHANNEL_ID`) |
 | `STRIPE_SECRET_KEY` | Stripe secret key for checkout sessions |
 | `STRIPE_WEBHOOK_SECRET` | Stripe webhook signing secret |
 | `STRIPE_PUBLISHABLE_KEY` | Stripe publishable key for frontend |

@@ -9,7 +9,9 @@ interface Video {
   source: string;
 }
 
-const CHANNEL_URL = 'https://www.youtube.com/channel/UCccyxYt6K8sqVMnppnzd4zQ';
+const CHANNEL_URL = import.meta.env.VITE_YOUTUBE_CHANNEL_ID
+  ? `https://www.youtube.com/channel/${import.meta.env.VITE_YOUTUBE_CHANNEL_ID}`
+  : 'https://www.youtube.com/@zyztm';
 
 export default function YouTubeLatest() {
   const [videos, setVideos] = useState<Video[]>([]);
