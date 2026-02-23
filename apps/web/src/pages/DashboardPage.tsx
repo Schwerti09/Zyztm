@@ -33,7 +33,7 @@ function CardDisplay({ card }: { card: Card }) {
 
 export default function DashboardPage() {
   const [, navigate] = useLocation();
-  const { credits, cards, setCards } = useStore();
+  const { credits, coins, cards, setCards } = useStore();
   const [packOpening, setPackOpening] = useState(false);
   const [newCards, setNewCards] = useState<Card[]>([]);
 
@@ -69,9 +69,10 @@ export default function DashboardPage() {
           </button>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
           {[
             { label: 'VOICE CREDITS', value: credits, icon: '🎙️', color: '#00f2ff' },
+            { label: 'JOJOJO COINS', value: coins, icon: '💎', color: '#ff0055' },
             { label: 'KARTEN', value: cards.length, icon: '🃏', color: '#ffd700' },
             { label: 'LEVEL', value: 'VIP', icon: '👑', color: '#ff0055' },
           ].map((stat) => (

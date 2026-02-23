@@ -9,6 +9,7 @@ const navLinks = [
   { icon: '👥', label: 'Users', path: '/admin/users' },
   { icon: '🛒', label: 'Products', path: '/admin/products' },
   { icon: '💳', label: 'Sales', path: '/admin/sales' },
+  { icon: '💎', label: 'Coins', path: '/admin/coins' },
   { icon: '🤖', label: 'AI Functions', path: '/admin/ai' },
   { icon: '⚙️', label: 'Settings', path: '/admin/settings' },
 ];
