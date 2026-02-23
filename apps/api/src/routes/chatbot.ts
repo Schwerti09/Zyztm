@@ -19,17 +19,20 @@ router.post('/chat', async (req: Request, res: Response) => {
   try {
     const { messages } = chatSchema.parse(req.body);
 
-    const apiKey = process.env.OPENAI_API_KEY;
-    if (!apiKey || apiKey === 'sk-...') {
+    const apiKey = process.env.GEMINI_API_KEY;
+    if (!apiKey) {
       return res.json({
         message: 'Ey Diggah! Ich bin gerade offline, aber was geht ab? 🎮 Komm vorbei auf meinem Stream, da liefern wir richtig ab!',
       });
     }
 
-    const openai = new OpenAI({ apiKey });
+    const openai = new OpenAI({
+      apiKey,
+      baseURL: 'https://generativelanguage.googleapis.com/v1beta/openai',
+    });
 
     const completion = await openai.chat.completions.create({
-      model: 'gpt-4o-mini',
+      model: 'gemini-2.0-flash',
       messages: [
         { role: 'system', content: SYSTEM_PROMPT },
         ...messages,

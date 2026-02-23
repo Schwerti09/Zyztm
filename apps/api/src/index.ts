@@ -9,6 +9,7 @@ import stripeRouter from './routes/stripe';
 import voiceRouter from './routes/voice';
 import chatbotRouter from './routes/chatbot';
 import cardsRouter from './routes/cards';
+import youtubeRouter from './routes/youtube';
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -34,6 +35,7 @@ app.use('/api/stripe', stripeRouter);
 app.use('/api/voice', voiceRouter);
 app.use('/api/chatbot', chatbotRouter);
 app.use('/api/cards', cardsRouter);
+app.use('/api/youtube', youtubeRouter);
 
 app.listen(PORT, () => {
   console.log(`🚀 Zyztm API running on port ${PORT}`);
