@@ -2,8 +2,8 @@ import { Router, Request, Response } from 'express';
 
 const router = Router();
 
-// Zyztm's YouTube channel ID
-const CHANNEL_ID = 'UCyJ9OBiMrj2LMUeY7XVhbew';
+// Zyztm's YouTube channel ID (can be overridden via YOUTUBE_CHANNEL_ID env var)
+const CHANNEL_ID = process.env.YOUTUBE_CHANNEL_ID || 'UCccyxYt6K8sqVMnppnzd4zQ';
 
 router.get('/latest', async (_req: Request, res: Response) => {
   const apiKey = process.env.YOUTUBE_API_KEY;

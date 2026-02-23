@@ -9,6 +9,7 @@ import NeuralSynthesizer from '../components/NeuralSynthesizer';
 import DeepIChat from '../components/DeepIChat';
 import NewsSection from '../components/NewsSection';
 import ImageGallery from '../components/ImageGallery';
+import GamerVoting from '../components/GamerVoting';
 import Footer from '../components/Footer';
 import ParticleField from '../components/ParticleField';
 import Intro from '../components/Intro';
@@ -39,6 +40,7 @@ export default function MainPage() {
           <DeepIChat />
           <NewsSection />
           <ImageGallery />
+          <GamerVoting />
         </main>
         <Footer />
       </div>

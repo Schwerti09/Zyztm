@@ -63,3 +63,10 @@ export const coinTransactions = pgTable('coin_transactions', {
   productId: varchar('product_id', { length: 255 }),
   createdAt: timestamp('created_at').defaultNow().notNull(),
 });
+
+export const featureVotes = pgTable('feature_votes', {
+  id: uuid('id').defaultRandom().primaryKey(),
+  featureId: varchar('feature_id', { length: 255 }).notNull(),
+  voterIp: varchar('voter_ip', { length: 45 }).notNull(),
+  createdAt: timestamp('created_at').defaultNow().notNull(),
+});
