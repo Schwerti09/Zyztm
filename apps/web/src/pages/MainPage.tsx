@@ -5,6 +5,7 @@ import KickEmbed from '../components/KickEmbed';
 import CreatorCode from '../components/CreatorCode';
 import SocialHub from '../components/SocialHub';
 import ProductGrid from '../components/ProductGrid';
+import YouTubeLatest from '../components/YouTubeLatest';
 import NeuralSynthesizer from '../components/NeuralSynthesizer';
 import DeepIChat from '../components/DeepIChat';
 import NewsSection from '../components/NewsSection';
@@ -36,6 +37,7 @@ export default function MainPage() {
           <CreatorCode />
           <SocialHub />
           <ProductGrid />
+          <YouTubeLatest />
           <NeuralSynthesizer />
           <DeepIChat />
           <NewsSection />

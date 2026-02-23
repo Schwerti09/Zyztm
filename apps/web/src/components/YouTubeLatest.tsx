@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { motion } from 'framer-motion';
 
 interface Video {
   videoId: string;
@@ -6,12 +7,11 @@ interface Video {
   thumbnail: string;
   url: string;
   publishedAt: string;
-  source: string;
+  source?: string;
 }
 
-const CHANNEL_URL = import.meta.env.VITE_YOUTUBE_CHANNEL_ID
-  ? `https://www.youtube.com/channel/${import.meta.env.VITE_YOUTUBE_CHANNEL_ID}`
-  : 'https://www.youtube.com/@zyztm';
+const CHANNEL_URL = 'https://www.youtube.com/@Zyztm';
+const FALLBACK_THUMBNAIL = '/images/yt-fallback.jpg';
 
 export default function YouTubeLatest() {
   const [videos, setVideos] = useState<Video[]>([]);
@@ -32,57 +32,129 @@ export default function YouTubeLatest() {
       .finally(() => setLoading(false));
   }, []);
 
-  if (loading) {
-    return (
-      <div className="flex gap-4 justify-center py-8">
-        {[1, 2, 3].map((i) => (
-          <div
-            key={i}
-            className="w-48 h-28 rounded bg-white/5 animate-pulse"
-          />
-        ))}
-      </div>
-    );
-  }
-
-  if (error || videos.length === 0) {
-    return (
-      <div className="text-center py-8">
-        {error && (
-          <p className="text-red-400 text-sm mb-3 font-mono">{error}</p>
-        )}
-        <a
-          href={CHANNEL_URL}
-          target="_blank"
-          rel="noreferrer"
-          className="inline-block px-6 py-3 border border-neon-pink text-neon-pink font-cyber tracking-widest rounded hover:bg-neon-pink/10 transition-colors"
-        >
-          🎬 YOUTUBE KANAL BESUCHEN
-        </a>
-      </div>
-    );
-  }
-
   return (
-    <div className="flex flex-wrap gap-4 justify-center">
-      {videos.map((v) => (
-        <a
-          key={v.videoId}
-          href={v.url}
-          target="_blank"
-          rel="noreferrer"
-          className="group w-48 rounded overflow-hidden border border-white/10 hover:border-neon-pink/60 transition-colors"
+    <section className="py-20 px-6 relative">
+      <div className="max-w-7xl mx-auto">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="text-center mb-12"
         >
-          <img
-            src={v.thumbnail}
-            alt={v.title}
-            className="w-full h-28 object-cover group-hover:opacity-80 transition-opacity"
-          />
-          <p className="p-2 text-xs text-white/70 line-clamp-2 group-hover:text-white transition-colors">
-            {v.title}
-          </p>
-        </a>
-      ))}
-    </div>
+          <h2 className="font-cyber text-4xl md:text-5xl font-bold text-white mb-4">
+            📺 NEUESTE{' '}
+            <span className="text-red-500" style={{ textShadow: '0 0 15px #ff0000' }}>
+              YOUTUBE-VIDEOS
+            </span>
+          </h2>
+          <p className="text-white/50">Die letzten Videos von @Zyztm</p>
+        </motion.div>
+
+        {loading ? (
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+            {[0, 1, 2].map((i) => (
+              <div
+                key={i}
+                className="rounded-lg overflow-hidden animate-pulse"
+                style={{
+                  background: 'linear-gradient(135deg, rgba(13,17,23,0.75) 0%, rgba(10,12,21,0.80) 100%)',
+                  backdropFilter: 'blur(16px)',
+                  border: '1px solid rgba(255,0,0,0.15)',
+                }}
+              >
+                <div className="aspect-video bg-white/5" />
+                <div className="p-4">
+                  <div className="h-3 bg-white/10 rounded mb-2 w-3/4" />
+                  <div className="h-2 bg-white/5 rounded w-1/4" />
+                </div>
+              </div>
+            ))}
+          </div>
+        ) : error || videos.length === 0 ? (
+          <div className="flex flex-col items-center gap-4">
+            {error && (
+              <p className="text-red-400 text-sm font-mono">{error}</p>
+            )}
+            <motion.a
+              href={CHANNEL_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              whileHover={{ scale: 1.03, y: -3 }}
+              className="rounded-lg overflow-hidden no-underline block group max-w-sm w-full"
+              style={{
+                background: 'linear-gradient(135deg, rgba(13,17,23,0.75) 0%, rgba(10,12,21,0.80) 100%)',
+                backdropFilter: 'blur(16px)',
+                WebkitBackdropFilter: 'blur(16px)',
+                border: '1px solid rgba(255,0,0,0.2)',
+                boxShadow: '0 4px 20px rgba(0,0,0,0.4)',
+              }}
+            >
+              <div className="relative aspect-video bg-gray-900 overflow-hidden">
+                <img
+                  src={FALLBACK_THUMBNAIL}
+                  alt="YouTube Kanal Vorschau"
+                  className="w-full h-full object-cover opacity-40 group-hover:opacity-60 transition-opacity duration-300"
+                />
+                <div className="absolute inset-0 flex flex-col items-center justify-center gap-3">
+                  <div className="text-5xl">📺</div>
+                  <p className="font-cyber text-lg font-bold text-red-500">ZYZTM AUF YOUTUBE</p>
+                </div>
+              </div>
+              <div className="p-4 text-center">
+                <p className="text-white/50 text-sm mb-2">Alle Videos & Highlights ansehen</p>
+                <div className="text-xs font-cyber tracking-widest py-2 px-6 border border-red-500/50 rounded text-red-500 inline-block">
+                  KANAL ÖFFNEN →
+                </div>
+              </div>
+            </motion.a>
+          </div>
+        ) : (
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+            {videos.map((v, i) => (
+              <motion.a
+                key={v.videoId}
+                href={v.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1 }}
+                whileHover={{ scale: 1.03, y: -5 }}
+                className="rounded-lg overflow-hidden no-underline block group"
+                style={{
+                  background: 'linear-gradient(135deg, rgba(13,17,23,0.75) 0%, rgba(10,12,21,0.80) 100%)',
+                  backdropFilter: 'blur(16px)',
+                  WebkitBackdropFilter: 'blur(16px)',
+                  border: '1px solid rgba(255,0,0,0.2)',
+                  boxShadow: '0 4px 20px rgba(0,0,0,0.4)',
+                  transition: 'box-shadow 0.3s ease',
+                }}
+              >
+                <div className="relative aspect-video bg-gray-900 overflow-hidden">
+                  <img
+                    src={v.thumbnail || FALLBACK_THUMBNAIL}
+                    alt={v.title}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  />
+                  <div className="absolute inset-0 flex items-center justify-center bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <span className="text-4xl">▶</span>
+                  </div>
+                </div>
+                <div className="p-4">
+                  <p className="text-white text-sm font-body font-bold line-clamp-2 group-hover:text-red-400 transition-colors duration-300">
+                    {v.title}
+                  </p>
+                  <p className="text-red-500 text-xs font-cyber mt-1">YOUTUBE →</p>
+                </div>
+              </motion.a>
+            ))}
+          </div>
+        )}
+      </div>
+    </section>
   );
 }
