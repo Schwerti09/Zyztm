@@ -16,6 +16,7 @@ import coinsRouter from './routes/coins';
 import voteRouter from './routes/vote';
 import clipsRouter from './routes/clips';
 import tiktokRouter from './routes/tiktok';
+import galleryRouter from './routes/gallery';
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -48,6 +49,7 @@ app.use('/api/coins', coinsRouter);
 app.use('/api/vote', voteRouter);
 app.use('/api/clips', clipsRouter);
 app.use('/api/tiktok', tiktokRouter);
+app.use('/api/gallery', galleryRouter);
 
 app.listen(PORT, () => {
   console.log(`🚀 Zyztm API running on port ${PORT}`);

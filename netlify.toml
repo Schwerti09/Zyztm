@@ -26,6 +26,11 @@
   status = 200
 
 [[redirects]]
+  from = "/api/gallery"
+  to = "/.netlify/functions/gallery"
+  status = 200
+
+[[redirects]]
   from = "/api/tiktok/latest"
   to = "/.netlify/functions/tiktok-latest"
   status = 200
@@ -49,6 +54,9 @@
 # Scheduled functions
 [functions."fetch-clips"]
   schedule = "0 */6 * * *"
+
+[functions."fetch-youtube-clips"]
+  schedule = "0 0 * * *"
 
 [functions."fetch-tiktok-clips"]
   schedule = "0 6 * * *"

@@ -49,12 +49,13 @@ async function fetchAndUpsertClips() {
   for (const clip of clips) {
     if (!clip.url) continue;
     await pool.query(
-      `INSERT INTO clips (title, thumbnail, url, views)
-       VALUES ($1, $2, $3, $4)
+      `INSERT INTO clips (title, thumbnail, url, views, source)
+       VALUES ($1, $2, $3, $4, 'kick')
        ON CONFLICT (url) DO UPDATE
          SET title     = EXCLUDED.title,
              thumbnail = EXCLUDED.thumbnail,
-             views     = EXCLUDED.views`,
+             views     = EXCLUDED.views,
+             source    = 'kick'`,
       [clip.title, clip.thumbnail, clip.url, clip.views],
     );
   }
