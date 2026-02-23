@@ -1,5 +1,6 @@
 /**
  * GET /.netlify/functions/clips-by-tag?tag=:tag
+ * Also handles path-param style via splat redirect: /api/clips/by-tag/:tag
  * Returns a random clip associated with a product_tag, or a fallback JSON
  * if no clips are found.
  *
@@ -10,7 +11,11 @@ import pg from 'pg';
 const { Pool } = pg;
 
 export const handler = async (event) => {
-  const tag = event.queryStringParameters?.tag ?? '';
+  // Support both ?tag= (query param) and /api/clips/by-tag/:tag (path param via splat redirect)
+  const pathTag = (event.path ?? '').split('/').filter(Boolean).pop() ?? '';
+  const tag =
+    event.queryStringParameters?.tag ??
+    (pathTag && pathTag !== 'clips-by-tag' ? decodeURIComponent(pathTag) : '');
 
   if (!tag) {
     return {
