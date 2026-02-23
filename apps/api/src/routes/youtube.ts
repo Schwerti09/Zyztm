@@ -2,8 +2,7 @@ import { Router, Request, Response } from 'express';
 
 const router = Router();
 
-// Zyztm's YouTube channel ID (can be overridden via YOUTUBE_CHANNEL_ID env var)
-const CHANNEL_ID = process.env.YOUTUBE_CHANNEL_ID || 'UCccyxYt6K8sqVMnppnzd4zQ';
+const CHANNEL_ID = process.env.YOUTUBE_CHANNEL_ID ?? '';
 
 /** Parse up to `limit` video entries from a YouTube Atom feed XML string. */
 function parseAtomFeed(xml: string, limit = 3) {
@@ -65,6 +64,9 @@ function parseAtomFeed(xml: string, limit = 3) {
 }
 
 router.get('/latest', async (_req: Request, res: Response) => {
+  if (!CHANNEL_ID) {
+    return res.status(500).json({ error: 'YOUTUBE_CHANNEL_ID env var is not configured' });
+  }
   const apiKey = process.env.YOUTUBE_API_KEY;
 
   try {
