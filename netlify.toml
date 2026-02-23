@@ -25,6 +25,21 @@
   to = "/.netlify/functions/clips-top"
   status = 200
 
+[[redirects]]
+  from = "/api/tiktok/latest"
+  to = "/.netlify/functions/tiktok-latest"
+  status = 200
+
+[[redirects]]
+  from = "/api/tiktok/like"
+  to = "/.netlify/functions/tiktok-like"
+  status = 200
+
+[[redirects]]
+  from = "/api/tiktok/liked"
+  to = "/.netlify/functions/tiktok-liked"
+  status = 200
+
 # Fallback SPA route – must be last
 [[redirects]]
   from = "/*"
@@ -34,6 +49,9 @@
 # Scheduled functions
 [functions."fetch-clips"]
   schedule = "0 */6 * * *"
+
+[functions."fetch-tiktok-clips"]
+  schedule = "0 6 * * *"
 
 [secrets]
   omit_paths = ["**/.env.example", ".env.example"]
