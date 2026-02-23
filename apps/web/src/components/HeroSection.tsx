@@ -51,7 +51,10 @@ export default function HeroSection() {
           transition={{ duration: 0.6, delay: 0.7 }}
           className="flex flex-col sm:flex-row gap-4 justify-center mb-16"
         >
-          <button className="btn-primary rounded-sm text-sm">
+          <button
+            className="btn-primary rounded-sm text-sm"
+            onClick={() => document.getElementById('marketplace')?.scrollIntoView({ behavior: 'smooth' })}
+          >
             🎮 JETZT SHOPPEN
           </button>
           <button className="btn-secondary rounded-sm text-sm">

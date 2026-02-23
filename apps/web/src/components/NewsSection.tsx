@@ -1,6 +1,16 @@
+import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 
-const news = [
+interface NewsItem {
+  id: number;
+  title: string;
+  teaser: string;
+  date: string;
+  tag: string;
+  color: string;
+}
+
+const FALLBACK_NEWS: NewsItem[] = [
   {
     id: 1,
     title: '🏆 ZYZTM GEWINNT FORTNITE TURNIER!',
@@ -28,6 +38,16 @@ const news = [
 ];
 
 export default function NewsSection() {
+  const [news, setNews] = useState<NewsItem[]>(FALLBACK_NEWS);
+
+  useEffect(() => {
+    fetch('/api/news/latest')
+      .then((r) => r.json())
+      .then((data) => {
+        if (data.news && data.news.length > 0) setNews(data.news);
+      })
+      .catch(() => {});
+  }, []);
   return (
     <section className="py-20 px-6">
       <div className="max-w-7xl mx-auto">

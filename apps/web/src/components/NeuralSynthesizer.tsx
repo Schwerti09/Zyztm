@@ -7,12 +7,27 @@ export default function NeuralSynthesizer() {
   const [loading, setLoading] = useState(false);
   const [audioUrl, setAudioUrl] = useState<string | null>(null);
   const [error, setError] = useState('');
+  const [demoMode, setDemoMode] = useState(false);
   const { credits } = useStore();
 
   const synthesize = async () => {
     if (!text.trim()) return;
     setLoading(true);
     setError('');
+    setDemoMode(false);
+    const useBrowserTTS = () => {
+      if (typeof window !== 'undefined' && 'speechSynthesis' in window) {
+        window.speechSynthesis.cancel();
+        const utterance = new SpeechSynthesisUtterance(text);
+        utterance.lang = 'de-DE';
+        utterance.rate = 0.95;
+        window.speechSynthesis.speak(utterance);
+        setDemoMode(true);
+        setError('ElevenLabs API nicht konfiguriert – Browser-Demo aktiv');
+        return true;
+      }
+      return false;
+    };
     try {
       const res = await fetch('/api/voice/synthesize', {
         method: 'POST',
@@ -21,13 +36,16 @@ export default function NeuralSynthesizer() {
       });
       if (!res.ok) {
         const data = await res.json();
+        if (res.status === 503 && useBrowserTTS()) return;
         setError(data.error || 'Fehler bei der Synthese');
         return;
       }
       const blob = await res.blob();
       setAudioUrl(URL.createObjectURL(blob));
     } catch {
-      setError('API nicht verfügbar. Konfiguriere ElevenLabs API Key.');
+      if (!useBrowserTTS()) {
+        setError('API nicht verfügbar. Konfiguriere ElevenLabs API Key.');
+      }
     } finally {
       setLoading(false);
     }
@@ -81,7 +99,11 @@ export default function NeuralSynthesizer() {
             </button>
           </div>
           
-          {error && <p className="text-neon-pink text-sm mb-4">⚠️ {error}</p>}
+          {error && (
+            <p className={`text-sm mb-4 ${demoMode ? 'text-neon-blue' : 'text-neon-pink'}`}>
+              {demoMode ? '🎙️ ' : '⚠️ '}{error}
+            </p>
+          )}
           
           {audioUrl && (
             <motion.div

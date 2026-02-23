@@ -3,6 +3,34 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useStore } from '../store/useStore';
 import type { ChatMessage } from '@zyztm/shared-types';
 
+const OFFLINE_RESPONSES = [
+  'Ey Diggah, was geht ab?! 🎮 Ich bin gerade bisschen beschäftigt mit Fortnite, aber was kann ich für dich tun?',
+  'Bruder, das ist ja krass! 🔥 Komm vorbei auf meinem Kick Stream, da liefern wir richtig ab!',
+  'Yooo, was geht! Ich hab gerade mega Loot gefunden – aber für dich nehme ich mir kurz Zeit! 😂',
+  'Diggah, du bist im ZYZTM NEXUS! Hier kriegst du die besten Fortnite Tipps und exklusive Produkte! 🏆',
+  'Krass krass krass! Ich hab gerade einen Victory Royale geholt! Was ist deine Frage, Bruder? 👑',
+  'Ey was geht ab! Check mal meine neuesten YouTube Videos aus – da gibt\'s mega Clips! 📺',
+  'Yooo! Willkommen im Nexus! Für den Discord Server – da chillen gerade über 12K Mitglieder! 💬',
+  'Abliefern ist alles! 🎯 Falls du Voice Credits brauchst oder einen Card Booster Pack willst – schau mal im Shop vorbei!',
+];
+
+function getOfflineResponse(input: string): string {
+  const lower = input.toLowerCase();
+  if (lower.includes('preis') || lower.includes('kaufen') || lower.includes('shop'))
+    return 'Bruder, im NEXUS MARKETPLACE kriegst du alles! Voice Pack ab €4.99, Deepi AI ab €9.99, VIP ab €19.99 – scroll mal runter! 💰';
+  if (lower.includes('stream') || lower.includes('kick') || lower.includes('live'))
+    return 'Ich stream live auf Kick! 🟢 Geh auf kick.com/zyztm – da liefern wir täglich ab Diggah!';
+  if (lower.includes('youtube') || lower.includes('video'))
+    return 'Auf YouTube @Zyztm findest du über 1 Million Abonnenten und krasse Fortnite Clips! 📺 Schau vorbei!';
+  if (lower.includes('discord'))
+    return 'Der ZYZTM Discord hat über 12K Mitglieder! Komm rein, die Community ist mega! 💬';
+  if (lower.includes('fortnite') || lower.includes('game'))
+    return 'Fortnite ist alles! 🎮 Season X ist gerade mega – die neuen Mechanics sind krassss! Was willst du wissen?';
+  if (lower.includes('creator') || lower.includes('code'))
+    return 'Mein Creator Code ist JOJOJO! Benutze ihn im Fortnite Shop und support deinen Liebling! ⚡';
+  return OFFLINE_RESPONSES[Math.floor(Math.random() * OFFLINE_RESPONSES.length)];
+}
+
 export default function DeepIChat() {
   const [input, setInput] = useState('');
   const [loading, setLoading] = useState(false);
@@ -26,9 +54,9 @@ export default function DeepIChat() {
         body: JSON.stringify({ messages: [...chatMessages, userMsg] }),
       });
       const data = await res.json();
-      addChatMessage({ role: 'assistant', content: data.message });
+      addChatMessage({ role: 'assistant', content: (data.message && data.message.trim()) ? data.message : getOfflineResponse(input) });
     } catch {
-      addChatMessage({ role: 'assistant', content: 'Ey Diggah, irgendwas ist schiefgelaufen! Versuch es nochmal! 🎮' });
+      addChatMessage({ role: 'assistant', content: getOfflineResponse(input) });
     } finally {
       setLoading(false);
     }

@@ -137,7 +137,7 @@ function ProductCard({ product, index }: { product: (typeof PRODUCTS)[0]; index:
 
 export default function ProductGrid() {
   return (
-    <section className="py-20 px-6 relative">
+    <section id="marketplace" className="py-20 px-6 relative">
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-neon-pink/3 to-transparent" />
       <div className="max-w-7xl mx-auto">
         <motion.div

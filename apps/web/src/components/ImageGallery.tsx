@@ -1,7 +1,15 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
-const galleryItems = [
+interface GalleryItem {
+  emoji?: string;
+  label: string;
+  bg: string;
+  thumbnail?: string;
+  url?: string;
+}
+
+const FALLBACK_GALLERY: GalleryItem[] = [
   { emoji: '🏆', label: 'Victory Royale', bg: 'from-yellow-900/40 to-bg-card' },
   { emoji: '🎮', label: 'Gaming Setup', bg: 'from-blue-900/40 to-bg-card' },
   { emoji: '📺', label: 'Stream Highlights', bg: 'from-red-900/40 to-bg-card' },
@@ -13,10 +21,31 @@ const galleryItems = [
 ];
 
 export default function ImageGallery() {
+  const [galleryItems, setGalleryItems] = useState<GalleryItem[]>(FALLBACK_GALLERY);
   const [lightboxOpen, setLightboxOpen] = useState(false);
-  const [currentItem, setCurrentItem] = useState<(typeof galleryItems)[0] | null>(null);
+  const [currentItem, setCurrentItem] = useState<GalleryItem | null>(null);
 
-  const openLightbox = (item: (typeof galleryItems)[0]) => {
+  useEffect(() => {
+    fetch('/api/youtube/latest')
+      .then((r) => r.json())
+      .then((data) => {
+        if (data.videos && data.videos.length > 0) {
+          const ytItems: GalleryItem[] = data.videos.map(
+            (v: { title: string; thumbnail: string; url: string }) => ({
+              label: v.title,
+              bg: 'from-red-900/40 to-bg-card',
+              thumbnail: v.thumbnail,
+              url: v.url,
+            })
+          );
+          // Mix YouTube thumbnails with fallback emojis
+          setGalleryItems([...ytItems, ...FALLBACK_GALLERY].slice(0, 8));
+        }
+      })
+      .catch(() => {});
+  }, []);
+
+  const openLightbox = (item: GalleryItem) => {
     setCurrentItem(item);
     setLightboxOpen(true);
   };
@@ -57,11 +86,27 @@ export default function ImageGallery() {
               viewport={{ once: true }}
               transition={{ delay: i * 0.05 }}
               whileHover={{ scale: 1.05, zIndex: 10 }}
-              onClick={() => openLightbox(item)}
-              className={`aspect-square cyber-card rounded-lg flex flex-col items-center justify-center cursor-pointer bg-gradient-to-br ${item.bg} group overflow-hidden`}
+              onClick={() => item.url ? window.open(item.url, '_blank', 'noopener,noreferrer') : openLightbox(item)}
+              className={`aspect-square cyber-card rounded-lg flex flex-col items-center justify-center cursor-pointer bg-gradient-to-br ${item.bg} group overflow-hidden relative`}
             >
-              <span className="text-6xl group-hover:scale-125 transition-transform duration-300">{item.emoji}</span>
-              <span className="text-white/50 text-xs font-cyber mt-3 tracking-widest group-hover:text-white transition-colors">{item.label}</span>
+              {item.thumbnail ? (
+                <>
+                  <img
+                    src={item.thumbnail}
+                    alt={item.label}
+                    className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  />
+                  <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                    <span className="text-4xl">▶</span>
+                  </div>
+                  <span className="absolute bottom-2 left-0 right-0 text-center text-white/80 text-xs font-cyber px-2 truncate z-10">{item.label}</span>
+                </>
+              ) : (
+                <>
+                  <span className="text-6xl group-hover:scale-125 transition-transform duration-300">{item.emoji}</span>
+                  <span className="text-white/50 text-xs font-cyber mt-3 tracking-widest group-hover:text-white transition-colors">{item.label}</span>
+                </>
+              )}
             </motion.div>
           ))}
         </div>
@@ -99,7 +144,15 @@ export default function ImageGallery() {
               >
                 ✕
               </button>
-              <span className="text-8xl mb-6">{currentItem.emoji}</span>
+              {currentItem.thumbnail ? (
+                <img
+                  src={currentItem.thumbnail}
+                  alt={currentItem.label}
+                  className="w-full rounded-lg mb-4 object-cover"
+                />
+              ) : (
+                <span className="text-8xl mb-6">{currentItem.emoji}</span>
+              )}
               <p className="font-cyber text-2xl font-bold text-white tracking-widest text-center">
                 {currentItem.label}
               </p>

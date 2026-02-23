@@ -74,47 +74,15 @@ export default function LaptopMockup() {
               }}
             />
 
-            {/* Static screenshot / preview content */}
-            <div className="w-full h-full flex flex-col items-center justify-center gap-4 p-8">
-              <div
-                className="font-cyber text-4xl md:text-5xl font-black text-neon-pink"
-                style={{ textShadow: '0 0 15px #ff0055, 0 0 40px #ff0055' }}
-              >
-                ZYZTM NEXUS
-              </div>
-              <div className="flex gap-6 text-xs font-cyber">
-                <span className="text-neon-blue" style={{ textShadow: '0 0 8px #00f2ff' }}>
-                  1.05M YOUTUBE
-                </span>
-                <span className="text-neon-pink" style={{ textShadow: '0 0 8px #ff0055' }}>
-                  CREATOR CODE: JOJOJO
-                </span>
-                <span style={{ color: '#53fc18', textShadow: '0 0 8px #53fc18' }}>
-                  180K KICK
-                </span>
-              </div>
-              <div className="grid grid-cols-3 gap-3 w-full max-w-sm mt-2">
-                {[
-                  { color: '#00f2ff', label: 'VOICE SYNTH' },
-                  { color: '#ff0055', label: 'DEEPI AI' },
-                  { color: '#ffd700', label: 'CARD BOOSTER' },
-                ].map((card) => (
-                  <div
-                    key={card.label}
-                    className="rounded p-2 text-center"
-                    style={{
-                      background: `linear-gradient(135deg, ${card.color}15, rgba(10,12,21,0.9))`,
-                      border: `1px solid ${card.color}40`,
-                      boxShadow: `0 0 10px ${card.color}20`,
-                    }}
-                  >
-                    <div className="font-cyber text-xs" style={{ color: card.color, fontSize: '9px' }}>
-                      {card.label}
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
+            {/* Embedded YouTube channel preview */}
+            <iframe
+              src="https://www.youtube.com/embed/videoseries?list=UUyJ9OBiMrj2LMUeY7XVhbew&autoplay=0&rel=0&modestbranding=1"
+              title="Zyztm YouTube Kanal"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+              className="w-full h-full border-0"
+              style={{ display: 'block' }}
+            />
           </div>
         </div>
 
