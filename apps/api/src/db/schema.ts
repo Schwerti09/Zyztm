@@ -1,4 +1,4 @@
-import { pgTable, uuid, varchar, integer, timestamp, jsonb, pgEnum } from 'drizzle-orm/pg-core';
+import { pgTable, uuid, varchar, integer, timestamp, jsonb, pgEnum, boolean, text } from 'drizzle-orm/pg-core';
 
 export const purchaseStatusEnum = pgEnum('purchase_status', ['pending', 'completed', 'refunded']);
 
@@ -8,6 +8,9 @@ export const users = pgTable('users', {
   stripeCustomerId: varchar('stripe_customer_id', { length: 255 }).unique(),
   credits: integer('credits').default(0).notNull(),
   createdAt: timestamp('created_at').defaultNow().notNull(),
+  isAdmin: boolean('is_admin').default(false).notNull(),
+  isBanned: boolean('is_banned').default(false).notNull(),
+  bannedReason: text('banned_reason'),
 });
 
 export const purchases = pgTable('purchases', {
@@ -31,4 +34,20 @@ export const cardBoosterPacks = pgTable('card_booster_packs', {
   userId: uuid('user_id').references(() => users.id).notNull(),
   cards: jsonb('cards').notNull(),
   purchasedAt: timestamp('purchased_at').defaultNow().notNull(),
+});
+
+export const adminLogs = pgTable('admin_logs', {
+  id: uuid('id').defaultRandom().primaryKey(),
+  adminUserId: uuid('admin_user_id'),
+  action: text('action').notNull(),
+  details: jsonb('details'),
+  createdAt: timestamp('created_at').defaultNow().notNull(),
+});
+
+export const pageViews = pgTable('page_views', {
+  id: uuid('id').defaultRandom().primaryKey(),
+  path: text('path').notNull(),
+  userId: uuid('user_id'),
+  sessionId: text('session_id'),
+  createdAt: timestamp('created_at').defaultNow().notNull(),
 });

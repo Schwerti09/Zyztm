@@ -12,6 +12,14 @@ router.post('/synthesize', async (req: Request, res: Response) => {
   try {
     const { text } = synthesizeSchema.parse(req.body);
 
+    const isTestMode =
+      req.headers['x-test-mode'] === 'true' &&
+      req.headers['x-admin-secret'] === process.env.ADMIN_SECRET;
+
+    if (isTestMode) {
+      return res.status(200).json({ testMode: true, message: 'Test mode - no audio generated' });
+    }
+
     const apiKey = process.env.ELEVENLABS_API_KEY;
     const voiceId = process.env.ELEVENLABS_VOICE_ID || '21m00Tcm4TlvDq8ikWAM';
 
