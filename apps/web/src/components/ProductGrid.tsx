@@ -84,7 +84,7 @@ function ProductCard({ product, index, userEmail, onCoinPurchase }: {
   useEffect(() => {
     if (!hovered || clipUrl !== null || fetchingRef.current) return;
     fetchingRef.current = true;
-    fetch(`/api/clips/by-tag?tag=${encodeURIComponent(product.id)}`)
+    fetch(`/api/clips/by-tag/${encodeURIComponent(product.tag)}`)
       .then((r) => r.json())
       .then((data) => {
         if (!data.fallback && data.clip?.url) {

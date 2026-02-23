@@ -29,7 +29,7 @@ router.get('/top', async (_req: Request, res: Response) => {
   }
 });
 
-/** GET /api/clips/by-tag?tag=:tag – random clip for a product tag */
+/** GET /api/clips/by-tag?tag=:tag – random clip for a product tag (query param) */
 router.get('/by-tag', async (req: Request, res: Response) => {
   const tag = (req.query['tag'] as string | undefined)?.trim();
   if (!tag) {
@@ -57,6 +57,38 @@ router.get('/by-tag', async (req: Request, res: Response) => {
     return res.json({ clip: row, fallback: false });
   } catch (err) {
     console.error('[clips/by-tag]', err);
+    return res.json({ clip: null, fallback: true, message: 'Database unavailable' });
+  }
+});
+
+/** GET /api/clips/by-tag/:tag – random clip for a product tag (path param) */
+router.get('/by-tag/:tag', async (req: Request, res: Response) => {
+  const tag = req.params['tag']?.trim();
+  if (!tag) {
+    return res.status(400).json({ error: 'Missing :tag path parameter' });
+  }
+
+  try {
+    const [row] = await db
+      .select({
+        id: clips.id,
+        title: clips.title,
+        thumbnail: clips.thumbnail,
+        url: clips.url,
+        views: clips.views,
+      })
+      .from(clips)
+      .where(eq(clips.productTag, tag))
+      .orderBy(sql`RANDOM()`)
+      .limit(1);
+
+    if (!row) {
+      return res.json({ clip: null, fallback: true, message: `No clips found for tag "${tag}"` });
+    }
+
+    return res.json({ clip: row, fallback: false });
+  } catch (err) {
+    console.error('[clips/by-tag/:tag]', err);
     return res.json({ clip: null, fallback: true, message: 'Database unavailable' });
   }
 });
