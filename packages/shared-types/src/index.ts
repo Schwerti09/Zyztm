@@ -12,7 +12,8 @@ export interface Purchase {
   id: string;
   userId: string;
   productId: string;
-  stripePaymentIntent: string;
+  stripePaymentIntent?: string | null;
+  paymentMethod: string;
   amount: number;
   status: 'pending' | 'completed' | 'refunded';
   createdAt: Date;
