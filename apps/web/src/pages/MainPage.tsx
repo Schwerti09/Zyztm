@@ -1,5 +1,6 @@
 import LiveBar from '../components/LiveBar';
 import HeroSection from '../components/HeroSection';
+import CreatorCode from '../components/CreatorCode';
 import SocialHub from '../components/SocialHub';
 import ProductGrid from '../components/ProductGrid';
 import NeuralSynthesizer from '../components/NeuralSynthesizer';
@@ -17,6 +18,7 @@ export default function MainPage() {
         <LiveBar />
         <main className="pt-10">
           <HeroSection />
+          <CreatorCode />
           <SocialHub />
           <ProductGrid />
           <NeuralSynthesizer />
