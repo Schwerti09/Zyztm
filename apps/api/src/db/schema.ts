@@ -78,5 +78,15 @@ export const clips = pgTable('clips', {
   url: text('url').notNull().unique(),
   views: integer('views').notNull().default(0),
   productTag: text('product_tag'),
+  source: varchar('source', { length: 50 }).default('kick'),
+  tiktokId: text('tiktok_id'),
+  likes: integer('likes').notNull().default(0),
   createdAt: timestamp('created_at', { withTimezone: true }).defaultNow().notNull(),
+});
+
+export const tiktokLikes = pgTable('tiktok_likes', {
+  id: uuid('id').defaultRandom().primaryKey(),
+  userId: uuid('user_id').references(() => users.id, { onDelete: 'cascade' }).notNull(),
+  clipId: uuid('clip_id').references(() => clips.id, { onDelete: 'cascade' }).notNull(),
+  createdAt: timestamp('created_at').defaultNow().notNull(),
 });

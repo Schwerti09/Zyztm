@@ -6,6 +6,7 @@ import CreatorCode from '../components/CreatorCode';
 import SocialHub from '../components/SocialHub';
 import ProductGrid from '../components/ProductGrid';
 import YouTubeLatest from '../components/YouTubeLatest';
+import TikTokWall from '../components/TikTokWall';
 import NeuralSynthesizer from '../components/NeuralSynthesizer';
 import DeepIChat from '../components/DeepIChat';
 import NewsSection from '../components/NewsSection';
@@ -38,6 +39,7 @@ export default function MainPage() {
           <SocialHub />
           <ProductGrid />
           <YouTubeLatest />
+          <TikTokWall />
           <NeuralSynthesizer />
           <DeepIChat />
           <NewsSection />
