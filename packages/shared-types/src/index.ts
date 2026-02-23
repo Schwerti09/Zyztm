@@ -3,6 +3,8 @@ export interface User {
   email: string;
   stripeCustomerId?: string;
   credits: number;
+  coins: number;
+  lastLogin?: Date | null;
   createdAt: Date;
 }
 
@@ -50,15 +52,16 @@ export interface Product {
   emoji: string;
   priceLabel: string;
   category: 'voice' | 'ai' | 'cards' | 'soundboard' | 'vip' | 'bundle';
+  coinPrice: number;
 }
 
 export const PRODUCTS: Product[] = [
-  { id: 'voice_pack', name: 'Voice Synth Credits', description: '50 Voice Credits für den Neural Synthesizer', price: 799, emoji: '🎙️', priceLabel: '€7.99', category: 'voice' },
-  { id: 'deepi_ai', name: 'Deepi AI', description: '1 Monat Zugang zum Zyztm AI Chatbot', price: 999, emoji: '🤖', priceLabel: '€9.99/Monat', category: 'ai' },
-  { id: 'card_booster', name: 'Legacy Card Pack', description: '5 zufällige Karten aus der Zyztm Collection', price: 399, emoji: '🃏', priceLabel: '€3.99', category: 'cards' },
-  { id: 'soundboard', name: 'Soundboard Pack', description: 'Exklusive Zyztm Sounds & Clips', price: 599, emoji: '🎵', priceLabel: '€5.99', category: 'soundboard' },
-  { id: 'vip', name: 'Zyztimate Box', description: 'Exklusiver Zugang zu VIP-Content & Discord', price: 799, emoji: '👑', priceLabel: '€7.99/Monat', category: 'vip' },
-  { id: 'gaming_bundle', name: 'Gaming Bundle', description: 'Alles in einem: Voice + AI + Cards + VIP', price: 2999, emoji: '🎮', priceLabel: '€29.99', category: 'bundle' },
+  { id: 'voice_pack', name: 'Voice Synth Credits', description: '50 Voice Credits für den Neural Synthesizer', price: 799, emoji: '🎙️', priceLabel: '€7.99', category: 'voice', coinPrice: 500 },
+  { id: 'deepi_ai', name: 'Deepi AI', description: '1 Monat Zugang zum Zyztm AI Chatbot', price: 999, emoji: '🤖', priceLabel: '€9.99/Monat', category: 'ai', coinPrice: 800 },
+  { id: 'card_booster', name: 'Legacy Card Pack', description: '5 zufällige Karten aus der Zyztm Collection', price: 399, emoji: '🃏', priceLabel: '€3.99', category: 'cards', coinPrice: 250 },
+  { id: 'soundboard', name: 'Soundboard Pack', description: 'Exklusive Zyztm Sounds & Clips', price: 599, emoji: '🎵', priceLabel: '€5.99', category: 'soundboard', coinPrice: 400 },
+  { id: 'vip', name: 'Zyztimate Box', description: 'Exklusiver Zugang zu VIP-Content & Discord', price: 799, emoji: '👑', priceLabel: '€7.99/Monat', category: 'vip', coinPrice: 500 },
+  { id: 'gaming_bundle', name: 'Gaming Bundle', description: 'Alles in einem: Voice + AI + Cards + VIP', price: 2999, emoji: '🎮', priceLabel: '€29.99', category: 'bundle', coinPrice: 1500 },
 ];
 
 export const ALL_CARDS: Card[] = [
