@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "skills": {
+    "neon-postgres": {
+      "source": "neondatabase/agent-skills",
+      "sourceType": "github",
+      "installedAt": "2026-02-23T15:03:34.228Z",
+      "updatedAt": "2026-02-23T15:03:34.228Z"
+    }
+  }
+}
