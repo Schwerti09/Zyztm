@@ -138,3 +138,8 @@
   93% { transform: translate(-3px, 1px); opacity: 0.8; }
   95% { transform: translate(2px, -1px); opacity: 0; }
 }
+
+@keyframes scan {
+  0% { transform: translateY(0%); }
+  100% { transform: translateY(100vh); }
+}
