@@ -10,7 +10,7 @@ import TikTokWall from '../components/TikTokWall';
 import NeuralSynthesizer from '../components/NeuralSynthesizer';
 import DeepIChat from '../components/DeepIChat';
 import NewsSection from '../components/NewsSection';
-import ImageGallery from '../components/ImageGallery';
+import MediaGallery from '../components/MediaGallery';
 import GamerVoting from '../components/GamerVoting';
 import Footer from '../components/Footer';
 import ParticleField from '../components/ParticleField';
@@ -43,7 +43,7 @@ export default function MainPage() {
           <NeuralSynthesizer />
           <DeepIChat />
           <NewsSection />
-          <ImageGallery />
+          <MediaGallery />
           <GamerVoting />
         </main>
         <Footer />
