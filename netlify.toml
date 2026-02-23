@@ -2,11 +2,38 @@
   base = "apps/web"
   command = "npm run build"
   publish = "dist"
+  functions = "../../netlify/functions"
 
+# API proxy – Netlify Functions handle /api/* requests
+[[redirects]]
+  from = "/api/debug/youtube"
+  to = "/.netlify/functions/debug-youtube"
+  status = 200
+
+[[redirects]]
+  from = "/api/youtube/latest"
+  to = "/.netlify/functions/youtube-latest"
+  status = 200
+
+[[redirects]]
+  from = "/api/clips/by-tag"
+  to = "/.netlify/functions/clips-by-tag"
+  status = 200
+
+[[redirects]]
+  from = "/api/clips/top"
+  to = "/.netlify/functions/clips-top"
+  status = 200
+
+# Fallback SPA route – must be last
 [[redirects]]
   from = "/*"
   to = "/index.html"
   status = 200
+
+# Scheduled functions
+[functions."fetch-clips"]
+  schedule = "0 */6 * * *"
 
 [secrets]
   omit_paths = [".env.example"]

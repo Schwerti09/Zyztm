@@ -1,0 +1,25 @@
+name: Daily Clip Fetch
+
+on:
+  schedule:
+    # Runs every day at 01:00 UTC
+    - cron: '0 1 * * *'
+  workflow_dispatch:
+
+jobs:
+  fetch-clips:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Install dependencies
+        run: npm install pg jsdom
+      - name: Fetch and upsert clips
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+          STREAMCHARTS_URL: ${{ secrets.STREAMCHARTS_URL }}
+        run: node scripts/fetch-clips.js
