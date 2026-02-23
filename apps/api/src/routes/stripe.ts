@@ -24,7 +24,7 @@ router.post('/create-checkout', async (req: Request, res: Response) => {
     }
 
     const session = await stripe.checkout.sessions.create({
-      payment_method_types: ['card'],
+      payment_method_types: ['card', 'giropay', 'klarna'],
       line_items: [
         {
           price_data: {

@@ -1,4 +1,36 @@
-import { motion } from 'framer-motion';
+import { motion, useMotionValue, useSpring, useInView } from 'framer-motion';
+import { useEffect, useRef } from 'react';
+
+function formatCounterValue(value: number, suffix: string): string {
+  const rounded = Math.round(value);
+  if (rounded >= 1000) {
+    const thousands = rounded / 1000;
+    const formatted = rounded % 1000 === 0 ? thousands.toFixed(0) : thousands.toFixed(2);
+    return `${formatted.replace('.', ',')}K${suffix}`;
+  }
+  return `${rounded}${suffix}`;
+}
+
+function AnimatedCounter({ target, suffix = '' }: { target: number; suffix?: string }) {
+  const ref = useRef<HTMLSpanElement>(null);
+  const motionVal = useMotionValue(0);
+  const spring = useSpring(motionVal, { stiffness: 60, damping: 20 });
+  const inView = useInView(ref, { once: true });
+
+  useEffect(() => {
+    if (inView) motionVal.set(target);
+  }, [inView, motionVal, target]);
+
+  useEffect(() => {
+    return spring.on('change', (v) => {
+      if (ref.current) {
+        ref.current.textContent = formatCounterValue(v, suffix);
+      }
+    });
+  }, [spring, suffix]);
+
+  return <span ref={ref}>0</span>;
+}
 
 export default function HeroSection() {
   return (
@@ -57,9 +89,14 @@ export default function HeroSection() {
           >
             🎮 JETZT SHOPPEN
           </button>
-          <button className="btn-secondary rounded-sm text-sm">
+          <a
+            href="https://kick.com/zyztm"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn-secondary rounded-sm text-sm"
+          >
             📺 STREAM ANSCHAUEN
-          </button>
+          </a>
         </motion.div>
         
         <motion.div
@@ -69,14 +106,14 @@ export default function HeroSection() {
           className="grid grid-cols-3 gap-8 max-w-2xl mx-auto"
         >
           {[
-            { label: 'YouTube', value: '1.05M', icon: '📺' },
-            { label: 'TikTok', value: '651K', icon: '🎵' },
-            { label: 'Kick', value: '180K', icon: '🟢' },
+            { label: 'YouTube', value: 1050, icon: '📺' },
+            { label: 'TikTok', value: 651, icon: '🎵' },
+            { label: 'Kick', value: 180, icon: '🟢' },
           ].map((stat) => (
             <div key={stat.label} className="text-center">
               <div className="text-3xl mb-1">{stat.icon}</div>
               <div className="text-2xl md:text-3xl font-cyber font-bold text-neon-blue neon-text-blue">
-                {stat.value}
+                <AnimatedCounter target={stat.value} suffix="K" />
               </div>
               <div className="text-white/50 text-sm">{stat.label}</div>
             </div>
