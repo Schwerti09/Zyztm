@@ -157,6 +157,24 @@ export default function ProductGrid() {
             <ProductCard key={product.id} product={product} index={i} />
           ))}
         </div>
+
+        {/* Payment methods info */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="mt-10 text-center"
+        >
+          <p className="text-white/40 text-xs font-cyber tracking-widest mb-3">BEZAHLMETHODEN</p>
+          <div className="flex flex-wrap justify-center items-center gap-3 text-sm">
+            <span className="px-3 py-1 border border-white/10 rounded text-white/60">💳 Kreditkarte</span>
+            <span className="px-3 py-1 border border-white/10 rounded text-white/60">🏦 Giropay</span>
+            <span className="px-3 py-1 border border-white/10 rounded text-white/60">🛒 Klarna</span>
+            <span className="px-3 py-1 border border-yellow-500/30 rounded text-yellow-400/80">
+              🎫 Paysafecard – an jeder Tankstelle/Kiosk erhältlich!
+            </span>
+          </div>
+        </motion.div>
       </div>
     </section>
   );

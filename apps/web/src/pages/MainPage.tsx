@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import LiveBar from '../components/LiveBar';
 import HeroSection from '../components/HeroSection';
+import KickEmbed from '../components/KickEmbed';
 import CreatorCode from '../components/CreatorCode';
 import SocialHub from '../components/SocialHub';
 import ProductGrid from '../components/ProductGrid';
@@ -26,6 +27,7 @@ export default function MainPage() {
         <LiveBar />
         <main className="pt-10">
           <HeroSection />
+          <KickEmbed />
           <LaptopMockup />
           <CreatorCode />
           <SocialHub />

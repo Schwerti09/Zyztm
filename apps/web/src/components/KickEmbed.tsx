@@ -1,0 +1,77 @@
+import { motion } from 'framer-motion';
+
+export default function KickEmbed() {
+  return (
+    <section className="py-12 px-6 relative">
+      <div className="max-w-5xl mx-auto">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="text-center mb-6"
+        >
+          <div className="inline-flex items-center gap-2 mb-3">
+            <span
+              className="w-3 h-3 rounded-full animate-pulse"
+              style={{ background: '#53fc18', boxShadow: '0 0 10px #53fc18' }}
+            />
+            <span className="font-cyber text-lg font-bold tracking-widest" style={{ color: '#53fc18' }}>
+              LIVE NOW
+            </span>
+            <span
+              className="w-3 h-3 rounded-full animate-pulse"
+              style={{ background: '#53fc18', boxShadow: '0 0 10px #53fc18' }}
+            />
+          </div>
+          <h2 className="font-cyber text-3xl md:text-4xl font-bold text-white">
+            ZYZTM AUF{' '}
+            <span className="font-cyber" style={{ color: '#53fc18', textShadow: '0 0 15px #53fc18' }}>
+              KICK
+            </span>
+          </h2>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, scale: 0.98 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.1 }}
+          className="relative rounded-lg overflow-hidden"
+          style={{
+            border: '1px solid #53fc1840',
+            boxShadow: '0 0 40px #53fc1820',
+          }}
+        >
+          <div className="aspect-video">
+            <iframe
+              src="https://player.kick.com/zyztm?autoplay=false&muted=true&allowfullscreen=true"
+              title="Zyztm Live auf Kick"
+              allow="autoplay; fullscreen"
+              allowFullScreen
+              className="w-full h-full"
+              style={{ border: 'none' }}
+            />
+          </div>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.2 }}
+          className="mt-4 text-center"
+        >
+          <a
+            href="https://kick.com/zyztm"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 text-sm font-cyber tracking-widest py-2 px-6 rounded border transition-all duration-300 hover:scale-105"
+            style={{ color: '#53fc18', borderColor: '#53fc1850', background: '#53fc1810' }}
+          >
+            🟢 AUF KICK FOLGEN →
+          </a>
+        </motion.div>
+      </div>
+    </section>
+  );
+}

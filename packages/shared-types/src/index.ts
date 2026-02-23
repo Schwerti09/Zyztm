@@ -53,11 +53,11 @@ export interface Product {
 }
 
 export const PRODUCTS: Product[] = [
-  { id: 'voice_pack', name: 'Voice Pack', description: '50 Voice Credits für den Neural Synthesizer', price: 499, emoji: '🎙️', priceLabel: '€4.99', category: 'voice' },
-  { id: 'deepi_ai', name: 'Deepi AI', description: '1 Monat Zugang zum Zyztm AI Chatbot', price: 999, emoji: '🤖', priceLabel: '€9.99/month', category: 'ai' },
-  { id: 'card_booster', name: 'Card Booster Pack', description: '5 zufällige Karten aus der Zyztm Collection', price: 299, emoji: '🃏', priceLabel: '€2.99', category: 'cards' },
-  { id: 'soundboard', name: 'Soundboard Pack', description: 'Exklusive Zyztm Sounds & Clips', price: 1499, emoji: '🎵', priceLabel: '€14.99', category: 'soundboard' },
-  { id: 'vip', name: 'VIP Membership', description: 'Exklusiver Zugang zu VIP-Content & Discord', price: 1999, emoji: '👑', priceLabel: '€19.99/month', category: 'vip' },
+  { id: 'voice_pack', name: 'Voice Synth Credits', description: '50 Voice Credits für den Neural Synthesizer', price: 799, emoji: '🎙️', priceLabel: '€7.99', category: 'voice' },
+  { id: 'deepi_ai', name: 'Deepi AI', description: '1 Monat Zugang zum Zyztm AI Chatbot', price: 999, emoji: '🤖', priceLabel: '€9.99/Monat', category: 'ai' },
+  { id: 'card_booster', name: 'Legacy Card Pack', description: '5 zufällige Karten aus der Zyztm Collection', price: 399, emoji: '🃏', priceLabel: '€3.99', category: 'cards' },
+  { id: 'soundboard', name: 'Soundboard Pack', description: 'Exklusive Zyztm Sounds & Clips', price: 599, emoji: '🎵', priceLabel: '€5.99', category: 'soundboard' },
+  { id: 'vip', name: 'Zyztimate Box', description: 'Exklusiver Zugang zu VIP-Content & Discord', price: 799, emoji: '👑', priceLabel: '€7.99/Monat', category: 'vip' },
   { id: 'gaming_bundle', name: 'Gaming Bundle', description: 'Alles in einem: Voice + AI + Cards + VIP', price: 2999, emoji: '🎮', priceLabel: '€29.99', category: 'bundle' },
 ];
 
