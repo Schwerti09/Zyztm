@@ -65,5 +65,10 @@ VALUES
   (gen_random_uuid(), 'Zyztm TikTok – Stream Moment',
    'https://www.tiktok.com/api/img/?itemId=7345678901234567890&location=0',
    'https://www.tiktok.com/@zyztm/video/7345678901234567890',
-   6200, NULL, 'tiktok', '7345678901234567890', 18)
+   6200, NULL, 'tiktok', '7345678901234567890', 18),
+
+  (gen_random_uuid(), 'Zyztm TikTok – Clip',
+   'https://www.tiktok.com/api/img/?itemId=7605933988426943746&location=0',
+   'https://www.tiktok.com/@zyztm/video/7605933988426943746',
+   0, NULL, 'tiktok', '7605933988426943746', 0)
 ON CONFLICT (url) DO NOTHING;
