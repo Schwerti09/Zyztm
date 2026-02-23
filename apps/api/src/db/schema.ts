@@ -70,3 +70,13 @@ export const featureVotes = pgTable('feature_votes', {
   voterIp: varchar('voter_ip', { length: 45 }).notNull(),
   createdAt: timestamp('created_at').defaultNow().notNull(),
 });
+
+export const clips = pgTable('clips', {
+  id: uuid('id').defaultRandom().primaryKey(),
+  title: text('title').notNull().default(''),
+  thumbnail: text('thumbnail').notNull().default(''),
+  url: text('url').notNull().unique(),
+  views: integer('views').notNull().default(0),
+  productTag: text('product_tag'),
+  createdAt: timestamp('created_at', { withTimezone: true }).defaultNow().notNull(),
+});

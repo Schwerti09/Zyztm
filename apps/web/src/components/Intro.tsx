@@ -5,6 +5,7 @@ export default function Intro() {
   const [showIntro, setShowIntro] = useState(() => {
     return !sessionStorage.getItem('intro-seen');
   });
+  const [videoFailed, setVideoFailed] = useState(false);
   const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const handleSkip = useCallback(() => {
@@ -16,6 +17,11 @@ export default function Intro() {
   const handleEnded = () => {
     handleSkip();
   };
+
+  const handleVideoError = useCallback(() => {
+    // Hide the video element but keep the fallback animation visible
+    setVideoFailed(true);
+  }, []);
 
   useEffect(() => {
     if (!showIntro) return;
@@ -35,18 +41,20 @@ export default function Intro() {
           transition={{ duration: 0.8 }}
           className="fixed inset-0 z-[9999] bg-black flex items-center justify-center"
         >
-          <video
-            autoPlay
-            muted
-            playsInline
-            onEnded={handleEnded}
-            onError={handleSkip}
-            className="w-full h-full object-cover"
-          >
-            <source src="/intro.mp4" type="video/mp4" />
-          </video>
+          {!videoFailed && (
+            <video
+              autoPlay
+              muted
+              playsInline
+              onEnded={handleEnded}
+              onError={handleVideoError}
+              className="w-full h-full object-cover"
+            >
+              <source src="/intro.mp4" type="video/mp4" />
+            </video>
+          )}
 
-          {/* Fallback overlay when no video */}
+          {/* Fallback overlay (always rendered, visible when video fails or is absent) */}
           <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none">
             <motion.h1
               initial={{ opacity: 0, scale: 0.8 }}
