@@ -44,9 +44,9 @@ export default function KickEmbed() {
         >
           <div className="aspect-video">
             <iframe
-              src="https://player.kick.com/zyztm?autoplay=false&muted=true&allowfullscreen=true"
+              src="https://player.kick.com/zyztm"
               title="Zyztm Live auf Kick"
-              allow="autoplay; fullscreen"
+              allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media"
               allowFullScreen
               className="w-full h-full"
               style={{ border: 'none' }}

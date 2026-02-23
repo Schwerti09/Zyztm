@@ -63,6 +63,65 @@ function parseAtomFeed(xml: string, limit = 3) {
   return entries;
 }
 
+router.get('/debug', async (_req: Request, res: Response) => {
+  const apiKey = process.env.YOUTUBE_API_KEY;
+  const channelId = process.env.YOUTUBE_CHANNEL_ID;
+
+  if (!apiKey || !channelId) {
+    return res.status(500).json({
+      success: false,
+      error: 'Missing env vars: YOUTUBE_API_KEY and/or YOUTUBE_CHANNEL_ID',
+      apiKeyPresent: !!apiKey,
+      channelIdPresent: !!channelId,
+    });
+  }
+
+  try {
+    const channelRes = await fetch(
+      `https://www.googleapis.com/youtube/v3/channels?part=snippet&id=${channelId}&key=${apiKey}`,
+    );
+    const channelData = (await channelRes.json()) as {
+      items?: Array<{ snippet?: { title?: string } }>;
+    };
+
+    if (!channelRes.ok) {
+      return res.status(502).json({ success: false, step: 'channels', error: channelData });
+    }
+
+    const searchRes = await fetch(
+      `https://www.googleapis.com/youtube/v3/search?part=snippet&channelId=${channelId}&order=date&maxResults=3&type=video&key=${apiKey}`,
+    );
+    const searchData = (await searchRes.json()) as {
+      items?: Array<{
+        id: { videoId: string };
+        snippet: { title: string; thumbnails: { medium: { url: string } }; publishedAt: string };
+      }>;
+    };
+
+    if (!searchRes.ok) {
+      return res.status(502).json({ success: false, step: 'search', error: searchData });
+    }
+
+    const videos = (searchData.items ?? []).map((item) => ({
+      videoId: item.id.videoId,
+      title: item.snippet.title,
+      thumbnail: item.snippet.thumbnails.medium.url,
+      url: `https://www.youtube.com/watch?v=${item.id.videoId}`,
+      publishedAt: item.snippet.publishedAt,
+    }));
+
+    return res.json({
+      success: true,
+      channelTitle: channelData.items?.[0]?.snippet?.title ?? null,
+      videoCount: videos.length,
+      videos,
+    });
+  } catch (err) {
+    console.error('[youtube/debug]', err);
+    return res.status(500).json({ success: false, error: 'Internal server error' });
+  }
+});
+
 router.get('/latest', async (_req: Request, res: Response) => {
   if (!CHANNEL_ID) {
     return res.status(500).json({ error: 'YOUTUBE_CHANNEL_ID env var is not configured' });
