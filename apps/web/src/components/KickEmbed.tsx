@@ -21,6 +21,22 @@ export default function KickEmbed() {
               KICK
             </span>
           </h2>
+          <div className="flex items-center justify-center gap-2 mt-3">
+            <span
+              className="w-2 h-2 rounded-full animate-pulse"
+              style={{ background: '#53fc18', boxShadow: '0 0 6px #53fc18' }}
+            />
+            <a
+              href="https://kick.com/zyztm"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-cyber text-sm tracking-widest"
+              style={{ color: '#53fc18' }}
+              aria-label="Zyztm Live-Stream auf Kick besuchen"
+            >
+              LIVE AUF KICK →
+            </a>
+          </div>
         </motion.div>
 
         <motion.div
