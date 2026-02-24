@@ -123,6 +123,7 @@ export default function YouTubeLatest() {
             </motion.a>
           </div>
         ) : (
+          <>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
             {videos.map((v, i) => (
               <motion.div
@@ -172,6 +173,7 @@ export default function YouTubeLatest() {
               KANAL ÖFFNEN →
             </a>
           </div>
+          </>
         )}
       </div>
 
