@@ -1,73 +1,78 @@
 import { motion } from 'framer-motion';
+import SocialCard, { type Channel } from './SocialCard';
+import PowerButton from './PowerButton';
 
 // Replace DEINE_DISCORD_SERVER_ID with your real Discord server ID to enable the widget
 const DISCORD_SERVER_ID = 'DEINE_DISCORD_SERVER_ID';
-const TIKTOK_COLOR = '#ff0055';
 
-const socials = [
+const socialChannels: Channel[] = [
   {
+    id: 'kick',
     name: 'KICK',
     icon: '🟢',
-    color: '#53fc18',
-    stats: '180K Follower',
-    description: 'Live Gaming Streams',
     url: 'https://kick.com/zyztm',
-    bg: 'from-green-950/50 to-bg-card',
+    color: '#53fc18',
+    bgColor: 'linear-gradient(135deg, rgba(15,40,15,0.9) 0%, rgba(13,17,23,0.95) 100%)',
+    stats: '180K Follower',
     live: true,
+    preview: { type: 'video', src: '/vids/kick-preview.mp4' },
   },
   {
+    id: 'youtube',
     name: 'YOUTUBE',
     icon: '📺',
+    url: 'https://youtube.com/@Zyztm',
     color: '#ff0000',
+    bgColor: 'linear-gradient(135deg, rgba(40,5,5,0.9) 0%, rgba(13,17,23,0.95) 100%)',
     stats: '1.05M Abonnenten',
-    description: 'Videos & Highlights',
-    url: 'https://www.youtube.com/@Zyztm',
-    bg: 'from-red-950/50 to-bg-card',
     live: false,
+    preview: { type: 'image', src: '/images/yt-fallback.jpg' },
   },
   {
+    id: 'tiktok',
     name: 'TIKTOK',
     icon: '🎵',
-    color: TIKTOK_COLOR,
+    url: 'https://tiktok.com/@zyztm',
+    color: '#ff0055',
+    bgColor: 'linear-gradient(135deg, rgba(30,10,20,0.9) 0%, rgba(13,17,23,0.95) 100%)',
     stats: '651K Follower',
-    description: 'Short Clips & Vibes',
-    url: 'https://www.tiktok.com/@zyztm',
-    bg: 'from-gray-800/50 to-bg-card',
     live: false,
+    preview: null,
   },
   {
+    id: 'discord',
     name: 'DISCORD',
     icon: '💬',
-    color: '#5865f2',
-    stats: '12K Mitglieder',
-    description: 'Community & Chat',
     url: 'https://discord.gg/zyztm',
-    bg: 'from-indigo-950/50 to-bg-card',
+    color: '#5865f2',
+    bgColor: 'linear-gradient(135deg, rgba(10,15,40,0.9) 0%, rgba(13,17,23,0.95) 100%)',
+    stats: '12K Mitglieder',
     live: false,
+    preview: null,
   },
   {
+    id: 'instagram',
     name: 'INSTAGRAM',
     icon: '📸',
+    url: 'https://instagram.com/zyztm2.0',
     color: '#e1306c',
+    bgColor: 'linear-gradient(135deg, rgba(40,5,20,0.9) 0%, rgba(13,17,23,0.95) 100%)',
     stats: 'Folg uns!',
-    description: 'Fotos & Stories',
-    url: 'https://www.instagram.com/zyztm2.0',
-    bg: 'from-pink-950/50 to-bg-card',
     live: false,
+    preview: null,
   },
   {
+    id: 'linktree',
     name: 'LINKTREE',
     icon: '🌐',
-    color: '#43e55e',
-    stats: 'Alle Links',
-    description: 'Alle Kanäle auf einen Blick',
     url: 'https://linktr.ee/zyztm',
-    bg: 'from-green-900/50 to-bg-card',
+    color: '#43e55e',
+    bgColor: 'linear-gradient(135deg, rgba(10,35,15,0.9) 0%, rgba(13,17,23,0.95) 100%)',
+    stats: 'Alle Links',
     live: false,
+    preview: null,
   },
 ];
-
-const tiktok = socials.find((s) => s.name === 'TIKTOK')!;
 
 export default function SocialHub() {
   return (
@@ -85,77 +90,21 @@ export default function SocialHub() {
           <p className="text-white/50">Folg mir auf allen Plattformen</p>
         </motion.div>
 
-        {/* Social Cards */}
+        {/* Social Cards Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-6 mb-16">
-          {socials.map((s, i) => (
-            <motion.a
-              key={s.name}
-              href={s.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.1 }}
-              whileHover={{ scale: 1.05, y: -5 }}
-              className={`cyber-card rounded-lg p-6 text-center bg-gradient-to-b ${s.bg} cursor-pointer no-underline block relative`}
-              style={{ borderColor: `${s.color}30` }}
-            >
-              {/* Live badge for Kick */}
-              {s.live && (
-                <div className="absolute top-3 right-3 flex items-center gap-1">
-                  <span
-                    className="w-2 h-2 rounded-full animate-pulse"
-                    style={{ background: '#53fc18', boxShadow: '0 0 6px #53fc18' }}
-                  />
-                  <span className="font-cyber text-xs" style={{ color: '#53fc18' }}>LIVE</span>
-                </div>
-              )}
-              <div className="text-5xl mb-4">{s.icon}</div>
-              <h3 className="font-cyber text-xl font-bold mb-1" style={{ color: s.color }}>
-                {s.name}
-              </h3>
-              <div className="text-white font-bold text-lg mb-1">{s.stats}</div>
-              <p className="text-white/50 text-sm">{s.description}</p>
-              <div
-                className="mt-4 text-xs font-cyber tracking-widest py-2 px-4 border rounded"
-                style={{ color: s.color, borderColor: `${s.color}50` }}
-              >
-                FOLGEN →
-              </div>
-            </motion.a>
+          {socialChannels.map((channel, i) => (
+            <SocialCard key={channel.id} channel={channel} index={i} />
           ))}
         </div>
 
-        {/* TikTok Channel Preview */}
+        {/* Power Button */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0, scale: 0.8 }}
+          whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
-          className="flex flex-col items-center mb-16"
+          className="flex justify-center mb-16"
         >
-          <h3 className="font-cyber text-2xl font-bold text-white mb-6 text-center">
-            <span style={{ color: TIKTOK_COLOR }}>🎵</span> TIKTOK KANAL
-          </h3>
-          <a
-            href={tiktok.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="cyber-card rounded-lg p-8 text-center no-underline flex flex-col items-center gap-4 max-w-sm w-full"
-            style={{ borderColor: `${TIKTOK_COLOR}30` }}
-          >
-            <div className="text-6xl">🎵</div>
-            <p className="font-cyber text-xl font-bold" style={{ color: TIKTOK_COLOR }}>
-              @ZYZTM
-            </p>
-            <p className="text-white/50 text-sm">{tiktok.stats} · {tiktok.description}</p>
-            <div
-              className="text-xs font-cyber tracking-widest py-2 px-6 border rounded"
-              style={{ color: TIKTOK_COLOR, borderColor: `${TIKTOK_COLOR}50` }}
-            >
-              KANAL BESUCHEN →
-            </div>
-          </a>
+          <PowerButton channels={socialChannels} />
         </motion.div>
 
         {/* Discord Widget */}
@@ -178,7 +127,6 @@ export default function SocialHub() {
               title="Discord Server Widget"
             />
           ) : (
-            // Discord invite
             <a
               href="https://discord.gg/zyztm"
               target="_blank"
