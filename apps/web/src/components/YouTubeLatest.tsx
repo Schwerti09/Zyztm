@@ -48,7 +48,17 @@ export default function YouTubeLatest() {
               YOUTUBE-VIDEOS
             </span>
           </h2>
-          <p className="text-white/50">Die letzten Videos von @Zyztm</p>
+          <p className="text-white/50">
+            Die letzten Videos von{' '}
+            <a
+              href={CHANNEL_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-red-500 hover:text-red-400 transition-colors"
+            >
+              @Zyztm
+            </a>
+          </p>
         </motion.div>
 
         {loading ? (
@@ -151,6 +161,16 @@ export default function YouTubeLatest() {
                 </div>
               </motion.div>
             ))}
+          </div>
+          <div className="flex justify-center mt-8">
+            <a
+              href={CHANNEL_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-xs font-cyber tracking-widest py-2 px-6 border border-red-500/50 rounded text-red-500 hover:border-red-500 hover:text-red-400 transition-all inline-block"
+            >
+              KANAL ÖFFNEN →
+            </a>
           </div>
         )}
       </div>
