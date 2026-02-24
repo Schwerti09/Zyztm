@@ -23,7 +23,7 @@ function getOfflineResponse(input: string): string {
   if (lower.includes('youtube') || lower.includes('video'))
     return 'Auf YouTube @Zyztm findest du über 1 Million Abonnenten und krasse Fortnite Clips! 📺 Schau vorbei!';
   if (lower.includes('discord'))
-    return 'Der ZYZTM Discord hat über 12K Mitglieder! Komm rein, die Community ist mega! 💬';
+    return 'Der ZYZTM Discord hat über 12K Mitglieder! Komm rein: discord.gg/zyztm – die Community ist mega! 💬';
   if (lower.includes('fortnite') || lower.includes('game'))
     return 'Fortnite ist alles! 🎮 Season X ist gerade mega – die neuen Mechanics sind krassss! Was willst du wissen?';
   if (lower.includes('creator') || lower.includes('code'))

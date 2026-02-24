@@ -30,3 +30,8 @@ https://www.instagram.com/zyztm2.0
 
 ## 🌐 Linktree
 https://linktr.ee/zyztm
+
+---
+
+## 💬 Discord
+https://discord.gg/zyztm

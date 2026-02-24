@@ -41,7 +41,7 @@ const socials = [
     color: '#5865f2',
     stats: '12K Mitglieder',
     description: 'Community & Chat',
-    url: 'https://discord.gg/DEINLINK', // TODO: Replace DEINLINK with your real Discord invite code
+    url: 'https://discord.gg/zyztm',
     bg: 'from-indigo-950/50 to-bg-card',
     live: false,
   },
@@ -178,9 +178,9 @@ export default function SocialHub() {
               title="Discord Server Widget"
             />
           ) : (
-            // TODO: Replace DEINLINK with your real Discord invite code
+            // Discord invite
             <a
-              href="https://discord.gg/DEINLINK"
+              href="https://discord.gg/zyztm"
               target="_blank"
               rel="noopener noreferrer"
               className="cyber-card rounded-lg p-8 text-center no-underline flex flex-col items-center gap-4 max-w-sm w-full"
