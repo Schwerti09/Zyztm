@@ -62,10 +62,11 @@ export const handler = async () => {
   const channelId = process.env.YOUTUBE_CHANNEL_ID;
 
   if (!channelId) {
+    console.error('Fehlende YouTube ENVs: YOUTUBE_CHANNEL_ID is not set');
     return {
-      statusCode: 503,
+      statusCode: 500,
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ error: 'YOUTUBE_CHANNEL_ID env var not configured' }),
+      body: JSON.stringify({ error: 'YouTube ENVs fehlen' }),
     };
   }
 
