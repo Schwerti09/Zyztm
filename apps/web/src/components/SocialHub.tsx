@@ -2,6 +2,7 @@ import { motion } from 'framer-motion';
 
 // Replace DEINE_DISCORD_SERVER_ID with your real Discord server ID to enable the widget
 const DISCORD_SERVER_ID = 'DEINE_DISCORD_SERVER_ID';
+const TIKTOK_COLOR = '#ff0055';
 
 const socials = [
   {
@@ -27,10 +28,10 @@ const socials = [
   {
     name: 'TIKTOK',
     icon: '🎵',
-    color: '#ffffff',
+    color: TIKTOK_COLOR,
     stats: '651K Follower',
     description: 'Short Clips & Vibes',
-    url: 'https://tiktok.com/@zyztm',
+    url: 'https://www.tiktok.com/@zyztm',
     bg: 'from-gray-800/50 to-bg-card',
     live: false,
   },
@@ -45,6 +46,8 @@ const socials = [
     live: false,
   },
 ];
+
+const tiktok = socials.find((s) => s.name === 'TIKTOK')!;
 
 export default function SocialHub() {
   return (
@@ -103,6 +106,37 @@ export default function SocialHub() {
             </motion.a>
           ))}
         </div>
+
+        {/* TikTok Channel Preview */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="flex flex-col items-center mb-16"
+        >
+          <h3 className="font-cyber text-2xl font-bold text-white mb-6 text-center">
+            <span style={{ color: TIKTOK_COLOR }}>🎵</span> TIKTOK KANAL
+          </h3>
+          <a
+            href={tiktok.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="cyber-card rounded-lg p-8 text-center no-underline flex flex-col items-center gap-4 max-w-sm w-full"
+            style={{ borderColor: `${TIKTOK_COLOR}30` }}
+          >
+            <div className="text-6xl">🎵</div>
+            <p className="font-cyber text-xl font-bold" style={{ color: TIKTOK_COLOR }}>
+              @ZYZTM
+            </p>
+            <p className="text-white/50 text-sm">{tiktok.stats} · {tiktok.description}</p>
+            <div
+              className="text-xs font-cyber tracking-widest py-2 px-6 border rounded"
+              style={{ color: TIKTOK_COLOR, borderColor: `${TIKTOK_COLOR}50` }}
+            >
+              KANAL BESUCHEN →
+            </div>
+          </a>
+        </motion.div>
 
         {/* Discord Widget */}
         <motion.div
