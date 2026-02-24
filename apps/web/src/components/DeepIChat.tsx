@@ -3,37 +3,81 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useStore } from '../store/useStore';
 import type { ChatMessage } from '@zyztm/shared-types';
 
-const OFFLINE_RESPONSES = [
-  'Ey Diggah, was geht ab?! 🎮 Ich bin gerade bisschen beschäftigt mit Fortnite, aber was kann ich für dich tun?',
-  'Bruder, das ist ja krass! 🔥 Komm vorbei auf meinem Kick Stream, da liefern wir richtig ab!',
-  'Yooo, was geht! Ich hab gerade mega Loot gefunden – aber für dich nehme ich mir kurz Zeit! 😂',
-  'Diggah, du bist im ZYZTM NEXUS! Hier kriegst du die besten Fortnite Tipps und exklusive Produkte! 🏆',
-  'Krass krass krass! Ich hab gerade einen Victory Royale geholt! Was ist deine Frage, Bruder? 👑',
-  'Ey was geht ab! Check mal meine neuesten YouTube Videos aus – da gibt\'s mega Clips! 📺',
-  'Yooo! Willkommen im Nexus! Für den Discord Server – da chillen gerade über 12K Mitglieder! 💬',
-  'Abliefern ist alles! 🎯 Falls du Voice Credits brauchst oder einen Card Booster Pack willst – schau mal im Shop vorbei!',
-];
+type Mood = 'chill' | 'tryhard' | 'lustig';
 
-function getOfflineResponse(input: string): string {
+const MOOD_CONFIG: Record<Mood, { label: string; emoji: string; color: string; prompt: string }> = {
+  chill: {
+    label: 'Chill',
+    emoji: '😎',
+    color: '#00f2ff',
+    prompt: 'chill',
+  },
+  tryhard: {
+    label: 'Tryhard',
+    emoji: '🔥',
+    color: '#ff0055',
+    prompt: 'tryhard',
+  },
+  lustig: {
+    label: 'Lustig',
+    emoji: '😂',
+    color: '#ffd700',
+    prompt: 'lustig',
+  },
+};
+
+const OFFLINE_RESPONSES: Record<Mood, string[]> = {
+  chill: [
+    'Yo Bro, was geht ab? 😎 Ich chill gerade ab, aber für dich nehm ich mir kurz Zeit!',
+    'Alles relaxed hier im Nexus 🌊 Was brauchst du?',
+    'Ey, kein Stress – sag mir einfach was auf dem Herzen liegt, Diggah!',
+    'Ich bin im Chill-Modus aber voll da für dich 💯',
+  ],
+  tryhard: [
+    'LASS GOOOO! 🔥🔥🔥 Ich bin im vollen Tryhard-Modus – frag mich was!!',
+    'WIR LIEFERN AB HEUTE! Was ist deine Frage? GIB ALLES!',
+    'VICTORY ROYALE oder Tod! Was willst du wissen, Bruder?! ⚡',
+    'FOCUS MODE AN! Ich beantworte alles in 0,1 Sekunden!',
+  ],
+  lustig: [
+    'HAHAHA wer hat dich gelassen hier rein zu kommen?? 😂 Just kidding – was geht?',
+    'Alter ich hab gerade so einen Move gebaut der war so krass ich glaub ich bin kein Mensch mehr 😭',
+    'Diggah ich frag mich jeden Tag warum Fortnite noch existiert und spiel es trotzdem 24/7 lmaooo',
+    'Ok ok ich hör auf zu labern – was willst du wissen bevor ich wieder auf TikTok schaue?',
+  ],
+};
+
+function getMoodResponse(input: string, mood: Mood): string {
   const lower = input.toLowerCase();
-  if (lower.includes('preis') || lower.includes('kaufen') || lower.includes('shop'))
-    return 'Bruder, im NEXUS MARKETPLACE kriegst du alles! Voice Pack ab €4.99, Deepi AI ab €9.99, VIP ab €19.99 – scroll mal runter! 💰';
-  if (lower.includes('stream') || lower.includes('kick') || lower.includes('live'))
-    return 'Ich stream live auf Kick! 🟢 Geh auf kick.com/zyztm – da liefern wir täglich ab Diggah!';
-  if (lower.includes('youtube') || lower.includes('video'))
-    return 'Auf YouTube @Zyztm findest du über 1 Million Abonnenten und krasse Fortnite Clips! 📺 Schau vorbei!';
-  if (lower.includes('discord'))
-    return 'Der ZYZTM Discord hat über 12K Mitglieder! Komm rein: discord.gg/zyztm – die Community ist mega! 💬';
-  if (lower.includes('fortnite') || lower.includes('game'))
-    return 'Fortnite ist alles! 🎮 Season X ist gerade mega – die neuen Mechanics sind krassss! Was willst du wissen?';
-  if (lower.includes('creator') || lower.includes('code'))
-    return 'Mein Creator Code ist JOJOJO! Benutze ihn im Fortnite Shop und support deinen Liebling! ⚡';
-  return OFFLINE_RESPONSES[Math.floor(Math.random() * OFFLINE_RESPONSES.length)];
+  if (lower.includes('preis') || lower.includes('kaufen') || lower.includes('shop')) {
+    if (mood === 'tryhard') return 'NEXUS MARKETPLACE CHECKEN! 🔥 Voice Pack €9,99, Deepi Bro €12,99, Soundboard €7,99 – KAUFEN ODER VERLIEREN!';
+    if (mood === 'lustig') return 'Alter du willst KAUFEN?? Ich dachte du liebst mich umsonst 😭 Aber ok schau mal im Shop vorbei lol';
+    return 'Im LOOT PODS Shop kriegst du krasse Items! Voice Pack, Deepi Bro, Karten und mehr – scroll mal runter! 😎';
+  }
+  if (lower.includes('stream') || lower.includes('kick') || lower.includes('live')) {
+    if (mood === 'tryhard') return 'KICK.COM/ZYZTM – DA WIRD GELIEFERT! 🟢 Täglich live, täglich Clutches!';
+    if (mood === 'lustig') return 'Kick.com/zyztm – da streame ich täglich und verliere stylisch 😂 Komm vorbei!';
+    return 'Ich stream auf Kick! 🟢 kick.com/zyztm – täglich ab 10 Uhr, chill vorbei kommen!';
+  }
+  if (lower.includes('fortnite') || lower.includes('game') || lower.includes('tipp')) {
+    if (mood === 'tryhard') return 'FORTNITE TIPPS: 1. IMMER BUILDEN. 2. IMMER PEEKEN. 3. NIEMALS AUFGEBEN. VICTORY ROYALE! 🏆';
+    if (mood === 'lustig') return 'Mein bester Fortnite-Tipp: Log aus und geh schlafen 😂 Nein seriously – High Ground nehmen!';
+    return 'Fortnite-Tipp vom Bro: High Ground ist King, aber manchmal muss man auch Low Ground spielen für die Überraschung 😎';
+  }
+  if (lower.includes('discord')) {
+    return mood === 'tryhard'
+      ? 'DISCORD.GG/ZYZTM – 12K KRIEGER WARTEN AUF DICH! JOIN SOFORT!'
+      : 'discord.gg/zyztm – 12K Mitglieder, mega Community 💬';
+  }
+  const responses = OFFLINE_RESPONSES[mood];
+  return responses[Math.floor(Math.random() * responses.length)];
 }
 
 export default function DeepIChat() {
   const [input, setInput] = useState('');
   const [loading, setLoading] = useState(false);
+  const [mood, setMood] = useState<Mood>('chill');
+  const [isTalking, setIsTalking] = useState(false);
   const { chatMessages, addChatMessage } = useStore();
   const bottomRef = useRef<HTMLDivElement>(null);
 
@@ -45,22 +89,32 @@ export default function DeepIChat() {
     if (!input.trim() || loading) return;
     const userMsg: ChatMessage = { role: 'user', content: input };
     addChatMessage(userMsg);
+    const sentInput = input;
     setInput('');
     setLoading(true);
+    setIsTalking(false);
     try {
       const res = await fetch('/api/chatbot/chat', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ messages: [...chatMessages, userMsg] }),
+        body: JSON.stringify({ messages: [...chatMessages, userMsg], mood }),
       });
       const data = await res.json();
-      addChatMessage({ role: 'assistant', content: (data.message && data.message.trim()) ? data.message : getOfflineResponse(input) });
+      const reply = (data.message && data.message.trim()) ? data.message : getMoodResponse(sentInput, mood);
+      addChatMessage({ role: 'assistant', content: reply });
+      setIsTalking(true);
+      setTimeout(() => setIsTalking(false), Math.min(reply.length * 40, 3000));
     } catch {
-      addChatMessage({ role: 'assistant', content: getOfflineResponse(input) });
+      const reply = getMoodResponse(sentInput, mood);
+      addChatMessage({ role: 'assistant', content: reply });
+      setIsTalking(true);
+      setTimeout(() => setIsTalking(false), Math.min(reply.length * 40, 3000));
     } finally {
       setLoading(false);
     }
   };
+
+  const currentMood = MOOD_CONFIG[mood];
 
   return (
     <section className="py-20 px-6">
@@ -69,71 +123,195 @@ export default function DeepIChat() {
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="cyber-card rounded-xl overflow-hidden"
+          className="rounded-xl overflow-hidden"
+          style={{
+            background: 'linear-gradient(160deg, rgba(8,10,18,0.97) 0%, rgba(5,7,14,0.99) 100%)',
+            border: `1px solid ${currentMood.color}40`,
+            boxShadow: `0 0 40px ${currentMood.color}15`,
+          }}
         >
-          <div className="bg-gradient-to-r from-neon-pink/20 to-neon-blue/20 p-4 border-b border-neon-pink/20 flex items-center gap-3">
-            <span className="text-3xl">🤖</span>
-            <div>
-              <h2 className="font-cyber text-xl font-bold text-white">DEEPI AI</h2>
-              <p className="text-white/50 text-xs">Zyztm's KI-Chatbot</p>
+          {/* Discord-style title bar */}
+          <div
+            className="px-4 py-3 flex items-center gap-3 border-b"
+            style={{ borderColor: `${currentMood.color}20`, background: `${currentMood.color}08` }}
+          >
+            {/* Avatar with talking animation */}
+            <div className="relative flex-shrink-0">
+              <motion.div
+                className="w-10 h-10 rounded-full flex items-center justify-center text-xl font-bold"
+                style={{ background: `linear-gradient(135deg, ${currentMood.color}40, ${currentMood.color}15)`, border: `2px solid ${currentMood.color}60` }}
+                animate={isTalking ? { scale: [1, 1.05, 1] } : { scale: 1 }}
+                transition={{ duration: 0.3, repeat: isTalking ? Infinity : 0 }}
+              >
+                🤖
+              </motion.div>
+              {/* Talking mouth indicator */}
+              {isTalking && (
+                <div className="absolute -bottom-1 -right-1 flex gap-0.5">
+                  {[0, 1, 2].map((i) => (
+                    <motion.div
+                      key={i}
+                      className="w-1 rounded-full"
+                      style={{ background: currentMood.color }}
+                      animate={{ height: ['3px', '8px', '3px'] }}
+                      transition={{ duration: 0.4, delay: i * 0.1, repeat: Infinity }}
+                    />
+                  ))}
+                </div>
+              )}
             </div>
-            <div className="ml-auto flex items-center gap-2">
-              <motion.div className="w-2 h-2 rounded-full bg-green-400" animate={{ opacity: [1, 0.3, 1] }} transition={{ duration: 2, repeat: Infinity }} />
-              <span className="text-green-400 text-xs font-cyber">ONLINE</span>
+            <div className="flex-1">
+              <div className="flex items-center gap-2">
+                <span className="font-cyber text-white font-bold text-sm">DEEPI BRO</span>
+                <span className="text-xs" style={{ color: currentMood.color }}>{currentMood.emoji}</span>
+              </div>
+              <div className="flex items-center gap-1.5">
+                <motion.div
+                  className="w-1.5 h-1.5 rounded-full bg-green-400"
+                  animate={{ opacity: [1, 0.3, 1] }}
+                  transition={{ duration: 2, repeat: Infinity }}
+                />
+                <span className="text-green-400 text-xs font-cyber">ONLINE</span>
+                <span className="text-white/30 text-xs">· Zyztm's Gaming-Kumpel</span>
+              </div>
+            </div>
+            {/* Mood tabs */}
+            <div className="flex gap-1">
+              {(Object.keys(MOOD_CONFIG) as Mood[]).map((m) => (
+                <button
+                  key={m}
+                  onClick={() => setMood(m)}
+                  className="px-2.5 py-1 rounded text-xs font-cyber transition-all duration-200"
+                  style={{
+                    background: mood === m ? `${MOOD_CONFIG[m].color}25` : 'transparent',
+                    border: `1px solid ${mood === m ? MOOD_CONFIG[m].color : 'rgba(255,255,255,0.1)'}`,
+                    color: mood === m ? MOOD_CONFIG[m].color : 'rgba(255,255,255,0.4)',
+                  }}
+                  title={MOOD_CONFIG[m].label}
+                >
+                  {MOOD_CONFIG[m].emoji}
+                </button>
+              ))}
             </div>
           </div>
-          
-          <div className="h-80 overflow-y-auto p-4 space-y-3 bg-black/30">
+
+          {/* Channel name bar */}
+          <div className="px-4 py-1.5 flex items-center gap-2 border-b border-white/5 bg-black/20">
+            <span className="text-white/30 text-xs">#</span>
+            <span className="text-white/50 text-xs font-cyber tracking-wider">deepi-bro-chat</span>
+            <span className="ml-auto text-xs px-2 py-0.5 rounded" style={{ background: `${currentMood.color}15`, color: currentMood.color }}>
+              {MOOD_CONFIG[mood].label}-Modus
+            </span>
+          </div>
+
+          {/* Messages area */}
+          <div className="h-72 overflow-y-auto p-4 space-y-4" style={{ background: 'rgba(0,0,0,0.3)' }}>
             {chatMessages.length === 0 && (
-              <div className="text-center text-white/30 text-sm py-10">
-                <div className="text-4xl mb-3">🎮</div>
-                <p>Schreib Zyztm an! Was geht ab?</p>
+              <div className="text-center py-10">
+                <motion.div
+                  className="text-5xl mb-3"
+                  animate={{ y: [0, -6, 0] }}
+                  transition={{ duration: 3, repeat: Infinity }}
+                >
+                  🤖
+                </motion.div>
+                <p className="text-white/40 text-sm font-cyber">Deepi Bro wartet auf dich!</p>
+                <p className="text-white/25 text-xs mt-1">Wähl einen Modus und fang an zu schreiben</p>
               </div>
             )}
             <AnimatePresence>
               {chatMessages.map((msg, i) => (
                 <motion.div
                   key={i}
-                  initial={{ opacity: 0, x: msg.role === 'user' ? 20 : -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}
+                  initial={{ opacity: 0, y: 8 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className={`flex items-start gap-3 ${msg.role === 'user' ? 'flex-row-reverse' : ''}`}
                 >
-                  {msg.role === 'assistant' && <span className="text-xl mr-2 self-end">🤖</span>}
                   <div
-                    className={`max-w-xs lg:max-w-md px-4 py-2 rounded-lg text-sm ${
-                      msg.role === 'user'
-                        ? 'bg-neon-pink/20 text-white border border-neon-pink/30'
-                        : 'bg-neon-blue/10 text-white border border-neon-blue/20'
-                    }`}
+                    className="w-8 h-8 rounded-full flex-shrink-0 flex items-center justify-center text-sm"
+                    style={{
+                      background: msg.role === 'assistant'
+                        ? `linear-gradient(135deg, ${currentMood.color}40, ${currentMood.color}15)`
+                        : 'rgba(255,255,255,0.1)',
+                      border: `1px solid ${msg.role === 'assistant' ? `${currentMood.color}50` : 'rgba(255,255,255,0.15)'}`,
+                    }}
                   >
-                    {msg.content}
+                    {msg.role === 'assistant' ? '🤖' : '👤'}
+                  </div>
+                  <div className={`max-w-xs lg:max-w-sm ${msg.role === 'user' ? 'items-end' : 'items-start'} flex flex-col gap-1`}>
+                    <span className="text-white/40 text-xs font-cyber px-1">
+                      {msg.role === 'assistant' ? 'Deepi Bro' : 'Du'}
+                    </span>
+                    <div
+                      className="px-4 py-2.5 rounded-lg text-sm leading-relaxed"
+                      style={{
+                        background: msg.role === 'user'
+                          ? 'rgba(255,255,255,0.08)'
+                          : `${currentMood.color}12`,
+                        border: `1px solid ${msg.role === 'user' ? 'rgba(255,255,255,0.12)' : `${currentMood.color}25`}`,
+                        color: 'rgba(255,255,255,0.9)',
+                      }}
+                    >
+                      {msg.content}
+                    </div>
                   </div>
                 </motion.div>
               ))}
             </AnimatePresence>
             {loading && (
-              <div className="flex justify-start">
-                <span className="text-xl mr-2">🤖</span>
-                <div className="bg-neon-blue/10 border border-neon-blue/20 px-4 py-2 rounded-lg">
-                  <motion.span animate={{ opacity: [0.3, 1, 0.3] }} transition={{ duration: 1.5, repeat: Infinity }} className="text-neon-blue text-sm">
-                    tippt...
-                  </motion.span>
+              <div className="flex items-start gap-3">
+                <div
+                  className="w-8 h-8 rounded-full flex-shrink-0 flex items-center justify-center text-sm"
+                  style={{ background: `${currentMood.color}20`, border: `1px solid ${currentMood.color}40` }}
+                >
+                  🤖
+                </div>
+                <div className="flex flex-col gap-1">
+                  <span className="text-white/40 text-xs font-cyber px-1">Deepi Bro</span>
+                  <div
+                    className="px-4 py-2.5 rounded-lg flex items-center gap-1"
+                    style={{ background: `${currentMood.color}12`, border: `1px solid ${currentMood.color}25` }}
+                  >
+                    {[0, 1, 2].map((i) => (
+                      <motion.div
+                        key={i}
+                        className="w-2 h-2 rounded-full"
+                        style={{ background: currentMood.color }}
+                        animate={{ opacity: [0.3, 1, 0.3], y: [0, -3, 0] }}
+                        transition={{ duration: 0.8, delay: i * 0.15, repeat: Infinity }}
+                      />
+                    ))}
+                  </div>
                 </div>
               </div>
             )}
             <div ref={bottomRef} />
           </div>
-          
-          <div className="p-4 border-t border-white/10 flex gap-3">
+
+          {/* Input area */}
+          <div
+            className="p-4 flex gap-3 border-t"
+            style={{ borderColor: `${currentMood.color}15`, background: 'rgba(0,0,0,0.2)' }}
+          >
             <input
               value={input}
               onChange={(e) => setInput(e.target.value)}
               onKeyDown={(e) => e.key === 'Enter' && sendMessage()}
-              placeholder="Was geht ab, Bruder?"
-              className="flex-1 bg-black/50 border border-white/20 rounded px-3 py-2 text-white placeholder-white/30 text-sm focus:outline-none focus:border-neon-blue/60"
+              placeholder={`Nachricht an Deepi Bro (${MOOD_CONFIG[mood].label}-Modus)...`}
+              className="flex-1 bg-white/5 border rounded px-3 py-2 text-white placeholder-white/25 text-sm focus:outline-none transition-colors"
+              style={{ borderColor: `${currentMood.color}25` }}
             />
-            <button onClick={sendMessage} disabled={loading || !input.trim()} className="btn-primary rounded text-xs px-4 disabled:opacity-40">
-              SENDEN
+            <button
+              onClick={sendMessage}
+              disabled={loading || !input.trim()}
+              className="px-4 rounded font-cyber text-xs tracking-widest disabled:opacity-40 transition-all duration-200"
+              style={{
+                background: `linear-gradient(90deg, ${currentMood.color}40, ${currentMood.color}20)`,
+                border: `1px solid ${currentMood.color}60`,
+                color: currentMood.color,
+              }}
+            >
+              ▶
             </button>
           </div>
         </motion.div>
