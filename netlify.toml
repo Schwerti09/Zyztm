@@ -3,6 +3,19 @@
   publish = "apps/web/dist"
   functions = "netlify/functions"
 
+# Cache headers – prevent stale deployments from being served
+[[headers]]
+  for = "/index.html"
+  [headers.values]
+    Cache-Control = "no-cache, no-store, must-revalidate"
+    Pragma = "no-cache"
+    Expires = "0"
+
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
 # API proxy – Netlify Functions handle /api/* requests
 [[redirects]]
   from = "/api/debug/youtube"
