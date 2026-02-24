@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { lazy, Suspense, useEffect } from 'react';
 import LiveBar from '../components/LiveBar';
 import HeroSection from '../components/HeroSection';
 import KickEmbed from '../components/KickEmbed';
@@ -21,6 +21,15 @@ import CommunitySpotlight from '../components/CommunitySpotlight';
 import StreamCalendar from '../components/StreamCalendar';
 import ZyztmLiveMap from '../components/ZyztmLiveMap';
 
+const FanCounter = lazy(() => import('../components/FanCounter'));
+const SoundboardDemo = lazy(() => import('../components/SoundboardDemo'));
+const ClutchReel = lazy(() => import('../components/ClutchReel'));
+const ZyztmBlast = lazy(() => import('../components/ZyztmBlast'));
+
+function SectionLoader() {
+  return <div className="py-20 flex justify-center"><div className="font-cyber text-neon-pink/30 text-xs tracking-widest animate-pulse">LOADING…</div></div>;
+}
+
 export default function MainPage() {
   const { toasts, remove } = useToastController();
 
@@ -37,13 +46,17 @@ export default function MainPage() {
         <main className="pt-10">
           <HeroSection />
           <AboutZyztm />
+          <Suspense fallback={<SectionLoader />}><FanCounter /></Suspense>
           <KickEmbed />
           <LaptopMockup />
           <CreatorCode />
           <SocialHub />
           <ZyztmLiveMap />
+          <Suspense fallback={<SectionLoader />}><ZyztmBlast /></Suspense>
           <StreamHighlights />
+          <Suspense fallback={<SectionLoader />}><ClutchReel /></Suspense>
           <ProductGrid />
+          <Suspense fallback={<SectionLoader />}><SoundboardDemo /></Suspense>
           <CommunitySpotlight />
           <NewsSection />
           <StreamCalendar />
@@ -58,3 +71,4 @@ export default function MainPage() {
     </div>
   );
 }
+

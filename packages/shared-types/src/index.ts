@@ -121,6 +121,47 @@ export const PRODUCTS: Product[] = [
   },
 ];
 
+export interface CoinPackage {
+  id: string;
+  name: string;
+  coins: number;
+  price: number; // in cents
+  priceLabel: string;
+  emoji: string;
+  bonus?: number; // bonus coins
+  popular?: boolean;
+}
+
+export const COIN_PACKAGES: CoinPackage[] = [
+  {
+    id: 'coins_100',
+    name: 'Starter Pack',
+    coins: 100,
+    price: 100,
+    priceLabel: '1,00€',
+    emoji: '💎',
+  },
+  {
+    id: 'coins_500',
+    name: 'Fan Pack',
+    coins: 500,
+    bonus: 50,
+    price: 500,
+    priceLabel: '5,00€',
+    emoji: '💎💎',
+    popular: true,
+  },
+  {
+    id: 'coins_1000',
+    name: 'Pro Pack',
+    coins: 1000,
+    bonus: 200,
+    price: 1000,
+    priceLabel: '10,00€',
+    emoji: '💎💎💎',
+  },
+];
+
 export const ALL_CARDS: Card[] = [
   { id: 'c1', name: 'Zyztm Legend', rarity: 'legendary', emoji: '👑', description: 'Der König des Fortnite' },
   { id: 'c2', name: 'Victory Royale', rarity: 'legendary', emoji: '🏆', description: 'Unbesiegbar in der Arena' },
