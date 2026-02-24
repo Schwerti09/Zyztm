@@ -36,6 +36,7 @@ export default function MediaGallery() {
     fetch('/api/gallery')
       .then((r) => r.json())
       .then((data) => {
+        console.log('[MediaGallery] /api/gallery response', data);
         if (Array.isArray(data.clips) && data.clips.length > 0) {
           setItems(data.clips);
         } else {
@@ -216,4 +217,3 @@ export default function MediaGallery() {
     </section>
   );
 }
-
