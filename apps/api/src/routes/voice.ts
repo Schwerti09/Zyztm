@@ -21,9 +21,9 @@ router.post('/synthesize', async (req: Request, res: Response) => {
     }
 
     const apiKey = process.env.ELEVENLABS_API_KEY;
-    const voiceId = process.env.ELEVENLABS_VOICE_ID || '21m00Tcm4TlvDq8ikWAM';
+    const voiceId = process.env.ELEVENLABS_VOICE_ID;
 
-    if (!apiKey || apiKey === '...') {
+    if (!apiKey || apiKey === '...' || !voiceId) {
       return res.status(503).json({ error: 'Voice synthesis not configured' });
     }
 
