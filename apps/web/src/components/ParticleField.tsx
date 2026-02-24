@@ -2,12 +2,14 @@ import { useRef, useMemo } from 'react';
 import { Canvas, useFrame, useThree } from '@react-three/fiber';
 import * as THREE from 'three';
 
+const PARTICLE_COUNT = typeof window !== 'undefined' && window.innerWidth < 768 ? 800 : 2000;
+
 function Particles() {
   const meshRef = useRef<THREE.Points>(null);
   const { mouse } = useThree();
   
   const { positions, colors } = useMemo(() => {
-    const count = 5000;
+    const count = PARTICLE_COUNT;
     const positions = new Float32Array(count * 3);
     const colors = new Float32Array(count * 3);
     
@@ -50,6 +52,13 @@ function Particles() {
 }
 
 export default function ParticleField() {
+  // Respect user preference for reduced motion
+  const prefersReducedMotion =
+    typeof window !== 'undefined' &&
+    window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  if (prefersReducedMotion) return null;
+
   return (
     <div className="fixed inset-0 pointer-events-none z-0">
       <Canvas camera={{ position: [0, 0, 5], fov: 75 }}>

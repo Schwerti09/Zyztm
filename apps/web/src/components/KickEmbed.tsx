@@ -1,6 +1,9 @@
+import { useState } from 'react';
 import { motion } from 'framer-motion';
 
 export default function KickEmbed() {
+  const [loaded, setLoaded] = useState(false);
+
   return (
     <section className="py-12 px-6 relative">
       <div className="max-w-5xl mx-auto">
@@ -50,15 +53,34 @@ export default function KickEmbed() {
             boxShadow: '0 0 40px #53fc1820',
           }}
         >
-          <div className="aspect-video">
-            <iframe
-              src="https://player.kick.com/zyztm?autoplay=true&muted=1"
-              title="Zyztm auf Kick"
-              allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media"
-              allowFullScreen
-              className="w-full h-full"
-              style={{ border: 'none' }}
-            />
+          <div className="aspect-video bg-black/80 relative">
+            {!loaded && (
+              <button
+                onClick={() => setLoaded(true)}
+                className="absolute inset-0 flex flex-col items-center justify-center gap-4 cursor-pointer group"
+                aria-label="Kick Stream laden"
+              >
+                <div
+                  className="w-20 h-20 rounded-full flex items-center justify-center transition-transform group-hover:scale-110"
+                  style={{ background: 'rgba(83,252,24,0.15)', border: '2px solid #53fc18' }}
+                >
+                  <span className="text-4xl ml-1">▶</span>
+                </div>
+                <span className="font-cyber text-sm tracking-widest" style={{ color: '#53fc18' }}>
+                  STREAM LADEN
+                </span>
+              </button>
+            )}
+            {loaded && (
+              <iframe
+                src="https://player.kick.com/zyztm?autoplay=true&muted=1"
+                title="Zyztm auf Kick"
+                allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media"
+                allowFullScreen
+                className="w-full h-full"
+                style={{ border: 'none' }}
+              />
+            )}
           </div>
         </motion.div>
 

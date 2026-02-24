@@ -17,4 +17,18 @@ export default defineConfig({
       },
     },
   },
+  build: {
+    target: 'es2020',
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          'react-vendor': ['react', 'react-dom'],
+          'motion': ['framer-motion'],
+          'three-vendor': ['three', '@react-three/fiber'],
+          'router': ['wouter', 'zustand'],
+          'charts': ['recharts'],
+        },
+      },
+    },
+  },
 });

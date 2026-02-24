@@ -198,6 +198,7 @@ export default function StreamHighlights() {
                         alt={clip.title}
                         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                         loading="lazy"
+                        decoding="async"
                       />
                     ) : (
                       <div className="w-full h-full flex items-center justify-center text-5xl">🎮</div>
@@ -294,6 +295,7 @@ export default function StreamHighlights() {
                     src={lightbox.thumbnail}
                     alt={lightbox.title}
                     className="w-full h-full object-cover"
+                    decoding="async"
                   />
                 </div>
               )}

@@ -75,6 +75,8 @@ export default function SocialCard({ channel, index }: { channel: Channel; index
         <img
           src={channel.preview.src}
           alt=""
+          loading="lazy"
+          decoding="async"
           className="absolute inset-0 w-full h-full object-cover pointer-events-none"
           style={{ opacity: isHovered ? 0.3 : 0, transition: 'opacity 0.3s ease', zIndex: 0 }}
         />

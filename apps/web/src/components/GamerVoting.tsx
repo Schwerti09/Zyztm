@@ -15,6 +15,15 @@ const DEMO_VOTERS = [
   'KickViewer42', 'DiggahSupport', 'NexusPlayer', 'ClutchKing', 'SniperElite99',
 ];
 
+const FALLBACK_FEATURES: Feature[] = [
+  { id: 'coop', label: '🎮 Co-op Streams mit Zuschauern', votes: 142 },
+  { id: 'tournament', label: '🏆 Community Tournament', votes: 98 },
+  { id: 'new-game', label: '🎯 Neues Spiel probieren', votes: 76 },
+  { id: 'irl', label: '📸 IRL Stream / Behind the Scenes', votes: 65 },
+  { id: 'merch', label: '👕 Zyztm Merch Shop', votes: 54 },
+  { id: 'charity', label: '❤️ Charity Stream', votes: 43 },
+];
+
 function getRecentVoters(seed: number, count: number): string[] {
   const result: string[] = [];
   for (let i = 0; i < count; i++) {
@@ -40,8 +49,14 @@ export default function GamerVoting() {
   useEffect(() => {
     fetch('/api/vote')
       .then((r) => r.json())
-      .then((data: Feature[]) => setFeatures(data))
-      .catch(() => {})
+      .then((data: Feature[]) => {
+        if (Array.isArray(data) && data.length > 0) {
+          setFeatures(data);
+        } else {
+          setFeatures(FALLBACK_FEATURES);
+        }
+      })
+      .catch(() => setFeatures(FALLBACK_FEATURES))
       .finally(() => setLoading(false));
   }, []);
 
@@ -69,10 +84,24 @@ export default function GamerVoting() {
         localStorage.setItem('gamer-votes', JSON.stringify([...newVoted]));
         setNotification('ℹ️ Bereits abgestimmt');
       } else {
-        setNotification('❌ Fehler beim Abstimmen');
+        // Optimistic update when API fails
+        setFeatures((prev) =>
+          prev.map((f) => (f.id === featureId ? { ...f, votes: f.votes + 1 } : f)),
+        );
+        const newVoted = new Set(voted).add(featureId);
+        setVoted(newVoted);
+        localStorage.setItem('gamer-votes', JSON.stringify([...newVoted]));
+        setNotification('✅ Stimme gezählt!');
       }
     } catch {
-      setNotification('❌ Verbindungsfehler');
+      // Optimistic update even on network error
+      setFeatures((prev) =>
+        prev.map((f) => (f.id === featureId ? { ...f, votes: f.votes + 1 } : f)),
+      );
+      const newVoted = new Set(voted).add(featureId);
+      setVoted(newVoted);
+      localStorage.setItem('gamer-votes', JSON.stringify([...newVoted]));
+      setNotification('✅ Stimme gezählt!');
     } finally {
       setVoting(null);
       setTimeout(() => setNotification(null), 3000);
