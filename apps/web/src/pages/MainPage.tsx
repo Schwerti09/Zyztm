@@ -19,6 +19,7 @@ import AboutZyztm from '../components/AboutZyztm';
 import StreamHighlights from '../components/StreamHighlights';
 import CommunitySpotlight from '../components/CommunitySpotlight';
 import StreamCalendar from '../components/StreamCalendar';
+import ZyztmLiveMap from '../components/ZyztmLiveMap';
 
 export default function MainPage() {
   const { toasts, remove } = useToastController();
@@ -40,6 +41,7 @@ export default function MainPage() {
           <LaptopMockup />
           <CreatorCode />
           <SocialHub />
+          <ZyztmLiveMap />
           <StreamHighlights />
           <ProductGrid />
           <CommunitySpotlight />

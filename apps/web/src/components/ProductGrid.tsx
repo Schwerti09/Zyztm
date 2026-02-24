@@ -12,10 +12,13 @@ async function buyProduct(productId: string) {
       body: JSON.stringify({ productId }),
     });
     const data = await res.json();
-    if (data.url) window.location.href = data.url;
-    else alert('Checkout nicht verfügbar. Bitte API konfigurieren.');
+    if (data.url) {
+      window.location.href = data.url;
+    } else {
+      showToast({ type: 'error', message: data.error || 'Checkout nicht verfügbar. Bitte versuche es erneut.' });
+    }
   } catch {
-    alert('Demo-Modus: Kein Backend verbunden. In der Produktion wird Stripe verwendet!');
+    showToast({ type: 'error', message: 'Verbindungsfehler. Bitte Internetverbindung prüfen.' });
   }
 }
 
