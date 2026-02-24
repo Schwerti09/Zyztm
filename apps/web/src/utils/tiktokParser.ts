@@ -39,5 +39,5 @@ export function parseTikTokEmbed(embedCode: string): TikTokVideo[] {
  * Build a TikTok embed iframe src URL from a video ID.
  */
 export function tiktokEmbedUrl(videoId: string): string {
-  return `https://www.tiktok.com/player/v1/?videoID=${videoId}`;
+  return `https://www.tiktok.com/player/v1/?videoID=${encodeURIComponent(videoId)}`;
 }
