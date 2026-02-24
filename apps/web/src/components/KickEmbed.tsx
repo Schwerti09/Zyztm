@@ -40,9 +40,13 @@ export default function KickEmbed() {
               title="Zyztm auf Kick"
               allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media"
               allowFullScreen
+              loading="lazy"
               className="w-full h-full"
               style={{ border: 'none' }}
             />
+            <div className="sr-only">
+              Wenn der Player nicht lädt, direkt öffnen: https://player.kick.com/zyztm
+            </div>
           </div>
         </motion.div>
 
