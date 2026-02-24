@@ -16,7 +16,7 @@ export default function Footer() {
                 { label: '🎵 TikTok', url: 'https://www.tiktok.com/@zyztm' },
                 { label: '📸 Instagram', url: 'https://www.instagram.com/zyztm2.0' },
                 { label: '🌐 Linktree', url: 'https://linktr.ee/zyztm' },
-                { label: '💬 Discord', url: 'https://discord.gg/DEINLINK' },
+                { label: '💬 Discord', url: 'https://discord.gg/zyztm' },
               ].map((s) => (
                 <a key={s.label} href={s.url} target="_blank" rel="noopener noreferrer" className="block text-white/50 text-sm hover:text-neon-blue transition-colors">{s.label}</a>
               ))}
