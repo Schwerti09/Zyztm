@@ -45,7 +45,14 @@ export default function KickEmbed() {
               style={{ border: 'none' }}
             />
             <div className="sr-only">
-              Wenn der Player nicht lädt, direkt öffnen: https://player.kick.com/zyztm
+              If the player does not load, open directly:{' '}
+              <a
+                href="https://player.kick.com/zyztm"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                https://player.kick.com/zyztm
+              </a>
             </div>
           </div>
         </motion.div>
