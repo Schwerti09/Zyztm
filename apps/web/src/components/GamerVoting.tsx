@@ -60,6 +60,16 @@ export default function GamerVoting() {
       .finally(() => setLoading(false));
   }, []);
 
+  const applyOptimisticVote = (featureId: string) => {
+    setFeatures((prev) =>
+      prev.map((f) => (f.id === featureId ? { ...f, votes: f.votes + 1 } : f)),
+    );
+    const newVoted = new Set(voted).add(featureId);
+    setVoted(newVoted);
+    localStorage.setItem('gamer-votes', JSON.stringify([...newVoted]));
+    setNotification('✅ Stimme gezählt!');
+  };
+
   const handleVote = async (featureId: string) => {
     if (voted.has(featureId) || voting) return;
     setVoting(featureId);
@@ -84,24 +94,10 @@ export default function GamerVoting() {
         localStorage.setItem('gamer-votes', JSON.stringify([...newVoted]));
         setNotification('ℹ️ Bereits abgestimmt');
       } else {
-        // Optimistic update when API fails
-        setFeatures((prev) =>
-          prev.map((f) => (f.id === featureId ? { ...f, votes: f.votes + 1 } : f)),
-        );
-        const newVoted = new Set(voted).add(featureId);
-        setVoted(newVoted);
-        localStorage.setItem('gamer-votes', JSON.stringify([...newVoted]));
-        setNotification('✅ Stimme gezählt!');
+        applyOptimisticVote(featureId);
       }
     } catch {
-      // Optimistic update even on network error
-      setFeatures((prev) =>
-        prev.map((f) => (f.id === featureId ? { ...f, votes: f.votes + 1 } : f)),
-      );
-      const newVoted = new Set(voted).add(featureId);
-      setVoted(newVoted);
-      localStorage.setItem('gamer-votes', JSON.stringify([...newVoted]));
-      setNotification('✅ Stimme gezählt!');
+      applyOptimisticVote(featureId);
     } finally {
       setVoting(null);
       setTimeout(() => setNotification(null), 3000);

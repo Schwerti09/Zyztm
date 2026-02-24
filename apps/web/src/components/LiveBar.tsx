@@ -13,6 +13,7 @@ export default function LiveBar() {
   const [showEmailForm, setShowEmailForm] = useState(false);
   const [emailInput, setEmailInput] = useState('');
   const emailInputRef = useRef<HTMLInputElement>(null);
+  const EMAIL_FOCUS_DELAY_MS = 50;
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -50,7 +51,7 @@ export default function LiveBar() {
 
   useEffect(() => {
     if (showEmailForm) {
-      setTimeout(() => emailInputRef.current?.focus(), 50);
+      setTimeout(() => emailInputRef.current?.focus(), EMAIL_FOCUS_DELAY_MS);
     }
   }, [showEmailForm]);
 

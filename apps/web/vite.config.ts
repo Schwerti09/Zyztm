@@ -18,7 +18,7 @@ export default defineConfig({
     },
   },
   build: {
-    target: 'es2020',
+    target: ['es2015', 'chrome80', 'firefox78', 'safari13'],
     rollupOptions: {
       output: {
         manualChunks: {
