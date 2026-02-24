@@ -12,6 +12,16 @@ interface Video {
 
 const CHANNEL_URL = 'https://www.youtube.com/@Zyztm';
 const FALLBACK_THUMBNAIL = '/images/yt-fallback.jpg';
+const fallbackVideos: Video[] = [
+  {
+    videoId: 'fallback-1',
+    title: 'Besuche meinen YouTube-Kanal',
+    thumbnail: FALLBACK_THUMBNAIL,
+    url: CHANNEL_URL,
+    publishedAt: '',
+    source: 'fallback',
+  },
+];
 
 export default function YouTubeLatest() {
   const [videos, setVideos] = useState<Video[]>([]);
@@ -23,13 +33,19 @@ export default function YouTubeLatest() {
     fetch('/api/youtube/latest')
       .then((r) => r.json())
       .then((data) => {
+        console.log('[YouTubeLatest] /api/youtube/latest response', data);
         if (data.error) {
           setError(data.error);
         } else {
-          setVideos(data.videos ?? []);
+          const list = data.videos ?? [];
+          setVideos(list.length ? list : fallbackVideos);
         }
       })
-      .catch((err: Error) => setError(err.message))
+      .catch((err: Error) => {
+        console.log('[YouTubeLatest] fetch error', err);
+        setError(err.message);
+        setVideos(fallbackVideos);
+      })
       .finally(() => setLoading(false));
   }, []);
 
@@ -71,7 +87,7 @@ export default function YouTubeLatest() {
               </div>
             ))}
           </div>
-        ) : error || videos.length === 0 ? (
+        ) : videos.length === 0 ? (
           <div className="flex flex-col items-center gap-4">
             {error && (
               <p className="text-red-400 text-sm font-mono">{error}</p>
@@ -114,6 +130,11 @@ export default function YouTubeLatest() {
           </div>
         ) : (
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+            {error && (
+              <p className="col-span-full text-center text-xs text-red-400 font-mono">
+                {error} – zeige Fallback
+              </p>
+            )}
             {videos.map((v, i) => (
               <motion.div
                 key={v.videoId}
