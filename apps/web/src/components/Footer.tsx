@@ -8,6 +8,9 @@ export default function Footer() {
           <div>
             <h3 className="font-cyber text-xl font-bold text-neon-pink mb-3 neon-text-pink">ZYZTM NEXUS</h3>
             <p className="text-white/50 text-sm">Der offizielle Hub für den #1 Fortnite Creator. Stream, Shop, Community.</p>
+            <p className="text-white/30 text-xs mt-3 font-cyber tracking-widest">
+              CREATOR CODE: <span className="text-neon-pink">JOJOJO</span>
+            </p>
           </div>
           <div>
             <h4 className="font-cyber text-sm font-bold text-white mb-3 tracking-widest">SOCIALS</h4>
