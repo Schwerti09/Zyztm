@@ -5,13 +5,8 @@ import { PRODUCTS } from '@zyztm/shared-types';
 
 const router = Router();
 
-if (!process.env.STRIPE_SECRET_KEY) {
-  throw new Error('STRIPE_SECRET_KEY environment variable is required');
-}
-
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY, {
-  apiVersion: '2024-04-10',
-});
+const stripeKey = process.env.STRIPE_SECRET_KEY;
+const stripe = stripeKey ? new Stripe(stripeKey, { apiVersion: '2024-04-10' }) : null;
 
 const checkoutSchema = z.object({
   productId: z.string(),
@@ -20,6 +15,9 @@ const checkoutSchema = z.object({
 });
 
 router.post('/create-checkout', async (req: Request, res: Response) => {
+  if (!stripe) {
+    return res.status(503).json({ error: 'Stripe ist nicht konfiguriert. Bitte STRIPE_SECRET_KEY setzen.' });
+  }
   try {
     const { productId, userId, email } = checkoutSchema.parse(req.body);
     const product = PRODUCTS.find((p) => p.id === productId);
@@ -60,6 +58,9 @@ router.post('/create-checkout', async (req: Request, res: Response) => {
 });
 
 router.post('/webhook', async (req: Request, res: Response) => {
+  if (!stripe) {
+    return res.status(503).json({ error: 'Stripe ist nicht konfiguriert.' });
+  }
   const sig = req.headers['stripe-signature'] as string;
   let event: Stripe.Event;
 
