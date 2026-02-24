@@ -10,6 +10,27 @@ interface GalleryClip {
   views?: number;
 }
 
+type CategoryKey = 'alle' | 'kick' | 'youtube' | 'highlights';
+
+const CATEGORIES: { key: CategoryKey; label: string }[] = [
+  { key: 'alle', label: '🎮 ALLE' },
+  { key: 'kick', label: '🟢 KICK' },
+  { key: 'youtube', label: '📺 YOUTUBE' },
+  { key: 'highlights', label: '⚡ HIGHLIGHTS' },
+];
+
+function filterItems(items: GalleryClip[], cat: CategoryKey): GalleryClip[] {
+  if (cat === 'kick') return items.filter((i) => i.source !== 'youtube');
+  if (cat === 'youtube') return items.filter((i) => i.source === 'youtube');
+  if (cat === 'highlights') {
+    return [...items]
+      .filter((i) => (i.views ?? 0) > 0)
+      .sort((a, b) => (b.views ?? 0) - (a.views ?? 0))
+      .slice(0, 6);
+  }
+  return items;
+}
+
 function SourceBadge({ source }: { source: string | null }) {
   const isYT = source === 'youtube';
   return (
@@ -31,6 +52,7 @@ export default function MediaGallery() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [lightbox, setLightbox] = useState<GalleryClip | null>(null);
+  const [category, setCategory] = useState<CategoryKey>('alle');
 
   useEffect(() => {
     fetch('/api/gallery')
@@ -53,6 +75,8 @@ export default function MediaGallery() {
     return () => window.removeEventListener('keydown', handler);
   }, [lightbox]);
 
+  const displayed = filterItems(items, category);
+
   return (
     <section className="py-20 px-6">
       <div className="max-w-7xl mx-auto">
@@ -60,14 +84,38 @@ export default function MediaGallery() {
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-12"
+          className="text-center mb-10"
         >
           <h2 className="font-cyber text-4xl md:text-5xl font-bold text-white mb-4">
             STREAM <span className="text-neon-pink neon-text-pink">MOMENTE</span>
           </h2>
           <p className="text-white/40 font-body tracking-widest text-sm">
-            NEUESTE CLIPS &amp; VIDEOS
+            BEHIND THE SCENES · EVENTS · GAMING
           </p>
+        </motion.div>
+
+        {/* Category tabs */}
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="flex justify-center gap-3 mb-10 flex-wrap"
+        >
+          {CATEGORIES.map((cat) => (
+            <button
+              key={cat.key}
+              onClick={() => setCategory(cat.key)}
+              className="font-cyber text-xs tracking-widest px-5 py-2 rounded border transition-all duration-200"
+              style={{
+                borderColor: category === cat.key ? '#ff0055' : 'rgba(255,255,255,0.15)',
+                color: category === cat.key ? '#ff0055' : 'rgba(255,255,255,0.5)',
+                background: category === cat.key ? 'rgba(255,0,85,0.08)' : 'transparent',
+                boxShadow: category === cat.key ? '0 0 12px rgba(255,0,85,0.2)' : 'none',
+              }}
+            >
+              {cat.label}
+            </button>
+          ))}
         </motion.div>
 
         {loading && (
@@ -104,9 +152,17 @@ export default function MediaGallery() {
           </div>
         )}
 
-        {!loading && items.length > 0 && (
+        {!loading && items.length > 0 && displayed.length === 0 && (
+          <div className="text-center py-12">
+            <p className="text-white/40 font-cyber tracking-widest">
+              KEINE CLIPS IN DIESER KATEGORIE.
+            </p>
+          </div>
+        )}
+
+        {!loading && displayed.length > 0 && (
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
-            {items.map((item, i) => (
+            {displayed.map((item, i) => (
               <motion.div
                 key={item.id}
                 initial={{ opacity: 0, scale: 0.9 }}

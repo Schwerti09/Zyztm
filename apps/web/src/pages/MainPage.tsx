@@ -5,8 +5,6 @@ import KickEmbed from '../components/KickEmbed';
 import CreatorCode from '../components/CreatorCode';
 import SocialHub from '../components/SocialHub';
 import ProductGrid from '../components/ProductGrid';
-import YouTubeLatest from '../components/YouTubeLatest';
-import TikTokWall from '../components/TikTokWall';
 import NeuralSynthesizer from '../components/NeuralSynthesizer';
 import DeepIChat from '../components/DeepIChat';
 import NewsSection from '../components/NewsSection';
@@ -17,6 +15,10 @@ import ParticleField from '../components/ParticleField';
 import Intro from '../components/Intro';
 import LaptopMockup from '../components/LaptopMockup';
 import { Toast, useToastController } from '../components/Toast';
+import AboutZyztm from '../components/AboutZyztm';
+import StreamHighlights from '../components/StreamHighlights';
+import CommunitySpotlight from '../components/CommunitySpotlight';
+import StreamCalendar from '../components/StreamCalendar';
 
 export default function MainPage() {
   const { toasts, remove } = useToastController();
@@ -33,17 +35,19 @@ export default function MainPage() {
         <LiveBar />
         <main className="pt-10">
           <HeroSection />
+          <AboutZyztm />
           <KickEmbed />
           <LaptopMockup />
           <CreatorCode />
           <SocialHub />
+          <StreamHighlights />
           <ProductGrid />
-          <YouTubeLatest />
-          <TikTokWall />
+          <CommunitySpotlight />
+          <NewsSection />
+          <StreamCalendar />
+          <MediaGallery />
           <NeuralSynthesizer />
           <DeepIChat />
-          <NewsSection />
-          <MediaGallery />
           <GamerVoting />
         </main>
         <Footer />
