@@ -21,7 +21,7 @@ const socials = [
     color: '#ff0000',
     stats: '1.05M Abonnenten',
     description: 'Videos & Highlights',
-    url: 'https://youtube.com/@Zyztm',
+    url: 'https://www.youtube.com/@Zyztm',
     bg: 'from-red-950/50 to-bg-card',
     live: false,
   },
@@ -45,6 +45,26 @@ const socials = [
     bg: 'from-indigo-950/50 to-bg-card',
     live: false,
   },
+  {
+    name: 'INSTAGRAM',
+    icon: '📸',
+    color: '#e1306c',
+    stats: 'Folg uns!',
+    description: 'Fotos & Stories',
+    url: 'https://www.instagram.com/zyztm2.0',
+    bg: 'from-pink-950/50 to-bg-card',
+    live: false,
+  },
+  {
+    name: 'LINKTREE',
+    icon: '🌐',
+    color: '#43e55e',
+    stats: 'Alle Links',
+    description: 'Alle Kanäle auf einen Blick',
+    url: 'https://linktr.ee/zyztm',
+    bg: 'from-green-900/50 to-bg-card',
+    live: false,
+  },
 ];
 
 const tiktok = socials.find((s) => s.name === 'TIKTOK')!;
@@ -66,7 +86,7 @@ export default function SocialHub() {
         </motion.div>
 
         {/* Social Cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-6 mb-16">
           {socials.map((s, i) => (
             <motion.a
               key={s.name}

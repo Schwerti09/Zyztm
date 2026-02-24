@@ -59,15 +59,9 @@ function parseAtomFeed(xml, limit = 3) {
 
 export const handler = async () => {
   const apiKey = process.env.YOUTUBE_API_KEY;
-  const channelId = process.env.YOUTUBE_CHANNEL_ID;
+  // Fall back to Zyztm's known channel ID so the feed works even without the env var set
+  const channelId = process.env.YOUTUBE_CHANNEL_ID || 'UCccyxYt6K8sqVMnppnzd4zQ';
 
-  if (!channelId) {
-    return {
-      statusCode: 500,
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ error: 'YOUTUBE_CHANNEL_ID env var is not configured' }),
-    };
-  }
 
   try {
     if (apiKey) {
