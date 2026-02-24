@@ -85,9 +85,9 @@ export default function SocialHub() {
           className="text-center mb-12"
         >
           <h2 className="font-cyber text-4xl md:text-5xl font-bold text-white mb-4">
-            SOCIAL <span className="text-neon-blue neon-text-blue">HUB</span>
+            THE <span className="text-neon-blue neon-text-blue">COMMAND CENTER</span>
           </h2>
-          <p className="text-white/50">Folg mir auf allen Plattformen</p>
+          <p className="text-white/50">Live-Daten aus allen Plattformen</p>
         </motion.div>
 
         {/* Social Cards Grid */}

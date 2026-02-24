@@ -5,6 +5,22 @@ interface Feature {
   id: string;
   label: string;
   votes: number;
+  recentVoters?: string[];
+}
+
+// Simulated voter name pool for demo (shows community engagement feel)
+const DEMO_VOTERS = [
+  'xXProGamerXx', 'FortniteKing99', 'ZyztmFan2000', 'NightOwl_GG', 'DropMasterZ',
+  'VictoryRoyale7', 'StreamLegend', 'ChillBro420', 'TryhardMode', 'LootLlamaFan',
+  'KickViewer42', 'DiggahSupport', 'NexusPlayer', 'ClutchKing', 'SniperElite99',
+];
+
+function getRecentVoters(seed: number, count: number): string[] {
+  const result: string[] = [];
+  for (let i = 0; i < count; i++) {
+    result.push(DEMO_VOTERS[(seed + i * 3) % DEMO_VOTERS.length]);
+  }
+  return result;
 }
 
 export default function GamerVoting() {
@@ -148,7 +164,7 @@ export default function GamerVoting() {
                     <p className="font-cyber text-base font-bold text-white mb-3">
                       {feature.label}
                     </p>
-                    <div className="flex items-center justify-between">
+                    <div className="flex items-center justify-between mb-3">
                       <div className="flex items-center gap-2">
                         <div
                           className="h-1.5 rounded-full transition-all duration-700"
@@ -176,6 +192,21 @@ export default function GamerVoting() {
                         {isVoting ? '⏳' : isVoted ? '✓ GEWÄHLT' : 'WÄHLEN'}
                       </button>
                     </div>
+                    {/* Recent voters */}
+                    {feature.votes > 0 && (
+                      <div className="flex flex-wrap gap-1 mt-1">
+                        {getRecentVoters(i * 7 + feature.votes, Math.min(3, feature.votes)).map((name, vi) => (
+                          <span key={vi} className="text-xs px-1.5 py-0.5 rounded" style={{ background: 'rgba(255,255,255,0.05)', color: 'rgba(255,255,255,0.35)', fontSize: '10px' }}>
+                            👤 {name}
+                          </span>
+                        ))}
+                        {feature.votes > 3 && (
+                          <span className="text-xs px-1.5 py-0.5 rounded" style={{ background: 'rgba(255,255,255,0.05)', color: 'rgba(255,255,255,0.25)', fontSize: '10px' }}>
+                            +{feature.votes - 3} weitere
+                          </span>
+                        )}
+                      </div>
+                    )}
                   </div>
                 </motion.div>
               );
