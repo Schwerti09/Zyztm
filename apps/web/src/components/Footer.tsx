@@ -1,3 +1,5 @@
+import { Link } from 'wouter';
+
 export default function Footer() {
   return (
     <footer className="border-t border-white/10 py-12 px-6 bg-black/50">
@@ -25,17 +27,36 @@ export default function Footer() {
           <div>
             <h4 className="font-cyber text-sm font-bold text-white mb-3 tracking-widest">LINKS</h4>
             <div className="space-y-2">
-              {['Marketplace', 'Dashboard', 'Impressum', 'Datenschutz'].map((l) => (
-                <a key={l} href="#" className="block text-white/50 text-sm hover:text-neon-pink transition-colors">{l}</a>
-              ))}
+              <a href="#marketplace" className="block text-white/50 text-sm hover:text-neon-pink transition-colors">Marketplace</a>
+              <Link href="/dashboard">
+                <a className="block text-white/50 text-sm hover:text-neon-pink transition-colors">Dashboard</a>
+              </Link>
+              <Link href="/coins">
+                <a className="block text-white/50 text-sm hover:text-neon-gold transition-colors">💎 JOJOJO Coins</a>
+              </Link>
+              <Link href="/impressum">
+                <a className="block text-white/50 text-sm hover:text-neon-pink transition-colors">Impressum</a>
+              </Link>
+              <Link href="/datenschutz">
+                <a className="block text-white/50 text-sm hover:text-neon-pink transition-colors">Datenschutz</a>
+              </Link>
+              <Link href="/agb">
+                <a className="block text-white/50 text-sm hover:text-neon-pink transition-colors">AGB</a>
+              </Link>
             </div>
           </div>
         </div>
         <div className="border-t border-white/10 pt-6 flex flex-col md:flex-row justify-between items-center text-white/30 text-xs">
           <span>© 2025 Zyztm Nexus. Alle Rechte vorbehalten.</span>
-          <span className="font-cyber mt-2 md:mt-0">POWERED BY NEXUS ENGINE v1.0</span>
+          <div className="flex gap-4 mt-2 md:mt-0 flex-wrap">
+            <Link href="/impressum"><a className="hover:text-white/60 transition-colors font-cyber">IMPRESSUM</a></Link>
+            <Link href="/datenschutz"><a className="hover:text-white/60 transition-colors font-cyber">DATENSCHUTZ</a></Link>
+            <Link href="/agb"><a className="hover:text-white/60 transition-colors font-cyber">AGB</a></Link>
+            <span className="font-cyber">POWERED BY NEXUS ENGINE v1.0</span>
+          </div>
         </div>
       </div>
     </footer>
   );
 }
+
