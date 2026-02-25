@@ -30,7 +30,7 @@ async function startCoinCheckout(packageId: string, email: string) {
       body: JSON.stringify({ packageId, email: email || undefined }),
     });
     const data = await res.json();
-    if (data.url) {
+    if (res.ok && data.url) {
       window.location.href = data.url;
     } else {
       showToast({ type: 'error', message: data.error || 'Checkout nicht verfügbar' });

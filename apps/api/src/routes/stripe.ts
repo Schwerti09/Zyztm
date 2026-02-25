@@ -35,7 +35,7 @@ router.post('/create-checkout', async (req: Request, res: Response) => {
     }
 
     const session = await stripe.checkout.sessions.create({
-      payment_method_types: ['card', 'klarna'],
+      automatic_payment_methods: { enabled: true },
       line_items: [
         {
           price_data: {
@@ -79,7 +79,7 @@ router.post('/create-coin-checkout', async (req: Request, res: Response) => {
 
     const totalCoins = pkg.coins + (pkg.bonus ?? 0);
     const session = await stripe.checkout.sessions.create({
-      payment_method_types: ['card', 'klarna'],
+      automatic_payment_methods: { enabled: true },
       line_items: [
         {
           price_data: {
