@@ -17,6 +17,7 @@ import LaptopMockup from '../components/LaptopMockup';
 import { Toast, useToastController } from '../components/Toast';
 import AboutZyztm from '../components/AboutZyztm';
 import StreamHighlights from '../components/StreamHighlights';
+import LatestYouTubeVideos from '../components/LatestYouTubeVideos';
 import CommunitySpotlight from '../components/CommunitySpotlight';
 import StreamCalendar from '../components/StreamCalendar';
 import ZyztmLiveMap from '../components/ZyztmLiveMap';
@@ -54,6 +55,7 @@ export default function MainPage() {
           <ZyztmLiveMap />
           <Suspense fallback={<SectionLoader />}><ZyztmBlast /></Suspense>
           <StreamHighlights />
+          <LatestYouTubeVideos />
           <Suspense fallback={<SectionLoader />}><ClutchReel /></Suspense>
           <ProductGrid />
           <Suspense fallback={<SectionLoader />}><SoundboardDemo /></Suspense>

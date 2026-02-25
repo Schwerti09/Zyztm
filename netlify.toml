@@ -28,6 +28,11 @@
   status = 200
 
 [[redirects]]
+  from = "/api/youtube/videos"
+  to = "/.netlify/functions/get-youtube-videos"
+  status = 200
+
+[[redirects]]
   from = "/api/clips/by-tag/*"
   to = "/.netlify/functions/clips-by-tag"
   status = 200
