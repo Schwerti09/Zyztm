@@ -5,6 +5,7 @@
   "type": "module",
   "dependencies": {
     "@neondatabase/serverless": "^0.10.4",
-    "pg": "^8.11.3"
+    "pg": "^8.11.3",
+    "stripe": "^15.7.0"
   }
 }
