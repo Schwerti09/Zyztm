@@ -1,14 +1,12 @@
 /**
- * GET /.netlify/functions/get-youtube-videos?channelId=UC...
+ * GET /.netlify/functions/get-youtube-videos
  *
  * Fetches the latest 12 YouTube videos for a given channel via the
  * YouTube Data API v3 and returns a clean JSON array.
  *
  * Required env vars:
- *   YOUTUBE_API_KEY  – YouTube Data API v3 key
- *
- * Query parameters:
- *   channelId  – YouTube channel ID (e.g. UCxxxxxxxxxxxxxxxxxxxxxxxx)
+ *   YOUTUBE_API_KEY      – YouTube Data API v3 key
+ *   YOUTUBE_CHANNEL_ID   – YouTube channel ID (e.g. UCxxxxxxxxxxxxxxxxxxxxxxxx)
  *
  * @typedef {{ id: string, title: string, thumbnail: string, publishedAt: string, link: string }} VideoItem
  */
@@ -57,9 +55,9 @@ export const handler = async (event) => {
     return respond(500, { error: 'YOUTUBE_API_KEY env var is not configured' });
   }
 
-  const channelId = event.queryStringParameters?.channelId;
+  const channelId = process.env.YOUTUBE_CHANNEL_ID;
   if (!channelId) {
-    return respond(400, { error: 'Missing required query parameter: channelId' });
+    return respond(500, { error: 'YOUTUBE_CHANNEL_ID env var is not configured' });
   }
 
   const url =

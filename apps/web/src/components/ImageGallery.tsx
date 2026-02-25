@@ -20,8 +20,7 @@ const FALLBACK_GALLERY: GalleryItem[] = [
   { emoji: '🔥', label: 'Fire Moments', bg: 'from-orange-900/40 to-bg-card' },
 ];
 
-const CHANNEL_ID = import.meta.env.VITE_YOUTUBE_CHANNEL_ID ?? '';
-const API_URL = `/.netlify/functions/get-youtube-videos?channelId=${CHANNEL_ID}`;
+const API_URL = '/.netlify/functions/get-youtube-videos';
 
 export default function ImageGallery() {
   const [galleryItems, setGalleryItems] = useState<GalleryItem[]>(FALLBACK_GALLERY);

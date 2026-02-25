@@ -10,9 +10,8 @@ interface VideoItem {
 }
 
 const CHANNEL_URL = 'https://www.youtube.com/@Zyztm';
-/** Channel ID passed as query param to the Netlify function */
-const CHANNEL_ID = import.meta.env.VITE_YOUTUBE_CHANNEL_ID ?? '';
-const API_URL = `/.netlify/functions/get-youtube-videos?channelId=${CHANNEL_ID}`;
+/** URL of the Netlify function that fetches YouTube videos server-side */
+const API_URL = '/.netlify/functions/get-youtube-videos';
 
 /** Format ISO date string to a short locale date */
 function formatDate(iso: string): string {
