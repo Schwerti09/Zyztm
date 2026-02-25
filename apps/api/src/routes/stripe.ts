@@ -50,6 +50,9 @@ router.post('/create-checkout', async (req: Request, res: Response) => {
         },
       ],
       mode: 'payment',
+      payment_intent_data: {
+        automatic_payment_methods: { enabled: true },
+      },
       success_url: `${process.env.FRONTEND_URL || 'http://localhost:5173'}/success?session_id={CHECKOUT_SESSION_ID}`,
       cancel_url: `${process.env.FRONTEND_URL || 'http://localhost:5173'}/`,
       customer_email: email,
@@ -94,6 +97,9 @@ router.post('/create-coin-checkout', async (req: Request, res: Response) => {
         },
       ],
       mode: 'payment',
+      payment_intent_data: {
+        automatic_payment_methods: { enabled: true },
+      },
       success_url: `${process.env.FRONTEND_URL || 'http://localhost:5173'}/success?session_id={CHECKOUT_SESSION_ID}`,
       cancel_url: `${process.env.FRONTEND_URL || 'http://localhost:5173'}/coins`,
       customer_email: email,
