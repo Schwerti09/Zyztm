@@ -12,7 +12,7 @@ async function buyProduct(productId: string) {
       body: JSON.stringify({ productId }),
     });
     const data = await res.json();
-    if (data.url) {
+    if (res.ok && data.url) {
       window.location.href = data.url;
     } else {
       showToast({ type: 'error', message: data.error || 'Checkout nicht verfügbar. Bitte versuche es erneut.' });

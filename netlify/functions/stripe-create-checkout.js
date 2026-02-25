@@ -93,7 +93,7 @@ export const handler = async (event) => {
 
   try {
     const session = await stripe.checkout.sessions.create({
-      payment_method_types: ['card', 'klarna'],
+      automatic_payment_methods: { enabled: true },
       line_items: [
         {
           price_data: {
