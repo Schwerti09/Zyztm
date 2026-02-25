@@ -21,6 +21,16 @@
 
 # API proxy – Netlify Functions handle /api/* requests
 [[redirects]]
+  from = "/api/stripe/create-checkout"
+  to = "/.netlify/functions/stripe-create-checkout"
+  status = 200
+
+[[redirects]]
+  from = "/api/stripe/create-coin-checkout"
+  to = "/.netlify/functions/stripe-create-coin-checkout"
+  status = 200
+
+[[redirects]]
   from = "/api/debug/youtube"
   to = "/.netlify/functions/debug-youtube"
   status = 200
