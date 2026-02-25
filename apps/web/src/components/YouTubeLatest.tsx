@@ -11,8 +11,7 @@ interface Video {
 
 const CHANNEL_URL = 'https://www.youtube.com/@Zyztm';
 const FALLBACK_THUMBNAIL = '/images/yt-fallback.jpg';
-const CHANNEL_ID = import.meta.env.VITE_YOUTUBE_CHANNEL_ID ?? '';
-const API_URL = `/.netlify/functions/get-youtube-videos?channelId=${CHANNEL_ID}`;
+const API_URL = '/.netlify/functions/get-youtube-videos';
 
 export default function YouTubeLatest() {
   const [videos, setVideos] = useState<Video[]>([]);
