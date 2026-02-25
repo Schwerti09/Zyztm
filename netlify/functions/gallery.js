@@ -4,9 +4,7 @@
  *
  * Required env vars: DATABASE_URL
  */
-import pg from 'pg';
-
-const { Pool } = pg;
+import { neon } from '@neondatabase/serverless';
 
 export const handler = async () => {
   if (!process.env.DATABASE_URL) {
@@ -17,20 +15,35 @@ export const handler = async () => {
     };
   }
 
-  const pool = new Pool({ connectionString: process.env.DATABASE_URL });
+  const sql = neon(process.env.DATABASE_URL);
 
   try {
-    const result = await pool.query(
-      `SELECT id, title, thumbnail, url, source, views, created_at
-         FROM clips
-        ORDER BY created_at DESC
-        LIMIT 10`,
-    );
+    let rows;
+    try {
+      rows = await sql`
+        SELECT id, title, thumbnail, url, source, views, created_at
+          FROM clips
+         ORDER BY created_at DESC
+         LIMIT 10
+      `;
+    } catch (colErr) {
+      // Fallback when source column has not been migrated yet (PostgreSQL 42703)
+      if (colErr.code === '42703') {
+        rows = await sql`
+          SELECT id, title, thumbnail, url, 'kick' AS source, views, created_at
+            FROM clips
+           ORDER BY created_at DESC
+           LIMIT 10
+        `;
+      } else {
+        throw colErr;
+      }
+    }
 
     return {
       statusCode: 200,
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ clips: result.rows }),
+      body: JSON.stringify({ clips: rows }),
     };
   } catch (err) {
     console.error('[gallery] Error:', err);
@@ -39,7 +52,5 @@ export const handler = async () => {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ error: err.message }),
     };
-  } finally {
-    await pool.end();
   }
 };
