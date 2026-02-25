@@ -1,60 +1,61 @@
 import { motion } from 'framer-motion';
 import SocialCard, { type Channel } from './SocialCard';
 import PowerButton from './PowerButton';
+import profile from '../creatorProfile.json';
 
-// Replace DEINE_DISCORD_SERVER_ID with your real Discord server ID to enable the widget
-const DISCORD_SERVER_ID = 'DEINE_DISCORD_SERVER_ID';
+const { socials } = profile;
 
+/** Maps creatorProfile socials to SocialCard Channel format. */
 const socialChannels: Channel[] = [
   {
     id: 'kick',
     name: 'KICK',
-    icon: '🟢',
-    url: 'https://kick.com/zyztm',
+    icon: socials.kick.icon,
+    url: socials.kick.url,
     color: '#53fc18',
     bgColor: 'linear-gradient(135deg, rgba(15,40,15,0.9) 0%, rgba(13,17,23,0.95) 100%)',
-    stats: '180K Follower',
+    stats: `${(socials.kick.followers / 1000).toFixed(0)}K Follower`,
     live: true,
     preview: { type: 'video', src: '/vids/kick-preview.mp4' },
   },
   {
     id: 'youtube',
     name: 'YOUTUBE',
-    icon: '📺',
-    url: 'https://youtube.com/@Zyztm',
+    icon: socials.youtube.icon,
+    url: socials.youtube.url,
     color: '#ff0000',
     bgColor: 'linear-gradient(135deg, rgba(40,5,5,0.9) 0%, rgba(13,17,23,0.95) 100%)',
-    stats: '1.05M Abonnenten',
+    stats: `${(socials.youtube.followers / 1000000).toFixed(2).replace('.', ',')}M Abonnenten`,
     live: false,
     preview: { type: 'image', src: '/images/yt-fallback.jpg' },
   },
   {
     id: 'tiktok',
     name: 'TIKTOK',
-    icon: '🎵',
-    url: 'https://tiktok.com/@zyztm',
+    icon: socials.tiktok.icon,
+    url: socials.tiktok.url,
     color: '#ff0055',
     bgColor: 'linear-gradient(135deg, rgba(30,10,20,0.9) 0%, rgba(13,17,23,0.95) 100%)',
-    stats: '651K Follower',
+    stats: `${(socials.tiktok.followers / 1000).toFixed(0)}K Follower`,
     live: false,
     preview: null,
   },
   {
     id: 'discord',
     name: 'DISCORD',
-    icon: '💬',
-    url: 'https://discord.gg/zyztm',
+    icon: socials.discord.icon,
+    url: socials.discord.url,
     color: '#5865f2',
     bgColor: 'linear-gradient(135deg, rgba(10,15,40,0.9) 0%, rgba(13,17,23,0.95) 100%)',
-    stats: '12K Mitglieder',
+    stats: `${(socials.discord.followers / 1000).toFixed(0)}K Mitglieder`,
     live: false,
     preview: null,
   },
   {
     id: 'instagram',
     name: 'INSTAGRAM',
-    icon: '📸',
-    url: 'https://instagram.com/zyztm2.0',
+    icon: socials.instagram.icon,
+    url: socials.instagram.url,
     color: '#e1306c',
     bgColor: 'linear-gradient(135deg, rgba(40,5,20,0.9) 0%, rgba(13,17,23,0.95) 100%)',
     stats: 'Folg uns!',
@@ -64,8 +65,8 @@ const socialChannels: Channel[] = [
   {
     id: 'linktree',
     name: 'LINKTREE',
-    icon: '🌐',
-    url: 'https://linktr.ee/zyztm',
+    icon: socials.linktree.icon,
+    url: socials.linktree.url,
     color: '#43e55e',
     bgColor: 'linear-gradient(135deg, rgba(10,35,15,0.9) 0%, rgba(13,17,23,0.95) 100%)',
     stats: 'Alle Links',
@@ -117,9 +118,9 @@ export default function SocialHub() {
           <h3 className="font-cyber text-2xl font-bold text-white mb-6 text-center">
             <span style={{ color: '#5865f2' }}>💬</span> DISCORD COMMUNITY
           </h3>
-          {DISCORD_SERVER_ID !== 'DEINE_DISCORD_SERVER_ID' ? (
+          {socials.discord.serverId !== 'DEINE_DISCORD_SERVER_ID' ? (
             <iframe
-              src={`https://discord.com/widget?id=${DISCORD_SERVER_ID}&theme=dark`}
+              src={`https://discord.com/widget?id=${socials.discord.serverId}&theme=dark`}
               width="350"
               height="500"
               sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"
@@ -128,7 +129,7 @@ export default function SocialHub() {
             />
           ) : (
             <a
-              href="https://discord.gg/zyztm"
+              href={socials.discord.url}
               target="_blank"
               rel="noopener noreferrer"
               className="cyber-card rounded-lg p-8 text-center no-underline flex flex-col items-center gap-4 max-w-sm w-full"
@@ -152,3 +153,4 @@ export default function SocialHub() {
     </section>
   );
 }
+

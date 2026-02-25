@@ -1,3 +1,40 @@
+/** A single social platform entry in the creator profile. */
+export interface SocialEntry {
+  url: string;
+  label: string;
+  icon: string;
+  followers: number;
+  channelId?: string;
+  serverId?: string;
+}
+
+/** AI configuration hooks (OpenAI / Grok ready). */
+export interface CreatorAIConfig {
+  openaiModel: string;
+  grokModel: string;
+  systemPromptHint: string;
+}
+
+/** Central creator profile – single source of truth for all platform accounts. */
+export interface CreatorProfile {
+  handle: string;
+  displayName: string;
+  bio: string;
+  creatorCode: string;
+  avatar: string;
+  socials: {
+    youtube: SocialEntry;
+    youtubeSecond: SocialEntry;
+    kick: SocialEntry;
+    tiktok: SocialEntry;
+    instagram: SocialEntry;
+    discord: SocialEntry & { serverId: string };
+    twitter: SocialEntry;
+    linktree: SocialEntry;
+  };
+  ai: CreatorAIConfig;
+}
+
 export interface User {
   id: string;
   email: string;

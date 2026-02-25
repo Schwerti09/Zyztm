@@ -1,4 +1,7 @@
 import { Link } from 'wouter';
+import profile from '../creatorProfile.json';
+
+const { socials, bio, creatorCode } = profile;
 
 export default function Footer() {
   return (
@@ -7,21 +10,22 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
           <div>
             <h3 className="font-cyber text-xl font-bold text-neon-pink mb-3 neon-text-pink">ZYZTM NEXUS</h3>
-            <p className="text-white/50 text-sm">Der offizielle Hub für den #1 Fortnite Creator. Stream, Shop, Community.</p>
+            <p className="text-white/50 text-sm">{bio}</p>
             <p className="text-white/30 text-xs mt-3 font-cyber tracking-widest">
-              CREATOR CODE: <span className="text-neon-pink">JOJOJO</span>
+              CREATOR CODE: <span className="text-neon-pink">{creatorCode}</span>
             </p>
           </div>
           <div>
             <h4 className="font-cyber text-sm font-bold text-white mb-3 tracking-widest">SOCIALS</h4>
             <div className="space-y-2">
               {[
-                { label: '🟢 Kick', url: 'https://kick.com/zyztm' },
-                { label: '📺 YouTube', url: 'https://www.youtube.com/@Zyztm' },
-                { label: '🎵 TikTok', url: 'https://www.tiktok.com/@zyztm' },
-                { label: '📸 Instagram', url: 'https://www.instagram.com/zyztm2.0' },
-                { label: '🌐 Linktree', url: 'https://linktr.ee/zyztm' },
-                { label: '💬 Discord', url: 'https://discord.gg/zyztm' },
+                { label: `${socials.kick.icon} Kick`, url: socials.kick.url },
+                { label: `${socials.youtube.icon} YouTube`, url: socials.youtube.url },
+                { label: `${socials.tiktok.icon} TikTok`, url: socials.tiktok.url },
+                { label: `${socials.instagram.icon} Instagram`, url: socials.instagram.url },
+                { label: `${socials.twitter.icon} X (Twitter)`, url: socials.twitter.url },
+                { label: `${socials.linktree.icon} Linktree`, url: socials.linktree.url },
+                { label: `${socials.discord.icon} Discord`, url: socials.discord.url },
               ].map((s) => (
                 <a key={s.label} href={s.url} target="_blank" rel="noopener noreferrer" className="block text-white/50 text-sm hover:text-neon-blue transition-colors">{s.label}</a>
               ))}
@@ -62,4 +66,3 @@ export default function Footer() {
     </footer>
   );
 }
-
