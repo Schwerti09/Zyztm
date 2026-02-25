@@ -2,16 +2,17 @@ import { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 interface Video {
-  videoId: string;
+  id: string;
   title: string;
   thumbnail: string;
-  url: string;
+  link: string;
   publishedAt: string;
-  source?: string;
 }
 
 const CHANNEL_URL = 'https://www.youtube.com/@Zyztm';
 const FALLBACK_THUMBNAIL = '/images/yt-fallback.jpg';
+const CHANNEL_ID = import.meta.env.VITE_YOUTUBE_CHANNEL_ID ?? '';
+const API_URL = `/.netlify/functions/get-youtube-videos?channelId=${CHANNEL_ID}`;
 
 export default function YouTubeLatest() {
   const [videos, setVideos] = useState<Video[]>([]);
@@ -20,13 +21,13 @@ export default function YouTubeLatest() {
   const [lightbox, setLightbox] = useState<Video | null>(null);
 
   useEffect(() => {
-    fetch('/api/youtube/latest')
+    fetch(API_URL)
       .then((r) => r.json())
-      .then((data) => {
-        if (data.error) {
-          setError(data.error);
+      .then((data: Video[] | { error: string }) => {
+        if (!Array.isArray(data)) {
+          setError((data as { error: string }).error ?? 'Unbekannter Fehler');
         } else {
-          setVideos(data.videos ?? []);
+          setVideos(data);
         }
       })
       .catch((err: Error) => setError(err.message))
@@ -127,7 +128,7 @@ export default function YouTubeLatest() {
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
             {videos.map((v, i) => (
               <motion.div
-                key={v.videoId}
+                key={v.id}
                 initial={{ opacity: 0, y: 40 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -141,7 +142,15 @@ export default function YouTubeLatest() {
                   WebkitBackdropFilter: 'blur(16px)',
                   border: '1px solid rgba(255,0,0,0.2)',
                   boxShadow: '0 4px 20px rgba(0,0,0,0.4)',
-                  transition: 'box-shadow 0.3s ease',
+                  transition: 'box-shadow 0.3s ease, border-color 0.3s ease',
+                }}
+                onMouseEnter={(e) => {
+                  (e.currentTarget as HTMLDivElement).style.borderColor = 'rgba(255,0,0,0.5)';
+                  (e.currentTarget as HTMLDivElement).style.boxShadow = '0 0 22px rgba(255,0,0,0.2), 0 4px 30px rgba(0,0,0,0.5)';
+                }}
+                onMouseLeave={(e) => {
+                  (e.currentTarget as HTMLDivElement).style.borderColor = 'rgba(255,0,0,0.2)';
+                  (e.currentTarget as HTMLDivElement).style.boxShadow = '0 4px 20px rgba(0,0,0,0.4)';
                 }}
               >
                 <div className="relative aspect-video bg-gray-900 overflow-hidden">
@@ -149,16 +158,23 @@ export default function YouTubeLatest() {
                     src={v.thumbnail || FALLBACK_THUMBNAIL}
                     alt={v.title}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                    loading="lazy"
                   />
-                  <div className="absolute inset-0 flex items-center justify-center bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <span className="text-4xl">▶</span>
+                  <div className="absolute inset-0 flex items-center justify-center bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <span className="text-5xl drop-shadow-lg">▶</span>
                   </div>
+                  <span
+                    className="absolute top-2 right-2 text-[10px] px-2 py-0.5 rounded font-cyber tracking-widest"
+                    style={{ background: 'rgba(255,0,0,0.85)', color: '#fff' }}
+                  >
+                    YT
+                  </span>
                 </div>
                 <div className="p-4">
                   <p className="text-white text-sm font-body font-bold line-clamp-2 group-hover:text-red-400 transition-colors duration-300">
                     {v.title}
                   </p>
-                  <p className="text-red-500 text-xs font-cyber mt-1">YOUTUBE ▶</p>
+                  <p className="text-red-500 text-xs font-cyber mt-1 tracking-widest">YOUTUBE ▶</p>
                 </div>
               </motion.div>
             ))}
@@ -200,7 +216,7 @@ export default function YouTubeLatest() {
             >
               <div className="aspect-video">
                 <iframe
-                  src={`https://www.youtube.com/embed/${lightbox.videoId}?autoplay=1`}
+                  src={`https://www.youtube.com/embed/${lightbox.id}?autoplay=1`}
                   title={lightbox.title}
                   allow="autoplay; fullscreen; picture-in-picture"
                   allowFullScreen
@@ -215,7 +231,7 @@ export default function YouTubeLatest() {
                 <p className="text-white/80 text-sm line-clamp-1 flex-1">{lightbox.title}</p>
                 <div className="flex items-center gap-2 shrink-0">
                   <a
-                    href={lightbox.url}
+                    href={lightbox.link}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-xs font-cyber px-3 py-2 rounded border transition-all"
