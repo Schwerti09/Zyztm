@@ -20,24 +20,25 @@ const FALLBACK_GALLERY: GalleryItem[] = [
   { emoji: '🔥', label: 'Fire Moments', bg: 'from-orange-900/40 to-bg-card' },
 ];
 
+const CHANNEL_ID = import.meta.env.VITE_YOUTUBE_CHANNEL_ID ?? '';
+const API_URL = `/.netlify/functions/get-youtube-videos?channelId=${CHANNEL_ID}`;
+
 export default function ImageGallery() {
   const [galleryItems, setGalleryItems] = useState<GalleryItem[]>(FALLBACK_GALLERY);
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [currentItem, setCurrentItem] = useState<GalleryItem | null>(null);
 
   useEffect(() => {
-    fetch('/api/youtube/latest')
+    fetch(API_URL)
       .then((r) => r.json())
-      .then((data) => {
-        if (data.videos && data.videos.length > 0) {
-          const ytItems: GalleryItem[] = data.videos.map(
-            (v: { title: string; thumbnail: string; url: string }) => ({
-              label: v.title,
-              bg: 'from-red-900/40 to-bg-card',
-              thumbnail: v.thumbnail,
-              url: v.url,
-            })
-          );
+      .then((data: Array<{ title: string; thumbnail: string; link: string }> | { error: string }) => {
+        if (Array.isArray(data) && data.length > 0) {
+          const ytItems: GalleryItem[] = data.map((v) => ({
+            label: v.title,
+            bg: 'from-red-900/40 to-bg-card',
+            thumbnail: v.thumbnail,
+            url: v.link,
+          }));
           // Mix YouTube thumbnails with fallback emojis
           setGalleryItems([...ytItems, ...FALLBACK_GALLERY].slice(0, 8));
         }
