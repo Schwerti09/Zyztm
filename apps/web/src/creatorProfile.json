@@ -1,0 +1,65 @@
+{
+  "handle": "Zyztm",
+  "displayName": "Zyztm",
+  "bio": "Der offizielle Hub für den #1 Fortnite Creator. Stream, Shop, Community.",
+  "creatorCode": "JOJOJO",
+  "avatar": "/images/zyztm-avatar.jpg",
+  "socials": {
+    "youtube": {
+      "url": "https://www.youtube.com/@Zyztm",
+      "channelId": "UCxxxxxxxxxxxxxxxxxxxxxx",
+      "label": "YouTube",
+      "icon": "📺",
+      "followers": 1050000
+    },
+    "youtubeSecond": {
+      "url": "https://www.youtube.com/@zyztmplus",
+      "channelId": "",
+      "label": "YouTube+",
+      "icon": "📺",
+      "followers": 0
+    },
+    "kick": {
+      "url": "https://kick.com/zyztm",
+      "label": "Kick",
+      "icon": "🟢",
+      "followers": 180000
+    },
+    "tiktok": {
+      "url": "https://www.tiktok.com/@zyztm",
+      "label": "TikTok",
+      "icon": "🎵",
+      "followers": 651000
+    },
+    "instagram": {
+      "url": "https://www.instagram.com/zyztm2.0",
+      "label": "Instagram",
+      "icon": "📸",
+      "followers": 0
+    },
+    "discord": {
+      "url": "https://discord.gg/zyztm",
+      "serverId": "DEINE_DISCORD_SERVER_ID",
+      "label": "Discord",
+      "icon": "💬",
+      "followers": 12000
+    },
+    "twitter": {
+      "url": "https://x.com/zyztm",
+      "label": "X (Twitter)",
+      "icon": "🐦",
+      "followers": 0
+    },
+    "linktree": {
+      "url": "https://linktr.ee/zyztm",
+      "label": "Linktree",
+      "icon": "🌐",
+      "followers": 0
+    }
+  },
+  "ai": {
+    "openaiModel": "gpt-4o",
+    "grokModel": "grok-2",
+    "systemPromptHint": "You are Deepi Bro, Zyztm's AI gaming companion. Answer in Zyztm's casual German gamer style."
+  }
+}

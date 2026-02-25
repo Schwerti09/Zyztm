@@ -1,5 +1,8 @@
 import { motion, useMotionValue, useSpring, useInView } from 'framer-motion';
 import { useEffect, useRef } from 'react';
+import profile from '../creatorProfile.json';
+
+const { socials } = profile;
 
 function formatCounterValue(value: number, suffix: string): string {
   const rounded = Math.round(value);
@@ -90,7 +93,7 @@ export default function HeroSection() {
             🎮 JETZT SHOPPEN
           </button>
           <a
-            href="https://kick.com/zyztm"
+            href={socials.kick.url}
             target="_blank"
             rel="noopener noreferrer"
             className="btn-secondary rounded-sm text-sm"
@@ -106,9 +109,9 @@ export default function HeroSection() {
           className="grid grid-cols-3 gap-8 max-w-2xl mx-auto"
         >
           {[
-            { label: 'YouTube', value: 1050, icon: '📺' },
-            { label: 'TikTok', value: 651, icon: '🎵' },
-            { label: 'Kick', value: 180, icon: '🟢' },
+            { label: 'YouTube', value: Math.round(socials.youtube.followers / 1000), icon: socials.youtube.icon },
+            { label: 'TikTok', value: Math.round(socials.tiktok.followers / 1000), icon: socials.tiktok.icon },
+            { label: 'Kick', value: Math.round(socials.kick.followers / 1000), icon: socials.kick.icon },
           ].map((stat) => (
             <div key={stat.label} className="text-center">
               <div className="text-3xl mb-1">{stat.icon}</div>

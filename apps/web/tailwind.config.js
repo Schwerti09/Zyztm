@@ -9,6 +9,9 @@ export default {
           blue: '#00f2ff',
           gold: '#ffd700',
           silver: '#c0c0c0',
+          purple: '#bf00ff',
+          magenta: '#ff00cc',
+          cyan: '#00f2ff',
         },
         bg: {
           dark: '#03050a',
