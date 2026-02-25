@@ -4,7 +4,7 @@ import { z } from 'zod';
 import { eq, sql } from 'drizzle-orm';
 import { PRODUCTS, COIN_PACKAGES } from '@zyztm/shared-types';
 import { db } from '../db';
-import { users, coinTransactions } from '../db/schema';
+import { users, coinTransactions, purchases } from '../db/schema';
 import { resolveUser } from '../utils/resolveUser';
 
 const router = Router();
@@ -35,7 +35,7 @@ router.post('/create-checkout', async (req: Request, res: Response) => {
     }
 
     const session = await stripe.checkout.sessions.create({
-      payment_method_types: ['card', 'giropay', 'klarna'],
+      payment_method_types: ['card', 'klarna'],
       line_items: [
         {
           price_data: {
@@ -79,7 +79,7 @@ router.post('/create-coin-checkout', async (req: Request, res: Response) => {
 
     const totalCoins = pkg.coins + (pkg.bonus ?? 0);
     const session = await stripe.checkout.sessions.create({
-      payment_method_types: ['card', 'giropay', 'klarna'],
+      payment_method_types: ['card', 'klarna'],
       line_items: [
         {
           price_data: {
@@ -157,8 +157,30 @@ router.post('/webhook', async (req: Request, res: Response) => {
           console.error('Failed to credit coins:', err);
         }
       }
-    } else {
-      // TODO: Update database with product purchase record
+    } else if (session.metadata?.productId) {
+      const productId = session.metadata.productId;
+      const userId = session.metadata.userId || undefined;
+      const email = session.customer_email || undefined;
+      const paymentIntentId = typeof session.payment_intent === 'string'
+        ? session.payment_intent
+        : session.payment_intent?.id ?? null;
+      const amount = session.amount_total ?? 0;
+      try {
+        const user = await resolveUser(userId, email);
+        if (user) {
+          await db.insert(purchases).values({
+            userId: user.id,
+            productId,
+            stripePaymentIntent: paymentIntentId,
+            paymentMethod: 'stripe',
+            amount,
+            status: 'completed',
+          });
+          console.log(`Recorded purchase of ${productId} for user ${user.id}`);
+        }
+      } catch (err) {
+        console.error('Failed to record purchase:', err);
+      }
     }
   }
 
