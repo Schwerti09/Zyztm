@@ -3,6 +3,9 @@
   publish = "apps/web/dist"
   functions = "netlify/functions"
 
+[build.environment]
+  NODE_VERSION = "20"
+
 # Cache headers – prevent stale deployments from being served
 [[headers]]
   for = "/index.html"
@@ -87,6 +90,3 @@
 
 [functions."fetch-tiktok-clips"]
   schedule = "0 6 * * *"
-
-[secrets]
-  omit_paths = ["**/.env.example", ".env.example"]
