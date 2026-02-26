@@ -32,6 +32,7 @@ import FortniteArcade from '../components/FortniteArcade';
 import LatestNews from '../components/LatestNews';
 import GlobalEmpire from '../components/GlobalEmpire';
 import RundgangTour from '../components/RundgangTour';
+import MidScrollChaos from '../components/MidScrollChaos';
 
 import SoundboardDemo from '../components/SoundboardDemo';
 import BackgroundMusic from '../components/BackgroundMusic';
@@ -104,6 +105,7 @@ export default function MainPage() {
       </div>
       <Toast toasts={toasts} onRemove={remove} />
       <RundgangTour />
+      <MidScrollChaos />
     </div>
   );
 }
