@@ -106,7 +106,7 @@ export default function SocialCard({ channel, index }: { channel: Channel; index
           className="mt-4 text-xs font-cyber tracking-widest py-2 px-4 border rounded w-full text-center"
           style={{ color: channel.color, borderColor: `${channel.color}50` }}
         >
-          FOLGEN →
+          {channel.id === 'instagram' ? 'FOLGE MIR →' : 'FOLGEN →'}
         </div>
       </div>
     </motion.a>

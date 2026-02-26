@@ -161,38 +161,39 @@ function ProductCard({ product, index, userEmail, onCoinPurchase }: {
       className="group cursor-pointer"
     >
       <div
-        className="relative rounded-xl flex flex-col overflow-hidden"
+        className="relative rounded-2xl flex flex-col overflow-hidden h-full"
         style={{
-          background: `linear-gradient(160deg, rgba(10,12,20,0.92) 0%, rgba(6,8,15,0.96) 100%)`,
-          border: `2px solid ${rarity.color}60`,
+          background: hovered
+            ? `linear-gradient(160deg, rgba(14,16,28,0.97) 0%, rgba(8,10,20,0.99) 100%)`
+            : `linear-gradient(160deg, rgba(10,12,20,0.92) 0%, rgba(6,8,15,0.96) 100%)`,
+          border: `1px solid ${hovered ? rarity.color : `${rarity.color}45`}`,
           boxShadow: hovered
-            ? `0 0 30px ${rarity.color}50, 0 0 60px ${rarity.color}20, inset 0 0 30px ${rarity.color}10`
-            : `0 4px 20px rgba(0,0,0,0.6), inset 0 0 20px ${rarity.color}05`,
-          transform: hovered ? `rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(10px)` : 'rotateX(0deg) rotateY(0deg)',
-          transition: hovered ? 'box-shadow 0.2s ease' : 'box-shadow 0.4s ease, transform 0.4s ease',
+            ? `0 0 40px ${rarity.color}45, 0 0 80px ${rarity.color}18, inset 0 0 40px ${rarity.color}08`
+            : `0 4px 24px rgba(0,0,0,0.65), inset 0 0 20px ${rarity.color}04`,
+          transform: hovered ? `rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(12px)` : 'rotateX(0deg) rotateY(0deg)',
+          transition: hovered ? 'box-shadow 0.2s ease, background 0.2s ease' : 'box-shadow 0.4s ease, transform 0.4s ease, background 0.4s ease',
+          backdropFilter: 'blur(20px)',
+          WebkitBackdropFilter: 'blur(20px)',
         }}
       >
         {/* Rarity banner */}
         <div
-          className="w-full py-1.5 px-4 flex items-center justify-between"
-          style={{ background: `linear-gradient(90deg, ${rarity.color}30, ${rarity.color}15, ${rarity.color}05)` }}
+          className="w-full py-2 px-4 flex items-center justify-between"
+          style={{
+            background: `linear-gradient(90deg, ${rarity.color}35, ${rarity.color}18, transparent)`,
+            borderBottom: `1px solid ${rarity.color}20`,
+          }}
         >
           <span
-            className="font-cyber text-xs font-bold tracking-[0.2em]"
-            style={{ color: rarity.color, textShadow: `0 0 8px ${rarity.color}` }}
+            className="font-cyber text-[11px] font-bold tracking-[0.25em]"
+            style={{ color: rarity.color, textShadow: hovered ? `0 0 10px ${rarity.color}` : 'none' }}
           >
             {rarity.label}
           </span>
-          <span className="text-xs tracking-wider" style={{ color: `${rarity.color}cc` }}>
+          <span className="text-xs tracking-wider" style={{ color: `${rarity.color}bb` }}>
             {rarityStars}
           </span>
         </div>
-
-        {/* Top shine line */}
-        <div
-          className="absolute top-8 left-0 right-0 h-px"
-          style={{ background: `linear-gradient(90deg, transparent, ${rarity.color}80, transparent)` }}
-        />
 
         {/* Video overlay on hover */}
         {videoSrc && (
@@ -200,14 +201,14 @@ function ProductCard({ product, index, userEmail, onCoinPurchase }: {
             initial={{ opacity: 0 }}
             animate={{ opacity: hovered ? 1 : 0 }}
             transition={{ duration: 0.3 }}
-            className="absolute inset-0 z-0 overflow-hidden rounded-xl"
+            className="absolute inset-0 z-0 overflow-hidden rounded-2xl"
           >
             <video
               ref={videoRef}
               src={videoSrc}
               loop muted playsInline
               className="w-full h-full object-cover"
-              style={{ opacity: 0.15 }}
+              style={{ opacity: 0.12 }}
             />
           </motion.div>
         )}
@@ -215,65 +216,79 @@ function ProductCard({ product, index, userEmail, onCoinPurchase }: {
         {/* Shimmer effect on hover */}
         {hovered && (
           <motion.div
-            className="absolute inset-0 z-0 pointer-events-none rounded-xl"
+            className="absolute inset-0 z-0 pointer-events-none rounded-2xl"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             style={{
-              background: `radial-gradient(ellipse at ${50 + rotateY * 2}% ${50 - rotateX * 2}%, ${rarity.color}20 0%, transparent 65%)`,
+              background: `radial-gradient(ellipse at ${50 + rotateY * 2}% ${50 - rotateX * 2}%, ${rarity.color}18 0%, transparent 65%)`,
             }}
           />
         )}
 
-        <div className="relative z-10 p-6 flex flex-col h-full">
+        <div className="relative z-10 p-6 flex flex-col h-full gap-4">
           {/* Icon area */}
-          <div className="flex items-center justify-center mb-5">
+          <div className="flex items-center justify-center pt-2">
             <motion.div
-              animate={hovered ? { scale: 1.15, rotate: [-3, 3, -3] } : { scale: 1, rotate: 0 }}
+              animate={hovered ? { scale: 1.18, rotate: [-3, 3, -3] } : { scale: 1, rotate: 0 }}
               transition={hovered ? { duration: 0.6, repeat: Infinity, repeatType: 'mirror' } : { duration: 0.3 }}
               className="text-6xl drop-shadow-lg"
-              style={{ filter: hovered ? `drop-shadow(0 0 12px ${rarity.color})` : 'none' }}
+              style={{ filter: hovered ? `drop-shadow(0 0 16px ${rarity.color})` : 'none' }}
             >
               {product.emoji}
             </motion.div>
           </div>
 
-          <h3 className="font-cyber text-lg font-bold text-white mb-2 text-center leading-tight">
-            {product.name}
-          </h3>
-          <p className="text-white/55 text-xs mb-5 flex-grow text-center leading-relaxed">
-            {product.description}
-          </p>
+          <div className="flex flex-col flex-grow gap-2">
+            <h3 className="font-cyber text-base font-bold text-white text-center leading-tight">
+              {product.name}
+            </h3>
+            <p className="text-white/50 text-xs text-center leading-relaxed flex-grow">
+              {product.description}
+            </p>
+          </div>
 
           {/* Price */}
-          <div className="text-center mb-4">
+          <div className="text-center py-1">
             <span
               className="font-cyber text-2xl font-bold"
-              style={{ color: rarity.color, textShadow: `0 0 12px ${rarity.color}` }}
+              style={{
+                color: rarity.color,
+                textShadow: hovered ? `0 0 16px ${rarity.color}, 0 0 32px ${rarity.color}60` : `0 0 8px ${rarity.color}60`,
+              }}
             >
               {product.priceLabel}
             </span>
           </div>
 
-          {/* Buy button */}
-          <button
-            onClick={() => buyProduct(product.id)}
-            className="w-full py-2.5 rounded font-cyber text-xs tracking-widest font-bold mb-2 transition-all duration-200"
-            style={{
-              background: hovered ? `linear-gradient(90deg, ${rarity.color}, ${rarity.color}cc)` : 'transparent',
-              border: `1px solid ${rarity.color}80`,
-              color: hovered ? '#000' : rarity.color,
-              boxShadow: hovered ? `0 0 15px ${rarity.color}50` : 'none',
-            }}
-          >
-            🛒 JETZT KAUFEN
-          </button>
-          <button
-            onClick={() => buyWithCoins(product.id, userEmail, onCoinPurchase)}
-            className="w-full text-xs py-2 rounded border font-cyber tracking-widest transition-colors hover:bg-white/5"
-            style={{ borderColor: 'rgba(255,255,255,0.15)', color: 'rgba(255,255,255,0.45)' }}
-          >
-            💎 MIT COINS ({product.coinPrice})
-          </button>
+          {/* Divider */}
+          <div style={{ height: '1px', background: `linear-gradient(90deg, transparent, ${rarity.color}40, transparent)` }} />
+
+          {/* Buy buttons */}
+          <div className="flex flex-col gap-2">
+            <button
+              onClick={() => buyProduct(product.id)}
+              aria-label={`${product.name} mit Geld kaufen`}
+              className="w-full py-2.5 rounded-lg font-cyber text-xs tracking-widest font-bold transition-all duration-200"
+              style={{
+                background: hovered
+                  ? `linear-gradient(90deg, ${rarity.color}, ${rarity.color}cc)`
+                  : `${rarity.color}12`,
+                border: `1px solid ${rarity.color}70`,
+                color: hovered ? '#000' : rarity.color,
+                boxShadow: hovered ? `0 0 20px ${rarity.color}55` : 'none',
+              }}
+            >
+              🛒 JETZT KAUFEN
+            </button>
+            <button
+              onClick={() => buyWithCoins(product.id, userEmail, onCoinPurchase)}
+              aria-label={`${product.name} mit ${product.coinPrice} Coins kaufen`}
+              className="w-full text-xs py-2 rounded-lg border font-cyber tracking-widest transition-colors hover:bg-white/5"
+              style={{ borderColor: 'rgba(255,255,255,0.18)', color: 'rgba(255,255,255,0.60)' }}
+            >
+              💎 MIT COINS ({product.coinPrice})
+            </button>
+          </div>
         </div>
       </div>
     </motion.div>

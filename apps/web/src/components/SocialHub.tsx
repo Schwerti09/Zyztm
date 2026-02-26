@@ -46,7 +46,7 @@ const socialChannels: Channel[] = [
     url: 'https://discord.gg/zyztm',
     color: '#5865f2',
     bgColor: 'linear-gradient(135deg, rgba(10,15,40,0.9) 0%, rgba(13,17,23,0.95) 100%)',
-    stats: '12K Mitglieder',
+    stats: 'Community',
     live: false,
     preview: null,
   },
@@ -57,7 +57,7 @@ const socialChannels: Channel[] = [
     url: 'https://instagram.com/zyztm2.0',
     color: '#e1306c',
     bgColor: 'linear-gradient(135deg, rgba(40,5,20,0.9) 0%, rgba(13,17,23,0.95) 100%)',
-    stats: 'Folg uns!',
+    stats: 'Folge mir!',
     live: false,
     preview: null,
   },
@@ -84,8 +84,8 @@ export default function SocialHub() {
           viewport={{ once: true }}
           className="text-center mb-12"
         >
-          <h2 className="font-cyber text-4xl md:text-5xl font-bold text-white mb-4">
-            THE <span className="text-neon-blue neon-text-blue">COMMAND CENTER</span>
+          <h2 className="font-cyber text-5xl md:text-6xl font-bold text-white mb-4 tracking-tight">
+            THE <span className="text-neon-blue neon-text-blue" style={{ textShadow: '0 0 30px #00f2ff, 0 0 60px #00f2ff60' }}>COMMAND CENTER</span>
           </h2>
           <p className="text-white/50">Live-Daten aus allen Plattformen</p>
         </motion.div>

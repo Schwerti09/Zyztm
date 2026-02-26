@@ -10,6 +10,7 @@ interface VideoItem {
 }
 
 const CHANNEL_URL = 'https://www.youtube.com/@Zyztm';
+const CHANNEL2_URL = 'https://www.youtube.com/@zyztmplus';
 /** URL of the Netlify function that fetches YouTube videos server-side */
 const API_URL = '/.netlify/functions/get-youtube-videos';
 
@@ -92,6 +93,15 @@ export default function LatestYouTubeVideos() {
             >
               @Zyztm
             </a>
+            {' · '}
+            <a
+              href={CHANNEL2_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-red-400 hover:text-red-300 transition-colors"
+            >
+              @zyztmplus
+            </a>
           </p>
         </motion.div>
 
@@ -123,32 +133,61 @@ export default function LatestYouTubeVideos() {
             {error && (
               <p className="text-red-400 text-sm font-mono">{error}</p>
             )}
-            <motion.a
-              href={CHANNEL_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              whileHover={{ scale: 1.03, y: -3 }}
-              className="rounded-lg overflow-hidden no-underline block group max-w-xs w-full"
-              style={{
-                background:
-                  'linear-gradient(135deg, rgba(13,17,23,0.75) 0%, rgba(10,12,21,0.80) 100%)',
-                backdropFilter: 'blur(16px)',
-                border: '1px solid rgba(255,0,0,0.2)',
-                boxShadow: '0 4px 20px rgba(0,0,0,0.4)',
-              }}
-            >
-              <div className="relative aspect-video bg-gray-900 flex flex-col items-center justify-center gap-3">
-                <div className="text-5xl">📺</div>
-                <p className="font-cyber text-lg font-bold text-red-500">ZYZTM AUF YOUTUBE</p>
-              </div>
-              <div className="p-4 text-center">
-                <div className="text-xs font-cyber tracking-widest py-2 px-6 border border-red-500/50 rounded text-red-500 inline-block">
-                  KANAL ÖFFNEN →
+            <div className="flex flex-col sm:flex-row gap-4 w-full max-w-2xl">
+              <motion.a
+                href={CHANNEL_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                whileHover={{ scale: 1.03, y: -3 }}
+                className="rounded-lg overflow-hidden no-underline block group flex-1"
+                style={{
+                  background:
+                    'linear-gradient(135deg, rgba(13,17,23,0.75) 0%, rgba(10,12,21,0.80) 100%)',
+                  backdropFilter: 'blur(16px)',
+                  border: '1px solid rgba(255,0,0,0.2)',
+                  boxShadow: '0 4px 20px rgba(0,0,0,0.4)',
+                }}
+              >
+                <div className="relative aspect-video bg-gray-900 flex flex-col items-center justify-center gap-3">
+                  <div className="text-5xl">📺</div>
+                  <p className="font-cyber text-lg font-bold text-red-500">ZYZTM AUF YOUTUBE</p>
                 </div>
-              </div>
-            </motion.a>
+                <div className="p-4 text-center">
+                  <div className="text-xs font-cyber tracking-widest py-2 px-6 border border-red-500/50 rounded text-red-500 inline-block">
+                    @ZYZTM ÖFFNEN →
+                  </div>
+                </div>
+              </motion.a>
+              <motion.a
+                href={CHANNEL2_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.1 }}
+                whileHover={{ scale: 1.03, y: -3 }}
+                className="rounded-lg overflow-hidden no-underline block group flex-1"
+                style={{
+                  background:
+                    'linear-gradient(135deg, rgba(13,17,23,0.75) 0%, rgba(10,12,21,0.80) 100%)',
+                  backdropFilter: 'blur(16px)',
+                  border: '1px solid rgba(255,80,80,0.2)',
+                  boxShadow: '0 4px 20px rgba(0,0,0,0.4)',
+                }}
+              >
+                <div className="relative aspect-video bg-gray-900 flex flex-col items-center justify-center gap-3">
+                  <div className="text-5xl">🎮</div>
+                  <p className="font-cyber text-lg font-bold text-red-400">ZYZTM+ KANAL</p>
+                </div>
+                <div className="p-4 text-center">
+                  <div className="text-xs font-cyber tracking-widest py-2 px-6 border border-red-400/50 rounded text-red-400 inline-block">
+                    @ZYZTMPLUS ÖFFNEN →
+                  </div>
+                </div>
+              </motion.a>
+            </div>
           </div>
         )}
 
@@ -229,7 +268,7 @@ export default function LatestYouTubeVideos() {
             </div>
 
             {/* Channel link */}
-            <div className="flex justify-center mt-10">
+            <div className="flex justify-center gap-4 mt-10 flex-wrap">
               <a
                 href={CHANNEL_URL}
                 target="_blank"
@@ -237,7 +276,16 @@ export default function LatestYouTubeVideos() {
                 className="text-xs font-cyber tracking-widest py-2 px-8 rounded border transition-all"
                 style={{ borderColor: 'rgba(255,0,0,0.4)', color: '#ff4444' }}
               >
-                KANAL ÖFFNEN →
+                @ZYZTM ÖFFNEN →
+              </a>
+              <a
+                href={CHANNEL2_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-xs font-cyber tracking-widest py-2 px-8 rounded border transition-all"
+                style={{ borderColor: 'rgba(255,80,80,0.3)', color: '#ff8888' }}
+              >
+                @ZYZTMPLUS →
               </a>
             </div>
           </>
