@@ -146,22 +146,21 @@ export default function SuccessPage() {
                 <p className="font-cyber text-xs" style={{ color: NEON_GREEN }}>
                   ✅ Dein {product.name} ist bereit!
                 </p>
-                <motion.a
-                  href="#download-ready"
-                  onClick={(e) => e.preventDefault()}
+                <motion.button
+                  onClick={() => alert(`Dein ${product.name} Download wird vorbereitet. Du erhältst eine E-Mail mit dem direkten Download-Link.`)}
                   whileHover={{ scale: 1.04, boxShadow: `0 0 30px ${NEON_GREEN}55` }}
                   whileTap={{ scale: 0.97 }}
                   className="w-full py-3 rounded-xl font-cyber text-sm font-black tracking-widest text-center"
                   style={{
                     background: `linear-gradient(135deg, ${NEON_GREEN}, #22cc08)`,
                     color: '#000',
-                    textDecoration: 'none',
-                    display: 'block',
+                    cursor: 'pointer',
+                    border: 'none',
                     boxShadow: `0 0 20px ${NEON_GREEN}40`,
                   }}
                 >
                   ⬇ DOWNLOAD STARTEN
-                </motion.a>
+                </motion.button>
                 <p className="font-cyber text-[9px] text-white/30 tracking-widest">
                   DOWNLOAD-LINK WURDE AN DEINE E-MAIL GESCHICKT
                 </p>

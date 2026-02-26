@@ -610,19 +610,18 @@ export default function FortniteItemShop() {
                   <span className="text-3xl mt-2">{p.icon}</span>
                   <h4 className="font-cyber text-[10px] font-bold leading-tight" style={{ color: NEON_GREEN }}>{p.name}</h4>
                   <span className="font-cyber text-xs font-black" style={{ color: GOLD }}>{p.price}</span>
-                  <a
-                    href={`/.netlify/functions/create-checkout-session?download=${p.productId}`}
-                    onClick={(e) => e.preventDefault()}
+                  <button
+                    onClick={() => alert(`Dein Download für "${p.name}" wird vorbereitet. Du erhältst eine E-Mail mit dem Download-Link.`)}
                     className="w-full py-1.5 rounded-lg font-cyber text-[9px] tracking-widest font-black"
                     style={{
                       background: `linear-gradient(90deg, ${NEON_GREEN}, #22cc08)`,
                       color: '#000',
-                      textDecoration: 'none',
-                      display: 'block',
+                      cursor: 'pointer',
+                      border: 'none',
                     }}
                   >
                     ⬇ DOWNLOAD
-                  </a>
+                  </button>
                   <span className="font-cyber text-[8px] text-white/30">
                     {new Date(p.purchasedAt).toLocaleDateString('de-DE')}
                   </span>
