@@ -39,9 +39,9 @@ const FALLBACK_NEWS: NewsItem[] = [
   },
   {
     id: 3,
-    title: '🤖 DEEPI BRO – DER KI-GAMING-KUMPEL IST DA!',
+    title: '🤖 ZYZTM BRO – DER KI-GAMING-KUMPEL IST DA!',
     teaser:
-      'Zyztm launcht seinen eigenen KI-Chatbot: Deepi Bro. Powered by Gemini AI, labert er wie Zyztm, kennt alle Fortnite-Tipps und hat drei Moods: Chill, Tryhard und Lustig. Teste ihn jetzt live im NEXUS!',
+      'Zyztm launcht seinen eigenen KI-Chatbot: Zyztm Bro. Powered by Gemini AI, labert er wie Zyztm, kennt alle Fortnite-Tipps und hat drei Moods: Chill, Tryhard und Lustig. Teste ihn jetzt live im NEXUS!',
     date: '24. Feb 2026',
     tag: 'FEATURE',
     color: '#a335ee',

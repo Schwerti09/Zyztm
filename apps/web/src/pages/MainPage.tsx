@@ -6,7 +6,7 @@ import CreatorCode from '../components/CreatorCode';
 import SocialHub from '../components/SocialHub';
 import ProductGrid from '../components/ProductGrid';
 import NeuralSynthesizer from '../components/NeuralSynthesizer';
-import DeepIChat from '../components/DeepIChat';
+import ZyztmBro from '../components/ZyztmBro';
 import NewsSection from '../components/NewsSection';
 import MediaGallery from '../components/MediaGallery';
 import GamerVoting from '../components/GamerVoting';
@@ -80,7 +80,7 @@ export default function MainPage() {
           <StreamCalendar />
           <MediaGallery />
           <NeuralSynthesizer />
-          <DeepIChat />
+          <ZyztmBro />
           <GamerVoting />
         </main>
         <Footer />

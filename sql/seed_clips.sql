@@ -26,7 +26,7 @@ VALUES
    'https://www.youtube.com/watch?v=YR5ApYxkU-U',
    4500, 'voice', 'youtube', NULL, 0),
 
-  (gen_random_uuid(), 'Deepi AI in Aktion',
+  (gen_random_uuid(), 'Zyztm Bro in Aktion',
    'https://i.ytimg.com/vi/2vjPBrBU-TM/mqdefault.jpg',
    'https://www.youtube.com/watch?v=2vjPBrBU-TM',
    3100, 'ai', 'youtube', NULL, 0),
