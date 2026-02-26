@@ -14,6 +14,7 @@ interface FnNewsItem {
   teaser: string;
   date: string;
   icon: string;
+  url: string;
   live?: boolean;
 }
 
@@ -22,62 +23,68 @@ const FN_NEWS: FnNewsItem[] = [
     id: 1,
     tag: 'PATCH NOTES',
     tagColor: NEON_GREEN,
-    title: 'v31.10 PATCH NOTES – Neue Waffen & Map-Änderungen',
+    title: 'CHAPTER 6 SEASON 2 „LAWLESS" – OFFIZIELLE PATCH NOTES',
     teaser:
-      'Mythic Pump Shotgun zurück, neue Storm-Mechanic & Battle Bus-Route geändert. Full patchlist jetzt live!',
-    date: '20. Feb 2026',
+      'Die neue Season bringt Crime City, Outlaw Oasis, Shiny Shafts & Lonewolf Lair. Neue Heist-Mechanik: überfalle gepanzerte Züge, knacke Tresore & kaufe Mythic-Gear an Black Markets mit Dill Bits!',
+    date: '21. Feb 2026',
     icon: '📋',
+    url: 'https://www.dexerto.com/fortnite/fortnite-chapter-6-season-2-patch-notes-3137316/',
     live: true,
   },
   {
     id: 2,
-    tag: 'EVENT',
+    tag: 'COLLAB',
     tagColor: NEON_PINK,
-    title: 'TRAVIS SCOTT KONZERT – Astronomical Returns!',
+    title: 'COWBOY BEBOP x FORTNITE – Spike & Faye jetzt im Item Shop!',
     teaser:
-      'Das legendäre In-Game Konzert kommt zurück – Chapter 6 Edition mit exklusivem Astro-Jack Skin Drop!',
-    date: '22. Feb 2026',
-    icon: '🎤',
+      'Spike Spiegel & Faye Valentine landen mit ikonischem Cel-Shading-Look in Fortnite. Bebop-Quests laufen bis 18. März – Belohnungen: exklusiver Wrap & Bebop Legends Loading Screen!',
+    date: '28. Feb 2026',
+    icon: '🚀',
+    url: 'https://www.dexerto.com/fortnite/fortnite-cowboy-bebop-collab-release-date-cosmetics-3139930/',
   },
   {
     id: 3,
     tag: 'MYTHIC',
     tagColor: NEON_GOLD,
-    title: 'NEUER MYTHIC WEAPON: Zerostorm Rifle',
+    title: 'NEUE WAFFEN: DOUBLE DOWN PISTOL, FALCON EYE SNIPER & CO.',
     teaser:
-      'Die neue Zerostorm Rifle löscht Zero-Build Gegner in 2 Shots. Nur bei The Underworld POI looten!',
+      'Fletcher Kanes Mythic Double Down Pistol & der Collateral Damage AR dominieren den neuen Meta. Dazu: Plasma Burst Laser, Falcon Eye Sniper, Thermite zum Tresor-Knacken & Med-Mist Grenade!',
     date: '21. Feb 2026',
     icon: '🔫',
+    url: 'https://beebom.com/fortnite-chapter-6-season-2-patch-notes/',
   },
   {
     id: 4,
-    tag: 'ZYZTM',
+    tag: 'CROSSOVER',
     tagColor: NEON_BLUE,
-    title: 'ZYZTM TURNIER ANGEKÜNDIGT – 5.000€ Preisgeld!',
+    title: 'SUB-ZERO (MORTAL KOMBAT) IST JETZT IN FORTNITE!',
     teaser:
-      'Zyztm veranstaltet sein erstes Community-Turnier mit 5.000€ Preisgeld. Anmeldung ab sofort im Discord!',
-    date: '24. Feb 2026',
-    icon: '🏆',
+      'Sub-Zero bringt sein Kombat Kit mit einzigartigen Eiskräften nach Fortnite Chapter 6 Season 2. Der Skin ist im Item Shop erhältlich und passt perfekt zum Outlaw-Thema der Lawless Season.',
+    date: '21. Feb 2026',
+    icon: '🧊',
+    url: 'https://www.cgmagonline.com/news/fortnite-lawless-brings-pickles-and-bebop/',
   },
   {
     id: 5,
-    tag: 'SEASON',
+    tag: 'MAP',
     tagColor: '#ff6b35',
-    title: 'CHAPTER 6 SEASON 2 – FIRST TEASER LEAKED!',
+    title: 'NEUE MAP: CRIME CITY, GOLD RUSH & HEIST-GAMEPLAY!',
     teaser:
-      'Erste offizielle Teaser deuten auf ein Neon-Noir Metropolis Theme hin. Neue Mechs & Cyberpunk-Skins incoming!',
-    date: '25. Feb 2026',
+      'Crime City dominiert die Kartenmitte mit neon-getränkter Großstadt-Atmosphäre. Gold Rush-Mechanic: Berühre goldene Quellen für Bewegungs-Buff. Armored Train & Vault-Heists sorgen für maximale Action!',
+    date: '21. Feb 2026',
     icon: '🌆',
+    url: 'https://esports.gg/news/fortnite/fortnite-chapter-6-season-2-patch-notes-everything-included-in-the-new-season/',
   },
   {
     id: 6,
-    tag: 'OG MAP',
+    tag: 'BATTLE PASS',
     tagColor: '#00ff88',
-    title: 'OG MAP RETURNS – Tilted Towers ist BACK!',
+    title: 'BATTLE PASS S2: CASSIDY QUINN, BIG DILL, VALENTINA & MEHR',
     teaser:
-      'Fortnite OG Map kehrt für 2 Wochen zurück. Tilted Towers, Dusty Depot & Loot Lake in voller Chapter-1-Glory!',
-    date: '26. Feb 2026',
-    icon: '🗺️',
+      'Der Season-2-Battle-Pass enthält Cassidy Quinn, Fletcher Kane, den rappenden Big Dill-Pickle, Valentina, Keisha Cross & Sub-Zero. Season läuft bis 2. Mai 2026 – jetzt freischalten!',
+    date: '21. Feb 2026',
+    icon: '🎫',
+    url: 'https://www.dexerto.com/fortnite/fortnite-chapter-6-season-2-patch-notes-3137316/',
   },
 ];
 
@@ -184,8 +191,12 @@ function NewsCard({ item, index }: { item: FnNewsItem; index: number }) {
         <p className="text-white/50 text-xs leading-relaxed line-clamp-2">{item.teaser}</p>
 
         {/* READ MORE button */}
-        <button
-          className="mt-2 w-full py-2 rounded font-cyber text-[11px] tracking-widest font-bold transition-all duration-200"
+        <a
+          href={item.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label={`Read more about ${item.title} (opens in new tab)`}
+          className="mt-2 block w-full py-2 rounded font-cyber text-[11px] tracking-widest font-bold transition-all duration-200 text-center"
           style={{
             background: hovered ? item.tagColor : `${item.tagColor}12`,
             border: `1px solid ${item.tagColor}60`,
@@ -194,7 +205,7 @@ function NewsCard({ item, index }: { item: FnNewsItem; index: number }) {
           }}
         >
           READ MORE →
-        </button>
+        </a>
       </div>
     </motion.article>
   );
