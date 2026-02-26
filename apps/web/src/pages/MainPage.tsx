@@ -33,7 +33,6 @@ import SoundboardDemo from '../components/SoundboardDemo';
 
 const FanCounter = lazy(() => import('../components/FanCounter'));
 const ClutchReel = lazy(() => import('../components/ClutchReel'));
-const ZyztmBlast = lazy(() => import('../components/ZyztmBlast'));
 const GlobalEmpire = lazy(() => import('../components/GlobalEmpire'));
 
 function SectionLoader() {
@@ -63,7 +62,6 @@ export default function MainPage() {
           <CreatorCode />
           <SocialHub />
           <ZyztmLiveMap />
-          <Suspense fallback={<SectionLoader />}><ZyztmBlast /></Suspense>
           <StreamHighlights />
           <Suspense fallback={<SectionLoader />}><ClutchReel /></Suspense>
           <ProductGrid />

@@ -1,7 +1,5 @@
 import { motion } from 'framer-motion';
 import SocialCard, { type Channel } from './SocialCard';
-import PowerButton from './PowerButton';
-
 // Replace DEINE_DISCORD_SERVER_ID with your real Discord server ID to enable the widget
 const DISCORD_SERVER_ID = 'DEINE_DISCORD_SERVER_ID';
 
@@ -96,16 +94,6 @@ export default function SocialHub() {
             <SocialCard key={channel.id} channel={channel} index={i} />
           ))}
         </div>
-
-        {/* Power Button */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.8 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true }}
-          className="flex justify-center mb-16"
-        >
-          <PowerButton channels={socialChannels} />
-        </motion.div>
 
         {/* Discord Widget */}
         <motion.div
