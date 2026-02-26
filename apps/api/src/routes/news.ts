@@ -5,30 +5,48 @@ const router = Router();
 const NEWS_ITEMS = [
   {
     id: 1,
-    title: '🏆 ZYZTM GEWINNT FORTNITE TURNIER!',
+    title: '🏆 ZYZTM ERREICHT 1 MILLION YOUTUBE-ABONNENTEN!',
     teaser:
-      'Was für eine Nacht! Zyztm hat beim offiziellen Fortnite Creator Cup den ersten Platz abgeräumt und damit 10.000€ Preisgeld gewonnen. Die Community war ausgerastet!',
-    date: '15. Jan 2025',
-    tag: 'TOURNAMENT',
-    color: '#ffd700',
+      'Nach Jahren harter Arbeit und tausenden Stunden Stream-Content hat Zyztm die magische Marke von 1.054.400 YouTube-Abonnenten geknackt. Der Weg dahin: täglich Fortnite-Clips, IRL-Momente und die beste Community im deutschsprachigen Raum.',
+    date: '3. Jan 2025',
+    tag: 'MILESTONE',
+    color: '#ff0000',
+    icon: '📺',
+    link: 'https://www.youtube.com/@Zyztm',
+    image: 'https://yt3.googleusercontent.com/ytc/AIdro_ki5TqFLW8PUMgHkDR_XZ2yxPkE5dCE9sC0Jw9RMA=s900-c-k-c0x00ffffff-no-rj',
   },
   {
     id: 2,
-    title: '🚀 1 MILLION YOUTUBE ABONNENTEN GEKNACKT!',
+    title: '📅 NEUE STREAM-ZEITEN FÜR 2026 BEKANNT GEGEBEN',
     teaser:
-      'Diggah, wir haben es geschafft! Der Kanal hat die 1 Million Abonnenten Marke geknackt. Zur Feier gibt es ein exklusives Merch Drop und eine 24h Livestream Celebration!',
-    date: '3. Jan 2025',
-    tag: 'MILESTONE',
-    color: '#ff0055',
+      'Zyztm hat seinen offiziellen Stream-Plan für 2026 enthüllt: Mo 13–18 Uhr, Di 12–17:40 Uhr, Mi 10–15:10 Uhr, Do 10:40–19:20 Uhr. Mit 28.518 Kick-Followern und durchschnittlich 159 Zuschauern liefert er täglich – mark your calendars!',
+    date: '10. Feb 2026',
+    tag: 'ANNOUNCEMENT',
+    color: '#00f2ff',
+    icon: '📅',
+    link: 'https://kick.com/zyztm',
   },
   {
     id: 3,
-    title: '🎮 NEUE SEASON, NEUES GLÜCK!',
+    title: '🤖 DEEPI BRO – DER KI-GAMING-KUMPEL IST DA!',
     teaser:
-      'Fortnite Season X bringt krasse neue Features! Zyztm erklärt alle neuen Mechanics, die besten Drop Spots und welche Waffen jetzt der absolute Meta sind.',
-    date: '28. Dez 2024',
-    tag: 'GAMING',
-    color: '#00f2ff',
+      'Zyztm launcht seinen eigenen KI-Chatbot: Deepi Bro. Powered by Gemini AI, labert er wie Zyztm, kennt alle Fortnite-Tipps und hat drei Moods: Chill, Tryhard und Lustig. Teste ihn jetzt live im NEXUS!',
+    date: '24. Feb 2026',
+    tag: 'FEATURE',
+    color: '#a335ee',
+    icon: '🤖',
+    link: 'https://discord.gg/zyztm',
+  },
+  {
+    id: 4,
+    title: '📈 REKORD AUF KICK: 3.598 ZUSCHAUER FEIERN ZYZTM!',
+    teaser:
+      'In seinem bisher größten Stream brach Zyztm alle Rekorde mit 3.598 gleichzeitigen Zuschauern auf Kick. Mit 651.600 TikTok-Followern, 13,5 Millionen Likes und einem Engagement von 8,24% ist er einer der aufstrebendsten Creator Deutschlands.',
+    date: '15. Jan 2025',
+    tag: 'RECORD',
+    color: '#ffd700',
+    icon: '🔥',
+    link: 'https://kick.com/zyztm/videos',
   },
 ];
 
