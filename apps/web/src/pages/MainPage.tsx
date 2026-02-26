@@ -26,6 +26,7 @@ import UpcomingEvents from '../components/UpcomingEvents';
 import BattlePassProgress from '../components/BattlePassProgress';
 import FortniteItemShop from '../components/FortniteItemShop';
 import FortniteArcade from '../components/FortniteArcade';
+import LatestNews from '../components/LatestNews';
 
 const FanCounter = lazy(() => import('../components/FanCounter'));
 const SoundboardDemo = lazy(() => import('../components/SoundboardDemo'));
@@ -69,6 +70,7 @@ export default function MainPage() {
           <NewsSection />
           <HotRightNow />
           <FortniteNewsSection />
+          <LatestNews />
           <UpcomingEvents />
           <BattlePassProgress />
           <FortniteItemShop />
