@@ -36,7 +36,7 @@ const MAP_NODES: MapNode[] = [
     url: 'https://youtube.com/@Zyztm',
     top: '18%',
     left: '55%',
-    stats: '1,05M Abos',
+    stats: '356K Abos',
     detail: 'Neuestes Video auf YouTube · @Zyztm',
     live: false,
   },

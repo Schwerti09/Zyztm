@@ -14,7 +14,7 @@ const platforms = [
   },
   {
     icon: '📺',
-    value: '58K',
+    value: '356K',
     label: 'YOUTUBE',
     sub: 'Haupt + Zyztm PLUS',
     color: '#ff0000',
@@ -28,7 +28,7 @@ const platforms = [
   },
   {
     icon: '🌍',
-    value: '763K',
+    value: '1.06M',
     label: 'TOTAL REACH',
     sub: 'Warriors weltweit',
     color: NEON_BLUE,
@@ -92,7 +92,7 @@ export default function GlobalEmpire() {
             </span>
           </h2>
           <p className="text-white/50 font-body text-lg">
-            763.000+ Warriors grind with us
+            1.06M+ Warriors grind with us
           </p>
         </motion.div>
 

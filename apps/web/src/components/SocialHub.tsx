@@ -24,7 +24,7 @@ const socialChannels: Channel[] = [
     url: 'https://youtube.com/@Zyztm',
     color: '#ff0000',
     bgColor: 'linear-gradient(135deg, rgba(40,5,5,0.9) 0%, rgba(13,17,23,0.95) 100%)',
-    stats: '1.05M Abonnenten',
+    stats: '356K Abonnenten',
     live: false,
     preview: { type: 'image', src: '/images/yt-fallback.jpg' },
   },
