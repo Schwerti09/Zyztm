@@ -19,7 +19,7 @@ const NEWS_ITEMS = [
     id: 2,
     title: '📅 NEUE STREAM-ZEITEN FÜR 2026 BEKANNT GEGEBEN',
     teaser:
-      'Zyztm hat seinen offiziellen Stream-Plan für 2026 enthüllt: Mo 13–18 Uhr, Di 12–17:40 Uhr, Mi 10–15:10 Uhr, Do 10:40–19:20 Uhr. Mit 28.518 Kick-Followern und durchschnittlich 159 Zuschauern liefert er täglich – mark your calendars!',
+      'Zyztm hat seinen offiziellen Stream-Plan für 2026 enthüllt: Mo 13–18 Uhr, Di 12–17:40 Uhr, Mi 10–15:10 Uhr, Do 10:40–19:20 Uhr. Mit 28.900 Kick-Followern und durchschnittlich 159 Zuschauern liefert er täglich – mark your calendars!',
     date: '10. Feb 2026',
     tag: 'ANNOUNCEMENT',
     color: '#00f2ff',

@@ -24,7 +24,7 @@ const MAP_NODES: MapNode[] = [
     url: 'https://kick.com/zyztm',
     top: '28%',
     left: '22%',
-    stats: '28.5K Follower',
+    stats: '28,9K Follower',
     detail: 'Live jetzt? → kick.com/zyztm · Rekord: 3.598 Zuschauer',
     live: true,
   },

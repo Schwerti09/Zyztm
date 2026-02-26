@@ -13,7 +13,7 @@ const socialChannels: Channel[] = [
     url: 'https://kick.com/zyztm',
     color: '#53fc18',
     bgColor: 'linear-gradient(135deg, rgba(15,40,15,0.9) 0%, rgba(13,17,23,0.95) 100%)',
-    stats: '180K Follower',
+    stats: '28,9K Follower',
     live: true,
     preview: { type: 'video', src: '/vids/kick-preview.mp4' },
   },

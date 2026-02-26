@@ -15,7 +15,7 @@ interface SocialPlatform {
 }
 
 const PLATFORMS: SocialPlatform[] = [
-  { id: 'kick', label: 'KICK', emoji: '🟢', color: '#53fc18', url: 'https://kick.com/zyztm', followers: '28.5K' },
+  { id: 'kick', label: 'KICK', emoji: '🟢', color: '#53fc18', url: 'https://kick.com/zyztm', followers: '28.9K' },
   { id: 'youtube', label: 'YOUTUBE', emoji: '📺', color: '#ff0000', url: 'https://youtube.com/@Zyztm', followers: '356K' },
   { id: 'tiktok', label: 'TIKTOK', emoji: '🎵', color: NEON_PINK, url: 'https://tiktok.com/@zyztm', followers: '651K' },
   { id: 'instagram', label: 'INSTAGRAM', emoji: '📸', color: '#e1306c', url: 'https://instagram.com/zyztm2.0', followers: 'Follow!' },
