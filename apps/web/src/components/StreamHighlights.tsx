@@ -13,6 +13,52 @@ interface Clip {
 
 type FilterKey = 'neueste' | 'beliebteste' | 'lustigste';
 
+const STATIC_HIGHLIGHTS: Clip[] = [
+  {
+    id: 'yt-OsiZmq4yLy4',
+    title: 'DAS ERSTE MÄDCHEN FANGEN DIE JUNGS TURNIER IN FORTNITE [UNFAIR?]',
+    thumbnail: 'https://img.youtube.com/vi/OsiZmq4yLy4/hqdefault.jpg',
+    url: 'https://www.youtube.com/watch?v=OsiZmq4yLy4',
+    source: 'youtube',
+  },
+  {
+    id: 'yt-Kd-9EVbrVSk',
+    title: 'I WAS NOT EXPECTING A FORTNITE ACCOUNT LIKE THIS...🤯',
+    thumbnail: 'https://img.youtube.com/vi/Kd-9EVbrVSk/hqdefault.jpg',
+    url: 'https://www.youtube.com/watch?v=Kd-9EVbrVSk',
+    source: 'youtube',
+    views: 19000,
+  },
+  {
+    id: 'tt-7610528912187198742',
+    title: 'Brooo das ist real #fortnite #zyztm',
+    thumbnail: '',
+    url: 'https://www.tiktok.com/@zyztm/video/7610528912187198742',
+    source: 'tiktok',
+  },
+  {
+    id: 'tt-7581494239306042646',
+    title: 'NIEMALS HÄTTE ICH DAMIT GERECHNET #fortnite #zyztm',
+    thumbnail: '',
+    url: 'https://www.tiktok.com/@zyztm/video/7581494239306042646',
+    source: 'tiktok',
+  },
+  {
+    id: 'kick-zyztm-videos',
+    title: 'Zyztm Kick Videos – letzte Streams inkl. 1V1 GIRLS TURNIER',
+    thumbnail: '',
+    url: 'https://kick.com/zyztm/videos',
+    source: 'kick',
+  },
+  {
+    id: 'tt-7571107930192366870',
+    title: 'MY NEW DOG ARES #fortnite #zyztm',
+    thumbnail: '',
+    url: 'https://www.tiktok.com/@zyztm/video/7571107930192366870',
+    source: 'tiktok',
+  },
+];
+
 const FILTERS: { key: FilterKey; label: string }[] = [
   { key: 'neueste', label: '🕐 NEUESTE' },
   { key: 'beliebteste', label: '🔥 BELIEBTESTE' },
@@ -76,7 +122,9 @@ export default function StreamHighlights() {
     return () => window.removeEventListener('keydown', handler);
   }, [lightbox]);
 
-  const displayed = sortClips(clips, filter).slice(0, 6);
+  const apiIds = new Set(clips.map((c) => c.id));
+  const mergedClips = [...clips, ...STATIC_HIGHLIGHTS.filter((c) => !apiIds.has(c.id))];
+  const displayed = sortClips(mergedClips, filter).slice(0, 6);
 
   return (
     <section className="py-20 px-6 relative" id="highlights">
@@ -146,7 +194,7 @@ export default function StreamHighlights() {
               </div>
             ))}
           </div>
-        ) : clips.length === 0 ? (
+        ) : mergedClips.length === 0 ? (
           <div className="flex flex-col items-center gap-4 py-12">
             <p className="text-white/40 font-cyber tracking-widest text-sm">
               Noch keine Highlights verfügbar.
@@ -231,7 +279,7 @@ export default function StreamHighlights() {
           </div>
         )}
 
-        {clips.length > 0 && (
+        {mergedClips.length > 0 && (
           <motion.div
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
