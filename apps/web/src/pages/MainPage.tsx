@@ -33,7 +33,6 @@ const FortniteArcade = lazy(() => import('../components/FortniteArcade'));
 const LatestNews = lazy(() => import('../components/LatestNews'));
 const GlobalEmpire = lazy(() => import('../components/GlobalEmpire'));
 const RundgangTour = lazy(() => import('../components/RundgangTour'));
-const MidScrollChaos = lazy(() => import('../components/MidScrollChaos'));
 const SoundboardDemo = lazy(() => import('../components/SoundboardDemo'));
 const BackgroundMusic = lazy(() => import('../components/BackgroundMusic'));
 const FanCounter = lazy(() => import('../components/FanCounter'));
@@ -105,7 +104,6 @@ export default function MainPage() {
         </div>
         <Toast toasts={toasts} onRemove={remove} />
         <RundgangTour />
-        <MidScrollChaos />
       </Suspense>
     </div>
   );
