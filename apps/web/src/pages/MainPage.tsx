@@ -1,8 +1,7 @@
-import { lazy, Suspense, useEffect, useState } from 'react';
+import { lazy, Suspense, useEffect } from 'react';
 import { Toast, useToastController } from '../components/Toast';
 
 const LiveBar = lazy(() => import('../components/LiveBar'));
-const IntroChaosBus = lazy(() => import('../components/IntroChaosBus'));
 const HeroSection = lazy(() => import('../components/HeroSection'));
 const KickEmbed = lazy(() => import('../components/KickEmbed'));
 const CreatorCode = lazy(() => import('../components/CreatorCode'));
@@ -46,10 +45,6 @@ function SectionLoader() {
 export default function MainPage() {
   const { toasts, remove } = useToastController();
 
-  const [showChaosBus, setShowChaosBus] = useState(
-    () => !sessionStorage.getItem('chaos-bus-seen'),
-  );
-
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -57,14 +52,6 @@ export default function MainPage() {
   return (
     <div className="min-h-screen bg-bg-dark relative">
       <Suspense fallback={<SectionLoader />}>
-        {showChaosBus && (
-          <IntroChaosBus
-            onFinish={() => {
-              sessionStorage.setItem('chaos-bus-seen', '1');
-              setShowChaosBus(false);
-            }}
-          />
-        )}
         <BackgroundMusic />
         <Intro />
         <ParticleField />
