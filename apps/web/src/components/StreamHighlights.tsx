@@ -13,6 +13,15 @@ interface Clip {
 
 type FilterKey = 'neueste' | 'beliebteste' | 'lustigste';
 
+const YT_PREFIX = 'yt-';
+
+function getYouTubeId(clip: Clip): string | null {
+  if (clip.source === 'youtube' && clip.id.startsWith(YT_PREFIX)) {
+    return clip.id.slice(YT_PREFIX.length);
+  }
+  return null;
+}
+
 const STATIC_HIGHLIGHTS: Clip[] = [
   {
     id: 'yt-OsiZmq4yLy4',
@@ -30,32 +39,32 @@ const STATIC_HIGHLIGHTS: Clip[] = [
     views: 19000,
   },
   {
-    id: 'tt-7610528912187198742',
-    title: 'Brooo das ist real #fortnite #zyztm',
-    thumbnail: 'https://www.tiktok.com/api/img/?itemId=7610528912187198742&location=0',
-    url: 'https://www.tiktok.com/@zyztm/video/7610528912187198742',
-    source: 'tiktok',
+    id: 'yt-O5w0NLJ7P-0',
+    title: 'ich EXPOSE JAPANISCHEN HACKER im 10.000€ FNCS DUO CUP!?',
+    thumbnail: 'https://img.youtube.com/vi/O5w0NLJ7P-0/hqdefault.jpg',
+    url: 'https://www.youtube.com/watch?v=O5w0NLJ7P-0',
+    source: 'youtube',
   },
   {
-    id: 'tt-7581494239306042646',
-    title: 'NIEMALS HÄTTE ICH DAMIT GERECHNET #fortnite #zyztm',
-    thumbnail: 'https://www.tiktok.com/api/img/?itemId=7581494239306042646&location=0',
-    url: 'https://www.tiktok.com/@zyztm/video/7581494239306042646',
-    source: 'tiktok',
+    id: 'yt-k6HtBerpT7A',
+    title: 'JEDER KILL = LOSER DANCE bis ICH GEADDET WERDE [RASTET AUS]',
+    thumbnail: 'https://img.youtube.com/vi/k6HtBerpT7A/hqdefault.jpg',
+    url: 'https://www.youtube.com/watch?v=k6HtBerpT7A',
+    source: 'youtube',
   },
   {
-    id: 'kick-zyztm-videos',
-    title: 'Zyztm Kick Videos – letzte Streams inkl. 1V1 GIRLS TURNIER',
-    thumbnail: 'https://thumbnail.kick.com/thumbnails/zyztm',
-    url: 'https://kick.com/zyztm/videos',
-    source: 'kick',
+    id: 'yt-EiNtoIK5cNM',
+    title: 'ZYZTM geht UNDERCOVER in meinem HIDE & SEEK für 24 STUNDEN! Fortnite',
+    thumbnail: 'https://img.youtube.com/vi/EiNtoIK5cNM/hqdefault.jpg',
+    url: 'https://www.youtube.com/watch?v=EiNtoIK5cNM',
+    source: 'youtube',
   },
   {
-    id: 'tt-7571107930192366870',
-    title: 'MY NEW DOG ARES #fortnite #zyztm',
-    thumbnail: 'https://www.tiktok.com/api/img/?itemId=7571107930192366870&location=0',
-    url: 'https://www.tiktok.com/@zyztm/video/7571107930192366870',
-    source: 'tiktok',
+    id: 'yt-B6riKkenTZM',
+    title: 'ZYZTM geht UNDERCOVER in meinem HIDE & SEEK – Fortnite',
+    thumbnail: 'https://img.youtube.com/vi/B6riKkenTZM/hqdefault.jpg',
+    url: 'https://www.youtube.com/watch?v=B6riKkenTZM',
+    source: 'youtube',
   },
 ];
 
@@ -364,15 +373,28 @@ export default function StreamHighlights() {
               >
                 ✕
               </button>
-              {lightbox.thumbnail && (
-                <div className="aspect-video bg-gray-900">
-                  <img
-                    src={lightbox.thumbnail}
-                    alt={lightbox.title}
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-              )}
+              {(() => {
+                const ytId = getYouTubeId(lightbox);
+                return ytId ? (
+                  <div className="aspect-video bg-black">
+                    <iframe
+                      src={`https://www.youtube.com/embed/${ytId}?autoplay=1&rel=0`}
+                      title={lightbox.title}
+                      allow="autoplay; fullscreen; picture-in-picture"
+                      allowFullScreen
+                      className="w-full h-full border-0"
+                    />
+                  </div>
+                ) : lightbox.thumbnail ? (
+                  <div className="aspect-video bg-gray-900">
+                    <img
+                      src={lightbox.thumbnail}
+                      alt={lightbox.title}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                ) : null;
+              })()}
               <div
                 className="p-4 flex items-center justify-between gap-3"
                 style={{ background: 'rgba(3,5,10,0.95)' }}
