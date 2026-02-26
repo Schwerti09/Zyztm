@@ -134,14 +134,13 @@ export default function LiveBar() {
               >
                 {bonusLoading ? '⏳' : bonusClaimed ? '✅ BONUS' : '🎁 BONUS'}
               </button>
-              <Link href="/coins">
-                <a
-                  className="text-xs px-2 py-1 rounded border transition-colors"
-                  style={{ borderColor: '#ffd70060', color: '#ffd700', background: 'rgba(255,215,0,0.07)' }}
-                  title="Coins kaufen"
-                >
-                  🛍️ KAUFEN
-                </a>
+              <Link
+                href="/coins"
+                className="text-xs px-2 py-1 rounded border transition-colors"
+                style={{ borderColor: '#ffd70060', color: '#ffd700', background: 'rgba(255,215,0,0.07)' }}
+                title="Coins kaufen"
+              >
+                🛍️ KAUFEN
               </Link>
             </div>
           ) : (
