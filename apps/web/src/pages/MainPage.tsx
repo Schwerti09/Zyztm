@@ -13,6 +13,7 @@ import GamerVoting from '../components/GamerVoting';
 import Footer from '../components/Footer';
 import ParticleField from '../components/ParticleField';
 import Intro from '../components/Intro';
+import ChaosBusBackground from '../components/ChaosBusBackground';
 import LaptopMockup from '../components/LaptopMockup';
 import { Toast, useToastController } from '../components/Toast';
 import AboutZyztm from '../components/AboutZyztm';
@@ -50,6 +51,7 @@ export default function MainPage() {
     <div className="min-h-screen bg-bg-dark relative">
       <Intro />
       <ParticleField />
+      <ChaosBusBackground />
       <div className="relative z-10">
         <LiveBar />
         <main className="pt-10">
