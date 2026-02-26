@@ -168,3 +168,23 @@
 .power-ring {
   animation: power-ring-pulse 1.5s ease-in-out infinite;
 }
+
+/* ── Clutch Reel card: holographic top-line scan ──────────────────────────── */
+@keyframes clutch-holo-scan {
+  0%   { transform: translateX(-100%); opacity: 0.8; }
+  100% { transform: translateX(100%);  opacity: 0.8; }
+}
+
+.clutch-holo-scan {
+  animation: clutch-holo-scan 2.8s linear infinite;
+}
+
+/* ── Clutch badge pulse glow ─────────────────────────────────────────────── */
+@keyframes clutch-badge-pulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.6; }
+}
+
+.clutch-badge {
+  animation: clutch-badge-pulse 1.8s ease-in-out infinite;
+}
