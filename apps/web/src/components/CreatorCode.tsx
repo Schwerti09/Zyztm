@@ -56,11 +56,13 @@ export default function CreatorCode() {
             ⚡ MEIN CREATOR CODE: JOJOJO ⚡
           </h2>
 
-          <p className="text-white/60 text-sm font-body mb-6">
-            Gib meinen Code im Fortnite Item Shop ein und unterstütze mich direkt!
+          <p className="text-white/60 text-sm font-body mb-2">
+            Gib meinen Code im Fortnite Item Shop ein und unterstütze mich direkt!{' '}
+            <span className="font-cyber font-bold text-white">5–10%</span> gehen{' '}
+            <span className="text-neon-pink font-cyber font-bold">direkt an Zyztm</span>!
           </p>
 
-          <div className="flex items-center justify-center gap-3">
+          <div className="flex items-center justify-center gap-3 mb-5">
             <div
               className="font-cyber text-2xl md:text-3xl font-bold tracking-widest px-6 py-3 rounded border border-neon-pink/50 text-neon-pink select-all"
               style={{ background: 'rgba(255,0,85,0.1)' }}
@@ -83,6 +85,24 @@ export default function CreatorCode() {
               {copied ? '✓ KOPIERT!' : '📋 KOPIEREN'}
             </motion.button>
           </div>
+
+          <motion.a
+            href={`https://www.epicgames.com/fortnite/en-US/creative/support-a-creator?creator=${code}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            whileHover={{ scale: 1.04, boxShadow: '0 0 40px rgba(255,0,85,0.6)' }}
+            whileTap={{ scale: 0.97 }}
+            className="inline-block font-cyber text-sm font-black tracking-widest px-8 py-3.5 rounded-xl transition-all"
+            style={{
+              background: 'linear-gradient(135deg, #ff0055, #cc0044)',
+              color: '#fff',
+              boxShadow: '0 0 24px rgba(255,0,85,0.4), 0 6px 24px rgba(0,0,0,0.5)',
+              border: '1px solid #ff0055',
+              textDecoration: 'none',
+            }}
+          >
+            🛒 JETZT KAUFEN & ZYZTM SUPPORTEN
+          </motion.a>
 
           {/* Bottom decoration */}
           <div
