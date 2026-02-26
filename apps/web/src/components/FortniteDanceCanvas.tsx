@@ -388,20 +388,20 @@ export default function FortniteDanceCanvas() {
       prevTime = now;
       const t = now / 1000;
 
-      // Beat pulse decay
+      // Beat pulse decay (dt-normalized so pulse fades at the same speed regardless of FPS)
       const elapsed = now - lastBeatTime;
       if (elapsed >= BEAT_MS / 4) {
         lastBeatTime = now;
         beatFrame = (beatFrame + 1) % 4;
         if (beatFrame === 0) beatPulse = 1;
       }
-      beatPulse *= 0.85;
+      beatPulse *= 1 - 0.15 * dt * 60;
 
       const W = canvas.width, H = canvas.height;
       const mx = mouseRef.current.x, my = mouseRef.current.y;
 
-      // Clear with trail effect
-      ctx.fillStyle = 'rgba(5, 5, 15, 0.18)';
+      // Clear with trail effect (dt-normalized so trails look consistent at any frame rate)
+      ctx.fillStyle = `rgba(5, 5, 15, ${0.18 * dt * 60})`;
       ctx.fillRect(0, 0, W, H);
 
       // V-Buck drop timer
@@ -424,8 +424,8 @@ export default function FortniteDanceCanvas() {
       // Update + draw V-Bucks
       for (let i = vbucks.length - 1; i >= 0; i--) {
         const vb = vbucks[i];
-        vb.vy += 0.3;
-        vb.y += vb.vy;
+        vb.vy += 0.3 * dt * 60;
+        vb.y += vb.vy * dt * 60;
         if (vb.y > H + 10) {
           // Ground burst
           for (let p = 0; p < 8; p++) {
@@ -450,10 +450,10 @@ export default function FortniteDanceCanvas() {
       // Update + draw particles
       for (let i = particles.length - 1; i >= 0; i--) {
         const p = particles[i];
-        p.x += p.vx;
-        p.y += p.vy;
-        p.vy += 0.15;
-        p.alpha -= 0.025;
+        p.x += p.vx * dt * 60;
+        p.y += p.vy * dt * 60;
+        p.vy += 0.15 * dt * 60;
+        p.alpha -= 0.025 * dt * 60;
         if (p.alpha <= 0) { particles.splice(i, 1); continue; }
         ctx.save();
         ctx.globalAlpha = p.alpha;
@@ -475,8 +475,8 @@ export default function FortniteDanceCanvas() {
         // Speed boost near mouse
         const speedBoost = 1 + s.mouseInfluence * 1.5;
 
-        s.x += s.vx * speedBoost;
-        s.y += s.vy * speedBoost;
+        s.x += s.vx * speedBoost * dt * 60;
+        s.y += s.vy * speedBoost * dt * 60;
 
         // Bounce off walls
         const margin = 55;
@@ -487,8 +487,8 @@ export default function FortniteDanceCanvas() {
 
         // Jump physics
         if (s.jumped) {
-          s.jumpY += s.jumpVY;
-          s.jumpVY += 1.2;
+          s.jumpY += s.jumpVY * dt * 60;
+          s.jumpVY += 1.2 * dt * 60;
           if (s.jumpY >= 0) { s.jumpY = 0; s.jumped = false; }
         }
       });
