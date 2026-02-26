@@ -32,28 +32,28 @@ const STATIC_HIGHLIGHTS: Clip[] = [
   {
     id: 'tt-7610528912187198742',
     title: 'Brooo das ist real #fortnite #zyztm',
-    thumbnail: '',
+    thumbnail: 'https://www.tiktok.com/api/img/?itemId=7610528912187198742&location=0',
     url: 'https://www.tiktok.com/@zyztm/video/7610528912187198742',
     source: 'tiktok',
   },
   {
     id: 'tt-7581494239306042646',
     title: 'NIEMALS HÄTTE ICH DAMIT GERECHNET #fortnite #zyztm',
-    thumbnail: '',
+    thumbnail: 'https://www.tiktok.com/api/img/?itemId=7581494239306042646&location=0',
     url: 'https://www.tiktok.com/@zyztm/video/7581494239306042646',
     source: 'tiktok',
   },
   {
     id: 'kick-zyztm-videos',
     title: 'Zyztm Kick Videos – letzte Streams inkl. 1V1 GIRLS TURNIER',
-    thumbnail: '',
+    thumbnail: 'https://thumbnail.kick.com/thumbnails/zyztm',
     url: 'https://kick.com/zyztm/videos',
     source: 'kick',
   },
   {
     id: 'tt-7571107930192366870',
     title: 'MY NEW DOG ARES #fortnite #zyztm',
-    thumbnail: '',
+    thumbnail: 'https://www.tiktok.com/api/img/?itemId=7571107930192366870&location=0',
     url: 'https://www.tiktok.com/@zyztm/video/7571107930192366870',
     source: 'tiktok',
   },
@@ -75,6 +75,55 @@ function sourceLabel(source: string | null): string {
   if (source === 'youtube') return 'YT';
   if (source === 'tiktok') return 'TT';
   return 'KICK';
+}
+
+const SOURCE_ICON: Record<string, string> = {
+  youtube: '▶',
+  tiktok: '🎵',
+  kick: '🟢',
+};
+
+function sourceIcon(source: string | null): string {
+  return SOURCE_ICON[source ?? ''] ?? '🎮';
+}
+
+function ClipThumbnail({ clip, color }: { clip: Clip; color: string }) {
+  const [imgError, setImgError] = useState(false);
+  const showFallback = !clip.thumbnail || imgError;
+
+  return (
+    <div className="relative aspect-video bg-gray-900 overflow-hidden">
+      {clip.thumbnail && !imgError && (
+        <img
+          src={clip.thumbnail}
+          alt={clip.title}
+          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+          loading="lazy"
+          onError={() => setImgError(true)}
+        />
+      )}
+      {showFallback && (
+        <div
+          className="w-full h-full flex items-center justify-center flex-col gap-2"
+          style={{ background: `linear-gradient(135deg, ${color}18 0%, ${color}08 100%)` }}
+        >
+          <span className="text-4xl">{sourceIcon(clip.source)}</span>
+          <span className="font-cyber text-xs tracking-widest" style={{ color }}>
+            {sourceLabel(clip.source)}
+          </span>
+        </div>
+      )}
+      <div className="absolute inset-0 flex items-center justify-center bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+        <span className="text-5xl drop-shadow-lg">▶</span>
+      </div>
+      <span
+        className="absolute top-2 right-2 text-[10px] px-2 py-0.5 rounded font-cyber tracking-widest"
+        style={{ background: `${color}cc`, color: '#fff' }}
+      >
+        {sourceLabel(clip.source)}
+      </span>
+    </div>
+  );
 }
 
 function sortClips(clips: Clip[], filter: FilterKey): Clip[] {
@@ -239,28 +288,7 @@ export default function StreamHighlights() {
                   }}
                 >
                   {/* Thumbnail */}
-                  <div className="relative aspect-video bg-gray-900 overflow-hidden">
-                    {clip.thumbnail ? (
-                      <img
-                        src={clip.thumbnail}
-                        alt={clip.title}
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                        loading="lazy"
-                      />
-                    ) : (
-                      <div className="w-full h-full flex items-center justify-center text-5xl">🎮</div>
-                    )}
-                    <div className="absolute inset-0 flex items-center justify-center bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                      <span className="text-5xl drop-shadow-lg">▶</span>
-                    </div>
-                    {/* Source badge */}
-                    <span
-                      className="absolute top-2 right-2 text-[10px] px-2 py-0.5 rounded font-cyber tracking-widest"
-                      style={{ background: `${color}cc`, color: '#fff' }}
-                    >
-                      {sourceLabel(clip.source)}
-                    </span>
-                  </div>
+                  <ClipThumbnail clip={clip} color={color} />
 
                   {/* Info */}
                   <div className="p-4">
