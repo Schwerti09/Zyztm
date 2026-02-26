@@ -16,9 +16,9 @@ interface NewsItem {
 const FALLBACK_NEWS: NewsItem[] = [
   {
     id: 1,
-    title: '🏆 ZYZTM ERREICHT 1 MILLION YOUTUBE-ABONNENTEN!',
+    title: '🏆 ZYZTM ERREICHT 356.000 YOUTUBE-ABONNENTEN!',
     teaser:
-      'Nach Jahren harter Arbeit und tausenden Stunden Stream-Content hat Zyztm die magische Marke von 1.054.400 YouTube-Abonnenten geknackt. Der Weg dahin: täglich Fortnite-Clips, IRL-Momente und die beste Community im deutschsprachigen Raum.',
+      'Nach Jahren harter Arbeit und tausenden Stunden Stream-Content hat Zyztm die Marke von 356.000 YouTube-Abonnenten geknackt. Der Weg dahin: täglich Fortnite-Clips, IRL-Momente und die beste Community im deutschsprachigen Raum.',
     date: '3. Jan 2025',
     tag: 'MILESTONE',
     color: '#ff0000',

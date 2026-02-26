@@ -106,7 +106,7 @@ export default function HeroSection() {
           className="grid grid-cols-3 gap-8 max-w-2xl mx-auto"
         >
           {[
-            { label: 'YouTube', value: 1050, icon: '📺' },
+            { label: 'YouTube', value: 356, icon: '📺' },
             { label: 'TikTok', value: 651, icon: '🎵' },
             { label: 'Kick', value: 180, icon: '🟢' },
           ].map((stat) => (

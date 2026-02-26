@@ -19,7 +19,7 @@ const milestones = [
     year: '2022',
     icon: '📺',
     title: 'YouTube explodiert',
-    text: 'Highlights, Tutorials und epische Clutch-Momente – der YouTube-Kanal wuchs innerhalb eines Jahres auf über 500K Abonnenten. Die Community wurde zur Familie.',
+    text: 'Highlights, Tutorials und epische Clutch-Momente – der YouTube-Kanal wuchs innerhalb eines Jahres auf über 100K Abonnenten. Die Community wurde zur Familie.',
     color: '#ff0000',
   },
   {
@@ -32,8 +32,8 @@ const milestones = [
   {
     year: '2024',
     icon: '💎',
-    title: '1 Million Abonnenten',
-    text: 'Die Marke, von der viele träumen: 1 Million YouTube-Abonnenten. Eine 24-Stunden-Stream-Feier mit der Community – unvergesslich.',
+    title: '356K Abonnenten',
+    text: 'Die Marke, von der viele träumen: 356.000 YouTube-Abonnenten. Eine 24-Stunden-Stream-Feier mit der Community – unvergesslich.',
     color: '#ff0055',
   },
 ];
