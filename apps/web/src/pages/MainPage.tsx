@@ -12,6 +12,7 @@ import MediaGallery from '../components/MediaGallery';
 import GamerVoting from '../components/GamerVoting';
 import Footer from '../components/Footer';
 import ParticleField from '../components/ParticleField';
+import ThumbnailSnake from '../components/ThumbnailSnake';
 import Intro from '../components/Intro';
 import LaptopMockup from '../components/LaptopMockup';
 import { Toast, useToastController } from '../components/Toast';
@@ -50,6 +51,7 @@ export default function MainPage() {
     <div className="min-h-screen bg-bg-dark relative">
       <Intro />
       <ParticleField />
+      <ThumbnailSnake />
       <div className="relative z-10">
         <LiveBar />
         <main className="pt-10">
