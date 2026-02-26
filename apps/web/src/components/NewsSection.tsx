@@ -9,6 +9,8 @@ interface NewsItem {
   tag: string;
   color: string;
   icon: string;
+  link: string;
+  image?: string;
 }
 
 const FALLBACK_NEWS: NewsItem[] = [
@@ -21,6 +23,8 @@ const FALLBACK_NEWS: NewsItem[] = [
     tag: 'MILESTONE',
     color: '#ff0000',
     icon: '📺',
+    link: 'https://www.youtube.com/@Zyztm',
+    image: 'https://yt3.googleusercontent.com/ytc/AIdro_ki5TqFLW8PUMgHkDR_XZ2yxPkE5dCE9sC0Jw9RMA=s900-c-k-c0x00ffffff-no-rj',
   },
   {
     id: 2,
@@ -31,6 +35,7 @@ const FALLBACK_NEWS: NewsItem[] = [
     tag: 'ANNOUNCEMENT',
     color: '#00f2ff',
     icon: '📅',
+    link: 'https://kick.com/zyztm',
   },
   {
     id: 3,
@@ -41,6 +46,7 @@ const FALLBACK_NEWS: NewsItem[] = [
     tag: 'FEATURE',
     color: '#a335ee',
     icon: '🤖',
+    link: 'https://discord.gg/zyztm',
   },
   {
     id: 4,
@@ -51,6 +57,7 @@ const FALLBACK_NEWS: NewsItem[] = [
     tag: 'RECORD',
     color: '#ffd700',
     icon: '🔥',
+    link: 'https://kick.com/zyztm/videos',
   },
 ];
 
@@ -89,14 +96,23 @@ export default function NewsSection() {
               viewport={{ once: true }}
               transition={{ delay: i * 0.1 }}
               whileHover={{ y: -6, boxShadow: `0 12px 40px ${item.color}25` }}
-              className="cyber-card rounded-xl overflow-hidden cursor-pointer flex flex-col"
+              className="cyber-card rounded-xl overflow-hidden cursor-pointer flex flex-col group"
               style={{ borderColor: `${item.color}25` }}
             >
               <div
                 className="h-36 flex items-center justify-center text-6xl relative overflow-hidden"
                 style={{ background: `linear-gradient(135deg, ${item.color}20, ${item.color}05)` }}
               >
+                {item.image ? (
+                  <img
+                    src={item.image}
+                    alt={item.title}
+                    className="absolute inset-0 w-full h-full object-cover opacity-40 group-hover:opacity-60 transition-opacity duration-300"
+                    loading="lazy"
+                  />
+                ) : null}
                 <motion.span
+                  className="relative z-10"
                   animate={{ y: [0, -4, 0] }}
                   transition={{ duration: 4, repeat: Infinity, delay: i * 0.5 }}
                 >
@@ -122,9 +138,16 @@ export default function NewsSection() {
                 </h3>
                 <p className="text-white/55 text-xs leading-relaxed line-clamp-3">{item.teaser}</p>
                 <div className="mt-4">
-                  <span className="text-xs font-cyber tracking-wider" style={{ color: item.color }}>
+                  <a
+                    href={item.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-xs font-cyber tracking-wider transition-opacity hover:opacity-70"
+                    style={{ color: item.color }}
+                    onClick={(e) => e.stopPropagation()}
+                  >
                     WEITERLESEN →
-                  </span>
+                  </a>
                 </div>
               </div>
             </motion.article>
