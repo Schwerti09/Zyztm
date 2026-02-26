@@ -21,6 +21,12 @@ import LatestYouTubeVideos from '../components/LatestYouTubeVideos';
 import CommunitySpotlight from '../components/CommunitySpotlight';
 import StreamCalendar from '../components/StreamCalendar';
 import ZyztmLiveMap from '../components/ZyztmLiveMap';
+import HotRightNow from '../components/HotRightNow';
+import FortniteNewsSection from '../components/FortniteNewsSection';
+import UpcomingEvents from '../components/UpcomingEvents';
+import BattlePassProgress from '../components/BattlePassProgress';
+import FortniteItemShop from '../components/FortniteItemShop';
+import FortniteArcade from '../components/FortniteArcade';
 
 const FanCounter = lazy(() => import('../components/FanCounter'));
 const SoundboardDemo = lazy(() => import('../components/SoundboardDemo'));
@@ -61,6 +67,12 @@ export default function MainPage() {
           <Suspense fallback={<SectionLoader />}><SoundboardDemo /></Suspense>
           <CommunitySpotlight />
           <NewsSection />
+          <HotRightNow />
+          <FortniteNewsSection />
+          <UpcomingEvents />
+          <BattlePassProgress />
+          <FortniteItemShop />
+          <FortniteArcade />
           <StreamCalendar />
           <MediaGallery />
           <NeuralSynthesizer />
