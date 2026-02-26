@@ -184,11 +184,15 @@ export default function ThumbnailSnake() {
     // ── animation loop ────────────────────────────────────────────────────────
     let raf = 0;
     let lastTime = performance.now();
+    const TARGET_INTERVAL = 1000 / 30; // throttle to ~30 fps
 
     const animate = (now: number) => {
-      const dt = Math.min((now - lastTime) / 16.67, 3); // normalised to 60fps
-      lastTime = now;
-      time += 0.016 * dt;
+      const elapsed = now - lastTime;
+      // Only render when enough time has passed (throttle to ~30 fps)
+      if (elapsed >= TARGET_INTERVAL) {
+        const dt = Math.min(elapsed / 16.67, 3); // normalised to 60fps
+        lastTime = now;
+        time += 0.016 * dt;
 
       const W = canvas.width;
       const H = canvas.height;
@@ -380,7 +384,7 @@ export default function ThumbnailSnake() {
         ctx.fillRect(0, 0, W, H);
         ctx.restore();
       }
-
+      } // end throttle guard
       raf = requestAnimationFrame(animate);
     };
 
@@ -407,7 +411,8 @@ export default function ThumbnailSnake() {
         pointerEvents: 'none',
         width: '100%',
         height: '100%',
-      }}
+        contain: 'strict',
+      } as React.CSSProperties}
       aria-hidden="true"
     />
   );

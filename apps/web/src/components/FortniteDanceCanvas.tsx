@@ -381,12 +381,15 @@ export default function FortniteDanceCanvas() {
     let animId = 0;
     let prevTime = performance.now();
     let beatPulse = 0;
+    const TARGET_INTERVAL = 1000 / 30; // throttle to ~30 fps
 
     const loop = (now: number) => {
-      animId = requestAnimationFrame(loop);
-      const dt = Math.min((now - prevTime) / 1000, 0.05);
-      prevTime = now;
-      const t = now / 1000;
+      const frameDelta = now - prevTime;
+      // Only render when enough time has passed (throttle to ~30 fps)
+      if (frameDelta >= TARGET_INTERVAL) {
+        const dt = Math.min(frameDelta / 1000, 0.05);
+        prevTime = now;
+        const t = now / 1000;
 
       // Beat pulse decay (dt-normalized so pulse fades at the same speed regardless of FPS)
       const elapsed = now - lastBeatTime;
@@ -517,6 +520,8 @@ export default function FortniteDanceCanvas() {
           }
         }
       }
+      } // end throttle guard
+      animId = requestAnimationFrame(loop);
     };
 
     animId = requestAnimationFrame(loop);
@@ -537,7 +542,7 @@ export default function FortniteDanceCanvas() {
     <canvas
       ref={canvasRef}
       className="fixed inset-0 pointer-events-none"
-      style={{ zIndex: 1 }}
+      style={{ zIndex: 1, contain: 'strict' } as React.CSSProperties}
       aria-hidden="true"
     />
   );

@@ -160,14 +160,16 @@ export default function NeuralSynthesizer() {
           {/* VU meter decoration */}
           <div className="flex items-end gap-1 h-8 mb-4 px-2">
             {Array.from({ length: 20 }).map((_, i) => (
-              <motion.div
+              <div
                 key={i}
                 className="flex-1 rounded-sm"
-                style={{ background: i < 12 ? '#00f2ff' : i < 16 ? '#ffd700' : '#ff0055' }}
-                animate={loading
-                  ? { height: `${Math.random() * 100}%` }
-                  : { height: `${10 + Math.sin(i * 0.8) * 40 + 40}%` }}
-                transition={{ duration: 0.1 + i * 0.02, repeat: Infinity, repeatType: 'mirror' }}
+                style={{
+                  background: i < 12 ? '#00f2ff' : i < 16 ? '#ffd700' : '#ff0055',
+                  height: `${10 + Math.sin(i * 0.8) * 40 + 40}%`,
+                  animation: loading
+                    ? `vu-bar-${i % 5} ${0.3 + (i % 4) * 0.1}s ease-in-out infinite alternate`
+                    : 'none',
+                }}
               />
             ))}
           </div>

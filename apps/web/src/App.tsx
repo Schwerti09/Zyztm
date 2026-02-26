@@ -1,10 +1,10 @@
 import { lazy, Suspense } from 'react';
 import { Route, Switch } from 'wouter';
-import MainPage from './pages/MainPage';
-import SuccessPage from './pages/SuccessPage';
-import DashboardPage from './pages/DashboardPage';
-import AdminPage from './pages/admin/AdminPage';
 
+const MainPage = lazy(() => import('./pages/MainPage'));
+const SuccessPage = lazy(() => import('./pages/SuccessPage'));
+const DashboardPage = lazy(() => import('./pages/DashboardPage'));
+const AdminPage = lazy(() => import('./pages/admin/AdminPage'));
 const CoinsPage = lazy(() => import('./pages/CoinsPage'));
 const ImpressumPage = lazy(() => import('./pages/ImpressumPage'));
 const DatenschutzPage = lazy(() => import('./pages/DatenschutzPage'));

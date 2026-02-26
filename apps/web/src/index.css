@@ -243,3 +243,10 @@
   0%, 100% { transform: translateY(0px); }
   50%       { transform: translateY(-20px); }
 }
+
+/* ── NeuralSynthesizer VU meter bars ─────────────────────────────────────── */
+@keyframes vu-bar-0 { from { height: 15%; } to { height: 85%; } }
+@keyframes vu-bar-1 { from { height: 25%; } to { height: 75%; } }
+@keyframes vu-bar-2 { from { height: 10%; } to { height: 90%; } }
+@keyframes vu-bar-3 { from { height: 30%; } to { height: 70%; } }
+@keyframes vu-bar-4 { from { height: 20%; } to { height: 80%; } }
