@@ -251,7 +251,7 @@ export default function TikTokWall() {
                   <p className="font-cyber text-xl font-bold mb-1" style={{ color: '#53fc18' }}>
                     KICK LIVE
                   </p>
-                  <p className="text-white/50 text-sm mb-3">180K Follower · kick.com/zyztm</p>
+                  <p className="text-white/50 text-sm mb-3">28,9K Follower · kick.com/zyztm</p>
                 </div>
                 <div
                   className="text-xs font-cyber tracking-widest py-2 px-6 rounded border"
