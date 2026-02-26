@@ -536,7 +536,7 @@ export default function FortniteDanceCanvas() {
   return (
     <canvas
       ref={canvasRef}
-      className="fixed inset-0 pointer-events-auto"
+      className="fixed inset-0 pointer-events-none"
       style={{ zIndex: 1 }}
       aria-hidden="true"
     />
