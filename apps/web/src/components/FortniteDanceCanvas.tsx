@@ -148,6 +148,8 @@ function playVictoryJingle(ctx: AudioContext) {
 
 const BPM = 128;
 const BEAT_MS = (60 / BPM) * 1000;
+const TARGET_FPS = 30;
+const FRAME_MS = 1000 / TARGET_FPS;
 
 // ─── Main component ────────────────────────────────────────────────────────────
 
@@ -379,13 +381,14 @@ export default function FortniteDanceCanvas() {
 
     // Main loop
     let animId = 0;
-    let prevTime = performance.now();
+    let lastFrameTime = performance.now();
     let beatPulse = 0;
 
     const loop = (now: number) => {
       animId = requestAnimationFrame(loop);
-      const dt = Math.min((now - prevTime) / 1000, 0.05);
-      prevTime = now;
+      if (now - lastFrameTime < FRAME_MS) return;
+      const dt = Math.min((now - lastFrameTime) / 1000, 0.05);
+      lastFrameTime = now;
       const t = now / 1000;
 
       // Beat pulse decay (dt-normalized so pulse fades at the same speed regardless of FPS)

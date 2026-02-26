@@ -2,9 +2,12 @@ import { useRef, useMemo } from 'react';
 import { Canvas, useFrame, useThree } from '@react-three/fiber';
 import * as THREE from 'three';
 
+const FRAME_INTERVAL = 1 / 30;
+
 function Particles() {
   const meshRef = useRef<THREE.Points>(null);
   const { mouse } = useThree();
+  const lastUpdate = useRef(0);
   
   const { positions, colors } = useMemo(() => {
     const count = 5000;
@@ -33,7 +36,10 @@ function Particles() {
   
   useFrame((state) => {
     if (!meshRef.current) return;
-    meshRef.current.rotation.y = state.clock.elapsedTime * 0.05;
+    const elapsed = state.clock.elapsedTime;
+    if (elapsed - lastUpdate.current < FRAME_INTERVAL) return;
+    lastUpdate.current = elapsed;
+    meshRef.current.rotation.y = elapsed * 0.05;
     meshRef.current.rotation.x = mouse.y * 0.2;
     meshRef.current.rotation.z = mouse.x * 0.1;
   });
