@@ -32,6 +32,7 @@ import LatestNews from '../components/LatestNews';
 import RundgangTour from '../components/RundgangTour';
 
 import SoundboardDemo from '../components/SoundboardDemo';
+import BackgroundMusic from '../components/BackgroundMusic';
 
 const FanCounter = lazy(() => import('../components/FanCounter'));
 const ClutchReel = lazy(() => import('../components/ClutchReel'));
@@ -50,6 +51,7 @@ export default function MainPage() {
 
   return (
     <div className="min-h-screen bg-bg-dark relative">
+      <BackgroundMusic />
       <Intro />
       <ParticleField />
       <ThumbnailSnake />
