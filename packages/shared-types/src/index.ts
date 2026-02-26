@@ -84,8 +84,8 @@ export const PRODUCTS: Product[] = [
     tag: 'voice',
   },
   {
-    id: 'deepi_ai',
-    name: 'Deepi Bro – Dein Gaming-Kumpel',
+    id: 'zyztm_bro',
+    name: 'Zyztm Bro – Dein Gaming-Kumpel',
     description: 'KI-Chatbot, der wie Zyztm labert: Fortnite-Tipps, Stream-Storys und mehr – powered by Gemini AI.',
     price: 999,
     emoji: '🤖',

@@ -80,7 +80,7 @@ const RARITY_CONFIG: Record<string, { color: string; label: string; stars: numbe
 
 const productVideos: Record<string, string> = {
   voice_pack: '/vids/produkt1.mp4',
-  deepi_ai: '/vids/produkt2.mp4',
+  zyztm_bro: '/vids/produkt2.mp4',
   card_booster: '/vids/produkt3.mp4',
   soundboard: '/vids/produkt4.mp4',
   vip: '/vids/produkt5.mp4',

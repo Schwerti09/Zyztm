@@ -4,7 +4,7 @@ Platziere hier kurze Hover-Videos für die Produktkarten.
 
 **Benötigte Dateien:**
 - `produkt1.mp4` → Voice Pack
-- `produkt2.mp4` → Deepi AI
+- `produkt2.mp4` → Zyztm Bro
 - `produkt3.mp4` → Card Booster Pack
 - `produkt4.mp4` → Soundboard Pack
 - `produkt5.mp4` → VIP Membership
