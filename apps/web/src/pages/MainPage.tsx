@@ -27,6 +27,7 @@ import BattlePassProgress from '../components/BattlePassProgress';
 import FortniteItemShop from '../components/FortniteItemShop';
 import FortniteArcade from '../components/FortniteArcade';
 import LatestNews from '../components/LatestNews';
+import RundgangTour from '../components/RundgangTour';
 
 import SoundboardDemo from '../components/SoundboardDemo';
 
@@ -85,6 +86,7 @@ export default function MainPage() {
         <Footer />
       </div>
       <Toast toasts={toasts} onRemove={remove} />
+      <RundgangTour />
     </div>
   );
 }
