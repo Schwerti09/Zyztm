@@ -29,6 +29,7 @@ import BattlePassProgress from '../components/BattlePassProgress';
 import FortniteItemShop from '../components/FortniteItemShop';
 import FortniteArcade from '../components/FortniteArcade';
 import LatestNews from '../components/LatestNews';
+import GlobalEmpire from '../components/GlobalEmpire';
 import RundgangTour from '../components/RundgangTour';
 
 import SoundboardDemo from '../components/SoundboardDemo';
@@ -36,7 +37,6 @@ import BackgroundMusic from '../components/BackgroundMusic';
 
 const FanCounter = lazy(() => import('../components/FanCounter'));
 const ClutchReel = lazy(() => import('../components/ClutchReel'));
-const GlobalEmpire = lazy(() => import('../components/GlobalEmpire'));
 
 function SectionLoader() {
   return <div className="py-20 flex justify-center"><div className="font-cyber text-neon-pink/30 text-xs tracking-widest animate-pulse">LOADING…</div></div>;
@@ -62,7 +62,7 @@ export default function MainPage() {
           <Suspense fallback={<SectionLoader />}><FanCounter /></Suspense>
           <HeroSection />
           <AboutZyztm />
-          <Suspense fallback={<SectionLoader />}><GlobalEmpire /></Suspense>
+          <GlobalEmpire />
           <KickEmbed />
           <LaptopMockup />
           <CreatorCode />
