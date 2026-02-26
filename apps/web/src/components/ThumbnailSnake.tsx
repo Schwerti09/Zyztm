@@ -140,6 +140,11 @@ export default function ThumbnailSnake() {
 
     // ── click detection ───────────────────────────────────────────────────────
     const onClick = (e: MouseEvent) => {
+      // Don't intercept clicks on interactive UI elements (buttons, links, tabs, etc.)
+      const target = e.target as HTMLElement | null;
+      if (target?.closest('a, button, input, select, textarea, [role="button"], [role="tab"], [tabindex]:not([tabindex="-1"])')) {
+        return;
+      }
       const cx = e.clientX;
       const cy = e.clientY;
       for (let i = 0; i < SEGMENT_COUNT; i++) {
