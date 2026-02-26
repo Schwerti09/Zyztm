@@ -3,100 +3,150 @@ import { useStore } from '../store/useStore';
 
 declare global { interface Window { webkitAudioContext?: typeof AudioContext } }
 
+// ── Fortnite-style upbeat battle-royale lobby music ──────────────────────────
 function startAmbientMusic(ctx: AudioContext): () => void {
+  const BPM = 128;
+  const BEAT = 60 / BPM; // seconds per beat
+
   const master = ctx.createGain();
   master.gain.setValueAtTime(0, ctx.currentTime);
-  master.gain.linearRampToValueAtTime(0.10, ctx.currentTime + 3);
+  master.gain.linearRampToValueAtTime(0.11, ctx.currentTime + 2.5);
   master.connect(ctx.destination);
 
-  const scheduled: AudioScheduledSourceNode[] = [];
+  let running = true;
+  const timerIds: ReturnType<typeof setTimeout>[] = [];
 
-  function osc(type: OscillatorType, freq: number, gainVal: number, dest: AudioNode) {
+  // ── Kick drum (sine sweep: 150 Hz → 0) every 2 beats ─────────────────────
+  function playKick() {
+    if (!running) return;
     const o = ctx.createOscillator();
     const g = ctx.createGain();
-    o.type = type;
-    o.frequency.value = freq;
-    g.gain.value = gainVal;
-    o.connect(g);
-    g.connect(dest);
-    o.start();
-    scheduled.push(o);
+    o.connect(g); g.connect(master);
+    o.type = 'sine';
+    o.frequency.setValueAtTime(150, ctx.currentTime);
+    o.frequency.linearRampToValueAtTime(0.001, ctx.currentTime + 0.32);
+    g.gain.setValueAtTime(0.55, ctx.currentTime);
+    g.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.32);
+    o.start(); o.stop(ctx.currentTime + 0.35);
+    timerIds.push(setTimeout(playKick, BEAT * 2 * 1000));
   }
+  playKick();
 
-  // Bass drone (A1 = 55 Hz, A2 = 110 Hz)
+  // ── Snare (noise burst, bandpass) on beats 2 & 4 ─────────────────────────
+  function playSnare() {
+    if (!running) return;
+    const bufSize = Math.floor(ctx.sampleRate * 0.12);
+    const buffer = ctx.createBuffer(1, bufSize, ctx.sampleRate);
+    const data = buffer.getChannelData(0);
+    for (let i = 0; i < bufSize; i++) data[i] = Math.random() * 2 - 1;
+    const src = ctx.createBufferSource();
+    src.buffer = buffer;
+    const filter = ctx.createBiquadFilter();
+    filter.type = 'bandpass';
+    filter.frequency.value = 1800;
+    filter.Q.value = 0.7;
+    const g = ctx.createGain();
+    src.connect(filter); filter.connect(g); g.connect(master);
+    g.gain.setValueAtTime(0.18, ctx.currentTime);
+    g.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.12);
+    src.start(); src.stop(ctx.currentTime + 0.14);
+    timerIds.push(setTimeout(playSnare, BEAT * 2 * 1000));
+  }
+  timerIds.push(setTimeout(playSnare, BEAT * 1000)); // offset 1 beat → lands on 2 & 4
+
+  // ── Hi-hat (highpass noise) every half-beat ───────────────────────────────
+  function playHihat() {
+    if (!running) return;
+    const bufSize = Math.floor(ctx.sampleRate * 0.04);
+    const buffer = ctx.createBuffer(1, bufSize, ctx.sampleRate);
+    const data = buffer.getChannelData(0);
+    for (let i = 0; i < bufSize; i++) data[i] = Math.random() * 2 - 1;
+    const src = ctx.createBufferSource();
+    src.buffer = buffer;
+    const filter = ctx.createBiquadFilter();
+    filter.type = 'highpass';
+    filter.frequency.value = 8000;
+    const g = ctx.createGain();
+    src.connect(filter); filter.connect(g); g.connect(master);
+    g.gain.setValueAtTime(0.045, ctx.currentTime);
+    g.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.04);
+    src.start(); src.stop(ctx.currentTime + 0.05);
+    timerIds.push(setTimeout(playHihat, BEAT * 0.5 * 1000));
+  }
+  playHihat();
+
+  // ── Bass synth (sawtooth, lowpass) – 8th-note pattern ────────────────────
+  const BASS_FREQS = [73.4, 73.4, 110, 73.4, 87.3, 73.4, 110, 87.3]; // D2, D2, A2, D2, F2, D2, A2, F2
+  let bassStep = 0;
   const bassFilter = ctx.createBiquadFilter();
   bassFilter.type = 'lowpass';
-  bassFilter.frequency.value = 180;
+  bassFilter.frequency.value = 220;
   bassFilter.connect(master);
-  osc('sine', 55, 0.55, bassFilter);
-  osc('sine', 110, 0.15, bassFilter);
 
-  // Slow LFO on master gain for a pulsing feel
-  const lfoOsc = ctx.createOscillator();
-  const lfoGain = ctx.createGain();
-  lfoOsc.type = 'sine';
-  lfoOsc.frequency.value = 0.22;
-  lfoGain.gain.value = 0.04;
-  lfoOsc.connect(lfoGain);
-  lfoGain.connect(master.gain);
-  lfoOsc.start();
-  scheduled.push(lfoOsc);
-
-  // Atmospheric pad (A minor: A3 = 220 Hz, E4 = 329.6 Hz)
-  const padFilter = ctx.createBiquadFilter();
-  padFilter.type = 'lowpass';
-  padFilter.frequency.value = 700;
-  padFilter.Q.value = 1.2;
-  padFilter.connect(master);
-  osc('triangle', 220, 0.06, padFilter);
-  osc('triangle', 329.6, 0.04, padFilter);
-
-  // Slow filter sweep LFO on pad
-  const padLfo = ctx.createOscillator();
-  const padLfoGain = ctx.createGain();
-  padLfo.type = 'sine';
-  padLfo.frequency.value = 0.07;
-  padLfoGain.gain.value = 250;
-  padLfo.connect(padLfoGain);
-  padLfoGain.connect(padFilter.frequency);
-  padLfo.start();
-  scheduled.push(padLfo);
-
-  // Arpeggio: A4=440, C5=523.25, E5=659.25, C5, G4=392, C5, E5, G5=783.99
-  const ARP_FREQS = [440, 523.25, 659.25, 523.25, 392, 523.25, 659.25, 783.99];
-  const ARP_INTERVAL_MS = 800;
-  let step = 0;
-  let running = true;
-  const arpTimerIds: ReturnType<typeof setTimeout>[] = [];
-
-  const arpOut = ctx.createGain();
-  arpOut.gain.value = 0.035;
-  const arpFilter = ctx.createBiquadFilter();
-  arpFilter.type = 'highpass';
-  arpFilter.frequency.value = 350;
-  arpOut.connect(arpFilter);
-  arpFilter.connect(master);
-
-  function playArpNote() {
+  function playBass() {
     if (!running) return;
-    const freq = ARP_FREQS[step % ARP_FREQS.length];
-    step++;
+    const freq = BASS_FREQS[bassStep % BASS_FREQS.length];
+    bassStep++;
     const o = ctx.createOscillator();
     const g = ctx.createGain();
-    o.type = 'sine';
+    o.type = 'sawtooth';
     o.frequency.value = freq;
-    o.connect(g);
-    g.connect(arpOut);
+    o.connect(g); g.connect(bassFilter);
     const t = ctx.currentTime;
-    g.gain.setValueAtTime(0, t);
-    g.gain.linearRampToValueAtTime(1, t + 0.04);
-    g.gain.exponentialRampToValueAtTime(0.001, t + 0.4);
-    o.start(t);
-    o.stop(t + 0.45);
-    arpTimerIds.push(setTimeout(playArpNote, ARP_INTERVAL_MS));
+    g.gain.setValueAtTime(0.55, t);
+    g.gain.exponentialRampToValueAtTime(0.001, t + BEAT * 0.75);
+    o.start(t); o.stop(t + BEAT * 0.8);
+    timerIds.push(setTimeout(playBass, BEAT * 1000));
   }
+  playBass();
 
-  playArpNote();
+  // ── Melodic lead – D major pentatonic (Fortnite-ish upbeat vibe) ─────────
+  // D4=293.66 E4=329.63 F#4=369.99 A4=440 B4=493.88, 0=rest
+  const MELODY = [
+    293.66, 329.63, 369.99, 440,
+    440,    369.99, 329.63, 293.66,
+    329.63, 369.99, 493.88, 440,
+    369.99, 293.66, 0,      0,
+  ];
+  let melStep = 0;
+  const leadGain = ctx.createGain();
+  leadGain.gain.value = 0.055;
+  leadGain.connect(master);
+
+  function playLead() {
+    if (!running) return;
+    const freq = MELODY[melStep % MELODY.length];
+    melStep++;
+    if (freq > 0) {
+      const o = ctx.createOscillator();
+      const g = ctx.createGain();
+      o.type = 'square';
+      o.frequency.value = freq;
+      o.connect(g); g.connect(leadGain);
+      const t = ctx.currentTime;
+      g.gain.setValueAtTime(0, t);
+      g.gain.linearRampToValueAtTime(1, t + 0.018);
+      g.gain.exponentialRampToValueAtTime(0.001, t + BEAT * 0.82);
+      o.start(t); o.stop(t + BEAT * 0.88);
+    }
+    timerIds.push(setTimeout(playLead, BEAT * 0.5 * 1000)); // 8th notes
+  }
+  playLead();
+
+  // ── Slow pad layer (A minor chord: A2 + E3 + A3) ─────────────────────────
+  const padGain = ctx.createGain();
+  padGain.gain.value = 0.028;
+  const padFilter = ctx.createBiquadFilter();
+  padFilter.type = 'lowpass';
+  padFilter.frequency.value = 900;
+  padGain.connect(padFilter); padFilter.connect(master);
+  // Continuous oscillators – stopped automatically when ctx.close() is called
+  ([110, 164.81, 220] as number[]).forEach((freq) => {
+    const o = ctx.createOscillator();
+    const g = ctx.createGain();
+    o.type = 'triangle'; o.frequency.value = freq; g.gain.value = 1;
+    o.connect(g); g.connect(padGain); o.start();
+  });
 
   let stopped = false;
   let fadeTimerId: ReturnType<typeof setTimeout> | null = null;
@@ -105,18 +155,16 @@ function startAmbientMusic(ctx: AudioContext): () => void {
     // Guard against double-calls (e.g. component re-render or rapid toggle)
     if (stopped) {
       if (fadeTimerId !== null) clearTimeout(fadeTimerId);
-      scheduled.forEach((n) => { try { n.stop(); } catch { /* already stopped */ } });
       ctx.close().catch(() => {});
       return;
     }
     stopped = true;
     running = false;
-    arpTimerIds.forEach(clearTimeout);
+    timerIds.forEach(clearTimeout);
     const now = ctx.currentTime;
     master.gain.setValueAtTime(master.gain.value, now);
     master.gain.linearRampToValueAtTime(0, now + 1.5);
     fadeTimerId = setTimeout(() => {
-      scheduled.forEach((n) => { try { n.stop(); } catch { /* already stopped */ } });
       ctx.close().catch(() => {});
     }, 1700);
   };

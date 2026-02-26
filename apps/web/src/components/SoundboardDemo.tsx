@@ -121,14 +121,97 @@ function synthPoggers(ctx: AudioContext): number {
   return 560;
 }
 
+// Fortnite Default Dance – bouncy rhythmic 8-note pattern
+function synthDefaultDance(ctx: AudioContext): number {
+  const PATTERN = [
+    { freq: 440, t: 0.00 }, { freq: 523.25, t: 0.14 }, { freq: 440, t: 0.28 },
+    { freq: 392,  t: 0.38 }, { freq: 440, t: 0.52 }, { freq: 659.25, t: 0.62 },
+    { freq: 523.25, t: 0.72 }, { freq: 440, t: 0.86 },
+  ];
+  PATTERN.forEach(({ freq, t: offset }) => {
+    const osc = ctx.createOscillator();
+    const gain = ctx.createGain();
+    osc.connect(gain); gain.connect(ctx.destination);
+    osc.type = 'triangle';
+    osc.frequency.value = freq;
+    const t = ctx.currentTime + offset;
+    gain.gain.setValueAtTime(0.001, t);
+    gain.gain.linearRampToValueAtTime(0.22, t + 0.02);
+    gain.gain.exponentialRampToValueAtTime(0.001, t + 0.12);
+    osc.start(t); osc.stop(t + 0.14);
+  });
+  return 1050;
+}
+
+// Fortnite Chest Opening – sparkling ascending glitter
+function synthChestOpen(ctx: AudioContext): number {
+  const FREQS = [523.25, 659.25, 783.99, 1046.5, 1318.5, 1567.98];
+  FREQS.forEach((freq, i) => {
+    const osc = ctx.createOscillator();
+    const gain = ctx.createGain();
+    osc.connect(gain); gain.connect(ctx.destination);
+    osc.type = 'sine';
+    osc.frequency.value = freq;
+    const t = ctx.currentTime + i * 0.075;
+    gain.gain.setValueAtTime(0.001, t);
+    gain.gain.linearRampToValueAtTime(0.26, t + 0.02);
+    gain.gain.exponentialRampToValueAtTime(0.001, t + 0.35);
+    osc.start(t); osc.stop(t + 0.38);
+  });
+  // Extra sparkle – higher harmonics
+  [2093, 2637].forEach((freq, i) => {
+    const osc = ctx.createOscillator();
+    const gain = ctx.createGain();
+    osc.connect(gain); gain.connect(ctx.destination);
+    osc.type = 'sine'; osc.frequency.value = freq;
+    const t = ctx.currentTime + 0.3 + i * 0.06;
+    gain.gain.setValueAtTime(0.001, t);
+    gain.gain.linearRampToValueAtTime(0.12, t + 0.015);
+    gain.gain.exponentialRampToValueAtTime(0.001, t + 0.22);
+    osc.start(t); osc.stop(t + 0.25);
+  });
+  return 950;
+}
+
+// Storm is moving – Fortnite zone-closing pulse warning
+function synthStormWarning(ctx: AudioContext): number {
+  // Low ominous pulse × 3
+  [0, 0.28, 0.56].forEach((offset) => {
+    const osc = ctx.createOscillator();
+    const gain = ctx.createGain();
+    osc.connect(gain); gain.connect(ctx.destination);
+    osc.type = 'sine'; osc.frequency.value = 120;
+    const t = ctx.currentTime + offset;
+    gain.gain.setValueAtTime(0.001, t);
+    gain.gain.linearRampToValueAtTime(0.35, t + 0.04);
+    gain.gain.exponentialRampToValueAtTime(0.001, t + 0.22);
+    osc.start(t); osc.stop(t + 0.25);
+  });
+  // Rising shriek overlay
+  const shriek = ctx.createOscillator();
+  const shriekGain = ctx.createGain();
+  shriek.connect(shriekGain); shriekGain.connect(ctx.destination);
+  shriek.type = 'sawtooth';
+  shriek.frequency.setValueAtTime(200, ctx.currentTime + 0.6);
+  shriek.frequency.exponentialRampToValueAtTime(800, ctx.currentTime + 1.1);
+  shriekGain.gain.setValueAtTime(0.001, ctx.currentTime + 0.6);
+  shriekGain.gain.linearRampToValueAtTime(0.18, ctx.currentTime + 0.65);
+  shriekGain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 1.1);
+  shriek.start(ctx.currentTime + 0.6); shriek.stop(ctx.currentTime + 1.15);
+  return 1200;
+}
+
 // ─── Sound definitions ────────────────────────────────────────────────────────
 const SOUNDS: SoundDef[] = [
-  { id: 'victory', label: 'VICTORY ROYALE!', emoji: '🏆', color: NEON_GOLD,   synth: synthVictory },
-  { id: 'clutch',  label: 'CLUTCH MOMENT!',  emoji: '⚡', color: NEON_PINK,   synth: synthClutch  },
-  { id: 'lets_go', label: "LET'S GOOOO!",    emoji: '🔥', color: NEON_GREEN,  synth: synthLetsGo  },
-  { id: 'ez',      label: 'EZ!',             emoji: '😎', color: NEON_CYAN,   synth: synthEZ      },
-  { id: 'hehe',    label: 'HEHE BOY',        emoji: '😈', color: NEON_ORANGE, synth: synthHehe    },
-  { id: 'poggers', label: 'POGGERS!',        emoji: '👀', color: NEON_PINK,   synth: synthPoggers },
+  { id: 'victory',       label: 'VICTORY ROYALE!',  emoji: '🏆', color: NEON_GOLD,   synth: synthVictory      },
+  { id: 'clutch',        label: 'CLUTCH MOMENT!',   emoji: '⚡', color: NEON_PINK,   synth: synthClutch       },
+  { id: 'lets_go',       label: "LET'S GOOOO!",     emoji: '🔥', color: NEON_GREEN,  synth: synthLetsGo       },
+  { id: 'ez',            label: 'EZ!',              emoji: '😎', color: NEON_CYAN,   synth: synthEZ           },
+  { id: 'hehe',          label: 'HEHE BOY',         emoji: '😈', color: NEON_ORANGE, synth: synthHehe         },
+  { id: 'poggers',       label: 'POGGERS!',         emoji: '👀', color: NEON_PINK,   synth: synthPoggers      },
+  { id: 'default_dance', label: 'DEFAULT DANCE!',   emoji: '🕺', color: '#B44FFF',   synth: synthDefaultDance },
+  { id: 'chest_open',    label: 'CHEST OPEN!',      emoji: '📦', color: NEON_GOLD,   synth: synthChestOpen    },
+  { id: 'storm_warning', label: 'STORM IS MOVING!', emoji: '🌀', color: '#FF3B6B',   synth: synthStormWarning },
 ];
 
 // ─── Waveform bars ────────────────────────────────────────────────────────────
