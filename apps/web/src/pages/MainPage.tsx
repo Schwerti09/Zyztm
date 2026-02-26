@@ -28,8 +28,9 @@ import FortniteItemShop from '../components/FortniteItemShop';
 import FortniteArcade from '../components/FortniteArcade';
 import LatestNews from '../components/LatestNews';
 
+import SoundboardDemo from '../components/SoundboardDemo';
+
 const FanCounter = lazy(() => import('../components/FanCounter'));
-const SoundboardDemo = lazy(() => import('../components/SoundboardDemo'));
 const ClutchReel = lazy(() => import('../components/ClutchReel'));
 const ZyztmBlast = lazy(() => import('../components/ZyztmBlast'));
 const GlobalEmpire = lazy(() => import('../components/GlobalEmpire'));
@@ -65,7 +66,7 @@ export default function MainPage() {
           <StreamHighlights />
           <Suspense fallback={<SectionLoader />}><ClutchReel /></Suspense>
           <ProductGrid />
-          <Suspense fallback={<SectionLoader />}><SoundboardDemo /></Suspense>
+          <SoundboardDemo />
           <CommunitySpotlight />
           <NewsSection />
           <HotRightNow />
