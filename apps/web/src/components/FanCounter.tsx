@@ -37,6 +37,25 @@ export default function FanCounter() {
           />
 
           <div className="relative z-10">
+            {/* Headline */}
+            <div className="mb-6">
+              <h2
+                className="font-cyber text-3xl md:text-4xl font-bold tracking-widest uppercase"
+                style={{
+                  color: NEON_PINK,
+                  textShadow: `0 0 18px ${NEON_PINK}, 0 0 36px ${NEON_PINK}60`,
+                }}
+              >
+                DIE BESTEN FANS DER WELT
+              </h2>
+              <p
+                className="font-cyber text-sm md:text-base tracking-widest mt-2 uppercase"
+                style={{ color: NEON_BLUE, textShadow: `0 0 12px ${NEON_BLUE}` }}
+              >
+                IHR SEID DER GRUND FÜR ALLES ❤️
+              </p>
+            </div>
+
             {/* Live indicator */}
             <div className="flex items-center justify-center gap-2 mb-4">
               <motion.span

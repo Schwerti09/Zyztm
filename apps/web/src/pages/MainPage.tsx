@@ -57,9 +57,9 @@ export default function MainPage() {
       <div className="relative z-10">
         <LiveBar />
         <main className="pt-10">
+          <Suspense fallback={<SectionLoader />}><FanCounter /></Suspense>
           <HeroSection />
           <AboutZyztm />
-          <Suspense fallback={<SectionLoader />}><FanCounter /></Suspense>
           <Suspense fallback={<SectionLoader />}><GlobalEmpire /></Suspense>
           <KickEmbed />
           <LaptopMockup />
