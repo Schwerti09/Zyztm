@@ -8,7 +8,7 @@ export default function LiveBar() {
   const [viewers, setViewers] = useState(3241);
   const [discord, setDiscord] = useState(1847);
   const [timeLeft, setTimeLeft] = useState({ h: 2, m: 34, s: 10 });
-  const { coins, setCoins, userEmail, setUserEmail } = useStore();
+  const { coins, setCoins, userEmail, setUserEmail, musicEnabled, setMusicEnabled } = useStore();
   const [bonusClaimed, setBonusClaimed] = useState(false);
   const [bonusLoading, setBonusLoading] = useState(false);
 
@@ -153,9 +153,25 @@ export default function LiveBar() {
             </button>
           )}
         </div>
-        <a href="/dashboard" className="text-neon-blue hover:text-white transition-colors text-xs tracking-widest">
-          NEXUS →
-        </a>
+        <div className="flex items-center gap-2">
+          <button
+            onClick={() => setMusicEnabled(!musicEnabled)}
+            className="text-xs px-2 py-1 rounded border transition-all duration-200"
+            style={{
+              borderColor: musicEnabled ? '#00f2ff' : 'rgba(255,255,255,0.2)',
+              color: musicEnabled ? '#00f2ff' : 'rgba(255,255,255,0.35)',
+              background: musicEnabled ? 'rgba(0,242,255,0.08)' : 'transparent',
+              boxShadow: musicEnabled ? '0 0 8px rgba(0,242,255,0.3)' : 'none',
+            }}
+            title={musicEnabled ? 'Musik ausschalten' : 'Musik einschalten'}
+            aria-label={musicEnabled ? 'Musik ausschalten' : 'Musik einschalten'}
+          >
+            {musicEnabled ? '🎵' : '🔇'}
+          </button>
+          <a href="/dashboard" className="text-neon-blue hover:text-white transition-colors text-xs tracking-widest">
+            NEXUS →
+          </a>
+        </div>
       </div>
     </div>
   );

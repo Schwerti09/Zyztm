@@ -6,6 +6,7 @@ interface AppStore {
   credits: number;
   coins: number;
   userEmail: string;
+  musicEnabled: boolean;
   cards: Card[];
   chatMessages: ChatMessage[];
   addChatMessage: (msg: ChatMessage) => void;
@@ -13,6 +14,7 @@ interface AppStore {
   setCredits: (credits: number) => void;
   setCoins: (coins: number) => void;
   setUserEmail: (email: string) => void;
+  setMusicEnabled: (enabled: boolean) => void;
 }
 
 export const useStore = create<AppStore>((set) => ({
@@ -20,6 +22,7 @@ export const useStore = create<AppStore>((set) => ({
   credits: 100,
   coins: 0,
   userEmail: typeof window !== 'undefined' ? (localStorage.getItem('userEmail') || '') : '',
+  musicEnabled: typeof window !== 'undefined' ? localStorage.getItem('musicEnabled') === 'true' : false,
   cards: [],
   chatMessages: [],
   addChatMessage: (msg) => set((state) => ({ chatMessages: [...state.chatMessages, msg] })),
@@ -29,5 +32,9 @@ export const useStore = create<AppStore>((set) => ({
   setUserEmail: (email) => {
     localStorage.setItem('userEmail', email);
     set({ userEmail: email });
+  },
+  setMusicEnabled: (enabled) => {
+    localStorage.setItem('musicEnabled', String(enabled));
+    set({ musicEnabled: enabled });
   },
 }));
