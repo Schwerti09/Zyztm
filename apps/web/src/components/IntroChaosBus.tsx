@@ -7,102 +7,116 @@ export default function IntroChaosBus({ onFinish }: { onFinish: () => void }) {
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
-    const ctx = canvas.getContext('2d');
+    const ctx = canvas.getContext('2d', { alpha: true });
     if (!ctx) return;
     let w = (canvas.width = window.innerWidth);
     let h = (canvas.height = window.innerHeight);
 
-    let busY = -600;
-    let speed = 11;
+    let busY = -800;
+    let speed = 13;
     let landed = false;
     let time = 0;
+    let shake = 0;
     let running = true;
 
     const skins = [
-      { emoji: '🍌', x: 180 },
-      { emoji: '🕴️', x: 280 },
-      { emoji: '👑', x: 380 },
-      { emoji: '🦈', x: 480 },
-      { emoji: '🛡️', x: 580 },
-      { emoji: '💀', x: 680 },
+      { emoji: '🍌', x: 220, rotSpeed: 1.8 },
+      { emoji: '🕴️', x: 340, rotSpeed: 2.3 },
+      { emoji: '👑', x: 460, rotSpeed: 1.6 },
+      { emoji: '🦈', x: 580, rotSpeed: 2.5 },
+      { emoji: '🛡️', x: 700, rotSpeed: 1.9 },
+      { emoji: '💀', x: 820, rotSpeed: 2.1 },
     ];
 
-    const vbucks: { x: number; y: number; speed: number }[] = [];
-
-    let busX = w * 0.12;
-
-    const FONT_LABEL = 'bold 42px Space Grotesk, Arial';
-    const FONT_SKIN = '120px Arial';
-    const FONT_VBUCK = '55px Arial';
+    const vbucks: { x: number; y: number; speed: number; rot: number }[] = [];
 
     const onResize = () => {
       w = canvas.width = window.innerWidth;
       h = canvas.height = window.innerHeight;
-      busX = w * 0.12;
     };
     window.addEventListener('resize', onResize);
 
     const animate = () => {
-      ctx.fillStyle = 'rgba(4, 4, 12, 0.45)';
+      ctx.fillStyle = 'rgba(2, 2, 10, 0.6)';
       ctx.fillRect(0, 0, w, h);
 
       busY += speed;
+      shake = landed ? Math.sin(time / 2) * 6 : 0;
+
+      const bx = w * 0.13;
+
+      // Shadow under the bus
+      ctx.fillStyle = 'rgba(0,0,0,0.6)';
+      ctx.fillRect(bx + 40, busY + 340, w * 0.7, 60);
 
       // Bus body
-      ctx.fillStyle = '#1f1f1f';
-      ctx.fillRect(busX, busY, w * 0.76, 320);
+      ctx.fillStyle = '#1c1c1c';
+      ctx.fillRect(bx, busY, w * 0.74, 340);
 
-      // Cockpit / roof
+      // Cockpit / roof (metallic look)
       ctx.fillStyle = '#0f0f0f';
-      ctx.fillRect(busX + 60, busY - 70, w * 0.64, 110);
+      ctx.fillRect(bx + 50, busY - 85, w * 0.64, 120);
 
       // Large window (glowing)
       ctx.fillStyle = '#22D3EE';
-      ctx.fillRect(busX + 100, busY + 50, w * 0.56, 140);
+      ctx.fillRect(bx + 90, busY + 55, w * 0.55, 160);
 
-      // Neon stripe at bottom
+      // Neon stripe
       ctx.fillStyle = '#39FF14';
-      ctx.fillRect(busX + 20, busY + 260, w * 0.72, 22);
+      ctx.fillRect(bx + 30, busY + 280, w * 0.68, 26);
 
       // "BATTLE BUS" label
       ctx.fillStyle = '#FFD700';
-      ctx.font = FONT_LABEL;
-      ctx.fillText('BATTLE BUS', busX + 180, busY + 295);
+      ctx.font = 'bold 58px Space Grotesk';
+      ctx.fillText('BATTLE BUS', bx + 160, busY + 315);
 
       // Dancing skins inside bus
       skins.forEach((skin, i) => {
-        const x = busX + skin.x + Math.sin(time / 9 + i) * 35;
-        const y = busY + 130 + Math.cos(time / 7 + i) * 55;
+        const x = bx + skin.x + Math.sin(time / 7 + i) * 38;
+        const y = busY + 135 + Math.cos(time / 6 + i) * 52;
 
         ctx.save();
-        ctx.translate(x, y);
-        ctx.rotate(Math.sin(time / 5 + i) * 0.35);
-        ctx.font = FONT_SKIN;
-        ctx.fillText(skin.emoji, -55, 50);
+        ctx.translate(x + shake, y);
+        ctx.rotate(Math.sin(time / 4.5 + i) * 0.45);
+        ctx.font = '128px Arial';
+        ctx.fillText(skin.emoji, -65, 55);
         ctx.restore();
       });
 
-      // V-Bucks fall from bus
-      if (Math.random() < 0.45) {
-        vbucks.push({ x: busX + 140 + Math.random() * (w * 0.55), y: busY + 70, speed: 13 });
+      // V-Bucks rain from bus
+      if (Math.random() < 0.55) {
+        vbucks.push({
+          x: bx + 180 + Math.random() * (w * 0.5),
+          y: busY + 90,
+          speed: 14 + Math.random() * 12,
+          rot: Math.random() * 360,
+        });
       }
       for (let i = vbucks.length - 1; i >= 0; i--) {
         const v = vbucks[i];
         v.y += v.speed;
-        ctx.font = FONT_VBUCK;
-        ctx.fillText('💰', v.x, v.y);
-        if (v.y > h + 80) vbucks.splice(i, 1);
+        v.rot += 8;
+
+        ctx.save();
+        ctx.translate(v.x, v.y);
+        ctx.rotate((v.rot * Math.PI) / 180);
+        ctx.font = '62px Arial';
+        ctx.fillText('💰', -25, 25);
+        ctx.restore();
+
+        if (v.y > h + 100) vbucks.splice(i, 1);
       }
 
       // Decelerate and land
-      if (busY > h * 0.18 && !landed) {
-        speed *= 0.78;
-        if (speed < 1.1) {
+      if (busY > h * 0.15 && !landed) {
+        speed *= 0.79;
+        if (speed < 1.3) {
           landed = true;
+          shake = 25;
           setTimeout(() => {
             setShow(false);
             onFinish();
-          }, 1600);
+          }, 1800);
         }
       }
 
