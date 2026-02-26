@@ -16,7 +16,6 @@ const GamerVoting = lazy(() => import('../components/GamerVoting'));
 const Footer = lazy(() => import('../components/Footer'));
 const ParticleField = lazy(() => import('../components/ParticleField'));
 const ThumbnailSnake = lazy(() => import('../components/ThumbnailSnake'));
-const FortniteDanceCanvas = lazy(() => import('../components/FortniteDanceCanvas'));
 const Intro = lazy(() => import('../components/Intro'));
 const LaptopMockup = lazy(() => import('../components/LaptopMockup'));
 const AboutZyztm = lazy(() => import('../components/AboutZyztm'));
@@ -68,7 +67,6 @@ export default function MainPage() {
         <Intro />
         <ParticleField />
         <ThumbnailSnake />
-        <FortniteDanceCanvas />
         <div className="relative z-10">
           <LiveBar />
           <main className="pt-10">
