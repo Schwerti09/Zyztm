@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 
 const NEON_PINK = '#ff0055';
 const NEON_BLUE = '#00f2ff';
@@ -23,46 +23,17 @@ const PLATFORMS: SocialPlatform[] = [
   { id: 'twitter', label: 'TWITTER/X', emoji: '🐦', color: '#1da1f2', url: 'https://twitter.com/zyztm', followers: 'Follow!' },
 ];
 
-interface Particle {
-  id: number;
-  emoji: string;
-  x: number;
-  y: number;
-  scale: number;
-  rotation: number;
-}
-
-let particleId = 0;
-
 export default function ZyztmBlast() {
-  const [blasted, setBlasted] = useState(false);
-  const [particles, setParticles] = useState<Particle[]>([]);
   const [followed, setFollowed] = useState<Set<string>>(new Set());
   const [totalFollowers, setTotalFollowers] = useState(1695000);
 
   // Animate follow counter up
   useEffect(() => {
-    if (!blasted) return;
     const interval = setInterval(() => {
       setTotalFollowers((c) => c + Math.floor(Math.random() * 3));
     }, 500);
     return () => clearInterval(interval);
-  }, [blasted]);
-
-  const handleBlast = () => {
-    setBlasted(true);
-    // Spawn particles
-    const newParticles: Particle[] = Array.from({ length: 20 }, (_, i) => ({
-      id: particleId++,
-      emoji: ['💥', '⚡', '🔥', '💎', '🏆', '✨'][i % 6],
-      x: Math.random() * 100,
-      y: Math.random() * 100,
-      scale: 0.5 + Math.random() * 1.5,
-      rotation: Math.random() * 360,
-    }));
-    setParticles((p) => [...p, ...newParticles]);
-    setTimeout(() => setParticles([]), 2000);
-  };
+  }, []);
 
   const handleFollow = (platform: SocialPlatform) => {
     setFollowed((prev) => new Set(prev).add(platform.id));
@@ -77,29 +48,6 @@ export default function ZyztmBlast() {
           background: `radial-gradient(ellipse 70% 50% at 50% 50%, ${NEON_PINK}05 0%, transparent 70%)`,
         }}
       />
-
-      {/* Explosion particles */}
-      <AnimatePresence>
-        {particles.map((p) => (
-          <motion.div
-            key={p.id}
-            initial={{ opacity: 1, scale: 0, x: '50vw', y: '50vh' }}
-            animate={{
-              opacity: 0,
-              scale: p.scale,
-              x: `${p.x}vw`,
-              y: `${p.y}vh`,
-              rotate: p.rotation,
-            }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 1.2, ease: 'easeOut' }}
-            className="fixed pointer-events-none z-40 text-3xl"
-            style={{ left: 0, top: 0 }}
-          >
-            {p.emoji}
-          </motion.div>
-        ))}
-      </AnimatePresence>
 
       <div className="max-w-4xl mx-auto relative z-10">
         <motion.div
@@ -143,29 +91,6 @@ export default function ZyztmBlast() {
           </div>
         </motion.div>
 
-        {/* BLAST button */}
-        <div className="flex justify-center mb-12">
-          <motion.button
-            onClick={handleBlast}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            animate={blasted ? { scale: [1, 1.15, 1] } : {}}
-            transition={blasted ? { duration: 0.4 } : {}}
-            className="relative font-cyber text-lg tracking-widest font-bold px-12 py-5 rounded-full"
-            style={{
-              background: blasted
-                ? `linear-gradient(135deg, ${NEON_GOLD}, #ff8c00)`
-                : `linear-gradient(135deg, ${NEON_PINK}, #cc0044)`,
-              color: blasted ? '#000' : '#fff',
-              boxShadow: blasted
-                ? `0 0 40px ${NEON_GOLD}60, 0 0 80px ${NEON_GOLD}30`
-                : `0 0 30px ${NEON_PINK}50, 0 0 60px ${NEON_PINK}20`,
-            }}
-          >
-            {blasted ? '💥 BLAST AKTIV!' : '💥 ZYZTM BLAST!'}
-          </motion.button>
-        </div>
-
         {/* Platform grid */}
         <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
           {PLATFORMS.map((platform, i) => {
@@ -177,21 +102,10 @@ export default function ZyztmBlast() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.08 }}
-                animate={blasted ? { y: [0, -8, 0] } : {}}
                 whileHover={{ scale: 1.04, y: -4 }}
                 className="cyber-card rounded-xl p-4 text-center relative overflow-hidden"
                 style={{ borderColor: `${platform.color}${isFollowed ? '60' : '25'}` }}
               >
-                {/* Glow on blast */}
-                {blasted && (
-                  <motion.div
-                    className="absolute inset-0 pointer-events-none"
-                    animate={{ opacity: [0.3, 0] }}
-                    transition={{ duration: 1, delay: i * 0.1 }}
-                    style={{ background: `radial-gradient(circle, ${platform.color}20 0%, transparent 70%)` }}
-                  />
-                )}
-
                 <div className="text-3xl mb-2">{platform.emoji}</div>
                 <p
                   className="font-cyber text-xs font-bold mb-1 tracking-wider"
