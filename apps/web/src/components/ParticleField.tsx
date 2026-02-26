@@ -4,6 +4,8 @@ import * as THREE from 'three';
 
 function Particles() {
   const meshRef = useRef<THREE.Points>(null);
+  const lastUpdate = useRef(0);
+  const FRAME_INTERVAL = 1 / 30;
   const { mouse } = useThree();
   
   const { positions, colors } = useMemo(() => {
@@ -33,6 +35,9 @@ function Particles() {
   
   useFrame((state) => {
     if (!meshRef.current) return;
+    // Throttle updates to ~30 fps
+    if (state.clock.elapsedTime - lastUpdate.current < FRAME_INTERVAL) return;
+    lastUpdate.current = state.clock.elapsedTime;
     meshRef.current.rotation.y = state.clock.elapsedTime * 0.05;
     meshRef.current.rotation.x = mouse.y * 0.2;
     meshRef.current.rotation.z = mouse.x * 0.1;

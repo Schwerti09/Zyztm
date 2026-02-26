@@ -379,13 +379,18 @@ export default function FortniteDanceCanvas() {
 
     // Main loop
     let animId = 0;
-    let prevTime = performance.now();
     let beatPulse = 0;
+    const TARGET_FPS = 30;
+    const FRAME_MS = 1000 / TARGET_FPS;
+    let lastFrameTime = 0;
 
     const loop = (now: number) => {
       animId = requestAnimationFrame(loop);
-      const dt = Math.min((now - prevTime) / 1000, 0.05);
-      prevTime = now;
+
+      // Throttle to TARGET_FPS
+      if (now - lastFrameTime < FRAME_MS) return;
+      const dt = Math.min((now - lastFrameTime) / 1000, 0.05);
+      lastFrameTime = now;
       const t = now / 1000;
 
       // Beat pulse decay (dt-normalized so pulse fades at the same speed regardless of FPS)
