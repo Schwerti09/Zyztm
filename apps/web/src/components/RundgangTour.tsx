@@ -87,7 +87,7 @@ const LOOT_RAIN_COUNT = 25;
 const CONFETTI_PARTICLE_COUNT = 120;
 const SWIPE_THRESHOLD_PX = 50;
 const SAFE_BOTTOM = 'max(24px, calc(env(safe-area-inset-bottom, 0px) + 16px))';
-const PANEL_BOTTOM = 'max(116px, calc(env(safe-area-inset-bottom, 0px) + 108px))';
+const PANEL_BOTTOM = 'max(84px, calc(env(safe-area-inset-bottom, 0px) + 76px))';
 
 function spawnLootRain(): void {
   for (let i = 0; i < LOOT_RAIN_COUNT; i++) {
@@ -127,6 +127,29 @@ function spawnNeonFlash(): void {
 function spawnScreenShake(): void {
   document.documentElement.classList.add('tour-shake');
   setTimeout(() => document.documentElement.classList.remove('tour-shake'), 520);
+}
+
+function playSiren(): void {
+  try {
+    const ctx = new AudioContext();
+    const osc = ctx.createOscillator();
+    const gain = ctx.createGain();
+    osc.connect(gain);
+    gain.connect(ctx.destination);
+    osc.type = 'sawtooth';
+    const t = ctx.currentTime;
+    osc.frequency.setValueAtTime(600, t);
+    osc.frequency.linearRampToValueAtTime(1200, t + 0.5);
+    osc.frequency.linearRampToValueAtTime(600, t + 1.0);
+    osc.frequency.linearRampToValueAtTime(1200, t + 1.5);
+    osc.frequency.linearRampToValueAtTime(600, t + 2.0);
+    gain.gain.setValueAtTime(0.25, t);
+    gain.gain.linearRampToValueAtTime(0, t + 2.0);
+    osc.start(t);
+    osc.stop(t + 2.0);
+  } catch {
+    // Audio not available
+  }
 }
 
 function spawnConfetti(): void {
@@ -228,6 +251,8 @@ export default function RundgangTour() {
     spawnNeonFlash();
     spawnScreenShake();
     spawnLootRain();
+    spawnConfetti();
+    playSiren();
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
@@ -286,16 +311,16 @@ export default function RundgangTour() {
               exit={{ opacity: 0, y: 24 }}
               transition={{ duration: 0.35, type: 'spring', damping: 22 }}
               onClick={startTour}
-              className="w-full flex items-center justify-center gap-3 rounded-none"
+              className="w-full flex items-center justify-center gap-2 rounded-none"
               style={{
                 pointerEvents: 'auto',
-                minHeight: '72px',
-                padding: '0 28px',
+                minHeight: '48px',
+                padding: '0 18px',
                 background: 'linear-gradient(135deg, #39FF14 0%, #00f2ff 50%, #39FF14 100%)',
                 backgroundSize: '200% 200%',
                 animation: 'btnGradientShift 3s ease infinite',
-                border: '3px solid rgba(0,0,0,0.45)',
-                boxShadow: '0 0 30px rgba(57,255,20,0.5), 0 0 60px rgba(57,255,20,0.2), 0 4px 24px rgba(0,0,0,0.5)',
+                border: '2px solid rgba(0,0,0,0.45)',
+                boxShadow: '0 0 20px rgba(57,255,20,0.4), 0 0 40px rgba(57,255,20,0.15), 0 4px 16px rgba(0,0,0,0.4)',
                 cursor: 'pointer',
                 userSelect: 'none',
                 WebkitTapHighlightColor: 'transparent',
@@ -303,16 +328,16 @@ export default function RundgangTour() {
               }}
               aria-label="Rundgang starten"
             >
-              <span style={{ fontSize: '28px', lineHeight: 1 }}>🪂</span>
+              <span style={{ fontSize: '18px', lineHeight: 1 }}>🪂</span>
               <span
                 className="font-cyber font-black tracking-widest uppercase"
-                style={{ fontSize: 'clamp(14px, 4vw, 20px)', color: '#000' }}
+                style={{ fontSize: 'clamp(11px, 3vw, 14px)', color: '#000' }}
               >
                 RUNDGANG STARTEN
               </span>
               <span
                 style={{
-                  fontSize: '22px',
+                  fontSize: '15px',
                   color: '#000',
                   fontWeight: 900,
                   display: 'inline-block',

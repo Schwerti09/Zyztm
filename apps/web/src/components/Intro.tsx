@@ -64,7 +64,7 @@ export default function Intro() {
           initial={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.8 }}
-          className="fixed inset-0 z-[9999] bg-black flex items-center justify-center overflow-hidden"
+          className="fixed inset-0 z-[999999] bg-black flex items-center justify-center overflow-hidden"
         >
           {/* Cyber grid background */}
           <div
