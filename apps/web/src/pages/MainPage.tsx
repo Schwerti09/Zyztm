@@ -32,6 +32,7 @@ const FanCounter = lazy(() => import('../components/FanCounter'));
 const SoundboardDemo = lazy(() => import('../components/SoundboardDemo'));
 const ClutchReel = lazy(() => import('../components/ClutchReel'));
 const ZyztmBlast = lazy(() => import('../components/ZyztmBlast'));
+const GlobalEmpire = lazy(() => import('../components/GlobalEmpire'));
 
 function SectionLoader() {
   return <div className="py-20 flex justify-center"><div className="font-cyber text-neon-pink/30 text-xs tracking-widest animate-pulse">LOADING…</div></div>;
@@ -54,6 +55,7 @@ export default function MainPage() {
           <HeroSection />
           <AboutZyztm />
           <Suspense fallback={<SectionLoader />}><FanCounter /></Suspense>
+          <Suspense fallback={<SectionLoader />}><GlobalEmpire /></Suspense>
           <KickEmbed />
           <LaptopMockup />
           <CreatorCode />
