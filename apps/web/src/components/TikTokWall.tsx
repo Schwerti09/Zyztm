@@ -196,19 +196,71 @@ export default function TikTokWall() {
             ))}
           </div>
         ) : clips.length === 0 ? (
-          <div className="flex flex-col items-center gap-4 py-12">
-            <p className="text-white/40 font-cyber tracking-widest">
-              Noch keine TikTok-Clips gespeichert.
+          <div className="flex flex-col items-center gap-6 py-12">
+            <p className="text-white/40 font-cyber tracking-widest text-sm">
+              Noch keine TikTok-Clips verfügbar.
             </p>
-            <a
-              href={TIKTOK_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="font-cyber text-sm px-6 py-3 rounded border transition-all"
-              style={{ borderColor: `${TIKTOK_PINK}55`, color: TIKTOK_PINK }}
-            >
-              @ZYZTM AUF TIKTOK BESUCHEN →
-            </a>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 w-full max-w-2xl">
+              <motion.a
+                href={TIKTOK_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                whileHover={{ scale: 1.03, y: -4 }}
+                className="rounded-xl overflow-hidden no-underline flex flex-col items-center gap-4 p-8 text-center"
+                style={{
+                  background: 'linear-gradient(135deg, rgba(255,0,85,0.12) 0%, rgba(0,242,255,0.06) 100%)',
+                  border: `1px solid ${TIKTOK_PINK}40`,
+                  boxShadow: `0 0 20px ${TIKTOK_PINK}20`,
+                  backdropFilter: 'blur(16px)',
+                }}
+              >
+                <div className="text-6xl">🎵</div>
+                <div>
+                  <p className="font-cyber text-xl font-bold mb-1" style={{ color: TIKTOK_PINK }}>
+                    @ZYZTM
+                  </p>
+                  <p className="text-white/50 text-sm mb-3">651K Follower · TikTok</p>
+                </div>
+                <div
+                  className="text-xs font-cyber tracking-widest py-2 px-6 rounded border"
+                  style={{ borderColor: `${TIKTOK_PINK}60`, color: TIKTOK_PINK }}
+                >
+                  JETZT FOLGEN →
+                </div>
+              </motion.a>
+              <motion.a
+                href="https://kick.com/zyztm"
+                target="_blank"
+                rel="noopener noreferrer"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.1 }}
+                whileHover={{ scale: 1.03, y: -4 }}
+                className="rounded-xl overflow-hidden no-underline flex flex-col items-center gap-4 p-8 text-center"
+                style={{
+                  background: 'linear-gradient(135deg, rgba(83,252,24,0.12) 0%, rgba(13,17,23,0.8) 100%)',
+                  border: '1px solid rgba(83,252,24,0.3)',
+                  boxShadow: '0 0 20px rgba(83,252,24,0.15)',
+                  backdropFilter: 'blur(16px)',
+                }}
+              >
+                <div className="text-6xl">🟢</div>
+                <div>
+                  <p className="font-cyber text-xl font-bold mb-1" style={{ color: '#53fc18' }}>
+                    KICK LIVE
+                  </p>
+                  <p className="text-white/50 text-sm mb-3">180K Follower · kick.com/zyztm</p>
+                </div>
+                <div
+                  className="text-xs font-cyber tracking-widest py-2 px-6 rounded border"
+                  style={{ borderColor: 'rgba(83,252,24,0.5)', color: '#53fc18' }}
+                >
+                  ZUM STREAM →
+                </div>
+              </motion.a>
+            </div>
           </div>
         ) : (
           <>
