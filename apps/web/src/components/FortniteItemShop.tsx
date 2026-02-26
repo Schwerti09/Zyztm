@@ -1,4 +1,4 @@
-import React, { useState, useRef, useCallback, useEffect } from 'react';
+import React, { useState, useRef, useCallback, useEffect, useMemo } from 'react';
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
 
 /* ─── Color Palette ─── */
@@ -40,31 +40,39 @@ interface ExclItem {
   badgeColor: string; color: string; desc: string; stars: number;
 }
 
+interface PurchasedItem {
+  productId: string;
+  name: string;
+  icon: string;
+  price: string;
+  purchasedAt: string;
+}
+
 const EXCL_ITEMS: ExclItem[] = [
   {
-    id: 'soundboard_pro', name: 'Soundboard Pro', icon: '🎛️',
-    price: '€9.99', badge: 'BEST SELLER', badgeColor: GOLD, color: GOLD,
-    desc: '200+ Fortnite FX, custom sweaty sounds, pro stream-ready pack.', stars: 5,
+    id: 'soundboard_pro', name: 'Zyztm Soundboard Pro', icon: '🎛️',
+    price: '€19.99', badge: 'BEST SELLER', badgeColor: GOLD, color: GOLD,
+    desc: '200+ Fortnite FX, custom sweaty sounds – sofort als Download verfügbar.', stars: 5,
   },
   {
-    id: 'preset_pack', name: 'Preset Pack Vol.2', icon: '🎨',
-    price: '€7.99', badge: 'HOT 🔥', badgeColor: PINK, color: PINK,
-    desc: "Zyztm's personal color-grading LUTs & Lightroom presets.", stars: 5,
+    id: 'preset_pack', name: 'Pro Preset Pack', icon: '🎨',
+    price: '€14.99', badge: 'HOT 🔥', badgeColor: PINK, color: PINK,
+    desc: "Zyztm's persönliche Color-Grading LUTs & Lightroom-Presets.", stars: 5,
   },
   {
-    id: 'ai_wallpaper', name: 'AI Wallpaper Bundle', icon: '🖼️',
-    price: '€4.99', badge: 'NEW DROP', badgeColor: NEON_GREEN, color: NEON_GREEN,
-    desc: '50x AI-generated 4K Fortnite wallpapers – exclusive art.', stars: 4,
+    id: 'ai_skin_generator', name: 'AI Skin & Thumbnail Generator', icon: '🤖',
+    price: '€24.99', badge: 'NEW DROP', badgeColor: NEON_GREEN, color: NEON_GREEN,
+    desc: 'KI-generierte Fortnite Skins & Thumbnails – unbegrenzte Generierungen.', stars: 5,
   },
   {
-    id: 'loadout_guide', name: 'Pro Loadout Guide', icon: '📖',
-    price: '€12.99', badge: 'LIMITED', badgeColor: PINK, color: PINK,
-    desc: 'Chapter 6 meta builds, keybinds, settings & ranked strategies.', stars: 5,
+    id: 'vod_highlight_pack', name: 'Exclusive VOD + Highlight Pack', icon: '🎬',
+    price: '€29.99', badge: 'LIMITED', badgeColor: PINK, color: PINK,
+    desc: 'Exklusive Stream-VODs & Highlight-Clips von Zyztm – nie veröffentlicht.', stars: 5,
   },
   {
-    id: 'pickaxe_sound', name: 'Exclusive Pickaxe Sound Pack', icon: '🔊',
-    price: '€6.99', badge: 'LIMITED', badgeColor: GOLD, color: GOLD,
-    desc: 'Custom hit-sounds & pickaxe audio for stream & video edits.', stars: 4,
+    id: 'loadout_guide', name: 'Custom Loadout Guide + Crosshair Pack', icon: '🎯',
+    price: '€9.99', badge: 'LIMITED', badgeColor: GOLD, color: GOLD,
+    desc: 'Chapter 6 Meta-Loadouts, Keybinds, Settings & Custom Crosshair-Pack.', stars: 4,
   },
 ];
 
@@ -143,7 +151,7 @@ function OfficialCard({ item, idx }: { item: FnItem; idx: number }) {
 }
 
 /* ─── Exclusive Drop Card with 3D Tilt + Particle Burst + Glitch ─── */
-function ExclCard({ item, idx }: { item: ExclItem; idx: number }) {
+function ExclCard({ item, idx, onBuy, loading }: { item: ExclItem; idx: number; onBuy: () => void; loading?: boolean }) {
   const cardRef = useRef<HTMLDivElement>(null);
   const [hov, setHov] = useState(false);
   const [particles, setParticles] = useState<{ id: number; x: number; y: number }[]>([]);
@@ -346,6 +354,8 @@ function ExclCard({ item, idx }: { item: ExclItem; idx: number }) {
         <motion.button
           whileHover={{ scale: 1.03 }}
           whileTap={{ scale: 0.97 }}
+          onClick={(e) => { e.stopPropagation(); onBuy(); }}
+          disabled={loading}
           className="w-full py-3 rounded-xl font-cyber text-xs tracking-widest font-black transition-all duration-200"
           style={{
             background: hov
@@ -354,8 +364,10 @@ function ExclCard({ item, idx }: { item: ExclItem; idx: number }) {
             border: `1.5px solid ${item.color}${hov ? 'dd' : '40'}`,
             color: hov ? '#000' : item.color,
             boxShadow: hov ? `0 0 24px ${item.color}55, 0 4px 20px rgba(0,0,0,0.5)` : 'none',
+            opacity: loading ? 0.7 : 1,
+            cursor: loading ? 'wait' : 'pointer',
           }}>
-          ⚡ SOFORT DOWNLOAD
+          {loading ? '⏳ VERARBEITE…' : '⚡ JETZT KAUFEN'}
         </motion.button>
       </div>
     </motion.div>
@@ -364,6 +376,42 @@ function ExclCard({ item, idx }: { item: ExclItem; idx: number }) {
 
 /* ─── Main Component ─── */
 export default function FortniteItemShop() {
+  const [loadingItem, setLoadingItem] = useState<string | null>(null);
+  const [purchases, setPurchases] = useState<PurchasedItem[]>(() => {
+    try { return JSON.parse(localStorage.getItem('zyztm_purchases') || '[]'); } catch { return []; }
+  });
+
+  // Refresh purchases when user returns from Stripe (window regains focus)
+  useEffect(() => {
+    const sync = () => {
+      try { setPurchases(JSON.parse(localStorage.getItem('zyztm_purchases') || '[]')); } catch { /* noop */ }
+    };
+    window.addEventListener('focus', sync);
+    return () => window.removeEventListener('focus', sync);
+  }, []);
+
+  const purchasedIds = useMemo(() => new Set(purchases.map((p) => p.productId)), [purchases]);
+
+  const buyProduct = useCallback(async (item: ExclItem) => {
+    setLoadingItem(item.id);
+    try {
+      const res = await fetch('/.netlify/functions/create-checkout-session', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ productId: item.id }),
+      });
+      const data = await res.json() as { url?: string; error?: string };
+      if (data.url) {
+        window.location.href = data.url;
+      } else {
+        console.error('Checkout error:', data.error);
+      }
+    } catch (err) {
+      console.error('Checkout error:', err);
+    } finally {
+      setLoadingItem(null);
+    }
+  }, []);
   return (
     <section id="daily-item-shop" className="py-20 px-4 relative overflow-hidden">
       {/* Background layers */}
@@ -515,10 +563,74 @@ export default function FortniteItemShop() {
             </motion.div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-1 gap-4">
-              {EXCL_ITEMS.map((item, i) => <ExclCard key={item.id} item={item} idx={i} />)}
+              {EXCL_ITEMS.map((item, i) => (
+                <ExclCard
+                  key={item.id}
+                  item={item}
+                  idx={i}
+                  onBuy={() => buyProduct(item)}
+                  loading={loadingItem === item.id}
+                />
+              ))}
             </div>
           </div>
         </div>
+
+        {/* ── MY GRIND – Purchased Products ── */}
+        {purchases.length > 0 && (
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="mt-16"
+          >
+            <div className="flex items-center gap-3 mb-6">
+              <div className="h-px flex-1" style={{ background: `linear-gradient(90deg, ${NEON_GREEN}, transparent)` }} />
+              <span className="font-cyber text-xs tracking-[0.25em]" style={{ color: NEON_GREEN }}>🏆 MY GRIND – MEINE KÄUFE</span>
+              <div className="h-px flex-1" style={{ background: `linear-gradient(270deg, ${NEON_GREEN}, transparent)` }} />
+            </div>
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3">
+              {purchases.map((p) => (
+                <motion.div
+                  key={p.productId}
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  className="relative rounded-xl overflow-hidden flex flex-col items-center gap-2 p-4 text-center"
+                  style={{
+                    background: `linear-gradient(135deg, ${NEON_GREEN}15 0%, rgba(6,8,15,0.95) 100%)`,
+                    border: `1.5px solid ${NEON_GREEN}50`,
+                    boxShadow: `0 0 20px ${NEON_GREEN}15`,
+                    backdropFilter: 'blur(14px)',
+                  }}
+                >
+                  <div className="absolute top-2 right-2">
+                    <span className="font-cyber text-[8px] tracking-widest px-1.5 py-0.5 rounded"
+                      style={{ background: NEON_GREEN, color: '#000', fontWeight: 800 }}>✓ OWNED</span>
+                  </div>
+                  <span className="text-3xl mt-2">{p.icon}</span>
+                  <h4 className="font-cyber text-[10px] font-bold leading-tight" style={{ color: NEON_GREEN }}>{p.name}</h4>
+                  <span className="font-cyber text-xs font-black" style={{ color: GOLD }}>{p.price}</span>
+                  <a
+                    href={`/.netlify/functions/create-checkout-session?download=${p.productId}`}
+                    onClick={(e) => e.preventDefault()}
+                    className="w-full py-1.5 rounded-lg font-cyber text-[9px] tracking-widest font-black"
+                    style={{
+                      background: `linear-gradient(90deg, ${NEON_GREEN}, #22cc08)`,
+                      color: '#000',
+                      textDecoration: 'none',
+                      display: 'block',
+                    }}
+                  >
+                    ⬇ DOWNLOAD
+                  </a>
+                  <span className="font-cyber text-[8px] text-white/30">
+                    {new Date(p.purchasedAt).toLocaleDateString('de-DE')}
+                  </span>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
+        )}
 
         {/* ── Bottom CTA ── */}
         <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
