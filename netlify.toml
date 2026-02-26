@@ -37,6 +37,16 @@
   status = 200
 
 [[redirects]]
+  from = "/api/coins/balance"
+  to = "/.netlify/functions/coins-balance"
+  status = 200
+
+[[redirects]]
+  from = "/api/coins/daily-bonus"
+  to = "/.netlify/functions/coins-daily-bonus"
+  status = 200
+
+[[redirects]]
   from = "/api/debug/youtube"
   to = "/.netlify/functions/debug-youtube"
   status = 200
