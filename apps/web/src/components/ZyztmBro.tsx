@@ -47,6 +47,33 @@ const OFFLINE_RESPONSES: Record<Mood, string[]> = {
   ],
 };
 
+const STRATEGY_RESPONSES: Record<Mood, Record<string, string>> = {
+  chill: {
+    drop: 'Ich drope am liebsten Tilted oder The Rig, da geht die Action sofort los 🪂 Aber entspannt, kein Stress beim Landen!',
+    rotation: 'Safe rotieren, innen in der Zone bleiben – erst Top 10, dann W-Key-Modus an 😎',
+    build: 'Ich bau nur wenn ich muss – lieber W-Key und Überraschungsangriff als 10 Minuten Box bauen, chill halt 🏗️',
+    loadout: 'AR + SMG + Pump ist mein Go-To, dazu Heals und fertig ist der Grind-Loadout 🛡️',
+    grind: 'Täglich 3-5 Stunden ist mein Ding – nicht zu stressig, aber konstant. Kein Grind = kein Glow-Up 💯',
+    zone: 'Niemals am Rand der Zone chillen Bro – zu riskant! Immer leicht drin bleiben und relaxed rotieren 🌀',
+  },
+  tryhard: {
+    drop: 'TILTED TOWERS ODER BUST!! 🪂🔥 Ich will SOFORT Kills, keine Zeit für sichere Drops!! VOLLE AGGRESSION AB SEKUNDE 1!',
+    rotation: 'ZONE INNEN HALTEN – DANN TOP 10 ANKOMMEN UND ALLES NIEDERREISSEN!! VOLLE AGGRESSION!! 🔥',
+    build: 'BUILDEN IST FÜR ANFÄNGER!! W-KEY PUSHEN, EDITIEREN, PEEKEN, KILLEN – DAS IST DER GRIND!! 🏗️🔥',
+    loadout: 'AR + SMG + PUMP + HEALS = HEILIGE DREIFALTIGKEIT!! KEIN HEAL = KEIN WIN!! IMMER VOLL AUSGERÜSTET!! 🛡️⚡',
+    grind: 'MINIMUM 5 STUNDEN TÄGLICH!! KEINE PAUSE BIS VICTORY ROYALE!! KEIN GRIND = KEIN GLOW-UP – PUNKT!! 🔥🔥🔥',
+    zone: 'IMMER INNEN IN DER ZONE!! AM RAND STERBEN IST CRINGE!! PUSH PUSH PUSH!! 💀',
+  },
+  lustig: {
+    drop: 'Ich drop Tilted weil ich zu faul bin für sichere Drops und eigentlich will ich einfach sofort sterben damit ich wieder was essen kann 😂🪂',
+    rotation: 'Ich rotiere innen in der Zone und bete dass niemand mich sieht 😂 Meistens sehen sie mich trotzdem 💀',
+    build: 'Ich bau gar nicht weil ich die Buttons nicht finde hahahaha jk jk – W-Key ist mein einziger Skill 😂🏗️',
+    loadout: 'Ich nehme immer alles was auf dem Boden liegt und wundere mich dann warum ich verliere lmaooo 😭🛡️',
+    grind: 'Ich grinde täglich aber hauptsächlich grinde ich Niederlagen – ich bin der Content-Creator der verliert damit ihr euch besser fühlt 😂🔥',
+    zone: 'Zone? Was ist Zone? Ich lauf einfach geradeaus bis ich entweder win oder sterbe – meistens sterbe ich 😂💀',
+  },
+};
+
 function getMoodResponse(input: string, mood: Mood): string {
   const lower = input.toLowerCase();
   if (lower.includes('preis') || lower.includes('kaufen') || lower.includes('shop')) {
@@ -59,10 +86,28 @@ function getMoodResponse(input: string, mood: Mood): string {
     if (mood === 'lustig') return 'Kick.com/zyztm – da streame ich täglich und verliere stylisch 😂 Komm vorbei!';
     return 'Ich stream auf Kick! 🟢 kick.com/zyztm – täglich ab 10 Uhr, chill vorbei kommen!';
   }
-  if (lower.includes('fortnite') || lower.includes('game') || lower.includes('tipp')) {
-    if (mood === 'tryhard') return 'FORTNITE TIPPS: 1. IMMER BUILDEN. 2. IMMER PEEKEN. 3. NIEMALS AUFGEBEN. VICTORY ROYALE! 🏆';
-    if (mood === 'lustig') return 'Mein bester Fortnite-Tipp: Log aus und geh schlafen 😂 Nein seriously – High Ground nehmen!';
-    return 'Fortnite-Tipp vom Bro: High Ground ist King, aber manchmal muss man auch Low Ground spielen für die Überraschung 😎';
+  if (lower.includes('drop') || lower.includes('landen') || lower.includes('drop spot') || lower.includes('wo landen')) {
+    return STRATEGY_RESPONSES[mood].drop;
+  }
+  if (lower.includes('rotation') || lower.includes('rotier') || lower.includes('zone rotier')) {
+    return STRATEGY_RESPONSES[mood].rotation;
+  }
+  if (lower.includes('zone') || lower.includes('storm') || lower.includes('ring')) {
+    return STRATEGY_RESPONSES[mood].zone;
+  }
+  if (lower.includes('build') || lower.includes('bau') || lower.includes('editier') || lower.includes('edit')) {
+    return STRATEGY_RESPONSES[mood].build;
+  }
+  if (lower.includes('loadout') || lower.includes('waffe') || lower.includes('weapon') || lower.includes('gun') || lower.includes('loot')) {
+    return STRATEGY_RESPONSES[mood].loadout;
+  }
+  if (lower.includes('grind') || lower.includes('üben') || lower.includes('besser werden') || lower.includes('tipps') || lower.includes('tipp') || lower.includes('improve')) {
+    return STRATEGY_RESPONSES[mood].grind;
+  }
+  if (lower.includes('fortnite') || lower.includes('game') || lower.includes('strateg') || lower.includes('win')) {
+    if (mood === 'tryhard') return 'FORTNITE GRIND-STRATEGIE: DROP TILTED, W-KEY ALLES, ZONE INNEN HALTEN, TOP 10 PUSHEN – VICTORY ROYALE! 🏆🔥';
+    if (mood === 'lustig') return 'Mein bester Fortnite-Tipp: Log aus und geh schlafen 😂 Nein seriously – Drop Tilted, W-Key, Heals dabei und beten!';
+    return 'Fortnite-Strategie vom Bro: Drop Tilted für Action, Zone innen halten, Top 10 abwarten, dann W-Key alles! Und Heals nie vergessen 🛡️😎';
   }
   if (lower.includes('discord')) {
     return mood === 'tryhard'
