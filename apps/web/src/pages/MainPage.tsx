@@ -13,6 +13,7 @@ import GamerVoting from '../components/GamerVoting';
 import Footer from '../components/Footer';
 import ParticleField from '../components/ParticleField';
 import ThumbnailSnake from '../components/ThumbnailSnake';
+import FortniteDanceCanvas from '../components/FortniteDanceCanvas';
 import Intro from '../components/Intro';
 import LaptopMockup from '../components/LaptopMockup';
 import { Toast, useToastController } from '../components/Toast';
@@ -52,6 +53,7 @@ export default function MainPage() {
       <Intro />
       <ParticleField />
       <ThumbnailSnake />
+      <FortniteDanceCanvas />
       <div className="relative z-10">
         <LiveBar />
         <main className="pt-10">
