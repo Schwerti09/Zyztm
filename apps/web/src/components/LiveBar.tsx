@@ -3,6 +3,8 @@ import { motion } from 'framer-motion';
 import { Link } from 'wouter';
 import { useStore } from '../store/useStore';
 import { showToast } from './Toast';
+// REAL-TIME LIVE STATS 2026: Import live stats hook for real-time counters
+import { useLiveStats, formatGermanNumber } from '../hooks/useLiveStats';
 
 export default function LiveBar() {
   const [viewers, setViewers] = useState(3241);
@@ -11,6 +13,8 @@ export default function LiveBar() {
   const { coins, setCoins, userEmail, setUserEmail, musicEnabled, setMusicEnabled } = useStore();
   const [bonusClaimed, setBonusClaimed] = useState(false);
   const [bonusLoading, setBonusLoading] = useState(false);
+  // REAL-TIME LIVE STATS 2026: Live stats from SSE stream
+  const { stats, flash } = useLiveStats();
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -99,6 +103,18 @@ export default function LiveBar() {
           </motion.div>
           <span className="text-white/50">|</span>
           <span className="text-white/80">👁 {viewers.toLocaleString()} ZUSCHAUER</span>
+          {/* REAL-TIME LIVE STATS 2026: Live check counter in top bar */}
+          <span className="text-white/50 hidden lg:inline">|</span>
+          <motion.span
+            className="hidden lg:inline font-bold tracking-widest"
+            style={{
+              color: flash === 'green' ? '#00ff88' : '#00f2ff',
+              textShadow: flash === 'green' ? '0 0 12px #00ff88' : '0 0 8px #00f2ff',
+              transition: 'color 0.3s ease, text-shadow 0.3s ease',
+            }}
+          >
+            🔒 {formatGermanNumber(stats.totalChecks)} CHECKS
+          </motion.span>
         </div>
         <div className="hidden md:flex items-center gap-4">
           <span className="text-white/60">

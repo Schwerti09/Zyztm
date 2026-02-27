@@ -17,6 +17,9 @@ import voteRouter from './routes/vote';
 import clipsRouter from './routes/clips';
 import tiktokRouter from './routes/tiktok';
 import galleryRouter from './routes/gallery';
+// REAL-TIME LIVE STATS 2026: New routes for live statistics and check endpoint
+import liveStatsRouter from './routes/live-stats';
+import checkRouter from './routes/check';
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -50,6 +53,9 @@ app.use('/api/vote', voteRouter);
 app.use('/api/clips', clipsRouter);
 app.use('/api/tiktok', tiktokRouter);
 app.use('/api/gallery', galleryRouter);
+// REAL-TIME LIVE STATS 2026: Register live-stats SSE stream and check endpoints
+app.use('/api/live-stats', liveStatsRouter);
+app.use('/api/check', checkRouter);
 
 app.listen(PORT, () => {
   console.log(`🚀 Zyztm API running on port ${PORT}`);
