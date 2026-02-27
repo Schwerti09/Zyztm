@@ -11,6 +11,8 @@ const ImpressumPage = lazy(() => import('./pages/ImpressumPage'));
 const DatenschutzPage = lazy(() => import('./pages/DatenschutzPage'));
 const AGBPage = lazy(() => import('./pages/AGBPage'));
 const ZyztmIntro = lazy(() => import('./components/ZyztmIntro'));
+const GuidePage = lazy(() => import('./pages/GuidePage'));
+const HubPage = lazy(() => import('./pages/HubPage'));
 
 function PageLoader() {
   return (
@@ -38,6 +40,9 @@ export default function App() {
           <Route path="/impressum" component={ImpressumPage} />
           <Route path="/datenschutz" component={DatenschutzPage} />
           <Route path="/agb" component={AGBPage} />
+          {/* Guide / Runbook routes (language-prefixed for SEO) */}
+          <Route path="/de/guide/:slug" component={GuidePage} />
+          <Route path="/de/guides/:category" component={HubPage} />
         </Switch>
       </Suspense>
     </>
