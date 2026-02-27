@@ -24,7 +24,6 @@ const ZyztmLiveMap = lazy(() => import('../components/ZyztmLiveMap'));
 const HotRightNow = lazy(() => import('../components/HotRightNow'));
 const FortniteNewsSection = lazy(() => import('../components/FortniteNewsSection'));
 const UpcomingEvents = lazy(() => import('../components/UpcomingEvents'));
-const BattlePassProgress = lazy(() => import('../components/BattlePassProgress'));
 const FortniteItemShop = lazy(() => import('../components/FortniteItemShop'));
 const FortniteArcade = lazy(() => import('../components/FortniteArcade'));
 const LatestNews = lazy(() => import('../components/LatestNews'));
@@ -74,7 +73,6 @@ export default function MainPage() {
             <FortniteNewsSection />
             <LatestNews />
             <UpcomingEvents />
-            <BattlePassProgress />
             <FortniteItemShop />
             <FortniteArcade />
             <StreamCalendar />
