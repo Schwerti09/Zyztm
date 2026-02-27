@@ -125,6 +125,11 @@
   status = 200
 
 [[redirects]]
+  from = "/api/db-init"
+  to = "/.netlify/functions/db-init"
+  status = 200
+
+[[redirects]]
   from = "/api/tiktok/latest"
   to = "/.netlify/functions/tiktok-latest"
   status = 200
