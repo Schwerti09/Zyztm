@@ -473,7 +473,7 @@ export default function FortniteItemShop() {
                 <span className="font-cyber font-bold text-white">5–10%</span> gehen <span style={{ color: GOLD }}>direkt an Zyztm</span>!
               </p>
               <motion.a
-                href={`https://www.epicgames.com/fortnite/en-US/creative/support-a-creator?creator=${CREATOR_CODE}`}
+                href="https://www.fortnite.com/item-shop?lang=de"
                 target="_blank"
                 rel="noopener noreferrer"
                 whileHover={{ scale: 1.04, boxShadow: `0 0 50px ${NEON_GREEN}55` }}
@@ -533,7 +533,7 @@ export default function FortniteItemShop() {
                 CODE <span style={{ color: NEON_GREEN, fontWeight: 900, fontSize: 14 }}>{CREATOR_CODE}</span> NICHT VERGESSEN!
               </p>
               <motion.a
-                href="https://www.epicgames.com/fortnite/en-US/shop"
+                href="https://www.fortnite.com/item-shop?lang=de"
                 target="_blank"
                 rel="noopener noreferrer"
                 whileHover={{ scale: 1.04, boxShadow: `0 0 40px ${GOLD}45` }}
