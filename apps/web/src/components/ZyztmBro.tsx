@@ -127,6 +127,7 @@ export default function ZyztmBro() {
   const bottomRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    if (chatMessages.length === 0) return;
     bottomRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [chatMessages]);
 
