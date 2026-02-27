@@ -9,6 +9,7 @@ const CoinsPage = lazy(() => import('./pages/CoinsPage'));
 const ImpressumPage = lazy(() => import('./pages/ImpressumPage'));
 const DatenschutzPage = lazy(() => import('./pages/DatenschutzPage'));
 const AGBPage = lazy(() => import('./pages/AGBPage'));
+const ZyztmIntro = lazy(() => import('./components/ZyztmIntro'));
 
 function PageLoader() {
   return (
@@ -20,19 +21,24 @@ function PageLoader() {
 
 export default function App() {
   return (
-    <Suspense fallback={<PageLoader />}>
-      <Switch>
-        <Route path="/admin/:rest*" component={AdminPage} />
-        <Route path="/admin" component={AdminPage} />
-        <Route path="/" component={MainPage} />
-        <Route path="/success" component={SuccessPage} />
-        <Route path="/dashboard" component={DashboardPage} />
-        <Route path="/coins" component={CoinsPage} />
-        <Route path="/impressum" component={ImpressumPage} />
-        <Route path="/datenschutz" component={DatenschutzPage} />
-        <Route path="/agb" component={AGBPage} />
-      </Switch>
-    </Suspense>
+    <>
+      <Suspense fallback={null}>
+        <ZyztmIntro />
+      </Suspense>
+      <Suspense fallback={<PageLoader />}>
+        <Switch>
+          <Route path="/admin/:rest*" component={AdminPage} />
+          <Route path="/admin" component={AdminPage} />
+          <Route path="/" component={MainPage} />
+          <Route path="/success" component={SuccessPage} />
+          <Route path="/dashboard" component={DashboardPage} />
+          <Route path="/coins" component={CoinsPage} />
+          <Route path="/impressum" component={ImpressumPage} />
+          <Route path="/datenschutz" component={DatenschutzPage} />
+          <Route path="/agb" component={AGBPage} />
+        </Switch>
+      </Suspense>
+    </>
   );
 }
 

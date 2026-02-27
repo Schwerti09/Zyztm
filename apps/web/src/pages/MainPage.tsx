@@ -15,7 +15,6 @@ const GamerVoting = lazy(() => import('../components/GamerVoting'));
 const Footer = lazy(() => import('../components/Footer'));
 const ParticleField = lazy(() => import('../components/ParticleField'));
 const ThumbnailSnake = lazy(() => import('../components/ThumbnailSnake'));
-const Intro = lazy(() => import('../components/Intro'));
 const LaptopMockup = lazy(() => import('../components/LaptopMockup'));
 const AboutZyztm = lazy(() => import('../components/AboutZyztm'));
 const StreamHighlights = lazy(() => import('../components/StreamHighlights'));
@@ -51,7 +50,6 @@ export default function MainPage() {
     <div className="min-h-screen bg-bg-dark relative">
       <Suspense fallback={<SectionLoader />}>
         <BackgroundMusic />
-        <Intro />
         <ParticleField />
         <ThumbnailSnake />
         <div className="relative z-10">
