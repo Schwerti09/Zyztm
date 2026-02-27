@@ -1,5 +1,6 @@
 import { lazy, Suspense } from 'react';
 import { Route, Switch } from 'wouter';
+import ScrollFix from './components/ScrollFix';
 import MainPage from './pages/MainPage';
 import SuccessPage from './pages/SuccessPage';
 import DashboardPage from './pages/DashboardPage';
@@ -22,6 +23,7 @@ function PageLoader() {
 export default function App() {
   return (
     <>
+      <ScrollFix />
       <Suspense fallback={null}>
         <ZyztmIntro />
       </Suspense>
