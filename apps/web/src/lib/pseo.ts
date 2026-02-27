@@ -107,7 +107,7 @@ export function generateHowToSchema(guide: GuideData, pageUrl: string): object {
       text: step.text,
       ...(step.image ? { image: { '@type': 'ImageObject', url: step.image } } : {}),
     })),
-    totalTime: `PT${guide.readingTimeMin * 2}M`,
+    totalTime: `PT${guide.readingTimeMin * 2}M`, // ×2: reading time + implementation/practice time
   };
 }
 
