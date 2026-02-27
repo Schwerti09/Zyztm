@@ -173,8 +173,6 @@ export default function ThumbnailSnake() {
           }
           // trigger glitch
           glitchTimers[i] = 30;
-          // open video
-          window.open(SNAKE_VIDEOS[i].url, '_blank', 'noopener,noreferrer');
           break;
         }
       }
