@@ -63,6 +63,15 @@ export const handler = async (event) => {
       body: JSON.stringify({ clip: result.rows[0], fallback: false }),
     };
   } catch (err) {
+    // Table does not exist yet – return fallback (PostgreSQL error code 42P01).
+    if (err.code === '42P01') {
+      console.warn('[clips-by-tag] clips table does not exist yet – returning fallback');
+      return {
+        statusCode: 200,
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ clip: null, fallback: true, message: 'Database not yet initialised' }),
+      };
+    }
     console.error('[clips-by-tag] Error:', err);
     return {
       statusCode: 500,

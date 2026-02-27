@@ -39,6 +39,15 @@ export const handler = async (event) => {
       body: JSON.stringify({ clips: result.rows }),
     };
   } catch (err) {
+    // Table does not exist yet – return empty list (PostgreSQL error code 42P01).
+    if (err.code === '42P01') {
+      console.warn('[tiktok-latest] clips table does not exist yet – returning empty list');
+      return {
+        statusCode: 200,
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ clips: [] }),
+      };
+    }
     console.error('[tiktok-latest] Error:', err);
     return {
       statusCode: 500,

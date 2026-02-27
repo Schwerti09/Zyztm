@@ -46,6 +46,16 @@ export const handler = async () => {
       body: JSON.stringify({ clips: rows }),
     };
   } catch (err) {
+    // Table does not exist yet – return empty list so the UI falls back to
+    // static highlights instead of crashing (PostgreSQL error code 42P01).
+    if (err.code === '42P01') {
+      console.warn('[gallery] clips table does not exist yet – returning empty list');
+      return {
+        statusCode: 200,
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ clips: [] }),
+      };
+    }
     console.error('[gallery] Error:', err);
     return {
       statusCode: 500,
