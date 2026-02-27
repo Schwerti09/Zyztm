@@ -87,7 +87,7 @@ export default function CreatorCode() {
           </div>
 
           <motion.a
-            href={`https://www.epicgames.com/fortnite/en-US/creative/support-a-creator?creator=${code}`}
+            href="https://www.fortnite.com/item-shop?lang=de"
             target="_blank"
             rel="noopener noreferrer"
             whileHover={{ scale: 1.04, boxShadow: '0 0 40px rgba(255,0,85,0.6)' }}
