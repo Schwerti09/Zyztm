@@ -2,6 +2,7 @@ import { lazy, Suspense, useEffect } from 'react';
 import { Toast, useToastController } from '../components/Toast';
 
 const LiveBar = lazy(() => import('../components/LiveBar'));
+const Navbar = lazy(() => import('../components/Navbar'));
 const HeroSection = lazy(() => import('../components/HeroSection'));
 const KickEmbed = lazy(() => import('../components/KickEmbed'));
 const CreatorCode = lazy(() => import('../components/CreatorCode'));
@@ -53,7 +54,8 @@ export default function MainPage() {
         <ThumbnailSnake />
         <div className="relative z-10">
           <LiveBar />
-          <main className="pt-10">
+          <Navbar />
+          <main className="pt-24">
             <Suspense fallback={<SectionLoader />}><FanCounter /></Suspense>
             <HeroSection />
             <AboutZyztm />
