@@ -89,14 +89,14 @@ export default function SuccessPage() {
     if (!verified || verified.type !== 'product' || !verified.productId) return;
     const productId = verified.productId;
     try {
-      const existing: PurchasedItem[] = JSON.parse(localStorage.getItem('zyztm_purchases') || '[]');
+      const existing: PurchasedItem[] = JSON.parse(localStorage.getItem('nexus_purchases') || '[]');
       const alreadyOwned = existing.some((p) => p.productId === productId);
       if (!alreadyOwned) {
         const updated: PurchasedItem[] = [
           ...existing,
           { productId, name: verified.name, icon: verified.emoji, price: verified.priceLabel ?? '', purchasedAt: new Date().toISOString() },
         ];
-        localStorage.setItem('zyztm_purchases', JSON.stringify(updated));
+        localStorage.setItem('nexus_purchases', JSON.stringify(updated));
       }
     } catch { /* noop */ }
 
@@ -199,7 +199,7 @@ export default function SuccessPage() {
             }}
           >
             <span className="text-5xl">💎</span>
-            <h2 className="font-cyber text-base font-black text-white">{verified.coinAmount} JOJOJO Coins</h2>
+            <h2 className="font-cyber text-base font-black text-white">{verified.coinAmount} NEXUS Coins</h2>
             <p className="font-cyber text-xs" style={{ color: GOLD }}>
               ✅ Coins wurden deinem Konto gutgeschrieben!
             </p>

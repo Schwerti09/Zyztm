@@ -55,8 +55,8 @@ export default function ImpressumPage() {
             <section>
               <h2 className="font-cyber text-lg font-bold mb-3" style={{ color: NEON_PINK }}>KONTAKT</h2>
               <p className="text-white/70 font-body leading-relaxed">
-                E-Mail: <a href="mailto:info@zyztm.de" className="text-neon-blue hover:text-white transition-colors">info@zyztm.de</a><br />
-                Soziale Medien: <a href="https://kick.com/zyztm" target="_blank" rel="noopener noreferrer" className="text-neon-blue hover:text-white transition-colors">kick.com/zyztm</a>
+                E-Mail: <a href="mailto:info@fortnitenexus.de" className="text-neon-blue hover:text-white transition-colors">info@fortnitenexus.de</a><br />
+                Soziale Medien: <a href="https://youtube.com/@FortniteNexusDE" target="_blank" rel="noopener noreferrer" className="text-neon-blue hover:text-white transition-colors">youtube.com/@FortniteNexusDE</a>
               </p>
             </section>
 
@@ -65,7 +65,7 @@ export default function ImpressumPage() {
             <section>
               <h2 className="font-cyber text-lg font-bold mb-3" style={{ color: NEON_BLUE }}>VERANTWORTLICH FÜR DEN INHALT NACH § 55 ABS. 2 RSTV</h2>
               <p className="text-white/70 font-body leading-relaxed">
-                Zyztm (Betreiber dieser Seite)<br />
+                Fortnite Nexus (Betreiber dieser Seite)<br />
                 [Anschrift wie oben]
               </p>
             </section>

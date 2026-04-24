@@ -43,7 +43,7 @@ export default function GuidePage() {
 
   if (!guide) return <NotFound />;
 
-  const pageUrl = `https://zyztm.com/de/guide/${guide.slug}`;
+  const pageUrl = `https://fortnitenexus.netlify.app/de/guide/${guide.slug}`;
 
   return (
     <div className="min-h-screen bg-bg-dark text-white">
@@ -225,7 +225,7 @@ export default function GuidePage() {
           <p className="text-xs font-body text-white/30">
             War dieser Guide hilfreich?{' '}
             <a
-              href={`https://discord.gg/zyztm`}
+              href={`https://discord.gg/fortnitenexus`}
               target="_blank"
               rel="noopener noreferrer"
               className="text-neon-blue hover:text-white transition-colors"

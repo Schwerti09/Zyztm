@@ -55,7 +55,7 @@ export default function DatenschutzPage() {
               <h2 className="font-cyber text-lg font-bold mb-3" style={{ color: NEON_PINK }}>2. DATENERHEBUNG AUF DIESER WEBSITE</h2>
               <h3 className="font-cyber text-sm font-bold mb-2 text-white/80">Wer ist verantwortlich für die Datenerhebung?</h3>
               <p className="text-white/70 font-body leading-relaxed text-sm mb-4">
-                Die Datenverarbeitung auf dieser Website erfolgt durch den Websitebetreiber (Zyztm Nexus).
+                Die Datenverarbeitung auf dieser Website erfolgt durch den Websitebetreiber (Fortnite Nexus).
                 Die Kontaktdaten findest du im Impressum.
               </p>
               <h3 className="font-cyber text-sm font-bold mb-2 text-white/80">Welche Daten werden erhoben?</h3>
@@ -126,7 +126,7 @@ export default function DatenschutzPage() {
                 <li>Widerspruch gegen die Verarbeitung (Art. 21 DSGVO)</li>
               </ul>
               <p className="text-white/70 font-body text-sm mt-3">
-                Anfragen bitte an: <a href="mailto:info@zyztm.de" className="text-neon-blue hover:text-white transition-colors">info@zyztm.de</a>
+                Anfragen bitte an: <a href="mailto:info@fortnitenexus.de" className="text-neon-blue hover:text-white transition-colors">info@fortnitenexus.de</a>
               </p>
             </section>
 
