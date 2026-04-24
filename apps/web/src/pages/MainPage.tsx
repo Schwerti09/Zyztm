@@ -17,7 +17,7 @@ const Footer = lazy(() => import('../components/Footer'));
 const ParticleField = lazy(() => import('../components/ParticleField'));
 const ThumbnailSnake = lazy(() => import('../components/ThumbnailSnake'));
 const LaptopMockup = lazy(() => import('../components/LaptopMockup'));
-const AboutZyztm = lazy(() => import('../components/AboutZyztm'));
+const AboutNexus = lazy(() => import('../components/AboutNexus'));
 const StreamHighlights = lazy(() => import('../components/StreamHighlights'));
 const CommunitySpotlight = lazy(() => import('../components/CommunitySpotlight'));
 const StreamCalendar = lazy(() => import('../components/StreamCalendar'));
@@ -28,6 +28,9 @@ const UpcomingEvents = lazy(() => import('../components/UpcomingEvents'));
 const FortniteItemShop = lazy(() => import('../components/FortniteItemShop'));
 const FortniteArcade = lazy(() => import('../components/FortniteArcade'));
 const LatestNews = lazy(() => import('../components/LatestNews'));
+const CreatorMarketplace = lazy(() => import('../components/CreatorMarketplace'));
+const SubscriptionPlans = lazy(() => import('../components/SubscriptionPlans'));
+const AffiliateSection = lazy(() => import('../components/AffiliateSection'));
 const GlobalEmpire = lazy(() => import('../components/GlobalEmpire'));
 const RundgangTour = lazy(() => import('../components/RundgangTour'));
 const SoundboardDemo = lazy(() => import('../components/SoundboardDemo'));
@@ -58,7 +61,10 @@ export default function MainPage() {
           <main className="pt-24">
             <Suspense fallback={<SectionLoader />}><FanCounter /></Suspense>
             <HeroSection />
-            <AboutZyztm />
+            <AboutNexus />
+            <CreatorMarketplace />
+            <SubscriptionPlans />
+            <AffiliateSection />
             <GlobalEmpire />
             <KickEmbed />
             <LaptopMockup />

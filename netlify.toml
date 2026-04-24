@@ -149,6 +149,63 @@
   to = "/.netlify/functions/tiktok-liked"
   status = 200
 
+# Fortnite Nexus - Creators API
+[[redirects]]
+  from = "/api/creators"
+  to = "/.netlify/functions/creators"
+  status = 200
+
+[[redirects]]
+  from = "/api/creators/:id"
+  to = "/.netlify/functions/creators"
+  status = 200
+
+[[redirects]]
+  from = "/api/creators/code/:code"
+  to = "/.netlify/functions/creators"
+  status = 200
+
+[[redirects]]
+  from = "/api/creators/leaderboard"
+  to = "/.netlify/functions/creators"
+  status = 200
+
+[[redirects]]
+  from = "/api/creators/select-creator"
+  to = "/.netlify/functions/creators"
+  status = 200
+
+[[redirects]]
+  from = "/api/creators/user-creator"
+  to = "/.netlify/functions/creators"
+  status = 200
+
+# Fortnite Nexus - Subscriptions API
+[[redirects]]
+  from = "/api/subscriptions/plans"
+  to = "/.netlify/functions/subscriptions"
+  status = 200
+
+[[redirects]]
+  from = "/api/subscriptions/status"
+  to = "/.netlify/functions/subscriptions"
+  status = 200
+
+[[redirects]]
+  from = "/api/subscriptions/create"
+  to = "/.netlify/functions/subscriptions"
+  status = 200
+
+[[redirects]]
+  from = "/api/subscriptions/cancel"
+  to = "/.netlify/functions/subscriptions"
+  status = 200
+
+[[redirects]]
+  from = "/api/subscriptions/webhook"
+  to = "/.netlify/functions/subscriptions-webhook"
+  status = 200
+
 # Fallback SPA route – must be last
 [[redirects]]
   from = "/*"

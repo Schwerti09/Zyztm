@@ -5,6 +5,7 @@ import { Link } from 'wouter';
 const NAV_LINKS = [
   { label: 'LIVE', href: '#highlights' },
   { label: 'SHOP', href: '#marketplace' },
+  { label: 'CREATORS', href: '#creators' },
   { label: 'NEWS', href: '#latest-news' },
   { label: 'GUIDES', href: '/de/guides/fortnite', isRoute: true },
   { label: 'COMMUNITY', href: '#community-spotlight' },
@@ -42,7 +43,7 @@ export default function Navbar() {
           <Link href="/">
             <a className="flex items-center gap-2 font-cyber font-bold tracking-widest text-base select-none">
               <span className="text-lg">🎮</span>
-              <span className="text-neon-pink neon-text-pink">ZYZTM</span>
+              <span className="text-neon-pink neon-text-pink">FORTNITE</span>
               <span className="text-white/80 hidden sm:inline">NEXUS</span>
             </a>
           </Link>
@@ -76,7 +77,7 @@ export default function Navbar() {
           {/* Desktop CTA */}
           <div className="hidden md:flex items-center gap-3">
             <a
-              href="https://discord.gg/zyztm"
+              href="https://discord.gg/fortnitenexus"
               target="_blank"
               rel="noopener noreferrer"
               className="px-4 py-1.5 text-xs font-cyber font-bold tracking-widest border border-neon-pink text-neon-pink bg-neon-pink/5 hover:bg-neon-pink/20 shadow-[0_0_10px_rgba(255,0,85,0.2)] hover:shadow-[0_0_20px_rgba(255,0,85,0.5)] transition-all duration-200"
@@ -145,7 +146,7 @@ export default function Navbar() {
               ))}
               <li className="pt-2">
                 <a
-                  href="https://discord.gg/zyztm"
+                  href="https://discord.gg/fortnitenexus"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="block px-3 py-2.5 text-sm font-cyber font-bold tracking-widest text-center text-neon-pink border border-neon-pink/40 bg-neon-pink/5"

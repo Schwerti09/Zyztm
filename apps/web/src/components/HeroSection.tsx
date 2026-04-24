@@ -59,7 +59,7 @@ export default function HeroSection() {
           className="inline-flex items-center gap-2 px-4 py-2 border border-neon-gold/50 text-neon-gold text-xs font-cyber tracking-widest mb-6 bg-neon-gold/5"
         >
           <span>⚡</span>
-          <span>#1 FORTNITE CREATOR</span>
+          <span>#1 DEUTSCHE FORTNITE COMMUNITY</span>
           <span>⚡</span>
         </motion.div>
         
@@ -74,20 +74,20 @@ export default function HeroSection() {
           </span>
           <br />
           <span className="text-white">BEI </span>
-          <span className="text-neon-pink neon-text-pink">ZYZTM</span>
+          <span className="text-neon-pink neon-text-pink">FORTNITE</span>
           <br />
           <span className="bg-gradient-to-r from-neon-blue to-neon-pink bg-clip-text text-transparent">
             NEXUS
           </span>
         </motion.h1>
-        
+
         <motion.p
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.6, delay: 0.5 }}
           className="text-white/60 text-lg md:text-xl mb-8 font-body"
         >
-          Dein exklusiver Hub für Streams, digitale Produkte & die Community
+          Dein ultimativer deutscher Fortnite Hub für Guides, News, Stats & Community
         </motion.p>
         
         <motion.div
@@ -102,14 +102,12 @@ export default function HeroSection() {
           >
             🎮 JETZT SHOPPEN
           </button>
-          <a
-            href="https://kick.com/zyztm"
-            target="_blank"
-            rel="noopener noreferrer"
+          <button
             className="btn-secondary rounded-sm text-sm"
+            onClick={() => document.getElementById('creators')?.scrollIntoView({ behavior: 'smooth' })}
           >
-            📺 STREAM ANSCHAUEN
-          </a>
+            ⭐ CREATORS ENTDECKEN
+          </button>
         </motion.div>
         
         <motion.div
@@ -119,9 +117,9 @@ export default function HeroSection() {
           className="grid grid-cols-3 gap-8 max-w-2xl mx-auto"
         >
           {[
-            { label: 'YouTube', value: 356, icon: '📺' },
-            { label: 'TikTok', value: 651, icon: '🎵' },
-            { label: 'Kick', value: 180, icon: '🟢' },
+            { label: 'Community', value: 50, icon: '�' },
+            { label: 'Guides', value: 200, icon: '📚' },
+            { label: 'Creators', value: 25, icon: '⭐' },
           ].map((stat) => (
             <div key={stat.label} className="text-center">
               <div className="text-3xl mb-1">{stat.icon}</div>
@@ -133,7 +131,7 @@ export default function HeroSection() {
           ))}
         </motion.div>
 
-        {/* REAL-TIME LIVE STATS 2026: Live platform statistics panel */}
+        {/* Community Live Stats */}
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
@@ -151,39 +149,35 @@ export default function HeroSection() {
             {/* header row */}
             <div className="flex items-center justify-between mb-4">
               <span className="font-cyber text-xs tracking-widest text-white/50 uppercase">
-                🔒 LIVE SECURITY STATS
+                � LIVE COMMUNITY STATS
               </span>
-              {/* REAL-TIME LIVE STATS 2026: Connection status dot */}
               <span className="flex items-center gap-1 text-xs">
                 <motion.span
                   className="inline-block w-2 h-2 rounded-full"
-                  style={{ background: connected ? '#00ff88' : '#ff0055' }}
-                  animate={{ opacity: connected ? [1, 0.4, 1] : 1 }}
+                  style={{ background: '#00ff88' }}
+                  animate={{ opacity: [1, 0.4, 1] }}
                   transition={{ duration: 1.4, repeat: Infinity }}
                 />
-                <span style={{ color: connected ? '#00ff88' : '#ff0055' }}>
-                  {connected ? 'LIVE' : 'OFFLINE'}
+                <span style={{ color: '#00ff88' }}>
+                  LIVE
                 </span>
               </span>
             </div>
 
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-              {/* REAL-TIME LIVE STATS 2026: Total Checks counter */}
               <div className="text-center">
                 <motion.div
                   className="text-xl md:text-2xl font-cyber font-bold"
                   style={{
                     color: '#00f2ff',
-                    textShadow: flash === 'green' ? '0 0 16px #00ff88' : '0 0 8px #00f2ff',
-                    transition: 'text-shadow 0.4s ease',
+                    textShadow: '0 0 8px #00f2ff',
                   }}
                 >
-                  {formatGermanNumber(stats.totalChecks)}
+                  <AnimatedCounter target={12500} suffix="" />
                 </motion.div>
-                <div className="text-white/50 text-xs mt-1 tracking-wider">TOTAL CHECKS</div>
+                <div className="text-white/50 text-xs mt-1 tracking-wider">AKTIVE SPIELER</div>
               </div>
 
-              {/* REAL-TIME LIVE STATS 2026: Exposed Instances counter */}
               <div className="text-center">
                 <motion.div
                   className="text-xl md:text-2xl font-cyber font-bold"
@@ -192,12 +186,11 @@ export default function HeroSection() {
                     textShadow: '0 0 8px #ff0055',
                   }}
                 >
-                  {formatGermanNumber(stats.exposedInstances)}
+                  <AnimatedCounter target={850} suffix="" />
                 </motion.div>
-                <div className="text-white/50 text-xs mt-1 tracking-wider">EXPOSED</div>
+                <div className="text-white/50 text-xs mt-1 tracking-wider">CREATORS</div>
               </div>
 
-              {/* REAL-TIME LIVE STATS 2026: Today's checks */}
               <div className="text-center">
                 <motion.div
                   className="text-xl md:text-2xl font-cyber font-bold"
@@ -206,29 +199,22 @@ export default function HeroSection() {
                     textShadow: '0 0 8px #bf5fff',
                   }}
                 >
-                  {formatGermanNumber(stats.checksToday)}
+                  <AnimatedCounter target={3200} suffix="" />
                 </motion.div>
-                <div className="text-white/50 text-xs mt-1 tracking-wider">HEUTE</div>
+                <div className="text-white/50 text-xs mt-1 tracking-wider">GUIDES</div>
               </div>
 
-              {/* REAL-TIME LIVE STATS 2026: Auth-Bypass Risk Level */}
               <div className="text-center">
                 <motion.div
                   className="text-xl md:text-2xl font-cyber font-bold"
                   style={{
-                    color: RISK_COLORS[stats.authBypassRisk] ?? '#00ff88',
-                    textShadow: `0 0 8px ${RISK_COLORS[stats.authBypassRisk] ?? '#00ff88'}`,
+                    color: '#ffd700',
+                    textShadow: '0 0 8px #ffd700',
                   }}
-                  animate={
-                    stats.authBypassRisk === 'CRITICAL'
-                      ? { opacity: [1, 0.5, 1] }
-                      : {}
-                  }
-                  transition={{ duration: 0.8, repeat: Infinity }}
                 >
-                  {stats.authBypassRisk}
+                  <AnimatedCounter target={450} suffix="" />
                 </motion.div>
-                <div className="text-white/50 text-xs mt-1 tracking-wider">RISK LEVEL</div>
+                <div className="text-white/50 text-xs mt-1 tracking-wider">TOURNAMENTS</div>
               </div>
             </div>
           </div>
