@@ -10,7 +10,7 @@ const CoinsPage = lazy(() => import('./pages/CoinsPage'));
 const ImpressumPage = lazy(() => import('./pages/ImpressumPage'));
 const DatenschutzPage = lazy(() => import('./pages/DatenschutzPage'));
 const AGBPage = lazy(() => import('./pages/AGBPage'));
-const ZyztmIntro = lazy(() => import('./components/ZyztmIntro'));
+const NexusIntro = lazy(() => import('./components/ZyztmIntro'));
 const GuidePage = lazy(() => import('./pages/GuidePage'));
 const HubPage = lazy(() => import('./pages/HubPage'));
 
@@ -27,7 +27,7 @@ export default function App() {
     <>
       <ScrollFix />
       <Suspense fallback={null}>
-        <ZyztmIntro />
+        <NexusIntro />
       </Suspense>
       <Suspense fallback={<PageLoader />}>
         <Switch>

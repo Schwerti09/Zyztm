@@ -1,5 +1,5 @@
 /**
- * Programmatic SEO (pSEO) utilities for Zyztm Nexus
+ * Programmatic SEO (pSEO) utilities for Fortnite Nexus
  * Generates structured data, meta tags, and content helpers for Guide pages
  * Implements HowTo + FAQPage + Speakable schema for Google AEO / 2026 algorithms
  */
@@ -97,7 +97,7 @@ export function generateHowToSchema(guide: GuideData, pageUrl: string): object {
     author: {
       '@type': 'Person',
       name: AUTHOR.name,
-      url: `https://zyztm.com/de/author`,
+      url: `https://fortnitenexus.netlify.app/de/author`,
     },
     mainEntityOfPage: { '@type': 'WebPage', '@id': pageUrl },
     step: guide.steps.map((step, i) => ({
@@ -188,8 +188,8 @@ export function buildAllSchemas(guide: GuideData, pageUrl: string): string {
     generateFAQSchema(guide.faqs),
     generateSpeakableSchema(['[data-speakable]', '.guide-direct-answer', 'h1']),
     generateBreadcrumbSchema([
-      { name: 'Home', url: 'https://zyztm.com/' },
-      { name: 'Guides', url: `https://zyztm.com/de/guides/${guide.category}` },
+      { name: 'Home', url: 'https://fortnitenexus.netlify.app/' },
+      { name: 'Guides', url: `https://fortnitenexus.netlify.app/de/guides/${guide.category}` },
       { name: guide.title, url: pageUrl },
     ]),
   ];
@@ -216,7 +216,7 @@ export interface MetaTags {
 
 export function generateMetaTags(guide: GuideData, pageUrl: string): MetaTags {
   return {
-    title: `${guide.title} | Zyztm Nexus`,
+    title: `${guide.title} | Fortnite Nexus`,
     description: guide.description,
     canonical: pageUrl,
     robots: 'index, follow',

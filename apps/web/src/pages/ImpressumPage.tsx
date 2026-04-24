@@ -43,7 +43,7 @@ export default function ImpressumPage() {
             <section>
               <h2 className="font-cyber text-lg font-bold mb-3" style={{ color: NEON_BLUE }}>ANGABEN GEMÄSS § 5 TMG</h2>
               <p className="text-white/70 font-body leading-relaxed">
-                Zyztm Nexus<br />
+                Fortnite Nexus<br />
                 [Straße und Hausnummer]<br />
                 [PLZ Ort]<br />
                 Deutschland

@@ -61,7 +61,7 @@ export interface Product {
 export const PRODUCTS: Product[] = [
   {
     id: 'vip',
-    name: "Zyztm's Loot Llama",
+    name: "Fortnite Nexus Loot Box",
     description: 'Monatliche Überraschungsbox mit exklusiven digitalen Goodies: Wallpaper, Clips & Emotes – automatisch per E-Mail!',
     price: 499,
     emoji: '🦙',
@@ -74,7 +74,7 @@ export const PRODUCTS: Product[] = [
   {
     id: 'voice_pack',
     name: 'Victory Royale Voice Pack',
-    description: '50 Sprach-Credits + exklusive Sieg-Sprüche von Zyztm – powered by ElevenLabs AI.',
+    description: '50 Sprach-Credits + exklusive Sieg-Sprüche von Top-Creators – powered by ElevenLabs AI.',
     price: 499,
     emoji: '🎤',
     priceLabel: '€4,99',
@@ -84,9 +84,9 @@ export const PRODUCTS: Product[] = [
     tag: 'voice',
   },
   {
-    id: 'zyztm_bro',
-    name: 'Zyztm Bro – Dein Gaming-Kumpel',
-    description: 'KI-Chatbot, der wie Zyztm labert: Fortnite-Tipps, Stream-Storys und mehr – powered by Gemini AI.',
+    id: 'nexus_ai',
+    name: 'Fortnite Nexus AI Assistant',
+    description: 'KI-Chatbot für Fortnite-Tipps, Meta-Analysen und Community-News – powered by Gemini AI.',
     price: 999,
     emoji: '🤖',
     priceLabel: '€9,99/Monat',
@@ -98,7 +98,7 @@ export const PRODUCTS: Product[] = [
   {
     id: 'card_booster',
     name: 'Clutch Moments Cards',
-    description: 'Booster-Pack mit 5 digitalen Sammelkarten aus deinen Lieblings-Stream-Momenten von Zyztm.',
+    description: 'Booster-Pack mit 5 digitalen Sammelkarten aus den besten Community-Momenten.',
     price: 199,
     emoji: '🃏',
     priceLabel: '€1,99',
@@ -109,8 +109,8 @@ export const PRODUCTS: Product[] = [
   },
   {
     id: 'soundboard',
-    name: 'Zyztm Soundboard Pro',
-    description: '50+ Zyztm-Sprüche als Hotkeys für Discord & Stream – sofort als Download verfügbar.',
+    name: 'Fortnite Nexus Soundboard',
+    description: '50+ Community-Sprüche als Hotkeys für Discord & Stream – sofort als Download verfügbar.',
     price: 499,
     emoji: '🔊',
     priceLabel: '€4,99',

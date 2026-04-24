@@ -45,7 +45,7 @@ export default function AGBPage() {
               <h2 className="font-cyber text-lg font-bold mb-3" style={{ color: NEON_BLUE }}>§ 1 GELTUNGSBEREICH</h2>
               <p className="text-white/70 font-body leading-relaxed text-sm">
                 Diese Allgemeinen Geschäftsbedingungen gelten für alle Käufe und Nutzungen des digitalen
-                Angebots auf Zyztm Nexus (nachfolgend „Plattform"). Mit dem Kauf eines Produkts oder der
+                Angebots auf Fortnite Nexus (nachfolgend „Plattform"). Mit dem Kauf eines Produkts oder der
                 Nutzung des Coin-Systems erklärst du dich mit diesen AGB einverstanden.
               </p>
             </section>
