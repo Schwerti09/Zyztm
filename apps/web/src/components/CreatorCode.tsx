@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 export default function CreatorCode() {
   const [copied, setCopied] = useState(false);
-  const code = 'JOJOJO';
+  const code = 'NEXUS';
 
   const handleCopy = async () => {
     try {

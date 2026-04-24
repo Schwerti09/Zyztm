@@ -66,12 +66,7 @@ export default function MainPage() {
             <SubscriptionPlans />
             <AffiliateSection />
             <GlobalEmpire />
-            <KickEmbed />
-            <LaptopMockup />
-            <CreatorCode />
             <SocialHub />
-            <ZyztmLiveMap />
-            <StreamHighlights />
             <Suspense fallback={<SectionLoader />}><ClutchReel /></Suspense>
             <ProductGrid />
             <SoundboardDemo />
@@ -82,12 +77,6 @@ export default function MainPage() {
             <LatestNews />
             <UpcomingEvents />
             <FortniteItemShop />
-            <FortniteArcade />
-            <StreamCalendar />
-            <MediaGallery />
-            <NeuralSynthesizer />
-            <ZyztmBro />
-            <GamerVoting />
           </main>
           <Footer />
         </div>

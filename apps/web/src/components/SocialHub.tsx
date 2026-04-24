@@ -5,24 +5,13 @@ const DISCORD_SERVER_ID = 'DEINE_DISCORD_SERVER_ID';
 
 const socialChannels: Channel[] = [
   {
-    id: 'kick',
-    name: 'KICK',
-    icon: '🟢',
-    url: 'https://kick.com/zyztm',
-    color: '#53fc18',
-    bgColor: 'linear-gradient(135deg, rgba(15,40,15,0.9) 0%, rgba(13,17,23,0.95) 100%)',
-    stats: '28,9K Follower',
-    live: true,
-    preview: { type: 'video', src: '/vids/kick-preview.mp4' },
-  },
-  {
     id: 'youtube',
     name: 'YOUTUBE',
     icon: '📺',
-    url: 'https://youtube.com/@Zyztm',
+    url: 'https://youtube.com/@FortniteNexusDE',
     color: '#ff0000',
     bgColor: 'linear-gradient(135deg, rgba(40,5,5,0.9) 0%, rgba(13,17,23,0.95) 100%)',
-    stats: '356K Abonnenten',
+    stats: 'Community',
     live: false,
     preview: { type: 'image', src: '/images/yt-fallback.jpg' },
   },
@@ -30,10 +19,10 @@ const socialChannels: Channel[] = [
     id: 'tiktok',
     name: 'TIKTOK',
     icon: '🎵',
-    url: 'https://tiktok.com/@zyztm',
+    url: 'https://tiktok.com/@fortnitenexus',
     color: '#ff0055',
     bgColor: 'linear-gradient(135deg, rgba(30,10,20,0.9) 0%, rgba(13,17,23,0.95) 100%)',
-    stats: '651K Follower',
+    stats: 'Community',
     live: false,
     preview: null,
   },
@@ -41,10 +30,10 @@ const socialChannels: Channel[] = [
     id: 'discord',
     name: 'DISCORD',
     icon: '💬',
-    url: 'https://discord.gg/zyztm',
+    url: 'https://discord.gg/fortnitenexus',
     color: '#5865f2',
     bgColor: 'linear-gradient(135deg, rgba(10,15,40,0.9) 0%, rgba(13,17,23,0.95) 100%)',
-    stats: 'Community',
+    stats: '50K+ Mitglieder',
     live: false,
     preview: null,
   },
@@ -52,21 +41,21 @@ const socialChannels: Channel[] = [
     id: 'instagram',
     name: 'INSTAGRAM',
     icon: '📸',
-    url: 'https://instagram.com/zyztm2.0',
+    url: 'https://instagram.com/fortnitenexus',
     color: '#e1306c',
-    bgColor: 'linear-gradient(135deg, rgba(40,5,20,0.9) 0%, rgba(13,17,23,0.95) 100%)',
-    stats: 'Folge mir!',
+    bgColor: 'linear-gradient(135deg, rgba(40,10,30,0.9) 0%, rgba(13,17,23,0.95) 100%)',
+    stats: 'Community',
     live: false,
     preview: null,
   },
   {
-    id: 'linktree',
-    name: 'LINKTREE',
-    icon: '🌐',
-    url: 'https://linktr.ee/zyztm',
-    color: '#43e55e',
-    bgColor: 'linear-gradient(135deg, rgba(10,35,15,0.9) 0%, rgba(13,17,23,0.95) 100%)',
-    stats: 'Alle Links',
+    id: 'twitter',
+    name: 'TWITTER/X',
+    icon: '🐦',
+    url: 'https://twitter.com/FortniteNexusDE',
+    color: '#1da1f2',
+    bgColor: 'linear-gradient(135deg, rgba(5,20,40,0.9) 0%, rgba(13,17,23,0.95) 100%)',
+    stats: 'Community',
     live: false,
     preview: null,
   },
@@ -116,7 +105,7 @@ export default function SocialHub() {
             />
           ) : (
             <a
-              href="https://discord.gg/zyztm"
+              href="https://discord.gg/fortnitenexus"
               target="_blank"
               rel="noopener noreferrer"
               className="cyber-card rounded-lg p-8 text-center no-underline flex flex-col items-center gap-4 max-w-sm w-full"

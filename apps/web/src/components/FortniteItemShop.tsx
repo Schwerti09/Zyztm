@@ -8,7 +8,7 @@ const PINK = '#FF2D78';       // fortnite pink
 const CYAN = '#00f2ff';
 
 /* ─── Constants ─── */
-const CREATOR_CODE = 'JOJOJO';
+const CREATOR_CODE = 'NEXUS';
 const PARTICLE_BURST_COUNT = 8;
 const PARTICLE_SPREAD_RADIUS = 30;
 
