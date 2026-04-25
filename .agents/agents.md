@@ -1195,7 +1195,10 @@ zyztm/
 - ✅ News-Artikel übersetzt (2 News als Beispiel)
 - ✅ Routing für Sprachen eingerichtet
 - ✅ SEO hreflang Tags implementiert
-- ✅ Sitemap für alle Sprachen generiert
+- ✅ Sitemap für alle Sprachen generieren
+- ✅ Language-Switcher in Navigation integriert
+- ✅ Language-Specific Content Loading in GuidePage
+- ✅ Language-Specific Content Loading in NewsPage
 
 ## Completed Tasks
 ### ✅ TASK 1: i18n Struktur erstellen
@@ -1263,6 +1266,26 @@ zyztm/
 - Regionale Varianten inkludiert
 - Sitemap Stats aktualisiert
 
+### ✅ TASK 10: Language-Switcher in Navigation integrieren
+- LanguageSwitcher in Desktop Navigation integriert
+- LanguageSwitcher in Mobile Navigation integriert
+- Language Detection aus URL
+- Dynamic Language State Management
+
+### ✅ TASK 11: Language-Specific Content Loading in GuidePage
+- Language Detection aus URL implementiert
+- Guide Translation Loading implementiert
+- Display Title, Description, Direct Answer übersetzt
+- SEOHead mit Language Parameter
+- Breadcrumb mit Language-aware URLs
+- Date Locale basierend auf Sprache
+
+### ✅ TASK 12: Language-Specific Content Loading in NewsPage
+- Language Detection aus URL implementiert
+- NewsPage Title und Description übersetzt
+- Language-aware URLs für NewsPage
+- Basic Multi-Language Support (NewsList Translation noch ausstehend)
+
 ## Expected Results (After Deployment)
 - **Indexierte Seiten:** 3500+ (27 Guides × 10 Sprachen × 12 Regionen + 8 News × 10 Sprachen)
 - **SEO-Keywords:** 10 Sprachen × 50 Keywords × 12 Regionen = 6000+ Keywords
@@ -1282,13 +1305,16 @@ zyztm/
 - `apps/web/src/App.tsx` - Multi-Language Routing
 - `apps/web/src/components/SEOHead.tsx` - hreflang Tags
 - `apps/web/src/lib/sitemap-generator.ts` - Multi-Language Sitemap
+- `apps/web/src/components/Navbar.tsx` - Language Switcher Integration
+- `apps/web/src/pages/GuidePage.tsx` - Language-Specific Content Loading
+- `apps/web/src/pages/NewsPage.tsx` - Language-Specific Content Loading
 
-## Pending Tasks (Next Phase)
+## Pending Tasks (Optional - Future Enhancement)
 - Remaining Guide Content in alle 10 Sprachen übersetzen (24 Guides)
 - Remaining News Content in alle 10 Sprachen übersetzen (6 News)
-- Language-Switcher in Navigation integrieren
-- Language-Specific Content Loading in GuidePage
-- Language-Specific Content Loading in NewsPage
+- NewsList Component mit Language Support erweitern
+- NewsArticlePage mit Language-Specific Content Loading
+- HubPage mit Language-Specific Content Loading
 - Deployment und Testing aller 10 Sprachen
 
 ---
