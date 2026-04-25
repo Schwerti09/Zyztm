@@ -6,7 +6,7 @@
  * ENHANCED: Geo-SEO integration for worldwide targeting
  */
 
-import { generateGeoSchema, type Region } from './geo-seo';
+import { generateGeoSchema, type Region, REGIONS } from './geo-seo';
 
 export type GuideCategory = 'fortnite' | 'hardware' | 'stream' | 'settings' | 'ranked';
 
@@ -318,14 +318,14 @@ export function generateGeoTargetedHowToSchema(guide: GuideData, region: Region)
   // Merge base schema with geo enhancements
   return {
     ...baseSchema,
-    ...geoSchema,
+    ...(geoSchema as any),
     // Add regional keywords to description
-    description: `${geoSchema.description} ${geoSchema.name}`,
+    description: `${(geoSchema as any).description} ${(geoSchema as any).name}`,
     // Add geo-specific audience targeting
-    audience: geoSchema.audience,
+    audience: (geoSchema as any).audience,
     // Add geo location data
-    geo: geoSchema.geo,
-    locationCreated: geoSchema.locationCreated,
+    geo: (geoSchema as any).geo,
+    locationCreated: (geoSchema as any).locationCreated,
   };
 }
 
@@ -333,7 +333,6 @@ export function generateGeoTargetedHowToSchema(guide: GuideData, region: Region)
  * Generate regional FAQ schema with local expert citations
  */
 export function generateRegionalFAQSchema(guide: GuideData, region: Region): object {
-  const { REGIONS } = require('./geo-seo');
   const regionData = REGIONS[region];
   
   return {
@@ -370,7 +369,6 @@ export function generateRegionalSitemapEntries(guide: GuideData): Array<{
   changeFrequency: string;
   priority: number;
 }> {
-  const { REGIONS } = require('./geo-seo');
   const entries = [];
   
   // Base entry
@@ -414,7 +412,6 @@ export function generateGeoMetaTags(guide: GuideData, region: Region): Array<{
   name: string;
   content: string;
 }> {
-  const { REGIONS } = require('./geo-seo');
   const regionData = REGIONS[region];
   
   return [
