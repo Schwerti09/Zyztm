@@ -41,9 +41,9 @@ export function generateCompleteSitemap(): SitemapEntry[] {
         });
 
         // Add regional variants for each language
-        REGIONS.forEach(region => {
+        Object.values(REGIONS).forEach(regionData => {
           entries.push({
-            url: `${BASE_URL}/${lang.code}/guide/${slug}?region=${region.code}`,
+            url: `${BASE_URL}/${lang.code}/guide/${slug}?region=${regionData.id}`,
             lastmod: guide.lastUpdated,
             changefreq: 'weekly',
             priority: 0.7,
@@ -62,16 +62,6 @@ export function generateCompleteSitemap(): SitemapEntry[] {
         changefreq: 'daily',
         priority: 0.7,
       });
-
-      // Language-specific variant (if different from English)
-      if (regionData.primaryLanguage !== 'English') {
-        entries.push({
-          url: `https://fortnitenexus.netlify.app/de/guide/${guide.slug}?region=${region}&lang=${regionData.primaryLanguage.toLowerCase()}`,
-          lastModified: guide.lastUpdated,
-          changeFrequency: 'weekly',
-          priority: 0.6,
-        });
-      }
     });
   });
 
@@ -88,8 +78,8 @@ export function generateSitemapXML(): string {
     return `
   <url>
     <loc>${entry.url}</loc>
-    <lastmod>${entry.lastModified}</lastmod>
-    <changefreq>${entry.changeFrequency}</changefreq>
+    <lastmod>${entry.lastmod}</lastmod>
+    <changefreq>${entry.changefreq}</changefreq>
     <priority>${entry.priority}</priority>
   </url>`;
   });
@@ -104,7 +94,6 @@ ${xmlEntries.join('')}
  * Generate sitemap index for multiple sitemaps (if needed)
  */
 export function generateSitemapIndexXML(): string {
-  const regions = Object.keys(REGIONS);
   const sitemaps = [];
 
   // Main sitemap
@@ -142,6 +131,6 @@ export function getSitemapStats() {
     news: newsEntries.length,
     regional: regionalEntries.length,
     languages: LANGUAGES.length,
-    regions: REGIONS.length,
+    regions: Object.keys(REGIONS).length,
   };
 }
