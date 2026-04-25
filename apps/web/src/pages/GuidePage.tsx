@@ -65,7 +65,13 @@ export default function GuidePage() {
 
   if (!guide) return <NotFound />;
 
-  const pageUrl = `https://fortnitenexus.netlify.app/de/guide/${guide.slug}${params.region ? `?region=${params.region}` : ''}`;
+  // Get translated content for current language
+  const translation = getGuideTranslation(guide.slug, currentLanguage);
+  const displayTitle = translation?.title || guide.title;
+  const displayDescription = translation?.description || guide.description;
+  const displayDirectAnswer = translation?.directAnswer || guide.directAnswer;
+
+  const pageUrl = `https://fortnitenexus.netlify.app/${currentLanguage}/guide/${guide.slug}${params.region ? `?region=${params.region}` : ''}`;
 
   return (
     <div className="min-h-screen bg-bg-dark text-white">
