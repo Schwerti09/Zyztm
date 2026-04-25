@@ -2,8 +2,8 @@ import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence, useMotionValue, useSpring } from 'framer-motion';
 import { useLocation } from 'wouter';
 import { useStore } from '../store/useStore';
-import { ALL_CARDS } from '@shared-types';
-import type { Card } from '@shared-types';
+import { ALL_CARDS } from '@zyztm/shared-types';
+import type { Card } from '@zyztm/shared-types';
 
 /* ─── Rarity config ───────────────────────────────────────────────────────── */
 const rarityColors: Record<string, string> = {

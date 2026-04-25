@@ -1,5 +1,5 @@
 import { create } from 'zustand';
-import type { Card, ChatMessage } from '@shared-types';
+import type { Card, ChatMessage } from '@zyztm/shared-types';
 
 interface AppStore {
   userId: string;
