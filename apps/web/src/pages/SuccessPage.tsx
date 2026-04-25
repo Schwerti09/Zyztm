@@ -3,17 +3,17 @@ import { motion } from 'framer-motion';
 import { useLocation } from 'wouter';
 
 const PRODUCT_INFO: Record<string, { name: string; icon: string; price: string }> = {
-  soundboard_pro: { name: 'Zyztm Soundboard Pro', icon: '🎛️', price: '€19.99' },
+  soundboard_pro: { name: 'Fortnite Nexus Soundboard Pro', icon: '🎛️', price: '€19.99' },
   preset_pack: { name: 'Pro Preset Pack', icon: '🎨', price: '€14.99' },
   ai_skin_generator: { name: 'AI Skin & Thumbnail Generator', icon: '🤖', price: '€24.99' },
   vod_highlight_pack: { name: 'Exclusive VOD + Highlight Pack', icon: '🎬', price: '€29.99' },
   loadout_guide: { name: 'Custom Loadout Guide + Crosshair Pack', icon: '🎯', price: '€9.99' },
   // stripe-create-checkout.js products
-  vip: { name: "Zyztm's Loot Llama", icon: '🦙', price: '€4,99/Monat' },
+  vip: { name: "Nexus Loot Llama", icon: '🦙', price: '€4,99/Monat' },
   voice_pack: { name: 'Victory Royale Voice Pack', icon: '🎤', price: '€4,99' },
-  zyztm_bro: { name: 'Zyztm Bro – Dein Gaming-Kumpel', icon: '🤖', price: '€9,99/Monat' },
+  nexus_bro: { name: 'Nexus Bro – Dein Gaming-Kumpel', icon: '🤖', price: '€9,99/Monat' },
   card_booster: { name: 'Clutch Moments Cards', icon: '🃏', price: '€1,99' },
-  soundboard: { name: 'Zyztm Soundboard Pro', icon: '🔊', price: '€4,99' },
+  soundboard: { name: 'Fortnite Nexus Soundboard Pro', icon: '🔊', price: '€4,99' },
 };
 
 const NEON_GREEN = '#39FF14';

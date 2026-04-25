@@ -244,7 +244,7 @@ export default function ZyztmBro() {
           {/* Channel name bar */}
           <div className="px-4 py-1.5 flex items-center gap-2 border-b border-white/5 bg-black/20">
             <span className="text-white/30 text-xs">#</span>
-            <span className="text-white/50 text-xs font-cyber tracking-wider">zyztm-bro-chat</span>
+            <span className="text-white/50 text-xs font-cyber tracking-wider">nexus-bro-chat</span>
             <span className="ml-auto text-xs px-2 py-0.5 rounded" style={{ background: `${currentMood.color}15`, color: currentMood.color }}>
               {MOOD_CONFIG[mood].label}-Modus
             </span>
@@ -286,7 +286,7 @@ export default function ZyztmBro() {
                   </div>
                   <div className={`max-w-xs lg:max-w-sm ${msg.role === 'user' ? 'items-end' : 'items-start'} flex flex-col gap-1`}>
                     <span className="text-white/40 text-xs font-cyber px-1">
-                      {msg.role === 'assistant' ? 'Zyztm Bro' : 'Du'}
+                      {msg.role === 'assistant' ? 'Nexus Bro' : 'Du'}
                     </span>
                     <div
                       className="px-4 py-2.5 rounded-lg text-sm leading-relaxed"
@@ -313,7 +313,7 @@ export default function ZyztmBro() {
                   🤖
                 </div>
                 <div className="flex flex-col gap-1">
-                  <span className="text-white/40 text-xs font-cyber px-1">Zyztm Bro</span>
+                  <span className="text-white/40 text-xs font-cyber px-1">Nexus Bro</span>
                   <div
                     className="px-4 py-2.5 rounded-lg flex items-center gap-1"
                     style={{ background: `${currentMood.color}12`, border: `1px solid ${currentMood.color}25` }}

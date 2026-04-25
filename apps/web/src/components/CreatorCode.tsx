@@ -59,7 +59,7 @@ export default function CreatorCode() {
           <p className="text-white/60 text-sm font-body mb-2">
             Gib meinen Code im Fortnite Item Shop ein und unterstütze mich direkt!{' '}
             <span className="font-cyber font-bold text-white">5–10%</span> gehen{' '}
-            <span className="text-neon-pink font-cyber font-bold">direkt an Zyztm</span>!
+            <span className="text-neon-pink font-cyber font-bold">direkt an Fortnite Nexus</span>!
           </p>
 
           <div className="flex items-center justify-center gap-3 mb-5">
@@ -101,7 +101,7 @@ export default function CreatorCode() {
               textDecoration: 'none',
             }}
           >
-            🛒 JETZT KAUFEN & ZYZTM SUPPORTEN
+            🛒 JETZT KAUFEN & NEXUS SUPPORTEN
           </motion.a>
 
           {/* Bottom decoration */}

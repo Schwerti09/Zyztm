@@ -663,9 +663,9 @@ export default function DashboardPage() {
               <div className="flex flex-col gap-2">
                 {[
                   { label: 'COINS KAUFEN', icon: '💎', color: '#ffd700', href: '/coins' },
-                  { label: 'STREAM WATCH', icon: '📺', color: '#00f2ff', href: 'https://kick.com/zyztm' },
+                  { label: 'STREAM WATCH', icon: '📺', color: '#00f2ff', href: 'https://youtube.com/@FortniteNexusDE' },
                   { label: 'PACK ÖFFNEN', icon: '🃏', color: '#ff0055', action: openPack },
-                  { label: 'COMMUNITY', icon: '🌐', color: '#bf5fff', href: 'https://discord.gg/zyztm' },
+                  { label: 'COMMUNITY', icon: '🌐', color: '#bf5fff', href: 'https://discord.gg/fortnitenexus' },
                 ].map((btn) => (
                   <motion.button
                     key={btn.label}

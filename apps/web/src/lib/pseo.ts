@@ -63,7 +63,7 @@ export interface GuideData {
 
 export const AUTHOR = {
   name: 'Rolf Schwertfechter',
-  handle: '@Zyztm',
+  handle: '@FortniteNexusDE',
   title: 'Fortnite Pro-Streamer & Content Creator',
   bio: 'Rolf streamt seit 2020 täglich Fortnite auf Kick und YouTube. Mit über 5 Jahren Erfahrung in kompetitivem Fortnite und PC-Optimierung teilt er sein Wissen mit der Community. Über 10.000 Stunden Spielzeit, Unreal-Rang, und regelmäßige Tests mit Capture-Software und Frame-Counter.',
   experience: '5+ Jahre kompetitives Fortnite · 10.000+ Stunden Spielzeit · Unreal-Rang',
@@ -75,10 +75,10 @@ export const AUTHOR = {
     'NVIDIA GeForce Game Ready Driver Changelogs',
   ],
   socials: {
-    kick: 'https://kick.com/zyztm',
-    youtube: 'https://www.youtube.com/@Zyztm',
-    tiktok: 'https://www.tiktok.com/@zyztm',
-    discord: 'https://discord.gg/zyztm',
+    kick: 'https://youtube.com/@FortniteNexusDE',
+    youtube: 'https://www.youtube.com/@FortniteNexusDE',
+    tiktok: 'https://www.tiktok.com/@fortnitenexus',
+    discord: 'https://discord.gg/fortnitenexus',
   },
 } as const;
 
@@ -155,9 +155,9 @@ export function generateArticleSchema(guide: GuideData, pageUrl: string): object
     },
     publisher: {
       '@type': 'Organization',
-      name: 'Zyztm Nexus',
-      url: 'https://zyztm.com',
-      logo: { '@type': 'ImageObject', url: 'https://zyztm.com/logo.png' },
+      name: 'Fortnite Nexus',
+      url: 'https://fortnitenexus.netlify.app',
+      logo: { '@type': 'ImageObject', url: 'https://fortnitenexus.netlify.app/logo.png' },
     },
     mainEntityOfPage: { '@type': 'WebPage', '@id': pageUrl },
     keywords: guide.keywords.join(', '),

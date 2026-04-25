@@ -230,12 +230,12 @@ export default function ZyztmLiveMap() {
           className="text-center mb-10"
         >
           <div className="inline-flex items-center gap-2 mb-3 px-4 py-1.5 rounded-full border border-neon-gold/30 bg-neon-gold/5">
-            <span className="text-neon-gold text-xs font-cyber tracking-widest">🗺️ ZYZTM UNIVERSE</span>
+            <span className="text-neon-gold text-xs font-cyber tracking-widest">🗺️ NEXUS UNIVERSE</span>
           </div>
           <h2 className="font-cyber text-4xl md:text-5xl font-bold text-white mb-4">
             LIVE <span className="text-neon-blue neon-text-blue">MAP</span>
           </h2>
-          <p className="text-white/50 text-sm">Interaktive Karte aller Zyztm-Plattformen – hover für Details, klick zum Besuchen</p>
+          <p className="text-white/50 text-sm">Interaktive Karte aller Fortnite Nexus-Plattformen – hover für Details, klick zum Besuchen</p>
         </motion.div>
 
         {/* Map container */}

@@ -304,7 +304,7 @@ export const GUIDES: GuideData[] = [
     slug: 'hardware-gaming-pc-budget-2026',
     title: 'Gaming PC Budget 2026 – Bester PC für Fortnite unter 800€',
     description:
-      'Der beste Gaming-PC für Fortnite 2026 unter 800 Euro: konkrete Komponenten-Liste, Preisvergleiche, Benchmarks und Upgrade-Pfad – getestet und zusammengestellt vom Zyztm-Team.',
+      'Der beste Gaming-PC für Fortnite 2026 unter 800 Euro: konkrete Komponenten-Liste, Preisvergleiche, Benchmarks und Upgrade-Pfad – getestet und zusammengestellt vom Fortnite Nexus-Team.',
     directAnswer:
       'Den besten Fortnite-PC unter 800 Euro baust du 2026 mit: Ryzen 5 7600, RX 7600 XT, 16 GB DDR5-5600, B650-Mainboard, 1 TB NVMe SSD – dieser Build liefert konstant 144+ FPS in Fortnite.',
     category: 'hardware',

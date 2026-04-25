@@ -85,7 +85,7 @@ export default function CoinsPage() {
               💎
             </motion.div>
             <h1 className="font-cyber text-4xl md:text-6xl font-bold text-white mb-4">
-              JOJOJO{' '}
+              NEXUS{' '}
               <span
                 className="glitch-text"
                 data-text="COINS"
@@ -108,10 +108,10 @@ export default function CoinsPage() {
             style={{ borderColor: `${NEON_GOLD}30` }}
           >
             <h2 className="font-cyber text-2xl font-bold text-white mb-4 flex items-center gap-3">
-              <span style={{ color: NEON_GOLD }}>💡</span> WAS SIND JOJOJO COINS?
+              <span style={{ color: NEON_GOLD }}>💡</span> WAS SIND NEXUS COINS?
             </h2>
             <p className="text-white/60 font-body leading-relaxed">
-              JOJOJO Coins sind die virtuelle Währung im Zyztm-Universum. Mit ihnen kannst du digitale Produkte
+              NEXUS Coins sind die virtuelle Währung im Nexus-Universum. Mit ihnen kannst du digitale Produkte
               kaufen, bei Features mitmachen und abstimmen – alles ohne echte Transaktionen für jeden einzelnen
               Klick. Sammle Coins täglich, kaufe Pakete oder gewinne sie bei Events!
             </p>

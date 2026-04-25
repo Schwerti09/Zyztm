@@ -50,14 +50,14 @@ interface PurchasedItem {
 
 const EXCL_ITEMS: ExclItem[] = [
   {
-    id: 'soundboard_pro', name: 'Zyztm Soundboard Pro', icon: '🎛️',
+    id: 'soundboard_pro', name: 'Fortnite Nexus Soundboard Pro', icon: '🎛️',
     price: '€19.99', badge: 'BEST SELLER', badgeColor: GOLD, color: GOLD,
     desc: '200+ Fortnite FX, custom sweaty sounds – sofort als Download verfügbar.', stars: 5,
   },
   {
     id: 'preset_pack', name: 'Pro Preset Pack', icon: '🎨',
     price: '€14.99', badge: 'HOT 🔥', badgeColor: PINK, color: PINK,
-    desc: "Zyztm's persönliche Color-Grading LUTs & Lightroom-Presets.", stars: 5,
+    desc: 'Persönliche Color-Grading LUTs & Lightroom-Presets.', stars: 5,
   },
   {
     id: 'ai_skin_generator', name: 'AI Skin & Thumbnail Generator', icon: '🤖',
@@ -67,7 +67,7 @@ const EXCL_ITEMS: ExclItem[] = [
   {
     id: 'vod_highlight_pack', name: 'Exclusive VOD + Highlight Pack', icon: '🎬',
     price: '€29.99', badge: 'LIMITED', badgeColor: PINK, color: PINK,
-    desc: 'Exklusive Stream-VODs & Highlight-Clips von Zyztm – nie veröffentlicht.', stars: 5,
+    desc: 'Exklusive Stream-VODs & Highlight-Clips – nie veröffentlicht.', stars: 5,
   },
   {
     id: 'loadout_guide', name: 'Custom Loadout Guide + Crosshair Pack', icon: '🎯',
@@ -384,7 +384,7 @@ export default function FortniteItemShop() {
   // Refresh purchases when user returns from Stripe (window regains focus)
   useEffect(() => {
     const sync = () => {
-      try { setPurchases(JSON.parse(localStorage.getItem('zyztm_purchases') || '[]')); } catch { /* noop */ }
+      try { setPurchases(JSON.parse(localStorage.getItem('nexus_purchases') || '[]')); } catch { /* noop */ }
     };
     window.addEventListener('focus', sync);
     return () => window.removeEventListener('focus', sync);
@@ -433,11 +433,11 @@ export default function FortniteItemShop() {
             🏆 DAILY ITEM SHOP
           </div>
           <h2 className="font-cyber text-4xl md:text-6xl font-black text-white mb-2 leading-tight">
-            ZYZTM{' '}
+            NEXUS{' '}
             <span style={{ color: GOLD, textShadow: `0 0 20px ${GOLD}, 0 0 50px ${GOLD}60` }}>FORTNITE</span>
-            {' '}NEXUS
+            {' '}SHOP
           </h2>
-          <p className="text-white/40 text-sm tracking-wide">Today's official drops + exclusive Zyztm digital products</p>
+          <p className="text-white/40 text-sm tracking-wide">Today's official drops + exclusive Fortnite Nexus digital products</p>
         </motion.div>
 
         {/* ── Creator Code Banner ── */}
@@ -470,7 +470,7 @@ export default function FortniteItemShop() {
             <div className="flex flex-col items-center gap-3 text-center md:text-right max-w-xs">
               <p className="text-white/60 text-sm leading-relaxed">
                 Gib Code <span className="font-cyber font-bold" style={{ color: NEON_GREEN }}>{CREATOR_CODE}</span> im Fortnite Item Shop ein →{' '}
-                <span className="font-cyber font-bold text-white">5–10%</span> gehen <span style={{ color: GOLD }}>direkt an Zyztm</span>!
+                <span className="font-cyber font-bold text-white">5–10%</span> gehen <span style={{ color: GOLD }}>direkt an Fortnite Nexus</span>!
               </p>
               <motion.a
                 href="https://www.fortnite.com/item-shop?lang=de"
@@ -487,7 +487,7 @@ export default function FortniteItemShop() {
                   display: 'inline-block',
                   textDecoration: 'none',
                 }}>
-                🛒 JETZT KAUFEN &amp; ZYZTM SUPPORTEN
+                🛒 JETZT KAUFEN &amp; NEXUS SUPPORTEN
               </motion.a>
             </div>
           </div>
@@ -558,7 +558,7 @@ export default function FortniteItemShop() {
             <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}
               className="flex items-center gap-3 mb-6">
               <div className="h-px flex-1" style={{ background: `linear-gradient(90deg, ${PINK}, transparent)` }} />
-              <span className="font-cyber text-xs tracking-[0.25em]" style={{ color: PINK }}>⚡ ZYZTM EXCLUSIVE DROPS</span>
+              <span className="font-cyber text-xs tracking-[0.25em]" style={{ color: PINK }}>⚡ NEXUS EXCLUSIVE DROPS</span>
               <div className="h-px flex-1" style={{ background: `linear-gradient(270deg, ${PINK}, transparent)` }} />
             </motion.div>
 
@@ -651,7 +651,7 @@ export default function FortniteItemShop() {
               🔥 MEHR DROPS ENTDECKEN →
             </motion.a>
             <p className="font-cyber text-[10px] text-white/20 tracking-widest">
-              VICTORY ROYALE ENERGY · CHAPTER 6 · ZYZTM NEXUS
+              VICTORY ROYALE ENERGY · CHAPTER 6 · FORTNITE NEXUS
             </p>
           </div>
         </motion.div>

@@ -9,7 +9,7 @@ interface Video {
   publishedAt: string;
 }
 
-const CHANNEL_URL = 'https://www.youtube.com/@Zyztm';
+const CHANNEL_URL = 'https://www.youtube.com/@FortniteNexusDE';
 const FALLBACK_THUMBNAIL = '/images/yt-fallback.jpg';
 const API_URL = '/.netlify/functions/get-youtube-videos';
 
