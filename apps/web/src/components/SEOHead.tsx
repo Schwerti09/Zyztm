@@ -1,18 +1,21 @@
 import { useEffect } from 'react';
 import type { GuideData } from '../lib/pseo';
 import { buildAllSchemas, generateMetaTags } from '../lib/pseo';
+import { LANGUAGES, type Language } from '../lib/i18n';
 
 interface SEOHeadProps {
   guide: GuideData;
   baseUrl?: string;
+  language?: Language;
 }
 
 /**
  * Injects dynamic meta tags and JSON-LD structured data for a guide page.
  * Works in Vite SPA by manipulating document.head directly.
+ * ENHANCED: Multi-language SEO with hreflang tags
  */
-export default function SEOHead({ guide, baseUrl = 'https://fortnitenexus.netlify.app' }: SEOHeadProps) {
-  const pageUrl = `${baseUrl}/de/guide/${guide.slug}`;
+export default function SEOHead({ guide, baseUrl = 'https://fortnitenexus.netlify.app', language = 'en' }: SEOHeadProps) {
+  const pageUrl = `${baseUrl}/${language}/guide/${guide.slug}`;
   const meta = generateMetaTags(guide, pageUrl);
 
   useEffect(() => {
@@ -40,6 +43,18 @@ export default function SEOHead({ guide, baseUrl = 'https://fortnitenexus.netlif
       el.setAttribute('href', href);
     };
 
+    // hreflang tags for multi-language SEO
+    const setHreflang = (hreflang: string, href: string) => {
+      let el = document.querySelector<HTMLLinkElement>(`link[rel="alternate"][hreflang="${hreflang}"]`);
+      if (!el) {
+        el = document.createElement('link');
+        el.setAttribute('rel', 'alternate');
+        el.setAttribute('hreflang', hreflang);
+        document.head.appendChild(el);
+      }
+      el.setAttribute('href', href);
+    };
+
     // Core meta
     setMeta('description', meta.description);
     setMeta('robots', meta.robots);
@@ -50,7 +65,7 @@ export default function SEOHead({ guide, baseUrl = 'https://fortnitenexus.netlif
     setMeta('og:description', meta.ogDescription, true);
     setMeta('og:url', meta.ogUrl, true);
     setMeta('og:type', 'article', true);
-    setMeta('og:locale', 'de_DE', true);
+    setMeta('og:locale', getLocaleCode(language), true);
     setMeta('og:site_name', 'Fortnite Nexus', true);
     setMeta('article:author', meta.articleAuthor, true);
     setMeta('article:modified_time', meta.articleModified, true);
@@ -64,6 +79,12 @@ export default function SEOHead({ guide, baseUrl = 'https://fortnitenexus.netlif
 
     // Canonical
     setLink('canonical', meta.canonical);
+
+    // hreflang tags for all languages
+    LANGUAGES.forEach(lang => {
+      setHreflang(lang.code, `${baseUrl}/${lang.code}/guide/${guide.slug}`);
+    });
+    setHreflang('x-default', `${baseUrl}/en/guide/${guide.slug}`);
 
     // JSON-LD structured data
     const schemaId = 'nexus-guide-schemas';
@@ -82,7 +103,26 @@ export default function SEOHead({ guide, baseUrl = 'https://fortnitenexus.netlif
       const schemaEl = document.getElementById(schemaId);
       if (schemaEl) schemaEl.remove();
     };
-  }, [guide, pageUrl, meta]);
+  }, [guide, pageUrl, meta, language, baseUrl]);
 
   return null;
+}
+
+/**
+ * Convert language code to locale code (e.g., 'en' -> 'en_US')
+ */
+function getLocaleCode(language: Language): string {
+  const localeMap: Record<Language, string> = {
+    en: 'en_US',
+    de: 'de_DE',
+    es: 'es_ES',
+    fr: 'fr_FR',
+    'pt-br': 'pt_BR',
+    it: 'it_IT',
+    ru: 'ru_RU',
+    pl: 'pl_PL',
+    tr: 'tr_TR',
+    ja: 'ja_JP',
+  };
+  return localeMap[language] || 'en_US';
 }

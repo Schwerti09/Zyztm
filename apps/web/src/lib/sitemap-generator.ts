@@ -1,63 +1,65 @@
 /**
  * Sitemap Generator for Fortnite Nexus
- * Generates sitemap with all regional variants for maximum SEO coverage
- * 
- * This creates 252+ URLs (12 regions × 21 guides) for complete indexing
+ * Generates sitemap XML including all regional and language variants
+ * ENHANCED: Multi-language support for 10 languages
  */
 
-import { GUIDES } from '../data/guides';
-import { REGIONS, type Region } from './geo-seo';
+import { GUIDES, getAllGuideSlugs } from '../data/guides';
+import { NEWS_ARTICLES } from '../data/news';
+import { REGIONS } from './geo-seo';
+import { LANGUAGES, type Language } from './i18n';
+
+const BASE_URL = 'https://fortnitenexus.netlify.app';
 
 export interface SitemapEntry {
   url: string;
-  lastModified: string;
-  changeFrequency: 'always' | 'hourly' | 'daily' | 'weekly' | 'monthly' | 'yearly' | 'never';
+  lastmod: string;
+  changefreq: 'always' | 'hourly' | 'daily' | 'weekly' | 'monthly' | 'yearly' | 'never';
   priority: number;
 }
 
 /**
- * Generate complete sitemap with all regional variants
+ * Generate complete sitemap with all guides, regions, and language variants
  */
 export function generateCompleteSitemap(): SitemapEntry[] {
   const entries: SitemapEntry[] = [];
 
   // Base pages
-  entries.push({
-    url: 'https://fortnitenexus.netlify.app/',
-    lastModified: new Date().toISOString(),
-    changeFrequency: 'daily',
-    priority: 1.0,
-  });
+  entries.push({ url: BASE_URL, lastmod: new Date().toISOString(), changefreq: 'daily', priority: 1.0 });
+  entries.push({ url: `${BASE_URL}/news`, lastmod: new Date().toISOString(), changefreq: 'daily', priority: 0.9 });
 
-  // Hub pages
-  entries.push({
-    url: 'https://fortnitenexus.netlify.app/de/guides/fortnite',
-    lastModified: new Date().toISOString(),
-    changeFrequency: 'daily',
-    priority: 0.9,
-  });
+  // Guide pages with all language variants
+  getAllGuideSlugs().forEach(slug => {
+    LANGUAGES.forEach(lang => {
+      const guide = GUIDES.find(g => g.slug === slug);
+      if (guide) {
+        entries.push({
+          url: `${BASE_URL}/${lang.code}/guide/${slug}`,
+          lastmod: guide.lastUpdated,
+          changefreq: 'weekly',
+          priority: 0.8,
+        });
 
-  // Base guide URLs
-  GUIDES.forEach((guide) => {
-    entries.push({
-      url: `https://fortnitenexus.netlify.app/de/guide/${guide.slug}`,
-      lastModified: guide.lastUpdated,
-      changeFrequency: 'weekly',
-      priority: 0.8,
+        // Add regional variants for each language
+        REGIONS.forEach(region => {
+          entries.push({
+            url: `${BASE_URL}/${lang.code}/guide/${slug}?region=${region.code}`,
+            lastmod: guide.lastUpdated,
+            changefreq: 'weekly',
+            priority: 0.7,
+          });
+        });
+      }
     });
   });
 
-  // Regional variants for each guide
-  GUIDES.forEach((guide) => {
-    Object.keys(REGIONS).forEach((regionKey) => {
-      const region = regionKey as Region;
-      const regionData = REGIONS[region];
-
-      // Regional variant URL
+  // News pages with all language variants
+  NEWS_ARTICLES.forEach(article => {
+    LANGUAGES.forEach(lang => {
       entries.push({
-        url: `https://fortnitenexus.netlify.app/de/guide/${guide.slug}?region=${region}`,
-        lastModified: guide.lastUpdated,
-        changeFrequency: 'weekly',
+        url: `${BASE_URL}/${lang.code}/news/${article.slug}`,
+        lastmod: article.publishedAt,
+        changefreq: 'daily',
         priority: 0.7,
       });
 
@@ -130,17 +132,16 @@ ${xmlEntries.join('')}
  */
 export function getSitemapStats() {
   const entries = generateCompleteSitemap();
-  const guides = GUIDES.length;
-  const regions = Object.keys(REGIONS).length;
-  const regionalVariants = guides * regions;
-  const totalUrls = entries.length;
+  const guideEntries = entries.filter(e => e.url.includes('/guide/'));
+  const newsEntries = entries.filter(e => e.url.includes('/news/'));
+  const regionalEntries = entries.filter(e => e.url.includes('?region='));
 
   return {
-    totalUrls,
-    guides,
-    regions,
-    regionalVariants,
-    baseUrls: guides + 2, // guides + home + hub
-    languageVariants: entries.filter((e) => e.url.includes('lang=')).length,
+    total: entries.length,
+    guides: guideEntries.length,
+    news: newsEntries.length,
+    regional: regionalEntries.length,
+    languages: LANGUAGES.length,
+    regions: REGIONS.length,
   };
 }
