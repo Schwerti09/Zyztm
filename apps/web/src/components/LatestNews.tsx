@@ -138,15 +138,15 @@ const EXTRA_NEWS: NewsItem[] = [
   },
   {
     id: 9,
-    tag: 'ZYZTM',
+    tag: 'NEXUS',
     tagColor: NEON_GREEN,
-    title: 'ZYZTM TURNIER – 5.000€ PRIZE POOL ANNOUNCED',
+    title: 'FORTNITE NEXUS TURNIER – 5.000€ PRIZE POOL ANNOUNCED',
     teaser:
-      'Das offizielle ZYZTM Fortnite Turnier ist bestätigt: 5.000€ Prize Pool, 64 Slots, Custom Lobbies. Anmeldung ab sofort über den offiziellen Discord. Format: Duo-Squads, Chapter 6 Ruleset, 3 Runden.',
+      'Das offizielle Fortnite Nexus Turnier ist bestätigt: 5.000€ Prize Pool, 64 Slots, Custom Lobbies. Anmeldung ab sofort über den offiziellen Discord. Format: Duo-Squads, Chapter 6 Ruleset, 3 Runden.',
     date: '25. Feb 2026',
     readTime: '5 min',
     icon: '🏆',
-    url: 'https://discord.gg/zyztm',
+    url: 'https://discord.gg/fortnitenexus',
     imgBg: `linear-gradient(135deg, ${NEON_GREEN}25 0%, #001100 60%, ${NEON_GREEN}08 100%)`,
     imgEmoji: '🏆',
   },
@@ -160,7 +160,7 @@ const HOT_ITEMS = [
   { text: 'New Anti-Cheat Requirements – Update Now!', icon: '🛡️', color: NEON_GREEN },
   { text: 'Love & Legends Event LIVE bis 14. Feb', icon: '💘', color: NEON_PINK },
   { text: 'Cowboy Bebop Collab – Spike & Faye im Item Shop', icon: '🚀', color: NEON_GOLD },
-  { text: 'ZYZTM Turnier 5.000€ Prize Pool – Jetzt anmelden!', icon: '🏆', color: NEON_GREEN },
+  { text: 'Fortnite Nexus Turnier 5.000€ Prize Pool – Jetzt anmelden!', icon: '🏆', color: NEON_GREEN },
   { text: 'Armored Train Heist – Neues Gameplay Feature', icon: '🚂', color: NEON_BLUE },
   { text: 'Crime City – Neue Map POI Details', icon: '🌆', color: NEON_PINK },
 ];

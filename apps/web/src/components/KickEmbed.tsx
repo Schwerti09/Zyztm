@@ -52,8 +52,8 @@ export default function KickEmbed() {
         >
           <div className="aspect-video">
             <iframe
-              src="https://player.kick.com/zyztm?autoplay=true&muted=1"
-              title="Zyztm auf Kick"
+              src="https://www.youtube.com/embed/live_stream?channel=UC_REPLACE_WITH_CHANNEL_ID"
+              title="Fortnite Nexus auf YouTube"
               allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media"
               allowFullScreen
               className="w-full h-full"
@@ -74,9 +74,9 @@ export default function KickEmbed() {
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 text-sm font-cyber tracking-widest py-2 px-6 rounded border transition-all duration-300 hover:scale-105"
-            style={{ color: '#53fc18', borderColor: '#53fc1850', background: '#53fc1810' }}
+            style={{ color: '#ff0000', borderColor: '#ff000050', background: '#ff000010' }}
           >
-            🟢 AUF KICK FOLGEN →
+            🟢 AUF YOUTUBE FOLGEN →
           </a>
         </motion.div>
       </div>
