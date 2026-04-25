@@ -2,7 +2,7 @@ import { useState, useEffect, useRef, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const BOOT_MESSAGES = [
-  'ZYZTM NEXUS OS v2.4.1 — INITIALISIERUNG...',
+  'FORTNITE NEXUS OS v2.4.1 — INITIALISIERUNG...',
   'KERNEL GELADEN ✓',
   'NEON-PROTOKOLL AKTIV ✓',
   'VERBINDUNG WIRD HERGESTELLT...',
@@ -132,7 +132,7 @@ export default function Intro() {
                 }}
                 transition={{ duration: 3, repeat: Infinity, times: [0, 0.4, 0.6, 1] }}
               >
-                ZYZTM NEXUS
+                FORTNITE NEXUS
               </motion.h1>
             </motion.div>
 
@@ -143,7 +143,7 @@ export default function Intro() {
               className="font-cyber text-xl md:text-3xl text-neon-blue mt-4"
               style={{ textShadow: '0 0 10px #00f2ff, 0 0 30px #00f2ff' }}
             >
-              CREATOR CODE: JOJOJO
+              CREATOR CODE: NEXUS
             </motion.p>
 
             {/* Boot messages */}
