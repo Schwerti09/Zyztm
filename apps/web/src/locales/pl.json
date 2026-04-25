@@ -1,0 +1,57 @@
+{
+  "nav": {
+    "home": "Strona główna",
+    "guides": "Poradniki",
+    "news": "Wiadomości",
+    "about": "O nas",
+    "contact": "Kontakt"
+  },
+  "common": {
+    "readMore": "Czytaj więcej",
+    "loading": "Ładowanie...",
+    "error": "Błąd",
+    "notFound": "Nie znaleziono",
+    "search": "Szukaj",
+    "filter": "Filtruj",
+    "all": "Wszystkie",
+    "category": "Kategoria",
+    "author": "Autor",
+    "date": "Data",
+    "views": "Wyświetlenia",
+    "featured": "Polecane",
+    "latest": "Najnowsze"
+  },
+  "guide": {
+    "readingTime": "Czas czytania",
+    "minutes": "minut",
+    "lastUpdated": "Ostatnia aktualizacja",
+    "relatedGuides": "Powiązane poradniki",
+    "steps": "Kroki",
+    "before": "Przed",
+    "after": "Po",
+    "faqs": "Często zadawane pytania",
+    "expertTip": "Wskazówka eksperta",
+    "hiddenInsight": "Ukryta perspektywa"
+  },
+  "news": {
+    "readArticle": "Czytaj artykuł",
+    "backToNews": "Powrót do wiadomości",
+    "shareArticle": "Udostępnij artykuł",
+    "relatedArticles": "Więcej artykułów"
+  },
+  "language": {
+    "switchLanguage": "Zmień język",
+    "autoDetect": "Automatyczne wykrywanie"
+  },
+  "errors": {
+    "404": {
+      "title": "Strona nie znaleziona",
+      "description": "Strona, której szukasz, nie istnieje.",
+      "backHome": "Powrót na stronę główną"
+    },
+    "500": {
+      "title": "Błąd serwera",
+      "description": "Coś poszło nie tak. Spróbuj ponownie później."
+    }
+  }
+}

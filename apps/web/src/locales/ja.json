@@ -1,0 +1,57 @@
+{
+  "nav": {
+    "home": "ホーム",
+    "guides": "ガイド",
+    "news": "ニュース",
+    "about": "私たちについて",
+    "contact": "お問い合わせ"
+  },
+  "common": {
+    "readMore": "もっと読む",
+    "loading": "読み込み中...",
+    "error": "エラー",
+    "notFound": "見つかりません",
+    "search": "検索",
+    "filter": "フィルター",
+    "all": "すべて",
+    "category": "カテゴリ",
+    "author": "著者",
+    "date": "日付",
+    "views": "閲覧数",
+    "featured": "注目",
+    "latest": "最新"
+  },
+  "guide": {
+    "readingTime": "読了時間",
+    "minutes": "分",
+    "lastUpdated": "最終更新",
+    "relatedGuides": "関連ガイド",
+    "steps": "手順",
+    "before": "前",
+    "after": "後",
+    "faqs": "よくある質問",
+    "expertTip": "専門家のヒント",
+    "hiddenInsight": "隠れた洞察"
+  },
+  "news": {
+    "readArticle": "記事を読む",
+    "backToNews": "ニュースに戻る",
+    "shareArticle": "記事をシェア",
+    "relatedArticles": "その他の記事"
+  },
+  "language": {
+    "switchLanguage": "言語を切り替え",
+    "autoDetect": "自動検出"
+  },
+  "errors": {
+    "404": {
+      "title": "ページが見つかりません",
+      "description": "お探しのページは存在しません。",
+      "backHome": "ホームに戻る"
+    },
+    "500": {
+      "title": "サーバーエラー",
+      "description": "エラーが発生しました。後でもう一度お試しください。"
+    }
+  }
+}

@@ -1,0 +1,57 @@
+{
+  "nav": {
+    "home": "Início",
+    "guides": "Guias",
+    "news": "Notícias",
+    "about": "Sobre",
+    "contact": "Contato"
+  },
+  "common": {
+    "readMore": "Ler mais",
+    "loading": "Carregando...",
+    "error": "Erro",
+    "notFound": "Não encontrado",
+    "search": "Buscar",
+    "filter": "Filtrar",
+    "all": "Todos",
+    "category": "Categoria",
+    "author": "Autor",
+    "date": "Data",
+    "views": "Visualizações",
+    "featured": "Destaque",
+    "latest": "Mais recente"
+  },
+  "guide": {
+    "readingTime": "Tempo de leitura",
+    "minutes": "minutos",
+    "lastUpdated": "Última atualização",
+    "relatedGuides": "Guias relacionados",
+    "steps": "Etapas",
+    "before": "Antes",
+    "after": "Depois",
+    "faqs": "Perguntas frequentes",
+    "expertTip": "Dica de especialista",
+    "hiddenInsight": "Perspectiva oculta"
+  },
+  "news": {
+    "readArticle": "Ler artigo",
+    "backToNews": "Voltar às notícias",
+    "shareArticle": "Compartilhar artigo",
+    "relatedArticles": "Mais artigos"
+  },
+  "language": {
+    "switchLanguage": "Mudar idioma",
+    "autoDetect": "Detecção automática"
+  },
+  "errors": {
+    "404": {
+      "title": "Página não encontrada",
+      "description": "A página que você procura não existe.",
+      "backHome": "Voltar ao início"
+    },
+    "500": {
+      "title": "Erro do servidor",
+      "description": "Algo deu errado. Por favor, tente novamente mais tarde."
+    }
+  }
+}

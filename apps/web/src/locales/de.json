@@ -1,0 +1,57 @@
+{
+  "nav": {
+    "home": "Home",
+    "guides": "Guides",
+    "news": "News",
+    "about": "Über uns",
+    "contact": "Kontakt"
+  },
+  "common": {
+    "readMore": "Mehr lesen",
+    "loading": "Laden...",
+    "error": "Fehler",
+    "notFound": "Nicht gefunden",
+    "search": "Suchen",
+    "filter": "Filter",
+    "all": "Alle",
+    "category": "Kategorie",
+    "author": "Autor",
+    "date": "Datum",
+    "views": "Aufrufe",
+    "featured": "Featured",
+    "latest": "Neueste"
+  },
+  "guide": {
+    "readingTime": "Lesezeit",
+    "minutes": "Minuten",
+    "lastUpdated": "Zuletzt aktualisiert",
+    "relatedGuides": "Verwandte Guides",
+    "steps": "Schritte",
+    "before": "Vorher",
+    "after": "Nachher",
+    "faqs": "Häufig gestellte Fragen",
+    "expertTip": "Experten-Tipp",
+    "hiddenInsight": "Versteckter Einblick"
+  },
+  "news": {
+    "readArticle": "Artikel lesen",
+    "backToNews": "Zurück zur News-Übersicht",
+    "shareArticle": "Diesen Artikel teilen",
+    "relatedArticles": "Weitere Artikel"
+  },
+  "language": {
+    "switchLanguage": "Sprache wechseln",
+    "autoDetect": "Auto-Erkennung"
+  },
+  "errors": {
+    "404": {
+      "title": "Seite nicht gefunden",
+      "description": "Die Seite, die du suchst, existiert nicht.",
+      "backHome": "Zurück zur Startseite"
+    },
+    "500": {
+      "title": "Server-Fehler",
+      "description": "Etwas ist schiefgelaufen. Bitte versuche es später erneut."
+    }
+  }
+}

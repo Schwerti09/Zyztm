@@ -1,0 +1,57 @@
+{
+  "nav": {
+    "home": "Home",
+    "guides": "Guides",
+    "news": "News",
+    "about": "About",
+    "contact": "Contact"
+  },
+  "common": {
+    "readMore": "Read More",
+    "loading": "Loading...",
+    "error": "Error",
+    "notFound": "Not Found",
+    "search": "Search",
+    "filter": "Filter",
+    "all": "All",
+    "category": "Category",
+    "author": "Author",
+    "date": "Date",
+    "views": "Views",
+    "featured": "Featured",
+    "latest": "Latest"
+  },
+  "guide": {
+    "readingTime": "Reading time",
+    "minutes": "minutes",
+    "lastUpdated": "Last updated",
+    "relatedGuides": "Related Guides",
+    "steps": "Steps",
+    "before": "Before",
+    "after": "After",
+    "faqs": "Frequently Asked Questions",
+    "expertTip": "Expert Tip",
+    "hiddenInsight": "Hidden Insight"
+  },
+  "news": {
+    "readArticle": "Read Article",
+    "backToNews": "Back to News",
+    "shareArticle": "Share this article",
+    "relatedArticles": "More Articles"
+  },
+  "language": {
+    "switchLanguage": "Switch Language",
+    "autoDetect": "Auto-detect"
+  },
+  "errors": {
+    "404": {
+      "title": "Page Not Found",
+      "description": "The page you are looking for does not exist.",
+      "backHome": "Back to Home"
+    },
+    "500": {
+      "title": "Server Error",
+      "description": "Something went wrong on our end. Please try again later."
+    }
+  }
+}

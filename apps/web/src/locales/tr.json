@@ -1,0 +1,57 @@
+{
+  "nav": {
+    "home": "Ana Sayfa",
+    "guides": "Rehberler",
+    "news": "Haberler",
+    "about": "Hakkımızda",
+    "contact": "İletişim"
+  },
+  "common": {
+    "readMore": "Devamını oku",
+    "loading": "Yükleniyor...",
+    "error": "Hata",
+    "notFound": "Bulunamadı",
+    "search": "Ara",
+    "filter": "Filtrele",
+    "all": "Tümü",
+    "category": "Kategori",
+    "author": "Yazar",
+    "date": "Tarih",
+    "views": "Görüntüleme",
+    "featured": "Öne çıkan",
+    "latest": "En son"
+  },
+  "guide": {
+    "readingTime": "Okuma süresi",
+    "minutes": "dakika",
+    "lastUpdated": "Son güncelleme",
+    "relatedGuides": "İlgili rehberler",
+    "steps": "Adımlar",
+    "before": "Önce",
+    "after": "Sonra",
+    "faqs": "Sıkça sorulan sorular",
+    "expertTip": "Uzman ipucu",
+    "hiddenInsight": "Gizli bakış açısı"
+  },
+  "news": {
+    "readArticle": "Makaleyi oku",
+    "backToNews": "Haberlere dön",
+    "shareArticle": "Makaleyi paylaş",
+    "relatedArticles": "Daha fazla makale"
+  },
+  "language": {
+    "switchLanguage": "Dili değiştir",
+    "autoDetect": "Otomatik algılama"
+  },
+  "errors": {
+    "404": {
+      "title": "Sayfa bulunamadı",
+      "description": "Aradığınız sayfa mevcut değil.",
+      "backHome": "Ana sayfaya dön"
+    },
+    "500": {
+      "title": "Sunucu hatası",
+      "description": "Bir şeyler yanlış gitti. Lütfen daha sonra tekrar deneyin."
+    }
+  }
+}
