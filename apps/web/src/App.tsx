@@ -13,6 +13,8 @@ const AGBPage = lazy(() => import('./pages/AGBPage'));
 const NexusIntro = lazy(() => import('./components/ZyztmIntro'));
 const GuidePage = lazy(() => import('./pages/GuidePage'));
 const HubPage = lazy(() => import('./pages/HubPage'));
+const NewsPage = lazy(() => import('./pages/NewsPage'));
+const NewsArticlePage = lazy(() => import('./pages/NewsArticlePage'));
 
 function PageLoader() {
   return (
@@ -43,6 +45,9 @@ export default function App() {
           {/* Guide / Runbook routes (language-prefixed for SEO) */}
           <Route path="/de/guide/:slug" component={GuidePage} />
           <Route path="/de/guides/:category" component={HubPage} />
+          {/* News routes */}
+          <Route path="/news/:slug" component={NewsArticlePage} />
+          <Route path="/news" component={NewsPage} />
         </Switch>
       </Suspense>
     </>
