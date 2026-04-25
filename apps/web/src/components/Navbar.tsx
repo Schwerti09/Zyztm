@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'wouter';
+import LanguageSwitcher from './LanguageSwitcher';
+import { getLanguageFromPath, type Language } from '../lib/i18n';
 
 const NAV_LINKS = [
   { label: 'LIVE', href: '#highlights' },
@@ -14,11 +16,18 @@ const NAV_LINKS = [
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [currentLanguage, setCurrentLanguage] = useState<Language>('en');
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 10);
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  useEffect(() => {
+    // Detect language from URL on mount and route changes
+    const lang = getLanguageFromPath(window.location.pathname);
+    setCurrentLanguage(lang);
   }, []);
 
   const handleAnchorClick = (href: string) => {
@@ -74,8 +83,9 @@ export default function Navbar() {
             ))}
           </ul>
 
-          {/* Desktop CTA */}
+          {/* Language Switcher & CTA */}
           <div className="hidden md:flex items-center gap-3">
+            <LanguageSwitcher currentLanguage={currentLanguage} />
             <a
               href="https://discord.gg/fortnitenexus"
               target="_blank"
@@ -144,6 +154,9 @@ export default function Navbar() {
                   )}
                 </li>
               ))}
+              <li className="pt-2 flex justify-center">
+                <LanguageSwitcher currentLanguage={currentLanguage} />
+              </li>
               <li className="pt-2">
                 <a
                   href="https://discord.gg/fortnitenexus"
