@@ -313,19 +313,19 @@ export const HUB_CATEGORIES: Array<{
  */
 export function generateGeoTargetedHowToSchema(guide: GuideData, region: Region): object {
   const baseSchema = generateHowToSchema(guide);
-  const geoSchema = generateGeoSchema(region, guide);
+  const geoSchema = generateGeoSchema(region, guide) as any;
   
   // Merge base schema with geo enhancements
   return {
     ...baseSchema,
-    ...(geoSchema as any),
+    ...geoSchema,
     // Add regional keywords to description
-    description: `${(geoSchema as any).description} ${(geoSchema as any).name}`,
+    description: `${geoSchema.description} ${geoSchema.name}`,
     // Add geo-specific audience targeting
-    audience: (geoSchema as any).audience,
+    audience: geoSchema.audience,
     // Add geo location data
-    geo: (geoSchema as any).geo,
-    locationCreated: (geoSchema as any).locationCreated,
+    geo: geoSchema.geo,
+    locationCreated: geoSchema.locationCreated,
   };
 }
 

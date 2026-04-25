@@ -62,6 +62,9 @@ export default function HubPage() {
 
       {/* ── All Guides in this category ── */}
       <main className="max-w-5xl mx-auto px-6 py-10">
+        {/* ── Multi-Regional Hub ── */}
+        <MultiRegionalHub showAllRegions={true} />
+
         {guides.length === 0 ? (
           <p className="font-body text-white/40 text-center py-16">
             Noch keine Guides in dieser Kategorie. Bald verfügbar!

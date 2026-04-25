@@ -1,9 +1,12 @@
 import { Link, useParams } from 'wouter';
-import { lazy, Suspense } from 'react';
+import { lazy, Suspense, useState, useEffect } from 'react';
 import { getGuideBySlug } from '../data/guides';
 import SEOHead from '../components/SEOHead';
 import AuthorBox from '../components/AuthorBox';
 import InternalLinks from '../components/InternalLinks';
+import GeoContentInjector from '../components/GeoContentInjector';
+import RegionalExpertCitation from '../components/RegionalExpertCitation';
+import { detectUserRegion, type Region } from '../lib/geo-seo';
 
 const Footer = lazy(() => import('../components/Footer'));
 
@@ -38,12 +41,21 @@ function NotFound() {
  * - FAQ accordion
  */
 export default function GuidePage() {
-  const params = useParams<{ slug: string }>();
+  const params = useParams<{ slug: string; region?: string }>();
   const guide = getGuideBySlug(params.slug ?? '');
+  const [userRegion, setUserRegion] = useState<Region>('unknown');
+
+  useEffect(() => {
+    async function loadRegion() {
+      const region = params.region as Region || await detectUserRegion();
+      setUserRegion(region);
+    }
+    loadRegion();
+  }, [params.region]);
 
   if (!guide) return <NotFound />;
 
-  const pageUrl = `https://fortnitenexus.netlify.app/de/guide/${guide.slug}`;
+  const pageUrl = `https://fortnitenexus.netlify.app/de/guide/${guide.slug}${params.region ? `?region=${params.region}` : ''}`;
 
   return (
     <div className="min-h-screen bg-bg-dark text-white">
@@ -79,6 +91,12 @@ export default function GuidePage() {
             📅 Aktualisiert: {new Date(guide.lastUpdated).toLocaleDateString('de-DE')}
           </span>
         </div>
+
+        {/* ── Geo-Targeted Content Injection ── */}
+        <GeoContentInjector guideTopic={guide.category} showPing={true} showExpertCitation={true} showCommunityLink={true} />
+
+        {/* ── Regional Expert Citation ── */}
+        <RegionalExpertCitation topic={guide.category} showAvatar={true} showCredibility={true} showSocialLink={true} />
 
         {/* ── Headline ── */}
         <h1

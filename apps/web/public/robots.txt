@@ -1,0 +1,13 @@
+# Fortnite Nexus - Robots.txt
+# Allow all crawlers to index all content including regional variants
+
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /api/
+
+# Sitemap location
+Sitemap: https://fortnitenexus.netlify.app/sitemap
+
+# Crawl-delay for politeness
+Crawl-delay: 1
