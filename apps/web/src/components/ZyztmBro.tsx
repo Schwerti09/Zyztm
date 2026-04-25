@@ -77,9 +77,9 @@ const STRATEGY_RESPONSES: Record<Mood, Record<string, string>> = {
 function getMoodResponse(input: string, mood: Mood): string {
   const lower = input.toLowerCase();
   if (lower.includes('preis') || lower.includes('kaufen') || lower.includes('shop')) {
-    if (mood === 'tryhard') return 'NEXUS MARKETPLACE CHECKEN! 🔥 Voice Pack €9,99, Zyztm Bro €12,99, Soundboard €7,99 – KAUFEN ODER VERLIEREN!';
+    if (mood === 'tryhard') return 'NEXUS MARKETPLACE CHECKEN! 🔥 Voice Pack €9,99, Nexus Bro €12,99, Soundboard €7,99 – KAUFEN ODER VERLIEREN!';
     if (mood === 'lustig') return 'Alter du willst KAUFEN?? Ich dachte du liebst mich umsonst 😭 Aber ok schau mal im Shop vorbei lol';
-    return 'Im LOOT PODS Shop kriegst du krasse Items! Voice Pack, Zyztm Bro, Karten und mehr – scroll mal runter! 😎';
+    return 'Im LOOT PODS Shop kriegst du krasse Items! Voice Pack, Nexus Bro, Karten und mehr – scroll mal runter! 😎';
   }
   if (lower.includes('stream') || lower.includes('kick') || lower.includes('live')) {
     if (mood === 'tryhard') return 'KICK.COM/ZYZTM – DA WIRD GELIEFERT! 🟢 Täglich live, täglich Clutches!';
@@ -111,8 +111,8 @@ function getMoodResponse(input: string, mood: Mood): string {
   }
   if (lower.includes('discord')) {
     return mood === 'tryhard'
-      ? 'DISCORD.GG/ZYZTM – 12K KRIEGER WARTEN AUF DICH! JOIN SOFORT!'
-      : 'discord.gg/zyztm – 12K Mitglieder, mega Community 💬';
+      ? 'DISCORD.GG/FORTNITENEXUS – 12K KRIEGER WARTEN AUF DICH! JOIN SOFORT!'
+      : 'discord.gg/fortnitenexus – 12K Mitglieder, mega Community 💬';
   }
   const responses = OFFLINE_RESPONSES[mood];
   return responses[Math.floor(Math.random() * responses.length)];
@@ -343,7 +343,7 @@ export default function ZyztmBro() {
               value={input}
               onChange={(e) => setInput(e.target.value)}
               onKeyDown={(e) => e.key === 'Enter' && sendMessage()}
-              placeholder={`Nachricht an Zyztm Bro (${MOOD_CONFIG[mood].label}-Modus)...`}
+              placeholder={`Nachricht an Nexus Bro (${MOOD_CONFIG[mood].label}-Modus)...`}
               className="flex-1 bg-white/5 border rounded px-3 py-2 text-white placeholder-white/25 text-sm focus:outline-none transition-colors"
               style={{ borderColor: `${currentMood.color}25` }}
             />
