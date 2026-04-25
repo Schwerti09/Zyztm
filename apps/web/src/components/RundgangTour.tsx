@@ -62,7 +62,7 @@ const TOUR_STEPS: TourStep[] = [
   {
     id: 'latest-news',
     title: 'Neueste News',
-    description: 'Bleib up to date mit den neuesten Infos aus der Fortnite Nexus-Welt und dem Fortnite-Universum.',,
+    description: 'Bleib up to date mit den neuesten Infos aus der Fortnite Nexus-Welt und dem Fortnite-Universum.',
     emoji: '📰',
     targetId: 'latest-news',
   },
