@@ -8,7 +8,7 @@
 
 import { generateGeoSchema, type Region, REGIONS } from './geo-seo';
 
-export type GuideCategory = 'fortnite' | 'hardware' | 'stream' | 'settings' | 'ranked';
+export type GuideCategory = 'fortnite' | 'hardware' | 'stream' | 'settings' | 'ranked' | 'season';
 
 export interface FAQ {
   question: string;
@@ -300,6 +300,13 @@ export const HUB_CATEGORIES: Array<{
     emoji: '🏆',
     description:
       'Strategien, Rotationen und Mentalität für den Weg in den Unreal-Rang.',
+  },
+  {
+    slug: 'season',
+    label: 'Season Meta Guides',
+    emoji: '📅',
+    description:
+      'Meta-Analysen und Strategien für jede Fortnite Season – von Season 1 bis Season 6.',
   },
 ];
 
