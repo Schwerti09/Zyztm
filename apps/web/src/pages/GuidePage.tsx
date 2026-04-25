@@ -7,6 +7,8 @@ import InternalLinks from '../components/InternalLinks';
 import GeoContentInjector from '../components/GeoContentInjector';
 import RegionalExpertCitation from '../components/RegionalExpertCitation';
 import { detectUserRegion, type Region } from '../lib/geo-seo';
+import { getLanguageFromPath, type Language } from '../lib/i18n';
+import { getGuideTranslation } from '../data/guide-translations';
 
 const Footer = lazy(() => import('../components/Footer'));
 
@@ -26,7 +28,7 @@ function NotFound() {
 
 /**
  * Runbook / Guide detail page.
- * Route: /de/guide/:slug
+ * Route: /{lang}/guide/:slug
  *
  * Features:
  * - Full JSON-LD schemas (HowTo + FAQPage + Speakable + Article + Breadcrumb)
@@ -39,11 +41,13 @@ function NotFound() {
  * - Author box with E-E-A-T signals
  * - 8–12 contextual internal links
  * - FAQ accordion
+ * - Multi-language support with translated content
  */
 export default function GuidePage() {
   const params = useParams<{ slug: string; region?: string }>();
   const guide = getGuideBySlug(params.slug ?? '');
   const [userRegion, setUserRegion] = useState<Region>('unknown');
+  const [currentLanguage, setCurrentLanguage] = useState<Language>('en');
 
   useEffect(() => {
     async function loadRegion() {
@@ -53,13 +57,19 @@ export default function GuidePage() {
     loadRegion();
   }, [params.region]);
 
+  useEffect(() => {
+    // Detect language from URL on mount
+    const lang = getLanguageFromPath(window.location.pathname);
+    setCurrentLanguage(lang);
+  }, []);
+
   if (!guide) return <NotFound />;
 
   const pageUrl = `https://fortnitenexus.netlify.app/de/guide/${guide.slug}${params.region ? `?region=${params.region}` : ''}`;
 
   return (
     <div className="min-h-screen bg-bg-dark text-white">
-      <SEOHead guide={guide} />
+      <SEOHead guide={guide} language={currentLanguage} />
 
       {/* ── Breadcrumb ── */}
       <nav
@@ -68,18 +78,18 @@ export default function GuidePage() {
       >
         <Link href="/"><a className="hover:text-neon-blue transition-colors">Home</a></Link>
         <span>/</span>
-        <Link href={`/de/guides/${guide.category}`}>
+        <Link href={`/${currentLanguage}/guides/${guide.category}`}>
           <a className="hover:text-neon-blue transition-colors capitalize">{guide.category}</a>
         </Link>
         <span>/</span>
-        <span className="text-white/60 truncate">{guide.title}</span>
+        <span className="text-white/60 truncate">{displayTitle}</span>
       </nav>
 
       <article className="max-w-4xl mx-auto px-6 py-8" itemScope itemType="https://schema.org/TechArticle">
 
         {/* ── Category tag + Reading time ── */}
         <div className="flex flex-wrap gap-3 mb-4">
-          <Link href={`/de/guides/${guide.category}`}>
+          <Link href={`/${currentLanguage}/guides/${guide.category}`}>
             <a className="text-xs font-cyber text-neon-pink/80 bg-neon-pink/10 border border-neon-pink/20 px-3 py-1 rounded-full hover:bg-neon-pink/20 transition-colors capitalize">
               {guide.category}
             </a>
@@ -88,7 +98,7 @@ export default function GuidePage() {
             ⏱ {guide.readingTimeMin} Min. Lesezeit
           </span>
           <span className="text-xs font-body text-white/30 self-center">
-            📅 Aktualisiert: {new Date(guide.lastUpdated).toLocaleDateString('de-DE')}
+            📅 Aktualisiert: {new Date(guide.lastUpdated).toLocaleDateString(currentLanguage === 'de' ? 'de-DE' : 'en-US')}
           </span>
         </div>
 
@@ -252,7 +262,7 @@ export default function GuidePage() {
             </a>{' '}
             oder{' '}
             <a
-              href={`https://twitter.com/intent/tweet?url=${encodeURIComponent(pageUrl)}&text=${encodeURIComponent(guide.title)}`}
+              href={`https://twitter.com/intent/tweet?url=${encodeURIComponent(pageUrl)}&text=${encodeURIComponent(displayTitle)}`}
               target="_blank"
               rel="noopener noreferrer"
               className="text-neon-pink hover:text-white transition-colors"
