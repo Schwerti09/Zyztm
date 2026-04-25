@@ -2,6 +2,8 @@ import { motion, useMotionValue, useSpring, useInView } from 'framer-motion';
 import { useEffect, useRef } from 'react';
 // REAL-TIME LIVE STATS 2026: Import live stats hook
 import { useLiveStats } from '../hooks/useLiveStats';
+// SAC CODE: Import SAC reminder component
+import SacReminder from './SacReminder';
 
 function formatCounterValue(value: number, suffix: string): string {
   const rounded = Math.round(value);
@@ -94,7 +96,7 @@ export default function HeroSection() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.7 }}
-          className="flex flex-col sm:flex-row gap-4 justify-center mb-16"
+          className="flex flex-col sm:flex-row gap-4 justify-center mb-8"
         >
           <button
             className="btn-primary rounded-sm text-sm"
@@ -109,11 +111,21 @@ export default function HeroSection() {
             ⭐ CREATORS ENTDECKEN
           </button>
         </motion.div>
+
+        {/* SAC Code Reminder - Hero Context */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.9 }}
+          className="max-w-xl mx-auto mb-16"
+        >
+          <SacReminder context="hero" showDismiss={false} />
+        </motion.div>
         
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 1, delay: 1 }}
+          transition={{ duration: 1, delay: 1.1 }}
           className="grid grid-cols-3 gap-8 max-w-2xl mx-auto"
         >
           {[
@@ -135,7 +147,7 @@ export default function HeroSection() {
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 1.3 }}
+          transition={{ duration: 0.8, delay: 1.4 }}
           className="mt-10 max-w-3xl mx-auto"
         >
           <div

@@ -6,6 +6,7 @@ import AuthorBox from '../components/AuthorBox';
 import InternalLinks from '../components/InternalLinks';
 import GeoContentInjector from '../components/GeoContentInjector';
 import RegionalExpertCitation from '../components/RegionalExpertCitation';
+import SacReminder from '../components/SacReminder';
 import { detectUserRegion, type Region } from '../lib/geo-seo';
 import { getLanguageFromPath, type Language } from '../lib/i18n';
 import { getGuideTranslation } from '../data/guide-translations';
@@ -132,6 +133,11 @@ export default function GuidePage() {
           <p className="font-body text-white/90 leading-relaxed text-base" itemProp="description">
             {guide.directAnswer}
           </p>
+        </div>
+
+        {/* ── SAC Code Reminder - Guide Context ── */}
+        <div className="mb-8">
+          <SacReminder context="guide" showDismiss={true} />
         </div>
 
         {/* ── Before / After ── */}

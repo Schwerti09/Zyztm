@@ -1,5 +1,6 @@
 import { Link } from 'wouter';
 import AdSpot from './AdSpot';
+import SacReminder from './SacReminder';
 
 export default function Footer() {
   return (
@@ -74,6 +75,11 @@ export default function Footer() {
         {/* Ad Spot in Footer */}
         <div className="flex justify-center mb-8">
           <AdSpot position="banner" size="small" />
+        </div>
+
+        {/* SAC Code Reminder - Footer Context */}
+        <div className="flex justify-center mb-8 max-w-xl mx-auto">
+          <SacReminder context="footer" showDismiss={true} />
         </div>
 
         <div className="border-t border-white/10 pt-6 flex flex-col md:flex-row justify-between items-center text-white/30 text-xs">

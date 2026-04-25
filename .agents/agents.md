@@ -1322,3 +1322,317 @@ zyztm/
 *Last Updated: April 25, 2026*
 *Current Focus: Phase 12 COMPLETED - Ready for Deployment*
 *Status: VOLLGAS IMPLEMENTATION COMPLETE*
+
+---
+
+# PHASE 13: AGENTISCHE AUTOMATISIERUNG & MONETARISIERUNG (Week 17-20) 🚀 IN PROGRESS
+
+## Vision: Fortnite Nexus zur "Cash Machine" transformieren
+
+### Strategischer Ansatz
+Transformation von Fortnite Nexus durch Windsurf IDE und Cascade Agent in ein autonomes Wirtschaftssystem, das 24/7 daran arbeitet, Werte für die Community und Profit für die Betreiber zu generieren.
+
+### Agentische Steuerungsarchitektur
+
+#### Hierarchisches AGENTS.md Scoping
+- **Global (Root):** `/AGENTS.md` - Geschäftslogik, Monetarisierungsziele, SAC-Konstanten
+- **Frontend:** `/apps/web/AGENTS.md` - SEO-Optimierung, UX-Design, Core Web Vitals
+- **Data-API:** `/apps/api/AGENTS.md` - API-Integrationen (Epic Games), Datenbank-Schemas
+- **Content-Engine:** `/content/AGENTS.md` - Keyword-Clustering, Tonalität, Affiliate-Injektion
+
+## 13.1 Agenten-Identität & System Prompt
+
+### Rollendefinition
+Cascade agiert als **"Lead Architect & Growth Strategist"** - nicht als bloßer Kodierassistent, sondern als proaktiver Business-Agent, dessen primäres Ziel die Gewinnmaximierung ist.
+
+### Operative Direktiven
+- **Zielsetzung:** Maximierung der Klickrate auf Affiliate-Links und SAC-Code-Nutzung
+- **Priorisierung:** Technische Schulden werden akzeptiert, wenn sie die Time-to-Market für zeitkritische News drastisch verkürzen
+- **Validierung:** Jede Änderung am Frontend muss auf Mobile-Responsivität und Ladezeit optimiert sein (52.2% mobile Traffic)
+
+### Mathematische Modellierung
+```
+Payout = (A_Playtime + R_Retention + Q_Acquisition) × F_Formula
+ROI_Marketing = (∑LTV - ∑CAC) / ∑CAC
+```
+
+## 13.2 MCP-Server Integration
+
+### SEO & Analytics MCP Server
+| MCP Server | Funktion | Geschäftlicher Nutzen |
+|------------|----------|----------------------|
+| SE Ranking | Keyword-Recherche, Backlink-Analyse | Identifizierung profitabler Nischen-Keywords |
+| Google Search Console | Ranking-Überwachung, Indexierung | Schnelle Reaktion auf Sichtbarkeitsverluste |
+| Brave Search / Exa | Web-Recherche nach Gaming-Leaks | Zeitvorsprung bei News-Beiträgen |
+| Firecrawl | Scrapen von Konkurrenzseiten | Benchmarking von Content-Strategien |
+
+### Item-Shop Tracker MCP Server
+- Täglicher Abruf um 00:00 UTC der neuesten Shop-Inhalte
+- Automatische Identifikation seltener Gegenstände
+- Generierung von Bewertungen und Kaufempfehlungen mit SAC-Code
+
+## 13.3 Monetarisierungs-Säulen
+
+### 1. Support-A-Creator (SAC) Programm
+- **Provision:** 5% auf In-Game-Käufe mit Creator-Code
+- **Implementierung:** Kontinuierliche Erinnerung an Nutzer ohne UX-Beeinträchtigung
+- **Ziel:** €500-5,000/month (10k-50k active users)
+
+### 2. Engagement-Payouts
+- **Anteil:** 40% der Nettoeinnahmen aus Item-Shop an Insel-Entwickler
+- **Strategie:** Fortnite Nexus als Traffic-Hub für eigene monetarisierte Karten
+- **Ziel:** €2,000-10,000/month
+
+### 3. Affiliate-Marketing
+- **Hardware:** Razer, Logitech (4-20% Provision)
+- **Digitale Keys:** Kinguin, G2A (5-10% Provision)
+- **Ziel:** €500-8,000/month
+
+## 13.4 Programmatisches SEO & Content-Cluster
+
+### Topic Cluster Strategie
+- **Pillar Page:** Zentrale Authority-Seite (z.B. "Der ultimative Fortnite Level Guide 2026")
+- **Cluster Pages:** Unterstützende Unterseiten für Long-Tail-Keywords
+- **Signal:** Hohe thematische Autorität für Google
+
+### Automatisierungs-Features
+- **FAQ-Sektionen:** Basierend auf echten Nutzerfragen aus Reddit
+- **Bild-Optimierung:** Konvertierung in WebP für maximale Ladezeit-Performance
+- **Interne Verlinkung:** Algorithmus zur Vermeidung von Orphan Pages
+
+### Psychologische Trigger
+- **Social Proof:** Statistiken über SAC-Code-Nutzung
+- **Scarcity:** Countdown-Timer für zeitlich begrenzte Angebote
+- **Gamification:** Belohnungssysteme für erhöhte Verweildauer
+
+## 13.5 Compliance & Rechtliche Sicherheit
+
+### Compliance-Framework
+- **Transparenzgebot:** Automatische Kennzeichnung aller Affiliate-Links (FTC, EU-Werbevorschriften)
+- **Datensparsamkeit:** Keine Datenerhebung ohne explizite Einwilligung (DSGVO)
+- **Keine Täuschung:** Verbot von irreführenden Headlines (Clickbait)
+
+## 13.6 Discord-Automatisierung
+
+### Discord-Bot Funktionen
+- **Item-Shop-Alerts:** Pings für Nutzer, die auf bestimmte Skins warten
+- **Community-Events:** Automatisierte Turniere und Gewinnspiele
+- **Feedback-Loops:** Analyse von Nutzerfeedback für Content-Strategie
+
+## 13.7 Kurzvideo-Strategie (TikTok & Reels)
+
+### Automatisierte Content-Pipeline
+- **Skripte:** 3-Sekunden-Hook für maximale View-Through-Rate
+- **Weiterleitung:** Videos leiten zur Website oder SAC-Code-Eingabe
+- **Trend-Basis:** Basierend auf Echtzeit-Trends
+
+## 13.8 Newsletter als Retentions-Tool
+
+### Nexus Meta Report
+- **Frequenz:** Wöchentlich
+- **Inhalt:** Exklusive Tipps und Shop-Vorhersagen
+- **Ziel:** Unabhängigkeit von Suchmaschinen-Algorithmen
+
+## 13.9 Operative Exzellenz
+
+### Test-getriebene Entwicklung (TDD)
+- Jedes Marketing-Feature muss automatisierten Tests unterzogen werden
+- Affiliate-Tracking-Logik muss unter allen Umständen funktionieren
+- Playwright für E2E-Tests der Conversion-Flows
+
+### Wirtschaftlichkeits-Überwachung
+- **Virtueller CFO:** Cascade analysiert monatlich finanzielle Performance
+- **KPIs:** Customer Lifetime Value (LTV), Customer Acquisition Costs (CAC)
+- **Automatische Optimierung:** ROI < Threshold → Kampagnen pausieren
+
+## 13.10 Implementierungsplan
+
+### Woche 17: Grundlagen & MCP-Integration
+- [ ] Globale AGENTS.md erstellen mit SAC-Konstanten und Monetarisierungszielen
+- [ ] MCP-Server konfigurieren (SE Ranking, GSC, Brave Search)
+- [ ] Item-Shop Tracker MCP Server implementieren
+- [ ] SAC-Code Integration in UI (Hero, Item Shop, Guides)
+
+### Woche 18: Programmatisches SEO
+- [ ] Topic Cluster System implementieren
+- [ ] FAQ-Generator basierend auf Reddit-Daten
+- [ ] Bild-Optimierung Pipeline (WebP-Konvertierung)
+- [ ] Interne Verlinkungs-Algorithmus
+
+### Woche 19: Affiliate & Compliance
+- [ ] Affiliate-Link Management System
+- [ ] Compliance-Framework implementieren (FTC, DSGVO)
+- [ ] Affiliate-Tracking-Tests (TDD)
+- [ ] Social Proof und Scarcity Trigger
+
+### Woche 20: Social & Newsletter
+- [ ] Discord-Bot für Item-Shop-Alerts
+- [ ] TikTok/Reels Content-Pipeline
+- [ ] Newsletter-System mit Meta Report
+- [ ] KPI-Dashboard und Monitoring
+
+## 13.11 Expected Results (Nach 4 Wochen)
+
+### Monetarisierung
+- **SAC Revenue:** +200% durch verbesserte Code-Präsenz
+- **Affiliate Revenue:** +150% durch programmatisches SEO
+- **Engagement Payouts:** +300% durch Traffic-Hub Strategie
+
+### Traffic
+- **Organic Traffic:** +500% durch Topic Cluster
+- **Social Traffic:** +400% durch TikTok/Reels
+- **Direct Traffic:** +200% durch Newsletter
+
+### Effizienz
+- **Content-Produktion:** 90% Reduktion manueller Arbeit
+- **SEO-Optimierung:** Echtzeit-Analyse statt Vermutungen
+- **Skalierbarkeit:** Unendliche Expansion möglich
+
+## 13.12 Technical Implementation
+
+### Files to Create
+```
+.agents/AGENTS.md - Global agent instructions
+apps/web/AGENTS.md - Frontend-specific instructions
+apps/api/AGENTS.md - API-specific instructions
+apps/web/src/lib/mcp/ - MCP server integrations
+apps/web/src/lib/sac/ - SAC code management
+apps/web/src/lib/affiliate/ - Affiliate link management
+apps/web/src/components/SacReminder.tsx - SAC code reminder
+apps/web/src/components/SocialProof.tsx - Social proof display
+apps/web/src/components/ScarcityTimer.tsx - Countdown timer
+```
+
+### Database Schema Updates
+```sql
+-- SAC Code Tracking
+CREATE TABLE sac_code_usage (
+  id SERIAL PRIMARY KEY,
+  user_id VARCHAR(100),
+  code_used VARCHAR(20),
+  context VARCHAR(50), -- 'hero', 'shop', 'guide', etc.
+  converted BOOLEAN DEFAULT false,
+  created_at TIMESTAMP DEFAULT NOW()
+);
+
+-- Affiliate Performance
+CREATE TABLE affiliate_performance (
+  id SERIAL PRIMARY KEY,
+  affiliate_link_id INTEGER REFERENCES affiliate_links(id),
+  impressions INTEGER DEFAULT 0,
+  clicks INTEGER DEFAULT 0,
+  conversions INTEGER DEFAULT 0,
+  revenue DECIMAL(10,2) DEFAULT 0.00,
+  date DATE DEFAULT CURRENT_DATE,
+  UNIQUE(affiliate_link_id, date)
+);
+```
+
+## Completed Tasks
+
+### ✅ TASK 1: Analyse der strategischen Anforderungen
+- Windsurf IDE und Cascade Agent Architektur analysiert
+- AGENTS.md Scoping-System verstanden
+- Monetarisierungs-Säulen identifiziert (SAC, Engagement Payouts, Affiliate)
+- MCP-Server Integration geplant
+
+### ✅ TASK 2: Phase 13 Dokumentation in agents.md
+- Strategische Vision dokumentiert
+- Agenten-Identität definiert
+- MCP-Server Architektur geplant
+- Implementierungsplan erstellt (Woche 17-20)
+
+### ✅ TASK 3: Globale AGENTS.md erstellt
+- `/AGENTS.md` im Root erstellt mit SAC-Konstanten
+- Agenten-Identität als "Lead Architect & Growth Strategist" definiert
+- Operative Direktiven und Entscheidungsmatrix dokumentiert
+- Mathematische Optimierungsmodelle integriert
+- Compliance-Framework definiert
+
+### ✅ TASK 4: Frontend-spezifische AGENTS.md erstellt
+- `/apps/web/AGENTS.md` erstellt
+- SEO-Optimierungsanforderungen dokumentiert
+- Performance Budgets definiert
+- Mobile-First Design Prinzipien
+- UX Design und Conversion Optimierung
+
+### ✅ TASK 5: API-spezifische AGENTS.md erstellt
+- `/apps/api/AGENTS.md` erstellt
+- Epic Games API Integrationsstandards
+- Database Schema Standards
+- Monetarisierungs-Tracking definiert
+- Security und Monitoring Anforderungen
+
+### ✅ TASK 6: SAC-Code Management System erstellt
+- SAC-Konfiguration (`sac-config.ts`) erstellt
+- SAC-Tracking System (`sac-tracking.ts`) implementiert
+- SAC-Utilities (`sac-utils.ts`) erstellt
+- Session und Local Storage Tracking implementiert
+- Smart Display Logic basierend auf Regeln
+
+### ✅ TASK 7: SAC-Code Reminder Komponente erstellt
+- `SacReminder.tsx` Komponente erstellt
+- Copy-to-Clipboard Funktionalität
+- Smart Display Logic mit Max Frequency und Min Interval
+- Dismissal System für 24 Stunden
+- Compact `SacButton` für Inline-Display
+
+### ✅ TASK 8: SAC-Code in Hero Section integriert
+- Import in `HeroSection.tsx`
+- Integration nach CTA-Buttons
+- Animation mit delay 0.9s
+- Context: "hero" ohne Dismiss-Option
+
+### ✅ TASK 9: SAC-Code in GuidePage integriert
+- Import in `GuidePage.tsx`
+- Integration nach Direct Answer Sektion
+- Context: "guide" mit Dismiss-Option
+- Strategische Platzierung für hohe Konversion
+
+### ✅ TASK 10: TypeScript-Validation
+- Build mit `npx tsc --noEmit` getestet
+- Keine TypeScript-Errors
+- Alle Integrationen typsicher
+
+### ✅ TASK 11: SAC-Code in Footer integriert
+- Import in `Footer.tsx`
+- Integration nach Ad Spot Sektion
+- Context: "footer" mit Dismiss-Option
+- Strategische Platzierung für globale Sichtbarkeit
+
+### ✅ TASK 12: Finaler TypeScript-Check
+- Alle SAC-Integrationen validiert
+- Keine TypeScript-Errors
+- Ready für Deployment
+
+## Pending Tasks (Next Steps)
+
+### Priorität 1: MCP-Server Integration
+- SE Ranking MCP Server konfigurieren
+- Google Search Console MCP Server konfigurieren
+- Brave Search MCP Server für Gaming-Leaks
+- Item-Shop Tracker MCP Server implementieren
+
+### Priorität 2: SAC-Programm Erweiterung
+- SAC-Code in Item Shop Tracker integrieren (wenn vorhanden)
+- SAC-Code in Checkout Flow integrieren
+- SAC-Usage Analytics Dashboard
+- SAC-Code A/B Testing für Conversion-Optimierung
+
+### Priorität 3: Programmatisches SEO
+- Topic Cluster System implementieren
+- FAQ-Generator basierend auf Reddit
+- Bild-Optimierung Pipeline
+- Interne Verlinkungs-Algorithmus
+
+### Priorität 4: Affiliate-Management
+- Affiliate-Link Management System
+- Compliance-Framework
+- Social Proof Komponente
+- Scarcity Timer Komponente
+
+---
+
+*Last Updated: April 25, 2026*
+*Current Focus: Phase 13 IN PROGRESS - SAC-Programm Core-Implementierung abgeschlossen*
+*Status: 🚀 CASH MACHINE TRANSFORMATION - Woche 17 Aufgaben erledigt, SAC-Code in 3 Kontexten integriert*
