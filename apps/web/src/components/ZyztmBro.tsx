@@ -82,9 +82,9 @@ function getMoodResponse(input: string, mood: Mood): string {
     return 'Im LOOT PODS Shop kriegst du krasse Items! Voice Pack, Nexus Bro, Karten und mehr – scroll mal runter! 😎';
   }
   if (lower.includes('stream') || lower.includes('kick') || lower.includes('live')) {
-    if (mood === 'tryhard') return 'KICK.COM/ZYZTM – DA WIRD GELIEFERT! 🟢 Täglich live, täglich Clutches!';
-    if (mood === 'lustig') return 'Kick.com/zyztm – da streame ich täglich und verliere stylisch 😂 Komm vorbei!';
-    return 'Ich stream auf Kick! 🟢 kick.com/zyztm – täglich ab 10 Uhr, chill vorbei kommen!';
+    if (mood === 'tryhard') return 'YOUTUBE.COM/@FORTNITENEXUSDE – DA WIRD GELIEFERT! 🟢 Täglich Content, täglich Clutches!';
+    if (mood === 'lustig') return 'youtube.com/@FortniteNexusDE – da post ich täglich Content und verliere stylisch 😂 Komm vorbei!';
+    return 'Ich poste auf YouTube! 🟢 youtube.com/@FortniteNexusDE – täglich chill vorbei kommen!';
   }
   if (lower.includes('drop') || lower.includes('landen') || lower.includes('drop spot') || lower.includes('wo landen')) {
     return STRATEGY_RESPONSES[mood].drop;

@@ -9,8 +9,8 @@ interface VideoItem {
   link: string;
 }
 
-const CHANNEL_URL = 'https://www.youtube.com/@Zyztm';
-const CHANNEL2_URL = 'https://www.youtube.com/@zyztmplus';
+const CHANNEL_URL = 'https://www.youtube.com/@FortniteNexusDE';
+const CHANNEL2_URL = 'https://www.youtube.com/@FortniteNexusDE';
 /** URL of the Netlify function that fetches YouTube videos server-side */
 const API_URL = '/.netlify/functions/get-youtube-videos';
 
@@ -91,7 +91,7 @@ export default function LatestYouTubeVideos() {
               rel="noopener noreferrer"
               className="text-red-500 hover:text-red-400 transition-colors"
             >
-              @Zyztm
+              @FortniteNexusDE
             </a>
             {' · '}
             <a
@@ -100,7 +100,7 @@ export default function LatestYouTubeVideos() {
               rel="noopener noreferrer"
               className="text-red-400 hover:text-red-300 transition-colors"
             >
-              @zyztmplus
+              @FortniteNexusDE
             </a>
           </p>
         </motion.div>
@@ -152,11 +152,11 @@ export default function LatestYouTubeVideos() {
               >
                 <div className="relative aspect-video bg-gray-900 flex flex-col items-center justify-center gap-3">
                   <div className="text-5xl">📺</div>
-                  <p className="font-cyber text-lg font-bold text-red-500">ZYZTM AUF YOUTUBE</p>
+                  <p className="font-cyber text-lg font-bold text-red-500">NEXUS AUF YOUTUBE</p>
                 </div>
                 <div className="p-4 text-center">
                   <div className="text-xs font-cyber tracking-widest py-2 px-6 border border-red-500/50 rounded text-red-500 inline-block">
-                    @ZYZTM ÖFFNEN →
+                    @NEXUS ÖFFNEN →
                   </div>
                 </div>
               </motion.a>
@@ -179,11 +179,11 @@ export default function LatestYouTubeVideos() {
               >
                 <div className="relative aspect-video bg-gray-900 flex flex-col items-center justify-center gap-3">
                   <div className="text-5xl">🎮</div>
-                  <p className="font-cyber text-lg font-bold text-red-400">ZYZTM+ KANAL</p>
+                  <p className="font-cyber text-lg font-bold text-red-400">NEXUS KANAL</p>
                 </div>
                 <div className="p-4 text-center">
                   <div className="text-xs font-cyber tracking-widest py-2 px-6 border border-red-400/50 rounded text-red-400 inline-block">
-                    @ZYZTMPLUS ÖFFNEN →
+                    @NEXUS ÖFFNEN →
                   </div>
                 </div>
               </motion.a>
@@ -276,7 +276,7 @@ export default function LatestYouTubeVideos() {
                 className="text-xs font-cyber tracking-widest py-2 px-8 rounded border transition-all"
                 style={{ borderColor: 'rgba(255,0,0,0.4)', color: '#ff4444' }}
               >
-                @ZYZTM ÖFFNEN →
+                @NEXUS ÖFFNEN →
               </a>
               <a
                 href={CHANNEL2_URL}
@@ -285,7 +285,7 @@ export default function LatestYouTubeVideos() {
                 className="text-xs font-cyber tracking-widest py-2 px-8 rounded border transition-all"
                 style={{ borderColor: 'rgba(255,80,80,0.3)', color: '#ff8888' }}
               >
-                @ZYZTMPLUS →
+                @NEXUS →
               </a>
             </div>
           </>

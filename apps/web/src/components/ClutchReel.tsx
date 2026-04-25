@@ -17,12 +17,12 @@ interface ClipData {
   emoji: string;
 }
 
-// ─── Clip data with real Zyztm video IDs ─────────────────────────────────────
+// ─── Clip data with real Fortnite Nexus video IDs ─────────────────────────────────────
 const CLIPS: ClipData[] = [
   {
     id: 'c1',
     title: 'SOLO vs. SQUAD WIPE',
-    subtitle: '4 Kills in 8 Sek. – unmöglich? Nicht für Zyztm!',
+    subtitle: '4 Kills in 8 Sek. – unmöglich? Nicht für Fortnite Nexus!',
     tag: 'CLUTCH',
     tagColor: '#ff0055',
     accentColor: '#ff0055',
@@ -84,7 +84,7 @@ const CLIPS: ClipData[] = [
     accentColor: '#a335ee',
     bgGradient: 'linear-gradient(135deg,#0e0018 0%,#06000f 100%)',
     youtubeId: null,
-    externalUrl: 'https://www.tiktok.com/@zyztm/video/7571107930192366870',
+    externalUrl: 'https://www.tiktok.com/@fortnitenexus/video/7571107930192366870',
     source: 'tiktok',
     stats: { kills: 6, accuracy: 82, mode: 'COMEBACK' },
     emoji: '❤️',
@@ -98,7 +98,7 @@ const CLIPS: ClipData[] = [
     accentColor: '#53fc18',
     bgGradient: 'linear-gradient(135deg,#001a0a 0%,#000f05 100%)',
     youtubeId: null,
-    externalUrl: 'https://kick.com/zyztm/videos',
+    externalUrl: 'https://youtube.com/@FortniteNexusDE/videos',
     source: 'kick',
     stats: { kills: 22, accuracy: 91, mode: 'ARENA SOLO' },
     emoji: '🎮',
@@ -632,7 +632,7 @@ export default function ClutchReel() {
           className="flex flex-wrap justify-center gap-4 mt-12"
         >
           <a
-            href="https://www.youtube.com/@Zyztm"
+            href="https://www.youtube.com/@FortniteNexusDE"
             target="_blank"
             rel="noopener noreferrer"
             className="font-cyber text-xs tracking-widest px-6 py-3 rounded border transition-all"

@@ -11,7 +11,7 @@ interface SEOHeadProps {
  * Injects dynamic meta tags and JSON-LD structured data for a guide page.
  * Works in Vite SPA by manipulating document.head directly.
  */
-export default function SEOHead({ guide, baseUrl = 'https://zyztm.com' }: SEOHeadProps) {
+export default function SEOHead({ guide, baseUrl = 'https://fortnitenexus.netlify.app' }: SEOHeadProps) {
   const pageUrl = `${baseUrl}/de/guide/${guide.slug}`;
   const meta = generateMetaTags(guide, pageUrl);
 
@@ -51,7 +51,7 @@ export default function SEOHead({ guide, baseUrl = 'https://zyztm.com' }: SEOHea
     setMeta('og:url', meta.ogUrl, true);
     setMeta('og:type', 'article', true);
     setMeta('og:locale', 'de_DE', true);
-    setMeta('og:site_name', 'Zyztm Nexus', true);
+    setMeta('og:site_name', 'Fortnite Nexus', true);
     setMeta('article:author', meta.articleAuthor, true);
     setMeta('article:modified_time', meta.articleModified, true);
 
@@ -59,14 +59,14 @@ export default function SEOHead({ guide, baseUrl = 'https://zyztm.com' }: SEOHea
     setMeta('twitter:card', 'summary_large_image');
     setMeta('twitter:title', meta.twitterTitle);
     setMeta('twitter:description', meta.twitterDescription);
-    setMeta('twitter:creator', '@zyztm');
-    setMeta('twitter:site', '@zyztm');
+    setMeta('twitter:creator', '@FortniteNexusDE');
+    setMeta('twitter:site', '@FortniteNexusDE');
 
     // Canonical
     setLink('canonical', meta.canonical);
 
     // JSON-LD structured data
-    const schemaId = 'zyztm-guide-schemas';
+    const schemaId = 'nexus-guide-schemas';
     let existingScript = document.getElementById(schemaId);
     if (!existingScript) {
       existingScript = document.createElement('script');
@@ -78,7 +78,7 @@ export default function SEOHead({ guide, baseUrl = 'https://zyztm.com' }: SEOHea
 
     return () => {
       // Cleanup on unmount – restore defaults
-      document.title = 'Zyztm Nexus';
+      document.title = 'Fortnite Nexus';
       const schemaEl = document.getElementById(schemaId);
       if (schemaEl) schemaEl.remove();
     };

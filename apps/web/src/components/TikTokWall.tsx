@@ -140,7 +140,7 @@ export default function TikTokWall() {
               – Die neuesten Clips
             </span>
           </h2>
-          <p className="text-white/50 mb-4">Alle Clips von @zyztm – direkt hier</p>
+          <p className="text-white/50 mb-4">Alle Clips von @fortnitenexus – direkt hier</p>
           <a
             href={TIKTOK_URL}
             target="_blank"
@@ -151,7 +151,7 @@ export default function TikTokWall() {
               color: TIKTOK_PINK,
             }}
           >
-            @ZYZTM AUF TIKTOK →
+            @NEXUS AUF TIKTOK →
           </a>
         </motion.div>
 
@@ -219,7 +219,7 @@ export default function TikTokWall() {
                 <div className="text-6xl">🎵</div>
                 <div>
                   <p className="font-cyber text-xl font-bold mb-1" style={{ color: TIKTOK_PINK }}>
-                    @ZYZTM
+                    @NEXUS
                   </p>
                   <p className="text-white/50 text-sm mb-3">651K Follower · TikTok</p>
                 </div>

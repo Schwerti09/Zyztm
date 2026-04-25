@@ -127,7 +127,7 @@ export default function NeuralSynthesizer() {
               <h2 className="font-cyber text-2xl font-bold text-white">
                 NEURAL <span className="text-neon-blue neon-text-blue">SYNTHESIZER</span>
               </h2>
-              <p className="text-white/50 text-sm">Lass Zyztm in deiner Stimme sprechen</p>
+              <p className="text-white/50 text-sm">Lass Fortnite Nexus in deiner Stimme sprechen</p>
             </div>
             <div className="ml-auto text-right">
               <div className="text-neon-gold font-cyber font-bold">{credits}</div>

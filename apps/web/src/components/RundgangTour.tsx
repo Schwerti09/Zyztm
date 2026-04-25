@@ -13,21 +13,21 @@ interface TourStep {
 const TOUR_STEPS: TourStep[] = [
   {
     id: 'hero',
-    title: 'Willkommen bei Zyztm Nexus!',
+    title: 'Willkommen bei Fortnite Nexus!',
     description: 'Dein exklusiver Hub für Streams, digitale Produkte & die Community. Lass uns eine kurze Tour machen!',
     emoji: '👋',
   },
   {
     id: 'about',
     title: 'Meine Gaming-Reise',
-    description: 'Erfahre alles über Zyztm – vom ersten Stream bis zum Creator Cup Sieg. Eine echte Erfolgsgeschichte.',
+    description: 'Erfahre alles über Fortnite Nexus – vom ersten Stream bis zum Creator Cup Sieg. Eine echte Erfolgsgeschichte.',
     emoji: '🚀',
     targetId: 'about',
   },
   {
     id: 'global-empire',
     title: 'Das Global Empire',
-    description: 'Zyztm ist auf allen Plattformen präsent – Kick, YouTube, TikTok. Folge ihm überall!',
+    description: 'Fortnite Nexus ist auf allen Plattformen präsent – YouTube, TikTok, Discord. Folge uns überall!',
     emoji: '🌍',
     targetId: 'global-empire',
   },
@@ -41,28 +41,28 @@ const TOUR_STEPS: TourStep[] = [
   {
     id: 'marketplace',
     title: 'Der Marketplace',
-    description: 'Exklusive digitale Produkte, Creator Codes und mehr. Unterstütze Zyztm direkt!',
+    description: 'Exklusive digitale Produkte, Creator Codes und mehr. Unterstütze Fortnite Nexus direkt!',
     emoji: '🛒',
     targetId: 'marketplace',
   },
   {
     id: 'soundboard-pro',
     title: 'Soundboard Pro',
-    description: 'Interaktives Soundboard mit den kultigsten Zyztm-Sounds. Jetzt ausprobieren!',
+    description: 'Interaktives Soundboard mit den kultigsten Nexus-Sounds. Jetzt ausprobieren!',
     emoji: '🎵',
     targetId: 'soundboard-pro',
   },
   {
     id: 'community-spotlight',
     title: 'Community Spotlight',
-    description: 'Die Community macht Zyztm aus. Hier werden die besten Fans und Clips gefeiert!',
+    description: 'Die Community macht Fortnite Nexus aus. Hier werden die besten Fans und Clips gefeiert!',
     emoji: '🤝',
     targetId: 'community-spotlight',
   },
   {
     id: 'latest-news',
     title: 'Neueste News',
-    description: 'Bleib up to date mit den neuesten Infos aus der Zyztm-Welt und dem Fortnite-Universum.',
+    description: 'Bleib up to date mit den neuesten Infos aus der Fortnite Nexus-Welt und dem Fortnite-Universum.',,
     emoji: '📰',
     targetId: 'latest-news',
   },
@@ -76,7 +76,7 @@ const TOUR_STEPS: TourStep[] = [
   {
     id: 'victory-royale',
     title: 'VICTORY ROYALE!',
-    description: 'Du hast den kompletten Zyztm Nexus erkundet! Willkommen im Squad – jetzt kennst du alle Bereiche!',
+    description: 'Du hast den kompletten Fortnite Nexus erkundet! Willkommen im Squad – jetzt kennst du alle Bereiche!',
     emoji: '🏆',
     isVictory: true,
   },
@@ -200,7 +200,7 @@ function applyGlow(targetId: string | undefined): void {
 
 export default function RundgangTour() {
   const [tourDone, setTourDone] = useState(
-    () => typeof window !== 'undefined' && sessionStorage.getItem('zyztm-tour-done') === 'true',
+    () => typeof window !== 'undefined' && sessionStorage.getItem('nexus-tour-done') === 'true',
   );
   const [isActive, setIsActive] = useState(false);
   const [currentStep, setCurrentStep] = useState(0);
@@ -216,7 +216,7 @@ export default function RundgangTour() {
     setIsActive(false);
     setCurrentStep(0);
     setTourDone(true);
-    sessionStorage.setItem('zyztm-tour-done', 'true');
+    sessionStorage.setItem('nexus-tour-done', 'true');
   }, []);
 
   const scrollAndGlow = useCallback((index: number) => {

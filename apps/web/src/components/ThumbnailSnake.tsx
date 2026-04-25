@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react';
 
-// Zyztm's real YouTube video data (id → url)
+// Fortnite Nexus real YouTube video data (id → url)
 const VIDEOS = [
   { id: 'OsiZmq4yLy4', url: 'https://www.youtube.com/watch?v=OsiZmq4yLy4' },
   { id: 'Kd-9EVbrVSk', url: 'https://www.youtube.com/watch?v=Kd-9EVbrVSk' },
@@ -18,7 +18,7 @@ const VIDEOS = [
   { id: '2Vv-BfVoq4g', url: 'https://www.youtube.com/watch?v=2Vv-BfVoq4g' },
 ];
 
-// Use the 3 confirmed Zyztm thumbnails first, fill rest with YouTube defaults
+// Use the 3 confirmed Fortnite Nexus thumbnails first, fill rest with YouTube defaults
 const SNAKE_VIDEOS = [
   VIDEOS[0], VIDEOS[1], VIDEOS[2],
   VIDEOS[0], VIDEOS[1], VIDEOS[2],
@@ -93,7 +93,7 @@ export default function ThumbnailSnake() {
     window.addEventListener('resize', resize);
 
     // ── preload thumbnails ────────────────────────────────────────────────────
-    // Only 3 confirmed Zyztm thumbnails are available, so cycle through them
+    // Only 3 confirmed Fortnite Nexus thumbnails are available, so cycle through them
     const CONFIRMED = [SNAKE_VIDEOS[0].id, SNAKE_VIDEOS[1].id, SNAKE_VIDEOS[2].id];
     const images: HTMLImageElement[] = SNAKE_VIDEOS.map((_v, i) => {
       const img = new Image();

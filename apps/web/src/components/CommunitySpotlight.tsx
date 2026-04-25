@@ -821,7 +821,7 @@ export default function CommunitySpotlight() {
                 </p>
               </div>
               <a
-                href="https://discord.gg/zyztm"
+                href="https://discord.gg/fortnitenexus"
                 target="_blank"
                 rel="noopener noreferrer"
                 style={{

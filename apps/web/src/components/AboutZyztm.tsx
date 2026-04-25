@@ -83,19 +83,19 @@ export default function AboutZyztm() {
             transition={{ duration: 0.6 }}
           >
             <h3 className="font-cyber text-2xl md:text-3xl font-bold text-white mb-6">
-              WER IST <span className="text-neon-pink neon-text-pink">ZYZTM?</span>
+              WER IST <span className="text-neon-pink neon-text-pink">FORTNITE NEXUS?</span>
             </h3>
             <div className="space-y-4 text-white/70 font-body leading-relaxed">
               <p>
-                Zyztm ist kein gewöhnlicher Streamer. Er ist ein Gamer, ein Entertainer und vor allem
+                Fortnite Nexus ist keine gewöhnliche Community. Es ist ein Ort für Gamer, Content Creator und vor allem
                 ein Mensch, der echte Verbindungen zu seiner Community aufbaut. Hinter dem Controller
-                steckt jemand, der mit echter Leidenschaft für Games und echtem Respekt für seine Fans
+                stecken Personen, die mit echter Leidenschaft für Games und echtem Respekt für ihre Fans
                 jeden Tag auf die Plattformen geht.
               </p>
               <p>
                 Was angefangen hat als Hobby – einfach spielen und die Welt daran teilhaben lassen –
                 wurde zu einem Lebenswerk. Mit seinem unverwechselbaren Stil, einer Mischung aus
-                explosivem Gameplay und authentischem Humor, schafft Zyztm eine Atmosphäre, die einen
+                explosivem Gameplay und authentischem Humor, schafft Fortnite Nexus eine Atmosphäre, die einen
                 immer wieder zurückzieht.
               </p>
               <p>

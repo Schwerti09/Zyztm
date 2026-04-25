@@ -550,7 +550,7 @@ export default function SoundboardDemo() {
               animate={{ skewX: [0, 0, -2, 2, 0, 0], x: [0, 0, -3, 3, 0, 0] }}
               transition={{ duration: 4, repeat: Infinity, repeatDelay: 3, ease: 'easeInOut' }}
             >
-              ZYZTM SOUNDBOARD PRO
+              NEXUS SOUNDBOARD PRO
             </motion.h2>
           </motion.div>
 

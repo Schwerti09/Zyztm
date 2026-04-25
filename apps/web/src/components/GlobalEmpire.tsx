@@ -16,7 +16,7 @@ const platforms = [
     icon: '📺',
     value: '356K',
     label: 'YOUTUBE',
-    sub: 'Haupt + Zyztm PLUS',
+    sub: 'Haupt + Nexus PLUS',
     color: '#ff0000',
   },
   {
@@ -83,7 +83,7 @@ export default function GlobalEmpire() {
             GLOBAL EMPIRE
           </span>
           <h2 className="font-cyber text-4xl md:text-5xl font-bold text-white mb-3 tracking-tight">
-            ZYZTM{' '}
+            NEXUS{' '}
             <span
               className="neon-text-blue"
               style={{ color: NEON_BLUE, textShadow: `0 0 30px ${NEON_BLUE}, 0 0 60px ${NEON_BLUE}60` }}

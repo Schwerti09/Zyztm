@@ -16,7 +16,7 @@ export default function KickEmbed() {
             </span>
           </div>
           <h2 className="font-cyber text-3xl md:text-4xl font-bold text-white">
-            ZYZTM AUF{' '}
+            NEXUS AUF{' '}
             <span className="font-cyber" style={{ color: '#53fc18', textShadow: '0 0 15px #53fc18' }}>
               KICK
             </span>
@@ -27,12 +27,12 @@ export default function KickEmbed() {
               style={{ background: '#53fc18', boxShadow: '0 0 6px #53fc18' }}
             />
             <a
-              href="https://kick.com/zyztm"
+              href="https://youtube.com/@FortniteNexusDE"
               target="_blank"
               rel="noopener noreferrer"
               className="font-cyber text-sm tracking-widest"
               style={{ color: '#53fc18' }}
-              aria-label="Zyztm Live-Stream auf Kick besuchen"
+              aria-label="Fortnite Nexus YouTube-Kanal besuchen"
             >
               LIVE AUF KICK →
             </a>
@@ -70,7 +70,7 @@ export default function KickEmbed() {
           className="mt-4 text-center"
         >
           <a
-            href="https://kick.com/zyztm"
+            href="https://youtube.com/@FortniteNexusDE"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 text-sm font-cyber tracking-widest py-2 px-6 rounded border transition-all duration-300 hover:scale-105"

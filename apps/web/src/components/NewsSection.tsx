@@ -16,48 +16,48 @@ interface NewsItem {
 const FALLBACK_NEWS: NewsItem[] = [
   {
     id: 1,
-    title: '🏆 ZYZTM ERREICHT 356.000 YOUTUBE-ABONNENTEN!',
+    title: '🏆 FORTNITE NEXUS ERREICHT 356.000 YOUTUBE-ABONNENTEN!',
     teaser:
-      'Nach Jahren harter Arbeit und tausenden Stunden Stream-Content hat Zyztm die Marke von 356.000 YouTube-Abonnenten geknackt. Der Weg dahin: täglich Fortnite-Clips, IRL-Momente und die beste Community im deutschsprachigen Raum.',
+      'Nach Jahren harter Arbeit und tausenden Stunden Content hat Fortnite Nexus die Marke von 356.000 YouTube-Abonnenten geknackt. Der Weg dahin: täglich Fortnite-Clips, Guides und die beste Community im deutschsprachigen Raum.',
     date: '3. Jan 2025',
     tag: 'MILESTONE',
     color: '#ff0000',
     icon: '📺',
-    link: 'https://www.youtube.com/@Zyztm',
+    link: 'https://www.youtube.com/@FortniteNexusDE',
     image: 'https://yt3.googleusercontent.com/ytc/AIdro_ki5TqFLW8PUMgHkDR_XZ2yxPkE5dCE9sC0Jw9RMA=s900-c-k-c0x00ffffff-no-rj',
   },
   {
     id: 2,
     title: '📅 NEUE STREAM-ZEITEN FÜR 2026 BEKANNT GEGEBEN',
     teaser:
-      'Zyztm hat seinen offiziellen Stream-Plan für 2026 enthüllt: Mo 13–18 Uhr, Di 12–17:40 Uhr, Mi 10–15:10 Uhr, Do 10:40–19:20 Uhr. Mit 28.900 Kick-Followern und durchschnittlich 159 Zuschauern liefert er täglich – mark your calendars!',
+      'Fortnite Nexus hat seinen offiziellen Content-Plan für 2026 enthüllt: Täglich neue Videos, Guides und Community-Events. Mit wachsenden Followerzahlen und täglichem Content liefert er konstant – mark your calendars!',
     date: '10. Feb 2026',
     tag: 'ANNOUNCEMENT',
     color: '#00f2ff',
     icon: '📅',
-    link: 'https://kick.com/zyztm',
+    link: 'https://youtube.com/@FortniteNexusDE',
   },
   {
     id: 3,
-    title: '🤖 ZYZTM BRO – DER KI-GAMING-KUMPEL IST DA!',
+    title: '🤖 NEXUS BRO – DER KI-GAMING-KUMPEL IST DA!',
     teaser:
-      'Zyztm launcht seinen eigenen KI-Chatbot: Zyztm Bro. Powered by Gemini AI, labert er wie Zyztm, kennt alle Fortnite-Tipps und hat drei Moods: Chill, Tryhard und Lustig. Teste ihn jetzt live im NEXUS!',
+      'Fortnite Nexus launcht seinen eigenen KI-Chatbot: Nexus Bro. Powered by AI, labert er wie ein Gamer, kennt alle Fortnite-Tipps und hat drei Moods: Chill, Tryhard und Lustig. Teste ihn jetzt live im NEXUS!',
     date: '24. Feb 2026',
     tag: 'FEATURE',
     color: '#a335ee',
     icon: '🤖',
-    link: 'https://discord.gg/zyztm',
+    link: 'https://discord.gg/fortnitenexus',
   },
   {
     id: 4,
-    title: '📈 REKORD AUF KICK: 3.598 ZUSCHAUER FEIERN ZYZTM!',
+    title: '📈 REKORD: FORTNITE NEXUS WÄCHST STÄNDIG!',
     teaser:
-      'In seinem bisher größten Stream brach Zyztm alle Rekorde mit 3.598 gleichzeitigen Zuschauern auf Kick. Mit 651.600 TikTok-Followern, 13,5 Millionen Likes und einem Engagement von 8,24% ist er einer der aufstrebendsten Creator Deutschlands.',
+      'Mit wachsender Community auf YouTube, TikTok und Discord ist Fortnite Nexus einer der aufstrebendsten Fortnite-Content-Plattformen Deutschlands. Täglich neue Clips, Guides und Community-Events – bleib dran!',
     date: '15. Jan 2025',
     tag: 'RECORD',
     color: '#ffd700',
     icon: '🔥',
-    link: 'https://kick.com/zyztm/videos',
+    link: 'https://youtube.com/@FortniteNexusDE',
   },
 ];
 
@@ -85,7 +85,7 @@ export default function NewsSection() {
           <h2 className="font-cyber text-4xl md:text-5xl font-bold text-white mb-4">
             LATEST <span className="text-neon-blue neon-text-blue">NEWS</span>
           </h2>
-          <p className="text-white/50">Das Neuste rund um Zyztm</p>
+          <p className="text-white/50">Das Neuste rund um Fortnite Nexus</p>
         </motion.div>
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
           {news.map((item, i) => (

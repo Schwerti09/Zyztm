@@ -133,7 +133,7 @@ export default function MediaGallery() {
             </p>
             <div className="flex justify-center gap-4 flex-wrap">
               <a
-                href="https://kick.com/zyztm"
+                href="https://youtube.com/@FortniteNexusDE"
                 target="_blank"
                 rel="noreferrer"
                 className="btn-secondary text-sm px-4 py-2"
@@ -141,7 +141,7 @@ export default function MediaGallery() {
                 📺 KICK CHANNEL
               </a>
               <a
-                href="https://youtube.com/@zyztm"
+                href="https://youtube.com/@FortniteNexusDE"
                 target="_blank"
                 rel="noreferrer"
                 className="btn-secondary text-sm px-4 py-2"

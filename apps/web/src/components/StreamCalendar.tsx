@@ -81,9 +81,9 @@ function buildCalendarUrl(slot: StreamSlot, date: Date): string {
   const endISO = end.toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z';
   const params = new URLSearchParams({
     action: 'TEMPLATE',
-    text: `Zyztm Stream – ${slot.game}`,
+    text: `Fortnite Nexus Stream – ${slot.game}`,
     dates: `${startISO}/${endISO}`,
-    details: 'Zyztm ist live auf Kick.com/zyztm',
+    details: 'Fortnite Nexus ist live auf youtube.com/@FortniteNexusDE',
     location: 'https://youtube.com/@FortniteNexusDE',
   });
   return `https://calendar.google.com/calendar/render?${params.toString()}`;
@@ -122,7 +122,7 @@ export default function StreamCalendar() {
             STREAM{' '}
             <span style={{ color: NEON_GREEN, textShadow: `0 0 15px ${NEON_GREEN}` }}>KALENDER</span>
           </h2>
-          <p className="text-white/50">Wann ist Zyztm das nächste Mal live?</p>
+          <p className="text-white/50">Wann ist Fortnite Nexus das nächste Mal live?</p>
         </motion.div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
@@ -178,7 +178,7 @@ export default function StreamCalendar() {
 
               <div className="flex flex-col sm:flex-row gap-3">
                 <a
-                  href="https://kick.com/zyztm"
+                  href="https://youtube.com/@FortniteNexusDE"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex-1 font-cyber text-xs tracking-widest py-3 rounded border text-center transition-all"
@@ -253,8 +253,8 @@ export default function StreamCalendar() {
               </p>
               <div className="flex justify-center gap-3 flex-wrap">
                 {[
-                  { label: 'KICK', href: 'https://kick.com/zyztm', color: NEON_GREEN },
-                  { label: 'YOUTUBE', href: 'https://youtube.com/@Zyztm', color: '#ff0000' },
+                  { label: 'YOUTUBE', href: 'https://youtube.com/@FortniteNexusDE', color: '#ff0000' },
+                  { label: 'YOUTUBE', href: 'https://youtube.com/@FortniteNexusDE', color: '#ff0000' },
                   { label: 'DISCORD', href: 'https://discord.gg/fortnitenexus', color: '#5865f2' },
                 ].map((link) => (
                   <a

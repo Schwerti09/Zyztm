@@ -378,7 +378,7 @@ function ExclCard({ item, idx, onBuy, loading }: { item: ExclItem; idx: number; 
 export default function FortniteItemShop() {
   const [loadingItem, setLoadingItem] = useState<string | null>(null);
   const [purchases, setPurchases] = useState<PurchasedItem[]>(() => {
-    try { return JSON.parse(localStorage.getItem('zyztm_purchases') || '[]'); } catch { return []; }
+    try { return JSON.parse(localStorage.getItem('nexus_purchases') || '[]'); } catch { return []; }
   });
 
   // Refresh purchases when user returns from Stripe (window regains focus)
@@ -553,7 +553,7 @@ export default function FortniteItemShop() {
             </motion.div>
           </div>
 
-          {/* RIGHT — Zyztm Exclusive Drops */}
+          {/* RIGHT — Nexus Exclusive Drops */}
           <div>
             <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}
               className="flex items-center gap-3 mb-6">

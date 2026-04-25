@@ -54,14 +54,14 @@ const STATIC_HIGHLIGHTS: Clip[] = [
   },
   {
     id: 'yt-EiNtoIK5cNM',
-    title: 'ZYZTM geht UNDERCOVER in meinem HIDE & SEEK für 24 STUNDEN! Fortnite',
+    title: 'NEXUS geht UNDERCOVER in meinem HIDE & SEEK für 24 STUNDEN! Fortnite',
     thumbnail: 'https://img.youtube.com/vi/EiNtoIK5cNM/hqdefault.jpg',
     url: 'https://www.youtube.com/watch?v=EiNtoIK5cNM',
     source: 'youtube',
   },
   {
     id: 'yt-B6riKkenTZM',
-    title: 'ZYZTM geht UNDERCOVER in meinem HIDE & SEEK – Fortnite',
+    title: 'NEXUS geht UNDERCOVER in meinem HIDE & SEEK – Fortnite',
     thumbnail: 'https://img.youtube.com/vi/B6riKkenTZM/hqdefault.jpg',
     url: 'https://www.youtube.com/watch?v=B6riKkenTZM',
     source: 'youtube',
@@ -258,7 +258,7 @@ export default function StreamHighlights() {
               Noch keine Highlights verfügbar.
             </p>
             <a
-              href="https://kick.com/zyztm"
+              href="https://youtube.com/@FortniteNexusDE"
               target="_blank"
               rel="noopener noreferrer"
               className="font-cyber text-xs tracking-widest px-6 py-3 rounded border transition-all"
@@ -324,7 +324,7 @@ export default function StreamHighlights() {
             className="flex justify-center mt-10 gap-4 flex-wrap"
           >
             <a
-              href="https://kick.com/zyztm"
+              href="https://youtube.com/@FortniteNexusDE"
               target="_blank"
               rel="noopener noreferrer"
               className="font-cyber text-xs tracking-widest px-6 py-3 rounded border transition-all"
