@@ -149,7 +149,7 @@ export function generateArticleSchema(guide: GuideData, pageUrl: string): object
     author: {
       '@type': 'Person',
       name: AUTHOR.name,
-      url: `https://zyztm.com/de/author`,
+      url: `https://fortnitenexus.netlify.app/de/author`,
       description: AUTHOR.bio,
       knowsAbout: ['Fortnite', 'PC Gaming', 'Stream Setup', 'Game Optimization', 'NVIDIA Settings'],
     },

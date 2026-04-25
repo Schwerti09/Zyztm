@@ -231,7 +231,7 @@ export default function TikTokWall() {
                 </div>
               </motion.a>
               <motion.a
-                href="https://kick.com/zyztm"
+                href="https://youtube.com/@FortniteNexusDE"
                 target="_blank"
                 rel="noopener noreferrer"
                 initial={{ opacity: 0, y: 20 }}

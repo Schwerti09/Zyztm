@@ -95,7 +95,7 @@ export default function CoinsPage() {
               </span>
             </h1>
             <p className="text-white/60 text-lg font-body max-w-2xl mx-auto">
-              Deine Währung im Zyztm-Universum – sammle, kaufe und nutze Coins für exklusive Features!
+              Deine Währung im Nexus-Universum – sammle, kaufe und nutze Coins für exklusive Features!
             </p>
           </motion.div>
 

@@ -70,7 +70,7 @@ const CLIPS: ClipData[] = [
     accentColor: '#53fc18',
     bgGradient: 'linear-gradient(135deg,#001a00 0%,#000f00 100%)',
     youtubeId: null,
-    externalUrl: 'https://www.tiktok.com/@zyztm/video/7581494239306042646',
+    externalUrl: 'https://www.tiktok.com/@fortnitenexus/video/7581494239306042646',
     source: 'tiktok',
     stats: { kills: 17, accuracy: 78, mode: 'BUILD BATTLE' },
     emoji: '🔨',

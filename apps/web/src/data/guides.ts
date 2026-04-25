@@ -1,5 +1,5 @@
 /**
- * Guide content data for Zyztm Nexus pSEO system
+ * Guide content data for Fortnite Nexus pSEO system
  * Each guide is 1200–1800 words equivalent, with real-world examples,
  * CLI commands, before/after data, FAQs, and unique insight sections.
  */

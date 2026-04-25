@@ -341,7 +341,7 @@ export default function DashboardPage() {
               <span style={{ color: '#ff0055', textShadow: '0 0 20px #ff005580, 0 0 40px #ff005540' }}>NEXUS</span>
               <span className="text-white"> DASHBOARD</span>
             </h1>
-            <p className="text-white/30 text-xs font-cyber tracking-widest mt-1">ZYZTM // SECURE CONTROL PANEL v2.0</p>
+            <p className="text-white/30 text-xs font-cyber tracking-widest mt-1">NEXUS // SECURE CONTROL PANEL v2.0</p>
           </div>
 
           <div className="flex items-center gap-3">
@@ -407,7 +407,7 @@ export default function DashboardPage() {
             {/* info */}
             <div className="flex-1">
               <div className="flex flex-wrap items-center gap-2 mb-2">
-                <span className="font-cyber text-lg font-bold text-white">ZYZTM MEMBER</span>
+                <span className="font-cyber text-lg font-bold text-white">NEXUS MEMBER</span>
                 <span
                   className="text-xs font-cyber px-2 py-0.5 rounded-full"
                   style={{ background: '#ff005520', color: '#ff0055', border: '1px solid #ff005540' }}

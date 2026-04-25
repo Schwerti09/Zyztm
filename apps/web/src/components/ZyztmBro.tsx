@@ -208,7 +208,7 @@ export default function ZyztmBro() {
             </div>
             <div className="flex-1">
               <div className="flex items-center gap-2">
-                <span className="font-cyber text-white font-bold text-sm">ZYZTM BRO</span>
+                <span className="font-cyber text-white font-bold text-sm">NEXUS BRO</span>
                 <span className="text-xs" style={{ color: currentMood.color }}>{currentMood.emoji}</span>
               </div>
               <div className="flex items-center gap-1.5">
@@ -218,7 +218,7 @@ export default function ZyztmBro() {
                   transition={{ duration: 2, repeat: Infinity }}
                 />
                 <span className="text-green-400 text-xs font-cyber">ONLINE</span>
-                <span className="text-white/30 text-xs">· Zyztm's Gaming-Kumpel</span>
+                <span className="text-white/30 text-xs">· Nexus Gaming-Kumpel</span>
               </div>
             </div>
             {/* Mood tabs */}
@@ -261,7 +261,7 @@ export default function ZyztmBro() {
                 >
                   🤖
                 </motion.div>
-                <p className="text-white/40 text-sm font-cyber">Zyztm Bro wartet auf dich!</p>
+                <p className="text-white/40 text-sm font-cyber">Nexus Bro wartet auf dich!</p>
                 <p className="text-white/25 text-xs mt-1">Wähl einen Modus und fang an zu schreiben</p>
               </div>
             )}
