@@ -6,7 +6,7 @@
 
 import { useState } from 'react';
 import { LANGUAGES, DEFAULT_LANGUAGE, type Language, getLanguageFlag, detectBrowserLanguage } from '../lib/i18n';
-import Link from 'wouter';
+import { Link } from 'wouter';
 
 interface LanguageSwitcherProps {
   currentLanguage?: Language;

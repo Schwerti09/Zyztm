@@ -319,7 +319,8 @@ export const HUB_CATEGORIES: Array<{
  * This creates unique schema for each region for better SEO
  */
 export function generateGeoTargetedHowToSchema(guide: GuideData, region: Region): object {
-  const baseSchema = generateHowToSchema(guide);
+  const pageUrl = `https://fortnitenexus.netlify.app/de/guides/${guide.slug}`;
+  const baseSchema = generateHowToSchema(guide, pageUrl);
   const geoSchema = generateGeoSchema(region, guide) as any;
   
   // Merge base schema with geo enhancements

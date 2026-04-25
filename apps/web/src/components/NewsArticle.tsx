@@ -4,7 +4,7 @@
  */
 'use client';
 
-import Link from 'wouter';
+import { Link } from 'wouter';
 import { NEWS_ARTICLES, type NewsArticle } from '../data/news';
 
 interface NewsArticleProps {

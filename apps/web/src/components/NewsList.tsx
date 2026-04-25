@@ -5,7 +5,7 @@
 'use client';
 
 import { useState } from 'react';
-import Link from 'wouter';
+import { Link } from 'wouter';
 import { NEWS_ARTICLES, getNewsArticlesByCategory, getFeaturedNews, type NewsArticle } from '../data/news';
 
 interface NewsListProps {

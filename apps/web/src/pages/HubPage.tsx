@@ -3,6 +3,7 @@ import { lazy, Suspense } from 'react';
 import { getGuidesByCategory } from '../data/guides';
 import { HUB_CATEGORIES } from '../lib/pseo';
 import type { GuideCategory } from '../lib/pseo';
+import MultiRegionalHub from '../components/MultiRegionalHub';
 
 const Footer = lazy(() => import('../components/Footer'));
 

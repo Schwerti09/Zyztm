@@ -2,10 +2,9 @@
  * News Article Page - Single news article view
  */
 import { useParams } from 'wouter';
-import { lazy, Suspense } from 'react';
+import { lazy, Suspense, useEffect } from 'react';
 import NewsArticle from '../components/NewsArticle';
 import { getNewsArticleBySlug } from '../data/news';
-import SEOHead from '../components/SEOHead';
 
 const Footer = lazy(() => import('../components/Footer'));
 
@@ -27,15 +26,13 @@ export default function NewsArticlePage() {
 
   const pageUrl = `https://fortnitenexus.netlify.app/news/${article.slug}`;
 
+  // Set document title
+  useEffect(() => {
+    document.title = article.title;
+  }, [article.title]);
+
   return (
     <div className="min-h-screen bg-bg-dark text-white">
-      <SEOHead
-        title={article.title}
-        description={article.excerpt}
-        url={pageUrl}
-        image={article.imageUrl}
-      />
-
       <NewsArticle slug={params.slug ?? ''} />
 
       <Suspense fallback={null}>

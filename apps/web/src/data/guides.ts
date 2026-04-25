@@ -1863,7 +1863,7 @@ export const GUIDES: GuideData[] = [
     description:
       'Die besten Switch-Einstellungen für Fortnite 2026: Graphics, Performance, Handheld-Mode und das perfekte Setup für Switch-Spielen.',
     directAnswer:
-      'Die besten Fortnite Switch-Einstellungen 2026 sind: Handheld-Mode 30 FPS, Docked-Mode 60 FPS, Graphics auf "Niedrig", und Controller Vibration AUS.',
+      'Die besten Fortnite Switch-Einstellungen 2026 sind: Handheld-Mode 30 FPS, Docked-Mode 60 FPS, Graphics auf "Niedrig", und Controller Vibration AUS',
     category: 'fortnite',
     keywords: [
       'Fortnite Switch',
@@ -2063,7 +2063,7 @@ export const GUIDES: GuideData[] = [
       { name: 'Mobility-Optimization', text: 'Nutze Vehicles statt Building für Rotation. Building ist noch wichtig für Combat aber Vehicles sind besser für Mobility. Zeit = Advantage.' },
       { name: 'Loadout-Anpassung', text: 'Mit Vehicle Meta ist AR wichtiger. Nutze AR für Vehicle-Combat und Mid Range. Shotgun ist noch wichtig für Close Combat.' },
       { name: 'Positioning mit Vehicles', text: 'Nutze Vehicles für High-Ground und Rotate-Advantage. Vermeide Vehicle-Combat gegen mehrere Gegner – Vehicle ist für Rotation nicht für Combat.' },
-    },
+    ],
     beforeAfter: {
       before: 'Building für Rotation. Langsame Rotates, schlechte Zone-Awareness.',
       after: 'Vehicle für Rotation. Schnelle Rotates, perfekte Zone-Awareness.',
@@ -2072,10 +2072,12 @@ export const GUIDES: GuideData[] = [
     faqs: [
       { question: 'Nitro Drifter oder Quad Crasher?', answer: 'Nitro Drifter ist besser für Solo Rotation, Quad Crasher für Squad. Nutze basierend auf deinem Game Mode. Beide sind Meta.' },
       { question: 'Ist Vehicle-Combat wichtig?', answer: 'Ja, Vehicle-Combat ist wichtig für Season 3 Meta. Übe in Creative für Vehicle-Combat Mastery. Vehicle-Combat ist der neue Skill-Check.' },
-      { question: 'Building noch wichtig?', answer: 'Ja, Building ist noch wichtig für Combat. Vehicles sind für Rotation nicht für Combat. Building + Vehicles = Season 3 Meta.',
-    },
-    hiddenInsight: 'Was andere Guides nicht sagen: Season 3 Meta ist nicht über Vehicles vs Building – es ist über Synergy. Vehicles für Rotation, Building für Combat. Die besten Players nutzen beide für Advantage. Synergy > einzelne Skills.',
-    expertTip: 'Mein persönlicher Tipp: Ich habe lange gedacht, Vehicles seien "noob". Dann habe ich gemerkt: Vehicles sind Advantage. Pro Players nutzen Vehicles für Rotation – nicht weil sie nicht Building können, sondern weil Vehicles schneller sind. Advantage > Ego.',
+      { question: 'Building noch wichtig?', answer: 'Ja, Building ist noch wichtig für Combat. Vehicles sind für Rotation nicht für Combat. Building + Vehicles = Season 3 Meta.' },
+    ],
+    hiddenInsight:
+      'Was andere Guides nicht sagen: Season 3 Meta ist nicht über Vehicles vs Building – es ist über Synergy. Vehicles für Rotation, Building für Combat. Die besten Players nutzen beide für Advantage. Synergy > einzelne Skills.',
+    expertTip:
+      'Mein persönlicher Tipp: Ich habe lange gedacht, Vehicles seien "noob". Dann habe ich gemerkt: Vehicles sind Advantage. Pro Players nutzen Vehicles für Rotation – nicht weil sie nicht Building können, sondern weil Vehicles schneller sind. Advantage > Ego.',
     content: [
       {
         heading: 'Season 3 Meta im Detail',
@@ -2102,8 +2104,8 @@ export const GUIDES: GuideData[] = [
       { name: 'Boss-Fight Strategy', text: 'Boss-Fights sind wichtig für Mythic Drops. Lerne Boss-Patterns und Weak Points. Boss-Fights sind Risk vs Reward – Risk ist hoch aber Reward ist höher.' },
       { name: 'Mythic Loadout', text: 'Mythic AR + Mythic Sniper + Pump Shotgun ist das beste Loadout. Mythics sind nicht nur Damage – sie sind Advantage.' },
       { name: 'Early-Game Strategy', text: 'Gehe direkt zu Boss-Locations für Mythic Drops. Early-Game Boss-Fight Risk ist hoch aber Advantage ist höher. Mythic = Win-Rate Boost.' },
-      { name: 'Mythic-Management', text: 'Mythics sind rare. Nutze sie weise – nicht spam. Mythic Ammo ist limited. Conserve für wichtigste Fights.',
-    },
+      { name: 'Mythic-Management', text: 'Mythics sind rare. Nutze sie weise – nicht spam. Mythic Ammo ist limited. Conserve für wichtigste Fights.' },
+    ],
     beforeAfter: {
       before: 'Keine Mythics. Standard Waffen. Kein Advantage.',
       after: 'Mythic Loadout. 15% mehr Damage. Massive Advantage.',
@@ -2112,8 +2114,8 @@ export const GUIDES: GuideData[] = [
     faqs: [
       { question: 'Mythic AR oder normaler AR?', answer: 'Mythic AR hat 15% mehr Damage und ist Meta. Normaler AR ist noch lebensfähig aber Mythic ist Advantage. Nutze Mythic wenn möglich.' },
       { question: 'Boss-Fight lohnt sich?', answer: 'Ja, Boss-Fight lohnt sich für Mythic Drop. Risk ist hoch aber Reward ist höher. Mythic = Win-Rate Boost +35%. Risk vs Reward = Favor Reward.' },
-      { question: 'Mythic Ammo Problem?', answer: 'Ja, Mythic Ammo ist limited. Conserve für wichtigste Fights. Nutze normalen AR für Farming und Mythic für Combat. Ammo-Management ist Skill.',
-    },
+      { question: 'Mythic Ammo Problem?', answer: 'Ja, Mythic Ammo ist limited. Conserve für wichtigste Fights. Nutze normalen AR für Farming und Mythic für Combat. Ammo-Management ist Skill.' },
+    ],
     hiddenInsight: 'Was andere Guides nicht sagen: Season 4 Meta ist nicht über Mythics – es ist über Risk Management. Die besten Players nehmen nicht alle Boss-Fights – sie nehmen calculated Risks. Risk Management > Blind Aggression.',
     expertTip: 'Mein persönlicher Tipp: Ich habe lange gedacht, Boss-Fights seien "noob". Dann habe ich gemerkt: Boss-Fights sind calculated Risk. Pro Players nehmen Boss-Fights wenn der Timing richtig ist. Risk Management ist der Unterschied zwischen Good und Great.',
     content: [
@@ -2142,8 +2144,8 @@ export const GUIDES: GuideData[] = [
       { name: 'POI-Strategy', text: 'Tilted Towers ist Hot-Drop mit high Risk aber high Reward. Pleasant Park ist mid-tier mit consistent Loot. Wähle basierend auf deinem Playstyle.' },
       { name: 'Rotate-Paths', text: 'New Map hat neue Rotate-Paths. Lerne sie für Zone-Awareness und Third-Party-Prevention. Rotate-Paths sind Season 5 Meta.' },
       { name: 'Loot-Spawns', text: 'New POIs haben neue Loot-Spawns. Lerne sie für consistent Loot. Loot-Knowledge = Consistency. Consistency > Randomness.' },
-      { name: 'Map-Control', text: 'Map-Control ist wichtiger mit New Map. Nutze High-Ground und Cover für Advantage. Map-Knowledge + Positioning = Season 5 Meta.',
-    },
+      { name: 'Map-Control', text: 'Map-Control ist wichtiger mit New Map. Nutze High-Ground und Cover für Advantage. Map-Knowledge + Positioning = Season 5 Meta.' },
+    ],
     beforeAfter: {
       before: 'Alte Map-Knowledge. Falsche Rotate-Paths. Schlechte Zone-Awareness.',
       after: 'New Map-Knowledge. Perfekte Rotate-Paths. Bessere Zone-Awareness.',
@@ -2152,8 +2154,8 @@ export const GUIDES: GuideData[] = [
     faqs: [
       { question: 'Tilted Towers Hot-Drop?', answer: 'Ja, Tilted ist Hot-Drop mit high Risk aber high Reward. Wenn du confident bist, drop Tilted. Wenn nicht, drop Pleasant Park oder andere POIs.' },
       { question: 'New Map lernen?', answer: 'Ja, New Map ist komplett anders. Lerne alle POIs, Loot-Spawns und Rotate-Paths. Map-Knowledge ist essential für Season 5 Meta.' },
-      { question: 'Welche POI ist best?', answer: 'Keine POI ist "best". Tilted ist Hot-Drop, Pleasant ist mid-tier. Wähle basierend auf deinem Playstyle. Playstyle > "Best" POI.',
-    },
+      { question: 'Welche POI ist best?', answer: 'Keine POI ist "best". Tilted ist Hot-Drop, Pleasant ist mid-tier. Wähle basierend auf deinem Playstyle. Playstyle > "Best" POI.' },
+    ],
     hiddenInsight: 'Was andere Guides nicht sagen: Season 5 Meta ist nicht über "beste" POI – es ist über Map-Knowledge. Die besten Players kennen alle POIs, nicht nur die "beste". Map-Knowledge = Advantage > POI-Selection.',
     expertTip: 'Mein persönlicher Tipp: Ich habe lange gedacht, Tilted sei die "beste" POI. Dann habe ich gemerkt: Map-Knowledge ist wichtiger. Ich drop jetzt Pleasant Park und habe mehr Success weil ich die POI kenne. Map-Knowledge > Hot-Drop.',
     content: [
@@ -2182,8 +2184,8 @@ export const GUIDES: GuideData[] = [
       { name: 'Championship Prep', text: 'Championship Prep ist essential. Übe in Ranked, scrim in Custom, review deine Matches. Prep = Performance. Performance = Success.' },
       { name: 'Loadout-Perfection', text: 'Loadout ist perfected. Mythic AR + Mythic Sniper + Pump Shotgun + Tactical SMG. Perfektes Loadout für Competitive Play.' },
       { name: 'Mental Game', text: 'Mental Game ist wichtig für Championship. Stay calm, stay focused, stay consistent. Mental = Performance. Performance = Success.' },
-      { name: 'Final Strategy', text: 'Final Strategy ist Consistency. Nutze deine perfected Skills, nicht gamble. Consistency > Risk. Consistency = Championship.',
-    },
+      { name: 'Final Strategy', text: 'Final Strategy ist Consistency. Nutze deine perfected Skills, nicht gamble. Consistency > Risk. Consistency = Championship.' },
+    ],
     beforeAfter: {
       before: 'Unbalanced Skills. Keine Championship Prep. Inconsistent Performance.',
       after: 'Balanced Skills. Championship Prep. Consistent Performance.',
@@ -2192,7 +2194,7 @@ export const GUIDES: GuideData[] = [
     faqs: [
       { question: 'Final Season Meta?', answer: 'Final Season Meta ist refined. All Skills sind wichtig – Building, Aim, Game Sense, Positioning. Balance ist Meta. Kein einzelner Skill dominiert.' },
       { question: 'Championship Prep wichtig?', answer: 'Ja, Championship Prep ist essential. Übe in Ranked, scrim in Custom, review deine Matches. Prep = Performance. Performance = Success.' },
-      { question: 'Mental Game wichtig?', answer: 'Ja, Mental Game ist wichtig für Championship. Stay calm, stay focused, stay consistent. Mental = Performance. Performance = Success.',
+      { question: 'Mental Game wichtig?', answer: 'Ja, Mental Game ist wichtig für Championship. Stay calm, stay focused, stay consistent. Mental = Performance. Performance = Success.' },
     ],
     hiddenInsight: 'Was andere Guides nicht sagen: Season 6 Meta ist nicht über einzelnen Skill – es ist über Balance. Die besten Players haben balanced Skills, nicht einen dominanten Skill. Balance > Specialization.',
     expertTip: 'Mein persönlicher Tipp: Ich habe lange gedacht, Building sei der wichtigste Skill. Dann habe ich gemerkt: Balance ist wichtiger. Ich habe meine Aim und Game Sense verbessert und habe mehr Success. Balance > Single Skill.',

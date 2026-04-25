@@ -114,7 +114,7 @@ export const REGIONS: Record<Region, RegionData> = {
     winrateVsGlobal: 3,
     popularWeapons: ['Heavy AR', 'Pump Shotgun', 'Sniper'],
     localExpert: {
-      name: 'Ali "SypherPK' Hassan',
+      name: 'Ali "SypherPK" Hassan',
       title: 'Top Fortnite Content Creator & Pro Player',
       region: 'na-west',
       achievements: ['10M+ YouTube subscribers', 'Multiple tournament wins', 'Fortnite Ambassador'],
@@ -140,10 +140,10 @@ export const REGIONS: Record<Region, RegionData> = {
     winrateVsGlobal: 8,
     popularWeapons: ['Striker AR', 'Pump Shotgun', 'SMG'],
     localExpert: {
-      name: 'Benjy "Benjyfishy' Fish',
+      name: 'Benjy "Benjyfishy" Fish',
       title: 'EU Top Player & FNCS Champion',
       region: 'eu-west',
-    achievements: ['Multiple FNCS championships', 'World Cup finalist', 'EU #1 ranked player'],
+        achievements: ['Multiple FNCS championships', 'World Cup finalist', 'EU #1 ranked player'],
       quote: 'EU West is known for technical building and precise aim. Our players focus on fundamentals – that\'s why we consistently dominate international tournaments.',
       credibility: 'Multiple FNCS champion with consistent top-tier placements in major tournaments',
       socialLink: 'https://twitch.tv/benjyfishy'
@@ -166,7 +166,7 @@ export const REGIONS: Record<Region, RegionData> = {
     winrateVsGlobal: 6,
     popularWeapons: ['Heavy AR', 'Tactical Shotgun', 'SMG'],
     localExpert: {
-      name: 'Jannis "JannisZ' Z',
+      name: 'Jannis "JannisZ" Z',
       title: 'German Fortnite Pro & Content Creator',
       region: 'eu-central',
       achievements: ['Multiple German tournament wins', 'EU competitive scene veteran', '1M+ Twitch followers'],
@@ -632,5 +632,3 @@ export function generateDynamicExpertCitation(region: Region, topic: string): st
 // ============================================================================
 // EXPORTS
 // ============================================================================
-export { REGIONS };
-export type { RegionData, LocalExpert, GeoContentInjection };
