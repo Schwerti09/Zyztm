@@ -2,7 +2,7 @@ import { useState, useRef, useEffect } from 'react';
 import { motion, useInView, AnimatePresence } from 'framer-motion';
 
 const BOOT_LINES = [
-  '> ZYZTM NEXUS OS v2.4.1 — INITIALISIERUNG...',
+  '> FORTNITE NEXUS OS v2.4.1 — INITIALISIERUNG...',
   '> KERNEL GELADEN ✓',
   '> NEON-PROTOKOLL AKTIV ✓',
   '> VERBINDUNG WIRD HERGESTELLT...',
@@ -265,7 +265,7 @@ export default function LaptopMockup() {
                 >
                   <iframe
                     src="https://www.youtube.com/embed/OsiZmq4yLy4?autoplay=1&mute=1&rel=0&modestbranding=1"
-                    title="Zyztm Nexus Preview"
+                    title="Fortnite Nexus Preview"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     allowFullScreen
                     className="w-full h-full border-0"

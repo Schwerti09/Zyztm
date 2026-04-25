@@ -56,7 +56,7 @@ export default function YouTubeLatest() {
               rel="noopener noreferrer"
               className="text-red-500 hover:text-red-400 transition-colors"
             >
-              @Zyztm
+              @FortniteNexusDE
             </a>
           </p>
         </motion.div>
@@ -111,7 +111,7 @@ export default function YouTubeLatest() {
                 />
                 <div className="absolute inset-0 flex flex-col items-center justify-center gap-3">
                   <div className="text-5xl">📺</div>
-                  <p className="font-cyber text-lg font-bold text-red-500">ZYZTM AUF YOUTUBE</p>
+                  <p className="font-cyber text-lg font-bold text-red-500">NEXUS AUF YOUTUBE</p>
                 </div>
               </div>
               <div className="p-4 text-center">

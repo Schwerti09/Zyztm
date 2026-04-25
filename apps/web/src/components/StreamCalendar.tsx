@@ -84,7 +84,7 @@ function buildCalendarUrl(slot: StreamSlot, date: Date): string {
     text: `Zyztm Stream – ${slot.game}`,
     dates: `${startISO}/${endISO}`,
     details: 'Zyztm ist live auf Kick.com/zyztm',
-    location: 'https://kick.com/zyztm',
+    location: 'https://youtube.com/@FortniteNexusDE',
   });
   return `https://calendar.google.com/calendar/render?${params.toString()}`;
 }
@@ -255,7 +255,7 @@ export default function StreamCalendar() {
                 {[
                   { label: 'KICK', href: 'https://kick.com/zyztm', color: NEON_GREEN },
                   { label: 'YOUTUBE', href: 'https://youtube.com/@Zyztm', color: '#ff0000' },
-                  { label: 'DISCORD', href: 'https://discord.gg/zyztm', color: '#5865f2' },
+                  { label: 'DISCORD', href: 'https://discord.gg/fortnitenexus', color: '#5865f2' },
                 ].map((link) => (
                   <a
                     key={link.label}

@@ -317,7 +317,7 @@ export default function ThumbnailSnake() {
           ctx.font = 'bold 12px Orbitron, monospace';
           ctx.textAlign = 'center';
           ctx.textBaseline = 'middle';
-          ctx.fillText('ZYZTM', 0, 0);
+          ctx.fillText('NEXUS', 0, 0);
         }
 
         // Scanline overlay

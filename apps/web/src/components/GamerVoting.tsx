@@ -10,7 +10,7 @@ interface Feature {
 
 // Simulated voter name pool for demo (shows community engagement feel)
 const DEMO_VOTERS = [
-  'xXProGamerXx', 'FortniteKing99', 'ZyztmFan2000', 'NightOwl_GG', 'DropMasterZ',
+  'xXProGamerXx', 'FortniteKing99', 'NexusFan2000', 'NightOwl_GG', 'DropMasterZ',
   'VictoryRoyale7', 'StreamLegend', 'ChillBro420', 'TryhardMode', 'LootLlamaFan',
   'KickViewer42', 'DiggahSupport', 'NexusPlayer', 'ClutchKing', 'SniperElite99',
 ];

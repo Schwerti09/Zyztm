@@ -56,7 +56,7 @@ const CLIPS: ClipData[] = [
     accentColor: '#00f2ff',
     bgGradient: 'linear-gradient(135deg,#00131a 0%,#000a0f 100%)',
     youtubeId: null,
-    externalUrl: 'https://www.tiktok.com/@zyztm/video/7610528912187198742',
+    externalUrl: 'https://www.tiktok.com/@fortnitenexus/video/7610528912187198742',
     source: 'tiktok',
     stats: { kills: 1, accuracy: 100, mode: 'NO-SCOPE' },
     emoji: '🎯',
@@ -641,7 +641,7 @@ export default function ClutchReel() {
             📺 YOUTUBE →
           </a>
           <a
-            href="https://kick.com/zyztm/videos"
+            href="https://youtube.com/@FortniteNexusDE/videos"
             target="_blank"
             rel="noopener noreferrer"
             className="font-cyber text-xs tracking-widest px-6 py-3 rounded border transition-all"
@@ -650,7 +650,7 @@ export default function ClutchReel() {
             🟢 KICK CLIPS →
           </a>
           <a
-            href="https://www.tiktok.com/@zyztm"
+            href="https://www.tiktok.com/@fortnitenexus"
             target="_blank"
             rel="noopener noreferrer"
             className="font-cyber text-xs tracking-widest px-6 py-3 rounded border transition-all"

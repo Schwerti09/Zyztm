@@ -27,7 +27,7 @@ const EVENTS: FnEvent[] = [
   },
   {
     id: 2,
-    name: 'ZYZTM Community Turnier',
+    name: 'NEXUS Community Turnier',
     description: '5.000€ Preisgeld – Anmeldung über Discord',
     icon: '🏆',
     color: NEON_GREEN,

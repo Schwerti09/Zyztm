@@ -7,7 +7,7 @@ const NEON_PINK = '#FF00FF';
 const NEON_BLUE = '#00f2ff';
 
 const TICKER_ITEMS = [
-  { text: 'New Skin: ZYZTM Exclusive', icon: '🎮', color: NEON_GREEN },
+  { text: 'New Skin: NEXUS Exclusive', icon: '🎮', color: NEON_GREEN },
   { text: '2x XP Weekend ACTIVE', icon: '⚡', color: NEON_GOLD },
   { text: 'New Map POI: The Underworld', icon: '🗺️', color: NEON_BLUE },
   { text: 'v31.10 Live Now', icon: '🔥', color: NEON_PINK },
@@ -15,7 +15,7 @@ const TICKER_ITEMS = [
   { text: 'Zerostorm Rifle – Mythic Loot', icon: '🔫', color: NEON_GREEN },
   { text: 'Tilted Towers Returns!', icon: '🏙️', color: NEON_BLUE },
   { text: 'Chapter 6 Season 2 Teaser Leaked', icon: '📱', color: NEON_PINK },
-  { text: 'ZYZTM Turnier: 5.000€ Prize Pool', icon: '🏆', color: NEON_GOLD },
+  { text: 'NEXUS Turnier: 5.000€ Prize Pool', icon: '🏆', color: NEON_GOLD },
   { text: 'Battle Pass Level 87 – Grind Mode ON', icon: '💪', color: NEON_GREEN },
 ];
 

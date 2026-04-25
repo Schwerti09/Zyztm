@@ -247,8 +247,8 @@ export default function FortniteDanceCanvas() {
       try {
         playVictoryJingle(getAudioCtx());
       } catch { /* ignore */ }
-      // Open Zyztm YouTube channel
-      window.open('https://www.youtube.com/@Zyztm', '_blank', 'noopener,noreferrer');
+      // Open Fortnite Nexus YouTube channel
+      window.open('https://www.youtube.com/@FortniteNexusDE', '_blank', 'noopener,noreferrer');
     };
     canvas.addEventListener('click', onClick);
 

@@ -333,7 +333,7 @@ export default function StreamHighlights() {
               ALLE KICK CLIPS →
             </a>
             <a
-              href="https://youtube.com/@Zyztm"
+              href="https://youtube.com/@FortniteNexusDE"
               target="_blank"
               rel="noopener noreferrer"
               className="font-cyber text-xs tracking-widest px-6 py-3 rounded border transition-all"
