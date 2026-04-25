@@ -4,45 +4,45 @@ const milestones = [
   {
     year: '2020',
     icon: '🎮',
-    title: 'Der erste Stream',
-    text: 'Mit einem günstigen Headset und unbändiger Leidenschaft startete Zyztm auf Twitch. Erste Zuschauer, erste Victories – und der Funke war entzündet.',
+    title: 'Der Start',
+    text: 'Mit einer Vision und Leidenschaft startete Fortnite Nexus. Erste Mitglieder, erste Guides – und die Community war geboren.',
     color: '#00f2ff',
   },
   {
     year: '2021',
     icon: '🚀',
-    title: 'Wechsel zu Kick',
-    text: 'Als einer der ersten deutschen Creator wechselte Zyztm zu Kick.com und baute dort eine der engagiertesten Communities im deutschen Fortnite-Bereich auf.',
+    title: 'Wachstum',
+    text: 'Die Community wuchs rasant. Mit neuen Guides und Tutorials baute Fortnite Nexus eine der engagiertesten deutschen Fortnite-Communities auf.',
     color: '#53fc18',
   },
   {
     year: '2022',
     icon: '📺',
-    title: 'YouTube explodiert',
-    text: 'Highlights, Tutorials und epische Clutch-Momente – der YouTube-Kanal wuchs innerhalb eines Jahres auf über 100K Abonnenten. Die Community wurde zur Familie.',
+    title: 'Content-Expansion',
+    text: 'Highlights, Tutorials und epische Clutch-Momente – der Content wuchs. Die Community wurde zur Familie.',
     color: '#ff0000',
   },
   {
     year: '2023',
     icon: '🏆',
-    title: 'Creator Cup Sieg',
-    text: 'Beim offiziellen Fortnite Creator Cup räumte Zyztm den ersten Platz ab und bewies, dass hinter dem Entertainment auch echtes Skill steckt.',
+    title: 'Creator Features',
+    text: 'Neue Features und Tools wurden eingeführt. Fortnite Nexus bewies, dass es mehr als nur eine Fanseite ist.',
     color: '#ffd700',
   },
   {
     year: '2024',
     icon: '💎',
-    title: '356K Abonnenten',
-    text: 'Die Marke, von der viele träumen: 356.000 YouTube-Abonnenten. Eine 24-Stunden-Stream-Feier mit der Community – unvergesslich.',
+    title: 'Community-Meilenstein',
+    text: 'Tausende aktive Mitglieder. Eine 24/7-Community mit Guides, News und Support – unvergesslich.',
     color: '#ff0055',
   },
 ];
 
 const traits = [
-  { icon: '🎯', label: 'Mechanical Skill', text: 'Top-0,1 %-Spieler in Fortnite – jede Entscheidung ist kalkuliert.' },
-  { icon: '😂', label: 'Humor & Unterhaltung', text: 'Kein Stream ohne Lachen. Die Kombination aus Skill und Comedy macht den Unterschied.' },
-  { icon: '🤝', label: 'Community First', text: 'Zyztm kennt seine Fans – und das zeigt sich in jedem Stream, jedem Video, jedem Clip.' },
-  { icon: '📡', label: 'Multi-Plattform', text: 'Kick, YouTube, TikTok – Zyztm ist überall, damit du keinen Moment verpasst.' },
+  { icon: '🎯', label: 'Quality Guides', text: 'Top-Notch Fortnite Guides – jeder Guide ist sorgfältig erstellt.' },
+  { icon: '😂', label: 'Community Humor', text: 'Kein Tag ohne Lachen. Die Community macht den Unterschied.' },
+  { icon: '🤝', label: 'Community First', text: 'Fortnite Nexus kennt seine Mitglieder – und das zeigt sich jeden Tag.' },
+  { icon: '📡', label: 'Multi-Plattform', text: 'YouTube, TikTok, Discord – Fortnite Nexus ist überall für dich erreichbar.' },
 ];
 
 export default function AboutZyztm() {
@@ -105,7 +105,7 @@ export default function AboutZyztm() {
             </div>
 
             <div className="flex flex-wrap gap-3 mt-8">
-              {['#Fortnite', '#Kick', '#Creator', '#Community'].map((tag) => (
+              {['#Fortnite', '#Guides', '#Creator', '#Community'].map((tag) => (
                 <span
                   key={tag}
                   className="font-cyber text-xs tracking-widest px-3 py-1.5 rounded border"

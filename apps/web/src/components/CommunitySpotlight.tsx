@@ -70,18 +70,18 @@ const FAN_ART = [
 const TESTIMONIALS = [
   {
     id: 1,
-    quote: 'Zyztm hat mich zu einem besseren Spieler gemacht. Durch seine Tutorials habe ich endlich meinen ersten Solo-Win geholt!',
+    quote: 'Fortnite Nexus hat mich zu einem besseren Spieler gemacht. Durch die Tutorials habe ich endlich meinen ersten Solo-Win geholt!',
     name: 'xX_Gaming_Luca_Xx', platform: 'Discord', color: NEON_GREEN,    icon: '🎮',
   },
   {
     id: 2,
-    quote: 'Kein Stream ohne Zyztm. Der Mann ist einfach zu unterhaltsam – ich lache jedes Mal Tränen.',
-    name: 'SarahPlays',        platform: 'Kick',    color: PINK,  icon: '😂',
+    quote: 'Die beste deutsche Fortnite-Community. Die Guides und Support sind einfach klasse!',
+    name: 'SarahPlays',        platform: 'YouTube',    color: PINK,  icon: '😂',
   },
   {
     id: 3,
-    quote: 'Die Community ist wie eine Familie. Danke Zyztm, dass du diesen Raum für uns alle geschaffen hast!',
-    name: 'Nexus_Fan_2024',    platform: 'YouTube', color: GOLD,  icon: '💙',
+    quote: 'Die Community ist wie eine Familie. Danke Fortnite Nexus für diesen großartigen Raum!',
+    name: 'Nexus_Fan_2024',    platform: 'Discord', color: GOLD,  icon: '💙',
   },
 ] as const;
 

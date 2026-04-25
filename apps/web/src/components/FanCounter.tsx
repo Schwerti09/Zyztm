@@ -65,7 +65,7 @@ export default function FanCounter() {
                 style={{ background: NEON_PINK, boxShadow: `0 0 8px ${NEON_PINK}` }}
               />
               <span className="font-cyber text-xs tracking-widest" style={{ color: NEON_PINK }}>
-                JETZT IM ZYZTM-UNIVERSUM
+                JETZT IM NEXUS-UNIVERSUM
               </span>
             </div>
 
@@ -87,7 +87,7 @@ export default function FanCounter() {
             <p className="text-white/60 font-body text-lg">
               Fans gerade im{' '}
               <span className="font-cyber font-bold" style={{ color: NEON_PINK }}>
-                Zyztm-Universum
+                Fortnite Nexus
               </span>
             </p>
 
