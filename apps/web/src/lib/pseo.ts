@@ -2,7 +2,11 @@
  * Programmatic SEO (pSEO) utilities for Fortnite Nexus
  * Generates structured data, meta tags, and content helpers for Guide pages
  * Implements HowTo + FAQPage + Speakable schema for Google AEO / 2026 algorithms
+ * 
+ * ENHANCED: Geo-SEO integration for worldwide targeting
  */
+
+import { generateGeoSchema, type Region } from './geo-seo';
 
 export type GuideCategory = 'fortnite' | 'hardware' | 'stream' | 'settings' | 'ranked';
 
@@ -298,3 +302,149 @@ export const HUB_CATEGORIES: Array<{
       'Strategien, Rotationen und Mentalität für den Weg in den Unreal-Rang.',
   },
 ];
+
+// ============================================================================
+// GEO-SEO ENHANCEMENTS - Schema generation with geo-targeting
+// ============================================================================
+
+/**
+ * Generate geo-targeted HowTo schema with regional data
+ * This creates unique schema for each region for better SEO
+ */
+export function generateGeoTargetedHowToSchema(guide: GuideData, region: Region): object {
+  const baseSchema = generateHowToSchema(guide);
+  const geoSchema = generateGeoSchema(region, guide);
+  
+  // Merge base schema with geo enhancements
+  return {
+    ...baseSchema,
+    ...geoSchema,
+    // Add regional keywords to description
+    description: `${geoSchema.description} ${geoSchema.name}`,
+    // Add geo-specific audience targeting
+    audience: geoSchema.audience,
+    // Add geo location data
+    geo: geoSchema.geo,
+    locationCreated: geoSchema.locationCreated,
+  };
+}
+
+/**
+ * Generate regional FAQ schema with local expert citations
+ */
+export function generateRegionalFAQSchema(guide: GuideData, region: Region): object {
+  const { REGIONS } = require('./geo-seo');
+  const regionData = REGIONS[region];
+  
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: guide.faqs.map((faq) => ({
+      '@type': 'Question',
+      name: faq.question,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: `${faq.answer} Regional insight for ${regionData.name}: ${regionData.localExpert.quote}`,
+        author: {
+          '@type': 'Person',
+          name: regionData.localExpert.name,
+          jobTitle: regionData.localExpert.title,
+        },
+      },
+    })),
+    about: {
+      '@type': 'Thing',
+      name: `Fortnite Guide for ${regionData.name}`,
+      description: `${guide.description} Optimized for ${regionData.name} players`,
+    },
+  };
+}
+
+/**
+ * Generate multi-regional sitemap entries
+ * This creates separate URLs for each region variant
+ */
+export function generateRegionalSitemapEntries(guide: GuideData): Array<{
+  url: string;
+  lastModified: string;
+  changeFrequency: string;
+  priority: number;
+}> {
+  const { REGIONS } = require('./geo-seo');
+  const entries = [];
+  
+  // Base entry
+  entries.push({
+    url: `https://fortnitenexus.netlify.app/guides/${guide.slug}`,
+    lastModified: guide.lastUpdated,
+    changeFrequency: 'weekly',
+    priority: 1.0,
+  });
+  
+  // Regional variants
+  Object.keys(REGIONS).forEach((regionKey) => {
+    const region = regionKey as Region;
+    const regionData = REGIONS[region];
+    
+    entries.push({
+      url: `https://fortnitenexus.netlify.app/guides/${guide.slug}?region=${region}`,
+      lastModified: guide.lastUpdated,
+      changeFrequency: 'weekly',
+      priority: 0.8,
+    });
+    
+    // Language-specific variants
+    if (regionData.primaryLanguage !== 'English') {
+      entries.push({
+        url: `https://fortnitenexus.netlify.app/guides/${guide.slug}?region=${region}&lang=${regionData.primaryLanguage.toLowerCase()}`,
+        lastModified: guide.lastUpdated,
+        changeFrequency: 'weekly',
+        priority: 0.7,
+      });
+    }
+  });
+  
+  return entries;
+}
+
+/**
+ * Generate geo-targeted meta tags
+ */
+export function generateGeoMetaTags(guide: GuideData, region: Region): Array<{
+  name: string;
+  content: string;
+}> {
+  const { REGIONS } = require('./geo-seo');
+  const regionData = REGIONS[region];
+  
+  return [
+    {
+      name: 'geo.region',
+      content: `${regionData.countryCode}`,
+    },
+    {
+      name: 'geo.placename',
+      content: regionData.serverLocation,
+    },
+    {
+      name: 'geo.position',
+      content: `${regionData.geoCoordinates.lat};${regionData.geoCoordinates.lng}`,
+    },
+    {
+      name: 'ICBM',
+      content: `${regionData.geoCoordinates.lat}, ${regionData.geoCoordinates.lng}`,
+    },
+    {
+      name: 'audience',
+      content: `${regionData.name} Fortnite Players`,
+    },
+    {
+      name: 'distribution',
+      content: 'global',
+    },
+    {
+      name: 'language',
+      content: regionData.primaryLanguage,
+    },
+  ];
+}
