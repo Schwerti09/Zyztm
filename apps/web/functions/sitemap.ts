@@ -4,9 +4,13 @@
  */
 
 import { generateSitemapXML, getSitemapStats } from '../src/lib/sitemap-generator';
+import { CANONICAL_DOMAIN } from '../src/lib/site-config';
 
 export const handler = async () => {
   try {
+    // Force canonical domain to be correct
+    console.log('Sitemap using canonical domain:', CANONICAL_DOMAIN);
+    
     const sitemapXML = generateSitemapXML();
     const stats = getSitemapStats();
 
