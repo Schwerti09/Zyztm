@@ -31,41 +31,54 @@ export function generateCompleteSitemap(): SitemapEntry[] {
   entries.push({ url: `${BASE_URL}/news`, lastmod: new Date().toISOString(), changefreq: 'daily', priority: 0.9 });
 
   // Guide pages with all language variants
-  getAllGuideSlugs().forEach(slug => {
-    LANGUAGES.forEach(lang => {
+  const guideSlugs = getAllGuideSlugs();
+  if (guideSlugs.length > 0) {
+    guideSlugs.forEach(slug => {
       const guide = GUIDES.find(g => g.slug === slug);
       if (guide) {
-        entries.push({
-          url: `${BASE_URL}/${lang.code}/guide/${slug}`,
-          lastmod: guide.lastUpdated,
-          changefreq: 'weekly',
-          priority: 0.8,
-        });
-
-        // Add regional variants for each language
-        Object.values(REGIONS).forEach(regionData => {
+        LANGUAGES.forEach(lang => {
+          // Validate lastmod format (ISO 8601)
+          const lastmod = guide.lastUpdated || new Date().toISOString();
+          
           entries.push({
-            url: `${BASE_URL}/${lang.code}/guide/${slug}?region=${regionData.id}`,
-            lastmod: guide.lastUpdated,
+            url: `${BASE_URL}/${lang.code}/guide/${slug}`,
+            lastmod: lastmod,
             changefreq: 'weekly',
-            priority: 0.7,
+            priority: 0.8,
           });
+
+          // Add regional variants for each language (only for primary language to avoid duplicates)
+          if (lang.code === 'de') {
+            Object.values(REGIONS).forEach(regionData => {
+              entries.push({
+                url: `${BASE_URL}/${lang.code}/guide/${slug}?region=${regionData.id}`,
+                lastmod: lastmod,
+                changefreq: 'weekly',
+                priority: 0.7,
+              });
+            });
+          }
         });
       }
     });
-  });
+  }
 
   // News pages with all language variants
-  NEWS_ARTICLES.forEach(article => {
-    LANGUAGES.forEach(lang => {
-      entries.push({
-        url: `${BASE_URL}/${lang.code}/news/${article.slug}`,
-        lastmod: article.publishedAt,
-        changefreq: 'daily',
-        priority: 0.7,
+  if (NEWS_ARTICLES.length > 0) {
+    NEWS_ARTICLES.forEach(article => {
+      LANGUAGES.forEach(lang => {
+        // Validate lastmod format (ISO 8601)
+        const lastmod = article.publishedAt || new Date().toISOString();
+        
+        entries.push({
+          url: `${BASE_URL}/${lang.code}/news/${article.slug}`,
+          lastmod: lastmod,
+          changefreq: 'daily',
+          priority: 0.7,
+        });
       });
     });
-  });
+  }
 
   return entries;
 }
