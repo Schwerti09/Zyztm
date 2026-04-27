@@ -6,6 +6,7 @@
 [build.environment]
   NODE_VERSION = "20"
   PNPM_VERSION = "9.15.9"
+  SECRETS_SCAN_OMIT_PATHS = ".env.example,apps/web/.env.example"
 
 # Cache headers – prevent stale deployments from being served
 [[headers]]
