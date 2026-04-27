@@ -24,7 +24,7 @@ User-agent: Google-Extended
 Allow: /
 
 # Sitemap location (canonical domain)
-Sitemap: https://fortnitenexus.com/sitemap
+Sitemap: https://fortnitenexus.space/sitemap
 
 # Crawl-delay for politeness
 Crawl-delay: 1

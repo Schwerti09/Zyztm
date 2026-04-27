@@ -118,7 +118,7 @@ export async function fulfillOrder(params: {
       downloadUrl = generateDownloadUrl(params.orderId, downloadToken);
     } else {
       // Email-based delivery (for subscriptions)
-      downloadUrl = `https://fortnitenexus.com/dashboard/orders/${order.id}`;
+      downloadUrl = `https://fortnitenexus.space/dashboard/orders/${order.id}`;
     }
 
     // 4. Update order

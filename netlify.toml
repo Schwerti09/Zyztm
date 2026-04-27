@@ -21,20 +21,20 @@
     Cache-Control = "public, max-age=31536000, immutable"
 
 # ── DOMAIN CONSOLIDATION – Redirect all variants to canonical domain ──
-# CRITICAL: These redirects ensure all traffic flows to fortnitenexus.com
-# preventing authority dilution between netlify.app and .com
+# CRITICAL: These redirects ensure all traffic flows to fortnitenexus.space
+# preventing authority dilution between netlify.app and .space
 
 # Redirect www to apex (canonical)
 [[redirects]]
-  from = "https://www.fortnitenexus.com/*"
-  to = "https://fortnitenexus.com/:splat"
+  from = "https://www.fortnitenexus.space/*"
+  to = "https://fortnitenexus.space/:splat"
   status = 301
   force = true
 
 # Redirect netlify.app to canonical (CRITICAL for SEO)
 [[redirects]]
   from = "https://fortnitenexus.netlify.app/*"
-  to = "https://fortnitenexus.com/:splat"
+  to = "https://fortnitenexus.space/:splat"
   status = 301
   force = true
 

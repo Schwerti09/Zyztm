@@ -27,15 +27,15 @@
  * Canonical domain - This is the PRIMARY domain that should be used everywhere
  * All other variations (netlify.app, www subdomain) should redirect here
  */
-export const CANONICAL_DOMAIN = 'https://fortnitenexus.com';
+export const CANONICAL_DOMAIN = 'https://fortnitenexus.space';
 
 /**
  * Alternative domains that should redirect to canonical
  */
 export const REDIRECT_DOMAINS = [
   'https://fortnitenexus.netlify.app',
-  'https://www.fortnitenexus.com',
-  'http://fortnitenexus.com',
+  'https://www.fortnitenexus.space',
+  'http://fortnitenexus.space',
   'http://fortnitenexus.netlify.app',
 ];
 
@@ -43,10 +43,10 @@ export const REDIRECT_DOMAINS = [
  * Subdomain configurations
  */
 export const SUBDOMAINS = {
-  WWW: 'https://www.fortnitenexus.com',
-  APP: 'https://app.fortnitenexus.com',      // Future: App subdomain
-  API: 'https://api.fortnitenexus.com',      // Future: API subdomain
-  CDN: 'https://cdn.fortnitenexus.com',      // Future: CDN for assets
+  WWW: 'https://www.fortnitenexus.space',
+  APP: 'https://app.fortnitenexus.space',      // Future: App subdomain
+  API: 'https://api.fortnitenexus.space',      // Future: API subdomain
+  CDN: 'https://cdn.fortnitenexus.space',      // Future: CDN for assets
 } as const;
 
 // ============================================================================

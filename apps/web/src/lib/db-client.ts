@@ -40,6 +40,6 @@ export function generateDownloadUrl(
   token: string,
   baseUrl?: string
 ): string {
-  const base = baseUrl || process.env.URL || 'https://fortnitenexus.com';
+  const base = baseUrl || process.env.URL || 'https://fortnitenexus.space';
   return `${base}/api/download/${orderId}?token=${token}`;
 }

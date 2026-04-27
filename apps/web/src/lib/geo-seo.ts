@@ -545,7 +545,7 @@ export function generateGeoSchema(region: Region, guideData: any): object {
     '@type': 'HowTo',
     name: `${guideData.title} - ${regionData.name} Edition`,
     description: `${guideData.description} Optimized for ${regionData.name} players with regional meta analysis and local expert insights.`,
-    image: 'https://fortnitenexus.com/og-image.jpg',
+    image: 'https://fortnitenexus.space/og-image.jpg',
     author: {
       '@type': 'Person',
       name: regionData.localExpert.name,

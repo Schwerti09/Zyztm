@@ -8,7 +8,7 @@ import { getDb } from './db-client';
 
 // Environment variables
 const resendApiKey = process.env.RESEND_API_KEY;
-const fromEmail = process.env.FROM_EMAIL || 'orders@fortnitenexus.com';
+const fromEmail = process.env.FROM_EMAIL || 'orders@fortnitenexus.space';
 const fromName = process.env.FROM_NAME || 'Fortnite Nexus';
 
 /**
@@ -168,8 +168,8 @@ export async function sendOrderConfirmation(params: {
       deliverables: params.deliverables,
       downloadLimit: params.downloadLimit || 3,
       orderId: params.orderId,
-      supportUrl: 'https://fortnitenexus.com/support',
-      dashboardUrl: `https://fortnitenexus.com/dashboard/orders/${params.orderId}`,
+      supportUrl: 'https://fortnitenexus.space/support',
+      dashboardUrl: `https://fortnitenexus.space/dashboard/orders/${params.orderId}`,
     };
 
     const template = templates.orderConfirmation(data);

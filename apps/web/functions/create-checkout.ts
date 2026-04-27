@@ -78,7 +78,7 @@ export const handler: Handler = async (event: HandlerEvent, context: HandlerCont
     }
 
     // Default URLs
-    const baseUrl = process.env.URL || 'https://fortnitenexus.com';
+    const baseUrl = process.env.URL || 'https://fortnitenexus.space';
     const defaultSuccessUrl = `${baseUrl}/checkout/success?session_id={CHECKOUT_SESSION_ID}`;
     const defaultCancelUrl = `${baseUrl}/checkout/cancel`;
 
