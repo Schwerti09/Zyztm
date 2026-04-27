@@ -6,7 +6,7 @@ import { getLanguageFromPath, type Language } from '../lib/i18n';
 
 const NAV_LINKS = [
   { label: 'LIVE', href: '#highlights' },
-  { label: 'SHOP', href: '#marketplace' },
+  { label: 'SHOP', href: '/shop', isRoute: true },
   { label: 'CREATORS', href: '#creators' },
   { label: 'NEWS', href: '#latest-news' },
   { label: 'GUIDES', href: '/de/guides/fortnite', isRoute: true },

@@ -4,9 +4,11 @@
  * Implements HowTo + FAQPage + Speakable schema for Google AEO / 2026 algorithms
  * 
  * ENHANCED: Geo-SEO integration for worldwide targeting
+ * UPDATED: 2026-04-26 - Migrated to centralized site-config for domain consistency
  */
 
 import { generateGeoSchema, type Region, REGIONS } from './geo-seo';
+import { CANONICAL_DOMAIN, SOCIAL_PROFILES, buildAuthorUrl } from './site-config';
 
 export type GuideCategory = 'fortnite' | 'hardware' | 'stream' | 'settings' | 'ranked' | 'season';
 
@@ -79,11 +81,15 @@ export const AUTHOR = {
     'NVIDIA GeForce Game Ready Driver Changelogs',
   ],
   socials: {
-    kick: 'https://youtube.com/@FortniteNexusDE',
-    youtube: 'https://www.youtube.com/@FortniteNexusDE',
-    tiktok: 'https://www.tiktok.com/@fortnitenexus',
-    discord: 'https://discord.gg/fortnitenexus',
+    kick: SOCIAL_PROFILES.KICK,
+    youtube: SOCIAL_PROFILES.YOUTUBE,
+    tiktok: SOCIAL_PROFILES.TIKTOK,
+    discord: SOCIAL_PROFILES.DISCORD,
+    twitter: SOCIAL_PROFILES.TWITTER,
+    instagram: SOCIAL_PROFILES.INSTAGRAM,
   },
+  /** Author profile URL for schema markup */
+  url: buildAuthorUrl('rolf-schwertfechter'),
 } as const;
 
 // ---------------------------------------------------------------------------
@@ -101,7 +107,9 @@ export function generateHowToSchema(guide: GuideData, pageUrl: string): object {
     author: {
       '@type': 'Person',
       name: AUTHOR.name,
-      url: `https://fortnitenexus.netlify.app/de/author`,
+      url: AUTHOR.url,
+      description: AUTHOR.bio,
+      knowsAbout: ['Fortnite', 'PC Gaming', 'Stream Setup', 'Game Optimization', 'NVIDIA Settings'],
     },
     mainEntityOfPage: { '@type': 'WebPage', '@id': pageUrl },
     step: guide.steps.map((step, i) => ({
@@ -153,15 +161,17 @@ export function generateArticleSchema(guide: GuideData, pageUrl: string): object
     author: {
       '@type': 'Person',
       name: AUTHOR.name,
-      url: `https://fortnitenexus.netlify.app/de/author`,
+      url: AUTHOR.url,
       description: AUTHOR.bio,
       knowsAbout: ['Fortnite', 'PC Gaming', 'Stream Setup', 'Game Optimization', 'NVIDIA Settings'],
+      sameAs: Object.values(AUTHOR.socials),
     },
     publisher: {
       '@type': 'Organization',
       name: 'Fortnite Nexus',
-      url: 'https://fortnitenexus.netlify.app',
-      logo: { '@type': 'ImageObject', url: 'https://fortnitenexus.netlify.app/logo.png' },
+      url: CANONICAL_DOMAIN,
+      logo: { '@type': 'ImageObject', url: `${CANONICAL_DOMAIN}/logo.png` },
+      sameAs: Object.values(SOCIAL_PROFILES),
     },
     mainEntityOfPage: { '@type': 'WebPage', '@id': pageUrl },
     keywords: guide.keywords.join(', '),
@@ -192,8 +202,8 @@ export function buildAllSchemas(guide: GuideData, pageUrl: string): string {
     generateFAQSchema(guide.faqs),
     generateSpeakableSchema(['[data-speakable]', '.guide-direct-answer', 'h1']),
     generateBreadcrumbSchema([
-      { name: 'Home', url: 'https://fortnitenexus.netlify.app/' },
-      { name: 'Guides', url: `https://fortnitenexus.netlify.app/de/guides/${guide.category}` },
+      { name: 'Home', url: `${CANONICAL_DOMAIN}/` },
+      { name: 'Guides', url: `${CANONICAL_DOMAIN}/de/guides/${guide.category}` },
       { name: guide.title, url: pageUrl },
     ]),
   ];

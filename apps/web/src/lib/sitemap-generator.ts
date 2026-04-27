@@ -2,14 +2,16 @@
  * Sitemap Generator for Fortnite Nexus
  * Generates sitemap XML including all regional and language variants
  * ENHANCED: Multi-language support for 10 languages
+ * UPDATED: 2026-04-26 - Migrated to centralized site-config for domain consistency
  */
 
 import { GUIDES, getAllGuideSlugs } from '../data/guides';
 import { NEWS_ARTICLES } from '../data/news';
 import { REGIONS } from './geo-seo';
 import { LANGUAGES, type Language } from './i18n';
+import { CANONICAL_DOMAIN } from './site-config';
 
-const BASE_URL = 'https://fortnitenexus.netlify.app';
+const BASE_URL = CANONICAL_DOMAIN;
 
 export interface SitemapEntry {
   url: string;
@@ -98,7 +100,7 @@ export function generateSitemapIndexXML(): string {
 
   // Main sitemap
   sitemaps.push({
-    loc: 'https://fortnitenexus.netlify.app/sitemap.xml',
+    loc: `${CANONICAL_DOMAIN}/sitemap.xml`,
     lastModified: new Date().toISOString(),
   });
 

@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fortnite Sensitivity Calculator – Fortnite Nexus Pro Pack</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: linear-gradient(135deg, #0a0a1f 0%, #1a0a2e 50%, #0f0a1f 100%);
+    color: #fff;
+    min-height: 100vh;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .container {
+    max-width: 900px;
+    width: 100%;
+    background: rgba(20, 20, 40, 0.8);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(168, 85, 247, 0.3);
+    border-radius: 24px;
+    padding: 40px;
+    box-shadow: 0 25px 50px rgba(0,0,0,0.5);
+  }
+  h1 {
+    font-size: 2.5rem;
+    background: linear-gradient(90deg, #a855f7, #ec4899, #f97316);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    margin-bottom: 8px;
+    font-weight: 900;
+  }
+  .subtitle {
+    color: #94a3b8;
+    margin-bottom: 32px;
+    font-size: 1.1rem;
+  }
+  .section {
+    margin-bottom: 24px;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+  }
+  .section-title {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 16px;
+    color: #c084fc;
+  }
+  .input-group {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 12px;
+  }
+  @media (max-width: 600px) {
+    .input-group { grid-template-columns: 1fr; }
+    h1 { font-size: 1.8rem; }
+    .container { padding: 24px; }
+  }
+  label {
+    display: block;
+    font-size: 0.85rem;
+    color: #94a3b8;
+    margin-bottom: 6px;
+    font-weight: 500;
+  }
+  input, select {
+    width: 100%;
+    padding: 12px 14px;
+    background: rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(168, 85, 247, 0.3);
+    border-radius: 10px;
+    color: #fff;
+    font-size: 1rem;
+    font-family: inherit;
+    transition: all 0.2s;
+  }
+  input:focus, select:focus {
+    outline: none;
+    border-color: #a855f7;
+    box-shadow: 0 0 0 3px rgba(168, 85, 247, 0.2);
+  }
+  .results {
+    background: linear-gradient(135deg, rgba(168, 85, 247, 0.15), rgba(236, 72, 153, 0.15));
+    border: 1px solid rgba(168, 85, 247, 0.4);
+    border-radius: 16px;
+    padding: 24px;
+    margin-top: 24px;
+  }
+  .result-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+  .result-row:last-child { border-bottom: none; }
+  .result-label {
+    color: #94a3b8;
+  }
+  .result-value {
+    font-weight: 700;
+    color: #fff;
+    font-size: 1.1rem;
+  }
+  .highlight {
+    color: #f0abfc;
+    font-size: 1.4rem;
+  }
+  .preset-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 12px;
+  }
+  .preset-btn {
+    padding: 8px 14px;
+    background: rgba(168, 85, 247, 0.2);
+    border: 1px solid rgba(168, 85, 247, 0.4);
+    border-radius: 8px;
+    color: #fff;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-family: inherit;
+  }
+  .preset-btn:hover {
+    background: rgba(168, 85, 247, 0.4);
+    transform: translateY(-1px);
+  }
+  .footer {
+    text-align: center;
+    margin-top: 32px;
+    color: #64748b;
+    font-size: 0.85rem;
+  }
+  .footer a { color: #c084fc; text-decoration: none; }
+  .badge {
+    display: inline-block;
+    padding: 4px 10px;
+    background: rgba(34, 197, 94, 0.2);
+    color: #4ade80;
+    border-radius: 999px;
+    font-size: 0.75rem;
+    margin-left: 8px;
+    font-weight: 600;
+  }
+  .info-text {
+    font-size: 0.85rem;
+    color: #94a3b8;
+    margin-top: 8px;
+    line-height: 1.5;
+  }
+</style>
+</head>
+<body>
+  <div class="container">
+    <h1>🎯 Sensitivity Calculator</h1>
+    <p class="subtitle">Fortnite Nexus Pro Settings Pack v2.1 · Berechne deine perfekte Sens</p>
+
+    <!-- Pro Presets -->
+    <div class="section">
+      <div class="section-title">⚡ Pro Presets (laden)</div>
+      <div class="preset-buttons">
+        <button class="preset-btn" onclick="loadPreset('bugha')">Bugha (8/8/50)</button>
+        <button class="preset-btn" onclick="loadPreset('mongraal')">Mongraal (7.5/7.5/60)</button>
+        <button class="preset-btn" onclick="loadPreset('clix')">Clix (7.7/7.7/60)</button>
+        <button class="preset-btn" onclick="loadPreset('epikwhale')">EpikWhale (8/8/60)</button>
+        <button class="preset-btn" onclick="loadPreset('benjyfishy')">Benjyfishy (8.5/8.5/65)</button>
+        <button class="preset-btn" onclick="loadPreset('default')">Pack Default (8/8/60)</button>
+      </div>
+      <p class="info-text">
+        Quelle: <a href="https://prosettings.net" style="color: #c084fc;">prosettings.net</a>
+        · Stand April 2026
+      </p>
+    </div>
+
+    <!-- Mouse Settings -->
+    <div class="section">
+      <div class="section-title">🖱️ Maus-Einstellungen</div>
+      <div class="input-group">
+        <div>
+          <label>Maus DPI</label>
+          <input type="number" id="dpi" value="800" min="100" max="32000" step="50" onchange="calculate()">
+        </div>
+        <div>
+          <label>Polling Rate (Hz)</label>
+          <select id="polling" onchange="calculate()">
+            <option value="125">125 Hz</option>
+            <option value="500">500 Hz</option>
+            <option value="1000" selected>1000 Hz</option>
+            <option value="2000">2000 Hz</option>
+            <option value="4000">4000 Hz</option>
+            <option value="8000">8000 Hz</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <!-- Fortnite Settings -->
+    <div class="section">
+      <div class="section-title">🎮 Fortnite Sensitivity</div>
+      <div class="input-group">
+        <div>
+          <label>X-Axis Sens (0-100%)</label>
+          <input type="number" id="sensX" value="8" min="0.1" max="100" step="0.1" onchange="calculate()">
+        </div>
+        <div>
+          <label>Y-Axis Sens (0-100%)</label>
+          <input type="number" id="sensY" value="8" min="0.1" max="100" step="0.1" onchange="calculate()">
+        </div>
+        <div>
+          <label>ADS Multiplier (Targeting)</label>
+          <input type="number" id="ads" value="60" min="0.1" max="100" step="0.1" onchange="calculate()">
+        </div>
+        <div>
+          <label>Scope Multiplier</label>
+          <input type="number" id="scope" value="60" min="0.1" max="100" step="0.1" onchange="calculate()">
+        </div>
+      </div>
+    </div>
+
+    <!-- Monitor Settings -->
+    <div class="section">
+      <div class="section-title">🖥️ Monitor</div>
+      <div class="input-group">
+        <div>
+          <label>Auflösung</label>
+          <select id="resolution" onchange="calculate()">
+            <option value="1920">1920x1080 (Full HD)</option>
+            <option value="2560">2560x1440 (QHD)</option>
+            <option value="3840">3840x2160 (4K)</option>
+            <option value="1680">1680x1050 (Stretched)</option>
+            <option value="1440">1440x1080 (Stretched)</option>
+          </select>
+        </div>
+        <div>
+          <label>FOV (Default: 80)</label>
+          <input type="number" id="fov" value="80" min="60" max="120" step="1" onchange="calculate()">
+        </div>
+      </div>
+    </div>
+
+    <!-- Results -->
+    <div class="results">
+      <div class="result-row">
+        <span class="result-label">cm pro 360° (Hipfire)</span>
+        <span class="result-value highlight" id="cm360">--</span>
+      </div>
+      <div class="result-row">
+        <span class="result-label">cm pro 360° (ADS)</span>
+        <span class="result-value" id="cm360ads">--</span>
+      </div>
+      <div class="result-row">
+        <span class="result-label">eDPI (Effective DPI)</span>
+        <span class="result-value" id="edpi">--</span>
+      </div>
+      <div class="result-row">
+        <span class="result-label">Inches per 360°</span>
+        <span class="result-value" id="in360">--</span>
+      </div>
+      <div class="result-row">
+        <span class="result-label">Empfehlung</span>
+        <span class="result-value" id="recommendation">--</span>
+      </div>
+    </div>
+
+    <!-- Sens-Empfehlung Tabelle -->
+    <div class="section" style="margin-top: 24px;">
+      <div class="section-title">📊 Sens-Empfehlung nach Style</div>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px;">
+        <div style="padding: 12px; background: rgba(34, 197, 94, 0.1); border-radius: 8px; border: 1px solid rgba(34, 197, 94, 0.3);">
+          <strong style="color: #4ade80;">🎯 Aim-focused</strong>
+          <p style="margin-top: 4px; font-size: 0.9rem; color: #94a3b8;">35-50 cm/360°</p>
+          <p style="font-size: 0.8rem; color: #64748b;">Wide arm sweeps, präzise Tracking</p>
+        </div>
+        <div style="padding: 12px; background: rgba(168, 85, 247, 0.1); border-radius: 8px; border: 1px solid rgba(168, 85, 247, 0.3);">
+          <strong style="color: #c084fc;">⚖️ Balanced</strong>
+          <p style="margin-top: 4px; font-size: 0.9rem; color: #94a3b8;">25-35 cm/360°</p>
+          <p style="font-size: 0.8rem; color: #64748b;">Pack Default · Empfohlen</p>
+        </div>
+        <div style="padding: 12px; background: rgba(236, 72, 153, 0.1); border-radius: 8px; border: 1px solid rgba(236, 72, 153, 0.3);">
+          <strong style="color: #f0abfc;">🏗️ Build-heavy</strong>
+          <p style="margin-top: 4px; font-size: 0.9rem; color: #94a3b8;">15-25 cm/360°</p>
+          <p style="font-size: 0.8rem; color: #64748b;">Schnelle Builds, mehr Wrist</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer">
+      <p>
+        <strong>Fortnite Nexus Pro Settings Pack v2.1</strong>
+        <span class="badge">100% kalibriert</span>
+      </p>
+      <p style="margin-top: 8px;">
+        Support · <a href="mailto:support@fortnitenexus.com">support@fortnitenexus.com</a>
+        · Updates · <a href="https://fortnitenexus.com/shop">fortnitenexus.com/shop</a>
+      </p>
+      <p style="margin-top: 8px; color: #c084fc;">Support the Creator: Code <strong>ZYZTM</strong> ✨</p>
+    </div>
+  </div>
+
+<script>
+const PRESETS = {
+  bugha: { dpi: 800, sensX: 8, sensY: 8, ads: 50 },
+  mongraal: { dpi: 800, sensX: 7.5, sensY: 7.5, ads: 60 },
+  clix: { dpi: 800, sensX: 7.7, sensY: 7.7, ads: 60 },
+  epikwhale: { dpi: 800, sensX: 8, sensY: 8, ads: 60 },
+  benjyfishy: { dpi: 800, sensX: 8.5, sensY: 8.5, ads: 65 },
+  default: { dpi: 800, sensX: 8, sensY: 8, ads: 60 },
+};
+
+function loadPreset(name) {
+  const p = PRESETS[name];
+  if (!p) return;
+  document.getElementById('dpi').value = p.dpi;
+  document.getElementById('sensX').value = p.sensX;
+  document.getElementById('sensY').value = p.sensY;
+  document.getElementById('ads').value = p.ads;
+  calculate();
+}
+
+function calculate() {
+  const dpi = parseFloat(document.getElementById('dpi').value);
+  const sensX = parseFloat(document.getElementById('sensX').value) / 100;
+  const sensY = parseFloat(document.getElementById('sensY').value) / 100;
+  const ads = parseFloat(document.getElementById('ads').value) / 100;
+  const fov = parseFloat(document.getElementById('fov').value);
+  
+  if (!dpi || !sensX) return;
+  
+  // Fortnite uses Yaw value 0.5555 (degrees per count at 100% sens)
+  // 360 degrees / (yaw * sens * dpi) * 2.54 = cm/360
+  const FORTNITE_YAW = 0.5555;
+  
+  const cm360 = (360 / (FORTNITE_YAW * sensX * dpi)) * 2.54;
+  const cm360ADS = (360 / (FORTNITE_YAW * sensX * ads * dpi)) * 2.54;
+  const edpi = (dpi * sensX * 100).toFixed(0);
+  const in360 = (cm360 / 2.54).toFixed(2);
+  
+  document.getElementById('cm360').textContent = cm360.toFixed(1) + ' cm';
+  document.getElementById('cm360ads').textContent = cm360ADS.toFixed(1) + ' cm';
+  document.getElementById('edpi').textContent = edpi;
+  document.getElementById('in360').textContent = in360 + '"';
+  
+  // Recommendation
+  let rec = '';
+  if (cm360 < 15) rec = '🚨 Sehr hoch · für Tracking schwer';
+  else if (cm360 < 25) rec = '🏗️ Build-Style · Wrist-aim';
+  else if (cm360 < 35) rec = '⚖️ Balanced · Empfohlen';
+  else if (cm360 < 50) rec = '🎯 Aim-focused · Arm-aim';
+  else rec = '📏 Sehr niedrig · für Casual';
+  
+  document.getElementById('recommendation').textContent = rec;
+}
+
+// Initial calc
+calculate();
+</script>
+</body>
+</html>

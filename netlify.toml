@@ -20,6 +20,24 @@
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
 
+# ── DOMAIN CONSOLIDATION – Redirect all variants to canonical domain ──
+# CRITICAL: These redirects ensure all traffic flows to fortnitenexus.com
+# preventing authority dilution between netlify.app and .com
+
+# Redirect www to apex (canonical)
+[[redirects]]
+  from = "https://www.fortnitenexus.com/*"
+  to = "https://fortnitenexus.com/:splat"
+  status = 301
+  force = true
+
+# Redirect netlify.app to canonical (CRITICAL for SEO)
+[[redirects]]
+  from = "https://fortnitenexus.netlify.app/*"
+  to = "https://fortnitenexus.com/:splat"
+  status = 301
+  force = true
+
 # ── SEO: 301 Redirects – old non-language URLs → /de/* (German as primary) ──
 # These preserve link equity after the multi-language rollout
 [[redirects]]
@@ -178,6 +196,34 @@
 [[redirects]]
   from = "/api/creators/user-creator"
   to = "/.netlify/functions/creators"
+  status = 200
+
+# =============================================================================
+# DIGITAL PRODUCTS SHOP - Stripe + Supabase Integration
+# =============================================================================
+
+# Create Checkout Session (initiates Stripe checkout)
+[[redirects]]
+  from = "/api/checkout/create"
+  to = "/.netlify/functions/create-checkout"
+  status = 200
+
+# Get Checkout Session (for success page)
+[[redirects]]
+  from = "/api/checkout/session"
+  to = "/.netlify/functions/get-checkout-session"
+  status = 200
+
+# Stripe Webhook (receives payment events)
+[[redirects]]
+  from = "/api/webhooks/stripe"
+  to = "/.netlify/functions/stripe-webhook"
+  status = 200
+
+# Process Download (verifies token and returns signed URL)
+[[redirects]]
+  from = "/api/download/process"
+  to = "/.netlify/functions/process-download"
   status = 200
 
 # Fortnite Nexus - Subscriptions API

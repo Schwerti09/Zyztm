@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import type { GuideData } from '../lib/pseo';
 import { buildAllSchemas, generateMetaTags } from '../lib/pseo';
 import { LANGUAGES, type Language } from '../lib/i18n';
+import { CANONICAL_DOMAIN, SEO } from '../lib/site-config';
 
 interface SEOHeadProps {
   guide: GuideData;
@@ -14,7 +15,7 @@ interface SEOHeadProps {
  * Works in Vite SPA by manipulating document.head directly.
  * ENHANCED: Multi-language SEO with hreflang tags
  */
-export default function SEOHead({ guide, baseUrl = 'https://fortnitenexus.netlify.app', language = 'en' }: SEOHeadProps) {
+export default function SEOHead({ guide, baseUrl = CANONICAL_DOMAIN, language = 'en' }: SEOHeadProps) {
   const pageUrl = `${baseUrl}/${language}/guide/${guide.slug}`;
   const meta = generateMetaTags(guide, pageUrl);
 
@@ -66,7 +67,7 @@ export default function SEOHead({ guide, baseUrl = 'https://fortnitenexus.netlif
     setMeta('og:url', meta.ogUrl, true);
     setMeta('og:type', 'article', true);
     setMeta('og:locale', getLocaleCode(language), true);
-    setMeta('og:site_name', 'Fortnite Nexus', true);
+    setMeta('og:site_name', SEO.DEFAULT_TITLE.split(' – ')[0], true);
     setMeta('article:author', meta.articleAuthor, true);
     setMeta('article:modified_time', meta.articleModified, true);
 
@@ -74,8 +75,8 @@ export default function SEOHead({ guide, baseUrl = 'https://fortnitenexus.netlif
     setMeta('twitter:card', 'summary_large_image');
     setMeta('twitter:title', meta.twitterTitle);
     setMeta('twitter:description', meta.twitterDescription);
-    setMeta('twitter:creator', '@FortniteNexusDE');
-    setMeta('twitter:site', '@FortniteNexusDE');
+    setMeta('twitter:creator', SEO.TWITTER_HANDLE);
+    setMeta('twitter:site', SEO.TWITTER_HANDLE);
 
     // Canonical
     setLink('canonical', meta.canonical);

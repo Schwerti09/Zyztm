@@ -1,0 +1,98 @@
+═══════════════════════════════════════════════════════════════
+  FORTNITE NEXUS – SEASON CHECKLIST NOTION TEMPLATE
+═══════════════════════════════════════════════════════════════
+
+Version: S2.1 (Chapter 6, Season 2)
+Build:   April 2026
+
+───────────────────────────────────────────────────────────────
+ TEMPLATE-LINK (privat, nur für Käufer):
+───────────────────────────────────────────────────────────────
+
+https://fortnitenexus.notion.site/season-checklist-template-DUMMY-PRIVATE-LINK
+
+⚠️ Bitte den Link nicht weitergeben – das Template ist nur für 
+   Käufer der Season Checklist.
+
+───────────────────────────────────────────────────────────────
+ SETUP-ANLEITUNG
+───────────────────────────────────────────────────────────────
+
+1. Öffne den Link oben in deinem Browser
+
+2. Klicke oben rechts auf "Duplicate" (Vervielfältigen)
+   - Falls du noch keinen Notion-Account hast: kostenlos auf 
+     notion.so registrieren
+
+3. Das Template wird in deinen Notion-Workspace kopiert
+
+4. Du kannst jetzt:
+   ✅ Tiers abhaken
+   ✅ Eigene Notizen pro Mission hinzufügen
+   ✅ Daily Tracking: XP-Fortschritt mitloggen
+   ✅ Mit Squad-Members teilen (Notion-Share)
+
+───────────────────────────────────────────────────────────────
+ INHALTE IM TEMPLATE
+───────────────────────────────────────────────────────────────
+
+📋 BATTLE PASS TRACKER
+   - Alle 200 Tiers als interactive Checkliste
+   - Tier-Bilder als Vorschau (gallery view)
+   - Filter: completed / pending / claimed
+   
+🎯 SECRET MISSIONS DATABASE
+   - Alle Missionen mit Lokations-Hints
+   - Map-Marker (interactive)
+   - Reward-Preview
+   
+📅 WEEKLY QUEST TRACKER
+   - Auto-Reset jeden Donnerstag
+   - Streak-Counter (täglicher Login)
+   - XP-Progress-Bar
+   
+💎 MYTHICS & VAULTS
+   - Boss-Locations
+   - Drop-Rates pro Vault
+   - Squad-Strategy-Notes
+   
+📊 XP-DASHBOARD
+   - Tagesziel vs. Ist
+   - Wochenstatistik
+   - Auto-Berechnung "Level X bis Tag Y"
+
+───────────────────────────────────────────────────────────────
+ SHORTCUTS IN NOTION
+───────────────────────────────────────────────────────────────
+
+  Cmd/Ctrl + N      Neuer Notiz-Eintrag
+  Cmd/Ctrl + /      Block-Type ändern (Liste, Tabelle etc.)
+  @                 Mention (Datum, Person, Page)
+  /todo             Checklist-Item
+  /toggle           Klappbarer Block
+
+───────────────────────────────────────────────────────────────
+ MOBILE NUTZUNG
+───────────────────────────────────────────────────────────────
+
+Notion-App für iOS/Android downloaden, mit deinem Account 
+einloggen. Das Template ist mobile-optimiert.
+
+Du kannst Quests direkt vom Handy abhaken, während du in 
+Fortnite die Mission abschließt.
+
+───────────────────────────────────────────────────────────────
+ SUPPORT
+───────────────────────────────────────────────────────────────
+
+Bei Problemen mit dem Template:
+  📧 support@fortnitenexus.com
+  💬 discord.gg/fortnitenexus
+
+Update-Hinweis: Das Template wird jede Season neu 
+versioniert – du bekommst per Email einen neuen Duplicate-Link.
+
+───────────────────────────────────────────────────────────────
+
+© 2026 Fortnite Nexus
+Code "ZYZTM" 💜

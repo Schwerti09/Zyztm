@@ -380,7 +380,7 @@ export const REGIONS: Record<Region, RegionData> = {
       achievements: ['Comprehensive regional analysis', 'Global meta tracking', 'Multi-regional expertise'],
       quote: 'Every region has unique strengths. The key is understanding your region\'s meta and adapting your playstyle accordingly.',
       credibility: 'Global Fortnite experts with comprehensive regional knowledge',
-      socialLink: 'https://fortnitenexus.netlify.app'
+      socialLink: 'https://fortnitenexus.com'
     },
     geoCoordinates: { lat: 0, lng: 0 }
   }
@@ -545,7 +545,7 @@ export function generateGeoSchema(region: Region, guideData: any): object {
     '@type': 'HowTo',
     name: `${guideData.title} - ${regionData.name} Edition`,
     description: `${guideData.description} Optimized for ${regionData.name} players with regional meta analysis and local expert insights.`,
-    image: 'https://fortnitenexus.netlify.app/og-image.jpg',
+    image: 'https://fortnitenexus.com/og-image.jpg',
     author: {
       '@type': 'Person',
       name: regionData.localExpert.name,

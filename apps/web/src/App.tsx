@@ -17,6 +17,14 @@ const HubPage = lazy(() => import('./pages/HubPage'));
 const NewsPage = lazy(() => import('./pages/NewsPage'));
 const NewsArticlePage = lazy(() => import('./pages/NewsArticlePage'));
 
+// Digital Products Shop
+const ShopPage = lazy(() => import('./pages/ShopPage'));
+const ProductDetailPage = lazy(() => import('./pages/ProductDetailPage'));
+const CheckoutSuccessPage = lazy(() => import('./pages/CheckoutSuccessPage'));
+const CheckoutCancelPage = lazy(() => import('./pages/CheckoutCancelPage'));
+const DownloadPage = lazy(() => import('./pages/DownloadPage'));
+const OrdersPage = lazy(() => import('./pages/OrdersPage'));
+
 function PageLoader() {
   return (
     <div className="min-h-screen bg-bg-dark flex items-center justify-center">
@@ -54,6 +62,13 @@ export default function App() {
           <Route path="/impressum" component={ImpressumPage} />
           <Route path="/datenschutz" component={DatenschutzPage} />
           <Route path="/agb" component={AGBPage} />
+          {/* Digital Products Shop */}
+          <Route path="/shop" component={ShopPage} />
+          <Route path="/shop/:slug" component={ProductDetailPage} />
+          <Route path="/checkout/success" component={CheckoutSuccessPage} />
+          <Route path="/checkout/cancel" component={CheckoutCancelPage} />
+          <Route path="/download/:orderId/:token" component={DownloadPage} />
+          <Route path="/orders" component={OrdersPage} />
           {/* Guide / Runbook routes (language-prefixed for SEO) */}
           <LanguageRoute path="/guide/:slug" component={GuidePage} />
           <LanguageRoute path="/guides/:category" component={HubPage} />

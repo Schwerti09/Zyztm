@@ -15,6 +15,7 @@
     "stripe": "^15.7.0"
   },
   "devDependencies": {
+    "supabase": "^2.95.5",
     "turbo": "^2.0.0",
     "typescript": "^5.4.0"
   },
