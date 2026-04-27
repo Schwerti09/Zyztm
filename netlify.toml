@@ -222,6 +222,12 @@
   to = "/.netlify/functions/stripe-webhook"
   status = 200
 
+# Sync Stripe Products (admin only)
+[[redirects]]
+  from = "/api/admin/sync-stripe-products"
+  to = "/.netlify/functions/sync-stripe-products"
+  status = 200
+
 # Process Download (verifies token and returns signed URL)
 [[redirects]]
   from = "/api/download/process"
