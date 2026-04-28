@@ -71,12 +71,44 @@ export const GUIDES: GuideData[] = [
         body: 'Die meisten Fortnite-Guides zeigen dir einzelne Skills – Aim, Building, Settings. Dieser Guide verbindet alles zu einem kompletten System. Fortnite ist nicht nur Aim, nicht nur Building, nicht nur Meta – es ist die Kombination aller Elemente, die dich zum Champion macht. In diesem Guide lernst du wie diese Komponenten zusammenwirken und wie du sie in einem kohärenten Trainingssystem integrierst.',
       },
       {
+        heading: 'Was ist Fortnite?',
+        body: 'Fortnite ist ein Battle Royale Spiel entwickelt von Epic Games, das 2017 veröffentlicht wurde. Das Spiel hat sich zu einem der populärsten Spiele der Welt entwickelt mit über 350 Millionen registrierten Spielern. Die drei Hauptmodi sind: Battle Royale (der klassische Modus mit 100 Spielern), Creative (erstelle deine eigenen Inseln und Spielmodi), und Save the World (kooperativer PvE Modus). Warum ist Fortnite so populär? Kostenlos, Crossplay, ständige Updates, Competitive Scene mit großen Turnieren, und eine der aktivsten Gaming-Communities.',
+      },
+      {
+        heading: 'Die Spielmodi erklärt',
+        body: 'Battle Royale: 100 Spieler springen aus dem Battle Bus ab, landen auf einer Karte und kämpfen bis nur noch ein Spieler oder ein Team übrig bleibt. Varianten: Solo, Duos, Squads, Trios. Zero Build: Ein neuerer Modus ohne Building-System. Einfacher für Anfänger, schnellere Matches, Fokus auf Aim und Positioning. Creative: Erstelle deine eigenen Inseln mit dem Creative-Tools. Beliebte Modi: Aim Training Maps, Parkour Challenges, 1v1 Arenas, Hide and Seek, Deathrun Maps.',
+      },
+      {
         heading: 'Das Fundament: Skills die jeder braucht',
         body: 'Aim: 400–800 DPI, 0.08–0.15 Sensitivity, tägliches Training. Building: 90er, Box-Fights, Edit-Training. Settings: Performance-Modus, maximale FPS, minimale Latenz. Ohne diese drei Fundamente kannst du keine Advanced Skills lernen. Investiere die ersten 2 Monate ausschließlich in diese Basics.',
       },
       {
-        heading: 'Meta-Verständnis: Warum es wichtiger ist als je zuvor',
-        body: 'Chapter 6 hat die Meta dramatisch verändert. Neue Waffen, Map-Änderungen, Ranked-System-Overhauls. Wer nicht mit der Meta geht, verliert. Die beste Waffe von Season 1 ist in Season 2 nutzlos. Der beste Drop-Spot von Woche 1 ist in Woche 5 ein Hotspot. Meta-Verständnis ist ein kontinuierlicher Prozess, kein einmaliges Lernen.',
+        heading: 'Grundlagen des Spiels',
+        body: 'Das Battle Bus: Jedes Match beginnt im Battle Bus, der über der Karte fliegt. Du kannst entscheiden wann und wo du abspringen. Springe nicht zu früh, wähle eine Landezone mit Loot, achte auf wo andere Spieler springen. Landing und Looting: Nach dem Landen musst du schnell Waffen und Materialien sammeln. Loot-Priorität: 1. Waffen (AR, Shotgun, SMG), 2. Schilde (mindestens 50), 3. Materialien (Holz, Stein, Metall), 4. Heilung (Bandagen, Medkits). Die Zone: Die Zone schrumpft im Laufe des Matches und zwingt Spieler zusammen. Wer in der Zone ist, nimmt Schaden. Bleibe immer in der Zone, plane deine Route zur nächsten Zone, nutze die Zone für strategische Vorteile.',
+      },
+      {
+        heading: 'Building System',
+        body: 'Das Building-System ist das, was Fortnite von anderen Battle Royales unterscheidet. Die vier Bauelemente: Wände (Schutz vor Schaden), Böden (Erhöhung und Schutz), Treppen (Vertikale Mobilität), Dächer (Schutz von oben). Building Basics: Kontrollen PC – Q Editieren, E Bauen, F1-F4 Bauelemente, Mausrad Material. Controller – L2/LT Bauen, R2/RT Bearbeiten, D-Pad Bauelemente. Building-Strategien: Box Fighting (Box um dich herum, Wände für Schutz, Editieren für Angriffe), 90s (schnell in die Höhe, vertikale Mobilität, high ground), Turtle Tunneling (Tunnel unter der Erde, Schutz, Überraschungsangriffe).',
+      },
+      {
+        heading: 'Waffen und Meta',
+        body: 'Waffen-Kategorien: Assault Rifles (ausgewogene Waffen für mid-range, hoher Damage, moderate Fire Rate), Shotguns (hoher Damage in close range, langsam aber tödlich), SMGs (schnelle Fire Rate, geringer Damage, close range spam), Sniper (hoher Damage auf Distanz, langsam präzise), Explosive (AOE Damage, Strukturen zerstören). Der aktuelle Meta Chapter 6 Season 2: S-Tier Waffen – Assault Rifle (Damage bufft), Combat Shotgun, Heavy Sniper, MP5. A-Tier – Tactical Shotgun, Semi-Auto Sniper, Hand Cannon. B-Tier – Pump Shotgun, Bolt-Action Sniper, Grenade Launcher. Meta Loadout: AR (Mid-range), Combat Shotgun (Close range), SMG (Close range spam), Sniper (Long range), Explosive (Strukturen).',
+      },
+      {
+        heading: 'Ranked und Competitive',
+        body: 'Ranked System: Fortnite hat ein Ranked-System mit verschiedenen Rängen – Bronze, Silver, Gold, Platinum, Diamond, Champion, Unreal (von niedrig bis hoch). Ranked-Points: Punkte für Placements (höhere Platzierungen = mehr Punkte), Eliminations (Kills geben zusätzliche Punkte), Assists (Team-Kills zählen auch). Competitive-Turniere: Cash Cups (wöchentliche Turniere mit Preisgeld, open für alle Spieler, Punkte für FNCS Qualifikation), FNCS (höchstes Competitive Niveau, nur für Top-Spieler, Millionen Dollar Preisgeld). Ranked-Tipps: Fokus auf Placements (Überleben ist wichtiger als Kills), Spiele mit deinem Team (Kommunikation ist entscheidend), Lerne den Meta (nutze die besten Waffen und Strategien), Übung regelmäßig (Aim und Building müssen trainiert werden).',
+      },
+      {
+        heading: 'Settings und Optimierung',
+        body: 'PC-Settings: Recommended Settings – Sensitivity 0.4-0.6 eDPI, Graphics Balanced Performance und Qualität, Resolution 1920x1080 oder höher, Frame Rate 144+ FPS wenn möglich. Keybinds – Q Editieren, E Bauen, F Waffenwechsel, Shift Sprinten, Space Springen. Controller-Settings: Sensitivity 4-6, Aim Assist Standard oder Precise, Build Immediately An, Turbo Building An. Mobile-Settings: Sensitivity 50-70, Graphics Balanced oder Performance, Frame Rate High wenn möglich, Touch Controls Custom Layout. Performance-Optimierung: Reduziere Graphics Settings, schalte V-Sync aus, nutze Game Mode, schließe Hintergrund-Apps, update deine Treiber.',
+      },
+      {
+        heading: 'Tipps für Anfänger',
+        body: 'Die ersten 10 Matches: Lande an Hotspots (lerne schnell Looten und kämpfen), Übe Building (baue in jedem Match), Lerne die Karte (kenne die POIs und Rotationen), Spiele mit Freunden (lerne von besseren Spielern), Schau Pro-Spieler (lerne von den Besten). Häufige Anfängerfehler: Zu aggressiv spielen (manchmal ist Vorsicht besser), Building ignorieren (Building ist entscheidend), Nicht kommunizieren (in Squads ist Kommunikation wichtig), Keine Patience (manchmal musst du warten), Nicht lernen (analysiere deine Matches). Schnelle Verbesserungen: In einer Woche – Übe Aim täglich 30 Min, lerne 3 Building-Techniken, spiele 10 Matches pro Tag, analysiere deine Tode. In einem Monat – Erreiche Gold Rank, lerne alle Waffen, baue schneller, verstehe den Meta.',
+      },
+      {
+        heading: 'Fortgeschrittene Strategien',
+        body: 'High Ground Advantage: Der Spieler mit dem hohen Boden hat einen massiven Vorteil. Strategien – Baue schnell in die Höhe, nutze 90s für vertikale Mobilität, editiere für Angriffe von oben, bleibe auf dem hohen Boden. Rotation Management: Effiziente Rotationen sind entscheidend für späte Matches. Tipps – Plane deine Route zur Zone, nutze Vehicles für schnelle Rotation, baue für Schutz während Rotationen, achte auf andere Spieler. Late Game Strategien: Final Circle Tipps – Bleibe in der Zone, nutze Strukturen für Schutz, sei geduldig, warte auf den richtigen Moment. Box Fighting: Basics – Baue eine Box um dich herum, editiere für Angriffe, nutze Shotguns für close range, bleibe in deiner Box.',
       },
     ],
   },
