@@ -2,17 +2,19 @@ import { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 interface VideoItem {
-  id: string;
+  id?: string;
+  videoId?: string;
   title: string;
   thumbnail: string;
   publishedAt: string;
-  link: string;
+  link?: string;
+  url?: string;
 }
 
 const CHANNEL_URL = 'https://www.youtube.com/@FortniteNexusDE';
 const CHANNEL2_URL = 'https://www.youtube.com/@FortniteNexusDE';
 /** URL of the Netlify function that fetches YouTube videos server-side */
-const API_URL = '/.netlify/functions/get-youtube-videos';
+const API_URL = '/.netlify/functions/youtube-latest';
 
 /** Format ISO date string to a short locale date */
 function formatDate(iso: string): string {
@@ -37,11 +39,21 @@ export default function LatestYouTubeVideos() {
   useEffect(() => {
     fetch(API_URL)
       .then((r) => r.json())
-      .then((data: VideoItem[] | { error: string }) => {
-        if (!Array.isArray(data)) {
-          setError((data as { error: string }).error ?? 'Unbekannter Fehler');
+      .then((data: { videos?: VideoItem[] } | { error: string }) => {
+        if ('error' in data) {
+          setError(data.error ?? 'Unbekannter Fehler');
+        } else if (data.videos && Array.isArray(data.videos)) {
+          // Map videoId to id for compatibility
+          const mappedVideos = data.videos.map((v) => ({
+            id: v.videoId || v.id,
+            title: v.title,
+            thumbnail: v.thumbnail,
+            publishedAt: v.publishedAt,
+            link: v.url || v.link
+          }));
+          setVideos(mappedVideos);
         } else {
-          setVideos(data);
+          setError('Keine Videos gefunden');
         }
       })
       .catch((err: Error) => setError(err.message))

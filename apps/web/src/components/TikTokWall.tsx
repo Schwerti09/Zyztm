@@ -37,7 +37,7 @@ export default function TikTokWall() {
 
   const fetchClips = useCallback(async (offset: number) => {
     try {
-      const res = await fetch(`/api/tiktok/latest?limit=${PAGE_SIZE}&offset=${offset}`);
+      const res = await fetch(`/.netlify/functions/tiktok-latest?limit=${PAGE_SIZE}&offset=${offset}`);
       const data = (await res.json()) as { clips?: TikTokClip[] };
       const fetched = data.clips ?? [];
       if (offset === 0) {
