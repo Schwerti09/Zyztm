@@ -81,6 +81,11 @@
 
 # API proxy – Netlify Functions handle /api/* requests
 [[redirects]]
+  from = "/api/test-db"
+  to = "/.netlify/functions/test-db"
+  status = 200
+
+[[redirects]]
   from = "/api/stripe/verify-session"
   to = "/.netlify/functions/verify-checkout-session"
   status = 200
