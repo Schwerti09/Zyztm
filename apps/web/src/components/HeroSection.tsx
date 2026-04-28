@@ -1,5 +1,6 @@
 import { motion, useMotionValue, useSpring, useInView } from 'framer-motion';
 import { useEffect, useRef } from 'react';
+import { Link } from 'wouter';
 // REAL-TIME LIVE STATS 2026: Import live stats hook
 import { useLiveStats } from '../hooks/useLiveStats';
 // SAC CODE: Import SAC reminder component
@@ -98,8 +99,13 @@ export default function HeroSection() {
           transition={{ duration: 0.6, delay: 0.7 }}
           className="flex flex-col sm:flex-row gap-4 justify-center mb-8"
         >
+          <Link href="/nexus-iq">
+            <a className="btn-primary rounded-sm text-sm bg-gradient-to-r from-neon-pink to-neon-blue hover:shadow-lg hover:shadow-neon-pink/30">
+              🧬 NEXUS IQ - DEINE BATTLE DNA
+            </a>
+          </Link>
           <button
-            className="btn-primary rounded-sm text-sm"
+            className="btn-secondary rounded-sm text-sm"
             onClick={() => document.getElementById('marketplace')?.scrollIntoView({ behavior: 'smooth' })}
           >
             🎮 JETZT SHOPPEN

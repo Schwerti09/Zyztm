@@ -16,6 +16,7 @@ const GuidePage = lazy(() => import('./pages/GuidePage'));
 const HubPage = lazy(() => import('./pages/HubPage'));
 const NewsPage = lazy(() => import('./pages/NewsPage'));
 const NewsArticlePage = lazy(() => import('./pages/NewsArticlePage'));
+const NexusIQPage = lazy(() => import('./pages/NexusIQPage'));
 
 // Digital Products Shop
 const ShopPage = lazy(() => import('./pages/ShopPage'));
@@ -69,6 +70,8 @@ export default function App() {
           <Route path="/checkout/cancel" component={CheckoutCancelPage} />
           <Route path="/download/:orderId/:token" component={DownloadPage} />
           <Route path="/orders" component={OrdersPage} />
+          {/* NEXUS IQ */}
+          <Route path="/nexus-iq" component={NexusIQPage} />
           {/* Guide / Runbook routes (language-prefixed for SEO) */}
           <LanguageRoute path="/guide/:slug" component={GuidePage} />
           <LanguageRoute path="/guides/:category" component={HubPage} />
