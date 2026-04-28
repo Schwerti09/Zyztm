@@ -34,14 +34,11 @@ export default function Footer() {
           <div>
             <h4 className="font-cyber text-sm font-bold text-white mb-3 tracking-widest">META</h4>
             <div className="space-y-2">
-              <Link href="/de/meta/waffen">
-                <a className="block text-white/50 text-sm hover:text-neon-blue transition-colors">Waffen</a>
+              <Link href="/de/guide/fortnite-ranked-tipps">
+                <a className="block text-white/50 text-sm hover:text-neon-blue transition-colors">Ranked Guide</a>
               </Link>
-              <Link href="/de/meta/karten">
-                <a className="block text-white/50 text-sm hover:text-neon-blue transition-colors">Karten</a>
-              </Link>
-              <Link href="/de/ranked">
-                <a className="block text-white/50 text-sm hover:text-neon-blue transition-colors">Ranked</a>
+              <Link href="/de/guide/fortnite-meta-strategie">
+                <a className="block text-white/50 text-sm hover:text-neon-blue transition-colors">Meta Guide</a>
               </Link>
               <Link href="/de/guide/fortnite-weapon-tier-list">
                 <a className="block text-white/50 text-sm hover:text-neon-blue transition-colors">Weapon Tier List</a>
@@ -51,17 +48,14 @@ export default function Footer() {
           <div>
             <h4 className="font-cyber text-sm font-bold text-white mb-3 tracking-widest">TOOLS</h4>
             <div className="space-y-2">
-              <Link href="/de/tools/waffen-datenbank">
-                <a className="block text-white/50 text-sm hover:text-neon-blue transition-colors">Waffen-Datenbank</a>
-              </Link>
-              <Link href="/de/tools/loadout-builder">
-                <a className="block text-white/50 text-sm hover:text-neon-blue transition-colors">Loadout Builder</a>
-              </Link>
               <Link href="/de/guide/fortnite-sensitivity-calculator">
                 <a className="block text-white/50 text-sm hover:text-neon-blue transition-colors">Sensitivity Calculator</a>
               </Link>
-              <Link href="/de/tools/stats-checker">
-                <a className="block text-white/50 text-sm hover:text-neon-blue transition-colors">Stats Checker</a>
+              <Link href="/de/guide/fortnite-keybinds-pro">
+                <a className="block text-white/50 text-sm hover:text-neon-blue transition-colors">Keybinds Pro Guide</a>
+              </Link>
+              <Link href="/de/guide/fortnite-creative-maps">
+                <a className="block text-white/50 text-sm hover:text-neon-blue transition-colors">Creative Maps Guide</a>
               </Link>
             </div>
           </div>
