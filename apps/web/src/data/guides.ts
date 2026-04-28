@@ -170,7 +170,7 @@ export const GUIDES: GuideData[] = [
     ],
     faqs: [
       { question: 'Was ist die beste Landing-Spot in Fortnite?', answer: 'Named Locations am Rand der Map mit mittlerem Loot. Beispiele: Pleasant Preamble, Frenzy Fields, Lazy Lake. Hot-Drops wie Tilted Towers sind nur für High-Skill-Spieler.' },
-      { question: 'Wie rotiere ich am besten?', text: 'Immer zum Center des nächsten Circles. Nutze Fahrzeuge oder Movement-Items. Vermeide den Rand des Circles – Storm-Damage und Third-Party sind dort hoch.' },
+      { question: 'Wie rotiere ich am besten?', answer: 'Immer zum Center des nächsten Circles. Nutze Fahrzeuge oder Movement-Items. Vermeide den Rand des Circles – Storm-Damage und Third-Party sind dort hoch.' },
       { question: 'Soll ich Kämpfe vermeiden?', answer: 'In Ranked: Ja, wenn nicht notwendig. In Casual: Nein, Kämpfe sind für Skill-Training wichtig. Balance Training vs. Ranked-Grinding.' },
     ],
     hiddenInsight: 'Was andere Guides nicht sagen: Die meisten Meta-Guides sagen "immer zum Circle rotieren". Aber was sie nicht sagen: WANN rotieren. 30 Sekunden vor Ring-Schließung ist der Sweet-Spot. Zu früh = du wirst gecamped. Zu spät = Storm-Damage. Timing ist alles.',

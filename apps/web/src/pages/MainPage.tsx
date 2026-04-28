@@ -6,7 +6,6 @@ const Navbar = lazy(() => import('../components/Navbar'));
 const HeroSection = lazy(() => import('../components/HeroSection'));
 const KickEmbed = lazy(() => import('../components/KickEmbed'));
 const CreatorCode = lazy(() => import('../components/CreatorCode'));
-const SocialHub = lazy(() => import('../components/SocialHub'));
 const ProductGrid = lazy(() => import('../components/ProductGrid'));
 const NeuralSynthesizer = lazy(() => import('../components/NeuralSynthesizer'));
 const NexusBro = lazy(() => import('../components/ZyztmBro'));
@@ -66,7 +65,6 @@ export default function MainPage() {
             <SubscriptionPlans />
             <AffiliateSection />
             <GlobalEmpire />
-            <SocialHub />
             <Suspense fallback={<SectionLoader />}><ClutchReel /></Suspense>
             <ProductGrid />
             <SoundboardDemo />

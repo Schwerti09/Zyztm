@@ -1,0 +1,303 @@
+.weapon-database {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 2rem;
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+  min-height: 100vh;
+  color: #fff;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.header h1 {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+  background: linear-gradient(90deg, #39FF14, #00f2ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.header p {
+  color: #9CA3AF;
+  font-size: 1.1rem;
+}
+
+.filters {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+  padding: 1.5rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+}
+
+.search-input {
+  flex: 1;
+  min-width: 200px;
+  padding: 0.75rem 1rem;
+  border: 2px solid #39FF14;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  font-size: 1rem;
+}
+
+.search-input::placeholder {
+  color: #9CA3AF;
+}
+
+.filter-select {
+  padding: 0.75rem 1rem;
+  border: 2px solid #39FF14;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.sort-button {
+  padding: 0.75rem 1.5rem;
+  border: 2px solid #39FF14;
+  border-radius: 8px;
+  background: rgba(57, 255, 20, 0.2);
+  color: #39FF14;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.sort-button:hover {
+  background: rgba(57, 255, 20, 0.4);
+}
+
+.weapon-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.weapon-card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 2px solid rgba(57, 255, 20, 0.3);
+  border-radius: 12px;
+  padding: 1.5rem;
+  transition: all 0.3s;
+}
+
+.weapon-card:hover {
+  border-color: #39FF14;
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(57, 255, 20, 0.3);
+}
+
+.weapon-header {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.weapon-image {
+  width: 80px;
+  height: 80px;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+.weapon-info h3 {
+  font-size: 1.3rem;
+  margin-bottom: 0.5rem;
+}
+
+.badges {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.badge {
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: bold;
+  color: #000;
+}
+
+.description {
+  color: #9CA3AF;
+  margin-bottom: 1rem;
+  font-size: 0.95rem;
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.stat {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 6px;
+}
+
+.label {
+  color: #9CA3AF;
+  font-size: 0.9rem;
+}
+
+.value {
+  color: #39FF14;
+  font-weight: bold;
+}
+
+.compare-button {
+  width: 100%;
+  padding: 0.75rem;
+  border: 2px solid #39FF14;
+  border-radius: 8px;
+  background: transparent;
+  color: #39FF14;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.compare-button:hover:not(:disabled) {
+  background: #39FF14;
+  color: #000;
+}
+
+.compare-button.active {
+  background: #39FF14;
+  color: #000;
+}
+
+.compare-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.comparison-panel {
+  background: rgba(255, 255, 255, 0.05);
+  border: 2px solid #39FF14;
+  border-radius: 12px;
+  padding: 2rem;
+  margin-bottom: 2rem;
+}
+
+.comparison-panel h2 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  color: #39FF14;
+}
+
+.comparison-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+}
+
+.comparison-card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(57, 255, 20, 0.3);
+  border-radius: 8px;
+  padding: 1.5rem;
+}
+
+.comparison-card h3 {
+  text-align: center;
+  margin-bottom: 1rem;
+  color: #39FF14;
+}
+
+.comparison-stats {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.comparison-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.comparison-stat .label {
+  font-size: 0.9rem;
+  color: #9CA3AF;
+}
+
+.comparison-stat .bar {
+  height: 24px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  position: relative;
+  overflow: hidden;
+}
+
+.bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #39FF14, #00f2ff);
+  transition: width 0.5s;
+}
+
+.comparison-stat .value {
+  position: absolute;
+  right: 0.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #fff;
+  font-weight: bold;
+  font-size: 0.85rem;
+}
+
+.comparison-card button {
+  width: 100%;
+  padding: 0.75rem;
+  margin-top: 1rem;
+  border: 2px solid #EF4444;
+  border-radius: 8px;
+  background: transparent;
+  color: #EF4444;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.comparison-card button:hover {
+  background: #EF4444;
+  color: #fff;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .weapon-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .filters {
+    flex-direction: column;
+  }
+
+  .search-input {
+    min-width: 100%;
+  }
+
+  .filter-select {
+    min-width: 100%;
+  }
+
+  .comparison-grid {
+    grid-template-columns: 1fr;
+  }
+}
