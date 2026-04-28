@@ -15,17 +15,20 @@ export default function Footer() {
             </p>
           </div>
           <div>
-            <h4 className="font-cyber text-sm font-bold text-white mb-3 tracking-widest">SOCIALS</h4>
+            <h4 className="font-cyber text-sm font-bold text-white mb-3 tracking-widest">INFO</h4>
             <div className="space-y-2">
-              {[
-                { label: ' YouTube', url: 'https://www.youtube.com/@FortniteNexusDE' },
-                { label: '🎵 TikTok', url: 'https://www.tiktok.com/@FortniteNexusDE' },
-                { label: '📸 Instagram', url: 'https://www.instagram.com/fortnitenexusde' },
-                { label: '🐦 Twitter/X', url: 'https://twitter.com/FortniteNexusDE' },
-                { label: '💬 Discord', url: 'https://discord.gg/fortnitenexus' },
-              ].map((s) => (
-                <a key={s.label} href={s.url} target="_blank" rel="noopener noreferrer" className="block text-white/50 text-sm hover:text-neon-blue transition-colors">{s.label}</a>
-              ))}
+              <Link href="/de/about">
+                <a className="block text-white/50 text-sm hover:text-neon-blue transition-colors">Über uns</a>
+              </Link>
+              <Link href="/de/kontakt">
+                <a className="block text-white/50 text-sm hover:text-neon-blue transition-colors">Kontakt</a>
+              </Link>
+              <Link href="/de/impressum">
+                <a className="block text-white/50 text-sm hover:text-neon-blue transition-colors">Impressum</a>
+              </Link>
+              <Link href="/de/datenschutz">
+                <a className="block text-white/50 text-sm hover:text-neon-blue transition-colors">Datenschutz</a>
+              </Link>
             </div>
           </div>
           <div>

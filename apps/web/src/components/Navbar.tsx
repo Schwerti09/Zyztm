@@ -83,17 +83,9 @@ export default function Navbar() {
             ))}
           </ul>
 
-          {/* Language Switcher & CTA */}
+          {/* Language Switcher */}
           <div className="hidden md:flex items-center gap-3">
             <LanguageSwitcher currentLanguage={currentLanguage} />
-            <a
-              href="https://discord.gg/fortnitenexus"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-4 py-1.5 text-xs font-cyber font-bold tracking-widest border border-neon-pink text-neon-pink bg-neon-pink/5 hover:bg-neon-pink/20 shadow-[0_0_10px_rgba(255,0,85,0.2)] hover:shadow-[0_0_20px_rgba(255,0,85,0.5)] transition-all duration-200"
-            >
-              JOIN NOW
-            </a>
           </div>
 
           {/* Mobile hamburger */}
@@ -156,17 +148,6 @@ export default function Navbar() {
               ))}
               <li className="pt-2 flex justify-center">
                 <LanguageSwitcher currentLanguage={currentLanguage} />
-              </li>
-              <li className="pt-2">
-                <a
-                  href="https://discord.gg/fortnitenexus"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="block px-3 py-2.5 text-sm font-cyber font-bold tracking-widest text-center text-neon-pink border border-neon-pink/40 bg-neon-pink/5"
-                  onClick={() => setMenuOpen(false)}
-                >
-                  JOIN COMMUNITY
-                </a>
               </li>
             </ul>
           </motion.div>

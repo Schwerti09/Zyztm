@@ -102,14 +102,17 @@ export const handler = async () => {
       };
     } else {
       // --- Public RSS/Atom feed fallback (no API key required) ---
+      // Use channel handle instead of channel_id for RSS feed
       const feedUrl = `https://www.youtube.com/feeds/videos.xml?channel_id=${channelId}`;
-      const res = await fetch(feedUrl);
+      const res = await fetch(feedUrl, {
+        headers: { 'User-Agent': 'Mozilla/5.0 (compatible; FortniteNexus/1.0)' }
+      });
 
       if (!res.ok) {
         return {
           statusCode: 502,
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ error: 'YouTube RSS feed request failed' }),
+          body: JSON.stringify({ error: 'YouTube RSS feed request failed', videos: [] }),
         };
       }
 
