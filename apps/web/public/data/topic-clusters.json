@@ -1,0 +1,451 @@
+{
+  "last_updated": "2026-04-29T13:00:00Z",
+  "pillar_pages": [
+    {
+      "id": "pillar_1",
+      "name": "Fortnite Ultimate Guide 2026",
+      "primary_keyword": "fortnite guide",
+      "url": "/de/guide/fortnite-ultimate-guide-2026",
+      "search_volume": 90000,
+      "kd": 80,
+      "cluster_articles": [
+        {
+          "title": "Fortnite Aim verbessern 2026",
+          "url": "/de/guide/fortnite-aim-verbessern-2026",
+          "keyword": "fortnite aim guide",
+          "search_volume": 22000,
+          "kd": 55,
+          "links_to": ["pillar_5", "pillar_2"]
+        },
+        {
+          "title": "Fortnite Building Guide",
+          "url": "/de/guide/fortnite-building-guide",
+          "keyword": "fortnite building guide",
+          "search_volume": 18000,
+          "kd": 50,
+          "links_to": ["pillar_4"]
+        },
+        {
+          "title": "Fortnite Best Settings 2026",
+          "url": "/de/guide/fortnite-best-settings-2026",
+          "keyword": "fortnite settings 2026",
+          "search_volume": 15000,
+          "kd": 45,
+          "links_to": ["pillar_5"]
+        },
+        {
+          "title": "Fortnite Weapon Tier List",
+          "url": "/de/guide/fortnite-weapon-tier-list",
+          "keyword": "fortnite weapon tier list",
+          "search_volume": 14000,
+          "kd": 50,
+          "links_to": ["pillar_2"]
+        },
+        {
+          "title": "Fortnite Ranked Tipps",
+          "url": "/de/guide/fortnite-ranked-tipps",
+          "keyword": "fortnite ranked tips",
+          "search_volume": 7500,
+          "kd": 35,
+          "links_to": ["pillar_4"]
+        },
+        {
+          "title": "Fortnite Meta Strategie",
+          "url": "/de/guide/fortnite-meta-strategie",
+          "keyword": "fortnite meta",
+          "search_volume": 15000,
+          "kd": 70,
+          "links_to": ["pillar_2", "pillar_4"]
+        },
+        {
+          "title": "Fortnite Sensitivity Calculator",
+          "url": "/de/guide/fortnite-sensitivity-calculator",
+          "keyword": "fortnite sensitivity calculator",
+          "search_volume": 1100,
+          "kd": 7,
+          "links_to": ["pillar_5"]
+        },
+        {
+          "title": "Fortnite Keybinds Pro",
+          "url": "/de/guide/fortnite-keybinds-pro",
+          "keyword": "fortnite keybinds",
+          "search_volume": 6000,
+          "kd": 30,
+          "links_to": ["pillar_5"]
+        }
+      ]
+    },
+    {
+      "id": "pillar_2",
+      "name": "Fortnite Weapons & Meta",
+      "primary_keyword": "fortnite weapons",
+      "url": "/de/meta/waffen",
+      "search_volume": 30000,
+      "kd": 75,
+      "cluster_articles": [
+        {
+          "title": "Fortnite Assault Rifles",
+          "url": "/de/meta/waffen/assault-rifles",
+          "keyword": "fortnite ar",
+          "search_volume": 8000,
+          "kd": 40,
+          "links_to": []
+        },
+        {
+          "title": "Fortnite Shotguns",
+          "url": "/de/meta/waffen/shotguns",
+          "keyword": "fortnite shotgun",
+          "search_volume": 6500,
+          "kd": 35,
+          "links_to": []
+        },
+        {
+          "title": "Fortnite SMG",
+          "url": "/de/meta/waffen/smg",
+          "keyword": "fortnite smg",
+          "search_volume": 5000,
+          "kd": 30,
+          "links_to": []
+        },
+        {
+          "title": "Fortnite Sniper",
+          "url": "/de/meta/waffen/sniper",
+          "keyword": "fortnite sniper",
+          "search_volume": 4000,
+          "kd": 25,
+          "links_to": []
+        },
+        {
+          "title": "Fortnite Explosive Weapons",
+          "url": "/de/meta/waffen/explosive",
+          "keyword": "fortnite explosive",
+          "search_volume": 3000,
+          "kd": 20,
+          "links_to": []
+        },
+        {
+          "title": "Fortnite Chapter 6 Season 2 Weapons",
+          "url": "/de/meta/waffen/chapter-6-season-2",
+          "keyword": "fortnite chapter 6 season 2 weapons",
+          "search_volume": 1300,
+          "kd": 18,
+          "links_to": ["pillar_6"]
+        },
+        {
+          "title": "Fortnite Best Loadouts",
+          "url": "/de/meta/waffen/best-loadouts",
+          "keyword": "fortnite loadout",
+          "search_volume": 6500,
+          "kd": 35,
+          "links_to": ["pillar_4"]
+        },
+        {
+          "title": "Fortnite Weapon Stats",
+          "url": "/de/meta/waffen/weapon-stats",
+          "keyword": "fortnite weapon stats",
+          "search_volume": 1200,
+          "kd": 8,
+          "links_to": []
+        }
+      ]
+    },
+    {
+      "id": "pillar_3",
+      "name": "Fortnite Maps & Locations",
+      "primary_keyword": "fortnite maps",
+      "url": "/de/meta/karten",
+      "search_volume": 35000,
+      "kd": 70,
+      "cluster_articles": [
+        {
+          "title": "Fortnite Chapter 6 Season 2 Map",
+          "url": "/de/meta/karten/chapter-6-season-2",
+          "keyword": "fortnite chapter 6 season 2 map",
+          "search_volume": 1500,
+          "kd": 20,
+          "links_to": ["pillar_6"]
+        },
+        {
+          "title": "Fortnite Beste Landezonen",
+          "url": "/de/meta/karten/beste-landezonen",
+          "keyword": "fortnite landing spots",
+          "search_volume": 4000,
+          "kd": 30,
+          "links_to": ["pillar_4"]
+        },
+        {
+          "title": "Fortnite Chest Spawn Rates",
+          "url": "/de/meta/karten/chest-spawn-rates",
+          "keyword": "fortnite chest spawn rates",
+          "search_volume": 2000,
+          "kd": 15,
+          "links_to": []
+        },
+        {
+          "title": "Fortnite POI Locations",
+          "url": "/de/meta/karten/poi-locations",
+          "keyword": "fortnite poi",
+          "search_volume": 3000,
+          "kd": 25,
+          "links_to": []
+        },
+        {
+          "title": "Fortnite Named Landmarks",
+          "url": "/de/meta/karten/named-landmarks",
+          "keyword": "fortnite landmarks",
+          "search_volume": 1500,
+          "kd": 12,
+          "links_to": []
+        },
+        {
+          "title": "Fortnite Rotation Tracker",
+          "url": "/de/meta/karten/rotation-tracker",
+          "keyword": "fortnite map rotation",
+          "search_volume": 1000,
+          "kd": 10,
+          "links_to": ["pillar_6"]
+        },
+        {
+          "title": "Fortnite Vehicle Spawns",
+          "url": "/de/meta/karten/vehicle-spawns",
+          "keyword": "fortnite vehicles",
+          "search_volume": 800,
+          "kd": 8,
+          "links_to": []
+        },
+        {
+          "title": "Fortnite Hiding Spots",
+          "url": "/de/meta/karten/hiding-spots",
+          "keyword": "fortnite hiding spots",
+          "search_volume": 600,
+          "kd": 5,
+          "links_to": ["pillar_4"]
+        }
+      ]
+    },
+    {
+      "id": "pillar_4",
+      "name": "Fortnite Ranked & Competitive",
+      "primary_keyword": "fortnite ranked",
+      "url": "/de/ranked",
+      "search_volume": 20000,
+      "kd": 60,
+      "cluster_articles": [
+        {
+          "title": "Fortnite Ranked Tipps",
+          "url": "/de/ranked/tipps",
+          "keyword": "fortnite ranked tips",
+          "search_volume": 7500,
+          "kd": 35,
+          "links_to": []
+        },
+        {
+          "title": "Fortnite Ranked Strategie",
+          "url": "/de/ranked/strategie",
+          "keyword": "fortnite ranked strategie",
+          "search_volume": 950,
+          "kd": 12,
+          "links_to": []
+        },
+        {
+          "title": "Fortnite Zone Wars",
+          "url": "/de/ranked/zone-wars",
+          "keyword": "fortnite zone wars",
+          "search_volume": 7000,
+          "kd": 40,
+          "links_to": []
+        },
+        {
+          "title": "Fortnite Ranked Loadouts",
+          "url": "/de/ranked/loadouts",
+          "keyword": "fortnite ranked loadout",
+          "search_volume": 5000,
+          "kd": 30,
+          "links_to": ["pillar_2"]
+        },
+        {
+          "title": "Fortnite Point System",
+          "url": "/de/ranked/point-system",
+          "keyword": "fortnite ranked points",
+          "search_volume": 3000,
+          "kd": 20,
+          "links_to": []
+        },
+        {
+          "title": "Fortnite Arena Mode",
+          "url": "/de/ranked/arena-mode",
+          "keyword": "fortnite arena",
+          "search_volume": 4000,
+          "kd": 25,
+          "links_to": []
+        },
+        {
+          "title": "Fortnite Pro Tipps",
+          "url": "/de/ranked/pro-tips",
+          "keyword": "fortnite pro tips",
+          "search_volume": 2500,
+          "kd": 18,
+          "links_to": []
+        },
+        {
+          "title": "Fortnite ELO Calculator",
+          "url": "/de/ranked/elo-calculator",
+          "keyword": "fortnite elo calculator",
+          "search_volume": 800,
+          "kd": 5,
+          "links_to": []
+        }
+      ]
+    },
+    {
+      "id": "pillar_5",
+      "name": "Fortnite Settings & Optimization",
+      "primary_keyword": "fortnite settings",
+      "url": "/de/einstellungen",
+      "search_volume": 25000,
+      "kd": 65,
+      "cluster_articles": [
+        {
+          "title": "Fortnite PC Settings",
+          "url": "/de/einstellungen/pc",
+          "keyword": "fortnite pc settings",
+          "search_volume": 12000,
+          "kd": 40,
+          "links_to": []
+        },
+        {
+          "title": "Fortnite Controller Settings",
+          "url": "/de/einstellungen/controller",
+          "keyword": "fortnite controller settings",
+          "search_volume": 9000,
+          "kd": 35,
+          "links_to": []
+        },
+        {
+          "title": "Fortnite Mobile Settings",
+          "url": "/de/einstellungen/mobile",
+          "keyword": "fortnite mobile settings",
+          "search_volume": 8000,
+          "kd": 30,
+          "links_to": []
+        },
+        {
+          "title": "Fortnite Nintendo Switch Settings",
+          "url": "/de/einstellungen/nintendo-switch",
+          "keyword": "fortnite nintendo switch settings",
+          "search_volume": 800,
+          "kd": 5,
+          "links_to": []
+        },
+        {
+          "title": "Fortnite PS5 Settings 2026",
+          "url": "/de/einstellungen/ps5",
+          "keyword": "fortnite ps5 settings",
+          "search_volume": 750,
+          "kd": 5,
+          "links_to": []
+        },
+        {
+          "title": "Fortnite Xbox Series X Settings",
+          "url": "/de/einstellungen/xbox-series-x",
+          "keyword": "fortnite xbox settings",
+          "search_volume": 700,
+          "kd": 5,
+          "links_to": []
+        },
+        {
+          "title": "Fortnite Sensitivity",
+          "url": "/de/einstellungen/sensitivity",
+          "keyword": "fortnite sensitivity",
+          "search_volume": 10000,
+          "kd": 40,
+          "links_to": []
+        },
+        {
+          "title": "Fortnite Graphics Settings",
+          "url": "/de/einstellungen/graphics",
+          "keyword": "fortnite graphics settings",
+          "search_volume": 3500,
+          "kd": 20,
+          "links_to": []
+        }
+      ]
+    },
+    {
+      "id": "pillar_6",
+      "name": "Fortnite News & Updates",
+      "primary_keyword": "fortnite news",
+      "url": "/de/news",
+      "search_volume": 12000,
+      "kd": 55,
+      "cluster_articles": [
+        {
+          "title": "Fortnite Patch Notes",
+          "url": "/de/news/patch-notes",
+          "keyword": "fortnite patch notes deutsch",
+          "search_volume": 800,
+          "kd": 10,
+          "links_to": ["pillar_2", "pillar_3"]
+        },
+        {
+          "title": "Fortnite Item Shop",
+          "url": "/de/news/item-shop",
+          "keyword": "fortnite item shop today",
+          "search_volume": 700,
+          "kd": 8,
+          "links_to": []
+        },
+        {
+          "title": "Fortnite Events",
+          "url": "/de/news/events",
+          "keyword": "fortnite events",
+          "search_volume": 1500,
+          "kd": 15,
+          "links_to": []
+        },
+        {
+          "title": "Fortnite Leaks",
+          "url": "/de/news/leaks",
+          "keyword": "fortnite leaks",
+          "search_volume": 2000,
+          "kd": 18,
+          "links_to": []
+        },
+        {
+          "title": "Fortnite Competitive",
+          "url": "/de/news/competitive",
+          "keyword": "fortnite competitive",
+          "search_volume": 1800,
+          "kd": 16,
+          "links_to": ["pillar_4"]
+        },
+        {
+          "title": "Fortnite Creator Updates",
+          "url": "/de/news/creator-updates",
+          "keyword": "fortnite creators",
+          "search_volume": 500,
+          "kd": 8,
+          "links_to": []
+        },
+        {
+          "title": "Fortnite Meta Changes",
+          "url": "/de/news/meta-changes",
+          "keyword": "fortnite meta deutsch",
+          "search_volume": 750,
+          "kd": 15,
+          "links_to": ["pillar_2"]
+        },
+        {
+          "title": "Fortnite Server Status",
+          "url": "/de/news/server-status",
+          "keyword": "fortnite server status",
+          "search_volume": 3000,
+          "kd": 12,
+          "links_to": []
+        }
+      ]
+    }
+  ],
+  "implementation_sequence": ["pillar_6", "pillar_5", "pillar_1", "pillar_2", "pillar_4", "pillar_3"],
+  "internal_linking_schema": "Pillar 1 (Ultimate Guide) → Cluster 1.1 (Aim) → Cluster 1.2 (Building) → Cluster 1.3 (Settings) → Pillar 5 (Settings Hub) → Cluster 5.1 (PC Settings) → Cluster 1.4 (Weapons) → Pillar 2 (Weapons Hub) → Cluster 2.1 (Assault Rifles) → Cluster 1.5 (Ranked) → Pillar 4 (Ranked Hub) → Cluster 4.1 (Tips) → Cluster 1.6 (Meta) → Pillar 2 (Weapons Hub) → Pillar 4 (Ranked Hub)"
+}
