@@ -237,6 +237,27 @@
   to = "/.netlify/functions/subscriptions-webhook"
   status = 200
 
+# Fortnite Nexus - Static HTML Pages (Content Integration System)
+[[redirects]]
+  from = "/nexus-iq"
+  to = "/nexus-iq.html"
+  status = 200
+
+[[redirects]]
+  from = "/loadout-god"
+  to = "/loadout-god.html"
+  status = 200
+
+[[redirects]]
+  from = "/creators"
+  to = "/creators.html"
+  status = 200
+
+[[redirects]]
+  from = "/classic"
+  to = "/classic.html"
+  status = 200
+
 # Fallback SPA route – must be last
 [[redirects]]
   from = "/*"
