@@ -29,7 +29,7 @@ export const WEAPONS: Weapon[] = [
     range: 50,
     headshotMultiplier: 2.0,
     tier: 'S',
-    imageUrl: '/images/weapons/ar-assault.png',
+    imageUrl: 'https://via.placeholder.com/80x80/39FF14/000000?text=AR',
     description: 'Standard Assault Rifle mit ausgeglichener Performance'
   },
   {
@@ -45,7 +45,7 @@ export const WEAPONS: Weapon[] = [
     range: 60,
     headshotMultiplier: 2.0,
     tier: 'S',
-    imageUrl: '/images/weapons/ar-heavy.png',
+    imageUrl: 'https://via.placeholder.com/80x80/A855F7/000000?text=HAR',
     description: 'Hoher Damage, langsamere Fire Rate'
   },
   {
@@ -61,7 +61,7 @@ export const WEAPONS: Weapon[] = [
     range: 55,
     headshotMultiplier: 2.0,
     tier: 'A',
-    imageUrl: '/images/weapons/ar-burst.png',
+    imageUrl: 'https://via.placeholder.com/80x80/A855F7/000000?text=BAR',
     description: 'Burst-Feuer für präzise Shots'
   },
   {
@@ -77,7 +77,7 @@ export const WEAPONS: Weapon[] = [
     range: 25,
     headshotMultiplier: 1.5,
     tier: 'A',
-    imageUrl: '/images/weapons/smg-tactical.png',
+    imageUrl: 'https://via.placeholder.com/80x80/3B82F6/000000?text=SMG',
     description: 'Schnell, hohe Fire Rate, geringer Damage'
   },
   {
@@ -93,7 +93,7 @@ export const WEAPONS: Weapon[] = [
     range: 20,
     headshotMultiplier: 1.5,
     tier: 'B',
-    imageUrl: '/images/weapons/smg-submachine.png',
+    imageUrl: 'https://via.placeholder.com/80x80/22C55E/000000?text=SM',
     description: 'Balance zwischen Damage und Fire Rate'
   },
   {
@@ -109,7 +109,7 @@ export const WEAPONS: Weapon[] = [
     range: 8,
     headshotMultiplier: 1.5,
     tier: 'A',
-    imageUrl: '/images/weapons/shotgun-pump.png',
+    imageUrl: 'https://via.placeholder.com/80x80/3B82F6/000000?text=PSG',
     description: 'Hoher Damage, langsam, klassisch'
   },
   {
@@ -125,7 +125,7 @@ export const WEAPONS: Weapon[] = [
     range: 10,
     headshotMultiplier: 1.5,
     tier: 'S',
-    imageUrl: '/images/weapons/shotgun-tactical.png',
+    imageUrl: 'https://via.placeholder.com/80x80/A855F7/000000?text=TSG',
     description: 'Schneller als Pump, etwas weniger Damage'
   },
   {
@@ -141,7 +141,7 @@ export const WEAPONS: Weapon[] = [
     range: 12,
     headshotMultiplier: 1.5,
     tier: 'S',
-    imageUrl: '/images/weapons/shotgun-combat.png',
+    imageUrl: 'https://via.placeholder.com/80x80/F59E0B/000000?text=CSG',
     description: 'Beste Shotgun im Spiel'
   },
   {
@@ -157,7 +157,7 @@ export const WEAPONS: Weapon[] = [
     range: 200,
     headshotMultiplier: 2.5,
     tier: 'A',
-    imageUrl: '/images/weapons/sniper-bolt.png',
+    imageUrl: 'https://via.placeholder.com/80x80/3B82F6/000000?text=BAS',
     description: 'Hoher Damage, langsamer Reload'
   },
   {
@@ -173,7 +173,7 @@ export const WEAPONS: Weapon[] = [
     range: 180,
     headshotMultiplier: 2.0,
     tier: 'A',
-    imageUrl: '/images/weapons/sniper-semi.png',
+    imageUrl: 'https://via.placeholder.com/80x80/A855F7/000000?text=SAS',
     description: 'Schneller als Bolt, weniger Damage'
   },
   {
@@ -189,7 +189,7 @@ export const WEAPONS: Weapon[] = [
     range: 250,
     headshotMultiplier: 2.5,
     tier: 'S',
-    imageUrl: '/images/weapons/sniper-heavy.png',
+    imageUrl: 'https://via.placeholder.com/80x80/F59E0B/000000?text=HS',
     description: 'Höchster Damage im Spiel'
   },
   {
@@ -205,7 +205,7 @@ export const WEAPONS: Weapon[] = [
     range: 30,
     headshotMultiplier: 2.0,
     tier: 'C',
-    imageUrl: '/images/weapons/pistol-standard.png',
+    imageUrl: 'https://via.placeholder.com/80x80/9CA3AF/000000?text=PI',
     description: 'Basic Pistol, früh im Spiel'
   },
   {
@@ -221,7 +221,7 @@ export const WEAPONS: Weapon[] = [
     range: 35,
     headshotMultiplier: 2.0,
     tier: 'B',
-    imageUrl: '/images/weapons/pistol-suppressed.png',
+    imageUrl: 'https://via.placeholder.com/80x80/3B82F6/000000?text=SP',
     description: 'Leiser, etwas mehr Damage'
   },
   {
@@ -237,7 +237,7 @@ export const WEAPONS: Weapon[] = [
     range: 40,
     headshotMultiplier: 2.0,
     tier: 'A',
-    imageUrl: '/images/weapons/pistol-hand.png',
+    imageUrl: 'https://via.placeholder.com/80x80/A855F7/000000?text=HC',
     description: 'Hoher Damage wie Shotgun'
   },
   {
@@ -253,7 +253,7 @@ export const WEAPONS: Weapon[] = [
     range: 100,
     headshotMultiplier: 1.0,
     tier: 'A',
-    imageUrl: '/images/weapons/explosive-rocket.png',
+    imageUrl: 'https://via.placeholder.com/80x80/3B82F6/000000?text=RL',
     description: 'Massiver AOE Damage'
   },
   {
@@ -269,7 +269,7 @@ export const WEAPONS: Weapon[] = [
     range: 80,
     headshotMultiplier: 1.0,
     tier: 'B',
-    imageUrl: '/images/weapons/explosive-grenade.png',
+    imageUrl: 'https://via.placeholder.com/80x80/A855F7/000000?text=GL',
     description: 'Mehrere Granaten, weniger Damage'
   },
   {
@@ -285,7 +285,7 @@ export const WEAPONS: Weapon[] = [
     range: 120,
     headshotMultiplier: 1.0,
     tier: 'S',
-    imageUrl: '/images/weapons/explosive-rpg.png',
+    imageUrl: 'https://via.placeholder.com/80x80/F59E0B/000000?text=RPG',
     description: 'Höchster Explosive Damage'
   },
   {
@@ -301,7 +301,7 @@ export const WEAPONS: Weapon[] = [
     range: 45,
     headshotMultiplier: 2.0,
     tier: 'A',
-    imageUrl: '/images/weapons/ar-famas.png',
+    imageUrl: 'https://via.placeholder.com/80x80/22C55E/000000?text=FAM',
     description: 'Hohe Fire Rate, geringer Damage'
   },
   {
@@ -317,7 +317,7 @@ export const WEAPONS: Weapon[] = [
     range: 55,
     headshotMultiplier: 2.0,
     tier: 'S',
-    imageUrl: '/images/weapons/ar-sc.png',
+    imageUrl: 'https://via.placeholder.com/80x80/A855F7/000000?text=SC',
     description: 'Ausgewogene Performance'
   },
   {
@@ -333,7 +333,7 @@ export const WEAPONS: Weapon[] = [
     range: 22,
     headshotMultiplier: 1.5,
     tier: 'S',
-    imageUrl: '/images/weapons/smg-mp5.png',
+    imageUrl: 'https://via.placeholder.com/80x80/A855F7/000000?text=MP5',
     description: 'Höchste Fire Rate unter SMGs'
   },
   {
@@ -349,7 +349,7 @@ export const WEAPONS: Weapon[] = [
     range: 10,
     headshotMultiplier: 1.5,
     tier: 'S',
-    imageUrl: '/images/weapons/shotgun-drum.png',
+    imageUrl: 'https://via.placeholder.com/80x80/F59E0B/000000?text=DSG',
     description: 'Hohe Mag Size, schnell'
   },
   {
@@ -365,7 +365,7 @@ export const WEAPONS: Weapon[] = [
     range: 150,
     headshotMultiplier: 2.0,
     tier: 'B',
-    imageUrl: '/images/weapons/sniper-hunting.png',
+    imageUrl: 'https://via.placeholder.com/80x80/22C55E/000000?text=HR',
     description: 'Basic Sniper, früh im Spiel'
   },
   {
@@ -381,7 +381,7 @@ export const WEAPONS: Weapon[] = [
     range: 50,
     headshotMultiplier: 1.0,
     tier: 'B',
-    imageUrl: '/images/weapons/explosive-c4.png',
+    imageUrl: 'https://via.placeholder.com/80x80/3B82F6/000000?text=C4',
     description: 'Massiver Damage, langsam'
   },
   {
@@ -397,7 +397,55 @@ export const WEAPONS: Weapon[] = [
     range: 35,
     headshotMultiplier: 2.0,
     tier: 'A',
-    imageUrl: '/images/weapons/pistol-flint.png',
+    imageUrl: 'https://via.placeholder.com/80x80/F59E0B/000000?text=FLK',
     description: 'Hoher Damage, aber langsam'
+  },
+  {
+    id: 'ar-m4',
+    name: 'M4A4',
+    type: 'AR',
+    rarity: 'Epic',
+    damage: 35,
+    fireRate: 5.8,
+    reloadTime: 2.2,
+    magSize: 30,
+    dps: 203,
+    range: 52,
+    headshotMultiplier: 2.0,
+    tier: 'S',
+    imageUrl: 'https://via.placeholder.com/80x80/A855F7/000000?text=M4',
+    description: 'Ausgewogene AR mit hoher Fire Rate'
+  },
+  {
+    id: 'smg-p90',
+    name: 'P90',
+    type: 'SMG',
+    rarity: 'Legendary',
+    damage: 21,
+    fireRate: 12.0,
+    reloadTime: 1.5,
+    magSize: 50,
+    dps: 252,
+    range: 20,
+    headshotMultiplier: 1.5,
+    tier: 'S',
+    imageUrl: 'https://via.placeholder.com/80x80/F59E0B/000000?text=P90',
+    description: 'Höchste Mag Size und Fire Rate'
+  },
+  {
+    id: 'explosive-sticky',
+    name: 'Sticky Grenade Launcher',
+    type: 'Explosive',
+    rarity: 'Legendary',
+    damage: 95,
+    fireRate: 0.6,
+    reloadTime: 2.8,
+    magSize: 5,
+    dps: 57,
+    range: 90,
+    headshotMultiplier: 1.0,
+    tier: 'A',
+    imageUrl: 'https://via.placeholder.com/80x80/F59E0B/000000?text=SGL',
+    description: 'Granaten kleben an Zielen'
   }
 ];
