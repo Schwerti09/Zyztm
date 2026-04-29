@@ -1,0 +1,266 @@
+{
+  "last_updated": "2026-04-29T13:00:00Z",
+  "competitors": {
+    "tracker_gg": {
+      "name": "Tracker.gg",
+      "strengths": ["Stats Tracking", "Leaderboards", "Pro Profiles"],
+      "weaknesses": [
+        "Keine deutschen Guides",
+        "Keine Settings-Optimierung",
+        "Keine Mobile/Console-Fokus",
+        "Keine Community-Funktionen"
+      ],
+      "missing_opportunities": [
+        "Deutsche Long-Tail Keywords",
+        "Settings für alle Plattformen",
+        "Community-Integration",
+        "Performance-Optimierung"
+      ]
+    },
+    "progameguides": {
+      "name": "ProGameGuides",
+      "strengths": ["Weapon Guides", "Meta Updates", "News Coverage"],
+      "weaknesses": [
+        "Keine regionalen Meta-Analysen",
+        "Keine Live-Item-Shop-Ratings",
+        "Keine Performance-Optimierung",
+        "Keine deutschen Long-Tail Keywords"
+      ],
+      "missing_opportunities": [
+        "Regionale Meta-Unterschiede",
+        "Live Item Shop Tracker",
+        "Performance-Guides",
+        "Deutsche Keywords"
+      ]
+    },
+    "dot_esports": {
+      "name": "Dot Esports",
+      "strengths": ["Esports Coverage", "Pro News", "Tournament Results"],
+      "weaknesses": [
+        "Keine Fortnite-spezifischen Guides",
+        "Keine Settings-Fokus",
+        "Keine Community-Integration",
+        "Keine regionalen Expert-Systeme"
+      ],
+      "missing_opportunities": [
+        "Fortnite-spezifische Guides",
+        "Settings-Optimierung",
+        "Community-Funktionen",
+        "Regionale Expertise"
+      ]
+    }
+  },
+  "german_keywords_opportunities": [
+    {
+      "keyword": "fortnite aim verbessern 2026 deutsch",
+      "search_volume": 1800,
+      "kd": 15,
+      "opportunity": "HOCH",
+      "competitor_coverage": "none"
+    },
+    {
+      "keyword": "fortnite building tutorial deutsch",
+      "search_volume": 1400,
+      "kd": 10,
+      "opportunity": "HOCH",
+      "competitor_coverage": "none"
+    },
+    {
+      "keyword": "fortnite controller settings deutsch",
+      "search_volume": 950,
+      "kd": 8,
+      "opportunity": "HOCH",
+      "competitor_coverage": "none"
+    },
+    {
+      "keyword": "fortnite ranked strategie deutsch",
+      "search_volume": 900,
+      "kd": 12,
+      "opportunity": "HOCH",
+      "competitor_coverage": "none"
+    },
+    {
+      "keyword": "fortnite mobile fps boost deutsch",
+      "search_volume": 850,
+      "kd": 5,
+      "opportunity": "SEHR HOCH",
+      "competitor_coverage": "none"
+    },
+    {
+      "keyword": "fortnite nintendo switch deutsch",
+      "search_volume": 800,
+      "kd": 5,
+      "opportunity": "SEHR HOCH",
+      "competitor_coverage": "none"
+    },
+    {
+      "keyword": "fortnite patch notes deutsch",
+      "search_volume": 800,
+      "kd": 10,
+      "opportunity": "HOCH",
+      "competitor_coverage": "low"
+    },
+    {
+      "keyword": "fortnite meta deutsch",
+      "search_volume": 750,
+      "kd": 15,
+      "opportunity": "HOCH",
+      "competitor_coverage": "low"
+    },
+    {
+      "keyword": "fortnite zone wars deutsch",
+      "search_volume": 700,
+      "kd": 8,
+      "opportunity": "HOCH",
+      "competitor_coverage": "none"
+    },
+    {
+      "keyword": "fortnite sensitivity deutsch",
+      "search_volume": 650,
+      "kd": 7,
+      "opportunity": "HOCH",
+      "competitor_coverage": "none"
+    }
+  ],
+  "blue_ocean_themes": [
+    {
+      "id": "regional_meta_analysis",
+      "name": "Regionale Meta-Analyse",
+      "concept": "Fortnite Meta unterscheidet sich regional (NA vs EU vs Asia)",
+      "opportunity": "Keine Website deckt regionale Meta-Unterschiede ab",
+      "content_example": "EU Meta vs NA Meta – Was du wissen musst",
+      "keywords": ["eu meta", "na meta", "asian meta", "regional differences"],
+      "estimated_traffic": 5000
+    },
+    {
+      "id": "low_end_pc_optimization",
+      "name": "Performance-Optimierung für Low-End PCs",
+      "concept": "Fortnite auf uralten Laptops spielen",
+      "opportunity": "Viele Spieler haben keine High-End PCs",
+      "content_example": "Fortnite auf 5 Jahren alten Laptop – 60 FPS möglich",
+      "keywords": ["low end pc", "old laptop", "performance", "fps boost"],
+      "estimated_traffic": 3000
+    },
+    {
+      "id": "ai_weapon_recommendations",
+      "name": "AI-Powered Weapon Recommendations",
+      "concept": "KI analysiert deinen Spielstil und empfiehlt Waffen",
+      "opportunity": "Keine Website bietet personalisierte Empfehlungen",
+      "content_example": "KI sagt welche Waffen zu deinem Spielstil passen",
+      "keywords": ["ai recommendations", "personalized loadout", "weapon suggestions"],
+      "estimated_traffic": 2000
+    }
+  ],
+  "quick_wins_content": [
+    {
+      "keyword": "fortnite ping fix",
+      "word_count": 300,
+      "time_to_create": 30,
+      "expected_ranking_time": "3 Tage"
+    },
+    {
+      "keyword": "fortnite crash fix",
+      "word_count": 350,
+      "time_to_create": 45,
+      "expected_ranking_time": "1 Woche"
+    },
+    {
+      "keyword": "fortnite lag spikes",
+      "word_count": 300,
+      "time_to_create": 30,
+      "expected_ranking_time": "3 Tage"
+    },
+    {
+      "keyword": "fortnite stuttering pc",
+      "word_count": 350,
+      "time_to_create": 45,
+      "expected_ranking_time": "3 Tage"
+    },
+    {
+      "keyword": "fortnite crosshair color",
+      "word_count": 250,
+      "time_to_create": 20,
+      "expected_ranking_time": "3 Tage"
+    },
+    {
+      "keyword": "fortnite packet loss fix",
+      "word_count": 300,
+      "time_to_create": 30,
+      "expected_ranking_time": "3 Tage"
+    },
+    {
+      "keyword": "fortnite fps drop fix",
+      "word_count": 350,
+      "time_to_create": 45,
+      "expected_ranking_time": "3 Tage"
+    },
+    {
+      "keyword": "fortnite error code",
+      "word_count": 400,
+      "time_to_create": 60,
+      "expected_ranking_time": "1 Woche"
+    },
+    {
+      "keyword": "fortnite item shop today",
+      "word_count": 400,
+      "time_to_create": 30,
+      "expected_ranking_time": "3 Tage"
+    },
+    {
+      "keyword": "fortnite rare skins tracker",
+      "word_count": 450,
+      "time_to_create": 30,
+      "expected_ranking_time": "1 Woche"
+    }
+  ],
+  "authority_content": [
+    {
+      "keyword": "fortnite ultimate guide 2026",
+      "word_count": 5000,
+      "time_to_create": 480,
+      "expected_ranking_time": "12 Monate"
+    },
+    {
+      "keyword": "fortnite aim verbessern 2026",
+      "word_count": 3500,
+      "time_to_create": 240,
+      "expected_ranking_time": "8 Monate"
+    },
+    {
+      "keyword": "fortnite building guide",
+      "word_count": 4000,
+      "time_to_create": 360,
+      "expected_ranking_time": "8 Monate"
+    },
+    {
+      "keyword": "fortnite best settings 2026",
+      "word_count": 3500,
+      "time_to_create": 240,
+      "expected_ranking_time": "6 Monate"
+    },
+    {
+      "keyword": "fortnite weapon tier list",
+      "word_count": 3000,
+      "time_to_create": 180,
+      "expected_ranking_time": "6 Monate"
+    },
+    {
+      "keyword": "fortnite ranked tips",
+      "word_count": 3500,
+      "time_to_create": 240,
+      "expected_ranking_time": "6 Monate"
+    },
+    {
+      "keyword": "fortnite meta strategie",
+      "word_count": 4000,
+      "time_to_create": 360,
+      "expected_ranking_time": "8 Monate"
+    },
+    {
+      "keyword": "fortnite chapter 6 season 2 guide",
+      "word_count": 3000,
+      "time_to_create": 180,
+      "expected_ranking_time": "6 Monate"
+    }
+  ]
+}
