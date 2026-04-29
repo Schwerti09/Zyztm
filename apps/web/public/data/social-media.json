@@ -1,0 +1,35 @@
+{
+  "last_updated": "2026-04-29T12:00:00Z",
+  "platforms": {
+    "twitter": {
+      "enabled": true,
+      "api_key": "",
+      "api_secret": "",
+      "access_token": "",
+      "access_token_secret": "",
+      "hashtag_strategy": ["#Fortnite", "#Meta", "#Loadout", "#FortniteNexus"]
+    },
+    "tiktok": {
+      "enabled": true,
+      "api_key": "",
+      "hashtag_strategy": ["#Fortnite", "#Meta", "#Gaming", "#FortniteNexus"]
+    },
+    "discord": {
+      "enabled": true,
+      "webhook_url": "",
+      "channels": {
+        "announcements": "",
+        "item-shop-updates": "",
+        "meta-updates": ""
+      }
+    },
+    "newsletter": {
+      "enabled": true,
+      "api_key": "",
+      "list_id": "",
+      "schedule": "weekly"
+    }
+  },
+  "content_queue": [],
+  "scheduled_posts": []
+}
