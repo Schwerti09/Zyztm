@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guides & Meta — Fortnite Nexus</title>
+    <meta name="description" content="Täglich aktualisierte Fortnite Guides, Tier-Listen, Patch-Analysen und Meta-Updates. Alles was du brauchst um besser zu werden.">
+    <link rel="stylesheet" href="/shared.css">
+    <style>
+        /* Classic spezifische Styles */
+        .classic-hero {
+            min-height: 40vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: var(--space-xl) var(--space-lg);
+            background: linear-gradient(135deg, var(--bg), var(--bg-secondary));
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .classic-hero::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, var(--cyan-dim) 0%, transparent 70%);
+            transform: translate(-50%, -50%);
+            animation: pulse 4s ease-in-out infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 0.3; transform: translate(-50%, -50%) scale(1); }
+            50% { opacity: 0.6; transform: translate(-50%, -50%) scale(1.1); }
+        }
+        
+        .classic-title {
+            font-family: var(--font-headline);
+            font-size: clamp(2rem, 6vw, 4rem);
+            font-weight: 900;
+            color: var(--text-light);
+            text-shadow: 0 0 30px var(--cyan);
+            margin-bottom: var(--space-md);
+            position: relative;
+            z-index: 1;
+        }
+        
+        .classic-subtitle {
+            font-size: 1.125rem;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .content-tabs {
+            display: flex;
+            gap: var(--space-md);
+            justify-content: center;
+            flex-wrap: wrap;
+            padding: var(--space-lg);
+            background: var(--bg-secondary);
+            border-bottom: 1px solid var(--cyan-dim);
+        }
+        
+        .content-tab {
+            padding: var(--space-sm) var(--space-lg);
+            background: transparent;
+            border: 2px solid rgba(0, 212, 255, 0.2);
+            border-radius: var(--radius-md);
+            color: var(--text-light);
+            font-family: var(--font-headline);
+            font-weight: 700;
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all var(--transition-normal);
+        }
+        
+        .content-tab:hover,
+        .content-tab.active {
+            background: var(--cyan-dim);
+            border-color: var(--cyan);
+            color: var(--text-dark);
+        }
+        
+        .content-section {
+            display: none;
+            padding: var(--space-2xl) var(--space-lg);
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .content-section.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .content-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: var(--space-xl);
+        }
+        
+        .content-card {
+            background: linear-gradient(135deg, var(--bg-secondary), var(--bg-tertiary));
+            border: 2px solid rgba(0, 212, 255, 0.2);
+            border-radius: var(--radius-xl);
+            padding: var(--space-xl);
+            transition: all var(--transition-normal);
+        }
+        
+        .content-card:hover {
+            border-color: var(--cyan);
+            box-shadow: var(--shadow-glow-cyan);
+            transform: translateY(-5px);
+        }
+        
+        .content-card-category {
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--gold);
+            margin-bottom: var(--space-sm);
+        }
+        
+        .content-card-title {
+            font-family: var(--font-headline);
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--text-light);
+            margin-bottom: var(--space-sm);
+        }
+        
+        .content-card-excerpt {
+            font-size: 0.875rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+            margin-bottom: var(--space-md);
+        }
+        
+        .content-card-meta {
+            display: flex;
+            gap: var(--space-md);
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            margin-bottom: var(--space-md);
+        }
+        
+        .content-card-meta span {
+            display: flex;
+            align-items: center;
+            gap: var(--space-xs);
+        }
+        
+        .content-card-link {
+            color: var(--cyan);
+            font-family: var(--font-headline);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-decoration: none;
+            transition: color var(--transition-normal);
+        }
+        
+        .content-card-link:hover {
+            color: var(--gold);
+        }
+        
+        .tier-list-container {
+            background: linear-gradient(135deg, var(--bg-secondary), var(--bg-tertiary));
+            border: 2px solid var(--gold-dim);
+            border-radius: var(--radius-xl);
+            padding: var(--space-2xl);
+            margin-bottom: var(--space-xl);
+        }
+        
+        .tier-list-title {
+            font-family: var(--font-headline);
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--gold);
+            margin-bottom: var(--space-lg);
+            text-align: center;
+        }
+        
+        .tier-section {
+            margin-bottom: var(--space-lg);
+        }
+        
+        .tier-label {
+            font-family: var(--font-headline);
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: var(--space-md);
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+        }
+        
+        .tier-label.s { color: var(--gold); }
+        .tier-label.a { color: var(--cyan); }
+        .tier-label.b { color: var(--orange); }
+        .tier-label.c { color: var(--text-muted); }
+        
+        .tier-weapons {
+            display: flex;
+            gap: var(--space-md);
+            flex-wrap: wrap;
+        }
+        
+        .tier-weapon {
+            background: rgba(255, 195, 0, 0.1);
+            border: 1px solid var(--gold-dim);
+            border-radius: var(--radius-md);
+            padding: var(--space-sm) var(--space-md);
+            font-size: 0.875rem;
+            color: var(--text-light);
+        }
+        
+        .patch-update {
+            background: linear-gradient(135deg, var(--bg-secondary), var(--bg-tertiary));
+            border: 2px solid var(--orange-dim);
+            border-radius: var(--radius-xl);
+            padding: var(--space-xl);
+            margin-bottom: var(--space-xl);
+        }
+        
+        .patch-version {
+            font-family: var(--font-headline);
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--orange);
+            margin-bottom: var(--space-sm);
+        }
+        
+        .patch-date {
+            font-size: 0.875rem;
+            color: var(--text-muted);
+            margin-bottom: var(--space-md);
+        }
+        
+        .patch-highlights {
+            list-style: none;
+            margin-bottom: var(--space-lg);
+        }
+        
+        .patch-highlights li {
+            padding: var(--space-xs) 0;
+            color: var(--text-muted);
+        }
+        
+        .patch-highlights li::before {
+            content: '→ ';
+            color: var(--orange);
+        }
+        
+        @media (max-width: 768px) {
+            .content-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .content-tabs {
+                padding: var(--space-md);
+            }
+            
+            .content-tab {
+                font-size: 0.75rem;
+                padding: var(--space-xs) var(--space-sm);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="/" class="navbar-logo">NEXUS</a>
+            <div class="navbar-links">
+                <a href="/" class="navbar-link">Home</a>
+                <a href="/nexus-iq" class="navbar-link">NEXUS IQ</a>
+                <a href="/loadout-god" class="navbar-link">Loadout God</a>
+                <a href="/creators" class="navbar-link">Creators</a>
+                <a href="/classic" class="navbar-link">Classic</a>
+                <a href="#" class="navbar-discord">Discord</a>
+            </div>
+            <button class="navbar-menu-btn">☰</button>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="navbar-mobile-menu">
+        <button class="navbar-mobile-close">×</button>
+        <a href="/" class="navbar-mobile-link">Home</a>
+        <a href="/nexus-iq" class="navbar-mobile-link">NEXUS IQ</a>
+        <a href="/loadout-god" class="navbar-mobile-link">Loadout God</a>
+        <a href="/creators" class="navbar-mobile-link">Creators</a>
+        <a href="/classic" class="navbar-mobile-link">Classic</a>
+    </div>
+
+    <!-- Custom Cursor -->
+    <div class="custom-cursor"></div>
+    <div class="custom-cursor-ring"></div>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Classic Hero -->
+        <section class="classic-hero">
+            <h1 class="classic-title">GUIDES & META</h1>
+            <p class="classic-subtitle">Täglich aktualisierte Fortnite Guides, Tier-Listen, Patch-Analysen und Meta-Updates.</p>
+        </section>
+        
+        <!-- Content Tabs -->
+        <div class="content-tabs">
+            <button class="content-tab active" onclick="switchTab('guides')">📖 Guides</button>
+            <button class="content-tab" onclick="switchTab('meta')">⚔️ Meta</button>
+            <button class="content-tab" onclick="switchTab('patches')">📰 Patches</button>
+        </div>
+        
+        <!-- Guides Section -->
+        <section class="content-section active" id="guides-section">
+            <div class="content-grid">
+                <div class="content-card">
+                    <div class="content-card-category">Guide</div>
+                    <h3 class="content-card-title">Building Guide 2026</h3>
+                    <p class="content-card-excerpt">Der ultimative Building-Guide für alle Skill-Levels mit Schritt-für-Schritt Anleitungen.</p>
+                    <div class="content-card-meta">
+                        <span>📅 20.04.2026</span>
+                        <span>👤 BuildMaster</span>
+                    </div>
+                    <a href="#" class="content-card-link">Guide lesen →</a>
+                </div>
+                
+                <div class="content-card">
+                    <div class="content-card-category">Guide</div>
+                    <h3 class="content-card-title">Aim Training 2026</h3>
+                    <p class="content-card-excerpt">Verbessere deinen Aim mit professionellen Tipps und Übungen für alle Skill-Levels.</p>
+                    <div class="content-card-meta">
+                        <span>📅 15.04.2026</span>
+                        <span>👤 NexuS_Pro</span>
+                    </div>
+                    <a href="#" class="content-card-link">Guide lesen →</a>
+                </div>
+                
+                <div class="content-card">
+                    <div class="content-card-category">Guide</div>
+                    <h3 class="content-card-title">Rotation Master</h3>
+                    <p class="content-card-excerpt">Lerne die effektivsten Rotations-Strategien für jede Phase des Spiels.</p>
+                    <div class="content-card-meta">
+                        <span>📅 10.04.2026</span>
+                        <span>👤 MobilityKing</span>
+                    </div>
+                    <a href="#" class="content-card-link">Guide lesen →</a>
+                </div>
+                
+                <div class="content-card">
+                    <div class="content-card-category">Guide</div>
+                    <h3 class="content-card-title">Box Fighting Guide</h3>
+                    <p class="content-card-excerpt">Meistere Box Fighting mit fortgeschrittenen Techniken und Counter-Strategien.</p>
+                    <div class="content-card-meta">
+                        <span>📅 05.04.2026</span>
+                        <span>👤 TacticalQueen</span>
+                    </div>
+                    <a href="#" class="content-card-link">Guide lesen →</a>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Meta Section -->
+        <section class="content-section" id="meta-section">
+            <div class="tier-list-container">
+                <h2 class="tier-list-title">WAFFEN TIER-LIST — CHAPTER 7 SEASON 2</h2>
+                
+                <div class="tier-section">
+                    <div class="tier-label s">S-TIER</div>
+                    <div class="tier-weapons">
+                        <div class="tier-weapon">🎯 Striker AR</div>
+                        <div class="tier-weapon">🎯 Thunder Burst AR</div>
+                        <div class="tier-weapon">💥 Maven Auto Shotgun</div>
+                        <div class="tier-weapon">💥 Thunder Burst SMG</div>
+                    </div>
+                </div>
+                
+                <div class="tier-section">
+                    <div class="tier-label a">A-TIER</div>
+                    <div class="tier-weapons">
+                        <div class="tier-weapon">🎯 Nemesis AR</div>
+                        <div class="tier-weapon">🎯 Heavy AR</div>
+                        <div class="tier-weapon">💥 Twin Mag Shotgun</div>
+                        <div class="tier-weapon">💥 Havoc SMG</div>
+                    </div>
+                </div>
+                
+                <div class="tier-section">
+                    <div class="tier-label b">B-TIER</div>
+                    <div class="tier-weapons">
+                        <div class="tier-weapon">🎯 Combat AR</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="content-grid">
+                <div class="content-card">
+                    <div class="content-card-category">Meta-Analyse</div>
+                    <h3 class="content-card-title">Die besten Waffen in Chapter 7 Season 2</h3>
+                    <p class="content-card-excerpt">Eine detaillierte Analyse der aktuellen Meta-Waffen und warum sie dominieren.</p>
+                    <div class="content-card-meta">
+                        <span>📅 29.04.2026</span>
+                        <span>👤 NexuS_Pro</span>
+                    </div>
+                    <a href="#" class="content-card-link">Analyse lesen →</a>
+                </div>
+                
+                <div class="content-card">
+                    <div class="content-card-category">Meta-Analyse</div>
+                    <h3 class="content-card-title">Patch v7.20 Impact Analysis</h3>
+                    <p class="content-card-excerpt">Wie der neueste Patch das Meta verändert hat und welche Strategien jetzt funktionieren.</p>
+                    <div class="content-card-meta">
+                        <span>📅 25.04.2026</span>
+                        <span>👤 TacticalQueen</span>
+                    </div>
+                    <a href="#" class="content-card-link">Analyse lesen →</a>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Patches Section -->
+        <section class="content-section" id="patches-section">
+            <div class="patch-update">
+                <h3 class="patch-version">v7.20 — Chapter 7 Season 2 Patch Notes</h3>
+                <p class="patch-date">25. April 2026</p>
+                <ul class="patch-highlights">
+                    <li>Thunder Burst AR hinzugefügt</li>
+                    <li>Tilted Towers zurückgekehrt</li>
+                    <li>Vehicle Changes: Hoverboard nerft</li>
+                    <li>Building Materials: Wood HP erhöht</li>
+                </ul>
+                <a href="#" class="content-card-link">Patch-Notes lesen →</a>
+            </div>
+            
+            <div class="patch-update">
+                <h3 class="patch-version">v7.10 — Hotfix</h3>
+                <p class="patch-date">18. April 2026</p>
+                <ul class="patch-highlights">
+                    <li>Maven Auto Shotgun Damage leicht reduziert</li>
+                    <li>Matchmaking verbessert</li>
+                    <li>Performance Optimierungen</li>
+                </ul>
+                <a href="#" class="content-card-link">Patch-Notes lesen →</a>
+            </div>
+            
+            <div class="patch-update">
+                <h3 class="patch-version">v7.00 — Chapter 7 Season 2 Start</h3>
+                <p class="patch-date">11. April 2026</p>
+                <ul class="patch-highlights">
+                    <li>Striker AR hinzugefügt</li>
+                    <li>Neue Biome: Cyber City</li>
+                    <li>Battle Pass Chapter 7 Season 2</li>
+                    <li>Zero Build Mode Updates</li>
+                </ul>
+                <a href="#" class="content-card-link">Patch-Notes lesen →</a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>NEXUS</h3>
+                    <p>Die Nr. 1 Fortnite-Kommandozentrale auf Deutsch.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/nexus-iq">NEXUS IQ</a></li>
+                        <li><a href="/loadout-god">Loadout God</a></li>
+                        <li><a href="/creators">Creators</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Social</h3>
+                    <div class="footer-social">
+                        <a href="#" aria-label="Discord">📱</a>
+                        <a href="#" aria-label="TikTok">🎵</a>
+                        <a href="#" aria-label="Reddit">📱</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2026 Fortnite Nexus. Alle Rechte vorbehalten.</p>
+                <p>Nicht mit Epic Games verbunden.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="/shared.js"></script>
+    <script src="/data-loader.js"></script>
+    <script>
+        // Tab Switching
+        function switchTab(tab) {
+            // Remove active class from all tabs
+            document.querySelectorAll('.content-tab').forEach(t => t.classList.remove('active'));
+            
+            // Hide all sections
+            document.querySelectorAll('.content-section').forEach(s => s.classList.remove('active'));
+            
+            // Add active class to clicked tab
+            event.target.classList.add('active');
+            
+            // Show corresponding section
+            document.getElementById(`${tab}-section`).classList.add('active');
+        }
+        
+        // Load dynamic content from JSON
+        async function loadClassicContent() {
+            const news = await loadNews();
+            const meta = await loadMeta();
+            
+            if (news && news.patch_updates) {
+                // Update patch section with dynamic data
+                // (Implementation would go here)
+            }
+            
+            if (meta && meta.tier_lists) {
+                // Update tier list with dynamic data
+                // (Implementation would go here)
+            }
+        }
+        
+        // Init
+        loadClassicContent();
+    </script>
+</body>
+</html>
