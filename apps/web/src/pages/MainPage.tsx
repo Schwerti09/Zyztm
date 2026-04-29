@@ -27,6 +27,8 @@ const UpcomingEvents = lazy(() => import('../components/UpcomingEvents'));
 const FortniteItemShop = lazy(() => import('../components/FortniteItemShop'));
 const FortniteArcade = lazy(() => import('../components/FortniteArcade'));
 const LatestNews = lazy(() => import('../components/LatestNews'));
+const WeaponDatabase = lazy(() => import('../components/WeaponDatabase'));
+const TierListBuilder = lazy(() => import('../components/TierListBuilder'));
 const CreatorMarketplace = lazy(() => import('../components/CreatorMarketplace'));
 const SubscriptionPlans = lazy(() => import('../components/SubscriptionPlans'));
 const AffiliateSection = lazy(() => import('../components/AffiliateSection'));
@@ -75,6 +77,8 @@ export default function MainPage() {
             <LatestNews />
             <UpcomingEvents />
             <FortniteItemShop />
+            <Suspense fallback={<SectionLoader />}><WeaponDatabase /></Suspense>
+            <Suspense fallback={<SectionLoader />}><TierListBuilder /></Suspense>
           </main>
           <Footer />
         </div>

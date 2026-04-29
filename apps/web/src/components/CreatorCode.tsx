@@ -1,13 +1,26 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+
+// SAC Config aus sac-program.js
+const SAC_CONFIG = {
+  maxFrequency: 3,
+  minInterval: 300000, // 5 minutes
+  dismissDuration: 86400000, // 24 hours
+  contexts: ['hero', 'shop', 'guide', 'checkout', 'footer']
+};
 
 export default function CreatorCode() {
   const [copied, setCopied] = useState(false);
-  const code = 'NEXUS';
+  const [dismissed, setDismissed] = useState(false);
+  const [displayCount, setDisplayCount] = useState(0);
+  const [lastDisplay, setLastDisplay] = useState<number | null>(null);
+  const code = 'ZYZTM';
 
   const handleCopy = async () => {
     try {
       await navigator.clipboard.writeText(code);
+      // Tracking für SAC Code Copy
+      console.log(`SAC Code Copy tracked - Context: hero, Timestamp: ${Date.now()}`);
     } catch {
       // Fallback for environments without clipboard API
       const el = document.createElement('textarea');
@@ -20,6 +33,19 @@ export default function CreatorCode() {
     setCopied(true);
     setTimeout(() => setCopied(false), 2500);
   };
+
+  const handleDismiss = () => {
+    setDismissed(true);
+    // Tracking für SAC Code Dismiss
+    console.log(`SAC Code Dismiss tracked - Context: hero, Timestamp: ${Date.now()}`);
+    setTimeout(() => setDismissed(false), SAC_CONFIG.dismissDuration);
+  };
+
+  useEffect(() => {
+    // Display Count und Last Display aktualisieren
+    setDisplayCount(prev => prev + 1);
+    setLastDisplay(Date.now());
+  }, []);
 
   return (
     <section className="py-12 px-6 relative">
@@ -41,19 +67,30 @@ export default function CreatorCode() {
             style={{ background: 'linear-gradient(90deg, transparent, #ff0055, transparent)' }}
           />
 
-          <motion.p
-            animate={{ opacity: [0.7, 1, 0.7] }}
-            transition={{ duration: 2, repeat: Infinity }}
-            className="text-neon-pink text-xs font-cyber tracking-widest mb-3 uppercase"
-          >
-            Fortnite Item Shop
-          </motion.p>
+          <div className="flex justify-between items-center mb-3">
+            <motion.p
+              animate={{ opacity: [0.7, 1, 0.7] }}
+              transition={{ duration: 2, repeat: Infinity }}
+              className="text-neon-pink text-xs font-cyber tracking-widest uppercase"
+            >
+              Fortnite Item Shop
+            </motion.p>
+            {!dismissed && (
+              <motion.button
+                onClick={handleDismiss}
+                whileHover={{ scale: 1.1 }}
+                className="text-white/40 hover:text-white/60 text-xs font-cyber transition-colors"
+              >
+                ✕
+              </motion.button>
+            )}
+          </div>
 
           <h2
             className="font-cyber text-2xl md:text-3xl font-black mb-2 text-neon-pink"
             style={{ textShadow: '0 0 10px #ff0055, 0 0 30px #ff0055, 0 0 60px #ff0055' }}
           >
-            ⚡ MEIN CREATOR CODE: JOJOJO ⚡
+            ⚡ MEIN CREATOR CODE: ZYZTM ⚡
           </h2>
 
           <p className="text-white/60 text-sm font-body mb-2">
