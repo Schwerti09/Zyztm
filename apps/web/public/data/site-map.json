@@ -1,0 +1,504 @@
+{
+  "last_updated": "2026-04-29T16:00:00Z",
+  "site_map": {
+    "/": {
+      "page_type": "landing_page",
+      "primary_keyword": "fortnite deutsch",
+      "page_rank": 5,
+      "title": "Fortnite Nexus – Die ultimative deutsche Fortnite Community 2026",
+      "description": "Guides, Meta, Tools und News – Alles für Fortnite Spieler auf Deutsch. Von Anfänger bis Pro."
+    },
+    "/meta/": {
+      "page_type": "hub_page",
+      "primary_keyword": "fortnite meta",
+      "page_rank": 5,
+      "title": "Fortnite Meta – Waffen, Karten & Ranked Strategien",
+      "description": "Aktuelle Fortnite Meta-Analysen, Waffen-Balance, Map-Updates und Ranked-Strategien."
+    },
+    "/meta/waffen/": {
+      "page_type": "hub_page",
+      "primary_keyword": "fortnite weapons",
+      "page_rank": 4,
+      "title": "Fortnite Waffen – Komplette Waffen-Datenbank",
+      "description": "Alle Fortnite Waffen mit Stats, Tier-List und Meta-Analyse."
+    },
+    "/meta/waffen/assault-rifles/": {
+      "page_type": "guide",
+      "primary_keyword": "fortnite assault rifles",
+      "page_rank": 3,
+      "title": "Fortnite Assault Rifles – Kompletter Guide",
+      "description": "Alle Fortnite Assault Rifles mit Stats, Tipps und Meta-Analyse."
+    },
+    "/meta/waffen/shotguns/": {
+      "page_type": "guide",
+      "primary_keyword": "fortnite shotguns",
+      "page_rank": 3,
+      "title": "Fortnite Shotguns – Kompletter Guide",
+      "description": "Alle Fortnite Shotguns mit Stats, Tipps und Meta-Analyse."
+    },
+    "/meta/waffen/smg/": {
+      "page_type": "guide",
+      "primary_keyword": "fortnite smg",
+      "page_rank": 3,
+      "title": "Fortnite SMGs – Kompletter Guide",
+      "description": "Alle Fortnite SMGs mit Stats, Tipps und Meta-Analyse."
+    },
+    "/meta/waffen/sniper/": {
+      "page_type": "guide",
+      "primary_keyword": "fortnite sniper",
+      "page_rank": 3,
+      "title": "Fortnite Sniper – Kompletter Guide",
+      "description": "Alle Fortnite Sniper mit Stats, Tipps und Meta-Analyse."
+    },
+    "/meta/waffen/explosive/": {
+      "page_type": "guide",
+      "primary_keyword": "fortnite explosive",
+      "page_rank": 3,
+      "title": "Fortnite Explosive Weapons – Kompletter Guide",
+      "description": "Alle Fortnite Explosive Weapons mit Stats, Tipps und Meta-Analyse."
+    },
+    "/meta/waffen/chapter-6-season-2/": {
+      "page_type": "guide",
+      "primary_keyword": "fortnite chapter 6 season 2 weapons",
+      "page_rank": 3,
+      "title": "Fortnite Chapter 6 Season 2 Waffen – Meta-Guide",
+      "description": "Alle Fortnite Chapter 6 Season 2 Waffen mit Meta-Analyse und Tipps."
+    },
+    "/meta/waffen/best-loadouts/": {
+      "page_type": "guide",
+      "primary_keyword": "fortnite best loadouts",
+      "page_rank": 4,
+      "title": "Fortnite Best Loadouts – Meta-Loadouts 2026",
+      "description": "Die besten Fortnite Loadouts für jeden Spielstil und Meta."
+    },
+    "/meta/waffen/weapon-stats/": {
+      "page_type": "tool",
+      "primary_keyword": "fortnite weapon stats",
+      "page_rank": 3,
+      "title": "Fortnite Weapon Stats – Komplette Datenbank",
+      "description": "Alle Fortnite Waffen-Stats in einer interaktiven Datenbank."
+    },
+    "/meta/karten/": {
+      "page_type": "hub_page",
+      "primary_keyword": "fortnite maps",
+      "page_rank": 4,
+      "title": "Fortnite Karten – Map-Guide & POI-Locations",
+      "description": "Alle Fortnite Karten mit POIs, Landezonen und Rotationen."
+    },
+    "/meta/karten/chapter-6-season-2/": {
+      "page_type": "guide",
+      "primary_keyword": "fortnite chapter 6 season 2 map",
+      "page_rank": 4,
+      "title": "Fortnite Chapter 6 Season 2 Map – Kompletter Guide",
+      "description": "Alle POIs, Landezonen und Rotationen für Fortnite Chapter 6 Season 2."
+    },
+    "/meta/karten/beste-landezonen/": {
+      "page_type": "guide",
+      "primary_keyword": "fortnite best landing spots",
+      "page_rank": 3,
+      "title": "Fortnite Beste Landezonen – Landing-Spots Guide",
+      "description": "Die besten Fortnite Landezonen für Loot und Survival."
+    },
+    "/meta/karten/chest-spawn-rates/": {
+      "page_type": "guide",
+      "primary_keyword": "fortnite chest spawn rates",
+      "page_rank": 3,
+      "title": "Fortnite Chest Spawn Rates – Loot-Guide",
+      "description": "Alle Fortnite Chest Spawn Rates und Loot-Locations."
+    },
+    "/meta/karten/poi-locations/": {
+      "page_type": "guide",
+      "primary_keyword": "fortnite poi locations",
+      "page_rank": 3,
+      "title": "Fortnite POI Locations – Named Landmarks Guide",
+      "description": "Alle Fortnite POI Locations und Named Landmarks."
+    },
+    "/meta/karten/named-landmarks/": {
+      "page_type": "guide",
+      "primary_keyword": "fortnite named landmarks",
+      "page_rank": 3,
+      "title": "Fortnite Named Landmarks – Guide",
+      "description": "Alle Fortnite Named Landmarks und ihre Loot."
+    },
+    "/meta/karten/rotation-tracker/": {
+      "page_type": "tool",
+      "primary_keyword": "fortnite map rotation",
+      "page_rank": 3,
+      "title": "Fortnite Map Rotation Tracker – Tool",
+      "description": "Tracke die Fortnite Map-Rotation und POI-Changes."
+    },
+    "/meta/karten/vehicle-spawns/": {
+      "page_type": "guide",
+      "primary_keyword": "fortnite vehicle spawns",
+      "page_rank": 2,
+      "title": "Fortnite Vehicle Spawns – Guide",
+      "description": "Alle Fortnite Vehicle Spawn-Locations."
+    },
+    "/meta/karten/hiding-spots/": {
+      "page_type": "guide",
+      "primary_keyword": "fortnite hiding spots",
+      "page_rank": 2,
+      "title": "Fortnite Hiding Spots – Guide",
+      "description": "Die besten Fortnite Hiding Spots für Survival."
+    },
+    "/guides/": {
+      "page_type": "hub_page",
+      "primary_keyword": "fortnite guide",
+      "page_rank": 5,
+      "title": "Fortnite Guides – Komplette Guide-Sammlung",
+      "description": "Alle Fortnite Guides für Aim, Building, Settings und Meta."
+    },
+    "/guides/fortnite-ultimate-guide-2026/": {
+      "page_type": "guide",
+      "primary_keyword": "fortnite guide 2026",
+      "page_rank": 5,
+      "title": "Fortnite Ultimate Guide 2026 – Der komplette Guide",
+      "description": "Der ultimative Fortnite Guide für 2026 – Von Anfänger bis Pro."
+    },
+    "/guides/fortnite-aim-verbessern-2026/": {
+      "page_type": "guide",
+      "primary_keyword": "fortnite aim verbessern",
+      "page_rank": 4,
+      "title": "Fortnite Aim verbessern 2026 – Aim-Guide",
+      "description": "Lerne wie du deinen Aim in Fortnite verbessern kannst mit diesen Tipps."
+    },
+    "/guides/fortnite-building-guide/": {
+      "page_type": "guide",
+      "primary_keyword": "fortnite building guide",
+      "page_rank": 4,
+      "title": "Fortnite Building Guide – Kompletter Guide",
+      "description": "Der komplette Fortnite Building Guide für alle Skill-Levels."
+    },
+    "/guides/fortnite-best-settings-2026/": {
+      "page_type": "guide",
+      "primary_keyword": "fortnite best settings",
+      "page_rank": 4,
+      "title": "Fortnite Best Settings 2026 – Settings-Guide",
+      "description": "Die besten Fortnite Settings für PC, Controller und Mobile."
+    },
+    "/guides/fortnite-weapon-tier-list/": {
+      "page_type": "guide",
+      "primary_keyword": "fortnite weapon tier list",
+      "page_rank": 4,
+      "title": "Fortnite Weapon Tier List – Tier-List Guide",
+      "description": "Die aktuelle Fortnite Weapon Tier List mit Meta-Analyse."
+    },
+    "/guides/fortnite-ranked-tipps/": {
+      "page_type": "guide",
+      "primary_keyword": "fortnite ranked tips",
+      "page_rank": 4,
+      "title": "Fortnite Ranked Tipps – Ranked-Guide",
+      "description": "Die besten Fortnite Ranked Tipps und Strategien."
+    },
+    "/guides/fortnite-meta-strategie/": {
+      "page_type": "guide",
+      "primary_keyword": "fortnite meta strategy",
+      "page_rank": 4,
+      "title": "Fortnite Meta Strategie – Meta-Guide",
+      "description": "Die aktuelle Fortnite Meta Strategie und wie du sie nutzt."
+    },
+    "/guides/fortnite-sensitivity-calculator/": {
+      "page_type": "tool",
+      "primary_keyword": "fortnite sensitivity calculator",
+      "page_rank": 3,
+      "title": "Fortnite Sensitivity Calculator – Tool",
+      "description": "Berechne deine optimale Fortnite Sensitivity."
+    },
+    "/guides/fortnite-keybinds-pro/": {
+      "page_type": "guide",
+      "primary_keyword": "fortnite keybinds pro",
+      "page_rank": 3,
+      "title": "Fortnite Keybinds Pro – Keybinds-Guide",
+      "description": "Die besten Fortnite Keybinds von Pro-Spielern."
+    },
+    "/ranked/": {
+      "page_type": "hub_page",
+      "primary_keyword": "fortnite ranked",
+      "page_rank": 4,
+      "title": "Fortnite Ranked – Ranked-Guide & Strategien",
+      "description": "Alle Fortnite Ranked Guides und Strategien."
+    },
+    "/ranked/tipps/": {
+      "page_type": "guide",
+      "primary_keyword": "fortnite ranked tips",
+      "page_rank": 3,
+      "title": "Fortnite Ranked Tipps – Tipps-Guide",
+      "description": "Die besten Fortnite Ranked Tipps und Tricks."
+    },
+    "/ranked/strategie/": {
+      "page_type": "guide",
+      "primary_keyword": "fortnite ranked strategy",
+      "page_rank": 3,
+      "title": "Fortnite Ranked Strategie – Strategie-Guide",
+      "description": "Die beste Fortnite Ranked Strategie für alle Ranks."
+    },
+    "/ranked/zone-wars/": {
+      "page_type": "guide",
+      "primary_keyword": "fortnite zone wars",
+      "page_rank": 3,
+      "title": "Fortnite Zone Wars – Zone Wars Guide",
+      "description": "Der komplette Fortnite Zone Wars Guide."
+    },
+    "/ranked/loadouts/": {
+      "page_type": "guide",
+      "primary_keyword": "fortnite ranked loadouts",
+      "page_rank": 3,
+      "title": "Fortnite Ranked Loadouts – Loadout-Guide",
+      "description": "Die besten Fortnite Ranked Loadouts."
+    },
+    "/ranked/point-system/": {
+      "page_type": "guide",
+      "primary_keyword": "fortnite ranked points",
+      "page_rank": 2,
+      "title": "Fortnite Ranked Points – Point-System Guide",
+      "description": "Das Fortnite Ranked Point-System erklärt."
+    },
+    "/ranked/arena-mode/": {
+      "page_type": "guide",
+      "primary_keyword": "fortnite arena mode",
+      "page_rank": 2,
+      "title": "Fortnite Arena Mode – Arena-Guide",
+      "description": "Der Fortnite Arena Mode Guide."
+    },
+    "/ranked/pro-tips/": {
+      "page_type": "guide",
+      "primary_keyword": "fortnite pro tips",
+      "page_rank": 3,
+      "title": "Fortnite Pro Tipps – Pro-Guide",
+      "description": "Fortnite Tipps von Pro-Spielern."
+    },
+    "/ranked/elo-calculator/": {
+      "page_type": "tool",
+      "primary_keyword": "fortnite elo calculator",
+      "page_rank": 2,
+      "title": "Fortnite ELO Calculator – Tool",
+      "description": "Berechne dein Fortnite ELO und Rank."
+    },
+    "/einstellungen/": {
+      "page_type": "hub_page",
+      "primary_keyword": "fortnite settings",
+      "page_rank": 4,
+      "title": "Fortnite Settings – Settings-Guide",
+      "description": "Alle Fortnite Settings für alle Plattformen."
+    },
+    "/einstellungen/pc/": {
+      "page_type": "guide",
+      "primary_keyword": "fortnite pc settings",
+      "page_rank": 3,
+      "title": "Fortnite PC Settings – PC-Guide",
+      "description": "Die besten Fortnite PC Settings."
+    },
+    "/einstellungen/controller/": {
+      "page_type": "guide",
+      "primary_keyword": "fortnite controller settings",
+      "page_rank": 3,
+      "title": "Fortnite Controller Settings – Controller-Guide",
+      "description": "Die besten Fortnite Controller Settings."
+    },
+    "/einstellungen/mobile/": {
+      "page_type": "guide",
+      "primary_keyword": "fortnite mobile settings",
+      "page_rank": 3,
+      "title": "Fortnite Mobile Settings – Mobile-Guide",
+      "description": "Die besten Fortnite Mobile Settings."
+    },
+    "/einstellungen/nintendo-switch/": {
+      "page_type": "guide",
+      "primary_keyword": "fortnite nintendo switch settings",
+      "page_rank": 2,
+      "title": "Fortnite Nintendo Switch Settings – Switch-Guide",
+      "description": "Die besten Fortnite Nintendo Switch Settings."
+    },
+    "/einstellungen/ps5/": {
+      "page_type": "guide",
+      "primary_keyword": "fortnite ps5 settings",
+      "page_rank": 2,
+      "title": "Fortnite PS5 Settings – PS5-Guide",
+      "description": "Die besten Fortnite PS5 Settings."
+    },
+    "/einstellungen/xbox-series-x/": {
+      "page_type": "guide",
+      "primary_keyword": "fortnite xbox series x settings",
+      "page_rank": 2,
+      "title": "Fortnite Xbox Series X Settings – Xbox-Guide",
+      "description": "Die besten Fortnite Xbox Series X Settings."
+    },
+    "/einstellungen/sensitivity/": {
+      "page_type": "guide",
+      "primary_keyword": "fortnite sensitivity",
+      "page_rank": 3,
+      "title": "Fortnite Sensitivity – Sensitivity-Guide",
+      "description": "Die beste Fortnite Sensitivity für alle Skill-Levels."
+    },
+    "/einstellungen/graphics/": {
+      "page_type": "guide",
+      "primary_keyword": "fortnite graphics settings",
+      "page_rank": 3,
+      "title": "Fortnite Graphics Settings – Graphics-Guide",
+      "description": "Die besten Fortnite Graphics Settings für Performance."
+    },
+    "/news/": {
+      "page_type": "hub_page",
+      "primary_keyword": "fortnite news",
+      "page_rank": 5,
+      "title": "Fortnite News – Patch Notes & Updates",
+      "description": "Alle Fortnite News, Patch Notes und Updates."
+    },
+    "/news/patch-notes/": {
+      "page_type": "news_hub",
+      "primary_keyword": "fortnite patch notes",
+      "page_rank": 4,
+      "title": "Fortnite Patch Notes – Patch-Notes Hub",
+      "description": "Alle Fortnite Patch Notes und Meta-Analysen."
+    },
+    "/news/item-shop/": {
+      "page_type": "news_hub",
+      "primary_keyword": "fortnite item shop",
+      "page_rank": 4,
+      "title": "Fortnite Item Shop – Item-Shop Hub",
+      "description": "Alle Fortnite Item Shop Updates und Highlights."
+    },
+    "/news/events/": {
+      "page_type": "news_hub",
+      "primary_keyword": "fortnite events",
+      "page_rank": 3,
+      "title": "Fortnite Events – Events Hub",
+      "description": "Alle Fortnite Events und Live-Sessions."
+    },
+    "/news/leaks/": {
+      "page_type": "news_hub",
+      "primary_keyword": "fortnite leaks",
+      "page_rank": 3,
+      "title": "Fortnite Leaks – Leaks Hub",
+      "description": "Alle Fortnite Leaks und Gerüchte."
+    },
+    "/news/competitive/": {
+      "page_type": "news_hub",
+      "primary_keyword": "fortnite competitive",
+      "page_rank": 3,
+      "title": "Fortnite Competitive – Competitive Hub",
+      "description": "Alle Fortnite Competitive News und Updates."
+    },
+    "/news/creator-updates/": {
+      "page_type": "news_hub",
+      "primary_keyword": "fortnite creator updates",
+      "page_rank": 2,
+      "title": "Fortnite Creator Updates – Creator Hub",
+      "description": "Alle Fortnite Creator Updates und News."
+    },
+    "/news/meta-changes/": {
+      "page_type": "news_hub",
+      "primary_keyword": "fortnite meta changes",
+      "page_rank": 3,
+      "title": "Fortnite Meta Changes – Meta Hub",
+      "description": "Alle Fortnite Meta Changes und Updates."
+    },
+    "/news/server-status/": {
+      "page_type": "tool",
+      "primary_keyword": "fortnite server status",
+      "page_rank": 2,
+      "title": "Fortnite Server Status – Server-Status Tool",
+      "description": "Prüfe den aktuellen Fortnite Server Status."
+    },
+    "/tools/": {
+      "page_type": "hub_page",
+      "primary_keyword": "fortnite tools",
+      "page_rank": 4,
+      "title": "Fortnite Tools – Interaktive Tools",
+      "description": "Alle Fortnite Tools für besseres Gameplay."
+    },
+    "/tools/waffen-datenbank/": {
+      "page_type": "tool",
+      "primary_keyword": "fortnite weapon database",
+      "page_rank": 4,
+      "title": "Fortnite Waffen-Datenbank – Waffen-Tool",
+      "description": "Interaktive Fortnite Waffen-Datenbank mit allen Stats."
+    },
+    "/tools/loadout-builder/": {
+      "page_type": "tool",
+      "primary_keyword": "fortnite loadout builder",
+      "page_rank": 3,
+      "title": "Fortnite Loadout Builder – Loadout-Tool",
+      "description": "Baue deinen perfekten Fortnite Loadout."
+    },
+    "/tools/sensitivity-calculator/": {
+      "page_type": "tool",
+      "primary_keyword": "fortnite sensitivity calculator",
+      "page_rank": 3,
+      "title": "Fortnite Sensitivity Calculator – Sensitivity-Tool",
+      "description": "Berechne deine optimale Fortnite Sensitivity."
+    },
+    "/tools/map-tracker/": {
+      "page_type": "tool",
+      "primary_keyword": "fortnite map tracker",
+      "page_rank": 3,
+      "title": "Fortnite Map Tracker – Map-Tool",
+      "description": "Tracke die Fortnite Map-Rotation und POI-Changes."
+    },
+    "/tools/stats-checker/": {
+      "page_type": "tool",
+      "primary_keyword": "fortnite stats checker",
+      "page_rank": 3,
+      "title": "Fortnite Stats Checker – Stats-Tool",
+      "description": "Prüfe deine Fortnite Stats und Performance."
+    },
+    "/tools/item-shop-tracker/": {
+      "page_type": "tool",
+      "primary_keyword": "fortnite item shop tracker",
+      "page_rank": 4,
+      "title": "Fortnite Item Shop Tracker – Shop-Tool",
+      "description": "Tracke den Fortnite Item Shop und neue Skins."
+    },
+    "/community/": {
+      "page_type": "hub_page",
+      "primary_keyword": "fortnite community",
+      "page_rank": 3,
+      "title": "Fortnite Community – Community Hub",
+      "description": "Trete der Fortnite Nexus Community bei."
+    },
+    "/community/discord/": {
+      "page_type": "external",
+      "primary_keyword": "fortnite discord",
+      "page_rank": 2,
+      "title": "Fortnite Discord – Discord Server",
+      "description": "Trete dem Fortnite Nexus Discord Server bei."
+    },
+    "/community/lfg/": {
+      "page_type": "tool",
+      "primary_keyword": "fortnite lfg",
+      "page_rank": 2,
+      "title": "Fortnite LFG – LFG Tool",
+      "description": "Finde Fortnite Squad-Mitglieder für LFG."
+    },
+    "/community/creators/": {
+      "page_type": "hub_page",
+      "primary_keyword": "fortnite creators",
+      "page_rank": 2,
+      "title": "Fortnite Creators – Creator Hub",
+      "description": "Entdecke Fortnite Creators und ihre Inhalte."
+    },
+    "/about/": {
+      "page_type": "static",
+      "primary_keyword": "",
+      "page_rank": 1,
+      "title": "Über uns – Fortnite Nexus",
+      "description": "Erfahre mehr über Fortnite Nexus und unser Team."
+    },
+    "/privacy/": {
+      "page_type": "static",
+      "primary_keyword": "",
+      "page_rank": 1,
+      "title": "Datenschutz – Fortnite Nexus",
+      "description": "Unsere Datenschutzrichtlinien."
+    },
+    "/impressum/": {
+      "page_type": "static",
+      "primary_keyword": "",
+      "page_rank": 1,
+      "title": "Impressum – Fortnite Nexus",
+      "description": "Unser Impressum und Kontaktinformationen."
+    }
+  },
+  "total_urls": 80,
+  "max_depth": 3
+}
