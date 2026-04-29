@@ -19,6 +19,8 @@ const NewsArticlePage = lazy(() => import('./pages/NewsArticlePage'));
 const NexusIQPage = lazy(() => import('./pages/NexusIQPage'));
 const FortniteSpacePage = lazy(() => import('./pages/FortniteSpacePage'));
 const LoadoutGodPage = lazy(() => import('./pages/LoadoutGodPage'));
+const CreatorsPage = lazy(() => import('./pages/CreatorsPage'));
+const ClassicPage = lazy(() => import('./pages/ClassicPage'));
 
 // Digital Products Shop
 const ShopPage = lazy(() => import('./pages/ShopPage'));
@@ -79,6 +81,10 @@ export default function App() {
           <Route path="/space" component={FortniteSpacePage} />
           {/* Loadout God */}
           <Route path="/loadout-god" component={LoadoutGodPage} />
+          {/* Creators */}
+          <Route path="/creators" component={CreatorsPage} />
+          {/* Classic */}
+          <Route path="/classic" component={ClassicPage} />
           {/* Guide / Runbook routes (language-prefixed for SEO) */}
           <LanguageRoute path="/guide/:slug" component={GuidePage} />
           <LanguageRoute path="/guides/:category" component={HubPage} />
