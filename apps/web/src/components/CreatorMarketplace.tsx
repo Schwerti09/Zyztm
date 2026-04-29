@@ -124,6 +124,269 @@ function CreatorCard({ creator, index, onSelect }: { creator: Creator; index: nu
   );
 }
 
+const MOCK_CREATORS: Creator[] = [
+  {
+    id: 1,
+    name: 'NinjaGermany',
+    creator_code: 'NINJAGERMANY',
+    display_name: 'NinjaGermany',
+    avatar_url: 'https://i.pravatar.cc/150?img=1',
+    bio: 'Deutscher Fortnite-Creator mit Fokus auf Tipps, Guides und Meta-Analysis. Täglich neue Content auf YouTube und Twitch.',
+    social_links: { twitter: 'https://twitter.com/ninjagermany', youtube: 'https://youtube.com/ninjagermany', twitch: 'https://twitch.tv/ninjagermany' },
+    is_verified: true,
+    total_revenue: 2450.50,
+    total_code_uses: 12500,
+    created_at: '2024-01-01'
+  },
+  {
+    id: 2,
+    name: 'FortniteDE_Pro',
+    creator_code: 'FORTNITEDEPRO',
+    display_name: 'FortniteDE_Pro',
+    avatar_url: 'https://i.pravatar.cc/150?img=2',
+    bio: 'Pro-Spieler mit kompetitivem Fokus. Ranked-Strategien, Pro-Matches und Meta-Updates. FNCS-Qualifikant und Cash-Cup Gewinner.',
+    social_links: { twitter: 'https://twitter.com/fortnitedepro', youtube: 'https://youtube.com/fortnitedepro', twitch: 'https://twitch.tv/fortnitedepro' },
+    is_verified: true,
+    total_revenue: 1890.75,
+    total_code_uses: 9800,
+    created_at: '2024-01-01'
+  },
+  {
+    id: 3,
+    name: 'GermanFortnite',
+    creator_code: 'GERMANFORTNITE',
+    display_name: 'GermanFortnite',
+    avatar_url: 'https://i.pravatar.cc/150?img=3',
+    bio: 'Wachsende deutsche Fortnite-Community mit News, Updates und Community-Content. Täglich Patch-Notes und Meta-Updates.',
+    social_links: { twitter: 'https://twitter.com/germanfortnite', youtube: 'https://youtube.com/germanfortnite', discord: 'https://discord.gg/germanfortnite' },
+    is_verified: true,
+    total_revenue: 1250.25,
+    total_code_uses: 7500,
+    created_at: '2024-01-01'
+  },
+  {
+    id: 4,
+    name: 'EpicDE',
+    creator_code: 'EPICDE',
+    display_name: 'EpicDE',
+    avatar_url: 'https://i.pravatar.cc/150?img=4',
+    bio: 'High-Quality Content mit Production-Value. Guides, Tutorials und Montages. Fortnite-Content auf professionellem Niveau.',
+    social_links: { twitter: 'https://twitter.com/epicde', youtube: 'https://youtube.com/epicde', instagram: 'https://instagram.com/epicde' },
+    is_verified: true,
+    total_revenue: 980.00,
+    total_code_uses: 6200,
+    created_at: '2024-01-01'
+  },
+  {
+    id: 5,
+    name: 'BattleRoyaleDE',
+    creator_code: 'BATTLEG',
+    display_name: 'BattleRoyaleDE',
+    avatar_url: 'https://i.pravatar.cc/150?img=5',
+    bio: 'Nische BR-Content mit Fokus auf Fortnite. BR-Strategien, Meta und Competitive-Content. Für echte Battle Royale Fans.',
+    social_links: { twitter: 'https://twitter.com/battleroyalede', youtube: 'https://youtube.com/battleroyalede' },
+    is_verified: false,
+    total_revenue: 750.50,
+    total_code_uses: 4800,
+    created_at: '2024-01-01'
+  },
+  {
+    id: 6,
+    name: 'SettingsMasterDE',
+    creator_code: 'SETTINGSDE',
+    display_name: 'SettingsMasterDE',
+    avatar_url: 'https://i.pravatar.cc/150?img=6',
+    bio: 'Settings-Spezialist mit Expertise für alle Plattformen. PC, Console, Mobile - perfekte Settings für maximale Performance.',
+    social_links: { twitter: 'https://twitter.com/settingsmasterde', youtube: 'https://youtube.com/settingsmasterde' },
+    is_verified: false,
+    total_revenue: 620.00,
+    total_code_uses: 4100,
+    created_at: '2024-01-01'
+  },
+  {
+    id: 7,
+    name: 'MobileFortniteDE',
+    creator_code: 'MOBILEDE',
+    display_name: 'MobileFortniteDE',
+    avatar_url: 'https://i.pravatar.cc/150?img=7',
+    bio: 'Mobile-Spezialist mit Nischen-Fokus. Mobile-Tips, Settings und Meta für Touch-Controls. Mobile Gaming auf höchstem Niveau.',
+    social_links: { twitter: 'https://twitter.com/mobilefortnitede', youtube: 'https://youtube.com/mobilefortnitede' },
+    is_verified: false,
+    total_revenue: 540.75,
+    total_code_uses: 3800,
+    created_at: '2024-01-01'
+  },
+  {
+    id: 8,
+    name: 'ConsoleFortniteDE',
+    creator_code: 'CONSOLEDE',
+    display_name: 'ConsoleFortniteDE',
+    avatar_url: 'https://i.pravatar.cc/150?img=8',
+    bio: 'Console-Spezialist mit Controller-Fokus. Controller-Tips, Settings und Meta für PlayStation, Xbox und Nintendo Switch.',
+    social_links: { twitter: 'https://twitter.com/consolefortnitede', youtube: 'https://youtube.com/consolefortnitede' },
+    is_verified: false,
+    total_revenue: 480.25,
+    total_code_uses: 3200,
+    created_at: '2024-01-01'
+  },
+  {
+    id: 9,
+    name: 'CreativeMapsDE',
+    creator_code: 'CREATIVEMAPS',
+    display_name: 'CreativeMapsDE',
+    avatar_url: 'https://i.pravatar.cc/150?img=9',
+    bio: 'Creative Map Spezialist. Map-Recommendations, Codes und Reviews für die besten Fortnite Creative Maps.',
+    social_links: { twitter: 'https://twitter.com/creativemapsde', youtube: 'https://youtube.com/creativemapsde', discord: 'https://discord.gg/creativemapsde' },
+    is_verified: false,
+    total_revenue: 410.00,
+    total_code_uses: 2900,
+    created_at: '2024-01-01'
+  },
+  {
+    id: 10,
+    name: 'FortniteNewsDE',
+    creator_code: 'NEWSDE',
+    display_name: 'FortniteNewsDE',
+    avatar_url: 'https://i.pravatar.cc/150?img=10',
+    bio: 'News-Spezialist mit schnellen Updates. Patch-Notes, Leaks und Events - immer aktuell mit den neuesten Fortnite-News.',
+    social_links: { twitter: 'https://twitter.com/fortnitenewsde', youtube: 'https://youtube.com/fortnitenewsde' },
+    is_verified: false,
+    total_revenue: 350.50,
+    total_code_uses: 2600,
+    created_at: '2024-01-01'
+  },
+  {
+    id: 11,
+    name: 'AimMasterDE',
+    creator_code: 'AIMMASTER',
+    display_name: 'AimMasterDE',
+    avatar_url: 'https://i.pravatar.cc/150?img=11',
+    bio: 'Aim-Training Spezialist. Aim-Lab Übungen, Sensitivity Guides und Aim-Verbesserung für alle Skill-Levels.',
+    social_links: { twitter: 'https://twitter.com/aimmasterde', youtube: 'https://youtube.com/aimmasterde' },
+    is_verified: false,
+    total_revenue: 290.00,
+    total_code_uses: 2200,
+    created_at: '2024-01-01'
+  },
+  {
+    id: 12,
+    name: 'BuildingProDE',
+    creator_code: 'BUILDINGPRO',
+    display_name: 'BuildingProDE',
+    avatar_url: 'https://i.pravatar.cc/150?img=12',
+    bio: 'Building-Experte mit Tutorials und Advanced Techniques. Box Fighting, 90s und Turtle Tunneling - alles über Building.',
+    social_links: { twitter: 'https://twitter.com/buildingprode', youtube: 'https://youtube.com/buildingprode' },
+    is_verified: false,
+    total_revenue: 250.75,
+    total_code_uses: 1900,
+    created_at: '2024-01-01'
+  },
+  {
+    id: 13,
+    name: 'RankedGuideDE',
+    creator_code: 'RANKEDGUIDE',
+    display_name: 'RankedGuideDE',
+    avatar_url: 'https://i.pravatar.cc/150?img=13',
+    bio: 'Ranked-Spezialist mit Strategien und Tips. Bronze bis Champion - Ranked-Guides für alle Ränge.',
+    social_links: { twitter: 'https://twitter.com/rankedguidede', youtube: 'https://youtube.com/rankedguidede' },
+    is_verified: false,
+    total_revenue: 220.50,
+    total_code_uses: 1700,
+    created_at: '2024-01-01'
+  },
+  {
+    id: 14,
+    name: 'MetaAnalysisDE',
+    creator_code: 'METAANALYSIS',
+    display_name: 'MetaAnalysisDE',
+    avatar_url: 'https://i.pravatar.cc/150?img=14',
+    bio: 'Meta-Analyst mit datenbasierten Insights. Weapon-Tier Lists, Loadouts und Meta-Verschiebungen basierend auf Daten.',
+    social_links: { twitter: 'https://twitter.com/metaanalysisde', youtube: 'https://youtube.com/metaanalysisde' },
+    is_verified: false,
+    total_revenue: 195.00,
+    total_code_uses: 1500,
+    created_at: '2024-01-01'
+  },
+  {
+    id: 15,
+    name: 'FortniteClipsDE',
+    creator_code: 'FORTNITECLIPS',
+    display_name: 'FortniteClipsDE',
+    avatar_url: 'https://i.pravatar.cc/150?img=15',
+    bio: 'Highlights und Clips aus der deutschen Community. Die besten Plays, Funny Moments und Pro-Clips.',
+    social_links: { twitter: 'https://twitter.com/fortniteclipsde', youtube: 'https://youtube.com/fortniteclipsde', tiktok: 'https://tiktok.com/fortniteclipsde' },
+    is_verified: false,
+    total_revenue: 175.25,
+    total_code_uses: 1400,
+    created_at: '2024-01-01'
+  },
+  {
+    id: 16,
+    name: 'ZoneWarsDE',
+    creator_code: 'ZONEWARS',
+    display_name: 'ZoneWarsDE',
+    avatar_url: 'https://i.pravatar.cc/150?img=16',
+    bio: 'Zone Wars Spezialist. Zone Wars Strategien, Tips und Tricks für Competitive Zone Wars Matches.',
+    social_links: { twitter: 'https://twitter.com/zonewarsde', youtube: 'https://youtube.com/zonewarsde' },
+    is_verified: false,
+    total_revenue: 160.00,
+    total_code_uses: 1300,
+    created_at: '2024-01-01'
+  },
+  {
+    id: 17,
+    name: 'BuildFightDE',
+    creator_code: 'BUILDFIGHT',
+    display_name: 'BuildFightDE',
+    avatar_url: 'https://i.pravatar.cc/150?img=17',
+    bio: 'Build Fight Expert. Box Fighting, Edit-Courses und Advanced Building-Techniken für Competitive Players.',
+    social_links: { twitter: 'https://twitter.com/buildfightde', youtube: 'https://youtube.com/buildfightde' },
+    is_verified: false,
+    total_revenue: 145.75,
+    total_code_uses: 1200,
+    created_at: '2024-01-01'
+  },
+  {
+    id: 18,
+    name: 'ControllerProDE',
+    creator_code: 'CONTROLLERPRO',
+    display_name: 'ControllerProDE',
+    avatar_url: 'https://i.pravatar.cc/150?img=18',
+    bio: 'Controller-Spezialist. Aim Assist, Controller-Settings und Competitive Controller-Strategien.',
+    social_links: { twitter: 'https://twitter.com/controllerprode', youtube: 'https://youtube.com/controllerprode' },
+    is_verified: false,
+    total_revenue: 130.50,
+    total_code_uses: 1100,
+    created_at: '2024-01-01'
+  },
+  {
+    id: 19,
+    name: 'TacticalDE',
+    creator_code: 'TACTICAL',
+    display_name: 'TacticalDE',
+    avatar_url: 'https://i.pravatar.cc/150?img=19',
+    bio: 'Tactical Gameplay Spezialist. Positioning, Rotations und Late-Game-Strategien für Competitive Matches.',
+    social_links: { twitter: 'https://twitter.com/tacticalde', youtube: 'https://youtube.com/tacticalde' },
+    is_verified: false,
+    total_revenue: 120.00,
+    total_code_uses: 1000,
+    created_at: '2024-01-01'
+  },
+  {
+    id: 20,
+    name: 'FortniteTipsDE',
+    creator_code: 'FORTNITETIPS',
+    display_name: 'FortniteTipsDE',
+    avatar_url: 'https://i.pravatar.cc/150?img=20',
+    bio: 'All-round Fortnite-Tips für alle Spieler. Quick-Tips, Tricks und tägliche Verbesserungen für dein Gameplay.',
+    social_links: { twitter: 'https://twitter.com/fortnitetipsde', youtube: 'https://youtube.com/fortnitetipsde' },
+    is_verified: false,
+    total_revenue: 110.25,
+    total_code_uses: 900,
+    created_at: '2024-01-01'
+  }
+];
+
 export default function CreatorMarketplace() {
   const [creators, setCreators] = useState<Creator[]>([]);
   const [loading, setLoading] = useState(true);
@@ -143,6 +406,8 @@ export default function CreatorMarketplace() {
       }
     } catch (err) {
       console.error('Error fetching creators:', err);
+      // Fallback zu Mock-Daten wenn API nicht verfügbar
+      setCreators(MOCK_CREATORS);
     } finally {
       setLoading(false);
     }

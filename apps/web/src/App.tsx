@@ -17,6 +17,7 @@ const HubPage = lazy(() => import('./pages/HubPage'));
 const NewsPage = lazy(() => import('./pages/NewsPage'));
 const NewsArticlePage = lazy(() => import('./pages/NewsArticlePage'));
 const NexusIQPage = lazy(() => import('./pages/NexusIQPage'));
+const FortniteSpacePage = lazy(() => import('./pages/FortniteSpacePage'));
 
 // Digital Products Shop
 const ShopPage = lazy(() => import('./pages/ShopPage'));
@@ -56,7 +57,8 @@ export default function App() {
         <Switch>
           <Route path="/admin/:rest*" component={AdminPage} />
           <Route path="/admin" component={AdminPage} />
-          <Route path="/" component={MainPage} />
+          <Route path="/" component={FortniteSpacePage} />
+          <Route path="/classic" component={MainPage} />
           <Route path="/success" component={SuccessPage} />
           <Route path="/dashboard" component={DashboardPage} />
           <Route path="/coins" component={CoinsPage} />
@@ -72,6 +74,8 @@ export default function App() {
           <Route path="/orders" component={OrdersPage} />
           {/* NEXUS IQ */}
           <Route path="/nexus-iq" component={NexusIQPage} />
+          {/* Fortnite Nexus Space */}
+          <Route path="/space" component={FortniteSpacePage} />
           {/* Guide / Runbook routes (language-prefixed for SEO) */}
           <LanguageRoute path="/guide/:slug" component={GuidePage} />
           <LanguageRoute path="/guides/:category" component={HubPage} />
