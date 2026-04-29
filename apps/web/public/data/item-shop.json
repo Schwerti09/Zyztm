@@ -1,0 +1,87 @@
+{
+  "last_updated": "2026-04-29T12:00:00Z",
+  "rotation_end": "2026-04-30T00:00:00Z",
+  "featured": [
+    {
+      "id": "skin-001",
+      "name": "Shadow Ops",
+      "type": "outfit",
+      "rarity": "legendary",
+      "price": 2000,
+      "image": "/images/shop/shadow-ops.png"
+    },
+    {
+      "id": "skin-002",
+      "name": "Galaxy Scout",
+      "type": "outfit",
+      "rarity": "epic",
+      "price": 1500,
+      "image": "/images/shop/galaxy-scout.png"
+    }
+  ],
+  "daily": [
+    {
+      "id": "skin-003",
+      "name": "Rogue Agent",
+      "type": "outfit",
+      "rarity": "rare",
+      "price": 1200,
+      "image": "/images/shop/rogue-agent.png"
+    },
+    {
+      "id": "pickaxe-001",
+      "name": "Harvesting Tool",
+      "type": "pickaxe",
+      "rarity": "epic",
+      "price": 800,
+      "image": "/images/shop/harvesting-tool.png"
+    },
+    {
+      "id": "emote-001",
+      "name": "Dance Party",
+      "type": "emote",
+      "rarity": "rare",
+      "price": 500,
+      "image": "/images/shop/dance-party.png"
+    },
+    {
+      "id": "wrap-001",
+      "name": "Cyber Wrap",
+      "type": "wrap",
+      "rarity": "uncommon",
+      "price": 300,
+      "image": "/images/shop/cyber-wrap.png"
+    },
+    {
+      "id": "bundle-001",
+      "name": "Starter Bundle",
+      "type": "bundle",
+      "rarity": "rare",
+      "price": 1000,
+      "image": "/images/shop/starter-bundle.png"
+    },
+    {
+      "id": "backpack-001",
+      "name": "Tactical Backpack",
+      "type": "backpack",
+      "rarity": "epic",
+      "price": 600,
+      "image": "/images/shop/tactical-backpack.png"
+    }
+  ],
+  "special_offers": [
+    {
+      "id": "special-001",
+      "name": "Limited Time Bundle",
+      "description": "Exclusive bundle with rare items",
+      "price": 3000,
+      "discount": 25,
+      "ends_at": "2026-05-01T00:00:00Z"
+    }
+  ],
+  "historical_data": {
+    "last_seen": {},
+    "rare_items": [],
+    "trending_items": []
+  }
+}
