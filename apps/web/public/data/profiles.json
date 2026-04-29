@@ -1,0 +1,81 @@
+{
+  "last_updated": "2026-04-29T10:00:00Z",
+  "profile_types": [
+    {
+      "id": "aggressive_rusher",
+      "name": "Aggressiver Rusher",
+      "icon": "🔥",
+      "description": "Du bist ein geborener Kämpfer. Du gehst direkt ins Gefecht, suchst nach Action und fürchtest dich nicht vor Konfrontationen. Hoher Risk, hoher Reward.",
+      "stats": {
+        "aggression": 85,
+        "tactics": 70,
+        "mobility": 90
+      },
+      "recommended_weapons": ["striker-ar", "maven-auto-shotgun", "thunder-burst-smg"],
+      "recommended_playstyle": "Rush Early Game, Third-Party Fights, High Ground Push",
+      "strengths": ["Schnelle Entscheidungen", "Aggressive Plays", "High Risk High Reward"],
+      "weaknesses": ["Kann über-aggressiv sein", "Ignoriert Positioning", "Hohe Todesrate"]
+    },
+    {
+      "id": "tactical_player",
+      "name": "Taktischer Spieler",
+      "icon": "🛡️",
+      "description": "Du planst jeden Schritt. Positioning und Timing sind deine Stärken. Du gewinnst durch Strategie, nicht durch Zufall.",
+      "stats": {
+        "aggression": 60,
+        "tactics": 95,
+        "mobility": 75
+      },
+      "recommended_weapons": ["nemesis-ar", "twin-mag-shotgun", "havoc-smg"],
+      "recommended_playstyle": "Third-Party Avoidance, Smart Rotations, Late Game Focus",
+      "strengths": ["Ausgezeichnetes Positioning", "Gute Entscheidungen", "Konsistenter Play"],
+      "weaknesses": ["Kann zu passiv sein", "Verpasst Early Action", "Langsamere Rotations"]
+    },
+    {
+      "id": "mobility_demon",
+      "name": "Mobility Demon",
+      "icon": "🏃",
+      "description": "Du bist immer in Bewegung. Niemand kann dich fangen. Rotation und Movement sind deine Superkräfte.",
+      "stats": {
+        "aggression": 75,
+        "tactics": 70,
+        "mobility": 95
+      },
+      "recommended_weapons": ["thunder-burst-ar", "thunder-burst-smg", "grappler"],
+      "recommended_playstyle": "Constant Rotation, High Ground Grabs, Flank Plays",
+      "strengths": ["Schnelle Rotations", "Unvorhersehbar", "Gutes Escape"],
+      "weaknesses": ["Kann über-rotieren", "Verliert Position", "Erschöpft Resources"]
+    },
+    {
+      "id": "sniper_god",
+      "name": "Sniper God",
+      "icon": "🎯",
+      "description": "Du bevorzugst Distanz-Kämpfe. Präzision und Geduld sind deine Waffen. Du eliminierst bevor sie dich sehen.",
+      "stats": {
+        "aggression": 70,
+        "tactics": 90,
+        "mobility": 65
+      },
+      "recommended_weapons": ["heavy-ar", "striker-ar", "shockwave-bow"],
+      "recommended_playstyle": "Long Range Engagements, High Ground Camping, Precision Shots",
+      "strengths": ["Präzision", "Distanz-Kontrolle", "High Kill Potential"],
+      "weaknesses": ["Schwach im Close Combat", "Langsam", "Benötigt Setup"]
+    },
+    {
+      "id": "allround_pro",
+      "name": "Allround Pro",
+      "icon": "⚡",
+      "description": "Du bist vielseitig und anpassungsfähig. Du kannst jede Situation meistern und wechselst dein Playstyle je nach Situation.",
+      "stats": {
+        "aggression": 75,
+        "tactics": 80,
+        "mobility": 80
+      },
+      "recommended_weapons": ["striker-ar", "maven-auto-shotgun", "shockwave-grenade"],
+      "recommended_playstyle": "Adaptiv je nach Situation, Balanced Approach, Flexibler Play",
+      "strengths": ["Vielseitig", "Anpassungsfähig", "Konsistent"],
+      "weaknesses": ["Keine Spezialisierung", "Kann unfokussiert sein", "Master of None"]
+    }
+  ],
+  "user_profiles": []
+}

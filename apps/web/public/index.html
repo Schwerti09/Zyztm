@@ -1,0 +1,849 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fortnite Nexus — Die Nr. 1 Fortnite-Kommandozentrale</title>
+    <meta name="description" content="Die Nr. 1 Fortnite-Kommandozentrale auf Deutsch. Battle DNA Scanner, Loadout Builder, Creator Hub, Guides & Meta.">
+    <link rel="stylesheet" href="/shared.css">
+    <style>
+        /* Homepage spezifische Styles */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: var(--space-xl) var(--space-lg);
+            background: var(--bg);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        /* Storm-Hintergrund Animation */
+        .storm-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(0, 212, 255, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 50%, rgba(168, 85, 247, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 50% 50%, rgba(0, 212, 255, 0.1) 0%, transparent 70%);
+            animation: stormRotate 20s linear infinite;
+        }
+        
+        @keyframes stormRotate {
+            0% { transform: rotate(0deg) scale(1); }
+            50% { transform: rotate(180deg) scale(1.1); }
+            100% { transform: rotate(360deg) scale(1); }
+        }
+        
+        /* Grid-Overlay */
+        .grid-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(0, 212, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 212, 255, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: gridPulse 4s ease-in-out infinite;
+        }
+        
+        @keyframes gridPulse {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.6; }
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .hero-title {
+            font-family: var(--font-headline);
+            font-size: clamp(2.5rem, 8vw, 6rem);
+            font-weight: 900;
+            color: var(--text-light);
+            text-shadow: 0 0 50px var(--cyan);
+            margin-bottom: var(--space-md);
+            line-height: 1.1;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto var(--space-xl);
+        }
+        
+        .hero-ctas {
+            display: flex;
+            gap: var(--space-md);
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .live-counter {
+            font-family: var(--font-headline);
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--cyan);
+            margin-bottom: var(--space-lg);
+        }
+        
+        .scroll-indicator {
+            position: absolute;
+            bottom: var(--space-xl);
+            left: 50%;
+            transform: translateX(-50%);
+            animation: scrollBounce 2s ease-in-out infinite;
+        }
+        
+        @keyframes scrollBounce {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(10px); }
+        }
+        
+        .scroll-indicator::before {
+            content: '';
+            display: block;
+            width: 2px;
+            height: 40px;
+            background: linear-gradient(to bottom, var(--cyan), transparent);
+            margin: 0 auto var(--space-sm);
+        }
+        
+        .scroll-indicator span {
+            color: var(--cyan);
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        
+        /* Ticker */
+        .ticker {
+            background: var(--bg-secondary);
+            border-top: 1px solid var(--cyan-dim);
+            border-bottom: 1px solid var(--cyan-dim);
+            padding: var(--space-sm) 0;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+        
+        .ticker-content {
+            display: inline-block;
+            animation: tickerScroll 30s linear infinite;
+        }
+        
+        @keyframes tickerScroll {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+        }
+        
+        .ticker-item {
+            display: inline-block;
+            padding: 0 var(--space-xl);
+            color: var(--text-muted);
+            font-size: 0.875rem;
+        }
+        
+        .ticker-item span {
+            color: var(--cyan);
+            font-weight: 700;
+        }
+        
+        /* Feature Showcase */
+        .features-section {
+            padding: var(--space-2xl) var(--space-lg);
+            background: linear-gradient(135deg, var(--bg), var(--bg-secondary));
+        }
+        
+        .features-grid {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: var(--space-xl);
+        }
+        
+        @media (max-width: 768px) {
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .feature-card {
+            background: linear-gradient(135deg, var(--bg-secondary), var(--bg-tertiary));
+            border: 2px solid rgba(0, 212, 255, 0.2);
+            border-radius: var(--radius-xl);
+            padding: var(--space-2xl);
+            transition: all var(--transition-normal);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at center, rgba(0, 212, 255, 0.1) 0%, transparent 70%);
+            opacity: 0;
+            transition: opacity var(--transition-normal);
+        }
+        
+        .feature-card:hover::before {
+            opacity: 1;
+        }
+        
+        .feature-card:hover {
+            border-color: var(--cyan);
+            box-shadow: var(--shadow-glow-cyan);
+            transform: translateY(-10px);
+        }
+        
+        .feature-icon {
+            font-size: 4rem;
+            margin-bottom: var(--space-md);
+        }
+        
+        .feature-badge {
+            display: inline-block;
+            padding: var(--space-xs) var(--space-sm);
+            background: var(--gold-dim);
+            color: var(--gold);
+            border-radius: var(--radius-sm);
+            font-family: var(--font-headline);
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: var(--space-md);
+        }
+        
+        .feature-title {
+            font-family: var(--font-headline);
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--text-light);
+            margin-bottom: var(--space-sm);
+        }
+        
+        .feature-subtitle {
+            font-size: 1rem;
+            color: var(--text-muted);
+            margin-bottom: var(--space-lg);
+        }
+        
+        .feature-cta {
+            display: inline-block;
+            color: var(--cyan);
+            font-family: var(--font-headline);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: color var(--transition-normal);
+        }
+        
+        .feature-cta:hover {
+            color: var(--gold);
+        }
+        
+        /* NEXUS IQ Mini-Demo */
+        .mini-demo {
+            padding: var(--space-2xl) var(--space-lg);
+            background: linear-gradient(135deg, var(--bg-secondary), var(--bg));
+        }
+        
+        .mini-demo-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: linear-gradient(135deg, var(--bg-tertiary), var(--bg-secondary));
+            border: 2px solid var(--gold-dim);
+            border-radius: var(--radius-xl);
+            padding: var(--space-2xl);
+            text-align: center;
+        }
+        
+        .mini-demo-title {
+            font-family: var(--font-headline);
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--gold);
+            margin-bottom: var(--space-lg);
+        }
+        
+        .mini-demo-questions {
+            margin-bottom: var(--space-xl);
+        }
+        
+        .mini-demo-question {
+            margin-bottom: var(--space-md);
+        }
+        
+        .mini-demo-question-title {
+            font-family: var(--font-headline);
+            font-size: 1.125rem;
+            font-weight: 700;
+            color: var(--text-light);
+            margin-bottom: var(--space-sm);
+        }
+        
+        .mini-demo-options {
+            display: flex;
+            gap: var(--space-sm);
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .mini-demo-option {
+            padding: var(--space-sm) var(--space-md);
+            background: rgba(255, 195, 0, 0.1);
+            border: 2px solid rgba(255, 195, 0, 0.2);
+            border-radius: var(--radius-md);
+            color: var(--text-light);
+            cursor: pointer;
+            transition: all var(--transition-normal);
+            font-size: 0.875rem;
+        }
+        
+        .mini-demo-option:hover,
+        .mini-demo-option.selected {
+            background: var(--gold-dim);
+            border-color: var(--gold);
+            color: var(--text-dark);
+        }
+        
+        .mini-demo-result {
+            display: none;
+            background: rgba(0, 212, 255, 0.1);
+            border: 2px solid var(--cyan-dim);
+            border-radius: var(--radius-md);
+            padding: var(--space-lg);
+            margin-bottom: var(--space-lg);
+        }
+        
+        .mini-demo-result.show {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        .mini-demo-result-icon {
+            font-size: 3rem;
+            margin-bottom: var(--space-sm);
+        }
+        
+        .mini-demo-result-type {
+            font-family: var(--font-headline);
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--cyan);
+            margin-bottom: var(--space-sm);
+        }
+        
+        /* Social Proof */
+        .social-proof {
+            padding: var(--space-2xl) var(--space-lg);
+            background: var(--bg);
+        }
+        
+        .stats-grid {
+            max-width: 1200px;
+            margin: 0 auto var(--space-xl);
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: var(--space-lg);
+        }
+        
+        @media (max-width: 768px) {
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        .stat-item {
+            text-align: center;
+        }
+        
+        .stat-value {
+            font-family: var(--font-headline);
+            font-size: 3rem;
+            font-weight: 900;
+            color: var(--cyan);
+            margin-bottom: var(--space-xs);
+        }
+        
+        .stat-label {
+            font-size: 0.875rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .quotes-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--space-lg);
+        }
+        
+        .quote-card {
+            background: linear-gradient(135deg, var(--bg-secondary), var(--bg-tertiary));
+            border: 2px solid rgba(0, 212, 255, 0.2);
+            border-radius: var(--radius-md);
+            padding: var(--space-lg);
+        }
+        
+        .quote-text {
+            font-style: italic;
+            color: var(--text-muted);
+            margin-bottom: var(--space-md);
+        }
+        
+        .quote-author {
+            font-family: var(--font-headline);
+            font-weight: 700;
+            color: var(--text-light);
+        }
+        
+        /* Discord CTA */
+        .discord-cta {
+            padding: var(--space-2xl) var(--space-lg);
+            background: linear-gradient(135deg, rgba(255, 107, 0, 0.1), var(--bg));
+            border-top: 2px solid var(--orange-dim);
+            border-bottom: 2px solid var(--orange-dim);
+            text-align: center;
+        }
+        
+        .discord-cta-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .discord-title {
+            font-family: var(--font-headline);
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: var(--orange);
+            text-shadow: 0 0 30px var(--orange-dim);
+            margin-bottom: var(--space-xl);
+        }
+        
+        .discord-benefits {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--space-lg);
+            margin-bottom: var(--space-xl);
+        }
+        
+        @media (max-width: 768px) {
+            .discord-benefits {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .discord-benefit {
+            padding: var(--space-lg);
+            background: rgba(255, 107, 0, 0.05);
+            border: 1px solid rgba(255, 107, 0, 0.2);
+            border-radius: var(--radius-md);
+        }
+        
+        .discord-benefit-icon {
+            font-size: 2rem;
+            margin-bottom: var(--space-sm);
+        }
+        
+        .discord-benefit-text {
+            font-size: 0.875rem;
+            color: var(--text-muted);
+        }
+        
+        .discord-button {
+            display: inline-block;
+            padding: var(--space-lg) var(--space-2xl);
+            background: #5865F2;
+            color: var(--text-light);
+            border: none;
+            border-radius: var(--radius-md);
+            font-family: var(--font-headline);
+            font-size: 1.25rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all var(--transition-normal);
+            animation: pulse 2s ease-in-out infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(88, 101, 242, 0.7); }
+            50% { transform: scale(1.05); box-shadow: 0 0 30px 10px rgba(88, 101, 242, 0.5); }
+        }
+        
+        .discord-button:hover {
+            background: #4752C4;
+            transform: scale(1.1);
+        }
+        
+        .discord-members {
+            margin-top: var(--space-lg);
+            font-size: 0.875rem;
+            color: var(--text-muted);
+        }
+        
+        /* Sticky Bar */
+        .sticky-bar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(90deg, var(--cyan), var(--gold));
+            color: var(--text-dark);
+            padding: var(--space-sm) var(--space-lg);
+            text-align: center;
+            font-family: var(--font-headline);
+            font-weight: 700;
+            font-size: 0.875rem;
+            transform: translateY(100%);
+            transition: transform var(--transition-slow);
+            z-index: 1001;
+        }
+        
+        .sticky-bar.show {
+            transform: translateY(0);
+        }
+        
+        .sticky-bar a {
+            color: var(--text-dark);
+            text-decoration: none;
+            margin-left: var(--space-md);
+            font-weight: 900;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="/" class="navbar-logo">NEXUS</a>
+            <div class="navbar-links">
+                <a href="/" class="navbar-link">Home</a>
+                <a href="/nexus-iq" class="navbar-link">NEXUS IQ</a>
+                <a href="/loadout-god" class="navbar-link">Loadout God</a>
+                <a href="/creators" class="navbar-link">Creators</a>
+                <a href="/classic" class="navbar-link">Classic</a>
+                <a href="#" class="navbar-discord">Discord</a>
+            </div>
+            <button class="navbar-menu-btn">☰</button>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="navbar-mobile-menu">
+        <button class="navbar-mobile-close">×</button>
+        <a href="/" class="navbar-mobile-link">Home</a>
+        <a href="/nexus-iq" class="navbar-mobile-link">NEXUS IQ</a>
+        <a href="/loadout-god" class="navbar-mobile-link">Loadout God</a>
+        <a href="/creators" class="navbar-mobile-link">Creators</a>
+        <a href="/classic" class="navbar-mobile-link">Classic</a>
+    </div>
+
+    <!-- Custom Cursor -->
+    <div class="custom-cursor"></div>
+    <div class="custom-cursor-ring"></div>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="storm-background"></div>
+            <div class="grid-overlay"></div>
+            
+            <div class="hero-content">
+                <div class="live-counter">
+                    Heute haben <span class="live-counter countup" data-target="18247">0</span> Spieler ihr DNA entdeckt
+                </div>
+                
+                <h1 class="hero-title">DIE NR. 1<br>FORTNITE-<br>KOMMANDOZENTRALE</h1>
+                
+                <p class="hero-subtitle">Battle DNA Scanner, Loadout Builder, Creator Hub, Guides & Meta — Alles an einem Ort.</p>
+                
+                <div class="hero-ctas">
+                    <a href="/nexus-iq" class="btn-primary">⚡ Battle DNA starten →</a>
+                    <a href="#" class="btn-secondary">👥 Community beitreten</a>
+                </div>
+            </div>
+            
+            <div class="scroll-indicator">
+                <div></div>
+                <span>Scroll</span>
+            </div>
+        </section>
+        
+        <!-- Ticker -->
+        <section class="ticker">
+            <div class="ticker-content">
+                <span class="ticker-item">⚡ <span>META UPDATE</span> vor 47 Minuten</span>
+                <span class="ticker-item">🔥 <span>PUMP SHOTGUN</span> S-TIER diese Woche</span>
+                <span class="ticker-item">📍 <span>TILTED TOWERS</span> Hotspot der Woche</span>
+                <span class="ticker-item">👥 <span>3.847 SPIELER</span> gerade online</span>
+                <span class="ticker-item">🏆 <span>TURNIER</span> in 2 Tagen</span>
+            </div>
+        </section>
+        
+        <!-- Feature Showcase -->
+        <section class="features-section">
+            <div class="features-grid">
+                <!-- NEXUS IQ Card -->
+                <div class="feature-card">
+                    <div class="feature-icon">🧬</div>
+                    <span class="feature-badge">WELTPREMIERE</span>
+                    <h3 class="feature-title">Battle DNA Scanner</h3>
+                    <p class="feature-subtitle">Das erste Tool das dir sagt wer du als Spieler bist</p>
+                    <a href="/nexus-iq" class="feature-cta">DNA starten →</a>
+                </div>
+                
+                <!-- Loadout God Card -->
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <span class="feature-badge">VIRAL TOOL</span>
+                    <h3 class="feature-title">Loadout God</h3>
+                    <p class="feature-subtitle">Build dein perfektes Setup in 60 Sekunden</p>
+                    <a href="/loadout-god" class="feature-cta">Loadout bauen →</a>
+                </div>
+                
+                <!-- Creators Card -->
+                <div class="feature-card">
+                    <div class="feature-icon">🎬</div>
+                    <span class="feature-badge">COMMUNITY</span>
+                    <h3 class="feature-title">Creator Hub</h3>
+                    <p class="feature-subtitle">Die besten deutschen Fortnite-Creator an einem Ort</p>
+                    <a href="/creators" class="feature-cta">Creator entdecken →</a>
+                </div>
+                
+                <!-- Classic Card -->
+                <div class="feature-card">
+                    <div class="feature-icon">📖</div>
+                    <span class="feature-badge">TÄGLICH AKTUELL</span>
+                    <h3 class="feature-title">Guides & Meta</h3>
+                    <p class="feature-subtitle">Täglich aktualisierte Guides, Tier-Listen, Patch-Analysen</p>
+                    <a href="/classic" class="feature-cta">Guides lesen →</a>
+                </div>
+            </div>
+        </section>
+        
+        <!-- NEXUS IQ Mini-Demo -->
+        <section class="mini-demo">
+            <div class="mini-demo-container">
+                <h2 class="mini-demo-title">🧬 TESTE DEIN DNA</h2>
+                
+                <div class="mini-demo-questions" id="mini-demo-questions">
+                    <div class="mini-demo-question">
+                        <div class="mini-demo-question-title">1. Was ist dein bevorzugter Spielstil?</div>
+                        <div class="mini-demo-options">
+                            <div class="mini-demo-option" onclick="selectMiniOption(1, 'aggressive', this)">🔥 Aggressiv</div>
+                            <div class="mini-demo-option" onclick="selectMiniOption(1, 'tactical', this)">🛡️ Taktisch</div>
+                            <div class="mini-demo-option" onclick="selectMiniOption(1, 'mobility', this)">🏃 Mobility</div>
+                            <div class="mini-demo-option" onclick="selectMiniOption(1, 'sniper', this)">🎯 Sniper</div>
+                        </div>
+                    </div>
+                    
+                    <div class="mini-demo-question">
+                        <div class="mini-demo-question-title">2. Auf welcher Plattform spielst du?</div>
+                        <div class="mini-demo-options">
+                            <div class="mini-demo-option" onclick="selectMiniOption(2, 'pc', this)">🎮 PC</div>
+                            <div class="mini-demo-option" onclick="selectMiniOption(2, 'playstation', this)">🕹️ PlayStation</div>
+                            <div class="mini-demo-option" onclick="selectMiniOption(2, 'xbox', this)">🕹️ Xbox</div>
+                        </div>
+                    </div>
+                    
+                    <div class="mini-demo-question">
+                        <div class="mini-demo-question-title">3. Was ist dein Hauptziel?</div>
+                        <div class="mini-demo-options">
+                            <div class="mini-demo-option" onclick="selectMiniOption(3, 'wins', this)">🏆 Victory Royales</div>
+                            <div class="mini-demo-option" onclick="selectMiniOption(3, 'kills', this)">💀 Eliminations</div>
+                            <div class="mini-demo-option" onclick="selectMiniOption(3, 'fun', this)">🎨 Spaß haben</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mini-demo-result" id="mini-demo-result">
+                    <div class="mini-demo-result-icon" id="result-icon">🔥</div>
+                    <div class="mini-demo-result-type" id="result-type">Aggressiver Rusher</div>
+                    <p style="color: var(--text-muted); margin-bottom: var(--space-md);" id="result-desc">Du gehst direkt ins Gefecht und suchst nach Action.</p>
+                    <a href="/nexus-iq" class="btn-gold">Vollständiges Profil →</a>
+                </div>
+                
+                <button class="btn-primary" id="mini-demo-btn" onclick="showMiniResult()" disabled style="margin-top: var(--space-lg);">ZEIGE MEIN DNA</button>
+            </div>
+        </section>
+        
+        <!-- Social Proof -->
+        <section class="social-proof">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-value countup" data-target="18427">0</div>
+                    <div class="stat-label">Profile</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value countup" data-target="156">0</div>
+                    <div class="stat-label">Guides</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value countup" data-target="89">0</div>
+                    <div class="stat-label">Updates</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value countup" data-target="2847">0</div>
+                    <div class="stat-label">Community</div>
+                </div>
+            </div>
+            
+            <div class="quotes-section">
+                <div class="quote-card">
+                    <p class="quote-text">"Der DNA Scanner hat mir geholfen, meinen Spielstil zu verstehen. Jetzt gewinne ich viel öfter!"</p>
+                    <p class="quote-author">— ProPlayer_DE</p>
+                </div>
+                <div class="quote-card">
+                    <p class="quote-text">"Loadout God ist genial. Ich habe endlich mein perfektes Setup gefunden."</p>
+                    <p class="quote-author">— TacticalQueen</p>
+                </div>
+                <div class="quote-card">
+                    <p class="quote-text">"Die Creator Hub ist der beste Ort um deutsche Fortnite-Creator zu finden."</p>
+                    <p class="quote-author">— MobilityKing</p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Discord CTA -->
+        <section class="discord-cta">
+            <div class="discord-cta-content">
+                <h2 class="discord-title">WERDE TEIL DES NEXUS</h2>
+                
+                <div class="discord-benefits">
+                    <div class="discord-benefit">
+                        <div class="discord-benefit-icon">🎮</div>
+                        <div class="discord-benefit-text">Exklusive Tipps & Strategien</div>
+                    </div>
+                    <div class="discord-benefit">
+                        <div class="discord-benefit-icon">👥</div>
+                        <div class="discord-benefit-text">Aktive Community</div>
+                    </div>
+                    <div class="discord-benefit">
+                        <div class="discord-benefit-icon">🏆</div>
+                        <div class="discord-benefit-text">Turniere & Events</div>
+                    </div>
+                </div>
+                
+                <button class="discord-button" onclick="window.open('https://discord.gg/fortnitenexus', '_blank')">🚀 DISCORD BEITRETEN</button>
+                
+                <div class="discord-members">2.847 Mitglieder</div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>NEXUS</h3>
+                    <p>Die Nr. 1 Fortnite-Kommandozentrale auf Deutsch.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/nexus-iq">NEXUS IQ</a></li>
+                        <li><a href="/loadout-god">Loadout God</a></li>
+                        <li><a href="/creators">Creators</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Social</h3>
+                    <div class="footer-social">
+                        <a href="#" aria-label="Discord">📱</a>
+                        <a href="#" aria-label="TikTok">🎵</a>
+                        <a href="#" aria-label="Reddit">📱</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2026 Fortnite Nexus. Alle Rechte vorbehalten.</p>
+                <p>Nicht mit Epic Games verbunden.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Sticky Bar -->
+    <div class="sticky-bar" id="sticky-bar">
+        🔥 Neu: Battle DNA Scanner ist live → <a href="/nexus-iq">JETZT TESTEN</a>
+    </div>
+
+    <script src="/shared.js"></script>
+    <script>
+        // Mini-Demo Logic
+        const miniAnswers = {};
+        
+        function selectMiniOption(question, answer, element) {
+            // Remove selected class from all options in question
+            const options = element.parentElement.querySelectorAll('.mini-demo-option');
+            options.forEach(opt => opt.classList.remove('selected'));
+            
+            // Add selected class to clicked option
+            element.classList.add('selected');
+            
+            // Store answer
+            miniAnswers[question] = answer;
+            
+            // Enable button if all questions answered
+            if (Object.keys(miniAnswers).length === 3) {
+                document.getElementById('mini-demo-btn').disabled = false;
+            }
+        }
+        
+        function showMiniResult() {
+            // Hide questions
+            document.getElementById('mini-demo-questions').style.display = 'none';
+            document.getElementById('mini-demo-btn').style.display = 'none';
+            
+            // Calculate result based on first answer
+            const playstyle = miniAnswers[1];
+            
+            let result;
+            if (playstyle === 'aggressive') {
+                result = { icon: '🔥', type: 'Aggressiver Rusher', desc: 'Du gehst direkt ins Gefecht und suchst nach Action.' };
+            } else if (playstyle === 'tactical') {
+                result = { icon: '🛡️', type: 'Taktischer Spieler', desc: 'Du planst jeden Schritt und gewinnst durch Strategie.' };
+            } else if (playstyle === 'mobility') {
+                result = { icon: '🏃', type: 'Mobility Demon', desc: 'Du bist immer in Bewegung und rotierst schnell.' };
+            } else {
+                result = { icon: '🎯', type: 'Sniper God', desc: 'Du bevorzugst Distanz-Kämpfe und Präzision.' };
+            }
+            
+            // Update result display
+            document.getElementById('result-icon').textContent = result.icon;
+            document.getElementById('result-type').textContent = result.type;
+            document.getElementById('result-desc').textContent = result.desc;
+            
+            // Show result
+            document.getElementById('mini-demo-result').classList.add('show');
+        }
+        
+        // Sticky Bar appears after 4 seconds
+        setTimeout(() => {
+            document.getElementById('sticky-bar').classList.add('show');
+        }, 4000);
+    </script>
+</body>
+</html>

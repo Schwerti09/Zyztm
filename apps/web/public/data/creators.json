@@ -1,0 +1,132 @@
+{
+  "last_updated": "2026-04-29T10:00:00Z",
+  "creators": [
+    {
+      "id": 1,
+      "name": "NexuS_Pro",
+      "display_name": "NexuS Pro",
+      "avatar": "🎮",
+      "platforms": {
+        "twitch": "https://twitch.tv/nexuspro",
+        "youtube": "https://youtube.com/@nexuspro"
+      },
+      "dna_type": "aggressive",
+      "bio": "Pro-Spieler mit 5 Jahren Erfahrung. Daily Streams & High-Level Gameplay.",
+      "followers": 50000,
+      "verified": true,
+      "joined": "2024-01-15"
+    },
+    {
+      "id": 2,
+      "name": "TacticalQueen",
+      "display_name": "Tactical Queen",
+      "avatar": "👑",
+      "platforms": {
+        "youtube": "https://youtube.com/@tacticalqueen",
+        "tiktok": "https://tiktok.com/@tacticalqueen"
+      },
+      "dna_type": "tactical",
+      "bio": "Taktische Guides & Building-Tutorials. Lerne mit mir Schritt für Schritt.",
+      "followers": 35000,
+      "verified": true,
+      "joined": "2024-02-20"
+    },
+    {
+      "id": 3,
+      "name": "MobilityKing",
+      "display_name": "Mobility King",
+      "avatar": "🏃",
+      "platforms": {
+        "twitch": "https://twitch.tv/mobilityking",
+        "tiktok": "https://tiktok.com/@mobilityking"
+      },
+      "dna_type": "mobility",
+      "bio": "Movement-Spezialist. Schnellste Rotations & trickiest Moves.",
+      "followers": 28000,
+      "verified": true,
+      "joined": "2024-03-10"
+    },
+    {
+      "id": 4,
+      "name": "SniperGod_DE",
+      "display_name": "SniperGod DE",
+      "avatar": "🎯",
+      "platforms": {
+        "youtube": "https://youtube.com/@snipergodde"
+      },
+      "dna_type": "sniper",
+      "bio": "Long-Range Precision. Sniping Guides & Aim-Training.",
+      "followers": 22000,
+      "verified": true,
+      "joined": "2024-03-25"
+    },
+    {
+      "id": 5,
+      "name": "BuildMaster",
+      "display_name": "BuildMaster",
+      "avatar": "🏗️",
+      "platforms": {
+        "twitch": "https://twitch.tv/buildmaster",
+        "youtube": "https://youtube.com/@buildmaster"
+      },
+      "dna_type": "tactical",
+      "bio": "Building-Experte. Von Basics bis Advanced Freebuilds.",
+      "followers": 18000,
+      "verified": true,
+      "joined": "2024-04-01"
+    },
+    {
+      "id": 6,
+      "name": "RushDemon",
+      "display_name": "RushDemon",
+      "avatar": "🔥",
+      "platforms": {
+        "tiktok": "https://tiktok.com/@rushdemon"
+      },
+      "dna_type": "aggressive",
+      "bio": "Aggressive Plays & Highlights. Pure Action.",
+      "followers": 15000,
+      "verified": false,
+      "joined": "2024-04-15"
+    },
+    {
+      "id": 7,
+      "name": "StratGuru",
+      "display_name": "StratGuru",
+      "avatar": "🧠",
+      "platforms": {
+        "youtube": "https://youtube.com/@stratguru"
+      },
+      "dna_type": "tactical",
+      "bio": "Strategie-Analysen & Meta-Updates. Bleib immer informiert.",
+      "followers": 12000,
+      "verified": true,
+      "joined": "2024-04-20"
+    },
+    {
+      "id": 8,
+      "name": "CreativeBuilder",
+      "display_name": "CreativeBuilder",
+      "avatar": "🎨",
+      "platforms": {
+        "twitch": "https://twitch.tv/creativebuilder",
+        "youtube": "https://youtube.com/@creativebuilder",
+        "tiktok": "https://tiktok.com/@creativebuilder"
+      },
+      "dna_type": "mobility",
+      "bio": "Creative Maps & Custom Games. Entdecke neue Spielmodi.",
+      "followers": 10000,
+      "verified": true,
+      "joined": "2024-04-25"
+    }
+  ],
+  "stats": {
+    "total_creators": 8,
+    "total_followers": 190000,
+    "platforms": {
+      "twitch": 4,
+      "youtube": 5,
+      "tiktok": 4
+    }
+  }
+}

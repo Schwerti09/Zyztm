@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEXUS IQ — Fortnite Battle DNA Scanner</title>
+    <meta name="description" content="Entdecke dein Fortnite Battle DNA — 5 Fragen, personalisiertes Spielerprofil, virales Sharing. Das erste Tool das dir sagt wer du als Spieler bist.">
+    <link rel="stylesheet" href="/shared.css">
+    <style>
+        /* NEXUS IQ spezifische Styles */
+        .dna-hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: var(--space-xl) var(--space-lg);
+            background: linear-gradient(135deg, var(--bg), var(--bg-secondary));
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .dna-hero::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, var(--cyan-dim) 0%, transparent 70%);
+            transform: translate(-50%, -50%);
+            animation: pulse 4s ease-in-out infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 0.3; transform: translate(-50%, -50%) scale(1); }
+            50% { opacity: 0.6; transform: translate(-50%, -50%) scale(1.1); }
+        }
+        
+        .dna-title {
+            font-family: var(--font-headline);
+            font-size: clamp(2.5rem, 8vw, 5rem);
+            font-weight: 900;
+            color: var(--text-light);
+            text-shadow: 0 0 30px var(--cyan);
+            margin-bottom: var(--space-md);
+            position: relative;
+            z-index: 1;
+        }
+        
+        .dna-subtitle {
+            font-size: 1.25rem;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto var(--space-xl);
+            position: relative;
+            z-index: 1;
+        }
+        
+        .dna-quiz-container {
+            max-width: 800px;
+            width: 100%;
+            margin: var(--space-xl) auto;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .quiz-question {
+            background: linear-gradient(135deg, var(--bg-secondary), var(--bg-tertiary));
+            border: 2px solid var(--cyan-dim);
+            border-radius: var(--radius-xl);
+            padding: var(--space-xl);
+            margin-bottom: var(--space-lg);
+            transition: all var(--transition-normal);
+        }
+        
+        .quiz-question:hover {
+            border-color: var(--cyan);
+            box-shadow: var(--shadow-glow-cyan);
+        }
+        
+        .quiz-question-title {
+            font-family: var(--font-headline);
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-light);
+            margin-bottom: var(--space-lg);
+        }
+        
+        .quiz-options {
+            display: grid;
+            gap: var(--space-md);
+        }
+        
+        .quiz-option {
+            background: rgba(0, 212, 255, 0.05);
+            border: 2px solid rgba(0, 212, 255, 0.2);
+            border-radius: var(--radius-md);
+            padding: var(--space-md);
+            cursor: pointer;
+            transition: all var(--transition-normal);
+            text-align: left;
+        }
+        
+        .quiz-option:hover {
+            background: var(--cyan-dim);
+            border-color: var(--cyan);
+            transform: translateX(10px);
+        }
+        
+        .quiz-option.selected {
+            background: var(--cyan-dim);
+            border-color: var(--cyan);
+            box-shadow: var(--shadow-glow-cyan);
+        }
+        
+        .quiz-option-text {
+            font-family: var(--font-body);
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text-light);
+        }
+        
+        .dna-result {
+            display: none;
+            background: linear-gradient(135deg, var(--bg-secondary), var(--bg-tertiary));
+            border: 2px solid var(--gold);
+            border-radius: var(--radius-xl);
+            padding: var(--space-2xl);
+            margin: var(--space-xl) auto;
+            max-width: 800px;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .dna-result.show {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        .dna-result-icon {
+            font-size: 5rem;
+            margin-bottom: var(--space-md);
+        }
+        
+        .dna-result-title {
+            font-family: var(--font-headline);
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: var(--gold);
+            margin-bottom: var(--space-md);
+            text-shadow: 0 0 20px var(--gold-dim);
+        }
+        
+        .dna-result-type {
+            font-family: var(--font-headline);
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--cyan);
+            margin-bottom: var(--space-lg);
+        }
+        
+        .dna-result-description {
+            font-size: 1.125rem;
+            color: var(--text-muted);
+            line-height: 1.8;
+            margin-bottom: var(--space-xl);
+        }
+        
+        .dna-result-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--space-md);
+            margin-bottom: var(--space-xl);
+        }
+        
+        .dna-stat {
+            background: rgba(255, 195, 0, 0.1);
+            border: 1px solid var(--gold-dim);
+            border-radius: var(--radius-md);
+            padding: var(--space-md);
+        }
+        
+        .dna-stat-value {
+            font-family: var(--font-headline);
+            font-size: 2rem;
+            font-weight: 900;
+            color: var(--gold);
+        }
+        
+        .dna-stat-label {
+            font-size: 0.875rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .dna-share-section {
+            margin-top: var(--space-xl);
+            padding-top: var(--space-xl);
+            border-top: 1px solid rgba(255, 195, 0, 0.2);
+        }
+        
+        .progress-bar {
+            width: 100%;
+            height: 4px;
+            background: var(--bg-tertiary);
+            border-radius: var(--radius-full);
+            margin-bottom: var(--space-xl);
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--cyan), var(--gold));
+            border-radius: var(--radius-full);
+            transition: width var(--transition-normal);
+        }
+        
+        .quiz-nav {
+            display: flex;
+            justify-content: space-between;
+            margin-top: var(--space-xl);
+        }
+        
+        @media (max-width: 768px) {
+            .dna-result-stats {
+                grid-template-columns: 1fr;
+            }
+            
+            .dna-title {
+                font-size: 2rem;
+            }
+            
+            .quiz-question {
+                padding: var(--space-lg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="/" class="navbar-logo">NEXUS</a>
+            <div class="navbar-links">
+                <a href="/" class="navbar-link">Home</a>
+                <a href="/nexus-iq" class="navbar-link">NEXUS IQ</a>
+                <a href="/loadout-god" class="navbar-link">Loadout God</a>
+                <a href="/creators" class="navbar-link">Creators</a>
+                <a href="/classic" class="navbar-link">Classic</a>
+                <a href="#" class="navbar-discord">Discord</a>
+            </div>
+            <button class="navbar-menu-btn">☰</button>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="navbar-mobile-menu">
+        <button class="navbar-mobile-close">×</button>
+        <a href="/" class="navbar-mobile-link">Home</a>
+        <a href="/nexus-iq" class="navbar-mobile-link">NEXUS IQ</a>
+        <a href="/loadout-god" class="navbar-mobile-link">Loadout God</a>
+        <a href="/creators" class="navbar-mobile-link">Creators</a>
+        <a href="/classic" class="navbar-mobile-link">Classic</a>
+    </div>
+
+    <!-- Custom Cursor -->
+    <div class="custom-cursor"></div>
+    <div class="custom-cursor-ring"></div>
+
+    <!-- Main Content -->
+    <main>
+        <!-- DNA Hero -->
+        <section class="dna-hero">
+            <h1 class="dna-title">NEXUS IQ</h1>
+            <p class="dna-subtitle">Das erste Tool das dir sagt wer du als Fortnite-Spieler bist. 5 Fragen → personalisiertes Spielerprofil → virales Sharing.</p>
+            
+            <!-- DNA Quiz -->
+            <div class="dna-quiz-container">
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progress-fill" style="width: 20%"></div>
+                </div>
+                
+                <!-- Question 1 -->
+                <div class="quiz-question" id="question-1">
+                    <h2 class="quiz-question-title">1. Was ist dein bevorzugter Spielstil?</h2>
+                    <div class="quiz-options">
+                        <div class="quiz-option" onclick="selectOption(1, this)">
+                            <span class="quiz-option-text">🔥 Aggressiver Rusher — Ich gehe direkt ins Gefecht</span>
+                        </div>
+                        <div class="quiz-option" onclick="selectOption(1, this)">
+                            <span class="quiz-option-text">🛡️ Taktischer Spieler — Ich plane jeden Schritt</span>
+                        </div>
+                        <div class="quiz-option" onclick="selectOption(1, this)">
+                            <span class="quiz-option-text">🏃 Mobility Demon — Ich bin immer in Bewegung</span>
+                        </div>
+                        <div class="quiz-option" onclick="selectOption(1, this)">
+                            <span class="quiz-option-text">🎯 Sniper God — Ich bevorzuge Distanz-Kämpfe</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Question 2 -->
+                <div class="quiz-question" id="question-2" style="display: none;">
+                    <h2 class="quiz-question-title">2. Welche Waffen-Klasse beherrschst du am besten?</h2>
+                    <div class="quiz-options">
+                        <div class="quiz-option" onclick="selectOption(2, this)">
+                            <span class="quiz-option-text">🔫 Assault Rifles — Mid-Range Dominanz</span>
+                        </div>
+                        <div class="quiz-option" onclick="selectOption(2, this)">
+                            <span class="quiz-option-text">💥 Shotguns — Close Range Monster</span>
+                        </div>
+                        <div class="quiz-option" onclick="selectOption(2, this)">
+                            <span class="quiz-option-text">🎯 Snipers — Long Range Precision</span>
+                        </div>
+                        <div class="quiz-option" onclick="selectOption(2, this)">
+                            <span class="quiz-option-text">🔥 SMGs — Rapid Fire Spray</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Question 3 -->
+                <div class="quiz-question" id="question-3" style="display: none;">
+                    <h2 class="quiz-question-title">3. Auf welcher Plattform spielst du hauptsächlich?</h2>
+                    <div class="quiz-options">
+                        <div class="quiz-option" onclick="selectOption(3, this)">
+                            <span class="quiz-option-text">🎮 PC — Mouse & Keyboard</span>
+                        </div>
+                        <div class="quiz-option" onclick="selectOption(3, this)">
+                            <span class="quiz-option-text">🎮 PC — Controller</span>
+                        </div>
+                        <div class="quiz-option" onclick="selectOption(3, this)">
+                            <span class="quiz-option-text">🕹️ PlayStation</span>
+                        </div>
+                        <div class="quiz-option" onclick="selectOption(3, this)">
+                            <span class="quiz-option-text">🕹️ Xbox</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Question 4 -->
+                <div class="quiz-question" id="question-4" style="display: none;">
+                    <h2 class="quiz-question-title">4. Was ist dein Hauptziel in Fortnite?</h2>
+                    <div class="quiz-options">
+                        <div class="quiz-option" onclick="selectOption(4, this)">
+                            <span class="quiz-option-text">🏆 Victory Royales — Ich will gewinnen</span>
+                        </div>
+                        <div class="quiz-option" onclick="selectOption(4, this)">
+                            <span class="quiz-option-text">💀 Eliminations — Ich will Kills</span>
+                        </div>
+                        <div class="quiz-option" onclick="selectOption(4, this)">
+                            <span class="quiz-option-text">🎨 Creativity — Ich baue und entdecke</span>
+                        </div>
+                        <div class="quiz-option" onclick="selectOption(4, this)">
+                            <span class="quiz-option-text">👥 Community — Ich spiele mit Freunden</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Question 5 -->
+                <div class="quiz-question" id="question-5" style="display: none;">
+                    <h2 class="quiz-question-title">5. Wie lange spielst du schon Fortnite?</h2>
+                    <div class="quiz-options">
+                        <div class="quiz-option" onclick="selectOption(5, this)">
+                            <span class="quiz-option-text">🌱 Neuling — Weniger als 6 Monate</span>
+                        </div>
+                        <div class="quiz-option" onclick="selectOption(5, this)">
+                            <span class="quiz-option-text">🌿 Intermediate — 6-12 Monate</span>
+                        </div>
+                        <div class="quiz-option" onclick="selectOption(5, this)">
+                            <span class="quiz-option-text">🌳 Veteran — 1-3 Jahre</span>
+                        </div>
+                        <div class="quiz-option" onclick="selectOption(5, this)">
+                            <span class="quiz-option-text">🌲 OG — Seit Chapter 1</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Quiz Navigation -->
+                <div class="quiz-nav">
+                    <button class="btn-secondary" id="prev-btn" onclick="prevQuestion()" style="visibility: hidden;">Zurück</button>
+                    <button class="btn-primary" id="next-btn" onclick="nextQuestion()" disabled>Weiter</button>
+                </div>
+            </div>
+            
+            <!-- DNA Result -->
+            <div class="dna-result" id="dna-result">
+                <div class="dna-result-icon" id="result-icon">🧬</div>
+                <h2 class="dna-result-title" id="result-title">DEIN BATTLE DNA</h2>
+                <h3 class="dna-result-type" id="result-type">Aggressiver Rusher</h3>
+                <p class="dna-result-description" id="result-description">
+                    Du bist ein geborener Kämpfer. Du gehst direkt ins Gefecht, suchst nach Action und fürchtest dich nicht vor Konfrontationen. Hoher Risk, hoher Reward.
+                </p>
+                
+                <div class="dna-result-stats">
+                    <div class="dna-stat">
+                        <div class="dna-stat-value" id="stat-aggression">85</div>
+                        <div class="dna-stat-label">Aggression</div>
+                    </div>
+                    <div class="dna-stat">
+                        <div class="dna-stat-value" id="stat-tactics">70</div>
+                        <div class="dna-stat-label">Taktik</div>
+                    </div>
+                    <div class="dna-stat">
+                        <div class="dna-stat-value" id="stat-mobility">90</div>
+                        <div class="dna-stat-label">Mobility</div>
+                    </div>
+                </div>
+                
+                <div class="dna-share-section">
+                    <button class="btn-gold" onclick="shareDNA()">🔥 Teile deine DNA</button>
+                    <button class="btn-secondary" onclick="restartQuiz()">Nochmal testen</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>NEXUS</h3>
+                    <p>Die Nr. 1 Fortnite-Kommandozentrale auf Deutsch.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/nexus-iq">NEXUS IQ</a></li>
+                        <li><a href="/loadout-god">Loadout God</a></li>
+                        <li><a href="/creators">Creators</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Social</h3>
+                    <div class="footer-social">
+                        <a href="#" aria-label="Discord">📱</a>
+                        <a href="#" aria-label="TikTok">🎵</a>
+                        <a href="#" aria-label="Reddit">📱</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2026 Fortnite Nexus. Alle Rechte vorbehalten.</p>
+                <p>Nicht mit Epic Games verbunden.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="/shared.js"></script>
+    <script>
+        // NEXUS IQ spezifische JavaScript
+        let currentQuestion = 1;
+        const totalQuestions = 5;
+        const answers = {};
+        
+        function selectOption(questionNum, element) {
+            // Remove selected class from all options
+            const options = document.querySelectorAll(`#question-${questionNum} .quiz-option`);
+            options.forEach(opt => opt.classList.remove('selected'));
+            
+            // Add selected class to clicked option
+            element.classList.add('selected');
+            
+            // Store answer
+            answers[questionNum] = element.querySelector('.quiz-option-text').textContent;
+            
+            // Enable next button
+            document.getElementById('next-btn').disabled = false;
+        }
+        
+        function nextQuestion() {
+            if (currentQuestion < totalQuestions) {
+                // Hide current question
+                document.getElementById(`question-${currentQuestion}`).style.display = 'none';
+                
+                // Show next question
+                currentQuestion++;
+                document.getElementById(`question-${currentQuestion}`).style.display = 'block';
+                
+                // Update progress bar
+                document.getElementById('progress-fill').style.width = `${(currentQuestion / totalQuestions) * 100}%`;
+                
+                // Update navigation buttons
+                document.getElementById('prev-btn').style.visibility = 'visible';
+                
+                // Disable next button until option selected
+                document.getElementById('next-btn').disabled = true;
+            } else {
+                // Show result
+                showResult();
+            }
+        }
+        
+        function prevQuestion() {
+            if (currentQuestion > 1) {
+                // Hide current question
+                document.getElementById(`question-${currentQuestion}`).style.display = 'none';
+                
+                // Show previous question
+                currentQuestion--;
+                document.getElementById(`question-${currentQuestion}`).style.display = 'block';
+                
+                // Update progress bar
+                document.getElementById('progress-fill').style.width = `${(currentQuestion / totalQuestions) * 100}%`;
+                
+                // Update navigation buttons
+                if (currentQuestion === 1) {
+                    document.getElementById('prev-btn').style.visibility = 'hidden';
+                }
+                
+                // Enable next button if answer was selected
+                if (answers[currentQuestion]) {
+                    document.getElementById('next-btn').disabled = false;
+                }
+            }
+        }
+        
+        function showResult() {
+            // Hide quiz
+            document.querySelector('.dna-quiz-container').style.display = 'none';
+            
+            // Calculate result based on answers
+            const result = calculateResult();
+            
+            // Update result display
+            document.getElementById('result-icon').textContent = result.icon;
+            document.getElementById('result-type').textContent = result.type;
+            document.getElementById('result-description').textContent = result.description;
+            document.getElementById('stat-aggression').textContent = result.stats.aggression;
+            document.getElementById('stat-tactics').textContent = result.stats.tactics;
+            document.getElementById('stat-mobility').textContent = result.stats.mobility;
+            
+            // Show result
+            document.getElementById('dna-result').classList.add('show');
+        }
+        
+        function calculateResult() {
+            // Simple result calculation based on first answer
+            const firstAnswer = answers[1];
+            
+            if (firstAnswer.includes('Aggressiver')) {
+                return {
+                    icon: '🔥',
+                    type: 'Aggressiver Rusher',
+                    description: 'Du bist ein geborener Kämpfer. Du gehst direkt ins Gefecht, suchst nach Action und fürchtest dich nicht vor Konfrontationen. Hoher Risk, hoher Reward.',
+                    stats: { aggression: 85, tactics: 70, mobility: 90 }
+                };
+            } else if (firstAnswer.includes('Taktischer')) {
+                return {
+                    icon: '🛡️',
+                    type: 'Taktischer Spieler',
+                    description: 'Du planst jeden Schritt. Positioning und Timing sind deine Stärken. Du gewinnst durch Strategie, nicht durch Zufall.',
+                    stats: { aggression: 60, tactics: 95, mobility: 75 }
+                };
+            } else if (firstAnswer.includes('Mobility')) {
+                return {
+                    icon: '🏃',
+                    type: 'Mobility Demon',
+                    description: 'Du bist immer in Bewegung. Niemand kann dich fangen. Rotation und Movement sind deine Superkräfte.',
+                    stats: { aggression: 75, tactics: 70, mobility: 95 }
+                };
+            } else {
+                return {
+                    icon: '🎯',
+                    type: 'Sniper God',
+                    description: 'Du bevorzugst Distanz-Kämpfe. Präzision und Geduld sind deine Waffen. Du eliminierst bevor sie dich sehen.',
+                    stats: { aggression: 70, tactics: 90, mobility: 65 }
+                };
+            }
+        }
+        
+        function shareDNA() {
+            const type = document.getElementById('result-type').textContent;
+            const text = `🧬 Mein Fortnite Battle DNA: ${type}! Teste deine DNA auf fortnitenexus.space/nexus-iq #Fortnite #NexusIQ`;
+            
+            navigator.clipboard.writeText(text).then(() => {
+                alert('DNA Text kopiert! Teile ihn auf Social Media.');
+            });
+        }
+        
+        function restartQuiz() {
+            // Reset quiz
+            currentQuestion = 1;
+            Object.keys(answers).forEach(key => delete answers[key]);
+            
+            // Reset UI
+            document.querySelector('.dna-quiz-container').style.display = 'block';
+            document.getElementById('dna-result').classList.remove('show');
+            
+            // Reset questions
+            for (let i = 1; i <= totalQuestions; i++) {
+                document.getElementById(`question-${i}`).style.display = i === 1 ? 'block' : 'none';
+                const options = document.querySelectorAll(`#question-${i} .quiz-option`);
+                options.forEach(opt => opt.classList.remove('selected'));
+            }
+            
+            // Reset progress bar
+            document.getElementById('progress-fill').style.width = '20%';
+            
+            // Reset navigation
+            document.getElementById('prev-btn').style.visibility = 'hidden';
+            document.getElementById('next-btn').disabled = true;
+        }
+    </script>
+</body>
+</html>

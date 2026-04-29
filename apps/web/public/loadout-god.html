@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loadout God — Fortnite Loadout Builder</title>
+    <meta name="description" content="Build dein perfektes Fortnite Loadout in 60 Sekunden. Der schnellste Loadout-Builder der Welt mit Share-Funktion.">
+    <link rel="stylesheet" href="/shared.css">
+    <style>
+        /* Loadout God spezifische Styles */
+        .loadout-hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: var(--space-xl) var(--space-lg);
+            background: linear-gradient(135deg, var(--bg), var(--bg-secondary));
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .loadout-hero::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, var(--orange-dim) 0%, transparent 70%);
+            transform: translate(-50%, -50%);
+            animation: pulse 4s ease-in-out infinite;
+        }
+        
+        .loadout-title {
+            font-family: var(--font-headline);
+            font-size: clamp(2rem, 6vw, 4rem);
+            font-weight: 900;
+            color: var(--text-light);
+            text-shadow: 0 0 30px var(--orange);
+            margin-bottom: var(--space-md);
+            position: relative;
+            z-index: 1;
+        }
+        
+        .loadout-subtitle {
+            font-size: 1.125rem;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto var(--space-xl);
+            position: relative;
+            z-index: 1;
+        }
+        
+        .loadout-builder {
+            max-width: 1200px;
+            width: 100%;
+            margin: var(--space-xl) auto;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .loadout-slots {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--space-lg);
+            margin-bottom: var(--space-xl);
+        }
+        
+        .loadout-slot {
+            background: linear-gradient(135deg, var(--bg-secondary), var(--bg-tertiary));
+            border: 2px solid var(--orange-dim);
+            border-radius: var(--radius-xl);
+            padding: var(--space-lg);
+            transition: all var(--transition-normal);
+        }
+        
+        .loadout-slot:hover {
+            border-color: var(--orange);
+            box-shadow: var(--shadow-glow-orange);
+            transform: translateY(-5px);
+        }
+        
+        .loadout-slot-title {
+            font-family: var(--font-headline);
+            font-size: 1.125rem;
+            font-weight: 700;
+            color: var(--orange);
+            margin-bottom: var(--space-md);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .weapon-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            gap: var(--space-sm);
+        }
+        
+        .weapon-card {
+            background: rgba(255, 107, 0, 0.05);
+            border: 2px solid rgba(255, 107, 0, 0.2);
+            border-radius: var(--radius-md);
+            padding: var(--space-sm);
+            cursor: pointer;
+            transition: all var(--transition-normal);
+            text-align: center;
+        }
+        
+        .weapon-card:hover {
+            background: var(--orange-dim);
+            border-color: var(--orange);
+            transform: scale(1.05);
+        }
+        
+        .weapon-card.selected {
+            background: var(--orange-dim);
+            border-color: var(--orange);
+            box-shadow: var(--shadow-glow-orange);
+        }
+        
+        .weapon-icon {
+            font-size: 2rem;
+            margin-bottom: var(--space-xs);
+        }
+        
+        .weapon-name {
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--text-light);
+        }
+        
+        .weapon-tier {
+            font-size: 0.625rem;
+            font-weight: 700;
+            color: var(--gold);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .loadout-result {
+            display: none;
+            background: linear-gradient(135deg, var(--bg-secondary), var(--bg-tertiary));
+            border: 2px solid var(--gold);
+            border-radius: var(--radius-xl);
+            padding: var(--space-2xl);
+            margin: var(--space-xl) auto;
+            max-width: 900px;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .loadout-result.show {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        .loadout-result-title {
+            font-family: var(--font-headline);
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: var(--gold);
+            margin-bottom: var(--space-lg);
+            text-shadow: 0 0 20px var(--gold-dim);
+        }
+        
+        .loadout-result-slots {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: var(--space-md);
+            margin-bottom: var(--space-xl);
+        }
+        
+        .result-slot {
+            background: rgba(255, 195, 0, 0.1);
+            border: 1px solid var(--gold-dim);
+            border-radius: var(--radius-md);
+            padding: var(--space-md);
+        }
+        
+        .result-slot-icon {
+            font-size: 2.5rem;
+            margin-bottom: var(--space-sm);
+        }
+        
+        .result-slot-name {
+            font-family: var(--font-headline);
+            font-size: 0.875rem;
+            font-weight: 700;
+            color: var(--text-light);
+        }
+        
+        .loadout-analysis {
+            background: rgba(0, 212, 255, 0.05);
+            border: 1px solid var(--cyan-dim);
+            border-radius: var(--radius-md);
+            padding: var(--space-lg);
+            margin-bottom: var(--space-xl);
+        }
+        
+        .loadout-analysis h3 {
+            font-family: var(--font-headline);
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--cyan);
+            margin-bottom: var(--space-md);
+        }
+        
+        .loadout-analysis p {
+            font-size: 1rem;
+            color: var(--text-muted);
+            line-height: 1.8;
+        }
+        
+        .loadout-tips {
+            background: rgba(255, 107, 0, 0.05);
+            border: 1px solid var(--orange-dim);
+            border-radius: var(--radius-md);
+            padding: var(--space-lg);
+            margin-bottom: var(--space-xl);
+        }
+        
+        .loadout-tips h3 {
+            font-family: var(--font-headline);
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--orange);
+            margin-bottom: var(--space-md);
+        }
+        
+        .loadout-tips ul {
+            list-style: none;
+        }
+        
+        .loadout-tips li {
+            padding: var(--space-xs) 0;
+            color: var(--text-muted);
+        }
+        
+        .loadout-tips li::before {
+            content: '→ ';
+            color: var(--orange);
+        }
+        
+        .loadout-power {
+            font-family: var(--font-headline);
+            font-size: 3rem;
+            font-weight: 900;
+            color: var(--gold);
+            margin-bottom: var(--space-lg);
+        }
+        
+        .loadout-power-label {
+            font-size: 0.875rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .loadout-history {
+            margin-top: var(--space-xl);
+            padding-top: var(--space-xl);
+            border-top: 1px solid rgba(255, 107, 0, 0.2);
+        }
+        
+        .loadout-history h3 {
+            font-family: var(--font-headline);
+            font-size: 1.125rem;
+            font-weight: 700;
+            color: var(--orange);
+            margin-bottom: var(--space-md);
+        }
+        
+        .loadout-history-list {
+            display: flex;
+            gap: var(--space-md);
+            flex-wrap: wrap;
+        }
+        
+        .history-item {
+            background: rgba(255, 107, 0, 0.05);
+            border: 1px solid rgba(255, 107, 0, 0.2);
+            border-radius: var(--radius-md);
+            padding: var(--space-sm);
+            font-size: 0.875rem;
+            color: var(--text-muted);
+            cursor: pointer;
+            transition: all var(--transition-normal);
+        }
+        
+        .history-item:hover {
+            background: var(--orange-dim);
+            border-color: var(--orange);
+        }
+        
+        @media (max-width: 768px) {
+            .loadout-slots {
+                grid-template-columns: 1fr;
+            }
+            
+            .loadout-result-slots {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .weapon-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="/" class="navbar-logo">NEXUS</a>
+            <div class="navbar-links">
+                <a href="/" class="navbar-link">Home</a>
+                <a href="/nexus-iq" class="navbar-link">NEXUS IQ</a>
+                <a href="/loadout-god" class="navbar-link">Loadout God</a>
+                <a href="/creators" class="navbar-link">Creators</a>
+                <a href="/classic" class="navbar-link">Classic</a>
+                <a href="#" class="navbar-discord">Discord</a>
+            </div>
+            <button class="navbar-menu-btn">☰</button>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="navbar-mobile-menu">
+        <button class="navbar-mobile-close">×</button>
+        <a href="/" class="navbar-mobile-link">Home</a>
+        <a href="/nexus-iq" class="navbar-mobile-link">NEXUS IQ</a>
+        <a href="/loadout-god" class="navbar-mobile-link">Loadout God</a>
+        <a href="/creators" class="navbar-mobile-link">Creators</a>
+        <a href="/classic" class="navbar-mobile-link">Classic</a>
+    </div>
+
+    <!-- Custom Cursor -->
+    <div class="custom-cursor"></div>
+    <div class="custom-cursor-ring"></div>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Loadout Hero -->
+        <section class="loadout-hero">
+            <h1 class="loadout-title">LOADOUT GOD</h1>
+            <p class="loadout-subtitle">Build dein perfektes Fortnite Loadout in 60 Sekunden. Der schnellste Loadout-Builder der Welt.</p>
+            
+            <!-- Loadout Builder -->
+            <div class="loadout-builder" id="loadout-builder">
+                <div class="loadout-slots">
+                    <!-- Slot 1: Primärwaffe -->
+                    <div class="loadout-slot">
+                        <h3 class="loadout-slot-title">🎯 PRIMÄRWAFFE</h3>
+                        <div class="weapon-grid" id="slot-primary">
+                            <!-- Waffen werden per JS geladen -->
+                        </div>
+                    </div>
+                    
+                    <!-- Slot 2: Nahkampf -->
+                    <div class="loadout-slot">
+                        <h3 class="loadout-slot-title">💥 NAHKAMPF</h3>
+                        <div class="weapon-grid" id="slot-melee">
+                            <!-- Waffen werden per JS geladen -->
+                        </div>
+                    </div>
+                    
+                    <!-- Slot 3: Utility -->
+                    <div class="loadout-slot">
+                        <h3 class="loadout-slot-title">🧪 UTILITY</h3>
+                        <div class="weapon-grid" id="slot-utility">
+                            <!-- Waffen werden per JS geladen -->
+                        </div>
+                    </div>
+                    
+                    <!-- Slot 4: Wildcard -->
+                    <div class="loadout-slot">
+                        <h3 class="loadout-slot-title">🃏 WILDCARD</h3>
+                        <div class="weapon-grid" id="slot-wildcard">
+                            <!-- Waffen werden per JS geladen -->
+                        </div>
+                    </div>
+                </div>
+                
+                <div style="display: flex; gap: var(--space-md); justify-content: center; flex-wrap: wrap;">
+                    <button class="btn-primary" onclick="generateLoadout()">⚡ LOADOUT GENERIEREN</button>
+                    <button class="btn-secondary" onclick="randomLoadout()">🎲 ZUFÄLLIG</button>
+                </div>
+            </div>
+            
+            <!-- Loadout Result -->
+            <div class="loadout-result" id="loadout-result">
+                <h2 class="loadout-result-title">YOUR GOD LOADOUT</h2>
+                
+                <div class="loadout-result-slots" id="result-slots">
+                    <!-- Slots werden per JS gefüllt -->
+                </div>
+                
+                <div class="loadout-power">
+                    <span class="loadout-power-label">LOADOUT POWER</span>
+                    <span id="power-score">87</span>
+                    <span class="loadout-power-label">/ 100</span>
+                </div>
+                
+                <div class="loadout-analysis">
+                    <h3>🎯 PLAYSTYLE ANALYSE</h3>
+                    <p id="playstyle-text">Dieses Loadout ist perfekt für Aggressive Rusher. Hoher Risk, hoher Reward.</p>
+                </div>
+                
+                <div class="loadout-tips">
+                    <h3>💡 STRATEGIE-TIPPS</h3>
+                    <ul id="strategy-tips">
+                        <li>Nutze die Primärwaffe für Mid-Range Engagements</li>
+                        <li>Wechsle schnell zur Nahkampf-Waffe im Close Combat</li>
+                    </ul>
+                </div>
+                
+                <div style="display: flex; gap: var(--space-md); justify-content: center; flex-wrap: wrap;">
+                    <button class="btn-gold" onclick="shareLoadout()">🔥 TEILEN</button>
+                    <button class="btn-secondary" onclick="resetLoadout()">NEUES LOADOUT</button>
+                </div>
+                
+                <div class="loadout-history">
+                    <h3>📜 LETZTE LOADOUTS</h3>
+                    <div class="loadout-history-list" id="loadout-history">
+                        <!-- History wird per JS gefüllt -->
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>NEXUS</h3>
+                    <p>Die Nr. 1 Fortnite-Kommandozentrale auf Deutsch.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/nexus-iq">NEXUS IQ</a></li>
+                        <li><a href="/loadout-god">Loadout God</a></li>
+                        <li><a href="/creators">Creators</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Social</h3>
+                    <div class="footer-social">
+                        <a href="#" aria-label="Discord">📱</a>
+                        <a href="#" aria-label="TikTok">🎵</a>
+                        <a href="#" aria-label="Reddit">📱</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2026 Fortnite Nexus. Alle Rechte vorbehalten.</p>
+                <p>Nicht mit Epic Games verbunden.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="/shared.js"></script>
+    <script>
+        // Loadout God spezifische JavaScript
+        const weapons = {
+            primary: [
+                { name: 'Striker AR', icon: '🎯', tier: 'S', damage: 42, fireRate: 8.5, reload: 2.2, dps: 357 },
+                { name: 'Nemesis AR', icon: '🎯', tier: 'A', damage: 40, fireRate: 8.0, reload: 2.4, dps: 320 },
+                { name: 'Heavy AR', icon: '🎯', tier: 'A', damage: 45, fireRate: 7.0, reload: 2.6, dps: 315 },
+                { name: 'Thunder Burst AR', icon: '🎯', tier: 'S', damage: 38, fireRate: 9.0, reload: 2.0, dps: 342 },
+                { name: 'Combat AR', icon: '🎯', tier: 'B', damage: 36, fireRate: 7.5, reload: 2.8, dps: 270 }
+            ],
+            melee: [
+                { name: 'Maven Auto Shotgun', icon: '💥', tier: 'S', damage: 90, fireRate: 1.5, reload: 2.8, dps: 135 },
+                { name: 'Twin Mag Shotgun', icon: '💥', tier: 'A', damage: 80, fireRate: 2.0, reload: 2.5, dps: 160 },
+                { name: 'Striker Shotgun', icon: '💥', tier: 'A', damage: 85, fireRate: 1.8, reload: 2.6, dps: 153 },
+                { name: 'Thunder Burst SMG', icon: '💥', tier: 'S', damage: 25, fireRate: 12.0, reload: 1.8, dps: 300 },
+                { name: 'Havoc SMG', icon: '💥', tier: 'B', damage: 22, fireRate: 11.0, reload: 2.0, dps: 242 }
+            ],
+            utility: [
+                { name: 'Shockwave Grenade', icon: '🧪', tier: 'S', damage: 0, fireRate: 0, reload: 0, dps: 0 },
+                { name: 'Overdrive Grenade', icon: '🧪', tier: 'A', damage: 0, fireRate: 0, reload: 0, dps: 0 },
+                { name: 'Chug Splash', icon: '🧪', tier: 'S', damage: 0, fireRate: 0, reload: 0, dps: 0 },
+                { name: 'Medkit', icon: '🧪', tier: 'A', damage: 0, fireRate: 0, reload: 0, dps: 0 },
+                { name: 'Big Pot', icon: '🧪', tier: 'A', damage: 0, fireRate: 0, reload: 0, dps: 0 }
+            ],
+            wildcard: [
+                { name: 'Grappler', icon: '🃏', tier: 'S', damage: 0, fireRate: 0, reload: 0, dps: 0 },
+                { name: 'Shockwave Bow', icon: '🃏', tier: 'A', damage: 0, fireRate: 0, reload: 0, dps: 0 },
+                { name: 'Launch Pad', icon: '🃏', tier: 'A', damage: 0, fireRate: 0, reload: 0, dps: 0 },
+                { name: 'Oasis Brazier', icon: '🃏', tier: 'B', damage: 0, fireRate: 0, reload: 0, dps: 0 },
+                { name: 'Flowberry Fizz', icon: '🃏', tier: 'A', damage: 0, fireRate: 0, reload: 0, dps: 0 }
+            ]
+        };
+        
+        const selectedWeapons = {
+            primary: null,
+            melee: null,
+            utility: null,
+            wildcard: null
+        };
+        
+        // Waffen in Slots laden
+        function loadWeapons() {
+            Object.keys(weapons).forEach(slot => {
+                const container = document.getElementById(`slot-${slot}`);
+                weapons[slot].forEach((weapon, index) => {
+                    const card = document.createElement('div');
+                    card.className = 'weapon-card';
+                    card.innerHTML = `
+                        <div class="weapon-icon">${weapon.icon}</div>
+                        <div class="weapon-name">${weapon.name}</div>
+                        <div class="weapon-tier">${weapon.tier}</div>
+                    `;
+                    card.onclick = () => selectWeapon(slot, weapon, card);
+                    container.appendChild(card);
+                });
+            });
+        }
+        
+        // Waffe auswählen
+        function selectWeapon(slot, weapon, card) {
+            // Remove selected class from all cards in slot
+            const cards = document.querySelectorAll(`#slot-${slot} .weapon-card`);
+            cards.forEach(c => c.classList.remove('selected'));
+            
+            // Add selected class to clicked card
+            card.classList.add('selected');
+            
+            // Store selection
+            selectedWeapons[slot] = weapon;
+        }
+        
+        // Loadout generieren
+        function generateLoadout() {
+            // Check if all slots are selected
+            const allSelected = Object.values(selectedWeapons).every(w => w !== null);
+            if (!allSelected) {
+                alert('Bitte wähle eine Waffe für jeden Slot aus!');
+                return;
+            }
+            
+            // Calculate power score
+            const powerScore = calculatePowerScore();
+            
+            // Determine playstyle
+            const playstyle = determinePlaystyle();
+            
+            // Generate strategy tips
+            const tips = generateStrategyTips();
+            
+            // Update result display
+            document.getElementById('power-score').textContent = powerScore;
+            document.getElementById('playstyle-text').textContent = playstyle.text;
+            document.getElementById('strategy-tips').innerHTML = tips.map(tip => `<li>${tip}</li>`).join('');
+            
+            // Update result slots
+            const resultSlots = document.getElementById('result-slots');
+            resultSlots.innerHTML = '';
+            Object.keys(selectedWeapons).forEach(slot => {
+                const weapon = selectedWeapons[slot];
+                const slotElement = document.createElement('div');
+                slotElement.className = 'result-slot';
+                slotElement.innerHTML = `
+                    <div class="result-slot-icon">${weapon.icon}</div>
+                    <div class="result-slot-name">${weapon.name}</div>
+                `;
+                resultSlots.appendChild(slotElement);
+            });
+            
+            // Hide builder, show result
+            document.getElementById('loadout-builder').style.display = 'none';
+            document.getElementById('loadout-result').classList.add('show');
+            
+            // Save to history
+            saveToHistory();
+        }
+        
+        // Power Score berechnen
+        function calculatePowerScore() {
+            let score = 0;
+            let count = 0;
+            
+            Object.values(selectedWeapons).forEach(weapon => {
+                if (weapon.tier === 'S') score += 25;
+                else if (weapon.tier === 'A') score += 20;
+                else if (weapon.tier === 'B') score += 15;
+                count++;
+            });
+            
+            return Math.min(Math.floor(score / count * 1.2), 100);
+        }
+        
+        // Playstyle bestimmen
+        function determinePlaystyle() {
+            const primary = selectedWeapons.primary.name;
+            const melee = selectedWeapons.melee.name;
+            
+            if (primary.includes('Striker') && melee.includes('Shotgun')) {
+                return { text: 'Dieses Loadout ist perfekt für Aggressive Rusher. Hoher Risk, hoher Reward.', type: 'aggressive' };
+            } else if (primary.includes('Heavy') && melee.includes('SMG')) {
+                return { text: 'Dieses Loadout ist perfekt für Taktische Spieler. Ausgewogen und vielseitig.', type: 'tactical' };
+            } else if (primary.includes('Thunder') && melee.includes('SMG')) {
+                return { text: 'Dieses Loadout ist perfekt für Mobility Demons. Schnelles Spray und Rotation.', type: 'mobility' };
+            } else {
+                return { text: 'Dieses Loadout ist perfekt für Allround Player. Vielseitig und anpassungsfähig.', type: 'allround' };
+            }
+        }
+        
+        // Strategie-Tipps generieren
+        function generateStrategyTips() {
+            const tips = [
+                'Nutze die Primärwaffe für Mid-Range Engagements',
+                'Wechsle schnell zur Nahkampf-Waffe im Close Combat',
+                'Utility-Items für Rotation und Heilung nutzen',
+                'Wildcard für spezialisierte Situationen'
+            ];
+            
+            return tips.slice(0, 2);
+        }
+        
+        // Zufälliges Loadout
+        function randomLoadout() {
+            Object.keys(weapons).forEach(slot => {
+                const randomIndex = Math.floor(Math.random() * weapons[slot].length);
+                const weapon = weapons[slot][randomIndex];
+                const cards = document.querySelectorAll(`#slot-${slot} .weapon-card`);
+                cards[randomIndex].click();
+            });
+        }
+        
+        // Loadout zurücksetzen
+        function resetLoadout() {
+            document.getElementById('loadout-result').classList.remove('show');
+            document.getElementById('loadout-builder').style.display = 'block';
+            
+            Object.keys(selectedWeapons).forEach(key => {
+                selectedWeapons[key] = null;
+            });
+            
+            const cards = document.querySelectorAll('.weapon-card');
+            cards.forEach(card => card.classList.remove('selected'));
+        }
+        
+        // Loadout teilen
+        function shareLoadout() {
+            const weaponsList = Object.values(selectedWeapons).map(w => w.name).join(' + ');
+            const text = `⚡ Mein God Loadout: ${weaponsList} auf fortnitenexus.space/loadout-god #Fortnite #LoadoutGod`;
+            
+            navigator.clipboard.writeText(text).then(() => {
+                alert('Loadout Text kopiert! Teile ihn auf Social Media.');
+            });
+        }
+        
+        // In History speichern
+        function saveToHistory() {
+            const history = JSON.parse(localStorage.getItem('loadoutHistory')) || [];
+            const loadout = {
+                weapons: Object.values(selectedWeapons).map(w => w.name),
+                date: new Date().toISOString()
+            };
+            
+            history.unshift(loadout);
+            if (history.length > 3) history.pop();
+            
+            localStorage.setItem('loadoutHistory', JSON.stringify(history));
+            loadHistory();
+        }
+        
+        // History laden
+        function loadHistory() {
+            const history = JSON.parse(localStorage.getItem('loadoutHistory')) || [];
+            const container = document.getElementById('loadout-history');
+            container.innerHTML = '';
+            
+            history.forEach((loadout, index) => {
+                const item = document.createElement('div');
+                item.className = 'history-item';
+                item.textContent = loadout.weapons.join(' + ');
+                item.onclick = () => loadLoadoutFromHistory(loadout);
+                container.appendChild(item);
+            });
+        }
+        
+        // Loadout aus History laden
+        function loadLoadoutFromHistory(loadout) {
+            // Reset current selection
+            resetLoadout();
+            
+            // Load weapons from history (simplified)
+            alert('Loadout aus History geladen (Demo-Funktion)');
+        }
+        
+        // Init
+        loadWeapons();
+        loadHistory();
+    </script>
+</body>
+</html>

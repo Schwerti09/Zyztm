@@ -1,0 +1,99 @@
+{
+  "last_updated": "2026-04-29T10:00:00Z",
+  "season": "Chapter 7 Season 2",
+  "weapons": [
+    {
+      "id": "striker-ar",
+      "name": "Striker AR",
+      "type": "assault_rifle",
+      "tier": "S",
+      "damage": 42,
+      "fire_rate": 8.5,
+      "reload": 2.2,
+      "dps": 357,
+      "meta_reason": "Hoher DPS, gute Accuracy, Mid-Range Dominanz"
+    },
+    {
+      "id": "nemesis-ar",
+      "name": "Nemesis AR",
+      "type": "assault_rifle",
+      "tier": "A",
+      "damage": 40,
+      "fire_rate": 8.0,
+      "reload": 2.4,
+      "dps": 320,
+      "meta_reason": "Solide Alternative, etwas geringerer DPS"
+    },
+    {
+      "id": "heavy-ar",
+      "name": "Heavy AR",
+      "type": "assault_rifle",
+      "tier": "A",
+      "damage": 45,
+      "fire_rate": 7.0,
+      "reload": 2.6,
+      "dps": 315,
+      "meta_reason": "Hoher Damage pro Shot, langsamer Fire Rate"
+    },
+    {
+      "id": "thunder-burst-ar",
+      "name": "Thunder Burst AR",
+      "type": "assault_rifle",
+      "tier": "S",
+      "damage": 38,
+      "fire_rate": 9.0,
+      "reload": 2.0,
+      "dps": 342,
+      "meta_reason": "Schnellster Fire Rate, exzellent für Aggressive Rusher"
+    },
+    {
+      "id": "maven-auto-shotgun",
+      "name": "Maven Auto Shotgun",
+      "type": "shotgun",
+      "tier": "S",
+      "damage": 90,
+      "fire_rate": 1.5,
+      "reload": 2.8,
+      "dps": 135,
+      "meta_reason": "Höchster Damage, Auto-Mode für schnelle Kills"
+    },
+    {
+      "id": "twin-mag-shotgun",
+      "name": "Twin Mag Shotgun",
+      "type": "shotgun",
+      "tier": "A",
+      "damage": 80,
+      "fire_rate": 2.0,
+      "reload": 2.5,
+      "dps": 160,
+      "meta_reason": "Zwei Schüsse ohne Nachladen, gut für Boxfights"
+    },
+    {
+      "id": "thunder-burst-smg",
+      "name": "Thunder Burst SMG",
+      "type": "smg",
+      "tier": "S",
+      "damage": 25,
+      "fire_rate": 12.0,
+      "reload": 1.8,
+      "dps": 300,
+      "meta_reason": "Höchster DPS, exzellent für Close Range"
+    },
+    {
+      "id": "havoc-smg",
+      "name": "Havoc SMG",
+      "type": "smg",
+      "tier": "B",
+      "damage": 22,
+      "fire_rate": 11.0,
+      "reload": 2.0,
+      "dps": 242,
+      "meta_reason": "Solide Alternative, etwas geringerer DPS"
+    }
+  ],
+  "tier_lists": {
+    "assault_rifle": ["striker-ar", "thunder-burst-ar", "nemesis-ar", "heavy-ar"],
+    "shotgun": ["maven-auto-shotgun", "twin-mag-shotgun"],
+    "smg": ["thunder-burst-smg", "havoc-smg"]
+  }
+}

@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Creators — Fortnite Creator Hub</title>
+    <meta name="description" content="Die besten deutschen Fortnite-Creator an einem Ort. Entdecke, folge und werde selbst Creator.">
+    <link rel="stylesheet" href="/shared.css">
+    <style>
+        /* Creators spezifische Styles */
+        .creators-hero {
+            min-height: 50vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: var(--space-xl) var(--space-lg);
+            background: linear-gradient(135deg, var(--bg), var(--bg-secondary));
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .creators-hero::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, var(--gold-dim) 0%, transparent 70%);
+            transform: translate(-50%, -50%);
+            animation: pulse 4s ease-in-out infinite;
+        }
+        
+        .creators-title {
+            font-family: var(--font-headline);
+            font-size: clamp(2rem, 6vw, 4rem);
+            font-weight: 900;
+            color: var(--text-light);
+            text-shadow: 0 0 30px var(--gold);
+            margin-bottom: var(--space-md);
+            position: relative;
+            z-index: 1;
+        }
+        
+        .creators-subtitle {
+            font-size: 1.125rem;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto var(--space-lg);
+            position: relative;
+            z-index: 1;
+        }
+        
+        .creators-stats {
+            display: flex;
+            gap: var(--space-xl);
+            justify-content: center;
+            flex-wrap: wrap;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .creators-stat {
+            text-align: center;
+        }
+        
+        .creators-stat-value {
+            font-family: var(--font-headline);
+            font-size: 2rem;
+            font-weight: 900;
+            color: var(--gold);
+        }
+        
+        .creators-stat-label {
+            font-size: 0.875rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .creators-grid {
+            max-width: 1400px;
+            margin: var(--space-xl) auto;
+            padding: 0 var(--space-lg);
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: var(--space-xl);
+        }
+        
+        .creator-card {
+            background: linear-gradient(135deg, var(--bg-secondary), var(--bg-tertiary));
+            border: 2px solid var(--gold-dim);
+            border-radius: var(--radius-xl);
+            padding: var(--space-xl);
+            transition: all var(--transition-normal);
+            text-align: center;
+        }
+        
+        .creator-card:hover {
+            border-color: var(--gold);
+            box-shadow: var(--shadow-glow-gold);
+            transform: translateY(-10px);
+        }
+        
+        .creator-avatar {
+            font-size: 4rem;
+            margin-bottom: var(--space-md);
+        }
+        
+        .creator-name {
+            font-family: var(--font-headline);
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-light);
+            margin-bottom: var(--space-sm);
+        }
+        
+        .creator-badges {
+            display: flex;
+            gap: var(--space-xs);
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: var(--space-md);
+        }
+        
+        .creator-badge {
+            font-size: 0.75rem;
+            padding: var(--space-xs) var(--space-sm);
+            border-radius: var(--radius-sm);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .creator-badge.twitch {
+            background: #9146FF;
+            color: var(--text-light);
+        }
+        
+        .creator-badge.youtube {
+            background: #FF0000;
+            color: var(--text-light);
+        }
+        
+        .creator-badge.tiktok {
+            background: #000000;
+            color: var(--text-light);
+        }
+        
+        .creator-badge.dna {
+            background: var(--cyan-dim);
+            color: var(--cyan);
+            border: 1px solid var(--cyan);
+        }
+        
+        .creator-bio {
+            font-size: 0.875rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+            margin-bottom: var(--space-lg);
+        }
+        
+        .creator-follow-btn {
+            width: 100%;
+            padding: var(--space-sm);
+            background: linear-gradient(135deg, var(--gold), var(--gold-dim));
+            color: var(--text-dark);
+            border: none;
+            border-radius: var(--radius-md);
+            font-family: var(--font-headline);
+            font-weight: 700;
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all var(--transition-normal);
+        }
+        
+        .creator-follow-btn:hover {
+            transform: scale(1.05);
+            box-shadow: var(--shadow-glow-gold);
+        }
+        
+        .creators-become {
+            max-width: 800px;
+            margin: var(--space-2xl) auto;
+            padding: var(--space-2xl);
+            background: linear-gradient(135deg, var(--bg-secondary), var(--bg-tertiary));
+            border: 2px solid var(--cyan-dim);
+            border-radius: var(--radius-xl);
+            text-align: center;
+        }
+        
+        .creators-become h2 {
+            font-family: var(--font-headline);
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--cyan);
+            margin-bottom: var(--space-lg);
+        }
+        
+        .creators-benefits {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--space-lg);
+            margin-bottom: var(--space-xl);
+        }
+        
+        .creators-benefit {
+            padding: var(--space-md);
+            background: rgba(0, 212, 255, 0.05);
+            border: 1px solid var(--cyan-dim);
+            border-radius: var(--radius-md);
+        }
+        
+        .creators-benefit-icon {
+            font-size: 2rem;
+            margin-bottom: var(--space-sm);
+        }
+        
+        .creators-benefit-text {
+            font-size: 0.875rem;
+            color: var(--text-muted);
+        }
+        
+        .creators-form {
+            max-width: 500px;
+            margin: 0 auto;
+            text-align: left;
+        }
+        
+        .creators-form label {
+            display: block;
+            font-family: var(--font-headline);
+            font-size: 0.875rem;
+            font-weight: 700;
+            color: var(--text-light);
+            margin-bottom: var(--space-sm);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .creators-form input,
+        .creators-form select,
+        .creators-form textarea {
+            width: 100%;
+            padding: var(--space-sm);
+            margin-bottom: var(--space-md);
+            background: var(--bg);
+            border: 2px solid rgba(0, 212, 255, 0.2);
+            border-radius: var(--radius-md);
+            color: var(--text-light);
+            font-family: var(--font-body);
+            font-size: 1rem;
+            transition: all var(--transition-normal);
+        }
+        
+        .creators-form input:focus,
+        .creators-form select:focus,
+        .creators-form textarea:focus {
+            outline: none;
+            border-color: var(--cyan);
+            box-shadow: var(--shadow-glow-cyan);
+        }
+        
+        .creators-filters {
+            display: flex;
+            gap: var(--space-md);
+            justify-content: center;
+            flex-wrap: wrap;
+            margin: var(--space-xl) 0;
+            padding: 0 var(--space-lg);
+        }
+        
+        .creators-filter {
+            padding: var(--space-sm) var(--space-md);
+            background: var(--bg-secondary);
+            border: 2px solid rgba(255, 195, 0, 0.2);
+            border-radius: var(--radius-md);
+            color: var(--text-light);
+            font-family: var(--font-headline);
+            font-size: 0.875rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all var(--transition-normal);
+        }
+        
+        .creators-filter:hover,
+        .creators-filter.active {
+            background: var(--gold-dim);
+            border-color: var(--gold);
+            color: var(--text-dark);
+        }
+        
+        @media (max-width: 768px) {
+            .creators-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .creators-benefits {
+                grid-template-columns: 1fr;
+            }
+            
+            .creators-stats {
+                gap: var(--space-md);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="/" class="navbar-logo">NEXUS</a>
+            <div class="navbar-links">
+                <a href="/" class="navbar-link">Home</a>
+                <a href="/nexus-iq" class="navbar-link">NEXUS IQ</a>
+                <a href="/loadout-god" class="navbar-link">Loadout God</a>
+                <a href="/creators" class="navbar-link">Creators</a>
+                <a href="/classic" class="navbar-link">Classic</a>
+                <a href="#" class="navbar-discord">Discord</a>
+            </div>
+            <button class="navbar-menu-btn">☰</button>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="navbar-mobile-menu">
+        <button class="navbar-mobile-close">×</button>
+        <a href="/" class="navbar-mobile-link">Home</a>
+        <a href="/nexus-iq" class="navbar-mobile-link">NEXUS IQ</a>
+        <a href="/loadout-god" class="navbar-mobile-link">Loadout God</a>
+        <a href="/creators" class="navbar-mobile-link">Creators</a>
+        <a href="/classic" class="navbar-mobile-link">Classic</a>
+    </div>
+
+    <!-- Custom Cursor -->
+    <div class="custom-cursor"></div>
+    <div class="custom-cursor-ring"></div>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Creators Hero -->
+        <section class="creators-hero">
+            <h1 class="creators-title">CREATOR HUB</h1>
+            <p class="creators-subtitle">Die besten deutschen Fortnite-Creator an einem Ort. Entdecke, folge und werde selbst Creator.</p>
+            
+            <div class="creators-stats">
+                <div class="creators-stat">
+                    <div class="creators-stat-value countup" data-target="20">0</div>
+                    <div class="creators-stat-label">Creators</div>
+                </div>
+                <div class="creators-stat">
+                    <div class="creators-stat-value countup" data-target="4">0</div>
+                    <div class="creators-stat-label">Plattformen</div>
+                </div>
+                <div class="creators-stat">
+                    <div class="creators-stat-value countup" data-target="150000">0</div>
+                    <div class="creators-stat-label">Reichweite</div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Creators Filters -->
+        <div class="creators-filters">
+            <button class="creators-filter active" onclick="filterCreators('all')">Alle</button>
+            <button class="creators-filter" onclick="filterCreators('twitch')">Twitch</button>
+            <button class="creators-filter" onclick="filterCreators('youtube')">YouTube</button>
+            <button class="creators-filter" onclick="filterCreators('tiktok')">TikTok</button>
+        </div>
+        
+        <!-- Creators Grid -->
+        <section class="creators-grid" id="creators-grid">
+            <!-- Creator Cards werden per JS geladen -->
+        </section>
+        
+        <!-- Become Creator Section -->
+        <section class="creators-become">
+            <h2>🎬 Du erstellst Fortnite-Content?</h2>
+            
+            <div class="creators-benefits">
+                <div class="creators-benefit">
+                    <div class="creators-benefit-icon">📈</div>
+                    <div class="creators-benefit-text">Mehr Reichweite durch Featured-Listings</div>
+                </div>
+                <div class="creators-benefit">
+                    <div class="creators-benefit-icon">🎯</div>
+                    <div class="creators-benefit-text">Gezielte Zielgruppe: Fortnite-Spieler</div>
+                </div>
+                <div class="creators-benefit">
+                    <div class="creators-benefit-icon">💰</div>
+                    <div class="creators-benefit-text">Monetarisierungsmöglichkeiten</div>
+                </div>
+            </div>
+            
+            <form class="creators-form" onsubmit="submitCreatorForm(event)">
+                <label for="creator-name">Name</label>
+                <input type="text" id="creator-name" name="name" required placeholder="Dein Creator-Name">
+                
+                <label for="creator-platform">Plattform</label>
+                <select id="creator-platform" name="platform" required>
+                    <option value="">Wähle Plattform</option>
+                    <option value="twitch">Twitch</option>
+                    <option value="youtube">YouTube</option>
+                    <option value="tiktok">TikTok</option>
+                </select>
+                
+                <label for="creator-dna">Spielertyp (DNA)</label>
+                <select id="creator-dna" name="dna" required>
+                    <option value="">Wähle Spielertyp</option>
+                    <option value="aggressive">Aggressiver Rusher</option>
+                    <option value="tactical">Taktischer Spieler</option>
+                    <option value="mobility">Mobility Demon</option>
+                    <option value="sniper">Sniper God</option>
+                </select>
+                
+                <label for="creator-bio">Kurzbeschreibung</label>
+                <textarea id="creator-bio" name="bio" rows="4" required placeholder="Erzähl kurz über dich und deinen Content..."></textarea>
+                
+                <button type="submit" class="btn-gold" style="width: 100%;">🚀 Creator werden</button>
+            </form>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>NEXUS</h3>
+                    <p>Die Nr. 1 Fortnite-Kommandozentrale auf Deutsch.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/nexus-iq">NEXUS IQ</a></li>
+                        <li><a href="/loadout-god">Loadout God</a></li>
+                        <li><a href="/creators">Creators</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Social</h3>
+                    <div class="footer-social">
+                        <a href="#" aria-label="Discord">📱</a>
+                        <a href="#" aria-label="TikTok">🎵</a>
+                        <a href="#" aria-label="Reddit">📱</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2026 Fortnite Nexus. Alle Rechte vorbehalten.</p>
+                <p>Nicht mit Epic Games verbunden.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="/shared.js"></script>
+    <script>
+        // Creators spezifische JavaScript
+        const creators = [
+            {
+                name: 'NexuS_Pro',
+                avatar: '🎮',
+                platforms: ['twitch', 'youtube'],
+                dna: 'aggressive',
+                bio: 'Pro-Spieler mit 5 Jahren Erfahrung. Daily Streams & High-Level Gameplay.',
+                followers: '50K'
+            },
+            {
+                name: 'TacticalQueen',
+                avatar: '👑',
+                platforms: ['youtube', 'tiktok'],
+                dna: 'tactical',
+                bio: 'Taktische Guides & Building-Tutorials. Lerne mit mir Schritt für Schritt.',
+                followers: '35K'
+            },
+            {
+                name: 'MobilityKing',
+                avatar: '🏃',
+                platforms: ['twitch', 'tiktok'],
+                dna: 'mobility',
+                bio: 'Movement-Spezialist. Schnellste Rotations & trickiest Moves.',
+                followers: '28K'
+            },
+            {
+                name: 'SniperGod_DE',
+                avatar: '🎯',
+                platforms: ['youtube'],
+                dna: 'sniper',
+                bio: 'Long-Range Precision. Sniping Guides & Aim-Training.',
+                followers: '22K'
+            },
+            {
+                name: 'BuildMaster',
+                avatar: '🏗️',
+                platforms: ['twitch', 'youtube'],
+                dna: 'tactical',
+                bio: 'Building-Experte. Von Basics bis Advanced Freebuilds.',
+                followers: '18K'
+            },
+            {
+                name: 'RushDemon',
+                avatar: '🔥',
+                platforms: ['tiktok'],
+                dna: 'aggressive',
+                bio: 'Aggressive Plays & Highlights. Pure Action.',
+                followers: '15K'
+            },
+            {
+                name: 'StratGuru',
+                avatar: '🧠',
+                platforms: ['youtube'],
+                dna: 'tactical',
+                bio: 'Strategie-Analysen & Meta-Updates. Bleib immer informiert.',
+                followers: '12K'
+            },
+            {
+                name: 'CreativeBuilder',
+                avatar: '🎨',
+                platforms: ['twitch', 'youtube', 'tiktok'],
+                dna: 'mobility',
+                bio: 'Creative Maps & Custom Games. Entdecke neue Spielmodi.',
+                followers: '10K'
+            }
+        ];
+        
+        // Creators laden
+        function loadCreators(filter = 'all') {
+            const container = document.getElementById('creators-grid');
+            container.innerHTML = '';
+            
+            const filteredCreators = filter === 'all' 
+                ? creators 
+                : creators.filter(c => c.platforms.includes(filter));
+            
+            filteredCreators.forEach((creator, index) => {
+                const card = document.createElement('div');
+                card.className = 'creator-card';
+                card.innerHTML = `
+                    <div class="creator-avatar">${creator.avatar}</div>
+                    <h3 class="creator-name">${creator.name}</h3>
+                    <div class="creator-badges">
+                        ${creator.platforms.map(p => `<span class="creator-badge ${p}">${p}</span>`).join('')}
+                        <span class="creator-badge dna">${creator.dna}</span>
+                    </div>
+                    <p class="creator-bio">${creator.bio}</p>
+                    <p class="text-muted" style="margin-bottom: var(--space-md);">👥 ${creator.followers} Followers</p>
+                    <button class="creator-follow-btn" onclick="followCreator('${creator.name}')">FOLGEN</button>
+                `;
+                container.appendChild(card);
+            });
+        }
+        
+        // Filter-Funktion
+        function filterCreators(filter) {
+            // Update active filter button
+            document.querySelectorAll('.creators-filter').forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.textContent.toLowerCase().includes(filter) || (filter === 'all' && btn.textContent === 'Alle')) {
+                    btn.classList.add('active');
+                }
+            });
+            
+            // Load filtered creators
+            loadCreators(filter);
+        }
+        
+        // Follow Creator
+        function followCreator(name) {
+            alert(`Du folgst jetzt ${name}! 🎉`);
+        }
+        
+        // Creator Form submit
+        function submitCreatorForm(event) {
+            event.preventDefault();
+            
+            const name = document.getElementById('creator-name').value;
+            const platform = document.getElementById('creator-platform').value;
+            const dna = document.getElementById('creator-dna').value;
+            const bio = document.getElementById('creator-bio').value;
+            
+            // In echten Szenario: Send to backend via API
+            // Für Demo: Öffne Discord Link
+            const discordUrl = 'https://discord.gg/fortnitenexus';
+            window.open(discordUrl, '_blank');
+            
+            alert(`Danke ${name}! Wir prüfen deine Anmeldung und melden uns auf Discord.`);
+            
+            // Reset form
+            event.target.reset();
+        }
+        
+        // Init
+        loadCreators();
+    </script>
+</body>
+</html>

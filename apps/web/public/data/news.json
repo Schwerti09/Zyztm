@@ -1,0 +1,87 @@
+{
+  "last_updated": "2026-04-29T10:00:00Z",
+  "patch_updates": [
+    {
+      "id": "v7.20",
+      "version": "7.20",
+      "date": "2026-04-25",
+      "title": "Chapter 7 Season 2 Patch Notes",
+      "summary": "Neue Waffen, Map-Änderungen und Gameplay-Updates",
+      "highlights": [
+        "Thunder Burst AR hinzugefügt",
+        "Tilted Towers zurückgekehrt",
+        "Vehicle Changes: Hoverboard nerft",
+        "Building Materials: Wood HP erhöht"
+      ],
+      "weapons_added": ["thunder-burst-ar"],
+      "weapons_removed": [],
+      "map_changes": ["tilted-towers-returned"],
+      "link": "/classic/patch/v7.20"
+    },
+    {
+      "id": "v7.10",
+      "version": "7.10",
+      "date": "2026-04-18",
+      "title": "Hotfix v7.10",
+      "summary": "Bug Fixes und Balance Changes",
+      "highlights": [
+        "Maven Auto Shotgun Damage leicht reduziert",
+        "Matchmaking verbessert",
+        "Performance Optimierungen"
+      ],
+      "weapons_added": [],
+      "weapons_removed": [],
+      "map_changes": [],
+      "link": "/classic/patch/v7.10"
+    },
+    {
+      "id": "v7.00",
+      "version": "7.00",
+      "date": "2026-04-11",
+      "title": "Chapter 7 Season 2 Start",
+      "summary": "Neue Season, neue Map, neue Waffen",
+      "highlights": [
+        "Striker AR hinzugefügt",
+        "Neue Biome: Cyber City",
+        "Battle Pass Chapter 7 Season 2",
+        "Zero Build Mode Updates"
+      ],
+      "weapons_added": ["striker-ar", "maven-auto-shotgun"],
+      "weapons_removed": [],
+      "map_changes": ["cyber-city-biome"],
+      "link": "/classic/patch/v7.00"
+    }
+  ],
+  "news_articles": [
+    {
+      "id": "meta-analysis-0429",
+      "title": "Meta-Analysis: Die besten Waffen in Chapter 7 Season 2",
+      "date": "2026-04-29",
+      "category": "meta_analysis",
+      "summary": "Eine detaillierte Analyse der aktuellen Meta-Waffen und warum sie dominieren.",
+      "author": "NexuS_Pro",
+      "tags": ["meta", "weapons", "tier-list"],
+      "link": "/classic/meta-analysis/beste-waffen-c7s2"
+    },
+    {
+      "id": "patch-seismograph-0425",
+      "title": "Patch Seismograph: v7.20 Impact Analysis",
+      "date": "2026-04-25",
+      "category": "patch_update",
+      "summary": "Wie der neueste Patch das Meta verändert hat und welche Strategien jetzt funktionieren.",
+      "author": "TacticalQueen",
+      "tags": ["patch", "meta", "analysis"],
+      "link": "/classic/patch-seismograph/v7.20"
+    },
+    {
+      "id": "building-guide-0420",
+      "title": "Building Guide 2026: Von Beginner bis Pro",
+      "date": "2026-04-20",
+      "category": "guide",
+      "summary": "Der ultimative Building-Guide für alle Skill-Levels mit Schritt-für-Schritt Anleitungen.",
+      "author": "BuildMaster",
+      "tags": ["building", "guide", "tutorial"],
+      "link": "/classic/guides/building-2026"
+    }
+  ]
+}
