@@ -1,0 +1,710 @@
+{
+  "last_updated": "2026-04-29T16:00:00Z",
+  "calendar": {
+    "week_1": {
+      "theme": "Fundament (Evergreen-Artikel zuerst)",
+      "days": [
+        {
+          "day": "Montag",
+          "title": "Fortnite Aim Guide",
+          "word_count": 3500,
+          "type": "guide",
+          "priority": "high"
+        },
+        {
+          "day": "Dienstag",
+          "title": "Fortnite Building Guide",
+          "word_count": 4000,
+          "type": "guide",
+          "priority": "high"
+        },
+        {
+          "day": "Mittwoch",
+          "title": "Fortnite Best Settings 2026",
+          "word_count": 3500,
+          "type": "guide",
+          "priority": "high"
+        },
+        {
+          "day": "Donnerstag",
+          "title": "Fortnite Weapon Tier List",
+          "word_count": 3000,
+          "type": "tier_list",
+          "priority": "high"
+        },
+        {
+          "day": "Freitag",
+          "title": "Fortnite Ranked Tips",
+          "word_count": 3500,
+          "type": "guide",
+          "priority": "high"
+        },
+        {
+          "day": "Samstag",
+          "title": "Fortnite Meta Strategy",
+          "word_count": 4000,
+          "type": "guide",
+          "priority": "high"
+        },
+        {
+          "day": "Sonntag",
+          "title": "Content-Review & Planung",
+          "word_count": 0,
+          "type": "planning",
+          "priority": "medium"
+        }
+      ]
+    },
+    "week_2": {
+      "theme": "Fundament (Evergreen-Artikel zuerst)",
+      "days": [
+        {
+          "day": "Montag",
+          "title": "Fortnite Sensitivity Calculator Guide",
+          "word_count": 2500,
+          "type": "guide",
+          "priority": "high"
+        },
+        {
+          "day": "Dienstag",
+          "title": "Fortnite Keybinds Pro Guide",
+          "word_count": 2500,
+          "type": "guide",
+          "priority": "high"
+        },
+        {
+          "day": "Mittwoch",
+          "title": "Fortnite Controller Settings",
+          "word_count": 2000,
+          "type": "guide",
+          "priority": "high"
+        },
+        {
+          "day": "Donnerstag",
+          "title": "Fortnite Mobile Settings",
+          "word_count": 2000,
+          "type": "guide",
+          "priority": "high"
+        },
+        {
+          "day": "Freitag",
+          "title": "Fortnite PC Settings",
+          "word_count": 2500,
+          "type": "guide",
+          "priority": "high"
+        },
+        {
+          "day": "Samstag",
+          "title": "Fortnite Graphics Settings",
+          "word_count": 2000,
+          "type": "guide",
+          "priority": "high"
+        },
+        {
+          "day": "Sonntag",
+          "title": "Content-Review & Planung",
+          "word_count": 0,
+          "type": "planning",
+          "priority": "medium"
+        }
+      ]
+    },
+    "week_3": {
+      "theme": "Fundament (Evergreen-Artikel zuerst)",
+      "days": [
+        {
+          "day": "Montag",
+          "title": "Fortnite Chapter 6 Season 2 Map Guide",
+          "word_count": 3000,
+          "type": "guide",
+          "priority": "high"
+        },
+        {
+          "day": "Dienstag",
+          "title": "Fortnite Best Landing Spots",
+          "word_count": 2500,
+          "type": "guide",
+          "priority": "high"
+        },
+        {
+          "day": "Mittwoch",
+          "title": "Fortnite POI Locations",
+          "word_count": 2000,
+          "type": "guide",
+          "priority": "high"
+        },
+        {
+          "day": "Donnerstag",
+          "title": "Fortnite Chest Spawn Rates",
+          "word_count": 2000,
+          "type": "guide",
+          "priority": "high"
+        },
+        {
+          "day": "Freitag",
+          "title": "Fortnite Vehicle Spawns",
+          "word_count": 1500,
+          "type": "guide",
+          "priority": "medium"
+        },
+        {
+          "day": "Samstag",
+          "title": "Fortnite Hiding Spots",
+          "word_count": 1500,
+          "type": "guide",
+          "priority": "medium"
+        },
+        {
+          "day": "Sonntag",
+          "title": "Content-Review & Planung",
+          "word_count": 0,
+          "type": "planning",
+          "priority": "medium"
+        }
+      ]
+    },
+    "week_4": {
+      "theme": "Fundament (Evergreen-Artikel zuerst)",
+      "days": [
+        {
+          "day": "Montag",
+          "title": "Fortnite Assault Rifles Guide",
+          "word_count": 2500,
+          "type": "guide",
+          "priority": "high"
+        },
+        {
+          "day": "Dienstag",
+          "title": "Fortnite Shotguns Guide",
+          "word_count": 2500,
+          "type": "guide",
+          "priority": "high"
+        },
+        {
+          "day": "Mittwoch",
+          "title": "Fortnite SMG Guide",
+          "word_count": 2000,
+          "type": "guide",
+          "priority": "high"
+        },
+        {
+          "day": "Donnerstag",
+          "title": "Fortnite Sniper Guide",
+          "word_count": 2000,
+          "type": "guide",
+          "priority": "high"
+        },
+        {
+          "day": "Freitag",
+          "title": "Fortnite Explosive Guide",
+          "word_count": 2000,
+          "type": "guide",
+          "priority": "high"
+        },
+        {
+          "day": "Samstag",
+          "title": "Fortnite Best Loadouts",
+          "word_count": 3000,
+          "type": "guide",
+          "priority": "high"
+        },
+        {
+          "day": "Sonntag",
+          "title": "Content-Review & Planung",
+          "word_count": 0,
+          "type": "planning",
+          "priority": "medium"
+        }
+      ]
+    },
+    "week_5": {
+      "theme": "Momentum (erste Rankings ausbauen)",
+      "days": [
+        {
+          "day": "Montag",
+          "title": "Fortnite Ranked Strategy",
+          "word_count": 3000,
+          "type": "guide",
+          "priority": "high"
+        },
+        {
+          "day": "Dienstag",
+          "title": "Fortnite Zone Wars Guide",
+          "word_count": 2500,
+          "type": "guide",
+          "priority": "high"
+        },
+        {
+          "day": "Mittwoch",
+          "title": "Fortnite Arena Mode",
+          "word_count": 2000,
+          "type": "guide",
+          "priority": "high"
+        },
+        {
+          "day": "Donnerstag",
+          "title": "Fortnite Ranked Points",
+          "word_count": 2000,
+          "type": "guide",
+          "priority": "medium"
+        },
+        {
+          "day": "Freitag",
+          "title": "Fortnite Pro Tips",
+          "word_count": 2500,
+          "type": "guide",
+          "priority": "high"
+        },
+        {
+          "day": "Samstag",
+          "title": "Fortnite Elo Calculator Guide",
+          "word_count": 1500,
+          "type": "guide",
+          "priority": "medium"
+        },
+        {
+          "day": "Sonntag",
+          "title": "Content-Review & Planung",
+          "word_count": 0,
+          "type": "planning",
+          "priority": "medium"
+        }
+      ]
+    },
+    "week_6": {
+      "theme": "Momentum (erste Rankings ausbauen)",
+      "days": [
+        {
+          "day": "Montag",
+          "title": "Fortnite Aim Lab Exercises",
+          "word_count": 2500,
+          "type": "guide",
+          "priority": "high"
+        },
+        {
+          "day": "Dienstag",
+          "title": "Fortnite Crosshair Guide",
+          "word_count": 2000,
+          "type": "guide",
+          "priority": "medium"
+        },
+        {
+          "day": "Mittwoch",
+          "title": "Fortnite FPS Boost Guide",
+          "word_count": 2000,
+          "type": "guide",
+          "priority": "medium"
+        },
+        {
+          "day": "Donnerstag",
+          "title": "Fortnite Lag Fix Guide",
+          "word_count": 2000,
+          "type": "guide",
+          "priority": "medium"
+        },
+        {
+          "day": "Freitag",
+          "title": "Fortnite Ping Fix Guide",
+          "word_count": 1500,
+          "type": "guide",
+          "priority": "low"
+        },
+        {
+          "day": "Samstag",
+          "title": "Fortnite Crash Fix Guide",
+          "word_count": 1500,
+          "type": "guide",
+          "priority": "low"
+        },
+        {
+          "day": "Sonntag",
+          "title": "Content-Review & Planung",
+          "word_count": 0,
+          "type": "planning",
+          "priority": "medium"
+        }
+      ]
+    },
+    "week_7": {
+      "theme": "Momentum (erste Rankings ausbauen)",
+      "days": [
+        {
+          "day": "Montag",
+          "title": "Fortnite Item Shop Tracker Guide",
+          "word_count": 2000,
+          "type": "guide",
+          "priority": "medium"
+        },
+        {
+          "day": "Dienstag",
+          "title": "Fortnite Rare Skins Tracker",
+          "word_count": 1500,
+          "type": "guide",
+          "priority": "low"
+        },
+        {
+          "day": "Mittwoch",
+          "title": "Fortnite Win Rate Calculator",
+          "word_count": 1500,
+          "type": "guide",
+          "priority": "low"
+        },
+        {
+          "day": "Donnerstag",
+          "title": "Fortnite KD Calculator",
+          "word_count": 1500,
+          "type": "guide",
+          "priority": "low"
+        },
+        {
+          "day": "Freitag",
+          "title": "Fortnite Stats Checker Guide",
+          "word_count": 2000,
+          "type": "guide",
+          "priority": "medium"
+        },
+        {
+          "day": "Samstag",
+          "title": "Fortnite Server Status",
+          "word_count": 1000,
+          "type": "guide",
+          "priority": "low"
+        },
+        {
+          "day": "Sonntag",
+          "title": "Content-Review & Planung",
+          "word_count": 0,
+          "type": "planning",
+          "priority": "medium"
+        }
+      ]
+    },
+    "week_8": {
+      "theme": "Momentum (erste Rankings ausbauen)",
+      "days": [
+        {
+          "day": "Montag",
+          "title": "Fortnite Patch Notes Template",
+          "word_count": 2000,
+          "type": "template",
+          "priority": "high"
+        },
+        {
+          "day": "Dienstag",
+          "title": "Fortnite Meta Analysis",
+          "word_count": 2500,
+          "type": "guide",
+          "priority": "high"
+        },
+        {
+          "day": "Mittwoch",
+          "title": "Fortnite Pro Reactions",
+          "word_count": 2000,
+          "type": "guide",
+          "priority": "medium"
+        },
+        {
+          "day": "Donnerstag",
+          "title": "Fortnite Quick Tips",
+          "word_count": 1500,
+          "type": "guide",
+          "priority": "medium"
+        },
+        {
+          "day": "Freitag",
+          "title": "Fortnite Competitive Changes",
+          "word_count": 2000,
+          "type": "guide",
+          "priority": "high"
+        },
+        {
+          "day": "Samstag",
+          "title": "Fortnite Bug Fixes",
+          "word_count": 1500,
+          "type": "guide",
+          "priority": "medium"
+        },
+        {
+          "day": "Sonntag",
+          "title": "Content-Review & Planung",
+          "word_count": 0,
+          "type": "planning",
+          "priority": "medium"
+        }
+      ]
+    },
+    "week_9": {
+      "theme": "Dominanz (kompetitive Keywords angreifen)",
+      "days": [
+        {
+          "day": "Montag",
+          "title": "Fortnite Ultimate Guide 2026",
+          "word_count": 5000,
+          "type": "guide",
+          "priority": "high"
+        },
+        {
+          "day": "Dienstag",
+          "title": "Fortnite vs Apex Legends",
+          "word_count": 2500,
+          "type": "comparison",
+          "priority": "high"
+        },
+        {
+          "day": "Mittwoch",
+          "title": "Fortnite vs Warzone",
+          "word_count": 2500,
+          "type": "comparison",
+          "priority": "high"
+        },
+        {
+          "day": "Donnerstag",
+          "title": "Fortnite vs Valorant",
+          "word_count": 2000,
+          "type": "comparison",
+          "priority": "medium"
+        },
+        {
+          "day": "Freitag",
+          "title": "Fortnite Best Battle Royale",
+          "word_count": 2500,
+          "type": "comparison",
+          "priority": "high"
+        },
+        {
+          "day": "Samstag",
+          "title": "Fortnite Free to Play",
+          "word_count": 2000,
+          "type": "guide",
+          "priority": "medium"
+        },
+        {
+          "day": "Sonntag",
+          "title": "Content-Review & Planung",
+          "word_count": 0,
+          "type": "planning",
+          "priority": "medium"
+        }
+      ]
+    },
+    "week_10": {
+      "theme": "Dominanz (kompetitive Keywords angreifen)",
+      "days": [
+        {
+          "day": "Montag",
+          "title": "Fortnite Nintendo Switch Guide",
+          "word_count": 2000,
+          "type": "guide",
+          "priority": "medium"
+        },
+        {
+          "day": "Dienstag",
+          "title": "Fortnite PS5 Guide",
+          "word_count": 2000,
+          "type": "guide",
+          "priority": "medium"
+        },
+        {
+          "day": "Mittwoch",
+          "title": "Fortnite Xbox Series X Guide",
+          "word_count": 2000,
+          "type": "guide",
+          "priority": "medium"
+        },
+        {
+          "day": "Donnerstag",
+          "title": "Fortnite Mobile Guide",
+          "word_count": 2500,
+          "type": "guide",
+          "priority": "high"
+        },
+        {
+          "day": "Freitag",
+          "title": "Fortnite PC Guide",
+          "word_count": 2500,
+          "type": "guide",
+          "priority": "high"
+        },
+        {
+          "day": "Samstag",
+          "title": "Fortnite Crossplay Guide",
+          "word_count": 2000,
+          "type": "guide",
+          "priority": "medium"
+        },
+        {
+          "day": "Sonntag",
+          "title": "Content-Review & Planung",
+          "word_count": 0,
+          "type": "planning",
+          "priority": "medium"
+        }
+      ]
+    },
+    "week_11": {
+      "theme": "Dominanz (kompetitive Keywords angreifen)",
+      "days": [
+        {
+          "day": "Montag",
+          "title": "Fortnite Chapter 6 Season 2 Weapons",
+          "word_count": 3000,
+          "type": "guide",
+          "priority": "high"
+        },
+        {
+          "day": "Dienstag",
+          "title": "Fortnite Chapter 6 Season 2 Meta",
+          "word_count": 3000,
+          "type": "guide",
+          "priority": "high"
+        },
+        {
+          "day": "Mittwoch",
+          "title": "Fortnite Chapter 6 Season 2 Tips",
+          "word_count": 2500,
+          "type": "guide",
+          "priority": "high"
+        },
+        {
+          "day": "Donnerstag",
+          "title": "Fortnite Chapter 6 Season 2 Changes",
+          "word_count": 2500,
+          "type": "guide",
+          "priority": "high"
+        },
+        {
+          "day": "Freitag",
+          "title": "Fortnite Chapter 6 Season 2 Secrets",
+          "word_count": 2000,
+          "type": "guide",
+          "priority": "medium"
+        },
+        {
+          "day": "Samstag",
+          "title": "Fortnite Chapter 6 Season 2 Easter Eggs",
+          "word_count": 2000,
+          "type": "guide",
+          "priority": "medium"
+        },
+        {
+          "day": "Sonntag",
+          "title": "Content-Review & Planung",
+          "word_count": 0,
+          "type": "planning",
+          "priority": "medium"
+        }
+      ]
+    },
+    "week_12": {
+      "theme": "Dominanz (kompetitive Keywords angreifen)",
+      "days": [
+        {
+          "day": "Montag",
+          "title": "Fortnite Creative Maps",
+          "word_count": 2500,
+          "type": "guide",
+          "priority": "high"
+        },
+        {
+          "day": "Dienstag",
+          "title": "Fortnite Best Creative Codes",
+          "word_count": 2000,
+          "type": "guide",
+          "priority": "medium"
+        },
+        {
+          "day": "Mittwoch",
+          "title": "Fortnite Practice Maps",
+          "word_count": 2000,
+          "type": "guide",
+          "priority": "medium"
+        },
+        {
+          "day": "Donnerstag",
+          "title": "Fortnite Aim Training Maps",
+          "word_count": 2000,
+          "type": "guide",
+          "priority": "medium"
+        },
+        {
+          "day": "Freitag",
+          "title": "Fortnite Building Practice Maps",
+          "word_count": 2000,
+          "type": "guide",
+          "priority": "medium"
+        },
+        {
+          "day": "Samstag",
+          "title": "Fortnite 1v1 Maps",
+          "word_count": 1500,
+          "type": "guide",
+          "priority": "low"
+        },
+        {
+          "day": "Sonntag",
+          "title": "Content-Review & Planung",
+          "word_count": 0,
+          "type": "planning",
+          "priority": "medium"
+        }
+      ]
+    },
+    "week_13": {
+      "theme": "Dominanz (kompetitive Keywords angreifen)",
+      "days": [
+        {
+          "day": "Montag",
+          "title": "Fortnite Twitch Drops Guide",
+          "word_count": 2000,
+          "type": "guide",
+          "priority": "medium"
+        },
+        {
+          "day": "Dienstag",
+          "title": "Fortnite YouTube Rewards",
+          "word_count": 2000,
+          "type": "guide",
+          "priority": "medium"
+        },
+        {
+          "day": "Mittwoch",
+          "title": "Fortnite Discord Rewards",
+          "word_count": 1500,
+          "type": "guide",
+          "priority": "low"
+        },
+        {
+          "day": "Donnerstag",
+          "title": "Fortnite Creator Code Benefits",
+          "word_count": 2000,
+          "type": "guide",
+          "priority": "medium"
+        },
+        {
+          "day": "Freitag",
+          "title": "Fortnite Support-A-Creator",
+          "word_count": 2000,
+          "type": "guide",
+          "priority": "medium"
+        },
+        {
+          "day": "Samstag",
+          "title": "Fortnite Engagement Payouts",
+          "word_count": 1500,
+          "type": "guide",
+          "priority": "low"
+        },
+        {
+          "day": "Sonntag",
+          "title": "Content-Review & Planung",
+          "word_count": 0,
+          "type": "planning",
+          "priority": "medium"
+        }
+      ]
+    }
+  },
+  "total_articles": 78,
+  "total_word_count": 215500,
+  "average_word_count": 2763
+}
