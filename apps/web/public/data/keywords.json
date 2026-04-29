@@ -1,0 +1,279 @@
+{
+  "last_updated": "2026-04-29T13:00:00Z",
+  "head_terms": [
+    {
+      "keyword": "fortnite",
+      "search_volume": 1200000,
+      "kd": 95,
+      "intent": "informational",
+      "format": "hub_page",
+      "time_to_rank": 12,
+      "url": "/de/fortnite"
+    },
+    {
+      "keyword": "fortnite deutsch",
+      "search_volume": 150000,
+      "kd": 85,
+      "intent": "informational",
+      "format": "hub_page",
+      "time_to_rank": 9,
+      "url": "/de/fortnite-deutsch"
+    },
+    {
+      "keyword": "fortnite guide",
+      "search_volume": 90000,
+      "kd": 80,
+      "intent": "informational",
+      "format": "hub_page",
+      "time_to_rank": 8,
+      "url": "/de/guide/fortnite-ultimate-guide-2026"
+    },
+    {
+      "keyword": "fortnite tips",
+      "search_volume": 45000,
+      "kd": 75,
+      "intent": "informational",
+      "format": "hub_page",
+      "time_to_rank": 7,
+      "url": "/de/tips"
+    },
+    {
+      "keyword": "fortnite maps",
+      "search_volume": 35000,
+      "kd": 70,
+      "intent": "informational",
+      "format": "hub_page",
+      "time_to_rank": 6,
+      "url": "/de/meta/karten"
+    },
+    {
+      "keyword": "fortnite weapons",
+      "search_volume": 30000,
+      "kd": 75,
+      "intent": "informational",
+      "format": "hub_page",
+      "time_to_rank": 6,
+      "url": "/de/meta/waffen"
+    },
+    {
+      "keyword": "fortnite season",
+      "search_volume": 25000,
+      "kd": 65,
+      "intent": "informational",
+      "format": "hub_page",
+      "time_to_rank": 5,
+      "url": "/de/season"
+    },
+    {
+      "keyword": "fortnite ranked",
+      "search_volume": 20000,
+      "kd": 60,
+      "intent": "informational",
+      "format": "guide",
+      "time_to_rank": 5,
+      "url": "/de/ranked"
+    },
+    {
+      "keyword": "fortnite meta",
+      "search_volume": 15000,
+      "kd": 70,
+      "intent": "informational",
+      "format": "guide",
+      "time_to_rank": 6,
+      "url": "/de/meta"
+    },
+    {
+      "keyword": "fortnite news",
+      "search_volume": 12000,
+      "kd": 55,
+      "intent": "informational",
+      "format": "news_hub",
+      "time_to_rank": 4,
+      "url": "/de/news"
+    }
+  ],
+  "mid_tail": [
+    {
+      "keyword": "fortnite aim guide",
+      "search_volume": 22000,
+      "kd": 55,
+      "intent": "informational",
+      "format": "guide",
+      "time_to_rank": 4,
+      "url": "/de/guide/fortnite-aim-verbessern-2026"
+    },
+    {
+      "keyword": "fortnite building guide",
+      "search_volume": 18000,
+      "kd": 50,
+      "intent": "informational",
+      "format": "guide",
+      "time_to_rank": 4,
+      "url": "/de/guide/fortnite-building-guide"
+    },
+    {
+      "keyword": "fortnite settings 2026",
+      "search_volume": 15000,
+      "kd": 45,
+      "intent": "informational",
+      "format": "guide",
+      "time_to_rank": 3,
+      "url": "/de/einstellungen/pc"
+    },
+    {
+      "keyword": "fortnite weapon tier list",
+      "search_volume": 14000,
+      "kd": 50,
+      "intent": "informational",
+      "format": "guide",
+      "time_to_rank": 3,
+      "url": "/de/meta/waffen/best-loadouts"
+    },
+    {
+      "keyword": "fortnite best weapons",
+      "search_volume": 12000,
+      "kd": 45,
+      "intent": "informational",
+      "format": "guide",
+      "time_to_rank": 3,
+      "url": "/de/meta/waffen"
+    },
+    {
+      "keyword": "fortnite sensitivity",
+      "search_volume": 10000,
+      "kd": 40,
+      "intent": "informational",
+      "format": "guide",
+      "time_to_rank": 3,
+      "url": "/de/einstellungen/sensitivity"
+    },
+    {
+      "keyword": "fortnite controller settings",
+      "search_volume": 9000,
+      "kd": 35,
+      "intent": "informational",
+      "format": "guide",
+      "time_to_rank": 2,
+      "url": "/de/einstellungen/controller"
+    },
+    {
+      "keyword": "fortnite mobile settings",
+      "search_volume": 8000,
+      "kd": 30,
+      "intent": "informational",
+      "format": "guide",
+      "time_to_rank": 2,
+      "url": "/de/einstellungen/mobile"
+    },
+    {
+      "keyword": "fortnite ranked tips",
+      "search_volume": 7500,
+      "kd": 35,
+      "intent": "informational",
+      "format": "guide",
+      "time_to_rank": 2,
+      "url": "/de/ranked/tipps"
+    },
+    {
+      "keyword": "fortnite zone wars",
+      "search_volume": 7000,
+      "kd": 40,
+      "intent": "informational",
+      "format": "guide",
+      "time_to_rank": 3,
+      "url": "/de/ranked/zone-wars"
+    }
+  ],
+  "long_tail": [
+    {
+      "keyword": "fortnite aim verbessern 2026",
+      "search_volume": 1800,
+      "kd": 15,
+      "intent": "informational",
+      "format": "guide",
+      "time_to_rank": 0.5,
+      "url": "/de/guide/fortnite-aim-verbessern-2026"
+    },
+    {
+      "keyword": "fortnite best settings pc",
+      "search_volume": 1600,
+      "kd": 12,
+      "intent": "informational",
+      "format": "guide",
+      "time_to_rank": 0.5,
+      "url": "/de/einstellungen/pc"
+    },
+    {
+      "keyword": "fortnite building tutorial deutsch",
+      "search_volume": 1400,
+      "kd": 10,
+      "intent": "informational",
+      "format": "guide",
+      "time_to_rank": 0.25,
+      "url": "/de/guide/fortnite-building-guide"
+    },
+    {
+      "keyword": "fortnite weapon stats",
+      "search_volume": 1200,
+      "kd": 8,
+      "intent": "informational",
+      "format": "guide",
+      "time_to_rank": 0.25,
+      "url": "/de/meta/waffen/weapon-stats"
+    },
+    {
+      "keyword": "fortnite sensitivity calculator",
+      "search_volume": 1100,
+      "kd": 7,
+      "intent": "tool",
+      "format": "tool",
+      "time_to_rank": 0.5,
+      "url": "/de/tools/sensitivity-calculator"
+    },
+    {
+      "keyword": "fortnite map rotation",
+      "search_volume": 1000,
+      "kd": 10,
+      "intent": "informational",
+      "format": "guide",
+      "time_to_rank": 0.25,
+      "url": "/de/meta/karten/rotation-tracker"
+    },
+    {
+      "keyword": "fortnite ranked strategie",
+      "search_volume": 950,
+      "kd": 12,
+      "intent": "informational",
+      "format": "guide",
+      "time_to_rank": 0.25,
+      "url": "/de/ranked/strategie"
+    },
+    {
+      "keyword": "fortnite controller aim assist",
+      "search_volume": 900,
+      "kd": 8,
+      "intent": "informational",
+      "format": "guide",
+      "time_to_rank": 0.25,
+      "url": "/de/einstellungen/controller"
+    },
+    {
+      "keyword": "fortnite mobile fps boost",
+      "search_volume": 850,
+      "kd": 5,
+      "intent": "informational",
+      "format": "guide",
+      "time_to_rank": 0.25,
+      "url": "/de/einstellungen/mobile"
+    },
+    {
+      "keyword": "fortnite nintendo switch settings",
+      "search_volume": 800,
+      "kd": 5,
+      "intent": "informational",
+      "format": "guide",
+      "time_to_rank": 0.25,
+      "url": "/de/einstellungen/nintendo-switch"
+    }
+  ]
+}
