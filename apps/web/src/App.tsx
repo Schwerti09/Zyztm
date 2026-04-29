@@ -30,6 +30,21 @@ const CheckoutCancelPage = lazy(() => import('./pages/CheckoutCancelPage'));
 const DownloadPage = lazy(() => import('./pages/DownloadPage'));
 const OrdersPage = lazy(() => import('./pages/OrdersPage'));
 
+// Pro Tools
+const ToolsPage = lazy(() => import('./pages/ToolsPage'));
+const SensitivityConverterPage = lazy(
+  () => import('./pages/tools/SensitivityConverterPage'),
+);
+const LoadoutOptimizerPage = lazy(
+  () => import('./pages/tools/LoadoutOptimizerPage'),
+);
+const StatsDashboardPage = lazy(() => import('./pages/tools/StatsDashboardPage'));
+const DropLocationsPage = lazy(() => import('./pages/tools/DropLocationsPage'));
+const BuildTrainerPage = lazy(() => import('./pages/tools/BuildTrainerPage'));
+const MetaPredictorPage = lazy(() => import('./pages/tools/MetaPredictorPage'));
+const KeybindOptimizerPage = lazy(() => import('./pages/tools/KeybindOptimizerPage'));
+const RotationPlannerPage = lazy(() => import('./pages/tools/RotationPlannerPage'));
+
 function PageLoader() {
   return (
     <div className="min-h-screen bg-bg-dark flex items-center justify-center">
@@ -77,6 +92,19 @@ export default function App() {
           <Route path="/orders" component={OrdersPage} />
           {/* NEXUS IQ */}
           <Route path="/nexus-iq" component={NexusIQPage} />
+          {/* Pro Tools — High-Tech Suite */}
+          <Route path="/tools" component={ToolsPage} />
+          <Route
+            path="/tools/sensitivity-converter"
+            component={SensitivityConverterPage}
+          />
+          <Route path="/tools/loadout-optimizer" component={LoadoutOptimizerPage} />
+          <Route path="/tools/stats-dashboard" component={StatsDashboardPage} />
+          <Route path="/tools/drop-locations" component={DropLocationsPage} />
+          <Route path="/tools/build-trainer" component={BuildTrainerPage} />
+          <Route path="/tools/meta-predictor" component={MetaPredictorPage} />
+          <Route path="/tools/keybind-optimizer" component={KeybindOptimizerPage} />
+          <Route path="/tools/rotation-planner" component={RotationPlannerPage} />
           {/* Fortnite Nexus Space */}
           <Route path="/space" component={FortniteSpacePage} />
           {/* Loadout God */}
