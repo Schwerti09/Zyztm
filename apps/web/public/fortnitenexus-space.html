@@ -792,6 +792,21 @@
         }
 
         /* ═══════════════════════════════════════════
+           STICKY NAVIGATION
+           ═══════════════════════════════════════════ */
+        #sticky-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(5, 5, 16, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 2px solid var(--glow-cyan);
+            box-shadow: 0 0 20px rgba(0, 207, 255, 0.3);
+        }
+
+        /* ═══════════════════════════════════════════
            ACCESSIBILITY
            ═══════════════════════════════════════════ */
         @media (prefers-reduced-motion: reduce) {
@@ -817,6 +832,35 @@
         <div id="storm-circle"></div>
     </div>
     <div id="flash-overlay"></div>
+
+    <!-- Sticky Navigation -->
+    <nav id="sticky-nav">
+        <div style="max-width: 1400px; margin: 0 auto; padding: 15px 20px; display: flex; justify-content: space-between; align-items: center;">
+            <div style="font-family: 'Orbitron', sans-serif; font-size: 1.5rem; font-weight: 900; color: var(--glow-cyan); text-shadow: 0 0 10px var(--glow-cyan);">
+                NEXUS
+            </div>
+            <div style="display: flex; gap: 30px; align-items: center;">
+                <a href="/guides/fortnite" style="color: var(--text-light); text-decoration: none; font-family: 'Orbitron', sans-serif; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; transition: color 0.3s ease;" onmouseover="this.style.color='var(--glow-cyan)'" onmouseout="this.style.color='var(--text-light)'">Guides</a>
+                <a href="/meta" style="color: var(--text-light); text-decoration: none; font-family: 'Orbitron', sans-serif; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; transition: color 0.3s ease;" onmouseover="this.style.color='var(--glow-cyan)'" onmouseout="this.style.color='var(--text-light)'">Meta</a>
+                <a href="/tools" style="color: var(--text-light); text-decoration: none; font-family: 'Orbitron', sans-serif; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; transition: color 0.3s ease;" onmouseover="this.style.color='var(--glow-cyan)'" onmouseout="this.style.color='var(--text-light)'">Tools</a>
+                <a href="/news" style="color: var(--text-light); text-decoration: none; font-family: 'Orbitron', sans-serif; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; transition: color 0.3s ease;" onmouseover="this.style.color='var(--glow-cyan)'" onmouseout="this.style.color='var(--text-light)'">News</a>
+                <a href="/creators" style="color: var(--text-light); text-decoration: none; font-family: 'Orbitron', sans-serif; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; transition: color 0.3s ease;" onmouseover="this.style.color='var(--glow-cyan)'" onmouseout="this.style.color='var(--text-light)'">Community</a>
+                <a href="/nexus-iq" style="
+                    background: linear-gradient(90deg, var(--glow-cyan), var(--glow-gold));
+                    color: var(--bg-dark);
+                    padding: 10px 20px;
+                    border-radius: 8px;
+                    text-decoration: none;
+                    font-family: 'Orbitron', sans-serif;
+                    font-size: 0.8rem;
+                    font-weight: 900;
+                    text-transform: uppercase;
+                    letter-spacing: 1px;
+                    transition: all 0.3s ease;
+                " onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 0 20px var(--glow-cyan)'" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='none'">NEXUS IQ</a>
+            </div>
+        </div>
+    </nav>
 
     <!-- Storm Circle Navigation -->
     <nav id="storm-nav">
@@ -865,6 +909,88 @@
                 <div id="terminal-text"></div>
                 <span class="cursor"></span>
                 <div id="terminal-subtext">Hier gewinnen echte Spieler.</div>
+            </div>
+
+            <!-- Primary CTA - NEXUS IQ -->
+            <div style="text-align: center; margin: 30px 0;">
+                <a href="/nexus-iq" style="
+                    display: inline-block;
+                    background: linear-gradient(90deg, var(--glow-cyan), var(--glow-gold));
+                    color: var(--bg-dark);
+                    padding: 20px 40px;
+                    border-radius: 15px;
+                    font-family: 'Orbitron', sans-serif;
+                    font-size: 1.2rem;
+                    font-weight: 900;
+                    text-decoration: none;
+                    text-transform: uppercase;
+                    letter-spacing: 2px;
+                    box-shadow: 0 0 30px var(--glow-cyan);
+                    transition: all 0.3s ease;
+                    animation: pulse 2s infinite;
+                " onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 0 50px var(--glow-cyan)'" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 0 30px var(--glow-cyan)'">
+                    ⚡ DEIN BATTLE DNA ANALYSIEREN
+                </a>
+            </div>
+
+            <!-- SAC Code Reminder -->
+            <div style="text-align: center; margin: 20px 0; padding: 15px; background: rgba(0, 207, 255, 0.1); border: 2px solid var(--glow-cyan); border-radius: 10px;">
+                <div style="font-family: 'Orbitron', sans-serif; font-size: 0.9rem; color: var(--glow-cyan); margin-bottom: 10px; text-transform: uppercase; letter-spacing: 2px;">
+                    🔥 SUPPORT UNS MIT CREATOR CODE
+                </div>
+                <div style="font-family: 'Orbitron', sans-serif; font-size: 1.5rem; font-weight: 900; color: var(--text-light); text-shadow: 0 0 10px var(--glow-cyan); cursor: pointer; transition: all 0.3s ease;" onclick="copySACCode()" onmouseover="this.style.color='var(--glow-gold)'" onmouseout="this.style.color='var(--text-light)'">
+                    ZYZTM
+                </div>
+                <div style="font-size: 0.8rem; color: var(--text-muted); margin-top: 5px;">Klicke zum Kopieren</div>
+            </div>
+
+            <!-- Quick Access CTAs -->
+            <div style="display: flex; gap: 15px; justify-content: center; margin-top: 20px; flex-wrap: wrap;">
+                <a href="/guides/fortnite" style="
+                    background: rgba(0, 207, 255, 0.1);
+                    border: 2px solid var(--glow-cyan);
+                    color: var(--text-light);
+                    padding: 12px 25px;
+                    border-radius: 10px;
+                    font-family: 'Orbitron', sans-serif;
+                    font-size: 0.9rem;
+                    text-decoration: none;
+                    text-transform: uppercase;
+                    letter-spacing: 1px;
+                    transition: all 0.3s ease;
+                " onmouseover="this.style.background='rgba(0, 207, 255, 0.2)'; this.style.transform='translateY(-3px)'" onmouseout="this.style.background='rgba(0, 207, 255, 0.1)'; this.style.transform='translateY(0)'">
+                    📚 GUIDES ENTDECKEN
+                </a>
+                <a href="/tools" style="
+                    background: rgba(255, 107, 0, 0.1);
+                    border: 2px solid var(--glow-orange);
+                    color: var(--text-light);
+                    padding: 12px 25px;
+                    border-radius: 10px;
+                    font-family: 'Orbitron', sans-serif;
+                    font-size: 0.9rem;
+                    text-decoration: none;
+                    text-transform: uppercase;
+                    letter-spacing: 1px;
+                    transition: all 0.3s ease;
+                " onmouseover="this.style.background='rgba(255, 107, 0, 0.2)'; this.style.transform='translateY(-3px)'" onmouseout="this.style.background='rgba(255, 107, 0, 0.1)'; this.style.transform='translateY(0)'">
+                    🔧 TOOLS NUTZEN
+                </a>
+                <a href="/news" style="
+                    background: rgba(255, 195, 0, 0.1);
+                    border: 2px solid var(--glow-gold);
+                    color: var(--text-light);
+                    padding: 12px 25px;
+                    border-radius: 10px;
+                    font-family: 'Orbitron', sans-serif;
+                    font-size: 0.9rem;
+                    text-decoration: none;
+                    text-transform: uppercase;
+                    letter-spacing: 1px;
+                    transition: all 0.3s ease;
+                " onmouseover="this.style.background='rgba(255, 195, 0, 0.2)'; this.style.transform='translateY(-3px)'" onmouseout="this.style.background='rgba(255, 195, 0, 0.1)'; this.style.transform='translateY(0)'">
+                    📰 NEWS LESEN
+                </a>
             </div>
 
             <!-- Signal Block -->
@@ -927,8 +1053,76 @@
                 <h4>🏆 WINRATE-POTENZIAL</h4>
                 <p id="winrate-potential" style="color: var(--text-muted);"></p>
             </div>
-            
+
+            <a href="/nexus-iq" style="
+                display: block;
+                background: linear-gradient(90deg, var(--glow-cyan), var(--glow-gold));
+                color: var(--bg-dark);
+                padding: 15px 30px;
+                border-radius: 10px;
+                font-family: 'Orbitron', sans-serif;
+                font-size: 1rem;
+                font-weight: 900;
+                text-decoration: none;
+                text-transform: uppercase;
+                letter-spacing: 2px;
+                text-align: center;
+                margin-top: 20px;
+                box-shadow: 0 0 30px var(--glow-cyan);
+                transition: all 0.3s ease;
+            " onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 0 50px var(--glow-cyan)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 0 30px var(--glow-cyan)'">
+                ⚡ DEIN BATTLE DNA SEHEN
+            </a>
+
             <button class="share-btn" onclick="shareResult()">🔥 TEILE DEIN ERGEBNIS</button>
+        </div>
+    </section>
+
+    <!-- Content Teasers Section -->
+    <section id="content-teasers-section" style="padding: 100px 20px; text-align: center;">
+        <h2 style="font-family: 'Orbitron', sans-serif; font-size: 2rem; color: var(--glow-cyan); margin-bottom: 40px; text-transform: uppercase; letter-spacing: 3px;">
+            TRENDING GUIDES
+        </h2>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; max-width: 1200px; margin: 0 auto;">
+            <div style="
+                background: rgba(0, 207, 255, 0.05);
+                border: 2px solid var(--glow-cyan);
+                border-radius: 15px;
+                padding: 30px;
+                transition: all 0.3s ease;
+                cursor: pointer;
+            " onclick="window.location.href='/guides/fortnite'" onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 0 30px var(--glow-cyan)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
+                <div style="font-size: 3rem; margin-bottom: 15px;">🎯</div>
+                <h3 style="font-family: 'Orbitron', sans-serif; color: var(--glow-cyan); margin-bottom: 15px; font-size: 1.2rem;">FORTNITE AIM GUIDE 2026</h3>
+                <p style="color: var(--text-muted); margin-bottom: 20px;">Verbessere deinen Aim mit professionellen Tipps und Übungen</p>
+                <span style="color: var(--glow-gold); font-family: 'Orbitron', sans-serif; font-size: 0.8rem; text-transform: uppercase;">→ GUIDE LESEN</span>
+            </div>
+            <div style="
+                background: rgba(255, 107, 0, 0.05);
+                border: 2px solid var(--glow-orange);
+                border-radius: 15px;
+                padding: 30px;
+                transition: all 0.3s ease;
+                cursor: pointer;
+            " onclick="window.location.href='/guides/fortnite'" onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 0 30px var(--glow-orange)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
+                <div style="font-size: 3rem; margin-bottom: 15px;">🏗️</div>
+                <h3 style="font-family: 'Orbitron', sans-serif; color: var(--glow-orange); margin-bottom: 15px; font-size: 1.2rem;">FORTNITE BUILDING GUIDE</h3>
+                <p style="color: var(--text-muted); margin-bottom: 20px;">Mastere Building-Techniken von Beginner bis Pro</p>
+                <span style="color: var(--glow-gold); font-family: 'Orbitron', sans-serif; font-size: 0.8rem; text-transform: uppercase;">→ GUIDE LESEN</span>
+            </div>
+            <div style="
+                background: rgba(255, 195, 0, 0.05);
+                border: 2px solid var(--glow-gold);
+                border-radius: 15px;
+                padding: 30px;
+                transition: all 0.3s ease;
+                cursor: pointer;
+            " onclick="window.location.href='/guides/fortnite'" onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 0 30px var(--glow-gold)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
+                <div style="font-size: 3rem; margin-bottom: 15px;">⚙️</div>
+                <h3 style="font-family: 'Orbitron', sans-serif; color: var(--glow-gold); margin-bottom: 15px; font-size: 1.2rem;">BEST SETTINGS 2026</h3>
+                <p style="color: var(--text-muted); margin-bottom: 20px;">Perfekte Settings für maximale Performance</p>
+                <span style="color: var(--glow-gold); font-family: 'Orbitron', sans-serif; font-size: 0.8rem; text-transform: uppercase;">→ GUIDE LESEN</span>
+            </div>
         </div>
     </section>
 
@@ -950,20 +1144,20 @@
         </div>
 
         <div class="intel-cards">
-            <div class="intel-card" onclick="toggleCard(this)">
+            <div class="intel-card" onclick="window.location.href='/meta/waffen'">
                 <h3>🎮 META-VERSCHIEBUNG</h3>
                 <p>Die aktuellen Waffen-Metas haben sich massiv verändert. Neue Strategien sind erforderlich.</p>
-                <button class="unlock-btn">ENTSCHLÜSSELN</button>
+                <button class="unlock-btn">ZU WAFFEN META</button>
             </div>
-            <div class="intel-card" onclick="toggleCard(this)">
+            <div class="intel-card" onclick="window.location.href='/meta/karten/beste-landezonen'">
                 <h3>🗺️ HOTSPOT ANALYSE</h3>
                 <p>Die gefährlichsten Landezonen dieser Woche basierend auf 100.000+ Matches.</p>
-                <button class="unlock-btn">ENTSCHLÜSSELN</button>
+                <button class="unlock-btn">ZU LANDZONEN</button>
             </div>
-            <div class="intel-card" onclick="toggleCard(this)">
+            <div class="intel-card" onclick="window.location.href='/guides/fortnite'">
                 <h3>⚔️ BUILDING META</h3>
                 <p>Die effektivsten Building-Strategien für die aktuelle Season.</p>
-                <button class="unlock-btn">ENTSCHLÜSSELN</button>
+                <button class="unlock-btn">ZU GUIDES</button>
             </div>
         </div>
     </section>
@@ -973,27 +1167,145 @@
         <h2 class="vault-title">NEXUS VAULT</h2>
         
         <div class="vault-items">
-            <div class="vault-item">
+            <div class="vault-item" onclick="window.location.href='/shop'">
                 <h3>🔥 DIE GEHEIME ROTATIONSROUTE</h3>
-                <p>Die Rotationsroute der Top 0.1% Spieler</p>
+                <p>Die Rotationsroute der Top 0.1% Spieler - Exklusiv für Premium</p>
             </div>
-            <div class="vault-item">
+            <div class="vault-item" onclick="window.location.href='/shop'">
                 <h3>🎯 WAFFEN-SETUP</h3>
-                <p>Das Waffen-Setup das Bugha in Season X benutzt hat</p>
+                <p>Das Waffen-Setup das Bugha in Season X benutzt hat - Pro Guides</p>
             </div>
-            <div class="vault-item">
+            <div class="vault-item" onclick="window.location.href='/shop'">
                 <h3>📈 EDIT-KURS</h3>
-                <p>Edit-Kurs der deinen KD in 7 Tagen verdoppelt</p>
+                <p>Edit-Kurs der deinen KD in 7 Tagen verdoppelt - Pro Features</p>
             </div>
         </div>
-        
-        <button class="vault-cta">Tritt dem Nexus bei (Discord) → Zugang sofort</button>
+
+        <div style="text-align: center; margin-top: 40px;">
+            <div style="font-family: 'Orbitron', sans-serif; font-size: 1.2rem; color: var(--glow-gold); margin-bottom: 20px; text-transform: uppercase; letter-spacing: 2px;">
+                💎 PREMIUM MEMBERSHIP
+            </div>
+            <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
+                <div style="
+                    background: rgba(0, 207, 255, 0.1);
+                    border: 2px solid var(--glow-cyan);
+                    border-radius: 15px;
+                    padding: 30px;
+                    min-width: 250px;
+                    text-align: center;
+                ">
+                    <div style="font-family: 'Orbitron', sans-serif; font-size: 1.5rem; color: var(--glow-cyan); margin-bottom: 10px;">PRO TIER</div>
+                    <div style="font-family: 'Orbitron', sans-serif; font-size: 2.5rem; font-weight: 900; color: var(--text-light); margin-bottom: 20px;">€4.99<span style="font-size: 1rem; color: var(--text-muted);">/Monat</span></div>
+                    <ul style="text-align: left; color: var(--text-muted); margin-bottom: 20px; line-height: 2;">
+                        <li>✓ Exklusive Pro Guides</li>
+                        <li>✓ Early Access zu News (7 Tage)</li>
+                        <li>✓ Discord Pro Role</li>
+                        <li>✓ Ad-Free Experience</li>
+                    </ul>
+                    <a href="/shop" style="
+                        display: inline-block;
+                        background: linear-gradient(90deg, var(--glow-cyan), var(--glow-gold));
+                        color: var(--bg-dark);
+                        padding: 15px 30px;
+                        border-radius: 10px;
+                        font-family: 'Orbitron', sans-serif;
+                        font-size: 0.9rem;
+                        font-weight: 900;
+                        text-decoration: none;
+                        text-transform: uppercase;
+                        letter-spacing: 1px;
+                    ">PRO WÄHLEN</a>
+                </div>
+                <div style="
+                    background: rgba(255, 195, 0, 0.1);
+                    border: 2px solid var(--glow-gold);
+                    border-radius: 15px;
+                    padding: 30px;
+                    min-width: 250px;
+                    text-align: center;
+                ">
+                    <div style="font-family: 'Orbitron', sans-serif; font-size: 1.5rem; color: var(--glow-gold); margin-bottom: 10px;">ELITE TIER</div>
+                    <div style="font-family: 'Orbitron', sans-serif; font-size: 2.5rem; font-weight: 900; color: var(--text-light); margin-bottom: 20px;">€9.99<span style="font-size: 1rem; color: var(--text-muted);">/Monat</span></div>
+                    <ul style="text-align: left; color: var(--text-muted); margin-bottom: 20px; line-height: 2;">
+                        <li>✓ Alle Pro Features</li>
+                        <li>✓ 1-on-1 Coaching (1x/Monat)</li>
+                        <li>✓ Beta Access zu neuen Features</li>
+                        <li>✓ Exclusive Discord Channels</li>
+                    </ul>
+                    <a href="/shop" style="
+                        display: inline-block;
+                        background: linear-gradient(90deg, var(--glow-gold), var(--glow-orange));
+                        color: var(--bg-dark);
+                        padding: 15px 30px;
+                        border-radius: 10px;
+                        font-family: 'Orbitron', sans-serif;
+                        font-size: 0.9rem;
+                        font-weight: 900;
+                        text-decoration: none;
+                        text-transform: uppercase;
+                        letter-spacing: 1px;
+                    ">ELITE WÄHLEN</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Block -->
+    <section id="newsletter-section" style="padding: 100px 20px; text-align: center;">
+        <div style="
+            background: linear-gradient(135deg, rgba(0, 207, 255, 0.1), rgba(255, 195, 0, 0.1));
+            border: 2px solid var(--glow-cyan);
+            border-radius: 20px;
+            padding: 60px 40px;
+            max-width: 800px;
+            margin: 0 auto;
+        ">
+            <div style="font-size: 4rem; margin-bottom: 20px;">📧</div>
+            <h2 style="font-family: 'Orbitron', sans-serif; font-size: 2rem; color: var(--glow-cyan); margin-bottom: 15px; text-transform: uppercase; letter-spacing: 3px;">
+                WÖCHENTLICHER META REPORT
+            </h2>
+            <p style="color: var(--text-muted); margin-bottom: 30px; font-size: 1.1rem; line-height: 1.6;">
+                Erhalte exklusive Tipps & Strategien direkt in dein Inbox. Kein Spam, nur wertvolle Content.
+            </p>
+            <div style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;">
+                <input type="email" placeholder="Deine E-Mail-Adresse" style="
+                    background: rgba(0, 0, 0, 0.3);
+                    border: 2px solid var(--glow-cyan);
+                    border-radius: 10px;
+                    padding: 15px 25px;
+                    color: var(--text-light);
+                    font-family: 'Orbitron', sans-serif;
+                    font-size: 1rem;
+                    min-width: 300px;
+                    outline: none;
+                " onfocus="this.style.borderColor='var(--glow-gold)'" onblur="this.style.borderColor='var(--glow-cyan)'">
+                <button style="
+                    background: linear-gradient(90deg, var(--glow-cyan), var(--glow-gold));
+                    color: var(--bg-dark);
+                    padding: 15px 30px;
+                    border-radius: 10px;
+                    font-family: 'Orbitron', sans-serif;
+                    font-size: 1rem;
+                    font-weight: 900;
+                    text-transform: uppercase;
+                    letter-spacing: 1px;
+                    cursor: pointer;
+                    transition: all 0.3s ease;
+                    border: none;
+                " onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 0 30px var(--glow-cyan)'" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='none'">
+                    ABONNIEREN
+                </button>
+            </div>
+            <div style="font-size: 0.8rem; color: var(--text-muted); margin-top: 20px;">
+                Keine Sorge, du kannst dich jederzeit abmelden.
+            </div>
+        </div>
     </section>
 
     <!-- Nexus Member Feed Section -->
     <section id="member-feed-section">
         <h2 class="feed-title">NEXUS MEMBER FEED</h2>
-        
+
         <div class="feed-container">
             <div class="feed-item">🏆 _ShadowFR_ hat heute seinen ersten Solo-Sieg geholt</div>
             <div class="feed-item">⚡ nexus_kai verbesserte seinen KD um 0.4 diese Woche</div>
@@ -1002,9 +1314,26 @@
             <div class="feed-item">⚡ nexus_kai verbesserte seinen KD um 0.4 diese Woche</div>
             <div class="feed-item">🎯 _ProBuildDE_ erreichte Champion League — Nexus-Strategie</div>
         </div>
-        
-        <p class="feed-cta">Du könntest der Nächste sein.</p>
-        <button class="share-btn" style="max-width: 300px; margin: 0 auto;">Discord beitreten</button>
+
+        <p class="feed-cta">Support deine Lieblingscreators und werde Teil der Community.</p>
+        <a href="/creators" style="
+            display: inline-block;
+            background: linear-gradient(90deg, var(--glow-cyan), var(--glow-gold));
+            color: var(--bg-dark);
+            padding: 15px 30px;
+            border-radius: 10px;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1rem;
+            font-weight: 900;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-top: 20px;
+            box-shadow: 0 0 30px var(--glow-cyan);
+            transition: all 0.3s ease;
+        " onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 0 50px var(--glow-cyan)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 0 30px var(--glow-cyan)'">
+            👥 CREATORS ENTDECKEN
+        </a>
     </section>
 
     <script>
@@ -1069,6 +1398,17 @@
             }
 
             typeCharacter();
+        }
+
+        /* ═══════════════════════════════════════════
+           SAC CODE COPY FUNCTION
+           ═══════════════════════════════════════════ */
+        function copySACCode() {
+            navigator.clipboard.writeText('ZYZTM').then(function() {
+                alert('Creator Code ZYZTM kopiert! Nutze ihn im Fortnite Item Shop.');
+            }).catch(function(err) {
+                console.error('Fehler beim Kopieren:', err);
+            });
         }
 
         /* ═══════════════════════════════════════════
