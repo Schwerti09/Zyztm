@@ -136,6 +136,45 @@
 
 ---
 
+## Strategische Startseite-Integration mit Verkaufsfunnels
+
+### Neue Features
+- **Hero Section Enhancement**
+  - SAC Code Reminder (Creator Code: ZYZTM) mit Copy-to-Clipboard Funktion
+  - NEXUS IQ Primary CTA (Battle DNA Analyse)
+  - Quick Access CTAs (Guides, Tools, News)
+- **Nexus Scanner → NEXUS IQ Funnel**
+  - CTA "DEIN BATTLE DNA SEHEN" nach Spielstil-Analyse
+  - Direkter Link zu /nexus-iq
+- **Nexus Intel → Content Funnel**
+  - META-VERSCHIEBUNG → /meta/waffen
+  - HOTSPOT ANALYSE → /meta/karten/beste-landezonen
+  - BUILDING META → /guides/fortnite
+- **Nexus Vault → Premium Membership Funnel**
+  - Premium Pricing Cards (Pro Tier €4.99/Monat, Elite Tier €9.99/Monat)
+  - Benefits: Pro Guides, Early Access, Discord Role, Ad-Free
+  - Links zu /shop
+- **Nexus Member Feed → Creator-Marketplace Funnel**
+  - CTA "CREATORS ENTDECKEN" → /creators
+- **Sticky Navigation**
+  - Fixed Navigation mit Links zu Guides, Meta, Tools, News, Community, NEXUS IQ
+  - Responsive Design mit Hover-Effekten
+- **Content-Teasers**
+  - Trending Guides Section (Aim Guide, Building Guide, Best Settings)
+  - Klickbare Cards mit Links zu /guides/fortnite
+- **Newsletter Block**
+  - Wöchentlicher Meta Report
+  - E-Mail Signup Form
+
+### Technische Details
+- Datei: `fortnitenexus-space.html`
+- Datei: `apps/web/public/fortnitenexus-space.html`
+- JavaScript: copySACCode() Funktion für SAC Code Copy
+- CSS: Sticky Navigation Styles
+- Alle 7 Einnahmeströme integriert (SAC, NEXUS IQ, Premium Membership, Creator-Marketplace)
+
+---
+
 ## Dokumentation
 
 ### Neue Dokumentation
@@ -152,6 +191,7 @@
 2. `Footer-Links korrigiert - nicht-existente Seiten entfernt, nur existierende Guides verlinkt`
 3. `Fortnite-Nexus Space Startseite hinzugefügt - Revolutionäre Landing Page mit lebendigem Sturm-Hintergrund, War Room Hero, Nexus Scanner, Intel-Wand, Vault und Member Feed`
 4. `Creator-Marketplace mit echten deutschen Fortnite-Creator-Daten gefüllt und Fortnite-Nexus Space Startseite integriert`
+5. `Strategische Startseite-Integration mit Verkaufsfunnels - Hero Enhancement, Nexus Funnel Integration, Sticky Navigation, Content Teasers, Newsletter Block`
 
 ---
 
