@@ -110,17 +110,13 @@ function drawBranding(
   ctx.fillStyle = 'rgba(255, 255, 255, 0.5)';
   ctx.fillText('PRO TOOLS · DATA · INSIGHTS', padding + 24, y + 26);
 
-  // SAC Code badge (bottom-right)
-  const sacY = h - (format === 'story' ? 130 : 80);
-  const sacX = w - padding;
-  ctx.font = `${format === 'story' ? 18 : 14}px system-ui, sans-serif`;
+  // URL badge (bottom-right)
+  const urlY = h - (format === 'story' ? 100 : 65);
+  const urlX = w - padding;
+  ctx.font = `${format === 'story' ? 20 : 16}px system-ui, sans-serif`;
   ctx.textAlign = 'right';
   ctx.fillStyle = 'rgba(255, 255, 255, 0.4)';
-  ctx.fillText('Creator-Code:', sacX, sacY);
-
-  ctx.font = `900 ${format === 'story' ? 42 : 32}px 'Orbitron', system-ui, sans-serif`;
-  ctx.fillStyle = '#ff0055';
-  ctx.fillText('ZYZTM', sacX, sacY + 22);
+  ctx.fillText('fortnitenexus.space', urlX, urlY);
 
   ctx.textAlign = 'left';
 }

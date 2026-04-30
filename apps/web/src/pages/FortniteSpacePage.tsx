@@ -235,8 +235,7 @@ export default function FortniteSpacePage() {
                     Item Shop heute
                   </h3>
                   <p className="text-sm font-body text-white/70 leading-relaxed mb-4">
-                    Aktueller Fortnite Shop mit Rarity-Rating und Shop-History. Creator-Code{' '}
-                    <strong className="text-neon-pink">ZYZTM</strong> für jedes Item.
+                    Aktueller Fortnite Shop mit Rarity-Rating und Shop-History. Täglich aktuell.
                   </p>
                   <div className="font-cyber text-xs tracking-widest text-neon-pink group-hover:translate-x-1 transition-transform">
                     SHOP ANSEHEN →

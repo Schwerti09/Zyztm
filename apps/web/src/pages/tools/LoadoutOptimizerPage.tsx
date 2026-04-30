@@ -82,7 +82,7 @@ export default function LoadoutOptimizerPage() {
             <ShareButton
               generateImage={generateImage}
               filename="fortnite-loadout-optimiert"
-              tweetText="Mein optimiertes Fortnite Loadout — berechnet mit dem Loadout Optimizer auf Fortnite Nexus! Creator Code: ZYZTM"
+              tweetText="Mein optimiertes Fortnite Loadout — berechnet mit dem Fortnite Nexus Loadout Optimizer!"
               shareUrl="https://fortnitenexus.space/tools/loadout-optimizer"
               hashtags={['Fortnite', 'FortniteLoadout', 'FortniteNexus']}
               variant="primary"

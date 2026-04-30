@@ -87,7 +87,7 @@ export default function ProPlayerPage() {
             <ShareButton
               generateImage={generateImage}
               filename={`${pro.slug}-fortnite-settings`}
-              tweetText={`${pro.name} Fortnite Settings: Sens ${pro.sensitivity.xAxis} | ${pro.sensitivity.dpi} DPI | ${pro.sensitivity.cm360} cm/360° — via Fortnite Nexus! Creator Code: ZYZTM`}
+              tweetText={`${pro.name} Fortnite Settings: Sens ${pro.sensitivity.xAxis} | ${pro.sensitivity.dpi} DPI | ${pro.sensitivity.cm360} cm/360° — via Fortnite Nexus!`}
               shareUrl={`https://fortnitenexus.space/pro/${pro.slug}`}
               hashtags={['Fortnite', 'ProSettings', 'FortniteNexus', pro.name]}
               variant="compact"

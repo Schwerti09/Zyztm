@@ -91,7 +91,7 @@ export default function SensitivityConverterPage() {
             <ShareButton
               generateImage={generateImage}
               filename="meine-sensitivity-fortnite"
-              tweetText="Meine Fortnite Sensitivity — konvertiert mit Fortnite Nexus! Creator Code: ZYZTM"
+              tweetText="Meine Fortnite Sensitivity — konvertiert mit dem Fortnite Nexus Sensitivity Converter!"
               shareUrl="https://fortnitenexus.space/tools/sensitivity-converter"
               hashtags={['Fortnite', 'FortniteSettings', 'FortniteNexus']}
               variant="primary"

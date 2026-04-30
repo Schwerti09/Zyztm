@@ -140,7 +140,7 @@ export default function WeaponPage() {
           <ShareButton
             generateImage={generateImage}
             filename={`${weapon.id}-fortnite-stats`}
-            tweetText={`${weapon.name} Stats: ${weapon.damage} DMG | ${weapon.dps.toFixed(0)} DPS | ${weapon.tier}-Tier — via Fortnite Nexus! Creator Code: ZYZTM`}
+            tweetText={`${weapon.name} Stats: ${weapon.damage} DMG | ${weapon.dps.toFixed(0)} DPS | ${weapon.tier}-Tier — via Fortnite Nexus!`}
             shareUrl={`https://fortnitenexus.space/weapon/${weapon.id}`}
             hashtags={['Fortnite', 'FortniteWeapons', 'FortniteNexus']}
             variant="compact"

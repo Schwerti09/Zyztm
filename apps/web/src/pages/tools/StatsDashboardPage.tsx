@@ -91,7 +91,7 @@ export default function StatsDashboardPage() {
             <ShareButton
               generateImage={generateImage}
               filename="fortnite-stats-dashboard"
-              tweetText={_lastStatsShare ? `${_lastStatsShare.username} Fortnite Stats: ${_lastStatsShare.kd.toFixed(2)} K/D | ${_lastStatsShare.winRate.toFixed(1)}% Win-Rate | Rank: ${_lastStatsShare.rank} — via Fortnite Nexus! Creator Code: ZYZTM` : 'Meine Fortnite Stats — analysiert mit Fortnite Nexus! Creator Code: ZYZTM'}
+              tweetText={_lastStatsShare ? `${_lastStatsShare.username} Fortnite Stats: ${_lastStatsShare.kd.toFixed(2)} K/D | ${_lastStatsShare.winRate.toFixed(1)}% Win-Rate | Rank: ${_lastStatsShare.rank} — via Fortnite Nexus!` : 'Meine Fortnite Stats — analysiert mit dem Fortnite Nexus Stats Dashboard!'}
               shareUrl="https://fortnitenexus.space/tools/stats-dashboard"
               hashtags={['Fortnite', 'FortniteStats', 'FortniteNexus']}
               variant="primary"
