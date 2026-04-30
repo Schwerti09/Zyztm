@@ -112,17 +112,27 @@ node scripts/tiktok-script-generator.mjs --all          # Alle 5 Formate
 node scripts/tiktok-script-generator.mjs               # Auto (Hidden Gem wenn seltenes Item)
 ```
 
+### Phase 4C: Viral Trigger Integration
+| Datei | Funktion |
+|-------|----------|
+| `scripts/lib/viral-triggers.mjs` | Zentrale Library für 5 psychologische Trigger |
+| `scripts/lib/tweet-templates.mjs` | Alle 5 Twitter-Formate mit autoTrigger |
+| `scripts/reddit-post-generator.mjs` | Alle 5 Reddit-Formate mit autoTrigger |
+| `scripts/tiktok-script-generator.mjs` | Alle 5 TikTok-Formate mit autoTrigger |
+| `scripts/weekly-meta-report.mjs` | Newsletter Subject + Footer mit autoTrigger |
+
+**5 Psychologische Trigger:**
+- **Surprise** — "Wusstest du dass...?" Fact-basierte Hooks
+- **Social Proof** — "X Nutzer haben das heute genutzt" User-Stats
+- **Scarcity** — "Nur X Stunden bis Shop-Rotation" Zeitlimit
+- **Authority** — "Laut Pro-Spieler Bugha: ..." Pro-Referenz
+- **Controversy** — "Die meisten machen es falsch" Gegen-Meinung
+
+**Smart Auto-Trigger:** Wählt basierend auf Kontext passenden Trigger (z.B. Scarcity bei Zeitlimit, Authority bei Pro-Referenz)
+
 ---
 
-## NÄCHSTE SCHRITTE (Phase 4B+)
-
-### Phase 4B: Cross-Platform Analytics Dashboard (Optional)
-- Unified Analytics für Twitter/Discord/Reddit/TikTok
-- Engagement-Tracking pro Plattform
-
-### Phase 4C: Viral Trigger Integration
-- Surprise, Social Proof, Scarcity, Authority, Controversy
-- Automatische Trigger in alle Posts
+## NÄCHSTE SCHRITTE (Phase 5)
 
 ### Phase 5: Performance & Scale
 - SVG→PNG Konvertierung für OG-Images (@napi-rs/canvas)
@@ -185,6 +195,7 @@ apps/
 ## GIT LOG (letzte relevante Commits)
 
 ```
+[Phase 4C] feat(phase4c): Viral Trigger Integration — 5 psychologische Trigger (Surprise, Social Proof, Scarcity, Authority, Controversy) in alle Content-Pipelines (Twitter, Reddit, TikTok, Newsletter)
 [Phase 4A] feat(phase4a): TikTok Script Generator — 5 Video-Formate (15s Scripts, Shop-Daten, Auto-Hook)
 d8f5dba feat(phase3e): OG-Image Generator + 5 SVG OG-Images
 7d62a22 feat(phase3d): Reddit Content Templates — 5 Formate + Schedule
