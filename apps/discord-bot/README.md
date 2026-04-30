@@ -72,11 +72,47 @@ data/
 
 ## Hosting
 
-Empfohlen: Railway, Fly.io, oder ein VPS mit PM2:
+### Railway (Empfohlen)
+
+1. Repository auf GitHub pushen
+2. Railway Dashboard → New Project → Deploy from GitHub repo
+3. Environment Variables setzen:
+   ```
+   DISCORD_TOKEN
+   DISCORD_CLIENT_ID
+   DISCORD_GUILD_ID
+   SHOP_ALERT_CHANNEL_ID
+   ```
+4. Deploy starten
+
+### Fly.io
+
+1. Fly CLI installieren: `npm install -g flyctl`
+2. Login: `flyctl auth login`
+3. App erstellen: `flyctl apps create fortnite-nexus-bot`
+4. Secrets setzen:
+   ```bash
+   flyctl secrets set DISCORD_TOKEN="..."
+   flyctl secrets set DISCORD_CLIENT_ID="..."
+   flyctl secrets set DISCORD_GUILD_ID="..."
+   flyctl secrets set SHOP_ALERT_CHANNEL_ID="..."
+   ```
+5. Deploy: `flyctl deploy`
+
+### VPS mit PM2
 
 ```bash
 # PM2
 pm2 start src/index.mjs --name fortnite-nexus-bot
 
-# Docker (TODO)
+# Auto-Start
+pm2 startup
+pm2 save
+```
+
+### Docker (Optional)
+
+```bash
+docker build -t fortnite-nexus-bot .
+docker run -d --env-file .env fortnite-nexus-bot
 ```
