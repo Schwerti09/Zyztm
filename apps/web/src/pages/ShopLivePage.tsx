@@ -1,49 +1,20 @@
-import { lazy, Suspense, useEffect } from 'react';
+import { lazy, Suspense } from 'react';
 import { Link } from 'wouter';
 import LiveItemShop from '../components/shop/LiveItemShop';
+import MetaTags from '../components/seo/MetaTags';
 
 const Footer = lazy(() => import('../components/Footer'));
 
 export default function ShopLivePage() {
-  useEffect(() => {
-    document.title =
-      'Fortnite Item Shop heute — Live mit Rarity-Rating | Fortnite Nexus';
-
-    let meta = document.querySelector('meta[name="description"]');
-    if (!meta) {
-      meta = document.createElement('meta');
-      meta.setAttribute('name', 'description');
-      document.head.appendChild(meta);
-    }
-    meta.setAttribute(
-      'content',
-      'Aktueller Fortnite Item Shop live mit Rarity-Rating, Shop-History und Creator-Code ZYZTM. Täglich rotierender Shop. Alle Items auf deutsch.',
-    );
-
-    // Schema.org
-    const schema = {
-      '@context': 'https://schema.org',
-      '@type': 'ItemList',
-      name: 'Fortnite Item Shop heute',
-      description: 'Aktueller Fortnite Shop mit Rarity-Rating',
-      url: 'https://fortnitenexus.space/item-shop',
-    };
-    const script = document.createElement('script');
-    script.type = 'application/ld+json';
-    script.id = 'schema-item-shop';
-    script.textContent = JSON.stringify(schema);
-    const existing = document.getElementById('schema-item-shop');
-    if (existing) existing.remove();
-    document.head.appendChild(script);
-
-    return () => {
-      const el = document.getElementById('schema-item-shop');
-      if (el) el.remove();
-    };
-  }, []);
-
   return (
     <div className="min-h-screen bg-bg-dark text-white">
+      <MetaTags
+        title="Fortnite Item Shop heute — Live mit Rarity-Rating | Fortnite Nexus"
+        description="Aktueller Fortnite Item Shop live mit Rarity-Rating, Shop-History und Creator-Code ZYZTM. Täglich rotierender Shop. Alle Items auf deutsch."
+        path="/item-shop"
+        image="https://fortnitenexus.space/og/og-shop.png"
+        keywords={['Fortnite Item Shop', 'Fortnite Shop heute', 'Item Shop Fortnite', 'Fortnite Skins', 'Fortnite V-Bucks']}
+      />
       <main>
         <nav
           aria-label="Breadcrumb"

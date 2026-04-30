@@ -1,30 +1,48 @@
-import { lazy, Suspense, useEffect } from 'react';
+import { lazy, Suspense, useCallback } from 'react';
 import { Link } from 'wouter';
 import SensitivityConverter from '../../components/tools/SensitivityConverter';
 import SoftwareAppSchema from '../../components/SoftwareAppSchema';
+import MetaTags from '../../components/seo/MetaTags';
+import ShareButton from '../../components/share/ShareButton';
+import { generateSensitivityImage, type ShareFormat } from '../../lib/share-image';
+import { toCm360 } from '../../lib/sensitivity-math';
 
 const Footer = lazy(() => import('../../components/Footer'));
 
-export default function SensitivityConverterPage() {
-  useEffect(() => {
-    document.title =
-      'Sensitivity Converter Pro — Fortnite zu Valorant, CS2, Apex | Fortnite Nexus';
+const STORAGE_KEY = 'nexus-sensitivity-converter-v1';
 
-    // Meta-Description setzen
-    let meta = document.querySelector('meta[name="description"]');
-    if (!meta) {
-      meta = document.createElement('meta');
-      meta.setAttribute('name', 'description');
-      document.head.appendChild(meta);
-    }
-    meta.setAttribute(
-      'content',
-      'Konvertiere Fortnite-Sensitivity zu Valorant, CS2, Apex Legends, CoD und mehr. Mit FOV-Scaling, cm/360°-Methode und DPI-Kompensation. Wissenschaftlich exakt.',
+export default function SensitivityConverterPage() {
+  const generateImage = useCallback(async (format: ShareFormat) => {
+    let dpi = 800;
+    let sensitivity = 0.08;
+    let fromGame = 'fortnite';
+    let toGame = 'valorant';
+    try {
+      const raw = localStorage.getItem(STORAGE_KEY);
+      if (raw) {
+        const s = JSON.parse(raw);
+        dpi = s.dpi ?? 800;
+        sensitivity = s.sensitivity ?? 0.08;
+        fromGame = s.fromGame ?? 'fortnite';
+        toGame = s.toGame ?? 'valorant';
+      }
+    } catch { /* ignore */ }
+    const cm360 = toCm360({ gameId: fromGame, sensitivity, dpi });
+    return generateSensitivityImage(
+      { dpi, cm360, xy: sensitivity, games: [fromGame, toGame] },
+      { format },
     );
   }, []);
 
   return (
     <div className="min-h-screen bg-bg-dark text-white">
+      <MetaTags
+        title="Sensitivity Converter Pro — Fortnite zu Valorant, CS2, Apex | Fortnite Nexus"
+        description="Konvertiere Fortnite-Sensitivity zu Valorant, CS2, Apex Legends, CoD und mehr. Mit FOV-Scaling, cm/360°-Methode und DPI-Kompensation. Wissenschaftlich exakt."
+        path="/tools/sensitivity-converter"
+        image="https://fortnitenexus.space/og/og-tools.png"
+        keywords={['Fortnite Sensitivity', 'Sensitivity Converter', 'cm/360', 'Fortnite Settings', 'DPI Converter']}
+      />
       <SoftwareAppSchema
         name="Sensitivity Converter Pro"
         description="Cross-Game Sensitivity Konverter für 8 Shooter. Mit cm/360°-Methode, FOV-Scaling und DPI-Kompensation."
@@ -58,6 +76,28 @@ export default function SensitivityConverterPage() {
         </nav>
 
         <SensitivityConverter />
+
+        {/* Share CTA */}
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 pb-2">
+          <div className="flex items-center gap-4 p-4 rounded-2xl border border-neon-pink/20 bg-neon-pink/5">
+            <div className="flex-1">
+              <p className="text-sm font-cyber tracking-wide text-white">
+                📤 ERGEBNIS TEILEN
+              </p>
+              <p className="text-xs font-body text-white/50 mt-0.5">
+                Teile deine Sensitivity als schickes Bild auf Twitter oder Discord
+              </p>
+            </div>
+            <ShareButton
+              generateImage={generateImage}
+              filename="meine-sensitivity-fortnite"
+              tweetText="Meine Fortnite Sensitivity — konvertiert mit Fortnite Nexus! Creator Code: ZYZTM"
+              shareUrl="https://fortnitenexus.space/tools/sensitivity-converter"
+              hashtags={['Fortnite', 'FortniteSettings', 'FortniteNexus']}
+              variant="primary"
+            />
+          </div>
+        </div>
 
         {/* SEO-Content */}
         <article className="max-w-3xl mx-auto px-4 sm:px-6 py-10 prose prose-invert">

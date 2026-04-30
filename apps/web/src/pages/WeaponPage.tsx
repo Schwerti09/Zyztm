@@ -1,6 +1,9 @@
-import { lazy, Suspense, useEffect } from 'react';
+import { lazy, Suspense, useCallback } from 'react';
 import { Link, useParams } from 'wouter';
 import { WEAPONS, type Weapon } from '../data/weapons-data';
+import MetaTags from '../components/seo/MetaTags';
+import ShareButton from '../components/share/ShareButton';
+import { generateWeaponImage, type ShareFormat } from '../lib/share-image';
 
 const Footer = lazy(() => import('../components/Footer'));
 
@@ -33,55 +36,19 @@ export default function WeaponPage() {
   const params = useParams<{ slug: string }>();
   const weapon = WEAPONS.find((w) => w.id === params.slug);
 
-  useEffect(() => {
-    if (!weapon) return;
-    document.title = `${weapon.name} — Damage, DPS & Stats Guide 2026 | Fortnite Nexus`;
-
-    let meta = document.querySelector('meta[name="description"]');
-    if (!meta) {
-      meta = document.createElement('meta');
-      meta.setAttribute('name', 'description');
-      document.head.appendChild(meta);
-    }
-    meta.setAttribute(
-      'content',
-      `${weapon.name} komplett analysiert: ${weapon.damage} Damage, ${weapon.dps.toFixed(0)} DPS, ${weapon.tier}-Tier. Pro-Tipps, Vergleiche und Loadout-Empfehlungen.`,
-    );
-
-    const schema = {
-      '@context': 'https://schema.org',
-      '@type': 'Product',
-      name: weapon.name,
-      description: weapon.description,
-      image: weapon.imageUrl,
-      category: weapon.type,
-      aggregateRating: {
-        '@type': 'AggregateRating',
-        ratingValue:
-          weapon.tier === 'S'
-            ? 4.9
-            : weapon.tier === 'A'
-            ? 4.5
-            : weapon.tier === 'B'
-            ? 4.0
-            : weapon.tier === 'C'
-            ? 3.5
-            : 2.5,
-        ratingCount: 250,
+  const generateImage = useCallback(async (format: ShareFormat) => {
+    if (!weapon) throw new Error('No weapon data');
+    return generateWeaponImage(
+      {
+        name: weapon.name,
+        tier: weapon.tier,
+        damage: weapon.damage,
+        dps: weapon.dps,
+        range: weapon.range,
+        rarity: weapon.rarity,
       },
-    };
-    const script = document.createElement('script');
-    script.type = 'application/ld+json';
-    script.id = `schema-weapon-${weapon.id}`;
-    script.textContent = JSON.stringify(schema);
-    const existing = document.getElementById(`schema-weapon-${weapon.id}`);
-    if (existing) existing.remove();
-    document.head.appendChild(script);
-
-    return () => {
-      const el = document.getElementById(`schema-weapon-${weapon.id}`);
-      if (el) el.remove();
-    };
+      { format },
+    );
   }, [weapon]);
 
   if (!weapon) {
@@ -113,6 +80,13 @@ export default function WeaponPage() {
 
   return (
     <div className="min-h-screen bg-bg-dark text-white">
+      <MetaTags
+        title={`${weapon.name} — Damage, DPS & Stats Guide 2026 | Fortnite Nexus`}
+        description={`${weapon.name} komplett analysiert: ${weapon.damage} Damage, ${weapon.dps.toFixed(0)} DPS, ${weapon.tier}-Tier. Pro-Tipps, Vergleiche und Loadout-Empfehlungen.`}
+        path={`/weapon/${weapon.id}`}
+        image="https://fortnitenexus.space/og/og-weapons.png"
+        keywords={[`${weapon.name} Fortnite`, `${weapon.name} Stats`, `Fortnite ${weapon.type}`, `${weapon.name} DPS`, 'Fortnite Waffen']}
+      />
       <main>
         <nav
           aria-label="Breadcrumb"
@@ -160,9 +134,17 @@ export default function WeaponPage() {
           <h1 className="font-cyber text-4xl sm:text-6xl font-black text-white mb-3 leading-none">
             {weapon.name}
           </h1>
-          <p className="text-white/70 font-body text-lg leading-relaxed max-w-3xl">
+          <p className="text-white/70 font-body text-lg leading-relaxed max-w-3xl mb-4">
             {weapon.description}
           </p>
+          <ShareButton
+            generateImage={generateImage}
+            filename={`${weapon.id}-fortnite-stats`}
+            tweetText={`${weapon.name} Stats: ${weapon.damage} DMG | ${weapon.dps.toFixed(0)} DPS | ${weapon.tier}-Tier — via Fortnite Nexus! Creator Code: ZYZTM`}
+            shareUrl={`https://fortnitenexus.space/weapon/${weapon.id}`}
+            hashtags={['Fortnite', 'FortniteWeapons', 'FortniteNexus']}
+            variant="compact"
+          />
         </section>
 
         {/* CORE STATS */}

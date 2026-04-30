@@ -1,29 +1,42 @@
-import { lazy, Suspense, useEffect } from 'react';
+import { lazy, Suspense, useCallback } from 'react';
 import { Link } from 'wouter';
 import LoadoutOptimizer from '../../components/tools/LoadoutOptimizer';
 import SoftwareAppSchema from '../../components/SoftwareAppSchema';
+import MetaTags from '../../components/seo/MetaTags';
+import ShareButton from '../../components/share/ShareButton';
+import { generateLoadoutImage, type ShareFormat } from '../../lib/share-image';
+import { optimizeLoadout } from '../../lib/loadout-optimizer';
 
 const Footer = lazy(() => import('../../components/Footer'));
 
 export default function LoadoutOptimizerPage() {
-  useEffect(() => {
-    document.title =
-      'Loadout Optimizer AI — Optimale Fortnite Waffen-Kombi | Fortnite Nexus';
-
-    let meta = document.querySelector('meta[name="description"]');
-    if (!meta) {
-      meta = document.createElement('meta');
-      meta.setAttribute('name', 'description');
-      document.head.appendChild(meta);
-    }
-    meta.setAttribute(
-      'content',
-      'AI-gestützter Loadout-Optimizer für Fortnite. Wähle Spielstil, Zone-Phase und Karten-Bereich — erhalte das optimale 5-Slot-Loadout mit Score-System.',
+  const generateImage = useCallback(async (format: ShareFormat) => {
+    const result = optimizeLoadout({
+      playStyle: 'balanced',
+      zonePhase: 'mid',
+      mapArea: 'urban',
+      skillLevel: 'ranked',
+    });
+    const weapons = result.recommendations.map((r) => ({
+      name: r.weapon.name,
+      tier: r.weapon.tier,
+      slot: r.slot,
+    }));
+    return generateLoadoutImage(
+      { weapons, style: 'Balanced', phase: 'Mid-Game', score: result.totalScore },
+      { format },
     );
   }, []);
 
   return (
     <div className="min-h-screen bg-bg-dark text-white">
+      <MetaTags
+        title="Loadout Optimizer AI — Optimale Fortnite Waffen-Kombi | Fortnite Nexus"
+        description="AI-gestützter Loadout-Optimizer für Fortnite. Wähle Spielstil, Zone-Phase und Karten-Bereich — erhalte das optimale 5-Slot-Loadout mit Score-System."
+        path="/tools/loadout-optimizer"
+        image="https://fortnitenexus.space/og/og-tools.png"
+        keywords={['Fortnite Loadout', 'Loadout Optimizer', 'Beste Waffen Fortnite', 'Fortnite Meta', 'Loadout Tipps']}
+      />
       <SoftwareAppSchema
         name="Loadout Optimizer AI"
         description="AI-gestützter Fortnite Loadout-Optimizer. Berechnet das optimale 5-Slot-Loadout basierend auf Spielstil, Zonen-Phase, Karten-Bereich und Skill-Level."
@@ -54,6 +67,28 @@ export default function LoadoutOptimizerPage() {
         </nav>
 
         <LoadoutOptimizer />
+
+        {/* Share CTA */}
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 pb-2">
+          <div className="flex items-center gap-4 p-4 rounded-2xl border border-neon-blue/20 bg-neon-blue/5">
+            <div className="flex-1">
+              <p className="text-sm font-cyber tracking-wide text-white">
+                📤 LOADOUT TEILEN
+              </p>
+              <p className="text-xs font-body text-white/50 mt-0.5">
+                Teile dein optimales Loadout auf Twitter oder Discord
+              </p>
+            </div>
+            <ShareButton
+              generateImage={generateImage}
+              filename="fortnite-loadout-optimiert"
+              tweetText="Mein optimiertes Fortnite Loadout — berechnet mit dem Loadout Optimizer auf Fortnite Nexus! Creator Code: ZYZTM"
+              shareUrl="https://fortnitenexus.space/tools/loadout-optimizer"
+              hashtags={['Fortnite', 'FortniteLoadout', 'FortniteNexus']}
+              variant="primary"
+            />
+          </div>
+        </div>
 
         <article className="max-w-3xl mx-auto px-4 sm:px-6 py-10">
           <h2 className="font-cyber text-2xl text-neon-blue mb-4">

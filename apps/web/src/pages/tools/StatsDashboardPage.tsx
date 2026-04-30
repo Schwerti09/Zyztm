@@ -1,29 +1,51 @@
-import { lazy, Suspense, useEffect } from 'react';
+import { lazy, Suspense, useCallback } from 'react';
 import { Link } from 'wouter';
 import StatsDashboard from '../../components/tools/StatsDashboard';
 import SoftwareAppSchema from '../../components/SoftwareAppSchema';
+import MetaTags from '../../components/seo/MetaTags';
+import ShareButton from '../../components/share/ShareButton';
+import { generateStatsImage, type ShareFormat } from '../../lib/share-image';
 
 const Footer = lazy(() => import('../../components/Footer'));
 
-export default function StatsDashboardPage() {
-  useEffect(() => {
-    document.title =
-      'Stats Dashboard Pro — Fortnite Performance Analyse mit AI | Fortnite Nexus';
+// Global share-state set by StatsDashboard via custom event
+let _lastStatsShare: {
+  username: string;
+  kd: number;
+  winRate: number;
+  wins: number;
+  skillScore: number;
+  rank: string;
+} | null = null;
 
-    let meta = document.querySelector('meta[name="description"]');
-    if (!meta) {
-      meta = document.createElement('meta');
-      meta.setAttribute('name', 'description');
-      document.head.appendChild(meta);
-    }
-    meta.setAttribute(
-      'content',
-      'Fortnite Stats-Analyse mit AI-Insights. Skill-Score in 4 Dimensionen, personalisierte 3-Wochen-Ziele und Rank-Bewertung. Gib deinen Username ein.',
-    );
+if (typeof window !== 'undefined') {
+  window.addEventListener('nexus:stats-analyzed', (e: Event) => {
+    _lastStatsShare = (e as CustomEvent).detail;
+  });
+}
+
+export default function StatsDashboardPage() {
+  const generateImage = useCallback(async (format: ShareFormat) => {
+    const data = _lastStatsShare ?? {
+      username: 'Fortnite Spieler',
+      kd: 1.5,
+      winRate: 8.2,
+      wins: 42,
+      skillScore: 65,
+      rank: 'Gold',
+    };
+    return generateStatsImage(data, { format });
   }, []);
 
   return (
     <div className="min-h-screen bg-bg-dark text-white">
+      <MetaTags
+        title="Stats Dashboard Pro — Fortnite Performance Analyse mit AI | Fortnite Nexus"
+        description="Fortnite Stats-Analyse mit AI-Insights. Skill-Score in 4 Dimensionen, personalisierte 3-Wochen-Ziele und Rank-Bewertung. Gib deinen Username ein."
+        path="/tools/stats-dashboard"
+        image="https://fortnitenexus.space/og/og-tools.png"
+        keywords={['Fortnite Stats', 'Fortnite Statistiken', 'Fortnite KD', 'Winrate', 'Fortnite Analyse']}
+      />
       <SoftwareAppSchema
         name="Stats Dashboard Pro"
         description="Fortnite Performance-Analyse mit AI-Insights. Skill-Score in 4 Dimensionen, personalisierte 3-Wochen-Trainingspläne."
@@ -54,6 +76,28 @@ export default function StatsDashboardPage() {
         </nav>
 
         <StatsDashboard />
+
+        {/* Share CTA */}
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 pb-2">
+          <div className="flex items-center gap-4 p-4 rounded-2xl border border-neon-gold/20 bg-neon-gold/5">
+            <div className="flex-1">
+              <p className="text-sm font-cyber tracking-wide text-white">
+                📤 STATS TEILEN
+              </p>
+              <p className="text-xs font-body text-white/50 mt-0.5">
+                Zeig der Community deinen Skill-Score und Rank
+              </p>
+            </div>
+            <ShareButton
+              generateImage={generateImage}
+              filename="fortnite-stats-dashboard"
+              tweetText={_lastStatsShare ? `${_lastStatsShare.username} Fortnite Stats: ${_lastStatsShare.kd.toFixed(2)} K/D | ${_lastStatsShare.winRate.toFixed(1)}% Win-Rate | Rank: ${_lastStatsShare.rank} — via Fortnite Nexus! Creator Code: ZYZTM` : 'Meine Fortnite Stats — analysiert mit Fortnite Nexus! Creator Code: ZYZTM'}
+              shareUrl="https://fortnitenexus.space/tools/stats-dashboard"
+              hashtags={['Fortnite', 'FortniteStats', 'FortniteNexus']}
+              variant="primary"
+            />
+          </div>
+        </div>
 
         <article className="max-w-3xl mx-auto px-4 sm:px-6 py-10">
           <h2 className="font-cyber text-2xl text-neon-gold mb-4">

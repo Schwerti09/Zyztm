@@ -1,6 +1,9 @@
-import { lazy, Suspense, useEffect } from 'react';
+import { lazy, Suspense, useCallback } from 'react';
 import { Link, useParams } from 'wouter';
 import { getProBySlug, PRO_PLAYERS } from '../data/pro-players';
+import MetaTags from '../components/seo/MetaTags';
+import ShareButton from '../components/share/ShareButton';
+import { generateProImage, type ShareFormat } from '../lib/share-image';
 
 const Footer = lazy(() => import('../components/Footer'));
 
@@ -8,43 +11,19 @@ export default function ProPlayerPage() {
   const params = useParams<{ slug: string }>();
   const pro = getProBySlug(params.slug);
 
-  useEffect(() => {
-    if (!pro) return;
-    document.title = `${pro.name} Fortnite Settings, Keybinds & Sensitivity 2026 | Fortnite Nexus`;
-
-    let meta = document.querySelector('meta[name="description"]');
-    if (!meta) {
-      meta = document.createElement('meta');
-      meta.setAttribute('name', 'description');
-      document.head.appendChild(meta);
-    }
-    meta.setAttribute(
-      'content',
-      `Alle ${pro.name} (${pro.team}) Fortnite Settings: Sensitivity ${pro.sensitivity.xAxis}, DPI ${pro.sensitivity.dpi}, ${pro.sensitivity.cm360} cm/360°. Keybinds, Maus & Monitor. Aktuell 2026.`,
+  const generateImage = useCallback(async (format: ShareFormat) => {
+    if (!pro) throw new Error('No pro data');
+    return generateProImage(
+      {
+        name: pro.name,
+        team: pro.team,
+        sens: pro.sensitivity.xAxis,
+        dpi: pro.sensitivity.dpi,
+        cm360: pro.sensitivity.cm360,
+        country: pro.country,
+      },
+      { format },
     );
-
-    const schema = {
-      '@context': 'https://schema.org',
-      '@type': 'Person',
-      name: pro.name,
-      alternateName: pro.realName,
-      nationality: pro.country,
-      memberOf: { '@type': 'SportsTeam', name: pro.team },
-      description: pro.bio,
-      url: `https://fortnitenexus.space/pro/${pro.slug}`,
-    };
-    const script = document.createElement('script');
-    script.type = 'application/ld+json';
-    script.id = `schema-pro-${pro.slug}`;
-    script.textContent = JSON.stringify(schema);
-    const existing = document.getElementById(`schema-pro-${pro.slug}`);
-    if (existing) existing.remove();
-    document.head.appendChild(script);
-
-    return () => {
-      const el = document.getElementById(`schema-pro-${pro.slug}`);
-      if (el) el.remove();
-    };
   }, [pro]);
 
   if (!pro) {
@@ -69,6 +48,14 @@ export default function ProPlayerPage() {
 
   return (
     <div className="min-h-screen bg-bg-dark text-white">
+      <MetaTags
+        title={`${pro.name} Fortnite Settings, Keybinds & Sensitivity 2026 | Fortnite Nexus`}
+        description={`Alle ${pro.name} (${pro.team}) Fortnite Settings: Sensitivity ${pro.sensitivity.xAxis}, DPI ${pro.sensitivity.dpi}, ${pro.sensitivity.cm360} cm/360°. Keybinds, Maus & Monitor. Aktuell 2026.`}
+        path={`/pro/${pro.slug}`}
+        image="https://fortnitenexus.space/og/og-pros.png"
+        type="profile"
+        keywords={[`${pro.name} Settings`, `${pro.name} Sensitivity`, `${pro.name} Fortnite`, `${pro.team} Fortnite`, 'Pro Settings Fortnite']}
+      />
       <main>
         <nav aria-label="Breadcrumb" className="max-w-5xl mx-auto px-4 sm:px-6 pt-8 text-xs font-body text-white/40 flex gap-2 flex-wrap">
           <Link href="/"><a className="hover:text-neon-pink">Home</a></Link>
@@ -93,10 +80,18 @@ export default function ProPlayerPage() {
             {pro.earnings && <span className="ml-3 text-neon-gold">· ${pro.earnings} Lifetime</span>}
           </p>
           <p className="text-white/70 font-body leading-relaxed mb-6 max-w-3xl">{pro.bio}</p>
-          <div className="flex flex-wrap gap-2">
+          <div className="flex flex-wrap gap-2 items-center">
             {pro.twitter && <a href={`https://twitter.com/${pro.twitter.replace('@', '')}`} target="_blank" rel="noopener" className="px-3 py-1.5 rounded-lg bg-white/5 hover:bg-white/10 text-xs font-cyber tracking-widest text-white/70">𝕏 TWITTER</a>}
             {pro.twitch && <a href={`https://twitch.tv/${pro.twitch}`} target="_blank" rel="noopener" className="px-3 py-1.5 rounded-lg bg-purple-500/10 hover:bg-purple-500/20 text-xs font-cyber tracking-widest text-purple-400">TWITCH</a>}
             {pro.youtube && <a href={`https://youtube.com/@${pro.youtube}`} target="_blank" rel="noopener" className="px-3 py-1.5 rounded-lg bg-red-500/10 hover:bg-red-500/20 text-xs font-cyber tracking-widest text-red-400">YOUTUBE</a>}
+            <ShareButton
+              generateImage={generateImage}
+              filename={`${pro.slug}-fortnite-settings`}
+              tweetText={`${pro.name} Fortnite Settings: Sens ${pro.sensitivity.xAxis} | ${pro.sensitivity.dpi} DPI | ${pro.sensitivity.cm360} cm/360° — via Fortnite Nexus! Creator Code: ZYZTM`}
+              shareUrl={`https://fortnitenexus.space/pro/${pro.slug}`}
+              hashtags={['Fortnite', 'ProSettings', 'FortniteNexus', pro.name]}
+              variant="compact"
+            />
           </div>
         </section>
 
