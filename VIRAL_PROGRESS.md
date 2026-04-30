@@ -91,21 +91,40 @@ Alle 8 Tools haben `SoftwareAppSchema` (Schema.org JSON-LD).
 
 ---
 
-## NÄCHSTE SCHRITTE (Phase 4+)
+## ABGESCHLOSSEN — Phase 4: TikTok Content Pipeline
 
-### Phase 4: Cross-Platform Synergie
-Referenz: Masterplan Abschnitt [6] + [7]
+### Phase 4A: TikTok Video Script Generator
+| Datei | Funktion |
+|-------|----------|
+| `scripts/tiktok-script-generator.mjs` | 15-Sekunden-Video-Scripts mit Timing-Markern |
 
-- Twitter <-> Reddit <-> Discord <-> TikTok Flywheel
-- Viral Trigger (Surprise, Social Proof, Scarcity, Authority, Controversy)
-- 12-Monats-Timeline aus Masterplan Abschnitt [8]
+**Formate:**
+- Shop Speedrun — Schnelle Cuts aller Top-Items
+- Hidden Gem Alert — Dramatic Alert für rare Returns (>90d)
+- Sensitivity Guide — Educational: 800 DPI + 0.07 Sens
+- Pro Settings Reveal — Random Pro (Bugha/TaySon/Mongraal)
+- Stats Reaction — Before/After Stats mit CTA
 
-### Phase 5: TikTok Content Pipeline
-- AI-generierte 15s Video-Scripts aus Shop/News-Daten
-- Templates für die 5 Video-Formate im Masterplan
-- Automatische Caption + Hashtag-Generierung
+**Usage:**
+```bash
+node scripts/tiktok-script-generator.mjs --format=sens  # Ein Format
+node scripts/tiktok-script-generator.mjs --all          # Alle 5 Formate
+node scripts/tiktok-script-generator.mjs               # Auto (Hidden Gem wenn seltenes Item)
+```
 
-### Phase 6: Performance & Scale
+---
+
+## NÄCHSTE SCHRITTE (Phase 4B+)
+
+### Phase 4B: Cross-Platform Analytics Dashboard (Optional)
+- Unified Analytics für Twitter/Discord/Reddit/TikTok
+- Engagement-Tracking pro Plattform
+
+### Phase 4C: Viral Trigger Integration
+- Surprise, Social Proof, Scarcity, Authority, Controversy
+- Automatische Trigger in alle Posts
+
+### Phase 5: Performance & Scale
 - SVG→PNG Konvertierung für OG-Images (@napi-rs/canvas)
 - Newsletter Resend-Integration (RESEND_API_KEY)
 - Discord Bot Hosting (Railway/Fly.io)
@@ -166,6 +185,7 @@ apps/
 ## GIT LOG (letzte relevante Commits)
 
 ```
+[Phase 4A] feat(phase4a): TikTok Script Generator — 5 Video-Formate (15s Scripts, Shop-Daten, Auto-Hook)
 d8f5dba feat(phase3e): OG-Image Generator + 5 SVG OG-Images
 7d62a22 feat(phase3d): Reddit Content Templates — 5 Formate + Schedule
 6791c57 feat(phase3c): Newsletter System — Signup + Function + Report + Cron
