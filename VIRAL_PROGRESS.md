@@ -45,55 +45,53 @@ Alle 8 Tools haben `SoftwareAppSchema` (Schema.org JSON-LD).
 
 ---
 
-## NÄCHSTE SCHRITTE (Phase 3+)
+## ABGESCHLOSSEN — Phase 3: Social Distribution & Community
 
-Laut `docs/masterplan/10-viral-growth-playbook.md` sind die nächsten Fronten:
+### Phase 3A: Twitter Auto-Post System
+| Datei | Funktion |
+|-------|----------|
+| `scripts/lib/twitter-client.mjs` | OAuth 1.0a Twitter API v2 Client (native Node crypto) |
+| `scripts/lib/tweet-templates.mjs` | 5 Tweet-Formate: Shop-Update, Hidden Gem, Stat Breakdown, Quick Win, Controversial |
+| `scripts/shop-tweet.mjs` | Haupt-Script: Shop fetchen → Tweet generieren → posten/dry-run |
+| `.github/workflows/daily-shop-tweet.yml` | Cron: täglich 00:15 UTC |
 
-### Phase 3A: Social Media Automation (Priorität HOCH)
-Referenz: Masterplan Abschnitt [1] Twitter, [3] TikTok
+**Setup:** 4 GitHub Secrets: `TWITTER_API_KEY`, `TWITTER_API_SECRET`, `TWITTER_ACCESS_TOKEN`, `TWITTER_ACCESS_SECRET`
 
-1. **Twitter Auto-Post System**
-   - Script `scripts/twitter-auto-post.mjs`
-   - Täglicher Item-Shop-Post um 00:15 UTC (nach Rotation)
-   - Nutzt die 5 Tweet-Formate aus dem Masterplan
-   - Hashtag-Strategie: #Fortnite #FortniteMeta #FortniteSettings
-   - Posting-Zeiten: Siehe Masterplan Timing-Grid
-   - Technisch: Twitter API v2 + Cron (GitHub Actions oder Netlify Scheduled Functions)
+### Phase 3B: Discord Bot
+| Datei | Funktion |
+|-------|----------|
+| `apps/discord-bot/src/index.mjs` | Bot Entry, Auto-Shop-Alert (00:10 UTC), Wishlist-DM-Alerts |
+| `apps/discord-bot/src/commands/shop.mjs` | `/shop` — Item Shop Embed |
+| `apps/discord-bot/src/commands/wishlist.mjs` | `/wishlist add/remove/show` — Skin-Wishlist |
+| `apps/discord-bot/src/commands/challenge.mjs` | `/challenge current/submit/leaderboard` — Weekly Challenge |
+| `apps/discord-bot/src/lib/fortnite-api.mjs` | Standalone Fortnite API Client |
+| `apps/discord-bot/src/lib/wishlist-store.mjs` | JSON-basierte Wishlist-Persistenz |
 
-2. **TikTok Content Pipeline**
-   - AI-generierte 15s Video-Scripts aus Shop/News-Daten
-   - Templates für die 5 Video-Formate im Masterplan
-   - Automatische Caption + Hashtag-Generierung
+**Setup:** 4 ENV-Vars: `DISCORD_TOKEN`, `DISCORD_CLIENT_ID`, `DISCORD_GUILD_ID`, `SHOP_ALERT_CHANNEL_ID`
 
-### Phase 3B: Discord Bot (Priorität HOCH)
-Referenz: Masterplan Abschnitt [4] Discord
+### Phase 3C: Newsletter System
+| Datei | Funktion |
+|-------|----------|
+| `src/components/newsletter/NewsletterSignup.tsx` | Signup-Formular (3 Varianten: inline/card/footer) |
+| `functions/newsletter-signup.ts` | Netlify Function: Speichert E-Mail in Neon DB |
+| `sql/newsletter-schema.sql` | DB-Schema: Subscriber + Referral-Tracking |
+| `scripts/weekly-meta-report.mjs` | HTML-Newsletter Generator (Meta, Tipps, Tools, Shop) |
+| `.github/workflows/weekly-newsletter.yml` | Cron: jeden Montag 08:00 UTC |
 
-1. **Discord Bot für Community-Engagement**
-   - Automatische Item-Shop-Alerts (täglich)
-   - Wishlist-System (User sagen welche Skins sie wollen, Bot alertet bei Return)
-   - Weekly Challenge Leaderboard
-   - Invite-Link überall integrieren (Footer, Guides, Newsletter)
+### Phase 3D: Reddit Content Templates
+| Datei | Funktion |
+|-------|----------|
+| `scripts/reddit-post-generator.mjs` | 5 Post-Formate + Cross-Posting Schedule für 5 Subreddits |
 
-### Phase 3C: Newsletter System (Priorität MITTEL)
-Referenz: Masterplan Abschnitt [5] Newsletter
+### Phase 3E: OG-Images
+| Datei | Funktion |
+|-------|----------|
+| `scripts/generate-og-images.mjs` | SVG-basierter OG-Image Generator |
+| `public/og/*.svg` | 5 OG-Images (default, tools, shop, pros, weapons) |
 
-1. **Newsletter-Integration**
-   - Weekly Meta Report (automatisch generiert aus Waffen/Meta-Daten)
-   - Patch-Alert-System
-   - Signup-Formular auf der Website
-   - Referral-Programm
+---
 
-### Phase 3D: Reddit Strategie (Priorität MITTEL)
-Referenz: Masterplan Abschnitt [2] Reddit
-
-1. **Reddit Content Templates**
-   - Guide-Format, Analysis-Format, Meta-Update-Format
-   - Cross-Posting Strategie für 5 Subreddits
-
-### Phase 3E: OG Image Generation (Priorität NIEDRIG)
-1. **Statische Default OG-Images** unter `public/og/`
-   - `og-default.png`, `og-tools.png`, `og-shop.png`, `og-pros.png`, `og-weapons.png`
-   - Einmal-Script mit Canvas-Generator
+## NÄCHSTE SCHRITTE (Phase 4+)
 
 ### Phase 4: Cross-Platform Synergie
 Referenz: Masterplan Abschnitt [6] + [7]
@@ -102,42 +100,65 @@ Referenz: Masterplan Abschnitt [6] + [7]
 - Viral Trigger (Surprise, Social Proof, Scarcity, Authority, Controversy)
 - 12-Monats-Timeline aus Masterplan Abschnitt [8]
 
+### Phase 5: TikTok Content Pipeline
+- AI-generierte 15s Video-Scripts aus Shop/News-Daten
+- Templates für die 5 Video-Formate im Masterplan
+- Automatische Caption + Hashtag-Generierung
+
+### Phase 6: Performance & Scale
+- SVG→PNG Konvertierung für OG-Images (@napi-rs/canvas)
+- Newsletter Resend-Integration (RESEND_API_KEY)
+- Discord Bot Hosting (Railway/Fly.io)
+- Wishlist-Store Migration zu Neon DB
+
 ---
 
 ## ARCHITEKTUR-ÜBERBLICK
 
 ```
-apps/web/
-  src/
-    components/
-      seo/MetaTags.tsx          -- Dynamische OG/Twitter/SEO Meta-Tags
-      share/ShareButton.tsx     -- Re-usable Share-Dropdown
-      shop/LiveItemShop.tsx     -- Live Item Shop Komponente
-      tools/                    -- 8 Tool-Komponenten
-      SoftwareAppSchema.tsx     -- Schema.org für Tools
-    data/
-      pro-players.ts            -- 20 Pro Player Datensätze
-      weapons-data.ts           -- 27 Waffen Datensätze
-    lib/
-      share-image.ts            -- Canvas PNG-Generator (5 Generatoren)
-      fortnite-api.ts           -- API Client mit Cache
-      sensitivity-math.ts       -- Sens-Converter Mathe
-      loadout-optimizer.ts      -- Loadout Decision Engine
-      stats-analyzer.ts         -- Stats AI Analyzer
-    pages/
-      tools/                    -- 8 Tool-Pages (alle mit MetaTags + ShareButton)
-      FortniteSpacePage.tsx     -- Homepage
-      ShopLivePage.tsx          -- Item Shop (MetaTags)
-      ProPlayerPage.tsx         -- Pro Page (MetaTags + ShareButton)
-      WeaponPage.tsx            -- Weapon Page (MetaTags + ShareButton)
-      ShareLandingPage.tsx      -- /share/:type/:id Viral Landing
-      ProsHubPage.tsx           -- Pro Hub
-      WeaponsHubPage.tsx        -- Weapons Hub
-    App.tsx                     -- Routing (alle Routes registriert)
-  scripts/
-    generate-sitemap.mjs        -- Auto-Sitemap Generator
-  public/
-    sitemap.xml                 -- 75+ URLs
+apps/
+  web/
+    src/
+      components/
+        seo/MetaTags.tsx            -- Dynamische OG/Twitter/SEO Meta-Tags
+        share/ShareButton.tsx       -- Re-usable Share-Dropdown
+        newsletter/NewsletterSignup.tsx -- Email Signup (3 Varianten)
+        shop/LiveItemShop.tsx       -- Live Item Shop Komponente
+        tools/                      -- 8 Tool-Komponenten
+      data/
+        pro-players.ts              -- 20 Pro Player Datensätze
+        weapons-data.ts             -- 27 Waffen Datensätze
+      lib/
+        share-image.ts              -- Canvas PNG-Generator (5 Generatoren)
+        fortnite-api.ts             -- API Client (/v2/shop)
+      pages/
+        tools/                      -- 8 Tool-Pages (MetaTags + ShareButton)
+        ShareLandingPage.tsx        -- /share/:type/:id
+      App.tsx                       -- Routing
+    functions/
+      newsletter-signup.ts          -- Netlify Function
+    scripts/
+      shop-tweet.mjs                -- Twitter Auto-Post
+      weekly-meta-report.mjs        -- Newsletter Generator
+      reddit-post-generator.mjs     -- Reddit Templates
+      generate-og-images.mjs        -- OG-Image Generator
+      generate-sitemap.mjs          -- Sitemap Generator
+      lib/
+        twitter-client.mjs          -- OAuth 1.0a Client
+        tweet-templates.mjs         -- 5 Tweet-Formate
+    public/og/                      -- 5 OG-Images (SVG)
+    sql/newsletter-schema.sql       -- DB-Schema
+  discord-bot/
+    src/
+      index.mjs                     -- Bot Entry + Auto-Alerts
+      commands/shop.mjs             -- /shop
+      commands/wishlist.mjs         -- /wishlist
+      commands/challenge.mjs        -- /challenge
+      lib/fortnite-api.mjs          -- API Client
+      lib/wishlist-store.mjs        -- JSON Store
+.github/workflows/
+  daily-shop-tweet.yml              -- Cron 00:15 UTC
+  weekly-newsletter.yml             -- Cron Montag 08:00 UTC
 ```
 
 ---
@@ -145,8 +166,13 @@ apps/web/
 ## GIT LOG (letzte relevante Commits)
 
 ```
-824ec47 fix: remove all ZYZTM/SAC references from viral share system + landing pages
-3e86fd2 feat(viral): Canvas Share System + MetaTags + ShareButton in 8 Pages + Viral Landing /share/:type/:id
+d8f5dba feat(phase3e): OG-Image Generator + 5 SVG OG-Images
+7d62a22 feat(phase3d): Reddit Content Templates — 5 Formate + Schedule
+6791c57 feat(phase3c): Newsletter System — Signup + Function + Report + Cron
+bcde1c8 feat(phase3b): Discord Bot — /shop /wishlist /challenge + Auto-Alerts
+0d9b3b1 feat(phase3a): Twitter Auto-Post + fix /v2/shop API migration
+824ec47 fix: remove all ZYZTM/SAC references
+3e86fd2 feat(viral): Canvas Share System + MetaTags + ShareButton + Viral Landing
 30f34f1 Phase 1: Live Data + Programmatic SEO (DEPLOYED)
 ```
 
@@ -155,7 +181,7 @@ apps/web/
 ## NÄCHSTER START-BEFEHL
 
 ```
-Lies VIRAL_PROGRESS.md. Starte mit Phase 3A: Twitter Auto-Post System.
+Lies VIRAL_PROGRESS.md. Starte mit Phase 4: Cross-Platform Synergie.
 ```
 
-Oder kürzer: **"weiter mit Phase 3"**
+Oder kürzer: **"weiter mit Phase 4"**
