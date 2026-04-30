@@ -1,32 +1,46 @@
 #!/usr/bin/env node
 
 /**
- * generate-og-images.mjs — Erstellt statische OG-Images für Social-Media-Previews
+ * generate-og-images.mjs — Generiert OG-Images für Social Media (SVG + PNG)
  *
- * Generiert 5 PNG-Dateien unter public/og/:
- *   - og-default.png  (allgemein)
- *   - og-tools.png    (Tool-Pages)
- *   - og-shop.png     (Item Shop)
- *   - og-pros.png     (Pro Player Pages)
- *   - og-weapons.png  (Weapon Pages)
+ * Erzeugt 5 OG-Images für verschiedene Kontexte:
+ *   1. default — General Purpose
+ *   2. tools — Tool-Seiten
+ *   3. shop — Item Shop
+ *   4. pros — Pro-Player Settings
+ *   5. weapons — Waffen-Datenbank
  *
- * Dimensionen: 1200×630 (Open Graph Standard)
+ * Output: public/og/*.svg und public/og/*.png (wenn canvas installiert)
  *
- * Usage: node scripts/generate-og-images.mjs
+ * Usage:
+ *   node scripts/generate-og-images.mjs              # SVG + PNG (wenn möglich)
+ *   node scripts/generate-og-images.mjs --svg-only  # Nur SVG
  *
- * Hinweis: Nutzt eine SVG-basierte Generierung da Node.js kein Canvas hat.
- * Die SVGs werden direkt als optimierte PNG-Platzhalter abgelegt.
+ * PNG-Konvertierung erfordert: npm install canvas
  */
 
-import fs from 'node:fs';
-import path from 'node:path';
-import { fileURLToPath } from 'node:url';
+import { writeFile, mkdir } from 'fs/promises';
+import { existsSync, mkdirSync, writeFileSync } from 'fs';
+import { join, dirname } from 'path';
+import { fileURLToPath } from 'url';
 
-const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const OUTPUT_DIR = path.join(__dirname, '..', 'public', 'og');
+const __dirname = dirname(fileURLToPath(import.meta.url));
+const OUTPUT_DIR = join(__dirname, '..', 'public', 'og');
+
+// Canvas für PNG-Konvertierung (optional)
+let canvas;
+let loadSVG;
+try {
+  const canvasModule = await import('canvas');
+  canvas = canvasModule.default;
+  loadSVG = canvasModule.loadSVG;
+} catch {
+  console.log('⚠️  Canvas nicht installiert — nur SVG-Output');
+  console.log('   Für PNG: npm install canvas');
+}
 
 function ensureDir(dir) {
-  if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
+  if (!existsSync(dir)) mkdirSync(dir, { recursive: true });
 }
 
 /**
@@ -95,23 +109,67 @@ const images = [
     accent: '#f5c518',
     icon: '📊',
     bgGradient: '<stop offset="0%" stop-color="#0a0a1a"/><stop offset="100%" stop-color="#1a1a0a"/>',
-  },
+  }
 ];
 
-function main() {
+/**
+ * Konvertiert SVG zu PNG mit Canvas (wenn verfügbar)
+ */
+async function convertSvgToPng(svg, outputPath) {
+  if (!canvas || !loadSVG) {
+    return false;
+  }
+
+  try {
+    const image = new canvas.Image();
+    const svgBuffer = Buffer.from(svg);
+    image.src = svgBuffer;
+
+    const cvs = canvas.createCanvas(1200, 630);
+    const ctx = cvs.getContext('2d');
+    ctx.drawImage(image, 0, 0, 1200, 630);
+
+    const pngBuffer = cvs.toBuffer('image/png');
+    await writeFile(outputPath, pngBuffer);
+    return true;
+  } catch (err) {
+    console.warn(`  ⚠️  PNG-Konvertierung fehlgeschlagen: ${err.message}`);
+    return false;
+  }
+}
+
+async function main() {
+  const args = process.argv.slice(2);
+  const svgOnly = args.includes('--svg-only');
+
   ensureDir(OUTPUT_DIR);
+
+  const pngAvailable = !!(canvas && loadSVG);
+  console.log(pngAvailable ? '✅ Canvas verfügbar — generiere SVG + PNG' : '⚠️  Canvas nicht verfügbar — nur SVG');
 
   for (const img of images) {
     const svg = generateSvgOg(img);
-    // SVG als .svg ablegen (für og:image muss später PNG konvertiert werden)
-    const svgPath = path.join(OUTPUT_DIR, img.filename.replace('.png', '.svg'));
-    fs.writeFileSync(svgPath, svg);
+    const basename = img.filename.replace('.png', '');
+
+    // SVG immer generieren
+    const svgPath = join(OUTPUT_DIR, `${basename}.svg`);
+    writeFileSync(svgPath, svg);
     console.log(`✅ ${svgPath}`);
+
+    // PNG generieren wenn verfügbar und nicht --svg-only
+    if (!svgOnly && pngAvailable) {
+      const pngPath = join(OUTPUT_DIR, `${basename}.png`);
+      const success = await convertSvgToPng(svg, pngPath);
+      if (success) {
+        console.log(`✅ ${pngPath}`);
+      }
+    }
   }
 
   console.log(`\n📁 ${images.length} OG-Images generiert in ${OUTPUT_DIR}`);
-  console.log('ℹ️  SVG-Format. Für echte PNG-Konvertierung: npm install @napi-rs/canvas');
-  console.log('   Oder online konvertieren: svgtopng.com');
+  if (!pngAvailable && !svgOnly) {
+    console.log('💡 Für PNG-Output: npm install canvas');
+  }
 }
 
 main();
