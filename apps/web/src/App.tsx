@@ -45,6 +45,13 @@ const MetaPredictorPage = lazy(() => import('./pages/tools/MetaPredictorPage'));
 const KeybindOptimizerPage = lazy(() => import('./pages/tools/KeybindOptimizerPage'));
 const RotationPlannerPage = lazy(() => import('./pages/tools/RotationPlannerPage'));
 
+// Live Data & Programmatic SEO
+const ShopLivePage = lazy(() => import('./pages/ShopLivePage'));
+const ProsHubPage = lazy(() => import('./pages/ProsHubPage'));
+const ProPlayerPage = lazy(() => import('./pages/ProPlayerPage'));
+const WeaponsHubPage = lazy(() => import('./pages/WeaponsHubPage'));
+const WeaponPage = lazy(() => import('./pages/WeaponPage'));
+
 function PageLoader() {
   return (
     <div className="min-h-screen bg-bg-dark flex items-center justify-center">
@@ -105,6 +112,12 @@ export default function App() {
           <Route path="/tools/meta-predictor" component={MetaPredictorPage} />
           <Route path="/tools/keybind-optimizer" component={KeybindOptimizerPage} />
           <Route path="/tools/rotation-planner" component={RotationPlannerPage} />
+          {/* Live Data & Programmatic SEO */}
+          <Route path="/item-shop" component={ShopLivePage} />
+          <Route path="/pros" component={ProsHubPage} />
+          <Route path="/pro/:slug" component={ProPlayerPage} />
+          <Route path="/weapons" component={WeaponsHubPage} />
+          <Route path="/weapon/:slug" component={WeaponPage} />
           {/* Fortnite Nexus Space */}
           <Route path="/space" component={FortniteSpacePage} />
           {/* Loadout God */}

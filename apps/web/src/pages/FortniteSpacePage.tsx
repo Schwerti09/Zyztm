@@ -207,6 +207,90 @@ export default function FortniteSpacePage() {
           </div>
         </section>
 
+        {/* LIVE DATA HUB */}
+        <section className="relative max-w-6xl mx-auto px-4 sm:px-6 py-12">
+          <div className="flex items-end justify-between mb-8 flex-wrap gap-3">
+            <div>
+              <h2 className="font-cyber text-2xl sm:text-3xl font-black text-white mb-2">
+                LIVE DATA HUB
+              </h2>
+              <p className="text-sm font-body text-white/60">
+                Daten statt Hype. Immer aktuell, immer ehrlich.
+              </p>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <Link href="/item-shop">
+              <a className="block group">
+                <article className="p-6 rounded-2xl border border-neon-pink/30 bg-gradient-to-br from-neon-pink/10 to-transparent hover:from-neon-pink/20 transition-all h-full">
+                  <div className="flex items-center gap-2 mb-4">
+                    <span className="w-2 h-2 rounded-full bg-red-500 animate-pulse" />
+                    <span className="text-[10px] font-cyber tracking-widest text-neon-pink">
+                      LIVE · DAILY ROTATION
+                    </span>
+                  </div>
+                  <div className="text-3xl mb-3">🛒</div>
+                  <h3 className="font-cyber text-xl font-bold text-white mb-2">
+                    Item Shop heute
+                  </h3>
+                  <p className="text-sm font-body text-white/70 leading-relaxed mb-4">
+                    Aktueller Fortnite Shop mit Rarity-Rating und Shop-History. Creator-Code{' '}
+                    <strong className="text-neon-pink">ZYZTM</strong> für jedes Item.
+                  </p>
+                  <div className="font-cyber text-xs tracking-widest text-neon-pink group-hover:translate-x-1 transition-transform">
+                    SHOP ANSEHEN →
+                  </div>
+                </article>
+              </a>
+            </Link>
+
+            <Link href="/pros">
+              <a className="block group">
+                <article className="p-6 rounded-2xl border border-neon-blue/30 bg-gradient-to-br from-neon-blue/10 to-transparent hover:from-neon-blue/20 transition-all h-full">
+                  <div className="mb-4">
+                    <span className="text-[10px] font-cyber tracking-widest text-neon-blue">
+                      20+ TOP-PROS
+                    </span>
+                  </div>
+                  <div className="text-3xl mb-3">🏆</div>
+                  <h3 className="font-cyber text-xl font-bold text-white mb-2">
+                    Pro Settings
+                  </h3>
+                  <p className="text-sm font-body text-white/70 leading-relaxed mb-4">
+                    Bugha, Clix, Mongraal, Tayson, Aqua — alle Sensitivities, Keybinds und Gear-Setups.
+                  </p>
+                  <div className="font-cyber text-xs tracking-widest text-neon-blue group-hover:translate-x-1 transition-transform">
+                    PROS ENTDECKEN →
+                  </div>
+                </article>
+              </a>
+            </Link>
+
+            <Link href="/weapons">
+              <a className="block group">
+                <article className="p-6 rounded-2xl border border-neon-gold/30 bg-gradient-to-br from-neon-gold/10 to-transparent hover:from-neon-gold/20 transition-all h-full">
+                  <div className="mb-4">
+                    <span className="text-[10px] font-cyber tracking-widest text-neon-gold">
+                      25+ WAFFEN · DPS DATA
+                    </span>
+                  </div>
+                  <div className="text-3xl mb-3">⚔️</div>
+                  <h3 className="font-cyber text-xl font-bold text-white mb-2">
+                    Waffen-Datenbank
+                  </h3>
+                  <p className="text-sm font-body text-white/70 leading-relaxed mb-4">
+                    Tier-Liste, DPS-Berechnung, Combat-Stats und Pro-Tipps für jede Waffe im Spiel.
+                  </p>
+                  <div className="font-cyber text-xs tracking-widest text-neon-gold group-hover:translate-x-1 transition-transform">
+                    WAFFEN ANSEHEN →
+                  </div>
+                </article>
+              </a>
+            </Link>
+          </div>
+        </section>
+
         {/* WHY US */}
         <section className="relative max-w-5xl mx-auto px-4 sm:px-6 py-16">
           <div className="text-center mb-10">
