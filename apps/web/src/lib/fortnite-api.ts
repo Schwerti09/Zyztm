@@ -131,6 +131,7 @@ export async function getItemShop(language: 'de' | 'en' = 'de'): Promise<ItemSho
   type RawShopEntry = {
     regularPrice: number;
     finalPrice: number;
+    sortPriority?: number;
     layout?: { name?: string; id?: string };
     brItems?: {
       id: string;
@@ -147,54 +148,44 @@ export async function getItemShop(language: 'de' | 'en' = 'de'): Promise<ItemSho
     data: {
       hash: string;
       date: string;
-      featured?: { entries: RawShopEntry[] };
-      daily?: { entries: RawShopEntry[] };
-      specialFeatured?: { entries: RawShopEntry[] };
-      specialDaily?: { entries: RawShopEntry[] };
+      entries: RawShopEntry[];
     };
   };
 
+  // /v2/shop (flat entries) — /v2/shop/br ist deprecated (410)
   const raw = await fetchJson<RawShopResponse>(
-    `${FN_API_BASE}/shop/br?language=${language}`,
+    `${FN_API_BASE}/shop?language=${language}`,
   );
 
   const sectionsMap = new Map<string, ShopItem[]>();
   let totalItems = 0;
 
-  const processSection = (entries: RawShopEntry[] | undefined, defaultName: string) => {
-    if (!entries) return;
-    for (const entry of entries) {
-      if (!entry.brItems || entry.brItems.length === 0) continue;
-      const firstItem = entry.brItems[0];
-      const sectionName = entry.layout?.name || defaultName;
+  for (const entry of raw.data.entries || []) {
+    if (!entry.brItems || entry.brItems.length === 0) continue;
+    const firstItem = entry.brItems[0];
+    const sectionName = entry.layout?.name || 'Sonstiges';
 
-      const rarityCap =
-        firstItem.rarity.value.charAt(0).toUpperCase() + firstItem.rarity.value.slice(1);
+    const rarityCap =
+      firstItem.rarity.value.charAt(0).toUpperCase() + firstItem.rarity.value.slice(1);
 
-      const item: ShopItem = {
-        id: firstItem.id,
-        name: firstItem.name,
-        description: firstItem.description,
-        rarity: rarityCap as ShopItem['rarity'],
-        type: firstItem.type.displayValue,
-        price: entry.finalPrice,
-        image: firstItem.images.featured || firstItem.images.icon,
-        featured: defaultName.toLowerCase().includes('featured'),
-        timesSeen: firstItem.shopHistory?.length,
-        firstSeenDate: firstItem.shopHistory?.[0],
-        lastSeenDate: firstItem.shopHistory?.[firstItem.shopHistory.length - 1],
-      };
+    const item: ShopItem = {
+      id: firstItem.id,
+      name: firstItem.name,
+      description: firstItem.description,
+      rarity: rarityCap as ShopItem['rarity'],
+      type: firstItem.type.displayValue,
+      price: entry.finalPrice,
+      image: firstItem.images.featured || firstItem.images.icon,
+      featured: (entry.sortPriority ?? 99) <= 0,
+      timesSeen: firstItem.shopHistory?.length,
+      firstSeenDate: firstItem.shopHistory?.[0],
+      lastSeenDate: firstItem.shopHistory?.[firstItem.shopHistory.length - 1],
+    };
 
-      if (!sectionsMap.has(sectionName)) sectionsMap.set(sectionName, []);
-      sectionsMap.get(sectionName)!.push(item);
-      totalItems++;
-    }
-  };
-
-  processSection(raw.data.featured?.entries, 'Featured');
-  processSection(raw.data.daily?.entries, 'Daily');
-  processSection(raw.data.specialFeatured?.entries, 'Special Featured');
-  processSection(raw.data.specialDaily?.entries, 'Special Daily');
+    if (!sectionsMap.has(sectionName)) sectionsMap.set(sectionName, []);
+    sectionsMap.get(sectionName)!.push(item);
+    totalItems++;
+  }
 
   const sections: ShopSection[] = Array.from(sectionsMap.entries()).map(([name, items]) => ({
     id: name.toLowerCase().replace(/\s+/g, '-'),
