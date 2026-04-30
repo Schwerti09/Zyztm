@@ -23,6 +23,49 @@
 import { autoTrigger } from './lib/viral-triggers.mjs';
 
 const DOMAIN = 'https://fortnitenexus.space';
+const RESEND_API_KEY = process.env.RESEND_API_KEY;
+const RESEND_FROM = 'Fortnite Nexus <newsletter@fortnitenexus.space>';
+
+// ─── Resend API Client ─────────────────────────────────────────────────────────
+
+async function sendNewsletter(subject, html) {
+  if (!RESEND_API_KEY) {
+    console.warn('⚠️  RESEND_API_KEY nicht gesetzt — E-Mail-Versand übersprungen');
+    return false;
+  }
+
+  try {
+    const res = await fetch('https://api.resend.com/emails', {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer ${RESEND_API_KEY}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        from: RESEND_FROM,
+        subject,
+        html,
+        tags: [
+          { name: 'category', value: 'newsletter' },
+          { name: 'type', value: 'weekly-meta-report' },
+        ],
+      }),
+    });
+
+    if (!res.ok) {
+      const error = await res.text();
+      console.error(`❌ Resend API Error: ${error}`);
+      return false;
+    }
+
+    const data = await res.json();
+    console.log(`✅ Newsletter gesendet: ${data.id}`);
+    return true;
+  } catch (err) {
+    console.error(`❌ Newsletter-Versand fehlgeschlagen: ${err.message}`);
+    return false;
+  }
+}
 
 // ─── Newsletter-Content generieren ───────────────────────────────────────────
 
@@ -176,12 +219,15 @@ async function main() {
   const report = generateReport();
 
   if (shouldSend) {
-    console.log('📤 Newsletter senden...');
-    console.log('⚠️  Resend-Integration TODO: RESEND_API_KEY + Subscriber-Query');
-    console.log('   Subject:', report.subject);
-    console.log('   Sende an alle aktiven Subscriber...');
-    // TODO: Subscriber aus DB laden, Resend API nutzen
-    console.log('   (Sending nicht implementiert — Preview-Modus)');
+    console.log('📤 Newsletter senden via Resend...');
+    console.log('Subject:', report.subject);
+    const success = await sendNewsletter(report.subject, report.html);
+    if (success) {
+      console.log('✅ Newsletter erfolgreich gesendet');
+    } else {
+      console.log('❌ Newsletter-Versand fehlgeschlagen');
+      process.exit(1);
+    }
   } else {
     console.log('─'.repeat(60));
     console.log('PREVIEW — Weekly Meta Report');
