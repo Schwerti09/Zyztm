@@ -130,15 +130,49 @@ node scripts/tiktok-script-generator.mjs               # Auto (Hidden Gem wenn s
 
 **Smart Auto-Trigger:** Wählt basierend auf Kontext passenden Trigger (z.B. Scarcity bei Zeitlimit, Authority bei Pro-Referenz)
 
+### Phase 5: Performance & Scale
+| Datei | Funktion |
+|-------|----------|
+| `scripts/generate-og-images.mjs` | SVG→PNG Konvertierung mit optional canvas library |
+| `scripts/weekly-meta-report.mjs` | Resend API Client für Newsletter-Versand |
+| `apps/discord-bot/railway.json` | Railway Deployment-Konfiguration |
+| `apps/discord-bot/Procfile` | Heroku/Railway Procfile |
+| `apps/discord-bot/src/lib/db-client.mjs` | Neon DB Client für Discord Bot |
+| `apps/discord-bot/sql/wishlist-schema.sql` | DB Schema für Wishlists + Challenges |
+| `apps/discord-bot/src/lib/wishlist-store.mjs` | Neon DB + JSON-Fallback für Persistenz |
+
+**Phase 5A: SVG→PNG Konvertierung**
+- Optional canvas library für PNG-Output
+- SVG-Output als Fallback
+- `--svg-only` Flag für reine SVG-Generierung
+
+**Phase 5B: Newsletter Resend-Integration**
+- Resend API Client für E-Mail-Versand
+- `--send` Flag für tatsächlichen Versand
+- RESEND_API_KEY Environment Variable
+
+**Phase 5C: Discord Bot Hosting**
+- Railway deployment config (railway.json)
+- Procfile für Heroku/Railway
+- README mit Railway/Fly.io/PM2/Docker Anleitungen
+
+**Phase 5D: Wishlist-Store Migration zu Neon DB**
+- Neon DB Client für Discord Bot
+- SQL Schema für wishlists + challenge_submissions
+- Async store functions mit JSON-Fallback
+- Discord Bot Commands für async Store updated
+
 ---
 
-## NÄCHSTE SCHRITTE (Phase 5)
+## NÄCHSTE SCHRITTE
 
-### Phase 5: Performance & Scale
-- SVG→PNG Konvertierung für OG-Images (@napi-rs/canvas)
-- Newsletter Resend-Integration (RESEND_API_KEY)
-- Discord Bot Hosting (Railway/Fly.io)
-- Wishlist-Store Migration zu Neon DB
+Phase 5 ist komplett. Alle viralen Wachstums-Phasen sind abgeschlossen.
+
+**Optionale Erweiterungen:**
+- Cross-Platform Analytics Dashboard (Twitter/Discord/Reddit/TikTok)
+- TikTok Video Rendering (automatische Video-Generierung)
+- Advanced Bot-Features (Stats-Tracking, Leaderboards)
+- Mobile App (React Native)
 
 ---
 
@@ -195,6 +229,10 @@ apps/
 ## GIT LOG (letzte relevante Commits)
 
 ```
+[Phase 5D] feat(phase5d): Wishlist-Store Migration zu Neon DB — DB client, SQL schema, async store with JSON fallback, Discord Bot updated
+[Phase 5C] feat(phase5c): Discord Bot Hosting — Railway/Fly.io configs (railway.json, Procfile, README hosting guide)
+[Phase 5B] feat(phase5b): Newsletter Resend-Integration — Resend API Client für E-Mail-Versand, --send Flag implemented
+[Phase 5A] feat(phase5a): OG-Image Generator mit SVG→PNG Support — optional canvas library für PNG-Konvertierung
 [Phase 4C] feat(phase4c): Viral Trigger Integration — 5 psychologische Trigger (Surprise, Social Proof, Scarcity, Authority, Controversy) in alle Content-Pipelines (Twitter, Reddit, TikTok, Newsletter)
 [Phase 4A] feat(phase4a): TikTok Script Generator — 5 Video-Formate (15s Scripts, Shop-Daten, Auto-Hook)
 d8f5dba feat(phase3e): OG-Image Generator + 5 SVG OG-Images
