@@ -8,6 +8,7 @@
     "dev": "node --watch src/index.mjs"
   },
   "dependencies": {
-    "discord.js": "^14.16.3"
+    "discord.js": "^14.16.3",
+    "@neondatabase/serverless": "^0.9.0"
   }
 }

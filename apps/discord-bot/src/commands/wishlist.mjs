@@ -44,7 +44,7 @@ export async function execute(interaction) {
   switch (sub) {
     case 'add': {
       const itemName = interaction.options.getString('item');
-      const added = addToWishlist(userId, itemName);
+      const added = await addToWishlist(userId, itemName);
 
       if (added) {
         await interaction.reply({
@@ -62,7 +62,7 @@ export async function execute(interaction) {
 
     case 'remove': {
       const itemName = interaction.options.getString('item');
-      const removed = removeFromWishlist(userId, itemName);
+      const removed = await removeFromWishlist(userId, itemName);
 
       if (removed) {
         await interaction.reply({
@@ -79,7 +79,7 @@ export async function execute(interaction) {
     }
 
     case 'show': {
-      const items = getWishlist(userId);
+      const items = await getWishlist(userId);
 
       if (items.length === 0) {
         await interaction.reply({

@@ -189,7 +189,7 @@ async function sendWishlistAlerts(shopItems) {
   let alertsSent = 0;
 
   for (const item of shopItems) {
-    const userIds = getUsersWantingItem(item.name);
+    const userIds = await getUsersWantingItem(item.name);
     if (userIds.length === 0) continue;
 
     for (const userId of userIds) {
