@@ -7,7 +7,11 @@
  *   3. Stat Breakdown (wöchentlich)
  *   4. Quick Win Tip (2x/Woche)
  *   5. Controversial Take (1x/Woche)
+ *
+ * Viral Trigger Integration: Alle Formate nutzen autoTrigger für maximale Engagement
  */
+
+import { autoTrigger } from './viral-triggers.mjs';
 
 const DOMAIN = 'https://fortnitenexus.space';
 
@@ -32,7 +36,7 @@ export function shopUpdateTweet(data) {
     rareSection = `\n\n🔥 ${rare[0].name} — ${rare[0].daysSinceLast}d nicht im Shop!`;
   }
 
-  return `Fortnite Shop Update 🛒
+  const base = `Fortnite Shop Update 🛒
 
 ${totalItems} Items heute:
 ${itemList}${rareSection}
@@ -40,6 +44,13 @@ ${itemList}${rareSection}
 ${DOMAIN}/item-shop
 
 ${HASHTAGS_SHORT}`;
+
+  // Viral Trigger: Scarcity wenn rare Items, sonst Social Proof
+  const triggerContext = rare.length > 0
+    ? { hours: 12, item: rare[0].name }
+    : { count: 1500 };
+
+  return autoTrigger(base, triggerContext);
 }
 
 // ─── Format 2: Hidden Gem Discovery ──────────────────────────────────────────
@@ -48,7 +59,7 @@ ${HASHTAGS_SHORT}`;
  * @param {{name: string, daysSinceLast: number, rarity: string, price: number}} item
  */
 export function hiddenGemTweet(item) {
-  return `Dieses Item war ${item.daysSinceLast} Tage nicht im Shop 👀
+  const base = `Dieses Item war ${item.daysSinceLast} Tage nicht im Shop 👀
 
 ${item.name} (${item.rarity}) ist zurück — nur ${item.price} V-Bucks.
 
@@ -58,6 +69,9 @@ Das könnte deine letzte Chance sein.
 ${DOMAIN}/item-shop
 
 ${HASHTAGS}`;
+
+  // Viral Trigger: Scarcity (Zeitlimit + Item)
+  return autoTrigger(base, { hours: 12, item: item.name });
 }
 
 // ─── Format 3: Stat Breakdown ────────────────────────────────────────────────
@@ -66,7 +80,7 @@ ${HASHTAGS}`;
  * @param {{weapon: string, dps: number, damage: number, tier: string, comparison: string}} data
  */
 export function statBreakdownTweet(data) {
-  return `${data.weapon} wird komplett unterschätzt 📊
+  const base = `${data.weapon} wird komplett unterschätzt 📊
 
 ${data.damage} Damage | ${data.dps} DPS | ${data.tier}-Tier
 
@@ -76,6 +90,9 @@ Vollständige Analyse:
 ${DOMAIN}/weapons
 
 ${HASHTAGS}`;
+
+  // Viral Trigger: Authority (Stat + Pro-Referenz)
+  return autoTrigger(base, { stat: `${data.weapon} ist unterschätzt`, pro: 'Bugha' });
 }
 
 // ─── Format 4: Quick Win Tip ─────────────────────────────────────────────────
@@ -84,7 +101,7 @@ ${HASHTAGS}`;
  * @param {{tip: string, explanation: string, result: string, link: string}} data
  */
 export function quickWinTweet(data) {
-  return `${data.tip} 🎯
+  const base = `${data.tip} 🎯
 
 ${data.explanation}
 
@@ -93,6 +110,9 @@ ${data.result}
 Full Guide: ${DOMAIN}${data.link}
 
 ${HASHTAGS}`;
+
+  // Viral Trigger: Surprise (Fact über den Tip)
+  return autoTrigger(base, { fact: 'Die meisten Pros nutzen diesen Tip' });
 }
 
 // ─── Format 5: Controversial Take ────────────────────────────────────────────
@@ -101,7 +121,7 @@ ${HASHTAGS}`;
  * @param {{take: string, argument: string, counterpoint: string}} data
  */
 export function controversialTweet(data) {
-  return `Unpopular Opinion: ${data.take}
+  const base = `Unpopular Opinion: ${data.take}
 
 ${data.argument}
 
@@ -110,6 +130,9 @@ ${data.counterpoint}
 Was denkt ihr? 👇
 
 ${HASHTAGS}`;
+
+  // Viral Trigger: Controversy (Statement ist schon im take)
+  return autoTrigger(base, { statement: data.take });
 }
 
 // ─── Helper: Zeichen-Check ───────────────────────────────────────────────────

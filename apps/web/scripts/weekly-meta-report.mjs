@@ -9,6 +9,8 @@
  *   - Tool-Empfehlung
  *   - Shop-Highlights der Woche
  *
+ * Viral Trigger Integration: Newsletter nutzt autoTrigger für maximale Engagement
+ *
  * Usage:
  *   node scripts/weekly-meta-report.mjs              # Preview (HTML-Output)
  *   node scripts/weekly-meta-report.mjs --send       # An alle Subscriber senden
@@ -18,6 +20,8 @@
  *   DATABASE_URL   — für Subscriber-Liste aus Neon
  */
 
+import { autoTrigger } from './lib/viral-triggers.mjs';
+
 const DOMAIN = 'https://fortnitenexus.space';
 
 // ─── Newsletter-Content generieren ───────────────────────────────────────────
@@ -26,9 +30,15 @@ function generateReport() {
   const weekNumber = getISOWeek(new Date());
   const dateRange = getWeekDateRange();
 
-  return {
-    subject: `🚀 Fortnite Meta Report KW${weekNumber} — ${dateRange}`,
-    html: `
+  // Viral Trigger: Scarcity (Newsletter ist zeitlich limitiert)
+  const baseSubject = `🚀 Fortnite Meta Report KW${weekNumber} — ${dateRange}`;
+  const subject = autoTrigger(baseSubject, { hours: 24 });
+
+  // Viral Trigger: Social Proof (Subscriber-Count)
+  const subscriberCount = 1500;
+  const socialProof = autoTrigger('', { count: subscriberCount });
+
+  const html = `
 <!DOCTYPE html>
 <html lang="de">
 <head>
@@ -117,6 +127,9 @@ function generateReport() {
       <p style="color:#ffffff40;font-size:11px;margin:0;">
         Du bekommst diese E-Mail weil du dich für den Fortnite Nexus Newsletter angemeldet hast.
       </p>
+      <p style="color:#ffffff50;font-size:11px;margin:8px 0;">
+        ${socialProof}
+      </p>
       <a href="${DOMAIN}/newsletter/unsubscribe" style="color:#ffffff40;font-size:11px;">
         Abmelden
       </a>
@@ -127,29 +140,9 @@ function generateReport() {
 
   </div>
 </body>
-</html>`,
-    text: `Fortnite Nexus Weekly Meta Report KW${weekNumber}
+</html>` };
 
-META UPDATE
-Die aktuelle Waffenmeta bleibt stabil. AR+SMG dominiert weiterhin.
-→ ${DOMAIN}/weapons
-
-PRO-TIPPS
-1. Crosshair Placement — Halte dein Crosshair immer auf Kopfhöhe
-2. Piece Control — Platziere Wände bevor du editierst
-3. Rotation Timing — Rotiere mit dem ersten Circle
-→ ${DOMAIN}/tools/sensitivity-converter
-
-TOOL DER WOCHE: Loadout Optimizer AI
-→ ${DOMAIN}/tools/loadout-optimizer
-
-SHOP-HIGHLIGHTS
-→ ${DOMAIN}/item-shop
-
----
-Abmelden: ${DOMAIN}/newsletter/unsubscribe
-`,
-  };
+  return { subject, html };
 }
 
 // ─── Helpers ─────────────────────────────────────────────────────────────────

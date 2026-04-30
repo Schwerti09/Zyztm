@@ -10,6 +10,8 @@
  *   4. Pro Settings Reveal — "So spielt [Pro Name]"
  *   5. Stats Reaction — "Wenn du siehst was ich gestern gebaut hab"
  *
+ * Viral Trigger Integration: Alle Formate nutzen autoTrigger für maximale Engagement
+ *
  * Usage:
  *   node scripts/tiktok-script-generator.mjs              # Auto-Format wählen
  *   node scripts/tiktok-script-generator.mjs --format=gem # Hidden Gem Script
@@ -17,6 +19,8 @@
  *
  * Output: Fertige Scripts mit Timing-Markern (0-15s)
  */
+
+import { autoTrigger } from './lib/viral-triggers.mjs';
 
 const FN_API = 'https://fortnite-api.com/v2';
 
@@ -61,21 +65,26 @@ function shopSpeedrunScript(shop) {
     .filter((i) => i.price >= 1500)
     .slice(0, 5);
 
+  const baseScript = `
+[0:00-0:03] HOOK: "Diese 5 Skins sind JETZT im Shop"
+[0:03-0:06] Cut 1: "${hotItems[0]?.name || 'Skin 1'} — ${hotItems[0]?.price || 1500} V-Bucks"
+[0:06-0:09] Cut 2: "${hotItems[1]?.name || 'Skin 2'} — ${hotItems[1]?.price || 1500} V-Bucks"
+[0:09-0:12] Cut 3: "${hotItems[2]?.name || 'Skin 3'} — ${hotItems[2]?.price || 1500} V-Bucks"
+[0:12-0:15] CTA: "Link in Bio für alle Items 👆"`.trim();
+
+  // Viral Trigger: Scarcity (Zeitlimit)
+  const script = autoTrigger(baseScript, { hours: 12 });
+  const caption = autoTrigger(`Shop Rotation ${new Date(shop.date).toLocaleDateString('de-DE')} 📅 Alle Items auf fortnitenexus.space`, { hours: 12 });
+
   return {
     format: 'Shop Speedrun',
     hook: 'POV: Fortnite Shop Rotation in 15 Sekunden ⚡',
     duration: '0:00-0:15',
     visual: 'Schnelle Cuts zwischen Top-Items, Preise einblenden',
     audio: 'Trending Sound: "Oh no, oh no, oh no no no"',
-    script: `
-[0:00-0:03] HOOK: "Diese 5 Skins sind JETZT im Shop"
-[0:03-0:06] Cut 1: "${hotItems[0]?.name || 'Skin 1'} — ${hotItems[0]?.price || 1500} V-Bucks"
-[0:06-0:09] Cut 2: "${hotItems[1]?.name || 'Skin 2'} — ${hotItems[1]?.price || 1500} V-Bucks"
-[0:09-0:12] Cut 3: "${hotItems[2]?.name || 'Skin 3'} — ${hotItems[2]?.price || 1500} V-Bucks"
-[0:12-0:15] CTA: "Link in Bio für alle Items 👆"
-    `.trim(),
+    script,
     hashtags: '#Fortnite #ItemShop #FortniteShop #Gaming #FYP',
-    caption: `Shop Rotation ${new Date(shop.date).toLocaleDateString('de-DE')} 📅 Alle Items auf fortnitenexus.space`,
+    caption,
   };
 }
 
@@ -88,42 +97,52 @@ function hiddenGemScript(shop) {
 
   if (!rare) return null;
 
+  const baseScript = `
+[0:00-0:03] HOOK: "${rare.name} ist ZURÜCK"
+[0:03-0:06] "Letztes Mal: vor ${rare.daysSinceLast} Tagen"
+[0:06-0:10] "Das ist über ${Math.floor(rare.daysSinceLast / 30)} Monate"
+[0:10-0:13] "Nur ${rare.price} V-Bucks"
+[0:13-0:15] CTA: "Schnell holen bevor weg! ⏰"`.trim();
+
+  // Viral Trigger: Scarcity (Item + Zeitlimit)
+  const script = autoTrigger(baseScript, { hours: 12, item: rare.name });
+  const caption = autoTrigger(`🔥 ${rare.name} ist nach ${rare.daysSinceLast} Tagen zurück!`, { hours: 12, item: rare.name });
+
   return {
     format: 'Hidden Gem Alert',
     hook: `Dieser Skin war ${rare.daysSinceLast} Tage nicht im Shop 😱`,
     duration: '0:00-0:15',
     visual: 'Dramatic Zoom auf Item, Roter Kreis, Countdown-Overlay',
     audio: 'Trending Sound: Suspense/Alert Sound',
-    script: `
-[0:00-0:03] HOOK: "${rare.name} ist ZURÜCK"
-[0:03-0:06] "Letztes Mal: vor ${rare.daysSinceLast} Tagen"
-[0:06-0:10] "Das ist über ${Math.floor(rare.daysSinceLast / 30)} Monate"
-[0:10-0:13] "Nur ${rare.price} V-Bucks"
-[0:13-0:15] CTA: "Schnell holen bevor weg! ⏰"
-    `.trim(),
+    script,
     hashtags: '#Fortnite #RareSkin #ItemShop #FortniteLeaks #FYP',
-    caption: `🔥 ${rare.name} ist nach ${rare.daysSinceLast} Tagen zurück!`,
+    caption,
   };
 }
 
 // ─── Video Format 3: Sensitivity Guide ───────────────────────────────────────
 
 function sensGuideScript() {
+  const baseScript = `
+[0:00-0:03] HOOK: "So findest du DIE perfekte Sens"
+[0:03-0:06] "Schritt 1: 800 DPI einstellen"
+[0:06-0:09] "Schritt 2: 0.07-0.10 in-game"
+[0:09-0:12] "Schritt 3: 25-35cm für 360°"
+[0:12-0:15] CTA: "Converter in Bio für dein Spiel 👆"`.trim();
+
+  // Viral Trigger: Authority (Pro-Referenz)
+  const script = autoTrigger(baseScript, { pro: 'Bugha', stat: '65% der Pros spielen Low Sens' });
+  const caption = autoTrigger('Die meisten Pros spielen zwischen 25-35cm/360° 🎯 Teste es!', { pro: 'Bugha' });
+
   return {
     format: 'Sensitivity Guide',
     hook: 'Die perfekte Fortnite Sens in 15 Sekunden 🎯',
     duration: '0:00-0:15',
     visual: 'Text-Overlay mit Werten, Maus-Hand-Demo',
     audio: 'Trending Sound: Educational/Quick Tips',
-    script: `
-[0:00-0:03] HOOK: "So findest du DIE perfekte Sens"
-[0:03-0:06] "Schritt 1: 800 DPI einstellen"
-[0:06-0:09] "Schritt 2: 0.07-0.10 in-game"
-[0:09-0:12] "Schritt 3: 25-35cm für 360°"
-[0:12-0:15] CTA: "Converter in Bio für dein Spiel 👆"
-    `.trim(),
+    script,
     hashtags: '#Fortnite #Aim #Sensitivity #GamingSetup #ProSettings',
-    caption: 'Die meisten Pros spielen zwischen 25-35cm/360° 🎯 Teste es!',
+    caption,
   };
 }
 
@@ -137,42 +156,52 @@ function proSettingsScript() {
   ];
   const pro = pros[Math.floor(Math.random() * pros.length)];
 
+  const baseScript = `
+[0:00-0:03] HOOK: "${pro.name} Fortnite Settings"
+[0:03-0:06] "Sens: ${pro.sens} @ ${pro.dpi} DPI"
+[0:06-0:09] "Das sind ${pro.cm360}cm für 360°"
+[0:09-0:12] "Low/Medium Sens = besseres Aim"
+[0:12-0:15] CTA: "Alle 20 Pros auf der Website 👆"`.trim();
+
+  // Viral Trigger: Authority (Pro-Name + Social Proof)
+  const script = autoTrigger(baseScript, { pro: pro.name, count: 2000 });
+  const caption = autoTrigger(`${pro.name}'s Settings: ${pro.sens} @ ${pro.dpi} DPI | ${pro.cm360}cm/360° 🎯`, { pro: pro.name });
+
   return {
     format: 'Pro Settings Reveal',
     hook: `So spielt ${pro.name} 🏆`,
     duration: '0:00-0:15',
     visual: 'Split Screen: Pro-Gameplay + Settings Overlay',
     audio: 'Trending Sound: Hype/Ambition',
-    script: `
-[0:00-0:03] HOOK: "${pro.name} Fortnite Settings"
-[0:03-0:06] "Sens: ${pro.sens} @ ${pro.dpi} DPI"
-[0:06-0:09] "Das sind ${pro.cm360}cm für 360°"
-[0:09-0:12] "Low/Medium Sens = besseres Aim"
-[0:12-0:15] CTA: "Alle 20 Pros auf der Website 👆"
-    `.trim(),
+    script,
     hashtags: '#Fortnite #ProSettings #${pro.name} #Esports #FYP',
-    caption: `${pro.name}'s Settings: ${pro.sens} @ ${pro.dpi} DPI | ${pro.cm360}cm/360° 🎯`,
+    caption,
   };
 }
 
 // ─── Video Format 5: Stats Reaction ──────────────────────────────────────────
 
 function statsReactionScript() {
+  const baseScript = `
+[0:00-0:03] HOOK: "Meine Stats nach 1 Woche mit neuem Loadout"
+[0:03-0:06] "Vorher: 1.2 K/D"
+[0:06-0:10] "Nachher: 2.8 K/D"
+[0:10-0:13] "Dank Loadout Optimizer"
+[0:13-0:15] CTA: "Link in Bio, gratis testen 👆"`.trim();
+
+  // Viral Trigger: Social Proof (User-Feedback)
+  const script = autoTrigger(baseScript, { count: 5000 });
+  const caption = autoTrigger('Loadout Optimizer hat meine Stats verdoppelt 📈 Link in Bio!', { count: 5000 });
+
   return {
     format: 'Stats Reaction',
     hook: 'Wenn du siehst was ich gestern gebaut hab 💀',
     duration: '0:00-0:15',
     visual: 'Gameplay-Aufnahme + Reaction-Cam (optional)',
     audio: 'Trending Sound: "How is that possible?"',
-    script: `
-[0:00-0:03] HOOK: "Meine Stats nach 1 Woche mit neuem Loadout"
-[0:03-0:06] "Vorher: 1.2 K/D"
-[0:06-0:10] "Nachher: 2.8 K/D"
-[0:10-0:13] "Dank Loadout Optimizer"
-[0:13-0:15] CTA: "Link in Bio, gratis testen 👆"
-    `.trim(),
+    script,
     hashtags: '#Fortnite #Stats #BeforeAfter #Gaming #FYP',
-    caption: 'Loadout Optimizer hat meine Stats verdoppelt 📈 Link in Bio!',
+    caption,
   };
 }
 

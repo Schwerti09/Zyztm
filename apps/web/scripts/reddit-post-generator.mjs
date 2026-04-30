@@ -6,6 +6,8 @@
  * Generiert fertige Reddit-Posts basierend auf den 5 Formaten
  * aus dem Masterplan (docs/masterplan/10-viral-growth-playbook.md).
  *
+ * Viral Trigger Integration: Alle Formate nutzen autoTrigger für maximale Engagement
+ *
  * Usage:
  *   node scripts/reddit-post-generator.mjs --format=guide
  *   node scripts/reddit-post-generator.mjs --format=analysis
@@ -22,15 +24,14 @@
  *   r/fortnitede (1x/Woche)
  */
 
+import { autoTrigger } from './lib/viral-triggers.mjs';
+
 const DOMAIN = 'https://fortnitenexus.space';
 
 // ─── Format 1: Comprehensive Guide ──────────────────────────────────────────
 
 function guidePost() {
-  return {
-    subreddit: 'r/FortniteCompetitive, r/FortniteBR',
-    title: '[Guide] Die optimale Sensitivity 2026 — mit Daten aus 20 Pro-Setups',
-    body: `# Die optimale Sensitivity 2026 — mit Daten aus 20 Pro-Setups
+  const baseBody = `# Die optimale Sensitivity 2026 — mit Daten aus 20 Pro-Setups
 
 Ich habe die Sensitivity-Settings von 20 aktuellen Fortnite Pro-Spielern analysiert und die Ergebnisse sind eindeutig.
 
@@ -75,18 +76,22 @@ A: Logitech G Pro X Superlight (35%) und Razer DeathAdder (15%) sind am häufigs
 
 Alle 20 Pro-Setups mit Keybinds und Gear: [fortnitenexus.space/pros](${DOMAIN}/pros)
 
-Sensitivity Converter Tool: [fortnitenexus.space/tools/sensitivity-converter](${DOMAIN}/tools/sensitivity-converter)
-`,
+Sensitivity Converter Tool: [fortnitenexus.space/tools/sensitivity-converter](${DOMAIN}/tools/sensitivity-converter)`;
+
+  // Viral Trigger: Authority (Pro-Referenz + Daten)
+  const body = autoTrigger(baseBody, { stat: '65% der Pros spielen Low Sens', pro: 'Bugha' });
+
+  return {
+    subreddit: 'r/FortniteCompetitive, r/FortniteBR',
+    title: '[Guide] Die optimale Sensitivity 2026 — mit Daten aus 20 Pro-Setups',
+    body,
   };
 }
 
 // ─── Format 2: Data-Backed Analysis ──────────────────────────────────────────
 
 function analysisPost() {
-  return {
-    subreddit: 'r/FortniteCompetitive',
-    title: '[Analysis] Waffen-Tier-List S-Tier bis D-Tier — DPS, Range & Win-Rate Daten',
-    body: `# Waffen-Tier-List 2026 — basierend auf DPS, Range & Win-Rate Daten
+  const baseBody = `# Waffen-Tier-List 2026 — basierend auf DPS, Range & Win-Rate Daten
 
 ## Methodik
 
@@ -127,18 +132,22 @@ Ich habe die Stats aller 27 aktuellen Waffen analysiert und in einem 4-Dimension
 
 Vollständige Waffen-Datenbank: [fortnitenexus.space/weapons](${DOMAIN}/weapons)
 
-Loadout Optimizer: [fortnitenexus.space/tools/loadout-optimizer](${DOMAIN}/tools/loadout-optimizer)
-`,
+Loadout Optimizer: [fortnitenexus.space/tools/loadout-optimizer](${DOMAIN}/tools/loadout-optimizer)`;
+
+  // Viral Trigger: Authority (Daten-gestützt)
+  const body = autoTrigger(baseBody, { stat: 'AR + SMG dominiert die Meta', pro: 'TaySon' });
+
+  return {
+    subreddit: 'r/FortniteCompetitive',
+    title: '[Analysis] Waffen-Tier-List S-Tier bis D-Tier — DPS, Range & Win-Rate Daten',
+    body,
   };
 }
 
 // ─── Format 3: Meta-Update ───────────────────────────────────────────────────
 
 function metaPost() {
-  return {
-    subreddit: 'r/FortniteBR, r/FortniteCompetitive',
-    title: '[Meta] Die aktuelle Waffen-Meta erklärt — was du spielen solltest',
-    body: `# Die aktuelle Waffen-Meta erklärt
+  const baseBody = `# Die aktuelle Waffen-Meta erklärt
 
 ## TL;DR
 AR + SMG > AR + Shotgun in den meisten Situationen.
@@ -165,18 +174,22 @@ Die letzten Patches haben die Mid-Range-Meta stark gemacht:
 Die meisten Pros sind auf AR+SMG umgestiegen. Nur wenige (wie Mongraal) halten an der Shotgun-Meta fest.
 
 Aktuelle Pro-Settings: [fortnitenexus.space/pros](${DOMAIN}/pros)
-Waffen-Stats: [fortnitenexus.space/weapons](${DOMAIN}/weapons)
-`,
+Waffen-Stats: [fortnitenexus.space/weapons](${DOMAIN}/weapons)`;
+
+  // Viral Trigger: Controversy (Gegen-Meinung zur Shotgun-Meta)
+  const body = autoTrigger(baseBody, { statement: 'Shotguns sind überbewertet' });
+
+  return {
+    subreddit: 'r/FortniteBR, r/FortniteCompetitive',
+    title: '[Meta] Die aktuelle Waffen-Meta erklärt — was du spielen solltest',
+    body,
   };
 }
 
 // ─── Format 4: Tool Recommendation ───────────────────────────────────────────
 
 function toolPost() {
-  return {
-    subreddit: 'r/FortniteSettings, r/FortniteBR',
-    title: '[Tool] Dieser Sensitivity Converter hat mein Aim massiv verbessert',
-    body: `# Sensitivity Converter — von Valorant/CS zu Fortnite
+  const baseBody = `# Sensitivity Converter — von Valorant/CS zu Fortnite
 
 ## Das Problem
 
@@ -209,18 +222,22 @@ Ich nutze einen [Sensitivity Converter](${DOMAIN}/tools/sensitivity-converter) d
 
 Link: [fortnitenexus.space/tools/sensitivity-converter](${DOMAIN}/tools/sensitivity-converter)
 
-Funktioniert komplett kostenlos im Browser, keine Installation nötig.
-`,
+Funktioniert komplett kostenlos im Browser, keine Installation nötig.`;
+
+  // Viral Trigger: Social Proof (User-Feedback)
+  const body = autoTrigger(baseBody, { count: 2000 });
+
+  return {
+    subreddit: 'r/FortniteSettings, r/FortniteBR',
+    title: '[Tool] Dieser Sensitivity Converter hat mein Aim massiv verbessert',
+    body,
   };
 }
 
 // ─── Format 5: Community Discussion ──────────────────────────────────────────
 
 function discussionPost() {
-  return {
-    subreddit: 'r/FortniteBR, r/fortnitede',
-    title: '[Discussion] Low Sens vs High Sens — was spielt ihr und warum?',
-    body: `# Low Sens vs High Sens — die ewige Debatte
+  const baseBody = `# Low Sens vs High Sens — die ewige Debatte
 
 Ich habe mir 20 Pro-Player-Setups angeschaut und festgestellt:
 
@@ -248,8 +265,15 @@ Spielt ihr eher Low oder High Sens? Und warum?
 
 Wenn ihr eure Sens aus anderen Spielen übertragen wollt: [Sensitivity Converter](${DOMAIN}/tools/sensitivity-converter)
 
-Pro-Player Setups zum Vergleich: [fortnitenexus.space/pros](${DOMAIN}/pros)
-`,
+Pro-Player Setups zum Vergleich: [fortnitenexus.space/pros](${DOMAIN}/pros)`;
+
+  // Viral Trigger: Controversy (Gegen-Meinung)
+  const body = autoTrigger(baseBody, { statement: 'Low Sens ist überbewertet' });
+
+  return {
+    subreddit: 'r/FortniteBR, r/fortnitede',
+    title: '[Discussion] Low Sens vs High Sens — was spielt ihr und warum?',
+    body,
   };
 }
 
