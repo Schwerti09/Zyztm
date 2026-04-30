@@ -1,0 +1,26 @@
+name: Weekly Meta Report Newsletter
+
+on:
+  schedule:
+    # Jeden Montag 08:00 UTC (10:00 DE-Zeit)
+    - cron: '0 8 * * 1'
+  workflow_dispatch: # Manuell auslösbar
+
+jobs:
+  send-newsletter:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Send Weekly Report
+        working-directory: apps/web
+        env:
+          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+        run: node scripts/weekly-meta-report.mjs --send

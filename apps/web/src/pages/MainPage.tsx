@@ -38,6 +38,7 @@ const SoundboardDemo = lazy(() => import('../components/SoundboardDemo'));
 const BackgroundMusic = lazy(() => import('../components/BackgroundMusic'));
 const FanCounter = lazy(() => import('../components/FanCounter'));
 const ClutchReel = lazy(() => import('../components/ClutchReel'));
+const NewsletterSignup = lazy(() => import('../components/newsletter/NewsletterSignup'));
 
 function SectionLoader() {
   return <div className="py-20 flex justify-center"><div className="font-cyber text-neon-pink/30 text-xs tracking-widest animate-pulse">LOADING…</div></div>;
@@ -79,6 +80,9 @@ export default function MainPage() {
             <FortniteItemShop />
             <Suspense fallback={<SectionLoader />}><WeaponDatabase /></Suspense>
             <Suspense fallback={<SectionLoader />}><TierListBuilder /></Suspense>
+            <section className="max-w-2xl mx-auto px-4 sm:px-6 py-16">
+              <Suspense fallback={<SectionLoader />}><NewsletterSignup /></Suspense>
+            </section>
           </main>
           <Footer />
         </div>
