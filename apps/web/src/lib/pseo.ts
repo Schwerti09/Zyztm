@@ -68,10 +68,10 @@ export interface GuideData {
 // ---------------------------------------------------------------------------
 
 export const AUTHOR = {
-  name: 'Rolf Schwertfechter',
+  name: 'R.Schwertfechter',
   handle: '@FortniteNexusDE',
   title: 'Fortnite Pro-Streamer & Content Creator',
-  bio: 'Rolf streamt seit 2020 täglich Fortnite auf Kick und YouTube. Mit über 5 Jahren Erfahrung in kompetitivem Fortnite und PC-Optimierung teilt er sein Wissen mit der Community. Über 10.000 Stunden Spielzeit, Unreal-Rang, und regelmäßige Tests mit Capture-Software und Frame-Counter.',
+  bio: 'R.Schwertfechter streamt seit 2020 täglich Fortnite auf Kick und YouTube. Mit über 5 Jahren Erfahrung in kompetitivem Fortnite und PC-Optimierung teilt er sein Wissen mit der Community. Über 10.000 Stunden Spielzeit, Unreal-Rang, und regelmäßige Tests mit Capture-Software und Frame-Counter.',
   experience: '5+ Jahre kompetitives Fortnite · 10.000+ Stunden Spielzeit · Unreal-Rang',
   sources: [
     'Epic Games offizielle Patch Notes',

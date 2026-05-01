@@ -46,7 +46,7 @@ export default function AboutTeamPage() {
               <div className="w-32 h-32 mx-auto rounded-2xl bg-gradient-to-br from-neon-pink to-neon-blue flex items-center justify-center mb-6 shadow-[0_0_40px_rgba(255,0,85,0.35)]">
                 <span className="font-cyber text-4xl font-bold text-white">RS</span>
               </div>
-              <h2 className="font-cyber text-2xl font-bold text-white mb-2">Rolf Schwertfechter</h2>
+              <h2 className="font-cyber text-2xl font-bold text-white mb-2">R.Schwertfechter</h2>
               <p className="text-neon-blue font-cyber text-sm tracking-widest mb-4">FOUNDER & FULL-STACK DEVELOPER</p>
               <div className="text-white/60 text-sm space-y-2">
                 <p>Dornum, Germany</p>
