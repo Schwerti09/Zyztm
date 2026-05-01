@@ -1,8 +1,8 @@
 # Fortnite Nexus — Gesamtfortschritt & Nächste Schritte
 
-**Stand:** 30. April 2026, 12:50 UTC+2
-**Letzter Commit:** `824ec47` auf `origin/main`
-**Netlify:** Auto-Deploy bei Push auf main
+**Stand:** 1. Mai 2026, 11:46 UTC+2
+**Letzter Commit:** `5e7b86b` auf `origin/main`
+**Netlify:** Auto-Deploy bei Push auf main; letzter Deploy-Fix: synchronisierter `pnpm-lock.yaml`
 
 ---
 
@@ -180,6 +180,16 @@ Phase 5 ist komplett. Alle viralen Wachstums-Phasen sind abgeschlossen.
 | Item Shop Tracker | ✅ | `scripts/item-shop-tracker.mjs` |
 | Social Media Automation | ✅ | Phases 3-4 (Twitter, TikTok, Discord, Newsletter) |
 
+**Legal & Deploy Readiness (abgeschlossen):**
+| Task | Status | Datei |
+|------|--------|-------|
+| Impressum | ✅ | `src/pages/impressum.astro` |
+| Datenschutz | ✅ | `src/pages/datenschutz.astro` |
+| AGB | ✅ | `src/pages/agb.astro` |
+| Über Uns / Team | ✅ | `src/pages/ueber-uns/team.astro` |
+| Legal Pages in Sitemap | ✅ | `src/lib/sitemap-generator.ts` |
+| Netlify Install-Fix | ✅ | `pnpm-lock.yaml` synchronisiert |
+
 **Optionale Erweiterungen:**
 - Cross-Platform Analytics Dashboard (Twitter/Discord/Reddit/TikTok)
 - TikTok Video Rendering (automatische Video-Generierung)
@@ -241,6 +251,10 @@ apps/
 ## GIT LOG (letzte relevante Commits)
 
 ```
+[Deploy Fix] fix(deploy): sync pnpm lockfile for discord bot Neon dependency
+[Sitemap] fix(sitemap): Legal Pages zur Sitemap hinzugefügt (impressum, datenschutz, agb, ueber-uns/team)
+[Legal] feat(legal): Legal Pages — Impressum, Datenschutz, AGB, Über Uns/Team (Rolf Schwertfechter, Barklandsweg 1, 26553 Dornum, USt-IdNr.DE275823159)
+[Docs] docs: update VIRAL_PROGRESS.md — AGENTS.md Implementation complete (MCP, Content Pipeline, KPI Monitoring, Automation)
 [AGENTS.md] feat(automation): Item Shop Tracker — Daily fetch, historical comparison, rare items, SAC ratings, Discord alerts
 [AGENTS.md] feat(kpi): KPI Monitoring System — Monetization, Traffic, Engagement, Technical KPIs with threshold alerts
 [AGENTS.md] feat(mcp): Content Pipeline Automation — Auto-draft articles from leaks, SEO title generation, social posts, newsletter scheduling
