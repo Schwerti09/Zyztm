@@ -4,6 +4,17 @@ export default {
   theme: {
     extend: {
       colors: {
+        nexus: {
+          orange: '#ff6b00', // Nexus Orange
+          orangeLight: '#ff8c33',
+          orangeDark: '#cc5500',
+          purple: '#8b5cf6', // Command Center Purple
+          purpleLight: '#a78bfa',
+          purpleDark: '#7c3aed',
+          green: '#10b981', // Neon Green
+          greenLight: '#34d399',
+          greenDark: '#059669',
+        },
         neon: {
           pink: '#ff0055',
           blue: '#00f2ff',
