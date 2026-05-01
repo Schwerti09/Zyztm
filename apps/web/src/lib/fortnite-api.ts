@@ -8,6 +8,7 @@
  */
 
 const FN_API_BASE = 'https://fortnite-api.com/v2';
+const FN_STATS_API = 'https://fortniteapi.io/v2/stats/br/v2';
 const SAC_CODE = 'NEXUS';
 
 // ============================================================================
@@ -305,4 +306,70 @@ export function getRarityColor(rarity: ShopItem['rarity']): string {
     Exotic: '#EC4899',
   };
   return colors[rarity] ?? '#9CA3AF';
+}
+
+// ============================================================================
+// PLAYER STATS (fortniteapi.io)
+// ============================================================================
+
+export interface PlayerStats {
+  username: string;
+  kd: number;
+  winRate: number;
+  top10Rate: number;
+  killsPerMatch: number;
+  placementAvg: number;
+  matchesPlayed: number;
+  accuracyEstimate?: number;
+  materialsGatheredAvg?: number;
+}
+
+/**
+ * Holt Spieler-Stats von fortniteapi.io.
+ * Benötigt API-Key in FORTNITE_API_KEY env var.
+ */
+export async function getPlayerStats(username: string): Promise<PlayerStats | null> {
+  const apiKey = process.env.FORTNITE_API_KEY;
+  if (!apiKey) {
+    console.warn('[fortnite-api] FORTNITE_API_KEY not configured, using fallback');
+    return null;
+  }
+
+  try {
+    const response = await fetch(
+      `${FN_STATS_API}?username=${encodeURIComponent(username)}`,
+      {
+        headers: {
+          'Authorization': apiKey,
+        },
+      },
+    );
+
+    if (!response.ok) {
+      if (response.status === 404) {
+        return null; // Spieler nicht gefunden
+      }
+      throw new Error(`API Error: ${response.status}`);
+    }
+
+    const data = await response.json();
+
+    // fortniteapi.io Response normalisieren
+    const stats: PlayerStats = {
+      username: data.username || username,
+      kd: data.stats?.all?.kd || 0,
+      winRate: data.stats?.all?.winRate || 0,
+      top10Rate: data.stats?.all?.top10 || 0,
+      killsPerMatch: data.stats?.all?.killsPerMatch || 0,
+      placementAvg: data.stats?.all?.avgPlacement || 50,
+      matchesPlayed: data.stats?.all?.matches || 0,
+      accuracyEstimate: data.stats?.all?.accuracy,
+      materialsGatheredAvg: data.stats?.all?.materials,
+    };
+
+    return stats;
+  } catch (error) {
+    console.error('[fortnite-api] Failed to fetch player stats:', error);
+    return null;
+  }
 }

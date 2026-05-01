@@ -5,6 +5,7 @@ import {
   type AnalysisReport,
   type Insight,
 } from '../../lib/stats-analyzer';
+import { getPlayerStats, type PlayerStats } from '../../lib/fortnite-api';
 
 const RANK_COLORS: Record<string, string> = {
   Bronze: '#a16c3b',
@@ -99,16 +100,34 @@ export default function StatsDashboard() {
   const [report, setReport] = useState<AnalysisReport | null>(null);
   const [loading, setLoading] = useState(false);
 
-  const handleAnalyze = () => {
+  const handleAnalyze = async () => {
     if (!username.trim()) return;
     setLoading(true);
-    // Simulation eines API-Calls
-    setTimeout(() => {
+    
+    try {
+      // Versuche echte Stats von API zu holen
+      const realStats = await getPlayerStats(username.trim());
+      
+      if (realStats) {
+        // Echte Stats gefunden
+        const analysis = analyzeStats(realStats);
+        setReport(analysis);
+      } else {
+        // API fehlgeschlagen oder kein Key, Fallback auf Mock
+        console.warn('[StatsDashboard] API failed, using mock data');
+        const stats = generateMockStats(username.trim());
+        const analysis = analyzeStats(stats);
+        setReport(analysis);
+      }
+    } catch (error) {
+      console.error('[StatsDashboard] Error fetching stats:', error);
+      // Fallback auf Mock bei Fehler
       const stats = generateMockStats(username.trim());
       const analysis = analyzeStats(stats);
       setReport(analysis);
+    } finally {
       setLoading(false);
-    }, 900);
+    }
   };
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -147,8 +166,9 @@ export default function StatsDashboard() {
           </button>
         </div>
         <p className="text-xs font-body text-white/40 mt-2">
-          Demo-Modus: Stats werden deterministisch aus deinem Username generiert. Live-API
-          folgt in Kürze.
+          {process.env.FORTNITE_API_KEY 
+            ? 'Live-Modus: Stats werden von fortniteapi.io geholt.' 
+            : 'Demo-Modus: Stats werden deterministisch generiert (API-Key nicht konfiguriert).'}
         </p>
       </form>
 
