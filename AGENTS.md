@@ -448,9 +448,9 @@ IF ANY KPI falls below threshold:
 ---
 
 *Last Updated: May 1, 2026*
-*Version: 1.2 - Architecture Upgrade (Milestones 7.6-7.11)*
+*Version: 1.3 - Shop Overhaul Phase 1 + Architecture Upgrade (Milestones 7.6-7.13)*
 
-# ARCHITECTURE UPGRADE - MILESTONES 7.6-7.11
+# ARCHITECTURE UPGRADE - MILESTONES 7.6-7.13
 
 ## Completed Tools (Vite + React + TypeScript + Zustand + React Query + Neon Serverless Postgres)
 
@@ -484,6 +484,38 @@ IF ANY KPI falls below threshold:
 - **Integration:** useNexusStore, WeaponMetaEntry types from shared-types.ts
 - **UI:** Nexus Orange/Purple/Green, Glassmorphism, PaywallGate (Pro/Elite)
 
+### Milestone 7.11: Rotation Planner
+- **File:** `apps/web/src/components/tools/RotationPlanner.tsx`
+- **Features:** Mode selection, target zone phase slider, rotation plans with mobility items, risk level, estimated time
+- **Integration:** useNexusStore, RotationPlan/GameMode types from shared-types.ts
+- **UI:** Nexus Orange/Purple/Green, Glassmorphism, PaywallGate (Pro/Elite)
+
+### Milestone 7.12: Build Trainer
+- **File:** `apps/web/src/components/tools/BuildTrainer.tsx`
+- **Features:** 4 Build Drills, Timer-based training, Session History, Score Tracking
+- **Integration:** useNexusStore, DrillSession types from shared-types.ts
+- **UI:** Nexus Orange/Purple/Green, Glassmorphism, PaywallGate (Pro)
+
+### Milestone 7.13: Keybind Optimizer
+- **File:** `apps/web/src/components/tools/KeybindOptimizer.tsx`
+- **Features:** 4 Playstyles, Hand Size selection, Hardware selection, Pro Similarity Score
+- **Integration:** useNexusStore, KeybindProfile/Playstyle types from shared-types.ts
+- **UI:** Nexus Orange/Purple/Green, Glassmorphism, PaywallGate (Pro/Elite)
+
+## Shop Overhaul - Phase 1
+
+### ShopPage.tsx - High-Conversion E-Commerce
+- **File:** `apps/web/src/pages/ShopPage.tsx`
+- **Features:** Strong Hero with "Die Tools der Pros" energy, Nexus Neon Colors, Glassmorphism UI, Testimonials Section (3 testimonials), FAQ Section mit Schema.org Markup, Exit-Intent Popup (10% Rabatt Code NEXUS10), Trust Signals & Scarcity
+- **Conversion Elements:** Exit Intent Detection (mouseleave event), FAQ Accordion mit Check/X icons, Testimonials mit Star ratings, Trust Indicators (Sofort-Auslieferung, Sichere Zahlung, 72h Download-Garantie), Schema.org FAQ Markup, 10% Rabatt Code NEXUS10
+- **UI:** Nexus Green/Purple/Orange, Glassmorphism mit backdrop-blur, Strong hover effects
+- **Brand Rules:** No mention of streamer names, only "Fortnite Nexus" and "NEXUS Community Code"
+
+### ProductCard.tsx - Epic Product Cards
+- **File:** `apps/web/src/components/shop/ProductCard.tsx`
+- **Features:** Nexus Neon Colors, Glassmorphism mit backdrop-blur, Strong hover effects mit nexus-orange shadow, Badge Icons (Flame, Crown, TrendingUp, Star), Nexus Green Price Display, Nexus Orange CTA Button
+- **UI:** Nexus Green/Purple/Orange, Glassmorphism, Epic hover effects
+
 ## Shared Components
 - **PaywallGate:** Feature gating for free/pro/elite tiers
 - **MetaBadge:** Season and last updated display
@@ -509,12 +541,8 @@ IF ANY KPI falls below threshold:
   - Flex card (FlexCard)
   - Global app state (NexusAppState)
   - Utility types
-
-### Milestone 7.11: Rotation Planner
-- **File:** `apps/web/src/components/tools/RotationPlanner.tsx`
-- **Features:** Mode selection, target zone phase slider, rotation plans with mobility items, risk level, estimated time
-- **Integration:** useNexusStore, RotationPlan/GameMode types from shared-types.ts
-- **UI:** Nexus Orange/Purple/Green, Glassmorphism, PaywallGate (Pro/Elite)
+  - DrillSession (Build Trainer)
+  - KeybindProfile (Keybind Optimizer)
 
 ## Commits
 - 6e5c3b1: Architecture upgrade - shared types, state management, components
@@ -527,5 +555,9 @@ IF ANY KPI falls below threshold:
 - 1c15b0c: Meta Predictor - Milestone 7.10 Complete
 - 008e040: docs(agents): Update with Milestone 7.6-7.10 completion
 - f1c398c: Rotation Planner - Milestone 7.11 Complete
+- 06d86de: Build Trainer - Milestone 7.12 Complete
+- 0e3c55c: Keybind Optimizer - Milestone 7.13 Complete (Architecture Upgrade Complete)
+- 723e530: ShopPage Nexus Design Update
+- 676b2a4: Shop Complete Overhaul Phase 1
 
 ---
