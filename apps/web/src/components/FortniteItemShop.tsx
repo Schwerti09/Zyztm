@@ -1,5 +1,6 @@
 import React, { useState, useRef, useCallback, useEffect, useMemo } from 'react';
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
+import { getItemShop, getSacCode, rateItemRarity, getRarityColor, type ShopItem } from '../lib/fortnite-api';
 
 /* ─── Color Palette ─── */
 const NEON_GREEN = '#39FF14'; // neon green
@@ -12,19 +13,19 @@ const CREATOR_CODE = 'NEXUS';
 const PARTICLE_BURST_COUNT = 8;
 const PARTICLE_SPREAD_RADIUS = 30;
 
-/* ─── Official Shop Items ─── */
+/* ─── Official Shop Items (Fallback if API fails) ─── */
 interface FnItem {
   id: string; name: string; icon: string; type: string;
   rarity: string; color: string; vbucks: number; featured?: boolean;
 }
 
-const FEATURED_ITEMS: FnItem[] = [
+const FALLBACK_FEATURED_ITEMS: FnItem[] = [
   { id: 'midas6', name: 'Midas Ch.6', icon: '✨', type: 'OUTFIT', rarity: 'LEGENDARY', color: GOLD, vbucks: 2000, featured: true },
   { id: 'astrojack', name: 'Astro Jack', icon: '🎤', type: 'OUTFIT', rarity: 'LEGENDARY', color: GOLD, vbucks: 2000, featured: true },
   { id: 'jonesey_neon', name: 'Neon Jonesey', icon: '🕹️', type: 'OUTFIT', rarity: 'EPIC', color: PINK, vbucks: 1500 },
 ];
 
-const DAILY_ITEMS: FnItem[] = [
+const FALLBACK_DAILY_ITEMS: FnItem[] = [
   { id: 'renegade2', name: 'Renegade Raider V2', icon: '🪖', type: 'OUTFIT', rarity: 'RARE', color: CYAN, vbucks: 1200 },
   { id: 'zy_pick', name: 'ZY Pickaxe', icon: '⛏️', type: 'HARVESTING', rarity: 'EPIC', color: PINK, vbucks: 1500 },
   { id: 'battlebus_gli', name: 'Battle Bus Glider', icon: '🚌', type: 'GLIDER', rarity: 'EPIC', color: PINK, vbucks: 1500 },
@@ -509,7 +510,7 @@ export default function FortniteItemShop() {
             <div className="mb-4">
               <span className="font-cyber text-[10px] tracking-widest text-white/35 mb-2 block">— FEATURED ITEMS —</span>
               <div className="grid grid-cols-3 gap-3">
-                {FEATURED_ITEMS.map((item, i) => <OfficialCard key={item.id} item={item} idx={i} />)}
+                {FALLBACK_FEATURED_ITEMS.map((item, i) => <OfficialCard key={item.id} item={item} idx={i} />)}
               </div>
             </div>
 
@@ -517,7 +518,7 @@ export default function FortniteItemShop() {
             <div>
               <span className="font-cyber text-[10px] tracking-widest text-white/35 mb-2 block">— DAILY ITEMS —</span>
               <div className="grid grid-cols-3 gap-3">
-                {DAILY_ITEMS.map((item, i) => <OfficialCard key={item.id} item={item} idx={i + 3} />)}
+                {FALLBACK_DAILY_ITEMS.map((item, i) => <OfficialCard key={item.id} item={item} idx={i + 3} />)}
               </div>
             </div>
 
