@@ -3,881 +3,1553 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fortnite Nexus — Die Nr. 1 Fortnite-Kommandozentrale</title>
-    <meta name="description" content="Die Nr. 1 Fortnite-Kommandozentrale auf Deutsch. Battle DNA Scanner, Loadout Builder, Creator Hub, Guides & Meta.">
-    <link rel="canonical" href="https://fortnitenexus.space/">
-    
-    <!-- Open Graph tags -->
-    <meta property="og:title" content="Fortnite Nexus — Die Nr. 1 Fortnite-Kommandozentrale">
-    <meta property="og:description" content="Die Nr. 1 Fortnite-Kommandozentrale auf Deutsch. Battle DNA Scanner, Loadout Builder, Creator Hub, Guides & Meta.">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://fortnitenexus.space/">
-    <meta property="og:image" content="https://fortnitenexus.space/images/og-image.png">
-    <meta property="og:site_name" content="Fortnite Nexus">
-    <meta property="og:locale" content="de_DE">
-    
-    <!-- Twitter Card tags -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Fortnite Nexus — Die Nr. 1 Fortnite-Kommandozentrale">
-    <meta name="twitter:description" content="Die Nr. 1 Fortnite-Kommandozentrale auf Deutsch. Battle DNA Scanner, Loadout Builder, Creator Hub, Guides & Meta.">
-    <meta name="twitter:image" content="https://fortnitenexus.space/images/twitter-card.png">
-    
-    <!-- Schema.org markup -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "WebSite",
-      "name": "Fortnite Nexus",
-      "url": "https://fortnitenexus.space/",
-      "description": "Die Nr. 1 Fortnite-Kommandozentrale auf Deutsch. Battle DNA Scanner, Loadout Builder, Creator Hub, Guides & Meta.",
-      "inLanguage": "de",
-      "potentialAction": {
-        "@type": "SearchAction",
-        "target": "https://fortnitenexus.space/search?q={search_term_string}",
-        "query-input": "required name=search_term_string"
-      }
-    }
-    </script>
-    
-    <link rel="stylesheet" href="/shared.css">
+    <title>Fortnite Nexus - Die Kommandozentrale</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Exo+2:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
-        /* Homepage spezifische Styles */
-        .hero {
+        /* ═══════════════════════════════════════════
+           GLOBAL STYLES & VARIABLES
+           ═══════════════════════════════════════════ */
+        :root {
+            --bg-dark: #050510;
+            --glow-cyan: #00cfff;
+            --glow-orange: #ff6b00;
+            --glow-gold: #ffc300;
+            --text-light: #e8eaf0;
+            --text-muted: rgba(232, 234, 240, 0.6);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Exo 2', sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-light);
+            overflow-x: hidden;
             min-height: 100vh;
+        }
+
+        /* ═══════════════════════════════════════════
+           LADING SCREEN
+           ═══════════════════════════════════════════ */
+        #loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--bg-dark);
             display: flex;
             flex-direction: column;
-            justify-content: center;
             align-items: center;
-            text-align: center;
-            padding: var(--space-xl) var(--space-lg);
-            background: var(--bg);
-            position: relative;
+            justify-content: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease;
+        }
+
+        #loading-screen.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        #loading-text {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.5rem;
+            color: var(--glow-cyan);
+            margin-bottom: 20px;
+            animation: pulse 1s infinite;
+        }
+
+        #loading-bar {
+            width: 300px;
+            height: 4px;
+            background: rgba(0, 207, 255, 0.2);
+            border-radius: 2px;
             overflow: hidden;
         }
-        
-        /* Storm-Hintergrund Animation */
-        .storm-background {
-            position: absolute;
+
+        #loading-progress {
+            height: 100%;
+            background: linear-gradient(90deg, var(--glow-cyan), var(--glow-gold));
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+
+        /* ═══════════════════════════════════════════
+           LEBENDER HINTERGRUND - "THE STORM IS COMING"
+           ═══════════════════════════════════════════ */
+        #storm-background {
+            position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: 
-                radial-gradient(circle at 20% 50%, rgba(0, 212, 255, 0.15) 0%, transparent 50%),
-                radial-gradient(circle at 80% 50%, rgba(168, 85, 247, 0.15) 0%, transparent 50%),
-                radial-gradient(circle at 50% 50%, rgba(0, 212, 255, 0.1) 0%, transparent 70%);
-            animation: stormRotate 20s linear infinite;
+            z-index: -1;
+            background: radial-gradient(circle at center, #1a1a3e 0%, #050510 100%);
+            overflow: hidden;
         }
-        
-        @keyframes stormRotate {
-            0% { transform: rotate(0deg) scale(1); }
-            50% { transform: rotate(180deg) scale(1.1); }
-            100% { transform: rotate(360deg) scale(1); }
-        }
-        
-        /* Grid-Overlay */
-        .grid-overlay {
+
+        #storm-circle {
             position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 150%;
+            height: 150%;
+            border-radius: 50%;
+            background: conic-gradient(from 0deg, 
+                transparent 0deg, 
+                rgba(0, 207, 255, 0.1) 90deg, 
+                transparent 180deg,
+                rgba(255, 107, 0, 0.1) 270deg,
+                transparent 360deg);
+            animation: storm-rotate 20s linear infinite;
+        }
+
+        #storm-circle::before {
+            content: '';
+            position: absolute;
+            top: 10%;
+            left: 10%;
+            right: 10%;
+            bottom: 10%;
+            border-radius: 50%;
+            background: conic-gradient(from 180deg, 
+                transparent 0deg, 
+                rgba(255, 195, 0, 0.1) 90deg, 
+                transparent 180deg,
+                rgba(0, 207, 255, 0.1) 270deg,
+                transparent 360deg);
+            animation: storm-rotate 15s linear infinite reverse;
+        }
+
+        #flash-overlay {
+            position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background-image: 
-                linear-gradient(rgba(0, 212, 255, 0.03) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(0, 212, 255, 0.03) 1px, transparent 1px);
-            background-size: 50px 50px;
-            animation: gridPulse 4s ease-in-out infinite;
+            background: white;
+            opacity: 0;
+            pointer-events: none;
+            z-index: -1;
         }
-        
-        @keyframes gridPulse {
-            0%, 100% { opacity: 0.3; }
-            50% { opacity: 0.6; }
+
+        @keyframes storm-rotate {
+            from { transform: translate(-50%, -50%) rotate(0deg); }
+            to { transform: translate(-50%, -50%) rotate(360deg); }
         }
-        
-        .hero-content {
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        @keyframes flash {
+            0% { opacity: 0; }
+            10% { opacity: 0.3; }
+            100% { opacity: 0; }
+        }
+
+        /* ═══════════════════════════════════════════
+           WAR ROOM HERO
+           ═══════════════════════════════════════════ */
+        #hero-section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
             position: relative;
-            z-index: 1;
         }
-        
-        .hero-title {
-            font-family: var(--font-headline);
-            font-size: clamp(2.5rem, 8vw, 6rem);
+
+        .hero-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 40px;
+            max-width: 1400px;
+            width: 100%;
+            align-items: center;
+        }
+
+        @media (max-width: 1024px) {
+            .hero-container {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+        }
+
+        /* Minimap - CSS Grid Animation */
+        .minimap-container {
+            position: relative;
+            width: 200px;
+            height: 200px;
+            background: rgba(0, 207, 255, 0.1);
+            border: 2px solid var(--glow-cyan);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .minimap-grid {
+            display: grid;
+            grid-template-columns: repeat(8, 1fr);
+            grid-template-rows: repeat(8, 1fr);
+            width: 100%;
+            height: 100%;
+        }
+
+        .minimap-cell {
+            border: 1px solid rgba(0, 207, 255, 0.1);
+        }
+
+        .player-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--glow-cyan);
+            border-radius: 50%;
+            position: absolute;
+            animation: player-move 4s infinite;
+            box-shadow: 0 0 10px var(--glow-cyan);
+        }
+
+        .player-dot:nth-child(1) { animation-delay: 0s; }
+        .player-dot:nth-child(2) { animation-delay: 1s; }
+        .player-dot:nth-child(3) { animation-delay: 2s; }
+
+        @keyframes player-move {
+            0% { top: 20%; left: 20%; }
+            25% { top: 30%; left: 40%; }
+            50% { top: 50%; left: 60%; }
+            75% { top: 40%; left: 80%; }
+            100% { top: 20%; left: 20%; }
+        }
+
+        /* Terminal Effect */
+        .terminal-container {
+            text-align: center;
+        }
+
+        #terminal-text {
+            font-family: 'Orbitron', sans-serif;
+            font-size: clamp(1.5rem, 4vw, 3rem);
             font-weight: 900;
             color: var(--text-light);
-            text-shadow: 0 0 50px var(--cyan);
-            margin-bottom: var(--space-md);
-            line-height: 1.1;
+            text-transform: uppercase;
+            min-height: 3.6rem;
+            margin-bottom: 20px;
+            text-shadow: 0 0 20px var(--glow-cyan);
         }
-        
-        .hero-subtitle {
-            font-size: 1.25rem;
+
+        #terminal-subtext {
+            font-size: 1.2rem;
             color: var(--text-muted);
-            max-width: 600px;
-            margin: 0 auto var(--space-xl);
+            opacity: 0;
+            transition: opacity 1s ease;
         }
-        
-        .hero-ctas {
-            display: flex;
-            gap: var(--space-md);
-            justify-content: center;
-            flex-wrap: wrap;
+
+        #terminal-subtext.visible {
+            opacity: 1;
         }
-        
-        .live-counter {
-            font-family: var(--font-headline);
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--cyan);
-            margin-bottom: var(--space-lg);
+
+        .cursor {
+            display: inline-block;
+            width: 3px;
+            height: 1em;
+            background: var(--glow-cyan);
+            margin-left: 5px;
+            animation: blink 0.7s infinite;
+            vertical-align: middle;
         }
-        
-        .scroll-indicator {
-            position: absolute;
-            bottom: var(--space-xl);
-            left: 50%;
-            transform: translateX(-50%);
-            animation: scrollBounce 2s ease-in-out infinite;
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
         }
-        
-        @keyframes scrollBounce {
-            0%, 100% { transform: translateX(-50%) translateY(0); }
-            50% { transform: translateX(-50%) translateY(10px); }
+
+        /* Signal Block */
+        .signal-block {
+            background: rgba(255, 107, 0, 0.1);
+            border: 2px solid var(--glow-orange);
+            border-radius: 10px;
+            padding: 30px;
+            text-align: center;
         }
-        
-        .scroll-indicator::before {
-            content: '';
-            display: block;
-            width: 2px;
-            height: 40px;
-            background: linear-gradient(to bottom, var(--cyan), transparent);
-            margin: 0 auto var(--space-sm);
-        }
-        
-        .scroll-indicator span {
-            color: var(--cyan);
-            font-size: 0.75rem;
+
+        .signal-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.9rem;
+            color: var(--glow-orange);
+            margin-bottom: 20px;
             text-transform: uppercase;
             letter-spacing: 2px;
         }
-        
-        /* Ticker */
-        .ticker {
-            background: var(--bg-secondary);
-            border-top: 1px solid var(--cyan-dim);
-            border-bottom: 1px solid var(--cyan-dim);
-            padding: var(--space-sm) 0;
+
+        .signal-waves {
+            position: relative;
+            width: 100px;
+            height: 100px;
+            margin: 0 auto;
+        }
+
+        .wave {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border: 2px solid var(--glow-orange);
+            border-radius: 50%;
+            animation: wave-expand 2s infinite;
+        }
+
+        .wave:nth-child(1) { animation-delay: 0s; }
+        .wave:nth-child(2) { animation-delay: 0.5s; }
+        .wave:nth-child(3) { animation-delay: 1s; }
+
+        @keyframes wave-expand {
+            0% { width: 20px; height: 20px; opacity: 1; }
+            100% { width: 100px; height: 100px; opacity: 0; }
+        }
+
+        /* ═══════════════════════════════════════════
+           NEXUS SCANNER
+           ═══════════════════════════════════════════ */
+        #scanner-section {
+            padding: 100px 20px;
+            text-align: center;
+            position: relative;
+        }
+
+        .scanner-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2rem;
+            color: var(--glow-cyan);
+            margin-bottom: 40px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+
+        .scanner-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .scanner-btn {
+            background: rgba(0, 207, 255, 0.1);
+            border: 2px solid var(--glow-cyan);
+            border-radius: 15px;
+            padding: 30px 40px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            min-width: 200px;
+        }
+
+        .scanner-btn:hover {
+            background: rgba(0, 207, 255, 0.2);
+            box-shadow: 0 0 30px var(--glow-cyan);
+            transform: translateY(-5px);
+        }
+
+        .scanner-btn .icon {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .scanner-btn .label {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1rem;
+            color: var(--text-light);
+            text-transform: uppercase;
+        }
+
+        /* Scanner Loading */
+        #scanner-loading {
+            display: none;
+            text-align: center;
+            margin: 40px 0;
+        }
+
+        .radar {
+            width: 150px;
+            height: 150px;
+            margin: 0 auto 20px;
+            position: relative;
+        }
+
+        .radar-circle {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border: 2px solid var(--glow-cyan);
+            border-radius: 50%;
+        }
+
+        .radar-circle:nth-child(1) { width: 100%; height: 100%; }
+        .radar-circle:nth-child(2) { width: 66%; height: 66%; }
+        .radar-circle:nth-child(3) { width: 33%; height: 33%; }
+
+        .radar-sweep {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 50%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--glow-cyan));
+            transform-origin: left center;
+            animation: radar-sweep 2s linear infinite;
+        }
+
+        @keyframes radar-sweep {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        /* Result Card */
+        #result-card {
+            display: none;
+            background: rgba(0, 207, 255, 0.1);
+            border: 2px solid var(--glow-cyan);
+            border-radius: 20px;
+            padding: 40px;
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: left;
+        }
+
+        .result-header {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.5rem;
+            color: var(--glow-cyan);
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .result-player-type {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            background: linear-gradient(90deg, var(--glow-cyan), var(--glow-gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .result-description {
+            color: var(--text-muted);
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+
+        .result-section {
+            margin-bottom: 20px;
+        }
+
+        .result-section h4 {
+            font-family: 'Orbitron', sans-serif;
+            color: var(--glow-gold);
+            margin-bottom: 10px;
+        }
+
+        .result-section ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .result-section li {
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(0, 207, 255, 0.1);
+            color: var(--text-muted);
+        }
+
+        .share-btn {
+            background: linear-gradient(90deg, var(--glow-cyan), var(--glow-gold));
+            border: none;
+            border-radius: 10px;
+            padding: 15px 30px;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1rem;
+            color: var(--bg-dark);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 20px;
+            width: 100%;
+        }
+
+        .share-btn:hover {
+            box-shadow: 0 0 30px var(--glow-cyan);
+            transform: translateY(-3px);
+        }
+
+        /* ═══════════════════════════════════════════
+           NEXUS INTEL - LEBENDE DATEN-WAND
+           ═══════════════════════════════════════════ */
+        #intel-section {
+            padding: 80px 20px;
+            overflow: hidden;
+        }
+
+        .ticker-container {
             overflow: hidden;
             white-space: nowrap;
+            margin-bottom: 40px;
         }
-        
-        .ticker-content {
+
+        .ticker {
             display: inline-block;
-            animation: tickerScroll 30s linear infinite;
+            animation: ticker-scroll 30s linear infinite;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.1rem;
+            color: var(--text-light);
         }
-        
-        @keyframes tickerScroll {
+
+        .ticker span {
+            margin: 0 30px;
+        }
+
+        @keyframes ticker-scroll {
             0% { transform: translateX(100%); }
             100% { transform: translateX(-100%); }
         }
-        
-        .ticker-item {
-            display: inline-block;
-            padding: 0 var(--space-xl);
-            color: var(--text-muted);
-            font-size: 0.875rem;
-        }
-        
-        .ticker-item span {
-            color: var(--cyan);
-            font-weight: 700;
-        }
-        
-        /* Feature Showcase */
-        .features-section {
-            padding: var(--space-2xl) var(--space-lg);
-            background: linear-gradient(135deg, var(--bg), var(--bg-secondary));
-        }
-        
-        .features-grid {
-            max-width: 1400px;
-            margin: 0 auto;
+
+        .intel-cards {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: var(--space-xl);
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
         }
-        
-        @media (max-width: 768px) {
-            .features-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-        
-        .feature-card {
-            background: linear-gradient(135deg, var(--bg-secondary), var(--bg-tertiary));
-            border: 2px solid rgba(0, 212, 255, 0.2);
-            border-radius: var(--radius-xl);
-            padding: var(--space-2xl);
-            transition: all var(--transition-normal);
+
+        .intel-card {
+            background: rgba(255, 107, 0, 0.05);
+            border: 2px solid var(--glow-orange);
+            border-radius: 15px;
+            padding: 30px;
+            transform: rotate(-2deg);
+            transition: all 0.3s ease;
+            cursor: pointer;
             position: relative;
             overflow: hidden;
         }
-        
-        .feature-card::before {
-            content: '';
+
+        .intel-card:nth-child(2) {
+            transform: rotate(1deg);
+        }
+
+        .intel-card:nth-child(3) {
+            transform: rotate(-1deg);
+        }
+
+        .intel-card:hover {
+            transform: rotate(0deg) scale(1.05);
+            box-shadow: 0 0 30px var(--glow-orange);
+        }
+
+        .intel-card::before {
+            content: 'TOP SECRET';
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle at center, rgba(0, 212, 255, 0.1) 0%, transparent 70%);
-            opacity: 0;
-            transition: opacity var(--transition-normal);
+            top: 10px;
+            right: 10px;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.7rem;
+            color: var(--glow-orange);
+            border: 1px solid var(--glow-orange);
+            padding: 5px 10px;
+            border-radius: 5px;
+            transform: rotate(15deg);
         }
-        
-        .feature-card:hover::before {
-            opacity: 1;
+
+        .intel-card h3 {
+            font-family: 'Orbitron', sans-serif;
+            color: var(--glow-orange);
+            margin-bottom: 15px;
         }
-        
-        .feature-card:hover {
-            border-color: var(--cyan);
-            box-shadow: var(--shadow-glow-cyan);
-            transform: translateY(-10px);
-        }
-        
-        .feature-icon {
-            font-size: 4rem;
-            margin-bottom: var(--space-md);
-        }
-        
-        .feature-badge {
-            display: inline-block;
-            padding: var(--space-xs) var(--space-sm);
-            background: var(--gold-dim);
-            color: var(--gold);
-            border-radius: var(--radius-sm);
-            font-family: var(--font-headline);
-            font-size: 0.75rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: var(--space-md);
-        }
-        
-        .feature-title {
-            font-family: var(--font-headline);
-            font-size: 1.75rem;
-            font-weight: 700;
-            color: var(--text-light);
-            margin-bottom: var(--space-sm);
-        }
-        
-        .feature-subtitle {
-            font-size: 1rem;
+
+        .intel-card p {
             color: var(--text-muted);
-            margin-bottom: var(--space-lg);
+            line-height: 1.6;
+            margin-bottom: 20px;
         }
-        
-        .feature-cta {
-            display: inline-block;
-            color: var(--cyan);
-            font-family: var(--font-headline);
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: color var(--transition-normal);
-        }
-        
-        .feature-cta:hover {
-            color: var(--gold);
-        }
-        
-        /* NEXUS IQ Mini-Demo */
-        .mini-demo {
-            padding: var(--space-2xl) var(--space-lg);
-            background: linear-gradient(135deg, var(--bg-secondary), var(--bg));
-        }
-        
-        .mini-demo-container {
-            max-width: 800px;
-            margin: 0 auto;
-            background: linear-gradient(135deg, var(--bg-tertiary), var(--bg-secondary));
-            border: 2px solid var(--gold-dim);
-            border-radius: var(--radius-xl);
-            padding: var(--space-2xl);
-            text-align: center;
-        }
-        
-        .mini-demo-title {
-            font-family: var(--font-headline);
-            font-size: 2rem;
-            font-weight: 700;
-            color: var(--gold);
-            margin-bottom: var(--space-lg);
-        }
-        
-        .mini-demo-questions {
-            margin-bottom: var(--space-xl);
-        }
-        
-        .mini-demo-question {
-            margin-bottom: var(--space-md);
-        }
-        
-        .mini-demo-question-title {
-            font-family: var(--font-headline);
-            font-size: 1.125rem;
-            font-weight: 700;
-            color: var(--text-light);
-            margin-bottom: var(--space-sm);
-        }
-        
-        .mini-demo-options {
-            display: flex;
-            gap: var(--space-sm);
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-        
-        .mini-demo-option {
-            padding: var(--space-sm) var(--space-md);
-            background: rgba(255, 195, 0, 0.1);
-            border: 2px solid rgba(255, 195, 0, 0.2);
-            border-radius: var(--radius-md);
-            color: var(--text-light);
+
+        .unlock-btn {
+            background: transparent;
+            border: 2px solid var(--glow-orange);
+            border-radius: 10px;
+            padding: 10px 20px;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.9rem;
+            color: var(--glow-orange);
             cursor: pointer;
-            transition: all var(--transition-normal);
-            font-size: 0.875rem;
+            transition: all 0.3s ease;
+            width: 100%;
         }
-        
-        .mini-demo-option:hover,
-        .mini-demo-option.selected {
-            background: var(--gold-dim);
-            border-color: var(--gold);
-            color: var(--text-dark);
+
+        .unlock-btn:hover {
+            background: var(--glow-orange);
+            color: var(--bg-dark);
         }
-        
-        .mini-demo-result {
-            display: none;
-            background: rgba(0, 212, 255, 0.1);
-            border: 2px solid var(--cyan-dim);
-            border-radius: var(--radius-md);
-            padding: var(--space-lg);
-            margin-bottom: var(--space-lg);
-        }
-        
-        .mini-demo-result.show {
-            display: block;
-            animation: fadeIn 0.5s ease;
-        }
-        
-        .mini-demo-result-icon {
-            font-size: 3rem;
-            margin-bottom: var(--space-sm);
-        }
-        
-        .mini-demo-result-type {
-            font-family: var(--font-headline);
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--cyan);
-            margin-bottom: var(--space-sm);
-        }
-        
-        /* Social Proof */
-        .social-proof {
-            padding: var(--space-2xl) var(--space-lg);
-            background: var(--bg);
-        }
-        
-        .stats-grid {
-            max-width: 1200px;
-            margin: 0 auto var(--space-xl);
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: var(--space-lg);
-        }
-        
-        @media (max-width: 768px) {
-            .stats-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-        
-        .stat-item {
+
+        /* ═══════════════════════════════════════════
+           NEXUS VAULT
+           ═══════════════════════════════════════════ */
+        #vault-section {
+            padding: 80px 20px;
             text-align: center;
         }
-        
-        .stat-value {
-            font-family: var(--font-headline);
-            font-size: 3rem;
-            font-weight: 900;
-            color: var(--cyan);
-            margin-bottom: var(--space-xs);
-        }
-        
-        .stat-label {
-            font-size: 0.875rem;
-            color: var(--text-muted);
+
+        .vault-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2rem;
+            color: var(--glow-gold);
+            margin-bottom: 40px;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 3px;
         }
-        
-        .quotes-section {
-            max-width: 1200px;
-            margin: 0 auto;
+
+        .vault-items {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: var(--space-lg);
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto 40px;
         }
-        
-        .quote-card {
-            background: linear-gradient(135deg, var(--bg-secondary), var(--bg-tertiary));
-            border: 2px solid rgba(0, 212, 255, 0.2);
-            border-radius: var(--radius-md);
-            padding: var(--space-lg);
+
+        .vault-item {
+            background: rgba(255, 195, 0, 0.05);
+            border: 2px solid var(--glow-gold);
+            border-radius: 15px;
+            padding: 40px;
+            position: relative;
+            filter: blur(3px);
+            transition: all 0.3s ease;
         }
-        
-        .quote-text {
-            font-style: italic;
-            color: var(--text-muted);
-            margin-bottom: var(--space-md);
+
+        .vault-item:hover {
+            filter: blur(0);
         }
-        
-        .quote-author {
-            font-family: var(--font-headline);
-            font-weight: 700;
-            color: var(--text-light);
+
+        .vault-item::before {
+            content: '🔒';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 3rem;
         }
-        
-        /* Discord CTA */
-        .discord-cta {
-            padding: var(--space-2xl) var(--space-lg);
-            background: linear-gradient(135deg, rgba(255, 107, 0, 0.1), var(--bg));
-            border-top: 2px solid var(--orange-dim);
-            border-bottom: 2px solid var(--orange-dim);
+
+        .vault-item h3 {
+            font-family: 'Orbitron', sans-serif;
+            color: var(--glow-gold);
+            margin-bottom: 15px;
+        }
+
+        .vault-cta {
+            background: linear-gradient(90deg, var(--glow-gold), var(--glow-orange));
+            border: none;
+            border-radius: 15px;
+            padding: 20px 40px;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.1rem;
+            color: var(--bg-dark);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 30px rgba(255, 195, 0, 0.3);
+        }
+
+        .vault-cta:hover {
+            box-shadow: 0 0 50px rgba(255, 195, 0, 0.5);
+            transform: translateY(-5px);
+        }
+
+        /* ═══════════════════════════════════════════
+           NEXUS MEMBER FEED
+           ═══════════════════════════════════════════ */
+        #member-feed-section {
+            padding: 80px 20px;
             text-align: center;
         }
-        
-        .discord-cta-content {
-            max-width: 800px;
-            margin: 0 auto;
+
+        .feed-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2rem;
+            color: var(--glow-cyan);
+            margin-bottom: 40px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
         }
-        
-        .discord-title {
-            font-family: var(--font-headline);
-            font-size: 2.5rem;
-            font-weight: 900;
-            color: var(--orange);
-            text-shadow: 0 0 30px var(--orange-dim);
-            margin-bottom: var(--space-xl);
+
+        .feed-container {
+            max-width: 600px;
+            margin: 0 auto 30px;
+            height: 200px;
+            overflow: hidden;
+            position: relative;
         }
-        
-        .discord-benefits {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: var(--space-lg);
-            margin-bottom: var(--space-xl);
+
+        .feed-item {
+            padding: 15px 20px;
+            background: rgba(0, 207, 255, 0.05);
+            border-left: 3px solid var(--glow-cyan);
+            margin-bottom: 15px;
+            border-radius: 5px;
+            animation: feed-scroll 15s linear infinite;
         }
-        
+
+        @keyframes feed-scroll {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(-100%); }
+        }
+
+        .feed-cta {
+            color: var(--glow-cyan);
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+        }
+
+        /* ═══════════════════════════════════════════
+           STORM CIRCLE NAVIGATION
+           ═══════════════════════════════════════════ */
+        #storm-nav {
+            position: fixed;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 100;
+        }
+
+        .nav-circle {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: rgba(0, 207, 255, 0.1);
+            border: 2px solid var(--glow-cyan);
+            margin: 15px 0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .nav-circle:hover {
+            background: rgba(0, 207, 255, 0.3);
+            box-shadow: 0 0 20px var(--glow-cyan);
+            animation: pulse 1s infinite;
+        }
+
+        .nav-circle .tooltip {
+            position: absolute;
+            left: 70px;
+            background: var(--bg-dark);
+            border: 1px solid var(--glow-cyan);
+            padding: 8px 15px;
+            border-radius: 5px;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.8rem;
+            color: var(--glow-cyan);
+            white-space: nowrap;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .nav-circle:hover .tooltip {
+            opacity: 1;
+        }
+
         @media (max-width: 768px) {
-            .discord-benefits {
-                grid-template-columns: 1fr;
+            #storm-nav {
+                left: 50%;
+                top: auto;
+                bottom: 20px;
+                transform: translateX(-50%);
+                display: flex;
+                flex-direction: row;
+            }
+
+            .nav-circle {
+                margin: 0 10px;
+            }
+
+            .nav-circle .tooltip {
+                left: 50%;
+                top: -40px;
+                transform: translateX(-50%);
             }
         }
-        
-        .discord-benefit {
-            padding: var(--space-lg);
-            background: rgba(255, 107, 0, 0.05);
-            border: 1px solid rgba(255, 107, 0, 0.2);
-            border-radius: var(--radius-md);
-        }
-        
-        .discord-benefit-icon {
-            font-size: 2rem;
-            margin-bottom: var(--space-sm);
-        }
-        
-        .discord-benefit-text {
-            font-size: 0.875rem;
-            color: var(--text-muted);
-        }
-        
-        .discord-button {
-            display: inline-block;
-            padding: var(--space-lg) var(--space-2xl);
-            background: #5865F2;
-            color: var(--text-light);
-            border: none;
-            border-radius: var(--radius-md);
-            font-family: var(--font-headline);
-            font-size: 1.25rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            cursor: pointer;
-            transition: all var(--transition-normal);
-            animation: pulse 2s ease-in-out infinite;
-        }
-        
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(88, 101, 242, 0.7); }
-            50% { transform: scale(1.05); box-shadow: 0 0 30px 10px rgba(88, 101, 242, 0.5); }
-        }
-        
-        .discord-button:hover {
-            background: #4752C4;
-            transform: scale(1.1);
-        }
-        
-        .discord-members {
-            margin-top: var(--space-lg);
-            font-size: 0.875rem;
-            color: var(--text-muted);
-        }
-        
-        /* Sticky Bar */
-        .sticky-bar {
+
+        /* ═══════════════════════════════════════════
+           STICKY NAVIGATION
+           ═══════════════════════════════════════════ */
+        #sticky-nav {
             position: fixed;
-            bottom: 0;
+            top: 0;
             left: 0;
             right: 0;
-            background: linear-gradient(90deg, var(--cyan), var(--gold));
-            color: var(--text-dark);
-            padding: var(--space-sm) var(--space-lg);
-            text-align: center;
-            font-family: var(--font-headline);
-            font-weight: 700;
-            font-size: 0.875rem;
-            transform: translateY(100%);
-            transition: transform var(--transition-slow);
-            z-index: 1001;
+            z-index: 1000;
+            background: rgba(5, 5, 16, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 2px solid var(--glow-cyan);
+            box-shadow: 0 0 20px rgba(0, 207, 255, 0.3);
         }
-        
-        .sticky-bar.show {
-            transform: translateY(0);
-        }
-        
-        .sticky-bar a {
-            color: var(--text-dark);
-            text-decoration: none;
-            margin-left: var(--space-md);
-            font-weight: 900;
+
+        /* ═══════════════════════════════════════════
+           ACCESSIBILITY
+           ═══════════════════════════════════════════ */
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
         }
     </style>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="navbar">
-        <div class="navbar-container">
-            <a href="/" class="navbar-logo">NEXUS</a>
-            <div class="navbar-links">
-                <a href="/" class="navbar-link">Home</a>
-                <a href="/nexus-iq" class="navbar-link">NEXUS IQ</a>
-                <a href="/loadout-god" class="navbar-link">Loadout God</a>
-                <a href="/creators" class="navbar-link">Creators</a>
-                <a href="/classic" class="navbar-link">Classic</a>
-                <a href="#" class="navbar-discord">Discord</a>
+    <!-- Loading Screen -->
+    <div id="loading-screen">
+        <div id="loading-text">NEXUS INITIALISIERT...</div>
+        <div id="loading-bar">
+            <div id="loading-progress"></div>
+        </div>
+    </div>
+
+    <!-- Storm Background -->
+    <div id="storm-background">
+        <div id="storm-circle"></div>
+    </div>
+    <div id="flash-overlay"></div>
+
+    <!-- Sticky Navigation -->
+    <nav id="sticky-nav">
+        <div style="max-width: 1400px; margin: 0 auto; padding: 15px 20px; display: flex; justify-content: space-between; align-items: center;">
+            <div style="font-family: 'Orbitron', sans-serif; font-size: 1.5rem; font-weight: 900; color: var(--glow-cyan); text-shadow: 0 0 10px var(--glow-cyan);">
+                NEXUS
             </div>
-            <button class="navbar-menu-btn">☰</button>
+            <div style="display: flex; gap: 30px; align-items: center;">
+                <a href="/creators" style="color: var(--text-light); text-decoration: none; font-family: 'Orbitron', sans-serif; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; transition: color 0.3s ease;" onmouseover="this.style.color='var(--glow-cyan)'" onmouseout="this.style.color='var(--text-light)'">Creators</a>
+                <a href="/loadout-god" style="color: var(--text-light); text-decoration: none; font-family: 'Orbitron', sans-serif; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; transition: color 0.3s ease;" onmouseover="this.style.color='var(--glow-cyan)'" onmouseout="this.style.color='var(--text-light)'">Loadout God</a>
+                <a href="/nexus-iq" style="color: var(--text-light); text-decoration: none; font-family: 'Orbitron', sans-serif; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; transition: color 0.3s ease;" onmouseover="this.style.color='var(--glow-cyan)'" onmouseout="this.style.color='var(--text-light)'">NEXUS IQ</a>
+                <a href="/classic" style="color: var(--text-light); text-decoration: none; font-family: 'Orbitron', sans-serif; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; transition: color 0.3s ease;" onmouseover="this.style.color='var(--glow-cyan)'" onmouseout="this.style.color='var(--text-light)'">Classic</a>
+                <a href="/nexus-iq" style="
+                    background: linear-gradient(90deg, var(--glow-cyan), var(--glow-gold));
+                    color: var(--bg-dark);
+                    padding: 10px 20px;
+                    border-radius: 8px;
+                    text-decoration: none;
+                    font-family: 'Orbitron', sans-serif;
+                    font-size: 0.8rem;
+                    font-weight: 900;
+                    text-transform: uppercase;
+                    letter-spacing: 1px;
+                    transition: all 0.3s ease;
+                " onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 0 20px var(--glow-cyan)'" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='none'">NEXUS IQ</a>
+            </div>
         </div>
     </nav>
 
-    <!-- Mobile Menu -->
-    <div class="navbar-mobile-menu">
-        <button class="navbar-mobile-close">×</button>
-        <a href="/" class="navbar-mobile-link">Home</a>
-        <a href="/nexus-iq" class="navbar-mobile-link">NEXUS IQ</a>
-        <a href="/loadout-god" class="navbar-mobile-link">Loadout God</a>
-        <a href="/creators" class="navbar-mobile-link">Creators</a>
-        <a href="/classic" class="navbar-mobile-link">Classic</a>
-    </div>
+    <!-- Storm Circle Navigation -->
+    <nav id="storm-nav">
+        <div class="nav-circle" onclick="scrollToSection('hero-section')">
+            <span>🎯</span>
+            <span class="tooltip">WAR ROOM</span>
+        </div>
+        <div class="nav-circle" onclick="scrollToSection('scanner-section')">
+            <span>🧬</span>
+            <span class="tooltip">SCANNER</span>
+        </div>
+        <div class="nav-circle" onclick="scrollToSection('intel-section')">
+            <span>📡</span>
+            <span class="tooltip">INTEL</span>
+        </div>
+        <div class="nav-circle" onclick="scrollToSection('vault-section')">
+            <span>🔒</span>
+            <span class="tooltip">VAULT</span>
+        </div>
+        <div class="nav-circle" onclick="scrollToSection('member-feed-section')">
+            <span>👥</span>
+            <span class="tooltip">MEMBERS</span>
+        </div>
+    </nav>
 
-    <!-- Custom Cursor -->
-    <div class="custom-cursor"></div>
-    <div class="custom-cursor-ring"></div>
+    <!-- Hero Section - War Room -->
+    <section id="hero-section">
+        <div class="hero-container">
+            <!-- Minimap -->
+            <div class="minimap-container">
+                <div class="minimap-grid">
+                    <!-- 64 cells for the grid -->
+                    <script>
+                        for (let i = 0; i < 64; i++) {
+                            document.write('<div class="minimap-cell"></div>');
+                        }
+                    </script>
+                </div>
+                <div class="player-dot"></div>
+                <div class="player-dot"></div>
+                <div class="player-dot"></div>
+            </div>
 
-    <!-- Main Content -->
-    <main>
-        <!-- Hero Section -->
-        <section class="hero">
-            <div class="storm-background"></div>
-            <div class="grid-overlay"></div>
-            
-            <div class="hero-content">
-                <div class="live-counter">
-                    Heute haben <span class="live-counter countup" data-target="18247">0</span> Spieler ihr DNA entdeckt
-                </div>
-                
-                <h1 class="hero-title">DIE NR. 1<br>FORTNITE-<br>KOMMANDOZENTRALE</h1>
-                
-                <p class="hero-subtitle">Battle DNA Scanner, Loadout Builder, Creator Hub, Guides & Meta — Alles an einem Ort.</p>
-                
-                <div class="hero-ctas">
-                    <a href="/nexus-iq" class="btn-primary">⚡ Battle DNA starten →</a>
-                    <a href="#" class="btn-secondary">👥 Community beitreten</a>
-                </div>
+            <!-- Terminal -->
+            <div class="terminal-container">
+                <div id="terminal-text"></div>
+                <span class="cursor"></span>
+                <div id="terminal-subtext">Hier gewinnen echte Spieler.</div>
             </div>
-            
-            <div class="scroll-indicator">
-                <div></div>
-                <span>Scroll</span>
-            </div>
-        </section>
-        
-        <!-- Ticker -->
-        <section class="ticker">
-            <div class="ticker-content">
-                <span class="ticker-item">⚡ <span>META UPDATE</span> vor 47 Minuten</span>
-                <span class="ticker-item">🔥 <span>PUMP SHOTGUN</span> S-TIER diese Woche</span>
-                <span class="ticker-item">📍 <span>TILTED TOWERS</span> Hotspot der Woche</span>
-                <span class="ticker-item">👥 <span>3.847 SPIELER</span> gerade online</span>
-                <span class="ticker-item">🏆 <span>TURNIER</span> in 2 Tagen</span>
-            </div>
-        </section>
-        
-        <!-- Feature Showcase -->
-        <section class="features-section">
-            <div class="features-grid">
-                <!-- NEXUS IQ Card -->
-                <div class="feature-card">
-                    <div class="feature-icon">🧬</div>
-                    <span class="feature-badge">WELTPREMIERE</span>
-                    <h3 class="feature-title">Battle DNA Scanner</h3>
-                    <p class="feature-subtitle">Das erste Tool das dir sagt wer du als Spieler bist</p>
-                    <a href="/nexus-iq" class="feature-cta">DNA starten →</a>
-                </div>
-                
-                <!-- Loadout God Card -->
-                <div class="feature-card">
-                    <div class="feature-icon">⚡</div>
-                    <span class="feature-badge">VIRAL TOOL</span>
-                    <h3 class="feature-title">Loadout God</h3>
-                    <p class="feature-subtitle">Build dein perfektes Setup in 60 Sekunden</p>
-                    <a href="/loadout-god" class="feature-cta">Loadout bauen →</a>
-                </div>
-                
-                <!-- Creators Card -->
-                <div class="feature-card">
-                    <div class="feature-icon">🎬</div>
-                    <span class="feature-badge">COMMUNITY</span>
-                    <h3 class="feature-title">Creator Hub</h3>
-                    <p class="feature-subtitle">Die besten deutschen Fortnite-Creator an einem Ort</p>
-                    <a href="/creators" class="feature-cta">Creator entdecken →</a>
-                </div>
-                
-                <!-- Classic Card -->
-                <div class="feature-card">
-                    <div class="feature-icon">📖</div>
-                    <span class="feature-badge">TÄGLICH AKTUELL</span>
-                    <h3 class="feature-title">Guides & Meta</h3>
-                    <p class="feature-subtitle">Täglich aktualisierte Guides, Tier-Listen, Patch-Analysen</p>
-                    <a href="/classic" class="feature-cta">Guides lesen →</a>
-                </div>
-            </div>
-        </section>
-        
-        <!-- NEXUS IQ Mini-Demo -->
-        <section class="mini-demo">
-            <div class="mini-demo-container">
-                <h2 class="mini-demo-title">🧬 TESTE DEIN DNA</h2>
-                
-                <div class="mini-demo-questions" id="mini-demo-questions">
-                    <div class="mini-demo-question">
-                        <div class="mini-demo-question-title">1. Was ist dein bevorzugter Spielstil?</div>
-                        <div class="mini-demo-options">
-                            <div class="mini-demo-option" onclick="selectMiniOption(1, 'aggressive', this)">🔥 Aggressiv</div>
-                            <div class="mini-demo-option" onclick="selectMiniOption(1, 'tactical', this)">🛡️ Taktisch</div>
-                            <div class="mini-demo-option" onclick="selectMiniOption(1, 'mobility', this)">🏃 Mobility</div>
-                            <div class="mini-demo-option" onclick="selectMiniOption(1, 'sniper', this)">🎯 Sniper</div>
-                        </div>
-                    </div>
-                    
-                    <div class="mini-demo-question">
-                        <div class="mini-demo-question-title">2. Auf welcher Plattform spielst du?</div>
-                        <div class="mini-demo-options">
-                            <div class="mini-demo-option" onclick="selectMiniOption(2, 'pc', this)">🎮 PC</div>
-                            <div class="mini-demo-option" onclick="selectMiniOption(2, 'playstation', this)">🕹️ PlayStation</div>
-                            <div class="mini-demo-option" onclick="selectMiniOption(2, 'xbox', this)">🕹️ Xbox</div>
-                        </div>
-                    </div>
-                    
-                    <div class="mini-demo-question">
-                        <div class="mini-demo-question-title">3. Was ist dein Hauptziel?</div>
-                        <div class="mini-demo-options">
-                            <div class="mini-demo-option" onclick="selectMiniOption(3, 'wins', this)">🏆 Victory Royales</div>
-                            <div class="mini-demo-option" onclick="selectMiniOption(3, 'kills', this)">💀 Eliminations</div>
-                            <div class="mini-demo-option" onclick="selectMiniOption(3, 'fun', this)">🎨 Spaß haben</div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="mini-demo-result" id="mini-demo-result">
-                    <div class="mini-demo-result-icon" id="result-icon">🔥</div>
-                    <div class="mini-demo-result-type" id="result-type">Aggressiver Rusher</div>
-                    <p style="color: var(--text-muted); margin-bottom: var(--space-md);" id="result-desc">Du gehst direkt ins Gefecht und suchst nach Action.</p>
-                    <a href="/nexus-iq" class="btn-gold">Vollständiges Profil →</a>
-                </div>
-                
-                <button class="btn-primary" id="mini-demo-btn" onclick="showMiniResult()" disabled style="margin-top: var(--space-lg);">ZEIGE MEIN DNA</button>
-            </div>
-        </section>
-        
-        <!-- Social Proof -->
-        <section class="social-proof">
-            <div class="stats-grid">
-                <div class="stat-item">
-                    <div class="stat-value countup" data-target="18427">0</div>
-                    <div class="stat-label">Profile</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-value countup" data-target="156">0</div>
-                    <div class="stat-label">Guides</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-value countup" data-target="89">0</div>
-                    <div class="stat-label">Updates</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-value countup" data-target="2847">0</div>
-                    <div class="stat-label">Community</div>
-                </div>
-            </div>
-            
-            <div class="quotes-section">
-                <div class="quote-card">
-                    <p class="quote-text">"Der DNA Scanner hat mir geholfen, meinen Spielstil zu verstehen. Jetzt gewinne ich viel öfter!"</p>
-                    <p class="quote-author">— ProPlayer_DE</p>
-                </div>
-                <div class="quote-card">
-                    <p class="quote-text">"Loadout God ist genial. Ich habe endlich mein perfektes Setup gefunden."</p>
-                    <p class="quote-author">— TacticalQueen</p>
-                </div>
-                <div class="quote-card">
-                    <p class="quote-text">"Die Creator Hub ist der beste Ort um deutsche Fortnite-Creator zu finden."</p>
-                    <p class="quote-author">— MobilityKing</p>
-                </div>
-            </div>
-        </section>
-        
-        <!-- Discord CTA -->
-        <section class="discord-cta">
-            <div class="discord-cta-content">
-                <h2 class="discord-title">WERDE TEIL DES NEXUS</h2>
-                
-                <div class="discord-benefits">
-                    <div class="discord-benefit">
-                        <div class="discord-benefit-icon">🎮</div>
-                        <div class="discord-benefit-text">Exklusive Tipps & Strategien</div>
-                    </div>
-                    <div class="discord-benefit">
-                        <div class="discord-benefit-icon">👥</div>
-                        <div class="discord-benefit-text">Aktive Community</div>
-                    </div>
-                    <div class="discord-benefit">
-                        <div class="discord-benefit-icon">🏆</div>
-                        <div class="discord-benefit-text">Turniere & Events</div>
-                    </div>
-                </div>
-                
-                <button class="discord-button" onclick="window.open('https://discord.gg/fortnitenexus', '_blank')">🚀 DISCORD BEITRETEN</button>
-                
-                <div class="discord-members">2.847 Mitglieder</div>
-            </div>
-        </section>
-    </main>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="footer-container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h3>NEXUS</h3>
-                    <p>Die Nr. 1 Fortnite-Kommandozentrale auf Deutsch.</p>
-                </div>
-                <div class="footer-section">
-                    <h3>Links</h3>
-                    <ul class="footer-links">
-                        <li><a href="/">Home</a></li>
-                        <li><a href="/nexus-iq">NEXUS IQ</a></li>
-                        <li><a href="/loadout-god">Loadout God</a></li>
-                        <li><a href="/creators">Creators</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h3>Social</h3>
-                    <div class="footer-social">
-                        <a href="#" aria-label="Discord">📱</a>
-                        <a href="#" aria-label="TikTok">🎵</a>
-                        <a href="#" aria-label="Reddit">📱</a>
-                    </div>
-                </div>
+            <!-- Primary CTA - NEXUS IQ -->
+            <div style="text-align: center; margin: 30px 0;">
+                <a href="/nexus-iq" style="
+                    display: inline-block;
+                    background: linear-gradient(90deg, var(--glow-cyan), var(--glow-gold));
+                    color: var(--bg-dark);
+                    padding: 20px 40px;
+                    border-radius: 15px;
+                    font-family: 'Orbitron', sans-serif;
+                    font-size: 1.2rem;
+                    font-weight: 900;
+                    text-decoration: none;
+                    text-transform: uppercase;
+                    letter-spacing: 2px;
+                    box-shadow: 0 0 30px var(--glow-cyan);
+                    transition: all 0.3s ease;
+                    animation: pulse 2s infinite;
+                " onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 0 50px var(--glow-cyan)'" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 0 30px var(--glow-cyan)'">
+                    ⚡ DEIN BATTLE DNA ANALYSIEREN
+                </a>
             </div>
-            <div class="footer-bottom">
-                <p>© 2026 Fortnite Nexus. Alle Rechte vorbehalten.</p>
-                <p>Nicht mit Epic Games verbunden.</p>
+
+            <!-- Quick Access CTAs -->
+            <div style="display: flex; gap: 15px; justify-content: center; margin-top: 20px; flex-wrap: wrap;">
+                <a href="/creators" style="
+                    background: rgba(0, 207, 255, 0.1);
+                    border: 2px solid var(--glow-cyan);
+                    color: var(--text-light);
+                    padding: 12px 25px;
+                    border-radius: 10px;
+                    font-family: 'Orbitron', sans-serif;
+                    font-size: 0.9rem;
+                    text-decoration: none;
+                    text-transform: uppercase;
+                    letter-spacing: 1px;
+                    transition: all 0.3s ease;
+                " onmouseover="this.style.background='rgba(0, 207, 255, 0.2)'; this.style.transform='translateY(-3px)'" onmouseout="this.style.background='rgba(0, 207, 255, 0.1)'; this.style.transform='translateY(0)'">
+                    � CREATORS ENTDECKEN
+                </a>
+                <a href="/loadout-god" style="
+                    background: rgba(255, 107, 0, 0.1);
+                    border: 2px solid var(--glow-orange);
+                    color: var(--text-light);
+                    padding: 12px 25px;
+                    border-radius: 10px;
+                    font-family: 'Orbitron', sans-serif;
+                    font-size: 0.9rem;
+                    text-decoration: none;
+                    text-transform: uppercase;
+                    letter-spacing: 1px;
+                    transition: all 0.3s ease;
+                " onmouseover="this.style.background='rgba(255, 107, 0, 0.2)'; this.style.transform='translateY(-3px)'" onmouseout="this.style.background='rgba(255, 107, 0, 0.1)'; this.style.transform='translateY(0)'">
+                    🔧 LOADOUT GOD
+                </a>
+                <a href="/nexus-iq" style="
+                    background: rgba(255, 195, 0, 0.1);
+                    border: 2px solid var(--glow-gold);
+                    color: var(--text-light);
+                    padding: 12px 25px;
+                    border-radius: 10px;
+                    font-family: 'Orbitron', sans-serif;
+                    font-size: 0.9rem;
+                    text-decoration: none;
+                    text-transform: uppercase;
+                    letter-spacing: 1px;
+                    transition: all 0.3s ease;
+                " onmouseover="this.style.background='rgba(255, 195, 0, 0.2)'; this.style.transform='translateY(-3px)'" onmouseout="this.style.background='rgba(255, 195, 0, 0.1)'; this.style.transform='translateY(0)'">
+                    ⚡ NEXUS IQ
+                </a>
+            </div>
+
+            <!-- Signal Block -->
+            <div class="signal-block">
+                <div class="signal-title">PATCH SIGNAL: AKTIV</div>
+                <div class="signal-waves">
+                    <div class="wave"></div>
+                    <div class="wave"></div>
+                    <div class="wave"></div>
+                </div>
             </div>
         </div>
-    </footer>
+    </section>
 
-    <!-- Sticky Bar -->
-    <div class="sticky-bar" id="sticky-bar">
-        🔥 Neu: Battle DNA Scanner ist live → <a href="/nexus-iq">JETZT TESTEN</a>
-    </div>
+    <!-- Nexus Scanner Section -->
+    <section id="scanner-section">
+        <h2 class="scanner-title">SCANNE DEINEN SPIELSTIL</h2>
+        
+        <div class="scanner-buttons">
+            <button class="scanner-btn" onclick="scanPlaystyle('aggressive')">
+                <span class="icon">⚡</span>
+                <span class="label">Ich gehe aggressiv vor</span>
+            </button>
+            <button class="scanner-btn" onclick="scanPlaystyle('survival')">
+                <span class="icon">🛡</span>
+                <span class="label">Ich spiele auf Survival</span>
+            </button>
+            <button class="scanner-btn" onclick="scanPlaystyle('builder')">
+                <span class="icon">🎯</span>
+                <span class="label">Ich baue meinen Weg zum Sieg</span>
+            </button>
+        </div>
 
-    <script src="/shared.js"></script>
+        <div id="scanner-loading">
+            <div class="radar">
+                <div class="radar-circle"></div>
+                <div class="radar-circle"></div>
+                <div class="radar-circle"></div>
+                <div class="radar-sweep"></div>
+            </div>
+            <p style="color: var(--glow-cyan); font-family: 'Orbitron';">ANALYSIERE SPIELSTIL...</p>
+        </div>
+
+        <div id="result-card">
+            <div class="result-header">DEIN SPIELER-TYP</div>
+            <div class="result-player-type" id="player-type"></div>
+            <div class="result-description" id="player-description"></div>
+            
+            <div class="result-section">
+                <h4>🎯 TOP 3 WAFFEN FÜR DEINEN STIL</h4>
+                <ul id="weapon-recommendations"></ul>
+            </div>
+            
+            <div class="result-section">
+                <h4>📍 LANDEZONE-EMPFEHLUNG</h4>
+                <p id="landing-zone" style="color: var(--text-muted);"></p>
+            </div>
+            
+            <div class="result-section">
+                <h4>🏆 WINRATE-POTENZIAL</h4>
+                <p id="winrate-potential" style="color: var(--text-muted);"></p>
+            </div>
+
+            <a href="/nexus-iq" style="
+                display: block;
+                background: linear-gradient(90deg, var(--glow-cyan), var(--glow-gold));
+                color: var(--bg-dark);
+                padding: 15px 30px;
+                border-radius: 10px;
+                font-family: 'Orbitron', sans-serif;
+                font-size: 1rem;
+                font-weight: 900;
+                text-decoration: none;
+                text-transform: uppercase;
+                letter-spacing: 2px;
+                text-align: center;
+                margin-top: 20px;
+                box-shadow: 0 0 30px var(--glow-cyan);
+                transition: all 0.3s ease;
+            " onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 0 50px var(--glow-cyan)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 0 30px var(--glow-cyan)'">
+                ⚡ DEIN BATTLE DNA SEHEN
+            </a>
+
+            <button class="share-btn" onclick="shareResult()">🔥 TEILE DEIN ERGEBNIS</button>
+        </div>
+    </section>
+
+    <!-- Content Teasers Section -->
+    <section id="content-teasers-section" style="padding: 100px 20px; text-align: center;">
+        <h2 style="font-family: 'Orbitron', sans-serif; font-size: 2rem; color: var(--glow-cyan); margin-bottom: 40px; text-transform: uppercase; letter-spacing: 3px;">
+            TOOLS & FEATURES
+        </h2>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; max-width: 1200px; margin: 0 auto;">
+            <div style="
+                background: rgba(0, 207, 255, 0.05);
+                border: 2px solid var(--glow-cyan);
+                border-radius: 15px;
+                padding: 30px;
+                transition: all 0.3s ease;
+                cursor: pointer;
+            " onclick="window.location.href='/loadout-god'" onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 0 30px var(--glow-cyan)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
+                <div style="font-size: 3rem; margin-bottom: 15px;">🔧</div>
+                <h3 style="font-family: 'Orbitron', sans-serif; color: var(--glow-cyan); margin-bottom: 15px; font-size: 1.2rem;">LOADOUT GOD</h3>
+                <p style="color: var(--text-muted); margin-bottom: 20px;">Das mächtigste Fortnite Loadout Tool mit Chapter 7 Season 2 Meta</p>
+                <span style="color: var(--glow-gold); font-family: 'Orbitron', sans-serif; font-size: 0.8rem; text-transform: uppercase;">→ LOADOUT GOD NUTZEN</span>
+            </div>
+            <div style="
+                background: rgba(255, 107, 0, 0.05);
+                border: 2px solid var(--glow-orange);
+                border-radius: 15px;
+                padding: 30px;
+                transition: all 0.3s ease;
+                cursor: pointer;
+            " onclick="window.location.href='/nexus-iq'" onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 0 30px var(--glow-orange)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
+                <div style="font-size: 3rem; margin-bottom: 15px;">⚡</div>
+                <h3 style="font-family: 'Orbitron', sans-serif; color: var(--glow-orange); margin-bottom: 15px; font-size: 1.2rem;">NEXUS IQ</h3>
+                <p style="color: var(--text-muted); margin-bottom: 20px;">Battle DNA Analyse - Entdecke deinen Spielstil und werde besser</p>
+                <span style="color: var(--glow-gold); font-family: 'Orbitron', sans-serif; font-size: 0.8rem; text-transform: uppercase;">→ NEXUS IQ STARTEN</span>
+            </div>
+            <div style="
+                background: rgba(255, 195, 0, 0.05);
+                border: 2px solid var(--glow-gold);
+                border-radius: 15px;
+                padding: 30px;
+                transition: all 0.3s ease;
+                cursor: pointer;
+            " onclick="window.location.href='/creators'" onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 0 30px var(--glow-gold)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
+                <div style="font-size: 3rem; margin-bottom: 15px;">👥</div>
+                <h3 style="font-family: 'Orbitron', sans-serif; color: var(--glow-gold); margin-bottom: 15px; font-size: 1.2rem;">CREATORS</h3>
+                <p style="color: var(--text-muted); margin-bottom: 20px;">Entdecke deutsche Fortnite-Creators und support deine Favoriten</p>
+                <span style="color: var(--glow-gold); font-family: 'Orbitron', sans-serif; font-size: 0.8rem; text-transform: uppercase;">→ CREATORS ENTDECKEN</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Nexus Intel Section -->
+    <section id="intel-section">
+        <div class="ticker-container">
+            <div class="ticker">
+                <span>⚡ META UPDATE VOR 47 MIN</span>
+                <span>🔥 PUMP SHOTGUN: S-TIER DIESE WOCHE</span>
+                <span>💀 3.847 SPIELER GERADE ONLINE</span>
+                <span>🏆 TURNIER IN 2 TAGEN</span>
+                <span>📍 TILTED TOWERS: HOTSPOT DER WOCHE</span>
+                <span>⚡ META UPDATE VOR 47 MIN</span>
+                <span>🔥 PUMP SHOTGUN: S-TIER DIESE WOCHE</span>
+                <span>💀 3.847 SPIELER GERADE ONLINE</span>
+                <span>🏆 TURNIER IN 2 TAGEN</span>
+                <span>📍 TILTED TOWERS: HOTSPOT DER WOCHE</span>
+            </div>
+        </div>
+
+        <div class="intel-cards">
+            <div class="intel-card" onclick="window.location.href='/loadout-god'">
+                <h3>🎮 LOADOUT GOD</h3>
+                <p>Das mächtigste Fortnite Loadout Tool mit Chapter 7 Season 2 Meta</p>
+                <button class="unlock-btn">ZU LOADOUT GOD</button>
+            </div>
+            <div class="intel-card" onclick="window.location.href='/nexus-iq'">
+                <h3>⚔️ NEXUS IQ</h3>
+                <p>Battle DNA Analyse - Entdecke deinen Spielstil und werde besser</p>
+                <button class="unlock-btn">ZU NEXUS IQ</button>
+            </div>
+            <div class="intel-card" onclick="window.location.href='/creators'">
+                <h3>👥 CREATORS</h3>
+                <p>Entdecke deutsche Fortnite-Creators und support deine Favoriten</p>
+                <button class="unlock-btn">ZU CREATORS</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Nexus Vault Section -->
+    <section id="vault-section">
+        <h2 class="vault-title">NEXUS VAULT</h2>
+        
+        <div class="vault-items">
+            <div class="vault-item" onclick="window.location.href='/shop'">
+                <h3>🔥 DIE GEHEIME ROTATIONSROUTE</h3>
+                <p>Die Rotationsroute der Top 0.1% Spieler - Exklusiv für Premium</p>
+            </div>
+            <div class="vault-item" onclick="window.location.href='/shop'">
+                <h3>🎯 WAFFEN-SETUP</h3>
+                <p>Das Waffen-Setup das Bugha in Season X benutzt hat - Pro Guides</p>
+            </div>
+            <div class="vault-item" onclick="window.location.href='/shop'">
+                <h3>📈 EDIT-KURS</h3>
+                <p>Edit-Kurs der deinen KD in 7 Tagen verdoppelt - Pro Features</p>
+            </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 40px;">
+            <div style="font-family: 'Orbitron', sans-serif; font-size: 1.2rem; color: var(--glow-gold); margin-bottom: 20px; text-transform: uppercase; letter-spacing: 2px;">
+                💎 PREMIUM MEMBERSHIP
+            </div>
+            <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
+                <div style="
+                    background: rgba(0, 207, 255, 0.1);
+                    border: 2px solid var(--glow-cyan);
+                    border-radius: 15px;
+                    padding: 30px;
+                    min-width: 250px;
+                    text-align: center;
+                ">
+                    <div style="font-family: 'Orbitron', sans-serif; font-size: 1.5rem; color: var(--glow-cyan); margin-bottom: 10px;">PRO TIER</div>
+                    <div style="font-family: 'Orbitron', sans-serif; font-size: 2.5rem; font-weight: 900; color: var(--text-light); margin-bottom: 20px;">€4.99<span style="font-size: 1rem; color: var(--text-muted);">/Monat</span></div>
+                    <ul style="text-align: left; color: var(--text-muted); margin-bottom: 20px; line-height: 2;">
+                        <li>✓ Exklusive Pro Guides</li>
+                        <li>✓ Early Access zu News (7 Tage)</li>
+                        <li>✓ Discord Pro Role</li>
+                        <li>✓ Ad-Free Experience</li>
+                    </ul>
+                    <a href="/shop" style="
+                        display: inline-block;
+                        background: linear-gradient(90deg, var(--glow-cyan), var(--glow-gold));
+                        color: var(--bg-dark);
+                        padding: 15px 30px;
+                        border-radius: 10px;
+                        font-family: 'Orbitron', sans-serif;
+                        font-size: 0.9rem;
+                        font-weight: 900;
+                        text-decoration: none;
+                        text-transform: uppercase;
+                        letter-spacing: 1px;
+                    ">PRO WÄHLEN</a>
+                </div>
+                <div style="
+                    background: rgba(255, 195, 0, 0.1);
+                    border: 2px solid var(--glow-gold);
+                    border-radius: 15px;
+                    padding: 30px;
+                    min-width: 250px;
+                    text-align: center;
+                ">
+                    <div style="font-family: 'Orbitron', sans-serif; font-size: 1.5rem; color: var(--glow-gold); margin-bottom: 10px;">ELITE TIER</div>
+                    <div style="font-family: 'Orbitron', sans-serif; font-size: 2.5rem; font-weight: 900; color: var(--text-light); margin-bottom: 20px;">€9.99<span style="font-size: 1rem; color: var(--text-muted);">/Monat</span></div>
+                    <ul style="text-align: left; color: var(--text-muted); margin-bottom: 20px; line-height: 2;">
+                        <li>✓ Alle Pro Features</li>
+                        <li>✓ 1-on-1 Coaching (1x/Monat)</li>
+                        <li>✓ Beta Access zu neuen Features</li>
+                        <li>✓ Exclusive Discord Channels</li>
+                    </ul>
+                    <a href="/shop" style="
+                        display: inline-block;
+                        background: linear-gradient(90deg, var(--glow-gold), var(--glow-orange));
+                        color: var(--bg-dark);
+                        padding: 15px 30px;
+                        border-radius: 10px;
+                        font-family: 'Orbitron', sans-serif;
+                        font-size: 0.9rem;
+                        font-weight: 900;
+                        text-decoration: none;
+                        text-transform: uppercase;
+                        letter-spacing: 1px;
+                    ">ELITE WÄHLEN</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Block -->
+    <section id="newsletter-section" style="padding: 100px 20px; text-align: center;">
+        <div style="
+            background: linear-gradient(135deg, rgba(0, 207, 255, 0.1), rgba(255, 195, 0, 0.1));
+            border: 2px solid var(--glow-cyan);
+            border-radius: 20px;
+            padding: 60px 40px;
+            max-width: 800px;
+            margin: 0 auto;
+        ">
+            <div style="font-size: 4rem; margin-bottom: 20px;">📧</div>
+            <h2 style="font-family: 'Orbitron', sans-serif; font-size: 2rem; color: var(--glow-cyan); margin-bottom: 15px; text-transform: uppercase; letter-spacing: 3px;">
+                WÖCHENTLICHER META REPORT
+            </h2>
+            <p style="color: var(--text-muted); margin-bottom: 30px; font-size: 1.1rem; line-height: 1.6;">
+                Erhalte exklusive Tipps & Strategien direkt in dein Inbox. Kein Spam, nur wertvolle Content.
+            </p>
+            <div style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;">
+                <input type="email" placeholder="Deine E-Mail-Adresse" style="
+                    background: rgba(0, 0, 0, 0.3);
+                    border: 2px solid var(--glow-cyan);
+                    border-radius: 10px;
+                    padding: 15px 25px;
+                    color: var(--text-light);
+                    font-family: 'Orbitron', sans-serif;
+                    font-size: 1rem;
+                    min-width: 300px;
+                    outline: none;
+                " onfocus="this.style.borderColor='var(--glow-gold)'" onblur="this.style.borderColor='var(--glow-cyan)'">
+                <button style="
+                    background: linear-gradient(90deg, var(--glow-cyan), var(--glow-gold));
+                    color: var(--bg-dark);
+                    padding: 15px 30px;
+                    border-radius: 10px;
+                    font-family: 'Orbitron', sans-serif;
+                    font-size: 1rem;
+                    font-weight: 900;
+                    text-transform: uppercase;
+                    letter-spacing: 1px;
+                    cursor: pointer;
+                    transition: all 0.3s ease;
+                    border: none;
+                " onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 0 30px var(--glow-cyan)'" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='none'">
+                    ABONNIEREN
+                </button>
+            </div>
+            <div style="font-size: 0.8rem; color: var(--text-muted); margin-top: 20px;">
+                Keine Sorge, du kannst dich jederzeit abmelden.
+            </div>
+        </div>
+    </section>
+
+    <!-- Nexus Member Feed Section -->
+    <section id="member-feed-section">
+        <h2 class="feed-title">NEXUS MEMBER FEED</h2>
+
+        <div class="feed-container">
+            <div class="feed-item">🏆 _ShadowFR_ hat heute seinen ersten Solo-Sieg geholt</div>
+            <div class="feed-item">⚡ nexus_kai verbesserte seinen KD um 0.4 diese Woche</div>
+            <div class="feed-item">🎯 _ProBuildDE_ erreichte Champion League — Nexus-Strategie</div>
+            <div class="feed-item">🏆 _ShadowFR_ hat heute seinen ersten Solo-Sieg geholt</div>
+            <div class="feed-item">⚡ nexus_kai verbesserte seinen KD um 0.4 diese Woche</div>
+            <div class="feed-item">🎯 _ProBuildDE_ erreichte Champion League — Nexus-Strategie</div>
+        </div>
+
+        <p class="feed-cta">Support deine Lieblingscreators und werde Teil der Community.</p>
+        <a href="/creators" style="
+            display: inline-block;
+            background: linear-gradient(90deg, var(--glow-cyan), var(--glow-gold));
+            color: var(--bg-dark);
+            padding: 15px 30px;
+            border-radius: 10px;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1rem;
+            font-weight: 900;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-top: 20px;
+            box-shadow: 0 0 30px var(--glow-cyan);
+            transition: all 0.3s ease;
+        " onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 0 50px var(--glow-cyan)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 0 30px var(--glow-cyan)'">
+            👥 CREATORS ENTDECKEN
+        </a>
+    </section>
+
     <script>
-        // Mini-Demo Logic
-        const miniAnswers = {};
-        
-        function selectMiniOption(question, answer, element) {
-            // Remove selected class from all options in question
-            const options = element.parentElement.querySelectorAll('.mini-demo-option');
-            options.forEach(opt => opt.classList.remove('selected'));
+        /* ═══════════════════════════════════════════
+           LADING SCREEN
+           ═══════════════════════════════════════════ */
+        window.addEventListener('load', function() {
+            const progress = document.getElementById('loading-progress');
+            const loadingScreen = document.getElementById('loading-screen');
+            let width = 0;
             
-            // Add selected class to clicked option
-            element.classList.add('selected');
-            
-            // Store answer
-            miniAnswers[question] = answer;
-            
-            // Enable button if all questions answered
-            if (Object.keys(miniAnswers).length === 3) {
-                document.getElementById('mini-demo-btn').disabled = false;
-            }
+            const interval = setInterval(function() {
+                if (width >= 100) {
+                    clearInterval(interval);
+                    loadingScreen.classList.add('hidden');
+                    setTimeout(function() {
+                        loadingScreen.style.display = 'none';
+                        startTerminalEffect();
+                    }, 500);
+                } else {
+                    width += Math.random() * 15;
+                    if (width > 100) width = 100;
+                    progress.style.width = width + '%';
+                }
+            }, 100);
+        });
+
+        /* ═══════════════════════════════════════════
+           STORM FLASH EFFECT
+           ═══════════════════════════════════════════ */
+        function triggerFlash() {
+            const flash = document.getElementById('flash-overlay');
+            flash.style.animation = 'none';
+            flash.offsetHeight; // Trigger reflow
+            flash.style.animation = 'flash 0.3s ease';
         }
-        
-        function showMiniResult() {
-            // Hide questions
-            document.getElementById('mini-demo-questions').style.display = 'none';
-            document.getElementById('mini-demo-btn').style.display = 'none';
+
+        // Random flash every 8-15 seconds
+        setInterval(function() {
+            triggerFlash();
+        }, Math.random() * 7000 + 8000);
+
+        /* ═══════════════════════════════════════════
+           TERMINAL EFFECT
+           ═══════════════════════════════════════════ */
+        function startTerminalEffect() {
+            const text = 'WILLKOMMEN IM NEXUS.';
+            const terminal = document.getElementById('terminal-text');
+            const subtext = document.getElementById('terminal-subtext');
+            let index = 0;
+
+            function typeCharacter() {
+                if (index < text.length) {
+                    terminal.textContent += text.charAt(index);
+                    index++;
+                    setTimeout(typeCharacter, 100);
+                } else {
+                    setTimeout(function() {
+                        subtext.classList.add('visible');
+                    }, 2000);
+                }
+            }
+
+            typeCharacter();
+        }
+
+        /* ═══════════════════════════════════════════
+           SCANNER FUNCTIONALITY
+           ═══════════════════════════════════════════ */
+        const playstyleData = {
+            aggressive: {
+                type: 'AGGRESSIVER RUSHER',
+                description: 'Du gehest direkt ins Gefecht und suchst nach Action. Hohe Risk, hoher Reward.',
+                weapons: ['Striker AR', 'Thunder Burst SMG', 'Maven Auto Shotgun'],
+                landing: 'Tilted Towers oder Pleasant Park - Hotspots für aggressive Spieler',
+                winrate: '25-35% mit perfektem Aim und Positioning'
+            },
+            survival: {
+                type: 'SURVIVAL MASTER',
+                description: 'Du spielst smart und vermeidest unnötige Kämpfe. Geduld zahlt sich aus.',
+                weapons: ['Nemesis AR', 'Hyper SMG', 'Reaper Sniper Rifle'],
+                landing: 'Remote Orte wie Misty Meadows oder Lazy Lake - Sammeln und rotieren',
+                winrate: '35-45% mit konsistenter Survival-Strategie'
+            },
+            builder: {
+                type: 'TAKTICAL BUILDER',
+                description: 'Du baust deinen Weg zum Sieg. Height Advantage ist dein Schlüssel zum Erfolg.',
+                weapons: ['Striker AR', 'Frenzy SMG', 'Maven Auto Shotgun'],
+                landing: 'Coney Crossroads oder Rocky Reels - Building-heavy Zonen',
+                winrate: '30-40% mit fortgeschrittenen Building-Skills'
+            }
+        };
+
+        let currentResult = null;
+
+        function scanPlaystyle(style) {
+            const loading = document.getElementById('scanner-loading');
+            const resultCard = document.getElementById('result-card');
+            const buttons = document.querySelector('.scanner-buttons');
             
-            // Calculate result based on first answer
-            const playstyle = miniAnswers[1];
+            buttons.style.display = 'none';
+            loading.style.display = 'block';
+            resultCard.style.display = 'none';
             
-            let result;
-            if (playstyle === 'aggressive') {
-                result = { icon: '🔥', type: 'Aggressiver Rusher', desc: 'Du gehst direkt ins Gefecht und suchst nach Action.' };
-            } else if (playstyle === 'tactical') {
-                result = { icon: '🛡️', type: 'Taktischer Spieler', desc: 'Du planst jeden Schritt und gewinnst durch Strategie.' };
-            } else if (playstyle === 'mobility') {
-                result = { icon: '🏃', type: 'Mobility Demon', desc: 'Du bist immer in Bewegung und rotierst schnell.' };
+            setTimeout(function() {
+                loading.style.display = 'none';
+                resultCard.style.display = 'block';
+                
+                const data = playstyleData[style];
+                currentResult = data;
+                
+                document.getElementById('player-type').textContent = data.type;
+                document.getElementById('player-description').textContent = data.description;
+                
+                const weaponsList = document.getElementById('weapon-recommendations');
+                weaponsList.innerHTML = '';
+                data.weapons.forEach(function(weapon) {
+                    const li = document.createElement('li');
+                    li.textContent = weapon;
+                    weaponsList.appendChild(li);
+                });
+                
+                document.getElementById('landing-zone').textContent = data.landing;
+                document.getElementById('winrate-potential').textContent = data.winrate;
+            }, 3000);
+        }
+
+        function shareResult() {
+            if (!currentResult) return;
+            
+            const shareText = `🧬 Mein Fortnite Spielertyp: ${currentResult.type}\n\n${currentResult.description}\n\nTop Waffen: ${currentResult.weapons.join(', ')}\n\nTeste deinen Spielertyp auf fortnitenexus.space`;
+            
+            if (navigator.share) {
+                navigator.share({
+                    title: 'Mein Fortnite Spielertyp',
+                    text: shareText
+                });
             } else {
-                result = { icon: '🎯', type: 'Sniper God', desc: 'Du bevorzugst Distanz-Kämpfe und Präzision.' };
+                // Fallback for browsers without share API
+                navigator.clipboard.writeText(shareText).then(function() {
+                    alert('Ergebnis in die Zwischenablage kopiert! Teile es auf Discord/Twitter.');
+                });
             }
-            
-            // Update result display
-            document.getElementById('result-icon').textContent = result.icon;
-            document.getElementById('result-type').textContent = result.type;
-            document.getElementById('result-desc').textContent = result.desc;
-            
-            // Show result
-            document.getElementById('mini-demo-result').classList.add('show');
         }
-        
-        // Sticky Bar appears after 4 seconds
-        setTimeout(() => {
-            document.getElementById('sticky-bar').classList.add('show');
-        }, 4000);
+
+        /* ═══════════════════════════════════════════
+           INTEL CARD TOGGLE
+           ═══════════════════════════════════════════ */
+        function toggleCard(card) {
+            const button = card.querySelector('.unlock-btn');
+            const isUnlocked = button.textContent === 'SCHLIESSEN';
+            
+            if (isUnlocked) {
+                card.style.filter = 'blur(3px)';
+                card.querySelector('p').style.display = 'none';
+                button.textContent = 'ENTSCHLÜSSELN';
+            } else {
+                card.style.filter = 'blur(0)';
+                card.querySelector('p').style.display = 'block';
+                button.textContent = 'SCHLIESSEN';
+            }
+        }
+
+        /* ═══════════════════════════════════════════
+           SMOOTH SCROLL
+           ═══════════════════════════════════════════ */
+        function scrollToSection(sectionId) {
+            const section = document.getElementById(sectionId);
+            if (section) {
+                section.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        /* ═══════════════════════════════════════════
+           CURSOR TRAIL EFFECT
+           ═══════════════════════════════════════════ */
+        document.addEventListener('mousemove', function(e) {
+            const trail = document.createElement('div');
+            trail.style.cssText = `
+                position: fixed;
+                top: ${e.clientY}px;
+                left: ${e.clientX}px;
+                width: 10px;
+                height: 10px;
+                background: radial-gradient(circle, var(--glow-cyan), transparent);
+                border-radius: 50%;
+                pointer-events: none;
+                z-index: 9999;
+                animation: trail-fade 0.5s ease forwards;
+            `;
+            document.body.appendChild(trail);
+            
+            setTimeout(function() {
+                trail.remove();
+            }, 500);
+        });
+
+        // Add trail fade animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes trail-fade {
+                0% { opacity: 1; transform: scale(1); }
+                100% { opacity: 0; transform: scale(0); }
+            }
+        `;
+        document.head.appendChild(style);
+
+        /* ═══════════════════════════════════════════
+           INTERSECTION OBSERVER FOR ANIMATIONS
+           ═══════════════════════════════════════════ */
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1 });
+
+        // Observe sections for scroll animations
+        document.querySelectorAll('section').forEach(function(section) {
+            section.style.opacity = '0';
+            section.style.transform = 'translateY(50px)';
+            section.style.transition = 'all 0.6s ease';
+            observer.observe(section);
+        });
+
+        // Gebaut für einen Träumer. fortnitenexus.space
     </script>
 </body>
 </html>
