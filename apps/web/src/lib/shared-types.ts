@@ -234,6 +234,17 @@ export interface DrillSession {
   completedAt?: Date;
 }
 
+// Keybind Optimizer
+export interface KeybindProfile {
+  playstyle: Playstyle;
+  handSize: 'small' | 'medium' | 'large';
+  mouse: string;
+  keyboard: string;
+  keybinds: Record<string, string>;
+  proSimilarity: number;
+  createdAt?: Date;
+}
+
 // Global App State
 export interface NexusAppState {
   currentSeason: string;
