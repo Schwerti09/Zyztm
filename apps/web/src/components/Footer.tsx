@@ -17,46 +17,26 @@ export default function Footer() {
           <div>
             <h4 className="font-cyber text-sm font-bold text-white mb-3 tracking-widest">GUIDES</h4>
             <div className="space-y-2">
-              <Link href="/de/guide/fortnite-ultimate-guide-2026">
-                <a className="block text-white/50 text-sm hover:text-neon-blue transition-colors">Ultimate Guide</a>
-              </Link>
-              <Link href="/de/guide/fortnite-aim-verbessern-2026">
-                <a className="block text-white/50 text-sm hover:text-neon-blue transition-colors">Aim Guide</a>
-              </Link>
-              <Link href="/de/guide/fortnite-building-guide">
-                <a className="block text-white/50 text-sm hover:text-neon-blue transition-colors">Building Guide</a>
-              </Link>
-              <Link href="/de/guide/fortnite-best-settings-2026">
-                <a className="block text-white/50 text-sm hover:text-neon-blue transition-colors">Best Settings</a>
-              </Link>
+              <a href="/de/guide/fortnite-ultimate-guide-2026" className="block text-white/50 text-sm hover:text-neon-blue transition-colors">Ultimate Guide</a>
+              <a href="/de/guide/fortnite-aim-verbessern-2026" className="block text-white/50 text-sm hover:text-neon-blue transition-colors">Aim Guide</a>
+              <a href="/de/guide/fortnite-building-guide" className="block text-white/50 text-sm hover:text-neon-blue transition-colors">Building Guide</a>
+              <a href="/de/guide/fortnite-best-settings-2026" className="block text-white/50 text-sm hover:text-neon-blue transition-colors">Best Settings</a>
             </div>
           </div>
           <div>
             <h4 className="font-cyber text-sm font-bold text-white mb-3 tracking-widest">META</h4>
             <div className="space-y-2">
-              <Link href="/de/guide/fortnite-ranked-tipps">
-                <a className="block text-white/50 text-sm hover:text-neon-blue transition-colors">Ranked Guide</a>
-              </Link>
-              <Link href="/de/guide/fortnite-meta-strategie">
-                <a className="block text-white/50 text-sm hover:text-neon-blue transition-colors">Meta Guide</a>
-              </Link>
-              <Link href="/de/guide/fortnite-weapon-tier-list">
-                <a className="block text-white/50 text-sm hover:text-neon-blue transition-colors">Weapon Tier List</a>
-              </Link>
+              <a href="/de/guide/fortnite-ranked-tipps" className="block text-white/50 text-sm hover:text-neon-blue transition-colors">Ranked Guide</a>
+              <a href="/de/guide/fortnite-meta-strategie" className="block text-white/50 text-sm hover:text-neon-blue transition-colors">Meta Guide</a>
+              <a href="/de/guide/fortnite-weapon-tier-list" className="block text-white/50 text-sm hover:text-neon-blue transition-colors">Weapon Tier List</a>
             </div>
           </div>
           <div>
             <h4 className="font-cyber text-sm font-bold text-white mb-3 tracking-widest">TOOLS</h4>
             <div className="space-y-2">
-              <Link href="/de/guide/fortnite-sensitivity-calculator">
-                <a className="block text-white/50 text-sm hover:text-neon-blue transition-colors">Sensitivity Calculator</a>
-              </Link>
-              <Link href="/de/guide/fortnite-keybinds-pro">
-                <a className="block text-white/50 text-sm hover:text-neon-blue transition-colors">Keybinds Pro Guide</a>
-              </Link>
-              <Link href="/de/guide/fortnite-creative-maps">
-                <a className="block text-white/50 text-sm hover:text-neon-blue transition-colors">Creative Maps Guide</a>
-              </Link>
+              <a href="/de/guide/fortnite-sensitivity-calculator" className="block text-white/50 text-sm hover:text-neon-blue transition-colors">Sensitivity Calculator</a>
+              <a href="/de/guide/fortnite-keybinds-pro" className="block text-white/50 text-sm hover:text-neon-blue transition-colors">Keybinds Pro Guide</a>
+              <a href="/de/guide/fortnite-creative-maps" className="block text-white/50 text-sm hover:text-neon-blue transition-colors">Creative Maps Guide</a>
             </div>
           </div>
           <div>
