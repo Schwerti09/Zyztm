@@ -448,9 +448,9 @@ IF ANY KPI falls below threshold:
 ---
 
 *Last Updated: May 1, 2026*
-*Version: 1.1 - Architecture Upgrade (Milestones 7.6-7.10)*
+*Version: 1.2 - Architecture Upgrade (Milestones 7.6-7.11)*
 
-# ARCHITECTURE UPGRADE - MILESTONES 7.6-7.10
+# ARCHITECTURE UPGRADE - MILESTONES 7.6-7.11
 
 ## Completed Tools (Vite + React + TypeScript + Zustand + React Query + Neon Serverless Postgres)
 
@@ -510,6 +510,12 @@ IF ANY KPI falls below threshold:
   - Global app state (NexusAppState)
   - Utility types
 
+### Milestone 7.11: Rotation Planner
+- **File:** `apps/web/src/components/tools/RotationPlanner.tsx`
+- **Features:** Mode selection, target zone phase slider, rotation plans with mobility items, risk level, estimated time
+- **Integration:** useNexusStore, RotationPlan/GameMode types from shared-types.ts
+- **UI:** Nexus Orange/Purple/Green, Glassmorphism, PaywallGate (Pro/Elite)
+
 ## Commits
 - 6e5c3b1: Architecture upgrade - shared types, state management, components
 - 46fd813: Complete type definitions upgrade - nexus.ts implementation
@@ -519,5 +525,7 @@ IF ANY KPI falls below threshold:
 - 454bbbc: Sensitivity Converter Pro - Milestone 7.8 Complete
 - 542a9b4: Drop Location Analyzer - Milestone 7.9 Complete
 - 1c15b0c: Meta Predictor - Milestone 7.10 Complete
+- 008e040: docs(agents): Update with Milestone 7.6-7.10 completion
+- f1c398c: Rotation Planner - Milestone 7.11 Complete
 
 ---
