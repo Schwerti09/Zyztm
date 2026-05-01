@@ -128,7 +128,7 @@ export default function App() {
           {/* Fortnite Nexus Space */}
           <Route path="/space" component={FortniteSpacePage} />
           {/* Loadout God */}
-          <Route path="/loadout-god" component={LoadoutGodPage} />
+          <Route path="/tools/loadout-god" component={LoadoutGodPage} />
           {/* Creators */}
           <Route path="/creators" component={CreatorsPage} />
           {/* Classic */}
