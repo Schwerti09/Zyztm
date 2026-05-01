@@ -1,103 +1,193 @@
 /**
  * Build Trainer - Milestone 7.12
- * Vollständig implementiert – 100% real, high-end und präzise
- * Adapted for Vite + React Architecture
+ * Echte interaktive Building-Übung mit Keyboard-Tracking
+ * 100% real, high-end und präzise
  */
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { useNexusStore } from '../../stores/nexus-store';
 import PaywallGate from '../shared/PaywallGate';
 import MetaBadge from '../shared/MetaBadge';
 import type { DrillSession } from '../../lib/shared-types';
 
-const DRILLS = [
+type BuildingAction = 'wall' | 'ramp' | 'floor' | 'cone' | 'pyramid';
+type InputKey = 'Q' | 'F' | 'E' | 'C' | 'V';
+
+interface BuildingSequence {
+  id: string;
+  name: string;
+  category: string;
+  difficulty: number;
+  targetTime: number; // seconds
+  sequence: BuildingAction[];
+  description: string;
+  focus: string;
+}
+
+const BUILDING_SEQUENCES: BuildingSequence[] = [
   {
-    id: "boxfight",
-    name: "Box Fight Drills",
-    category: "build_fight",
-    duration: 180,
-    difficulty: 8,
-    description: "Schnelles Editieren + Piece Control in 1x1 Boxen",
-    focus: "Edit Speed & Piece Control"
+    id: 'basics',
+    name: 'Basics (Wall → Ramp)',
+    category: 'build_fight',
+    difficulty: 3,
+    targetTime: 1.5,
+    sequence: ['wall', 'ramp'],
+    description: 'Die Grundlage jeder Build-Sequenz',
+    focus: 'Wall → Ramp'
   },
   {
-    id: "edit-course",
-    name: "Advanced Edit Course",
-    category: "edit_speed",
-    duration: 120,
-    difficulty: 9,
-    description: "30 Edits in unter 25 Sekunden",
-    focus: "Edit Speed"
-  },
-  {
-    id: "piece-control",
-    name: "Piece Control Training",
-    category: "build_fight",
-    duration: 150,
+    id: '90s',
+    name: '90s (Wall-Ramp-Floor-Wall)',
+    category: 'build_fight',
     difficulty: 7,
-    description: "Defensive & Offensive Piece Control",
-    focus: "Game Sense"
+    targetTime: 2.5,
+    sequence: ['wall', 'ramp', 'floor', 'wall'],
+    description: 'Klassischer High-Ground-Take',
+    focus: '90 Degree Turn'
   },
   {
-    id: "ramp-rush",
-    name: "Ramp Rush Challenge",
-    category: "build_fight",
-    duration: 90,
+    id: 'double-ramp',
+    name: 'Double-Ramp-Rush',
+    category: 'build_fight',
     difficulty: 6,
-    description: "Schnelles Hochbauen und Pushen",
-    focus: "Mobility & Aggression"
+    targetTime: 2.0,
+    sequence: ['ramp', 'ramp', 'floor', 'ramp'],
+    description: 'Aggressive Pusher-Technik',
+    focus: 'Speed & Aggression'
+  },
+  {
+    id: 'tunneling',
+    name: 'Tunneling',
+    category: 'build_fight',
+    difficulty: 5,
+    targetTime: 3.0,
+    sequence: ['wall', 'floor', 'wall', 'floor', 'wall'],
+    description: 'Für Rotations unter Druck',
+    focus: 'Consistency'
   },
 ];
 
+const KEY_MAPPING: Record<InputKey, BuildingAction> = {
+  'Q': 'wall',
+  'F': 'floor',
+  'E': 'ramp',
+  'C': 'cone',
+  'V': 'pyramid',
+};
+
+const ACTION_DISPLAY: Record<BuildingAction, string> = {
+  'wall': '🧱 Wall (Q)',
+  'ramp': '📐 Ramp (E)',
+  'floor': '⬛ Floor (F)',
+  'cone': '🔺 Cone (C)',
+  'pyramid': '🔻 Pyramid (V)',
+};
+
 export default function BuildTrainer() {
   const { user } = useNexusStore();
-  const [selectedDrill, setSelectedDrill] = useState(DRILLS[0]);
+  const [selectedSequence, setSelectedSequence] = useState(BUILDING_SEQUENCES[0]);
   const [isTraining, setIsTraining] = useState(false);
-  const [timeLeft, setTimeLeft] = useState(0);
-  const [score, setScore] = useState(0);
+  const [sequenceIndex, setSequenceIndex] = useState(0);
+  const [startTime, setStartTime] = useState<number | null>(null);
+  const [elapsedTime, setElapsedTime] = useState(0);
   const [sessionHistory, setSessionHistory] = useState<DrillSession[]>([]);
+  const [currentInput, setCurrentInput] = useState<BuildingAction | null>(null);
+  const [feedback, setFeedback] = useState<{ type: 'correct' | 'wrong' | 'missed'; message: string } | null>(null);
+  const [streak, setStreak] = useState(0);
+  const [bestTimes, setBestTimes] = useState<Record<string, number>>({});
 
-  // Timer Logic
+  // Timer for elapsed time
   useEffect(() => {
     let interval: NodeJS.Timeout;
-    if (isTraining && timeLeft > 0) {
+    if (isTraining && startTime) {
       interval = setInterval(() => {
-        setTimeLeft(prev => {
-          if (prev <= 1) {
-            setIsTraining(false);
-            finishSession();
-            return 0;
-          }
-          return prev - 1;
-        });
-      }, 1000);
+        setElapsedTime(Date.now() - startTime);
+      }, 10);
     }
     return () => clearInterval(interval);
-  }, [isTraining, timeLeft]);
+  }, [isTraining, startTime]);
 
-  const startDrill = () => {
+  // Handle keyboard input
+  const handleKeyDown = useCallback((e: KeyboardEvent) => {
+    if (!isTraining) return;
+    
+    const key = e.key.toUpperCase() as InputKey;
+    if (!KEY_MAPPING[key]) return;
+
+    e.preventDefault();
+    
+    const expectedAction = selectedSequence.sequence[sequenceIndex];
+    const inputAction = KEY_MAPPING[key];
+    
+    setCurrentInput(inputAction);
+
+    if (inputAction === expectedAction) {
+      // Correct input
+      setFeedback({ type: 'correct', message: '✓ Correct!' });
+      setStreak(prev => prev + 1);
+      
+      if (sequenceIndex < selectedSequence.sequence.length - 1) {
+        setSequenceIndex(prev => prev + 1);
+      } else {
+        // Sequence completed
+        finishSequence();
+      }
+    } else {
+      // Wrong input
+      setFeedback({ type: 'wrong', message: `✗ Expected: ${ACTION_DISPLAY[expectedAction]}` });
+      setStreak(0);
+    }
+
+    setTimeout(() => setFeedback(null), 500);
+  }, [isTraining, selectedSequence, sequenceIndex]);
+
+  useEffect(() => {
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [handleKeyDown]);
+
+  const startSequence = () => {
     setIsTraining(true);
-    setTimeLeft(selectedDrill.duration);
-    setScore(0);
+    setSequenceIndex(0);
+    setStartTime(Date.now());
+    setElapsedTime(0);
+    setStreak(0);
+    setCurrentInput(null);
+    setFeedback(null);
   };
 
-  const finishSession = () => {
+  const finishSequence = () => {
+    const finalTime = elapsedTime / 1000; // Convert to seconds
+    const targetTime = selectedSequence.targetTime;
+    const score = Math.max(0, Math.min(100, 100 - ((finalTime - targetTime) / targetTime) * 100));
+    
+    // Update best time
+    setBestTimes(prev => ({
+      ...prev,
+      [selectedSequence.id]: prev[selectedSequence.id] ? Math.min(prev[selectedSequence.id], finalTime) : finalTime,
+    }));
+
     const newSession: DrillSession = {
-      drillType: selectedDrill.category as any,
-      duration: selectedDrill.duration - timeLeft,
-      difficulty: selectedDrill.difficulty,
-      score: Math.floor(Math.random() * 40) + 60, // Simulated score 60-100
-      improvementAreas: ["Edit Speed", "Piece Control"],
-      recommendedNextDrill: DRILLS[Math.floor(Math.random() * DRILLS.length)].id,
+      drillType: selectedSequence.category as any,
+      duration: Math.floor(finalTime),
+      difficulty: selectedSequence.difficulty,
+      score: Math.floor(score),
+      improvementAreas: score < 70 ? ['Speed', 'Accuracy'] : [],
+      recommendedNextDrill: BUILDING_SEQUENCES[Math.floor(Math.random() * BUILDING_SEQUENCES.length)].id,
     };
 
     setSessionHistory(prev => [newSession, ...prev].slice(0, 5));
+    setIsTraining(false);
+    setStartTime(null);
   };
 
-  const formatTime = (seconds: number) => {
-    const min = Math.floor(seconds / 60);
-    const sec = seconds % 60;
-    return `${min}:${sec.toString().padStart(2, '0')}`;
+  const formatTime = (ms: number) => {
+    const seconds = ms / 1000;
+    return `${seconds.toFixed(2)}s`;
+  };
+
+  const getBestTime = (sequenceId: string) => {
+    return bestTimes[sequenceId] ? `${bestTimes[sequenceId].toFixed(2)}s` : '-';
   };
 
   return (
@@ -109,7 +199,7 @@ export default function BuildTrainer() {
             <div>
               <h1 className="text-6xl font-black tracking-tighter text-nexus-green">BUILD</h1>
               <h2 className="text-5xl font-black text-nexus-green -mt-3">TRAINER</h2>
-              <p className="text-zinc-400 mt-2">Mechanics Training • Skill Development • Progress Tracking</p>
+              <p className="text-zinc-400 mt-2">Echte Keyboard-Tracking • Muscle-Memory Training</p>
             </div>
             <MetaBadge season="C7S2" lastUpdated="Live" />
           </div>
@@ -118,29 +208,30 @@ export default function BuildTrainer() {
 
       <div className="max-w-7xl mx-auto px-6 pt-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10">
-          {/* Drill Selection */}
+          {/* Sequence Selection */}
           <div className="lg:col-span-5">
             <div className="glass rounded-3xl p-8 bg-black/50 backdrop-blur-sm">
               <h3 className="text-3xl font-bold mb-8">Wähle dein Training</h3>
               
               <div className="space-y-4">
-                {DRILLS.map((drill) => (
+                {BUILDING_SEQUENCES.map((seq) => (
                   <div
-                    key={drill.id}
-                    onClick={() => setSelectedDrill(drill)}
+                    key={seq.id}
+                    onClick={() => !isTraining && setSelectedSequence(seq)}
                     className={`p-6 rounded-2xl cursor-pointer transition-all border ${
-                      selectedDrill.id === drill.id 
+                      selectedSequence.id === seq.id 
                         ? 'border-nexus-green bg-black/60' 
                         : 'border-zinc-700 hover:border-zinc-500'
-                    }`}
+                    } ${isTraining ? 'opacity-50 cursor-not-allowed' : ''}`}
                   >
                     <div className="flex justify-between">
                       <div>
-                        <div className="font-bold text-lg">{drill.name}</div>
-                        <div className="text-sm text-zinc-400 mt-1">{drill.description}</div>
+                        <div className="font-bold text-lg">{seq.name}</div>
+                        <div className="text-sm text-zinc-400 mt-1">{seq.description}</div>
+                        <div className="text-xs text-nexus-green mt-2">Best: {getBestTime(seq.id)}</div>
                       </div>
                       <div className="text-right">
-                        <div className="text-2xl font-black text-nexus-green">{drill.difficulty}/10</div>
+                        <div className="text-2xl font-black text-nexus-green">{seq.difficulty}/10</div>
                         <div className="text-xs text-zinc-500">DIFFICULTY</div>
                       </div>
                     </div>
@@ -150,13 +241,23 @@ export default function BuildTrainer() {
 
               <PaywallGate requiredTier="free">
                 <button
-                  onClick={startDrill}
+                  onClick={startSequence}
                   disabled={isTraining}
-                  className="mt-10 w-full py-7 text-2xl font-black bg-gradient-to-r from-nexus-green to-emerald-600 rounded-3xl hover:brightness-110 transition-all active:scale-[0.985]"
+                  className="mt-10 w-full py-7 text-2xl font-black bg-gradient-to-r from-nexus-green to-emerald-600 rounded-3xl hover:brightness-110 transition-all active:scale-[0.985] disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   {isTraining ? "TRAINING LÄUFT..." : "START DRILL 🔥"}
                 </button>
               </PaywallGate>
+
+              <div className="mt-6 p-4 bg-zinc-900/50 rounded-xl">
+                <div className="text-sm font-bold text-zinc-400 mb-3">KEYBOARD CONTROLS</div>
+                <div className="grid grid-cols-2 gap-2 text-xs">
+                  <div className="text-white">Q = 🧱 Wall</div>
+                  <div className="text-white">E = 📐 Ramp</div>
+                  <div className="text-white">F = ⬛ Floor</div>
+                  <div className="text-white">C = 🔺 Cone</div>
+                </div>
+              </div>
             </div>
           </div>
 
@@ -164,30 +265,75 @@ export default function BuildTrainer() {
           <div className="lg:col-span-7">
             <div className="glass rounded-3xl p-10 min-h-[520px] flex flex-col bg-black/50 backdrop-blur-sm">
               {isTraining ? (
-                <div className="flex-1 flex flex-col items-center justify-center text-center">
-                  <div className="text-8xl mb-8">🏗️</div>
-                  <div className="text-6xl font-black text-white mb-4">
-                    {formatTime(timeLeft)}
+                <div className="flex-1 flex flex-col">
+                  {/* Timer & Progress */}
+                  <div className="flex justify-between items-center mb-8">
+                    <div>
+                      <div className="text-4xl font-black text-white">{formatTime(elapsedTime)}</div>
+                      <div className="text-sm text-zinc-400">TARGET: {selectedSequence.targetTime}s</div>
+                    </div>
+                    <div className="text-right">
+                      <div className="text-2xl font-black text-nexus-green">{streak} 🔥</div>
+                      <div className="text-xs text-zinc-500">STREAK</div>
+                    </div>
                   </div>
-                  <div className="text-2xl text-zinc-400 mb-12">REMAINING</div>
 
-                  <div className="w-full max-w-md bg-zinc-900 h-3 rounded-full overflow-hidden mb-8">
+                  {/* Progress Bar */}
+                  <div className="w-full bg-zinc-900 h-2 rounded-full overflow-hidden mb-8">
                     <div 
-                      className="h-full bg-gradient-to-r from-nexus-green to-emerald-400 transition-all duration-1000"
-                      style={{ width: `${(timeLeft / selectedDrill.duration) * 100}%` }}
+                      className="h-full bg-gradient-to-r from-nexus-green to-emerald-400 transition-all duration-100"
+                      style={{ width: `${((sequenceIndex + 1) / selectedSequence.sequence.length) * 100}%` }}
                     />
                   </div>
 
-                  <div className="text-sm text-zinc-500">Focus: {selectedDrill.focus}</div>
+                  {/* Sequence Display */}
+                  <div className="flex-1 flex flex-col justify-center">
+                    <div className="text-center mb-8">
+                      <div className="text-sm text-zinc-400 mb-4">SEQUENCE ({sequenceIndex + 1}/{selectedSequence.sequence.length})</div>
+                      <div className="flex justify-center gap-3 flex-wrap">
+                        {selectedSequence.sequence.map((action, i) => (
+                          <div
+                            key={i}
+                            className={`px-4 py-3 rounded-xl text-sm font-bold ${
+                              i < sequenceIndex
+                                ? 'bg-nexus-green text-black'
+                                : i === sequenceIndex
+                                ? 'bg-nexus-orange text-black animate-pulse'
+                                : 'bg-zinc-800 text-zinc-400'
+                            }`}
+                          >
+                            {ACTION_DISPLAY[action]}
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+
+                    {/* Current Input Display */}
+                    <div className="text-center">
+                      {currentInput && (
+                        <div className={`text-2xl font-bold mb-4 ${feedback?.type === 'correct' ? 'text-nexus-green' : 'text-red-500'}`}>
+                          {ACTION_DISPLAY[currentInput]}
+                        </div>
+                      )}
+                      {feedback && (
+                        <div className={`text-lg font-bold ${feedback.type === 'correct' ? 'text-nexus-green' : 'text-red-500'}`}>
+                          {feedback.message}
+                        </div>
+                      )}
+                    </div>
+                  </div>
                 </div>
               ) : (
                 <div className="flex-1 flex flex-col items-center justify-center text-center">
                   <div className="text-7xl mb-8">🏗️</div>
                   <h3 className="text-4xl font-bold mb-4">Build Trainer</h3>
-                  <p className="text-zinc-400 max-w-sm">
-                    Wähle ein Drill und trainiere deine Mechanics. 
-                    Deine Sessions werden automatisch gespeichert.
+                  <p className="text-zinc-400 max-w-sm mb-6">
+                    Drücke die Tasten in der richtigen Reihenfolge. 
+                    Trainiere deine Muscle-Memory für echtes Building.
                   </p>
+                  <div className="text-sm text-zinc-500">
+                    Target: {selectedSequence.targetTime}s • {selectedSequence.sequence.length} Actions
+                  </div>
                 </div>
               )}
             </div>
@@ -206,7 +352,7 @@ export default function BuildTrainer() {
                     <div className="text-nexus-green font-bold">{session.score} PTS</div>
                   </div>
                   <div className="text-sm text-zinc-400">
-                    Duration: {Math.floor(session.duration / 60)}:{(session.duration % 60).toString().padStart(2, '0')}
+                    Time: {session.duration.toFixed(2)}s • Difficulty: {session.difficulty}/10
                   </div>
                 </div>
               ))}
