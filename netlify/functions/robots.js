@@ -7,7 +7,7 @@
  * - Points to the dynamic sitemap
  */
 
-const BASE_URL = 'https://zyztm.com';
+const BASE_URL = 'https://fortnitenexus.space';
 
 export const handler = async () => {
   const body = [

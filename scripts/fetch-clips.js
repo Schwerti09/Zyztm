@@ -23,7 +23,7 @@ async function run() {
   const html = await fetch(url, {
     headers: {
       'User-Agent':
-        'Mozilla/5.0 (compatible; ZyztmBot/1.0; +https://zyztm.com)',
+        'Mozilla/5.0 (compatible; NexusBot/1.0; +https://fortnitenexus.space)',
     },
   }).then((r) => r.text());
 

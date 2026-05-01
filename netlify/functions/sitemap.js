@@ -9,7 +9,7 @@
  * Re-indexing trigger: every deploy regenerates the sitemap with current lastmod dates.
  */
 
-const BASE_URL = 'https://zyztm.com';
+const BASE_URL = 'https://fortnitenexus.space';
 
 /** Guide slugs and metadata – keep in sync with apps/web/src/data/guides.ts */
 const GUIDES = [
