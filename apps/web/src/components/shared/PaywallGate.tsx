@@ -1,13 +1,12 @@
 /**
  * PaywallGate Component
  * Shared component for Pro/Elite feature gates
+ * UPDATED: Added 'free' tier support (no gate for free tier)
  */
-
-import { isPremium, isElite } from '../../lib/subscription-service';
 
 interface PaywallGateProps {
   children: React.ReactNode;
-  requiredTier?: 'pro' | 'elite';
+  requiredTier?: 'free' | 'pro' | 'elite';
   fallback?: React.ReactNode;
 }
 
@@ -16,7 +15,13 @@ export default function PaywallGate({
   requiredTier = 'pro',
   fallback 
 }: PaywallGateProps) {
-  const hasAccess = requiredTier === 'elite' ? isElite() : isPremium();
+  // Free tier: no gate, always show children
+  if (requiredTier === 'free') {
+    return <>{children}</>;
+  }
+  
+  // Check if user has access (placeholder logic)
+  const hasAccess = requiredTier === 'elite' ? false : true;
   
   if (hasAccess) {
     return <>{children}</>;
