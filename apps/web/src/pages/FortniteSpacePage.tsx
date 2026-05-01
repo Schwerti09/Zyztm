@@ -171,7 +171,7 @@ export default function FortniteSpacePage() {
                 ALLE TOOLS ENTDECKEN →
               </a>
             </Link>
-            <Link href="/shop">
+            <Link href="/subscription">
               <a className="inline-block px-8 py-4 rounded-xl border border-white/20 bg-white/5 font-cyber text-sm tracking-widest text-white hover:bg-white/10 transition-colors">
                 NEXUS PRO €14,99
               </a>
