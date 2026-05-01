@@ -1,6 +1,7 @@
 /**
  * Stats Dashboard Store (Zustand)
  * Tool-specific store for Stats Dashboard Pro
+ * UPDATED: Uses shared-types.ts for unified data structures
  */
 
 import { create } from 'zustand';
@@ -19,7 +20,7 @@ interface StatsState {
   clearSearchHistory: () => void;
 }
 
-export const useStatsStore = create<StatsState>()((set, get) => ({
+export const useStatsStore = create<StatsState>()((set) => ({
   // Initial State
   currentPlayerProfile: null,
   searchHistory: [],

@@ -1,6 +1,7 @@
 /**
  * Loadout God Store (Zustand)
  * Tool-specific store for Nexus Loadout God
+ * UPDATED: Uses shared-types.ts for unified data structures
  */
 
 import { create } from 'zustand';
@@ -22,7 +23,7 @@ interface LoadoutState {
 
 export const useLoadoutStore = create<LoadoutState>()(
   persist(
-    (set, get) => ({
+    (set) => ({
       // Initial State
       currentLoadout: null,
       savedLoadouts: [],
@@ -36,6 +37,7 @@ export const useLoadoutStore = create<LoadoutState>()(
           id: crypto.randomUUID(),
           userId: undefined,
           createdAt: new Date(),
+          updatedAt: new Date(),
           season: 'C7S2',
           mode: inputs.mode,
           playstyle: inputs.playstyle,
@@ -48,6 +50,7 @@ export const useLoadoutStore = create<LoadoutState>()(
           tags: [],
           flexScore: 0,
           isDailyGodLoadout: false,
+          metaVersion: 'meta-2026-05-01',
         };
         
         set({ currentLoadout: newLoadout });

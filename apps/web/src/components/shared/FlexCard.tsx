@@ -1,6 +1,7 @@
 /**
  * FlexCard Component
  * Shareable card for Loadout God with branding
+ * UPDATED: Uses shared-types.ts for unified data structures
  */
 
 import type { Loadout } from '../../lib/shared-types';
@@ -13,10 +14,10 @@ interface FlexCardProps {
 
 export default function FlexCard({ loadout, username, nexusScore }: FlexCardProps) {
   return (
-    <div className="bg-gradient-to-br from-orange-500/10 to-purple-500/10 border-2 border-orange-500/50 rounded-2xl p-6 backdrop-blur-sm">
+    <div className="bg-gradient-to-br from-nexus-orange/10 to-nexus-purple/10 border-2 border-nexus-orange/50 rounded-2xl p-6 backdrop-blur-sm">
       {/* Header */}
       <div className="flex items-center justify-between mb-4">
-        <div className="text-xs font-bold tracking-widest text-orange-400">
+        <div className="text-xs font-bold tracking-widest text-nexus-orange">
           NEXUS LOADOUT GOD
         </div>
         <div className="text-xs text-white/40">
@@ -28,6 +29,7 @@ export default function FlexCard({ loadout, username, nexusScore }: FlexCardProp
       <div className="mb-4">
         <h2 className="text-2xl font-bold text-white mb-1">{loadout.title}</h2>
         <p className="text-white/60 text-sm">{loadout.subtitle}</p>
+        <div className="text-xs text-nexus-green mt-1">{loadout.season} • {loadout.mode}</div>
       </div>
       
       {/* Slots */}
@@ -41,8 +43,8 @@ export default function FlexCard({ loadout, username, nexusScore }: FlexCardProp
             <div className="text-sm font-bold text-white truncate">{slot.itemName}</div>
             <div className={`text-xs ${
               slot.rarity === 'Mythic' ? 'text-yellow-400' :
-              slot.rarity === 'Legendary' ? 'text-orange-400' :
-              slot.rarity === 'Epic' ? 'text-purple-400' :
+              slot.rarity === 'Legendary' ? 'text-nexus-orange' :
+              slot.rarity === 'Epic' ? 'text-nexus-purple' :
               'text-white/60'
             }`}>
               {slot.rarity}
@@ -59,7 +61,7 @@ export default function FlexCard({ loadout, username, nexusScore }: FlexCardProp
         </div>
         <div>
           <span className="text-white/40">Flex Score:</span>
-          <span className="text-orange-400 font-bold ml-2">{loadout.flexScore}/100</span>
+          <span className="text-nexus-orange font-bold ml-2">{loadout.flexScore}/100</span>
         </div>
       </div>
       
@@ -72,7 +74,7 @@ export default function FlexCard({ loadout, username, nexusScore }: FlexCardProp
         )}
         {nexusScore !== undefined && (
           <div className="text-xs text-white/40">
-            Nexus Score: <span className="text-orange-400 font-bold">{nexusScore}</span>
+            Nexus Score: <span className="text-nexus-orange font-bold">{nexusScore}</span>
           </div>
         )}
         <div className="text-xs text-white/20">

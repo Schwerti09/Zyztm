@@ -1,31 +1,22 @@
 /**
  * Global Nexus Store (Zustand)
  * User Tier, Current Season, Global Meta, Theme Settings
+ * UPDATED: Uses shared-types.ts for unified data structures
  */
 
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
-import type { Tier } from '../lib/shared-types';
+import type { Tier, NexusUser, NexusAppState, WeaponMetaEntry } from '../lib/shared-types';
 
-interface NexusState {
-  // User
-  userTier: Tier;
-  nexusCode?: string;
-  savedLoadoutsCount: number;
-  
-  // Global Meta
-  currentSeason: string;
-  globalMeta: Record<string, any>;
-  
+interface NexusState extends NexusAppState {
   // Theme
   theme: 'dark' | 'light' | 'neon';
   
   // Actions
-  setUserTier: (tier: Tier) => void;
-  setNexusCode: (code: string) => void;
-  setSavedLoadoutsCount: (count: number) => void;
+  setUser: (user: NexusUser | null) => void;
   setCurrentSeason: (season: string) => void;
-  setGlobalMeta: (meta: Record<string, any>) => void;
+  setCurrentMetaVersion: (version: string) => void;
+  setGlobalMeta: (meta: Record<string, WeaponMetaEntry>) => void;
   setTheme: (theme: 'dark' | 'light' | 'neon') => void;
 }
 
@@ -33,18 +24,17 @@ export const useNexusStore = create<NexusState>()(
   persist(
     (set) => ({
       // Initial State
-      userTier: 'free',
-      nexusCode: undefined,
-      savedLoadoutsCount: 0,
       currentSeason: 'C7S2',
+      currentMetaVersion: 'meta-2026-05-01',
       globalMeta: {},
+      user: null,
+      isLoading: false,
       theme: 'neon',
       
       // Actions
-      setUserTier: (tier) => set({ userTier: tier }),
-      setNexusCode: (code) => set({ nexusCode: code }),
-      setSavedLoadoutsCount: (count) => set({ savedLoadoutsCount: count }),
+      setUser: (user) => set({ user }),
       setCurrentSeason: (season) => set({ currentSeason: season }),
+      setCurrentMetaVersion: (version) => set({ currentMetaVersion: version }),
       setGlobalMeta: (meta) => set({ globalMeta: meta }),
       setTheme: (theme) => set({ theme }),
     }),
