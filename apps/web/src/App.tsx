@@ -22,6 +22,7 @@ const FortniteSpacePage = lazy(() => import('./pages/FortniteSpacePage'));
 const LoadoutGodPage = lazy(() => import('./pages/LoadoutGodPage'));
 const CreatorsPage = lazy(() => import('./pages/CreatorsPage'));
 const ClassicPage = lazy(() => import('./pages/ClassicPage'));
+const SubscriptionPage = lazy(() => import('./pages/SubscriptionPage'));
 
 // Digital Products Shop
 const ShopPage = lazy(() => import('./pages/ShopPage'));
@@ -131,6 +132,8 @@ export default function App() {
           <Route path="/tools/loadout-god" component={LoadoutGodPage} />
           {/* Creators */}
           <Route path="/creators" component={CreatorsPage} />
+          {/* Subscription */}
+          <Route path="/subscription" component={SubscriptionPage} />
           {/* Classic */}
           <Route path="/classic" component={ClassicPage} />
           {/* Guide / Runbook routes (language-prefixed for SEO) */}
