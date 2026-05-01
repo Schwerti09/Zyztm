@@ -118,7 +118,7 @@ function getMoodResponse(input: string, mood: Mood): string {
   return responses[Math.floor(Math.random() * responses.length)];
 }
 
-export default function ZyztmBro() {
+export default function NexusBro() {
   const [input, setInput] = useState('');
   const [loading, setLoading] = useState(false);
   const [mood, setMood] = useState<Mood>('chill');

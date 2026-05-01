@@ -277,7 +277,7 @@ export default function LiveItemShop() {
         </h1>
         <p className="text-white/60 font-body max-w-2xl leading-relaxed mb-4">
           Aktueller Fortnite Shop mit <strong className="text-white">Rarity-Ratings</strong>
-          , Shop-History und Creator-Code <strong className="text-neon-pink">ZYZTM</strong>.
+          , Shop-History und Community-Code <strong className="text-neon-pink">NEXUS</strong>.
           Rotation täglich um 00:00 UTC.
         </p>
 

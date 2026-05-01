@@ -217,7 +217,7 @@ function MapNode({ node, isHovered, onHover }: {
   );
 }
 
-export default function ZyztmLiveMap() {
+export default function NexusLiveMap() {
   const [hoveredId, setHoveredId] = useState<string | null>(null);
 
   return (

@@ -77,8 +77,8 @@ const templates = {
     <hr style="margin: 30px 0; border: none; border-top: 1px solid #e5e7eb;">
     
     <div style="text-align: center;">
-      <p><strong>💙 Support the Creator</strong></p>
-      <p>Nutze Code <strong>ZYZTM</strong> im Fortnite Item Shop!<br>
+      <p><strong>💙 Support the Community</strong></p>
+      <p>Nutze Code <strong>NEXUS</strong> im Fortnite Item Shop!<br>
       Kostet dich nichts, hilft uns neue Guides zu erstellen.</p>
     </div>
   </div>
@@ -105,8 +105,8 @@ ${data.deliverables.map(item => `- ${item}`).join('\n')}
 Probleme? Kontaktiere uns: ${data.supportUrl}
 
 ---
-💙 Support the Creator
-Nutze Code ZYZTM im Fortnite Item Shop!
+💙 Support the Community
+Nutze Code NEXUS im Fortnite Item Shop!
 
 © 2026 Fortnite Nexus
 Bestellung #${data.orderId}

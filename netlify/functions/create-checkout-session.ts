@@ -1,6 +1,6 @@
 /**
  * POST /.netlify/functions/create-checkout-session
- * Creates a Stripe Checkout session for a Zyztm Exclusive Drop purchase.
+ * Creates a Stripe Checkout session for a Fortnite Nexus Exclusive Drop purchase.
  *
  * Required env vars: STRIPE_SECRET_KEY, FRONTEND_URL
  * Body: { productId: string, email?: string }
@@ -15,7 +15,7 @@ interface RequestBody {
 const SHOP_PRODUCTS = [
   {
     id: 'soundboard_pro',
-    name: 'Zyztm Soundboard Pro',
+    name: 'Nexus Soundboard Pro',
     description: '200+ Fortnite FX, custom sweaty sounds, pro stream-ready pack. Sofort-Download nach Kauf.',
     price: 1999,
     emoji: '🎛️',
@@ -23,7 +23,7 @@ const SHOP_PRODUCTS = [
   {
     id: 'preset_pack',
     name: 'Pro Preset Pack',
-    description: "Zyztm's persönliche Color-Grading LUTs & Lightroom-Presets. Sofort-Download nach Kauf.",
+    description: "Fortnite Nexus persönliche Color-Grading LUTs & Lightroom-Presets. Sofort-Download nach Kauf.",
     price: 1499,
     emoji: '🎨',
   },
@@ -37,7 +37,7 @@ const SHOP_PRODUCTS = [
   {
     id: 'vod_highlight_pack',
     name: 'Exclusive VOD + Highlight Pack',
-    description: 'Exklusive Stream-VODs & Highlight-Clips von Zyztm – nie veröffentlicht, direkt als Download.',
+    description: 'Exklusive Stream-VODs & Highlight-Clips von Fortnite Nexus – nie veröffentlicht, direkt als Download.',
     price: 2999,
     emoji: '🎬',
   },
@@ -94,7 +94,7 @@ export const handler = async (event: { httpMethod: string; body: string | null }
   }
 
   const stripe = new Stripe(stripeKey, { apiVersion: '2024-04-10' });
-  const frontendUrl = process.env.FRONTEND_URL || 'https://zyztm.de';
+  const frontendUrl = process.env.FRONTEND_URL || 'https://fortnitenexus.space';
 
   try {
     const session = await stripe.checkout.sessions.create({

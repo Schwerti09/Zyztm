@@ -130,7 +130,7 @@ export default function CheckoutSuccessPage() {
             {/* Support the Creator */}
             <div className="p-4 bg-yellow-500/10 border border-yellow-500/30 rounded-xl mb-6">
               <p className="text-sm text-yellow-200">
-                💙 <strong>Support the Creator:</strong> Nutze Code <strong className="text-yellow-300">ZYZTM</strong> im Fortnite Item Shop!
+                💙 <strong>Support the Community:</strong> Nutze Code <strong className="text-yellow-300">NEXUS</strong> im Fortnite Item Shop!
               </p>
             </div>
             

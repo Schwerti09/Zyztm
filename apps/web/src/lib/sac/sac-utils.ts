@@ -73,27 +73,27 @@ export function getSACDisplayText(context: string): {
   const textMap: Record<string, { title: string; description: string; cta: string }> = {
     hero: {
       title: 'Support Fortnite Nexus',
-      description: 'Use code ZYZTM in the item shop to support us!',
+      description: 'Use code NEXUS in the item shop to support us!',
       cta: 'Copy Code',
     },
     shop: {
       title: 'Get Your Items',
-      description: 'Don\'t forget to use code ZYZTM at checkout!',
+      description: 'Don\'t forget to use code NEXUS at checkout!',
       cta: 'Copy Code',
     },
     guide: {
       title: 'Enjoyed this guide?',
-      description: 'Support us with code ZYZTM in the item shop',
+      description: 'Support us with code NEXUS in the item shop',
       cta: 'Copy Code',
     },
     checkout: {
       title: 'One more step!',
-      description: 'Enter code ZYZTM before completing your purchase',
+      description: 'Enter code NEXUS before completing your purchase',
       cta: 'Copy Code',
     },
     footer: {
       title: 'Support the Community',
-      description: 'Use code ZYZTM in Fortnite',
+      description: 'Use code NEXUS in Fortnite',
       cta: 'Copy Code',
     },
   };

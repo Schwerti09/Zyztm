@@ -90,11 +90,11 @@ export default function CreatorCode() {
             className="font-cyber text-2xl md:text-3xl font-black mb-2 text-neon-pink"
             style={{ textShadow: '0 0 10px #ff0055, 0 0 30px #ff0055, 0 0 60px #ff0055' }}
           >
-            ⚡ MEIN CREATOR CODE: ZYZTM ⚡
+            ⚡ UNSER COMMUNITY CODE: NEXUS ⚡
           </h2>
 
           <p className="text-white/60 text-sm font-body mb-2">
-            Gib meinen Code im Fortnite Item Shop ein und unterstütze mich direkt!{' '}
+            Gib unseren Community-Code im Fortnite Item Shop ein und unterstütze uns direkt!{' '}
             <span className="font-cyber font-bold text-white">5–10%</span> gehen{' '}
             <span className="text-neon-pink font-cyber font-bold">direkt an Fortnite Nexus</span>!
           </p>

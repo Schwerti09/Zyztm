@@ -12,7 +12,7 @@ const ImpressumPage = lazy(() => import('./pages/ImpressumPage'));
 const DatenschutzPage = lazy(() => import('./pages/DatenschutzPage'));
 const AGBPage = lazy(() => import('./pages/AGBPage'));
 const AboutTeamPage = lazy(() => import('./pages/AboutTeamPage'));
-const NexusIntro = lazy(() => import('./components/ZyztmIntro'));
+const NexusIntro = lazy(() => import('./components/NexusIntro'));
 const GuidePage = lazy(() => import('./pages/GuidePage'));
 const HubPage = lazy(() => import('./pages/HubPage'));
 const NewsPage = lazy(() => import('./pages/NewsPage'));

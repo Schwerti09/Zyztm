@@ -78,7 +78,7 @@ export const handler = async (event) => {
   }
 
   const stripe = new Stripe(stripeKey, { apiVersion: '2024-04-10' });
-  const frontendUrl = process.env.FRONTEND_URL || 'https://zyztm.de';
+  const frontendUrl = process.env.FRONTEND_URL || 'https://fortnitenexus.space';
   const totalCoins = pkg.coins + (pkg.bonus ?? 0);
 
   try {
@@ -90,7 +90,7 @@ export const handler = async (event) => {
             currency: 'eur',
             product_data: {
               name: `${pkg.emoji} ${pkg.name} – ${totalCoins} JOJOJO Coins`,
-              description: `${pkg.coins} Coins${pkg.bonus ? ` + ${pkg.bonus} Bonus-Coins` : ''} für dein Zyztm-Konto`,
+              description: `${pkg.coins} Coins${pkg.bonus ? ` + ${pkg.bonus} Bonus-Coins` : ''} für dein Nexus-Konto`,
             },
             unit_amount: pkg.price,
           },

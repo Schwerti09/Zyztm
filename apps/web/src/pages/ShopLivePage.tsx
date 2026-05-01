@@ -10,7 +10,7 @@ export default function ShopLivePage() {
     <div className="min-h-screen bg-bg-dark text-white">
       <MetaTags
         title="Fortnite Item Shop heute — Live mit Rarity-Rating | Fortnite Nexus"
-        description="Aktueller Fortnite Item Shop live mit Rarity-Rating, Shop-History und Creator-Code ZYZTM. Täglich rotierender Shop. Alle Items auf deutsch."
+        description="Aktueller Fortnite Item Shop live mit Rarity-Rating, Shop-History und Community-Code NEXUS. Täglich rotierender Shop. Alle Items auf deutsch."
         path="/item-shop"
         image="https://fortnitenexus.space/og/og-shop.png"
         keywords={['Fortnite Item Shop', 'Fortnite Shop heute', 'Item Shop Fortnite', 'Fortnite Skins', 'Fortnite V-Bucks']}
@@ -66,8 +66,8 @@ export default function ShopLivePage() {
             Creator-Code beim Kauf
           </h3>
           <p className="text-white/70 font-body leading-relaxed mb-4">
-            Wenn du Items kaufst, nutze den Creator-Code{' '}
-            <strong className="text-neon-pink">ZYZTM</strong> — das kostet dich{' '}
+            Wenn du Items kaufst, nutze unseren Community-Code{' '}
+            <strong className="text-neon-pink">NEXUS</strong> — das kostet dich{' '}
             <strong>nichts extra</strong>, aber unterstützt Fortnite Nexus. Dadurch
             können wir diese Seite und alle{' '}
             <Link href="/tools">

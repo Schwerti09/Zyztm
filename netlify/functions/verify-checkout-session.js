@@ -7,13 +7,13 @@
 import Stripe from 'stripe';
 
 const PRODUCTS = [
-  { id: 'vip', name: "Zyztm's Loot Llama", emoji: '🦙', priceLabel: '€4,99/Monat' },
+  { id: 'vip', name: "Nexus Loot Llama", emoji: '🦙', priceLabel: '€4,99/Monat' },
   { id: 'voice_pack', name: 'Victory Royale Voice Pack', emoji: '🎤', priceLabel: '€4,99' },
-  { id: 'zyztm_bro', name: 'Zyztm Bro – Dein Gaming-Kumpel', emoji: '🤖', priceLabel: '€9,99/Monat' },
+  { id: 'nexus_bro', name: 'Nexus Bro – Dein Gaming-Kumpel', emoji: '🤖', priceLabel: '€9,99/Monat' },
   { id: 'card_booster', name: 'Clutch Moments Cards', emoji: '🃏', priceLabel: '€1,99' },
-  { id: 'soundboard', name: 'Zyztm Soundboard Pro', emoji: '🔊', priceLabel: '€4,99' },
+  { id: 'soundboard', name: 'Nexus Soundboard Pro', emoji: '🔊', priceLabel: '€4,99' },
   // create-checkout-session.ts products
-  { id: 'soundboard_pro', name: 'Zyztm Soundboard Pro', emoji: '🎛️', priceLabel: '€19,99' },
+  { id: 'soundboard_pro', name: 'Nexus Soundboard Pro', emoji: '🎛️', priceLabel: '€19,99' },
   { id: 'preset_pack', name: 'Pro Preset Pack', emoji: '🎨', priceLabel: '€14,99' },
   { id: 'ai_skin_generator', name: 'AI Skin & Thumbnail Generator', emoji: '🤖', priceLabel: '€24,99' },
   { id: 'vod_highlight_pack', name: 'Exclusive VOD + Highlight Pack', emoji: '🎬', priceLabel: '€29,99' },

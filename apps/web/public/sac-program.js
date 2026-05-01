@@ -14,7 +14,7 @@ const sacDisplayContexts = [
         position: 'Direkt unter CTA-Buttons',
         display: 'Prominent, animiert',
         dismiss: false,
-        text: 'Nutze Creator Code: ZYZTM im Item Shop'
+        text: 'Nutze Creator Code: NEXUS im Item Shop'
     },
     {
         id: 'guide',
@@ -22,21 +22,21 @@ const sacDisplayContexts = [
         display: 'Compact, inline',
         dismiss: true,
         dismiss_duration: 86400000, // 24 hours
-        text: 'Support uns mit Creator Code: ZYZTM'
+        text: 'Support uns mit Creator Code: NEXUS'
     },
     {
         id: 'shop',
         position: 'Neben Item Shop Display',
         display: 'Highlighted, prominent',
         dismiss: false,
-        text: 'Nutze Code: ZYZTM für Support'
+        text: 'Nutze Code: NEXUS für Support'
     },
     {
         id: 'checkout',
         position: 'Vor finaler Kaufbestätigung',
         display: 'Final CTA',
         dismiss: false,
-        text: 'Vergiss nicht: ZYZTM im Item Shop'
+        text: 'Vergiss nicht: NEXUS im Item Shop'
     },
     {
         id: 'footer',
@@ -44,7 +44,7 @@ const sacDisplayContexts = [
         display: 'Subtle, persistent',
         dismiss: true,
         dismiss_duration: 86400000, // 24 hours
-        text: 'Creator Code: ZYZTM'
+        text: 'Creator Code: NEXUS'
     }
 ];
 

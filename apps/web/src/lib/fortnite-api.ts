@@ -8,7 +8,7 @@
  */
 
 const FN_API_BASE = 'https://fortnite-api.com/v2';
-const SAC_CODE = 'ZYZTM';
+const SAC_CODE = 'NEXUS';
 
 // ============================================================================
 // TYPES

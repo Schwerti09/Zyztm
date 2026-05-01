@@ -4,8 +4,8 @@
  */
 
 export const SAC_CONFIG = {
-  // Primary creator code for Fortnite Nexus
-  CREATOR_CODE: 'ZYZTM',
+  // Primary creator code for Fortnite Nexus (Community Code, no individual streamer)
+  CREATOR_CODE: 'NEXUS',
 
   // Epic Games commission rate (5%)
   PROVISION_RATE: 0.05,
