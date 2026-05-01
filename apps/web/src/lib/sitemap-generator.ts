@@ -29,6 +29,12 @@ export function generateCompleteSitemap(): SitemapEntry[] {
   // Base pages
   entries.push({ url: BASE_URL, lastmod: new Date().toISOString(), changefreq: 'daily', priority: 1.0 });
   entries.push({ url: `${BASE_URL}/news`, lastmod: new Date().toISOString(), changefreq: 'daily', priority: 0.9 });
+  
+  // Legal pages
+  entries.push({ url: `${BASE_URL}/impressum`, lastmod: new Date().toISOString(), changefreq: 'monthly', priority: 0.5 });
+  entries.push({ url: `${BASE_URL}/datenschutz`, lastmod: new Date().toISOString(), changefreq: 'monthly', priority: 0.5 });
+  entries.push({ url: `${BASE_URL}/agb`, lastmod: new Date().toISOString(), changefreq: 'monthly', priority: 0.5 });
+  entries.push({ url: `${BASE_URL}/ueber-uns/team`, lastmod: new Date().toISOString(), changefreq: 'monthly', priority: 0.6 });
 
   // Guide pages with all language variants
   const guideSlugs = getAllGuideSlugs();
