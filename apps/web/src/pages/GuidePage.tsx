@@ -255,7 +255,7 @@ export default function GuidePage() {
         )}
 
         {/* ── Internal Links ── */}
-        <InternalLinks guide={guide} />
+        <InternalLinks guide={guide} language={currentLanguage} />
 
         {/* ── Author Box (E-E-A-T) ── */}
         <AuthorBox lastUpdated={guide.lastUpdated} />

@@ -5,6 +5,7 @@ import { GUIDES } from '../data/guides';
 
 interface InternalLinksProps {
   guide: GuideData;
+  language?: string;
 }
 
 const CATEGORY_LABELS: Record<string, string> = {
@@ -19,7 +20,7 @@ const CATEGORY_LABELS: Record<string, string> = {
  * Renders 8–12 contextual internal links to related guides.
  * Boosts site crawlability and topical authority.
  */
-export default function InternalLinks({ guide }: InternalLinksProps) {
+export default function InternalLinks({ guide, language = 'de' }: InternalLinksProps) {
   const related = getRelatedGuides(guide, GUIDES, 10);
 
   if (related.length === 0) return null;
@@ -31,7 +32,7 @@ export default function InternalLinks({ guide }: InternalLinksProps) {
       </h2>
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
         {related.map((rel) => (
-          <Link key={rel.slug} href={`/de/guide/${rel.slug}`}>
+          <Link key={rel.slug} href={`/${language}/guide/${rel.slug}`}>
             <a className="group flex flex-col p-4 rounded-xl border border-white/10 bg-bg-card/60 hover:border-neon-blue/50 hover:bg-bg-card transition-all duration-200">
               <span className="text-xs font-cyber text-neon-blue/60 tracking-widest mb-1">
                 {CATEGORY_LABELS[rel.category] ?? rel.category}
