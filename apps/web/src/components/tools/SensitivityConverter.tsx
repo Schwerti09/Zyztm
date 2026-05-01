@@ -6,6 +6,7 @@ import {
   calculateEDPI,
   toCm360,
 } from '../../lib/sensitivity-math';
+import { checkUsageLimit, incrementUsage, getRemainingUses, isPremium, FREE_DAILY_LIMITS } from '../../lib/subscription-service';
 
 const STORAGE_KEY = 'nexus-sensitivity-converter-v1';
 
@@ -45,6 +46,10 @@ export default function SensitivityConverter() {
   const [fromFov, setFromFov] = useState(saved.fromFov ?? 80);
   const [toFov, setToFov] = useState(saved.toFov ?? 103);
   const [copied, setCopied] = useState(false);
+  const [limitReached, setLimitReached] = useState(false);
+
+  const premium = isPremium();
+  const remainingUses = getRemainingUses('sensitivityConversions');
 
   useEffect(() => {
     saveState({ fromGame, toGame, sensitivity, dpi, fromFov, toFov });
@@ -54,6 +59,12 @@ export default function SensitivityConverter() {
   const toGameConfig = GAMES.find((g) => g.id === toGame)!;
 
   const result = useMemo(() => {
+    // Prüfe Limit vor Berechnung
+    if (!checkUsageLimit('sensitivityConversions')) {
+      setLimitReached(true);
+      return null;
+    }
+    
     try {
       return convertSensitivity(
         { gameId: fromGame, sensitivity, dpi, fov: fromFov },
@@ -78,6 +89,10 @@ export default function SensitivityConverter() {
 
   const handleCopy = async () => {
     if (!result) return;
+    
+    // Inkrementiere Usage bei Copy (User hat Ergebnis gesehen)
+    incrementUsage('sensitivityConversions');
+    
     try {
       await navigator.clipboard.writeText(String(result.targetSensitivity));
       setCopied(true);
@@ -97,6 +112,12 @@ export default function SensitivityConverter() {
           Konvertiere deine Sensitivity zwischen 8 Shootern. Wissenschaftlich exakt mit
           cm/360°-Methode, FOV-Scaling und DPI-Kompensation.
         </p>
+        {!premium && (
+          <p className="text-xs text-white/40 mt-2">
+            Free-Tier: {remainingUses === Infinity ? 'Unlimited' : `${remainingUses}/${FREE_DAILY_LIMITS.sensitivityConversions} Konvertierungen heute`}
+            {remainingUses === 0 && ' — Limit erreicht'}
+          </p>
+        )}
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
