@@ -1,53 +1,100 @@
 import { lazy, Suspense, useEffect } from 'react';
 import { Link } from 'wouter';
 import VisualEffectsLayer, { GlassmorphismHover, SectionEntrance } from '../components/visuals/VisualEffectsLayer';
+import ToolCard, { ToolCardProps } from '../components/tools/ToolCard';
 
 const Footer = lazy(() => import('../components/Footer'));
 
-interface FeaturedTool {
-  slug: string;
-  name: string;
-  tagline: string;
-  description: string;
-  icon: string;
-  color: string;
-  status: 'live' | 'coming-soon';
-}
-
-const FEATURED_TOOLS: FeaturedTool[] = [
+const ALL_TOOLS: ToolCardProps[] = [
+  {
+    slug: 'loadout-god',
+    name: 'Loadout God',
+    tagline: 'Ultimative Loadout-Optimierung',
+    description: '5-Slot-Loadout Engine. 25+ Waffen. Situational Scoring. Meta-aware.',
+    icon: '🎒',
+    color: '#ff6b00',
+    status: 'live',
+    tier: 'elite',
+    badge: 'featured',
+  },
+  {
+    slug: 'stats-dashboard',
+    name: 'Stats Dashboard Pro',
+    tagline: 'AI-Performance-Analyse',
+    description: '4-Dimensionen Skill-Score. Personalisierte Trainingspläne. KPI-Tracking.',
+    icon: '📊',
+    color: '#8b5cf6',
+    status: 'live',
+    tier: 'pro',
+    badge: 'popular',
+  },
   {
     slug: 'sensitivity-converter',
     name: 'Sensitivity Converter Pro',
     tagline: 'Cross-Game Sens-Berechnung',
     description: '8 Spiele. cm/360°-Methode. FOV-Scaling. DPI-Kompensation.',
     icon: '🎯',
-    color: '#ff0055',
+    color: '#10b981',
     status: 'live',
+    tier: 'pro',
   },
   {
-    slug: 'loadout-optimizer',
-    name: 'Loadout Optimizer AI',
-    tagline: 'Optimales 5-Slot-Loadout',
-    description: 'Multi-Criteria Decision-Engine. 25+ Waffen. Situational Score.',
-    icon: '🎒',
-    color: '#00f2ff',
+    slug: 'drop-location-analyzer',
+    name: 'Drop Location Analyzer',
+    tagline: 'Strategische Drop-Zonen',
+    description: 'Heatmap-Analyse. Loot-Dichte. Rotation-Pfade. POI-Ranking.',
+    icon: '📍',
+    color: '#ff6b00',
     status: 'live',
+    tier: 'pro',
   },
   {
-    slug: 'stats-dashboard',
-    name: 'Stats Dashboard Pro',
-    tagline: 'AI-Performance-Analyse',
-    description: '4-Dimensionen Skill-Score. Personalisierte Trainingspläne.',
-    icon: '📊',
-    color: '#f5c518',
+    slug: 'meta-predictor',
+    name: 'Meta Predictor',
+    tagline: 'Meta-Vorhersage Engine',
+    description: 'AI-basierte Meta-Analyse. Trend-Vorhersage. Nerf/Buff-Tracking.',
+    icon: '🔮',
+    color: '#8b5cf6',
     status: 'live',
+    tier: 'elite',
+    badge: 'new',
+  },
+  {
+    slug: 'rotation-planner',
+    name: 'Rotation Planner',
+    tagline: 'Intelligente Routenplanung',
+    description: 'Optimale Rotation-Pfade. Storm-Tracking. Zone-Management.',
+    icon: '🗺️',
+    color: '#10b981',
+    status: 'live',
+    tier: 'pro',
+  },
+  {
+    slug: 'build-trainer',
+    name: 'Build Trainer',
+    tagline: 'Build-Training System',
+    description: '90°-Training. Speed-Drills. Height-Management. Edit-Timing.',
+    icon: '🏗️',
+    color: '#ff6b00',
+    status: 'live',
+    tier: 'pro',
+  },
+  {
+    slug: 'keybind-optimizer',
+    name: 'Keybind Optimizer',
+    tagline: 'Optimale Keybind-Konfiguration',
+    description: 'Ergonomie-Analyse. Reach-Optimierung. Conflict-Detection.',
+    icon: '⌨️',
+    color: '#8b5cf6',
+    status: 'live',
+    tier: 'pro',
   },
 ];
 
 const STATS = [
   { label: 'Pro Tools', value: '8', sublabel: 'Alle live & einsatzbereit' },
-  { label: 'Waffen-Datenbank', value: '25+', sublabel: 'Mit Live-DPS-Berechnung' },
-  { label: 'Spiele', value: '8', sublabel: 'Cross-Game Sens-Support' },
+  { label: 'Elite Features', value: '2', sublabel: 'Loadout God + Meta Predictor' },
+  { label: 'Pro Features', value: '6', sublabel: 'Advanced Analytics' },
   { label: 'Mobile-Ready', value: '100%', sublabel: 'Responsive Design' },
 ];
 
@@ -166,56 +213,15 @@ export default function FortniteSpacePage() {
               </p>
             </div>
             <Link href="/tools">
-              <a className="font-cyber text-xs tracking-widest text-neon-blue hover:text-white transition-colors">
+              <a className="font-cyber text-xs tracking-widest text-nexus-orange hover:text-white transition-colors">
                 ALLE 8 TOOLS →
               </a>
             </Link>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            {FEATURED_TOOLS.map((tool) => (
-              <Link key={tool.slug} href={`/tools/${tool.slug}`}>
-                <a className="block group">
-                  <article
-                    className="p-6 rounded-2xl border bg-white/[0.02] hover:bg-white/[0.05] transition-all h-full"
-                    style={{
-                      borderColor: `${tool.color}30`,
-                    }}
-                  >
-                    <div
-                      className="w-14 h-14 rounded-xl flex items-center justify-center text-3xl mb-4"
-                      style={{
-                        background: `${tool.color}15`,
-                        border: `1px solid ${tool.color}40`,
-                      }}
-                    >
-                      {tool.icon}
-                    </div>
-
-                    <div
-                      className="text-xs font-cyber tracking-widest mb-1"
-                      style={{ color: tool.color }}
-                    >
-                      {tool.tagline}
-                    </div>
-
-                    <h3 className="font-cyber text-lg font-bold text-white mb-2 leading-tight">
-                      {tool.name}
-                    </h3>
-
-                    <p className="text-sm font-body text-white/60 leading-relaxed mb-4">
-                      {tool.description}
-                    </p>
-
-                    <div
-                      className="font-cyber text-xs tracking-widest transition-all group-hover:translate-x-1"
-                      style={{ color: tool.color }}
-                    >
-                      JETZT NUTZEN →
-                    </div>
-                  </article>
-                </a>
-              </Link>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+            {ALL_TOOLS.slice(0, 4).map((tool) => (
+              <ToolCard key={tool.slug} {...tool} />
             ))}
           </div>
           </SectionEntrance>
