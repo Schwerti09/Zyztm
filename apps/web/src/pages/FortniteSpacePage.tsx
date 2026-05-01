@@ -1,5 +1,6 @@
 import { lazy, Suspense, useEffect } from 'react';
 import { Link } from 'wouter';
+import VisualEffectsLayer, { GlassmorphismHover, SectionEntrance } from '../components/visuals/VisualEffectsLayer';
 
 const Footer = lazy(() => import('../components/Footer'));
 
@@ -70,6 +71,15 @@ export default function FortniteSpacePage() {
 
   return (
     <div className="min-h-screen bg-bg-dark text-white relative overflow-hidden">
+      {/* Visual Effects Layer */}
+      <VisualEffectsLayer enabled effects={{
+        chaosBus: true,
+        floatingSkins: true,
+        thumbnailSnake: true,
+        midScrollStorm: true,
+        neonCursorTrail: true,
+      }} />
+
       {/* HERO */}
       <main className="relative">
         {/* Glow Background */}
@@ -82,6 +92,7 @@ export default function FortniteSpacePage() {
         />
 
         <section className="relative max-w-6xl mx-auto px-4 sm:px-6 pt-16 sm:pt-24 pb-12 text-center">
+          <SectionEntrance>
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-neon-pink/30 bg-neon-pink/5 mb-6">
             <span className="w-2 h-2 rounded-full bg-neon-pink animate-pulse" />
             <span className="font-cyber text-[10px] tracking-widest text-neon-pink">
@@ -139,10 +150,12 @@ export default function FortniteSpacePage() {
               </div>
             ))}
           </div>
+          </SectionEntrance>
         </section>
 
         {/* FEATURED TOOLS */}
         <section className="relative max-w-6xl mx-auto px-4 sm:px-6 py-12">
+          <SectionEntrance delay={0.1}>
           <div className="flex items-end justify-between mb-8 flex-wrap gap-3">
             <div>
               <h2 className="font-cyber text-2xl sm:text-3xl font-black text-white mb-2">
@@ -205,10 +218,12 @@ export default function FortniteSpacePage() {
               </Link>
             ))}
           </div>
+          </SectionEntrance>
         </section>
 
         {/* LIVE DATA HUB */}
         <section className="relative max-w-6xl mx-auto px-4 sm:px-6 py-12">
+          <SectionEntrance delay={0.2}>
           <div className="flex items-end justify-between mb-8 flex-wrap gap-3">
             <div>
               <h2 className="font-cyber text-2xl sm:text-3xl font-black text-white mb-2">
@@ -288,10 +303,12 @@ export default function FortniteSpacePage() {
               </a>
             </Link>
           </div>
+          </SectionEntrance>
         </section>
 
         {/* WHY US */}
         <section className="relative max-w-5xl mx-auto px-4 sm:px-6 py-16">
+          <SectionEntrance delay={0.3}>
           <div className="text-center mb-10">
             <h2 className="font-cyber text-3xl sm:text-4xl font-black text-white mb-3">
               WARUM NEXUS?
@@ -335,10 +352,12 @@ export default function FortniteSpacePage() {
               </p>
             </div>
           </div>
+          </SectionEntrance>
         </section>
 
         {/* FINAL CTA */}
         <section className="relative max-w-4xl mx-auto px-4 sm:px-6 py-12 mb-16">
+          <SectionEntrance delay={0.4}>
           <div className="p-10 rounded-3xl border border-neon-gold/40 bg-gradient-to-br from-neon-gold/10 via-transparent to-neon-pink/10 text-center">
             <h2 className="font-cyber text-3xl sm:text-4xl font-black text-white mb-3">
               READY TO LEVEL UP?
@@ -365,6 +384,7 @@ export default function FortniteSpacePage() {
               </Link>
             </div>
           </div>
+          </SectionEntrance>
         </section>
       </main>
 

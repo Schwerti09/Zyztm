@@ -11,6 +11,7 @@ import type { Tier, NexusUser, NexusAppState, WeaponMetaEntry } from '../lib/sha
 interface NexusState extends NexusAppState {
   // Theme
   theme: 'dark' | 'light' | 'neon';
+  visualEffectsEnabled: boolean;
   
   // Actions
   setUser: (user: NexusUser | null) => void;
@@ -18,6 +19,7 @@ interface NexusState extends NexusAppState {
   setCurrentMetaVersion: (version: string) => void;
   setGlobalMeta: (meta: Record<string, WeaponMetaEntry>) => void;
   setTheme: (theme: 'dark' | 'light' | 'neon') => void;
+  setVisualEffectsEnabled: (enabled: boolean) => void;
 }
 
 export const useNexusStore = create<NexusState>()(
@@ -30,6 +32,7 @@ export const useNexusStore = create<NexusState>()(
       user: null,
       isLoading: false,
       theme: 'neon',
+      visualEffectsEnabled: true,
       
       // Actions
       setUser: (user) => set({ user }),
@@ -37,6 +40,7 @@ export const useNexusStore = create<NexusState>()(
       setCurrentMetaVersion: (version) => set({ currentMetaVersion: version }),
       setGlobalMeta: (meta) => set({ globalMeta: meta }),
       setTheme: (theme) => set({ theme }),
+      setVisualEffectsEnabled: (enabled) => set({ visualEffectsEnabled: enabled }),
     }),
     {
       name: 'nexus-storage',
