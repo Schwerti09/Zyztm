@@ -141,7 +141,7 @@ export default function ToolsPage() {
             Free-Tier hat tägliche Limits. Mit Nexus Pro nutzt du alle 8 Tools unlimited,
             erhältst Wochen-Reports und 10% Rabatt auf alle digitalen Produkte.
           </p>
-          <Link href="/shop">
+          <Link href="/subscription">
             <a className="inline-block px-8 py-3 rounded-xl bg-gradient-to-r from-nexus-orange to-nexus-purple font-cyber text-sm tracking-widest text-bg-dark font-black hover:scale-105 transition-transform">
               JETZT UPGRADEN — €14,99/MONAT
             </a>
