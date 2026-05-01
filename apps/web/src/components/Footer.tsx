@@ -62,14 +62,17 @@ export default function Footer() {
           <div>
             <h4 className="font-cyber text-sm font-bold text-white mb-3 tracking-widest">LEGAL</h4>
             <div className="space-y-2">
-              <Link href="/de/impressum">
+              <Link href="/impressum">
                 <a className="block text-white/50 text-sm hover:text-neon-blue transition-colors">Impressum</a>
               </Link>
-              <Link href="/de/datenschutz">
+              <Link href="/datenschutz">
                 <a className="block text-white/50 text-sm hover:text-neon-blue transition-colors">Datenschutz</a>
               </Link>
-              <Link href="/de/agb">
+              <Link href="/agb">
                 <a className="block text-white/50 text-sm hover:text-neon-blue transition-colors">AGB</a>
+              </Link>
+              <Link href="/ueber-uns/team">
+                <a className="block text-white/50 text-sm hover:text-neon-blue transition-colors">Über Uns</a>
               </Link>
             </div>
           </div>
@@ -91,6 +94,7 @@ export default function Footer() {
             <Link href="/impressum"><a className="hover:text-white/60 transition-colors font-cyber">IMPRESSUM</a></Link>
             <Link href="/datenschutz"><a className="hover:text-white/60 transition-colors font-cyber">DATENSCHUTZ</a></Link>
             <Link href="/agb"><a className="hover:text-white/60 transition-colors font-cyber">AGB</a></Link>
+            <Link href="/ueber-uns/team"><a className="hover:text-white/60 transition-colors font-cyber">ÜBER UNS</a></Link>
             <span className="font-cyber">POWERED BY NEXUS ENGINE v2.0</span>
           </div>
         </div>

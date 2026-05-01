@@ -11,6 +11,7 @@ const CoinsPage = lazy(() => import('./pages/CoinsPage'));
 const ImpressumPage = lazy(() => import('./pages/ImpressumPage'));
 const DatenschutzPage = lazy(() => import('./pages/DatenschutzPage'));
 const AGBPage = lazy(() => import('./pages/AGBPage'));
+const AboutTeamPage = lazy(() => import('./pages/AboutTeamPage'));
 const NexusIntro = lazy(() => import('./components/ZyztmIntro'));
 const GuidePage = lazy(() => import('./pages/GuidePage'));
 const HubPage = lazy(() => import('./pages/HubPage'));
@@ -93,6 +94,7 @@ export default function App() {
           <Route path="/impressum" component={ImpressumPage} />
           <Route path="/datenschutz" component={DatenschutzPage} />
           <Route path="/agb" component={AGBPage} />
+          <Route path="/ueber-uns/team" component={AboutTeamPage} />
           {/* Digital Products Shop */}
           <Route path="/shop" component={ShopPage} />
           <Route path="/shop/:slug" component={ProductDetailPage} />
