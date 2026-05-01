@@ -112,7 +112,7 @@ export default function App() {
           />
           <Route path="/tools/loadout-optimizer" component={LoadoutOptimizerPage} />
           <Route path="/tools/stats-dashboard" component={StatsDashboardPage} />
-          <Route path="/tools/drop-locations" component={DropLocationsPage} />
+          <Route path="/tools/drop-location-analyzer" component={DropLocationsPage} />
           <Route path="/tools/build-trainer" component={BuildTrainerPage} />
           <Route path="/tools/meta-predictor" component={MetaPredictorPage} />
           <Route path="/tools/keybind-optimizer" component={KeybindOptimizerPage} />
