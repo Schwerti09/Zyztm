@@ -16,7 +16,7 @@ const COLORS = ['#ff6b00', '#8b5cf6', '#10b981', '#f97316'];
 
 export default function StatsDashboardPro() {
   const { user } = useNexusStore();
-  const { currentPlayerProfile, fetchPlayerStats, addToSearchHistory } = useStatsStore();
+  const { currentPlayerProfile, fetchPlayerStats, addToSearchHistory, error } = useStatsStore();
   
   const [usernameInput, setUsernameInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
@@ -52,7 +52,12 @@ export default function StatsDashboardPro() {
       <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-zinc-950 to-black p-6">
         <div className="glass rounded-3xl p-12 max-w-md text-center bg-black/50 backdrop-blur-sm">
           <h2 className="text-3xl font-bold mb-4">Keine Stats gefunden</h2>
-          <p className="text-zinc-400 mb-8">Gib deinen Epic-Username ein, um echte Stats zu laden.</p>
+          <p className="text-zinc-400 mb-4">Gib deinen Epic-Username ein, um echte Stats zu laden.</p>
+          {error && (
+            <div className="mb-6 p-4 bg-red-500/10 border border-red-500/30 rounded-xl">
+              <p className="text-red-400 text-sm">{error}</p>
+            </div>
+          )}
           <input
             type="text"
             placeholder="Dein Epic Username"
@@ -69,6 +74,9 @@ export default function StatsDashboardPro() {
           >
             Stats laden
           </button>
+          <p className="text-xs text-zinc-500 mt-4">
+            API: fortnite-api.com • Echte Spieler-Stats
+          </p>
         </div>
       </div>
     );
