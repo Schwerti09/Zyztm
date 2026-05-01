@@ -223,6 +223,17 @@ export interface FlexCardData {
   backgroundVariant?: 'default' | 'neon' | 'dark';
 }
 
+// Build Trainer
+export interface DrillSession {
+  drillType: string;
+  duration: number;
+  difficulty: number;
+  score: number;
+  improvementAreas: string[];
+  recommendedNextDrill: string;
+  completedAt?: Date;
+}
+
 // Global App State
 export interface NexusAppState {
   currentSeason: string;
