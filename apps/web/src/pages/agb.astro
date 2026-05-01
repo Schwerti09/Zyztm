@@ -1,0 +1,225 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { SITE } from '../config';
+
+const title = 'AGB — Fortnite Nexus';
+const description = 'Allgemeine Geschäftsbedingungen für Fortnite Nexus. Nutzungsbedingungen, Haftungsausschluss und Rechte an Inhalten.';
+const url = `${SITE.url}/agb`;
+
+// Schema.org Markup
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "Allgemeine Geschäftsbedingungen",
+  "url": url,
+  "description": description,
+  "publisher": {
+    "@type": "Organization",
+    "name": "Fortnite Nexus",
+    "email": "legal@fortnitenexus.space"
+  }
+};
+---
+
+<Layout title={title} description={description} canonical={url}>
+  <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+  
+  <main class="min-h-screen bg-gradient-to-b from-slate-900 via-slate-800 to-slate-900 text-white">
+    <!-- Hero Section -->
+    <section class="relative overflow-hidden py-20 px-4">
+      <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-purple-500/20 via-slate-900/50 to-slate-900/50"></div>
+      
+      <div class="relative max-w-4xl mx-auto">
+        <h1 class="text-5xl font-black text-center mb-4 bg-gradient-to-r from-purple-500 to-pink-500 bg-clip-text text-transparent">
+          AGB
+        </h1>
+        <p class="text-center text-slate-400 text-lg">
+          Allgemeine Geschäftsbedingungen
+        </p>
+      </div>
+    </section>
+
+    <!-- Content Section -->
+    <section class="max-w-4xl mx-auto px-4 py-12">
+      <div class="bg-slate-800/50 backdrop-blur-sm rounded-2xl p-8 border border-slate-700/50 shadow-2xl">
+        
+        <!-- Geltungsbereich -->
+        <div class="mb-12">
+          <h2 class="text-2xl font-bold mb-4">1. Geltungsbereich</h2>
+          <p class="text-slate-300 leading-relaxed">
+            Diese Allgemeinen Geschäftsbedingungen (AGB) gelten für die Nutzung der Website "Fortnite Nexus" und alle damit verbundenen Dienste. Mit der Nutzung unserer Website erklären Sie sich mit diesen AGB einverstanden.
+          </p>
+          <p class="text-slate-300 leading-relaxed mt-4">
+            Fortnite Nexus ist eine deutsche Fortnite-Community-Website, die Informationen, Tools und Inhalte rund um das Spiel Fortnite bietet. Wir sind nicht offiziell mit Epic Games verbunden.
+          </p>
+        </div>
+
+        <!-- Gegenstand der Website -->
+        <div class="mb-12">
+          <h2 class="text-2xl font-bold mb-4">2. Gegenstand der Website</h2>
+          <p class="text-slate-300 leading-relaxed">
+            Fortnite Nexus bietet folgende Dienste an:
+          </p>
+          <ul class="list-disc list-inside text-slate-300 mt-4 space-y-2">
+            <li>Item Shop Informationen und Historie</li>
+            <li>Pro-Player Settings und Loadouts</li>
+            <li>Waffen-Datenbank und Statistiken</li>
+            <li>Sensitivity Converter und andere Tools</li>
+            <li>Community-Features (Discord Bot, Newsletter, etc.)</li>
+            <li>News, Guides und Meta-Updates</li>
+          </ul>
+        </div>
+
+        <!-- Registrierung und Nutzerkonto -->
+        <div class="mb-12">
+          <h2 class="text-2xl font-bold mb-4">3. Registrierung und Nutzerkonto</h2>
+          <p class="text-slate-300 leading-relaxed">
+            Die Nutzung bestimmter Funktionen unserer Website erfordert eine Registrierung. Bei der Registrierung geben Sie wahrheitsgemäße und vollständige Angaben an.
+          </p>
+          <p class="text-slate-300 leading-relaxed mt-4">
+            Sie sind verpflichtet, Ihre Zugangsdaten geheim zu halten und nicht an Dritte weiterzugeben. Sie haften für alle Handlungen, die unter Ihrem Konto erfolgen.
+          </p>
+          <p class="text-slate-300 leading-relaxed mt-4">
+            Wir behalten uns das Recht vor, Konten bei Verstößen gegen diese AGB zu sperren oder zu löschen.
+          </p>
+        </div>
+
+        <!-- Nutzungsrechte -->
+        <div class="mb-12">
+          <h2 class="text-2xl font-bold mb-4">4. Nutzungsrechte</h2>
+          <p class="text-slate-300 leading-relaxed">
+            Wir gewähren Ihnen eine nicht-exklusive, nicht übertragbare Lizenz zur Nutzung der Website und der darin enthaltenen Inhalte für persönliche, nicht-kommerzielle Zwecke.
+          </p>
+          <p class="text-slate-300 leading-relaxed mt-4">
+            Folgende Handlungen sind ohne unsere ausdrückliche schriftliche Zustimmung nicht gestattet:
+          </p>
+          <ul class="list-disc list-inside text-slate-300 mt-4 space-y-2">
+            <li>Vervielfältigung, Verbreitung oder öffentliche Wiedergabe von Inhalten</li>
+            <li>Kommerzielle Nutzung von Daten oder Tools</li>
+            <li>Scraping, Crawling oder automatisierte Datenerfassung</li>
+            <li>Reverse Engineering der Website oder Tools</li>
+          </ul>
+        </div>
+
+        <!-- Inhalte der Nutzer -->
+        <div class="mb-12">
+          <h2 class="text-2xl font-bold mb-4">5. Inhalte der Nutzer</h2>
+          <p class="text-slate-300 leading-relaxed">
+            Wenn Sie Inhalte auf unserer Website veröffentlichen (z. B. Kommentare, Forenbeiträge), garantieren Sie, dass Sie über alle erforderlichen Rechte verfügen und keine Rechte Dritter verletzen.
+          </p>
+          <p class="text-slate-300 leading-relaxed mt-4">
+            Sie erklären sich damit einverstanden, dass wir Ihre Inhalte auf unserer Website und in unseren Marketingmaterialien nutzen dürfen.
+          </p>
+          <p class="text-slate-300 leading-relaxed mt-4">
+            Wir behalten uns das Recht vor, Inhalte zu entfernen, die gegen diese AGB verstoßen oder rechtswidrig sind.
+          </p>
+        </div>
+
+        <!-- Haftungsausschluss -->
+        <div class="mb-12">
+          <h2 class="text-2xl font-bold mb-4">6. Haftungsausschluss</h2>
+          <p class="text-slate-300 leading-relaxed">
+            Fortnite Nexus ist nicht offiziell mit Epic Games verbunden. Alle Inhalte werden "wie besehen" ohne Gewähr für Vollständigkeit, Richtigkeit oder Aktualität bereitgestellt.
+          </p>
+          <p class="text-slate-300 leading-relaxed mt-4">
+            Wir übernehmen keine Haftung für:
+          </p>
+          <ul class="list-disc list-inside text-slate-300 mt-4 space-y-2">
+            <li>Fehler oder Ungenauigkeiten in den bereitgestellten Informationen</li>
+            <li>Schäden, die durch die Nutzung unserer Website entstehen</li>
+            <li>Verfügbarkeit oder Funktionalität externer Links</li>
+            <li>Inhalte von Drittanbietern (z. B. Epic Games API)</li>
+          </ul>
+        </div>
+
+        <!-- Affiliate Links und Support-A-Creator -->
+        <div class="mb-12">
+          <h2 class="text-2xl font-bold mb-4">7. Affiliate Links und Support-A-Creator</h2>
+          <p class="text-slate-300 leading-relaxed">
+            Unsere Website enthält Affiliate-Links und den Support-A-Creator Code "ZYZTM". Wenn Sie über diese Links Einkäufe tätigen oder den Creator-Code verwenden, erhalten wir eine Provision.
+          </p>
+          <p class="text-slate-300 leading-relaxed mt-4">
+            Dies hat keine Auswirkungen auf den Preis für Sie. Die Provision hilft uns, die Website kostenlos zu halten.
+          </p>
+          <p class="text-slate-300 leading-relaxed mt-4">
+            Alle Affiliate-Links sind gemäß FTC-Richtlinien gekennzeichnet.
+          </p>
+        </div>
+
+        <!-- Urheberrecht -->
+        <div class="mb-12">
+          <h2 class="text-2xl font-bold mb-4">8. Urheberrecht</h2>
+          <p class="text-slate-300 leading-relaxed">
+            Alle Inhalte auf Fortnite Nexus, sofern nicht anders angegeben, sind urheberrechtlich geschützt. Das Layout, das Design und die Programmierung der Website sind Eigentum von Fortnite Nexus.
+          </p>
+          <p class="text-slate-300 leading-relaxed mt-4">
+            Fortnite ist eine eingetragene Marke von Epic Games, Inc. Alle Rechte vorbehalten. Fortnite Nexus steht in keiner Verbindung zu Epic Games.
+          </p>
+        </div>
+
+        <!-- Änderungen der AGB -->
+        <div class="mb-12">
+          <h2 class="text-2xl font-bold mb-4">9. Änderungen der AGB</h2>
+          <p class="text-slate-300 leading-relaxed">
+            Wir behalten uns das Recht vor, diese AGB jederzeit zu ändern. Die geänderten AGB treten mit Veröffentlichung auf unserer Website in Kraft.
+          </p>
+          <p class="text-slate-300 leading-relaxed mt-4">
+            Wir empfehlen Ihnen, diese AGB regelmäßig zu überprüfen. Die fortgesetzte Nutzung der Website nach Änderungen gilt als Zustimmung zu den geänderten Bedingungen.
+          </p>
+        </div>
+
+        <!-- Salvatorische Klausel -->
+        <div class="mb-12">
+          <h2 class="text-2xl font-bold mb-4">10. Salvatorische Klausel</h2>
+          <p class="text-slate-300 leading-relaxed">
+            Sollte eine Bestimmung dieser AGB unwirksam sein oder werden, bleibt die Wirksamkeit der übrigen Bestimmungen unberührt. Die unwirksame Bestimmung wird durch eine wirksame ersetzt, die dem wirtschaftlichen Zweck am nächsten kommt.
+          </p>
+        </div>
+
+        <!-- Gerichtsstand -->
+        <div class="mb-12">
+          <h2 class="text-2xl font-bold mb-4">11. Gerichtsstand und anwendbares Recht</h2>
+          <p class="text-slate-300 leading-relaxed">
+            Es gilt das Recht der Bundesrepublik Deutschland. Gerichtsstand ist Dornum, soweit gesetzlich zulässig.
+          </p>
+        </div>
+
+        <!-- Kontakt -->
+        <div>
+          <h2 class="text-2xl font-bold mb-4">12. Kontakt</h2>
+          <p class="text-slate-300 leading-relaxed">
+            Bei Fragen zu diesen AGB wenden Sie sich bitte an:
+          </p>
+          <div class="mt-4 space-y-2 text-slate-300">
+            <p>
+              <span class="text-slate-400">E-Mail:</span>{' '}
+              <a href="mailto:legal@fortnitenexus.space" class="text-cyan-400 hover:text-cyan-300 transition-colors">
+                legal@fortnitenexus.space
+              </a>
+            </p>
+            <p>
+              <span class="text-slate-400">Adresse:</span><br>
+              Fortnite Nexus<br>
+              Barklandsweg 1<br>
+              26553 Dornum<br>
+              Germany
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="max-w-4xl mx-auto px-4 py-8 text-center text-slate-400 text-sm">
+      <p>
+        Stand: {new Date().toLocaleDateString('de-DE', { day: '2-digit', month: '2-digit', year: 'numeric' })}
+      </p>
+      <div class="mt-4 flex justify-center gap-6">
+        <a href="/impressum" class="hover:text-white transition-colors">Impressum</a>
+        <a href="/datenschutz" class="hover:text-white transition-colors">Datenschutz</a>
+        <a href="/ueber-uns/team" class="hover:text-white transition-colors">Über Uns</a>
+      </div>
+    </footer>
+  </main>
+</Layout>

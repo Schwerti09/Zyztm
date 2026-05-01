@@ -1,0 +1,227 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { SITE } from '../config';
+
+const title = 'Datenschutz — Fortnite Nexus';
+const description = 'Datenschutzerklärung für Fortnite Nexus. Informationen zur Datenerhebung, -verarbeitung und -nutzung gemäß DSGVO (GDPR). Kontakt: legal@fortnitenexus.space';
+const url = `${SITE.url}/datenschutz`;
+
+// Schema.org Markup
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "Datenschutzerklärung",
+  "url": url,
+  "description": description,
+  "publisher": {
+    "@type": "Organization",
+    "name": "Fortnite Nexus",
+    "email": "legal@fortnitenexus.space"
+  }
+};
+---
+
+<Layout title={title} description={description} canonical={url}>
+  <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+  
+  <main class="min-h-screen bg-gradient-to-b from-slate-900 via-slate-800 to-slate-900 text-white">
+    <!-- Hero Section -->
+    <section class="relative overflow-hidden py-20 px-4">
+      <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-cyan-500/20 via-slate-900/50 to-slate-900/50"></div>
+      
+      <div class="relative max-w-4xl mx-auto">
+        <h1 class="text-5xl font-black text-center mb-4 bg-gradient-to-r from-cyan-500 to-pink-500 bg-clip-text text-transparent">
+          Datenschutz
+        </h1>
+        <p class="text-center text-slate-400 text-lg">
+          Datenschutzerklärung gemäß DSGVO (GDPR)
+        </p>
+      </div>
+    </section>
+
+    <!-- Content Section -->
+    <section class="max-w-4xl mx-auto px-4 py-12">
+      <div class="bg-slate-800/50 backdrop-blur-sm rounded-2xl p-8 border border-slate-700/50 shadow-2xl">
+        
+        <!-- Einleitung -->
+        <div class="mb-12">
+          <h2 class="text-2xl font-bold mb-4">Einleitung</h2>
+          <p class="text-slate-300 leading-relaxed">
+            Wir nehmen den Schutz Ihrer persönlichen Daten sehr ernst. Wir behandeln Ihre personenbezogenen Daten vertraulich und entsprechend der gesetzlichen Datenschutzvorschriften sowie dieser Datenschutzerklärung.
+          </p>
+          <p class="text-slate-300 leading-relaxed mt-4">
+            Die Nutzung unserer Webseite ist in der Regel ohne Angabe personenbezogener Daten möglich. Soweit auf unseren Seiten personenbezogene Daten (beispielsweise Name, Anschrift oder E-Mail-Adressen) erhoben werden, erfolgt dies stets auf freiwilliger Basis. Diese Daten werden ohne Ihre ausdrückliche Zustimmung nicht an Dritte weitergegeben.
+          </p>
+          <p class="text-slate-300 leading-relaxed mt-4">
+            Wir weisen darauf hin, dass die Datenübertragung im Internet (z. B. bei der Kommunikation per E-Mail) Sicherheitslücken aufweisen kann. Ein lückenloser Schutz der Daten vor dem Zugriff durch Dritte ist nicht möglich.
+          </p>
+        </div>
+
+        <!-- Server-Log-Files -->
+        <div class="mb-12">
+          <h2 class="text-2xl font-bold mb-4">Server-Log-Files</h2>
+          <p class="text-slate-300 leading-relaxed">
+            Der Webhoster erhebt und speichert Informationen, die Ihr Browser automatisch an uns übermittelt. Dies sind:
+          </p>
+          <ul class="list-disc list-inside text-slate-300 mt-4 space-y-2">
+            <li>Browsertyp und Browserversion</li>
+            <li>Verwendetes Betriebssystem</li>
+            <li>Referrer URL</li>
+            <li>Hostname des zugreifenden Rechners</li>
+            <li>Uhrzeit der Serveranfrage</li>
+          </ul>
+          <p class="text-slate-300 leading-relaxed mt-4">
+            Diese Daten werden nicht mit personenbezogenen Daten zusammengeführt. Die Daten werden ausschließlich zu statistischen Zwecken und zur Verbesserung der Website-Nutzung analysiert.
+          </p>
+        </div>
+
+        <!-- Cookies -->
+        <div class="mb-12">
+          <h2 class="text-2xl font-bold mb-4">Cookies</h2>
+          <p class="text-slate-300 leading-relaxed">
+            Unsere Webseite verwendet Cookies. Cookies sind kleine Textdateien, die auf Ihrem Endgerät gespeichert werden. Sie dienen dazu, unsere Webseite nutzerfreundlicher, effektiver und sicherer zu machen.
+          </p>
+          <p class="text-slate-300 leading-relaxed mt-4">
+            <strong>Essenzielle Cookies:</strong> Diese Cookies sind für den Betrieb der Website unbedingt erforderlich. Sie ermöglichen grundlegende Funktionen wie Navigation, Warenkorb und Cookie-Consent.
+          </p>
+          <p class="text-slate-300 leading-relaxed mt-4">
+            <strong>Analytics-Cookies:</strong> Diese Cookies helfen uns zu verstehen, wie Besucher unsere Website nutzen. Sie werden nur mit Ihrer ausdrücklichen Zustimmung gesetzt.
+          </p>
+          <p class="text-slate-300 leading-relaxed mt-4">
+            Sie können Cookies jederzeit über die Browsereinstellungen deaktivieren oder löschen. Bitte beachten Sie, dass dies die Funktionalität der Website beeinträchtigen kann.
+          </p>
+        </div>
+
+        <!-- Kontaktformular -->
+        <div class="mb-12">
+          <h2 class="text-2xl font-bold mb-4">Kontaktformular</h2>
+          <p class="text-slate-300 leading-relaxed">
+            Wenn Sie uns per Kontaktformular Anfragen zukommen lassen, werden Ihre Angaben aus dem Anfrageformular inklusive der von Ihnen dort angegebenen Kontaktdaten zwecks Bearbeitung der Anfrage und für den Fall von Anschlussfragen bei uns gespeichert. Diese Daten geben wir nicht ohne Ihre Einwilligung weiter.
+          </p>
+          <p class="text-slate-300 leading-relaxed mt-4">
+            Die Verarbeitung der Daten erfolgt auf Grundlage von Art. 6 Abs. 1 lit. b DSGVO, sofern Ihre Anfrage mit der Erfüllung eines Vertrags zusammenhängt oder zur Durchführung vorvertraglicher Maßnahmen erforderlich ist. In allen übrigen Fällen beruht die Verarbeitung auf Ihrer Einwilligung (Art. 6 Abs. 1 lit. a DSGVO) oder auf unseren berechtigten Interessen (Art. 6 Abs. 1 lit. f DSGVO).
+          </p>
+        </div>
+
+        <!-- Newsletter -->
+        <div class="mb-12">
+          <h2 class="text-2xl font-bold mb-4">Newsletter</h2>
+          <p class="text-slate-300 leading-relaxed">
+            Wenn Sie den auf der Webseite angebotenen Newsletter beziehen möchten, benötigen wir von Ihnen eine E-Mail-Adresse sowie Informationen, die uns die Überprüfung ermöglichen, dass Sie der Inhaber der angegebenen E-Mail-Adresse sind und mit dem Empfang des Newsletters einverstanden sind.
+          </p>
+          <p class="text-slate-300 leading-relaxed mt-4">
+            Die Daten werden ausschließlich für den Versand des Newsletters verwendet. Sie können den Newsletter jederzeit abbestellen. Ihre Daten werden nach Abbestellung gelöscht, sofern keine gesetzlichen Aufbewahrungsfristen entgegenstehen.
+          </p>
+          <p class="text-slate-300 leading-relaxed mt-4">
+            Rechtsgrundlage für die Datenverarbeitung ist Art. 6 Abs. 1 lit. a DSGVO (Einwilligung).
+          </p>
+        </div>
+
+        <!-- Discord Bot -->
+        <div class="mb-12">
+          <h2 class="text-2xl font-bold mb-4">Discord Bot</h2>
+          <p class="text-slate-300 leading-relaxed">
+            Wenn Sie unseren Discord Bot nutzen, speichern wir Ihre Discord User-ID und ggf. von Ihnen angegebene Daten (z. B. Wishlist-Items). Diese Daten werden ausschließlich für den Betrieb des Bots verwendet.
+          </p>
+          <p class="text-slate-300 leading-relaxed mt-4">
+            Sie können die Löschung Ihrer Daten jederzeit durch Kontaktaufnahme unter <a href="mailto:legal@fortnitenexus.space" class="text-cyan-400 hover:text-cyan-300 transition-colors">legal@fortnitenexus.space</a> beantragen.
+          </p>
+          <p class="text-slate-300 leading-relaxed mt-4">
+            Rechtsgrundlage für die Datenverarbeitung ist Art. 6 Abs. 1 lit. b DSGVO (Vertragserfüllung) oder Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse).
+          </p>
+        </div>
+
+        <!-- Social Media -->
+        <div class="mb-12">
+          <h2 class="text-2xl font-bold mb-4">Social Media</h2>
+          <p class="text-slate-300 leading-relaxed">
+            Wir unterhalten Präsenzen auf Social-Media-Plattformen (Twitter, TikTok, Reddit), um mit unseren Kunden in Kontakt zu treten und sie über unsere Leistungen zu informieren. Beim Aufruf dieser Plattformen werden Daten an die jeweiligen Betreiber übermittelt.
+          </p>
+          <p class="text-slate-300 leading-relaxed mt-4">
+            Weitere Informationen zur Datenverarbeitung finden Sie in den Datenschutzrichtlinien der jeweiligen Plattformen.
+          </p>
+        </div>
+
+        <!-- SSL/TLS-Verschlüsselung -->
+        <div class="mb-12">
+          <h2 class="text-2xl font-bold mb-4">SSL- bzw. TLS-Verschlüsselung</h2>
+          <p class="text-slate-300 leading-relaxed">
+            Diese Seite nutzt aus Sicherheitsgründen und zum Schutz der Übertragung vertraulicher Inhalte eine SSL-bzw. TLS-Verschlüsselung. Sie erkennen eine verschlüsselte Verbindung an der "https://" Adresszeile Ihres Browsers und an dem Schloss-Symbol in der Browserleiste.
+          </p>
+        </div>
+
+        <!-- Betroffenenrechte -->
+        <div class="mb-12">
+          <h2 class="text-2xl font-bold mb-4">Ihre Betroffenenrechte</h2>
+          <p class="text-slate-300 leading-relaxed">
+            Sie haben das Recht, folgende Rechte gemäß Art. 15 DSGVO geltend zu machen:
+          </p>
+          <ul class="list-disc list-inside text-slate-300 mt-4 space-y-2">
+            <li>Recht auf Auskunft über Ihre verarbeiteten Daten</li>
+            <li>Recht auf Berichtigung falscher Daten</li>
+            <li>Recht auf Löschung Ihrer Daten (Recht auf Vergessenwerden)</li>
+            <li>Recht auf Einschränkung der Verarbeitung</li>
+            <li>Recht auf Datenübertragbarkeit</li>
+            <li>Recht auf Widerspruch gegen die Verarbeitung</li>
+            <li>Recht auf Widerruf Ihrer Einwilligung</li>
+          </ul>
+          <p class="text-slate-300 leading-relaxed mt-4">
+            Zur Geltendmachung dieser Rechte können Sie uns jederzeit unter <a href="mailto:legal@fortnitenexus.space" class="text-cyan-400 hover:text-cyan-300 transition-colors">legal@fortnitenexus.space</a> kontaktieren.
+          </p>
+        </div>
+
+        <!-- Beschwerderecht -->
+        <div class="mb-12">
+          <h2 class="text-2xl font-bold mb-4">Beschwerderecht bei einer Aufsichtsbehörde</h2>
+          <p class="text-slate-300 leading-relaxed">
+            Sie haben das Recht, sich bei einer Aufsichtsbehörde für den Datenschutz zu beschweren, wenn Sie der Meinung sind, dass die Verarbeitung Ihrer personenbezogenen Daten gegen die DSGVO verstößt.
+          </p>
+          <p class="text-slate-300 leading-relaxed mt-4">
+            Zuständige Aufsichtsbehörde ist:
+          </p>
+          <p class="text-slate-300 leading-relaxed mt-4">
+            Der Landesbeauftragte für den Datenschutz Niedersachsen<br>
+            Prinzenstraße 7<br>
+            30159 Hannover
+          </p>
+        </div>
+
+        <!-- Kontakt -->
+        <div>
+          <h2 class="text-2xl font-bold mb-4">Kontakt bei Datenschutzfragen</h2>
+          <p class="text-slate-300 leading-relaxed">
+            Bei Fragen zur Datenerhebung, -verarbeitung oder -nutzung wenden Sie sich bitte an:
+          </p>
+          <div class="mt-4 space-y-2 text-slate-300">
+            <p>
+              <span class="text-slate-400">E-Mail:</span>{' '}
+              <a href="mailto:legal@fortnitenexus.space" class="text-cyan-400 hover:text-cyan-300 transition-colors">
+                legal@fortnitenexus.space
+              </a>
+            </p>
+            <p>
+              <span class="text-slate-400">Adresse:</span><br>
+              Fortnite Nexus<br>
+              Barklandsweg 1<br>
+              26553 Dornum<br>
+              Germany
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="max-w-4xl mx-auto px-4 py-8 text-center text-slate-400 text-sm">
+      <p>
+        Stand: {new Date().toLocaleDateString('de-DE', { day: '2-digit', month: '2-digit', year: 'numeric' })}
+      </p>
+      <div class="mt-4 flex justify-center gap-6">
+        <a href="/impressum" class="hover:text-white transition-colors">Impressum</a>
+        <a href="/agb" class="hover:text-white transition-colors">AGB</a>
+        <a href="/ueber-uns/team" class="hover:text-white transition-colors">Über Uns</a>
+      </div>
+    </footer>
+  </main>
+</Layout>

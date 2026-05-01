@@ -1,0 +1,255 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { SITE } from '../../config';
+
+const title = 'Über Uns — Fortnite Nexus';
+const description = 'Über Fortnite Nexus und das Team. Founder & Full-Stack Developer: Rolf Schwertfechter. Wir bauen die beste deutsche Fortnite Community.';
+const url = `${SITE.url}/ueber-uns/team`;
+
+// Schema.org Markup für Organization
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Fortnite Nexus",
+  "url": SITE.url,
+  "logo": `${SITE.url}/og/og-default.png`,
+  "description": "Deutsche Fortnite Community mit Tools, Guides und Meta-Updates",
+  "founder": {
+    "@type": "Person",
+    "name": "Rolf Schwertfechter",
+    "jobTitle": "Founder & Full-Stack Developer",
+    "email": "legal@fortnitenexus.space"
+  },
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Barklandsweg 1",
+    "postalCode": "26553",
+    "addressLocality": "Dornum",
+    "addressCountry": "DE"
+  },
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "email": "legal@fortnitenexus.space",
+    "contactType": "customer service"
+  }
+};
+---
+
+<Layout title={title} description={description} canonical={url}>
+  <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+  
+  <main class="min-h-screen bg-gradient-to-b from-slate-900 via-slate-800 to-slate-900 text-white">
+    <!-- Hero Section -->
+    <section class="relative overflow-hidden py-20 px-4">
+      <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-pink-500/20 via-slate-900/50 to-slate-900/50"></div>
+      
+      <div class="relative max-w-4xl mx-auto text-center">
+        <h1 class="text-5xl font-black mb-4 bg-gradient-to-r from-pink-500 to-cyan-500 bg-clip-text text-transparent">
+          Über Fortnite Nexus
+        </h1>
+        <p class="text-slate-400 text-lg">
+          Die beste deutsche Fortnite Community
+        </p>
+      </div>
+    </section>
+
+    <!-- Mission Section -->
+    <section class="max-w-4xl mx-auto px-4 py-12">
+      <div class="bg-slate-800/50 backdrop-blur-sm rounded-2xl p-8 border border-slate-700/50 shadow-2xl">
+        <h2 class="text-3xl font-bold mb-6 text-center">Unsere Mission</h2>
+        <p class="text-slate-300 text-lg leading-relaxed text-center">
+          Fortnite Nexus wurde mit einem Ziel gegründet: Die deutsche Fortnite-Community mit den besten Tools, aktuellen Informationen und hilfreichen Guides zu unterstützen. Wir glauben, dass jeder Spieler Zugang zu professionellen Ressourcen haben sollte – kostenlos und werbefrei.
+        </p>
+      </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="max-w-4xl mx-auto px-4 py-12">
+      <h2 class="text-3xl font-bold mb-8 text-center">Team</h2>
+      
+      <div class="bg-slate-800/50 backdrop-blur-sm rounded-2xl p-8 border border-slate-700/50 shadow-2xl">
+        <!-- Team Member Card -->
+        <div class="flex flex-col md:flex-row gap-8 items-center">
+          <!-- Avatar Placeholder -->
+          <div class="w-48 h-48 bg-gradient-to-br from-pink-500 to-cyan-500 rounded-2xl flex items-center justify-center flex-shrink-0">
+            <span class="text-6xl font-black text-white">RS</span>
+          </div>
+          
+          <!-- Info -->
+          <div class="flex-1">
+            <h3 class="text-2xl font-bold mb-2">Rolf Schwertfechter</h3>
+            <p class="text-cyan-400 text-lg mb-4">Founder & Full-Stack Developer</p>
+            
+            <div class="space-y-3 text-slate-300">
+              <p>
+                <span class="text-slate-400">📍 Standort:</span> Dornum, Germany
+              </p>
+              <p>
+                <span class="text-slate-400">💼 Rolle:</span> Full-Stack Entwicklung, Produktmanagement, Community-Management
+              </p>
+              <p>
+                <span class="text-slate-400">🎮 Erfahrung:</span> Fortnite seit Chapter 1, Web-Entwicklung seit 2015
+              </p>
+              <p>
+                <span class="text-slate-400">📧 Kontakt:</span>{' '}
+                <a href="mailto:legal@fortnitenexus.space" class="text-cyan-400 hover:text-cyan-300 transition-colors">
+                  legal@fortnitenexus.space
+                </a>
+              </p>
+            </div>
+            
+            <div class="mt-6">
+              <p class="text-slate-300 leading-relaxed">
+                "Ich habe Fortnite Nexus gebaut, weil ich frustriert war, dass es keine gute deutsche Ressource für Fortnite gab. Heute ist Fortnite Nexus eine der größten deutschen Fortnite-Communities mit tausenden Nutzern."
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Values Section -->
+    <section class="max-w-4xl mx-auto px-4 py-12">
+      <h2 class="text-3xl font-bold mb-8 text-center">Unsere Werte</h2>
+      
+      <div class="grid md:grid-cols-3 gap-6">
+        <!-- Value 1 -->
+        <div class="bg-slate-800/50 backdrop-blur-sm rounded-xl p-6 border border-slate-700/50">
+          <div class="w-12 h-12 bg-pink-500/20 rounded-lg flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-pink-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold mb-2">Qualität</h3>
+          <p class="text-slate-300">
+            Wir liefern präzise, aktuelle und verlässliche Informationen. Jeder Guide und jedes Tool wird sorgfältig geprüft.
+          </p>
+        </div>
+
+        <!-- Value 2 -->
+        <div class="bg-slate-800/50 backdrop-blur-sm rounded-xl p-6 border border-slate-700/50">
+          <div class="w-12 h-12 bg-cyan-500/20 rounded-lg flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-cyan-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold mb-2">Community</h3>
+          <p class="text-slate-300">
+            Fortnite Nexus ist von der Community, für die Community. Wir hören auf Feedback und verbessern uns ständig.
+          </p>
+        </div>
+
+        <!-- Value 3 -->
+        <div class="bg-slate-800/50 backdrop-blur-sm rounded-xl p-6 border border-slate-700/50">
+          <div class="w-12 h-12 bg-purple-500/20 rounded-lg flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-purple-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold mb-2">Innovation</h3>
+          <p class="text-slate-300">
+            Wir nutzen die neuesten Technologien und Trends, um die beste User Experience zu bieten.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="max-w-4xl mx-auto px-4 py-12">
+      <div class="bg-slate-800/50 backdrop-blur-sm rounded-2xl p-8 border border-slate-700/50 shadow-2xl">
+        <h2 class="text-3xl font-bold mb-8 text-center">Unsere Zahlen</h2>
+        
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+          <div>
+            <div class="text-4xl font-black text-pink-500 mb-2">10k+</div>
+            <div class="text-slate-300">Monatliche Besucher</div>
+          </div>
+          <div>
+            <div class="text-4xl font-black text-cyan-500 mb-2">50+</div>
+            <div class="text-slate-300">Tools & Guides</div>
+          </div>
+          <div>
+            <div class="text-4xl font-black text-purple-500 mb-2">1.5k+</div>
+            <div class="text-slate-300">Newsletter-Abonnenten</div>
+          </div>
+          <div>
+            <div class="text-4xl font-black text-green-500 mb-2">2024</div>
+            <div class="text-slate-300">Gegründet</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Technology Stack Section -->
+    <section class="max-w-4xl mx-auto px-4 py-12">
+      <div class="bg-slate-800/50 backdrop-blur-sm rounded-2xl p-8 border border-slate-700/50 shadow-2xl">
+        <h2 class="text-3xl font-bold mb-6 text-center">Technologie-Stack</h2>
+        
+        <div class="grid md:grid-cols-2 gap-6">
+          <div>
+            <h3 class="text-lg font-bold mb-3 text-pink-400">Frontend</h3>
+            <ul class="space-y-2 text-slate-300">
+              <li>• Astro (Framework)</li>
+              <li>• React (Komponenten)</li>
+              <li>• Tailwind CSS (Styling)</li>
+              <li>• TypeScript (Typsicherheit)</li>
+            </ul>
+          </div>
+          
+          <div>
+            <h3 class="text-lg font-bold mb-3 text-cyan-400">Backend & Infrastruktur</h3>
+            <ul class="space-y-2 text-slate-300">
+              <li>• Neon Serverless Postgres (Database)</li>
+              <li>• Netlify (Hosting & Functions)</li>
+              <li>• GitHub Actions (CI/CD)</li>
+              <li>• Railway (Discord Bot Hosting)</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="max-w-4xl mx-auto px-4 py-12">
+      <div class="bg-gradient-to-r from-pink-500/10 to-cyan-500/10 rounded-2xl p-8 border border-slate-700/50">
+        <h2 class="text-3xl font-bold mb-6 text-center">Kontaktieren Sie Uns</h2>
+        <p class="text-slate-300 text-center mb-8">
+          Haben Sie Fragen, Feedback oder möchten Sie mit uns zusammenarbeiten? Wir freuen uns auf Ihre Nachricht!
+        </p>
+        
+        <div class="text-center">
+          <a href="mailto:legal@fortnitenexus.space" class="inline-block bg-gradient-to-r from-pink-500 to-cyan-500 text-white font-bold px-8 py-4 rounded-xl hover:opacity-90 transition-opacity">
+            E-Mail senden
+          </a>
+        </div>
+        
+        <div class="mt-8 text-center text-slate-400">
+          <p>Oder finden Sie uns auf:</p>
+          <div class="mt-4 flex justify-center gap-6">
+            <a href="https://twitter.com/fortnitenexus" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors">
+              Twitter
+            </a>
+            <a href="https://discord.gg/fortnitenexus" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors">
+              Discord
+            </a>
+            <a href="https://reddit.com/r/fortnitenexus" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors">
+              Reddit
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="max-w-4xl mx-auto px-4 py-8 text-center text-slate-400 text-sm">
+      <p>
+        © {new Date().getFullYear()} Fortnite Nexus. Alle Rechte vorbehalten.
+      </p>
+      <div class="mt-4 flex justify-center gap-6">
+        <a href="/impressum" class="hover:text-white transition-colors">Impressum</a>
+        <a href="/datenschutz" class="hover:text-white transition-colors">Datenschutz</a>
+        <a href="/agb" class="hover:text-white transition-colors">AGB</a>
+      </div>
+    </footer>
+  </main>
+</Layout>
