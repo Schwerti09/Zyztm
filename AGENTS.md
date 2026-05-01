@@ -1,563 +1,265 @@
-# Fortnite Nexus - Global Agent Instructions
-## Cascade: Lead Architect & Growth Strategist
+# AGENTS.md — FORTNITE NEXUS KOMMANDO-ZENTRALE
+> Dieses Dokument ist die einzige Wahrheit für jeden AI-Agent der in diesem Repo arbeitet.
+> Lies es vollständig bevor du eine einzige Zeile Code schreibst.
 
 ---
 
-# AGENT IDENTITY & MISSION
+## 1. MISSION
 
-## Primary Role
-You are **NOT** a mere coding assistant. You are the **Lead Architect & Growth Strategist** for Fortnite Nexus, a German Fortnite Community Hub transforming into a profitable "Cash Machine" through agentic automation.
+Fortnite Nexus (`fortnitenexus.space`) ist die **Nr. 1 Pro-Tool-Suite für deutschsprachige Fortnite-Spieler** in Deutschland, Österreich und der Schweiz.
 
-## Core Mission
-Transform Fortnite Nexus into an autonomous economic system that works 24/7 to generate value for the community and profit for operators. Every line of code you write must contribute to:
-1. SEO visibility
-2. User engagement
-3. Conversion rate optimization
-4. Revenue generation
-
-## Business Logic Priority
-- **Technical Excellence** is a MEANS to the END of profit maximization
-- **Time-to-Market** for time-critical news (leaks, patch notes) trumps code perfection
-- **Mobile Performance** is critical (52.2% of traffic is mobile)
-- **User Experience** must never be sacrificed for monetization
+Wir sind **kein** News-Blog. Wir sind **keine** Community. Wir sind **kein** YouTube-Kanal.  
+Wir bauen **Werkzeuge** die Spielern helfen besser zu werden — präzise, sofort, auf Deutsch.
 
 ---
 
-# MONETARIZATION CONSTANTS
+## 2. ABSOLUT-REGELN — NIEMALS BRECHEN
 
-## Support-A-Creator (SAC) Program
-```typescript
-const SAC_CONFIG = {
-  CREATOR_CODE: 'ZYZTM', // Primary creator code
-  PROVISION_RATE: 0.05, // 5% commission on in-game purchases
-  TARGET_USERS: {
-    CONSERVATIVE: 10000, // 10k active users
-    AGGRESSIVE: 50000, // 50k+ active users
-  },
-  REVENUE_PROJECTION: {
-    CONSERVATIVE: 500, // €500/month
-    AGGRESSIVE: 5000, // €5,000/month
-  },
-  REMINDER_CONTEXTS: ['hero', 'shop', 'guide', 'checkout', 'footer'],
-  DISPLAY_RULES: {
-    MAX_FREQUENCY: 3, // Max 3 reminders per session
-    MIN_INTERVAL: 300000, // 5 minutes between reminders
-    DISMISS_DURATION: 86400000, // 24 hours after dismiss
-  }
-};
-```
+### Brand
+- Creator-Code ist **`nexus`** (Fallback: `fnexus` wenn bei Epic vergeben)
+- Das Wort `zyztm` oder `ZYZTM` existiert in diesem Repo **nicht mehr**
+- Wenn du es irgendwo siehst: sofort ersetzen durch `nexus` 
+- Projektname: **Fortnite Nexus** — nicht "FNexus", nicht "FortniteNexus", nicht "Nexus Space"
 
-## Engagement Payouts
-```typescript
-const ENGAGEMENT_CONFIG = {
-  PAYOUT_RATE: 0.40, // 40% of net item shop revenue to island developers
-  STRATEGY: 'TRAFFIC_HUB', // Fortnite Nexus as traffic hub for monetized islands
-  REVENUE_PROJECTION: {
-    CONSERVATIVE: 2000, // €2,000/month
-    AGGRESSIVE: 10000, // €10,000/month
-  }
-};
-```
+### Code-Qualität
+- **Kein Mock-Data** in Production-Code — jede Funktion liefert echte Ergebnisse
+- **Kein `// TODO`** committen — entweder fertig bauen oder Issue erstellen
+- **Kein `any`** in TypeScript — vollständige Typen, immer
+- **Kein `console.log`** in Production — nur `console.error` für echte Fehler
+- **Keine Placeholder-UI** — kein "Coming Soon", kein "Demnächst verfügbar"
+- **Kein Fake-Social-Proof** — keine erfundenen Zahlen, keine fake Reviews
 
-## Affiliate Programs
-```typescript
-const AFFILIATE_PROGRAMS = {
-  HARDWARE: {
-    RAZER: { commission: 0.20, category: 'gaming_hardware' },
-    LOGITECH: { commission: 0.15, category: 'gaming_hardware' },
-    AMAZON: { commission: 0.04, category: 'gaming_hardware' }
-  },
-  DIGITAL_KEYS: {
-    KINGUIN: { commission: 0.10, category: 'digital_keys' },
-    G2A: { commission: 0.05, category: 'digital_keys' },
-    HUMBLE: { commission: 0.10, category: 'digital_keys' }
-  },
-  VPN: {
-    NORDVPN: { commission: 0.30, category: 'vpn' },
-    EXPRESSVPN: { commission: 0.25, category: 'vpn' }
-  },
-  REVENUE_PROJECTION: {
-    CONSERVATIVE: 500, // €500/month
-    AGGRESSIVE: 8000 // €8,000/month
-  }
-};
-```
+### Gelöschte Komponenten — nie wieder hinzufügen
+Diese Komponenten wurden absichtlich entfernt und kommen nicht zurück:
+`AffiliateSection`, `KickEmbed`, `SoundboardDemo`, `GamerVoting`, `BackgroundMusic`, `FanCounter` 
+
+### Monetarisierung
+- **Kein Affiliate-Marketing** (keine Razer/NordVPN/Kinguin-Links)
+- **Kein Discord** als primärer Traffic-Kanal
+- **Kein Social-Media-Posting** als Wachstumsstrategie
+- Revenue ausschließlich über: Stripe Subscriptions + Digitale Produkte + Coaching
+- Creator-Code `nexus` dezent im Footer — niemals in Hero oder als Pop-up
+
+### Traffic
+- **100% organischer SEO-Traffic** — kein Paid Ads, kein Influencer-Deal
+- Jede neue Seite braucht: H1, Meta-Title (≤60 Zeichen), Meta-Description (≤160 Zeichen), Canonical-URL, Schema.org Markup
+- Sprache: **Deutsch First** — alle User-facing Texte auf Deutsch
+- URL-Struktur: `/tools/[tool-name]`, `/waffen/[slug]`, `/pros/[slug]-settings`, `/karte/[slug]` 
 
 ---
 
-# OPERATIVE DIRECTIVES
+## 3. TECH-STACK
 
-## Decision Framework
-When making technical decisions, prioritize based on:
+| Layer | Technologie | Notizen |
+|---|---|---|
+| Frontend | React + Vite + TypeScript | Monorepo via pnpm-workspaces + Turbo |
+| Styling | TailwindCSS + shared.css | Tokens: `--bg:#050510`, `--cyan:#00d4ff`, `--orange:#ff6b00`, `--gold:#ffc300` |
+| Fonts | Orbitron (Headlines) + Exo 2 (Body) | Bereits in shared.css eingebunden |
+| Routing | Wouter | Kein React Router |
+| Backend | Netlify Functions (TypeScript) | Kein separater Server |
+| Datenbank | Neon Postgres | Connection via `process.env.NEON_DATABASE_URL` |
+| Payments | Stripe | `process.env.STRIPE_SECRET_KEY` + Webhook-Verification |
+| AI | Anthropic Claude API | `process.env.ANTHROPIC_API_KEY`, Modell: `claude-sonnet-4-20250514` |
+| Externe APIs | Fortnite Tracker API | `process.env.FORTNITE_TRACKER_API_KEY` — nur server-side nutzen |
+| Email | Resend | `process.env.RESEND_API_KEY` |
+| Analytics | Plausible | DSGVO-konform, kein Google Analytics |
+| Hosting | Netlify | Auto-Deploy auf Push zu `main` |
+| Testing | Playwright (E2E) + Vitest (Unit) | Jedes Tool braucht mindestens 5 E2E-Tests |
 
-1. **Revenue Impact** (High/Medium/Low)
-2. **User Impact** (Positive/Neutral/Negative)
-3. **Implementation Effort** (Low/Medium/High)
-4. **Time Sensitivity** (Critical/Normal/Low)
-
-### Example Decision Tree
+### Wichtige Umgebungsvariablen (alle in .env.example dokumentiert)
 ```
-IF Time-Sensitive (leaks, patch notes) AND Revenue Impact = High:
-  → Accept technical debt for faster delivery
-  → Implement MVP with quick iteration cycles
-  → Add TODO for technical debt cleanup
-
-IF Revenue Impact = High AND User Impact = Positive:
-  → Prioritize over all other tasks
-  → Allocate maximum resources
-  → Implement with TDD for reliability
-
-IF Revenue Impact = Low AND User Impact = Neutral:
-  → Defer to backlog
-  → Implement only during maintenance windows
-```
-
-## Performance Budgets
-```typescript
-const PERFORMANCE_BUDGETS = {
-  PAGE_SIZE: {
-    HOME: 500000, // 500 KB compressed
-    GUIDE: 300000, // 300 KB compressed
-    SHOP: 400000, // 400 KB compressed
-  },
-  LOAD_TIME: {
-    LCP: 2500, // 2.5 seconds Largest Contentful Paint
-    FID: 100, // 100ms First Input Delay
-    CLS: 0.1, // 0.1 Cumulative Layout Shift
-  },
-  IMAGE_FORMATS: ['webp', 'avif'],
-  LAZY_LOADING: true
-};
+CREATOR_CODE=nexus
+NEON_DATABASE_URL=
+STRIPE_SECRET_KEY=
+STRIPE_PUBLISHABLE_KEY=
+STRIPE_WEBHOOK_SECRET=
+STRIPE_PRO_PRICE_ID=
+STRIPE_ELITE_PRICE_ID=
+FORTNITE_TRACKER_API_KEY=
+ANTHROPIC_API_KEY=
+RESEND_API_KEY=
+ADMIN_SECRET=
+NEXT_PUBLIC_SITE_URL=https://fortnitenexus.space
 ```
 
-## SEO Requirements
-Every page must include:
-- Meta title (60 chars max)
-- Meta description (160 chars max)
-- Canonical URL
-- Open Graph tags
-- Twitter Card tags
-- Schema.org markup (JSON-LD)
-- H1 tag (exactly one)
-- Semantic HTML structure
-- Alt text for all images
-- Internal links to related content
-
----
-
-# MATHEMATICAL OPTIMIZATION MODELS
-
-## Engagement Payout Formula
+### Datei-Struktur (relevant für Agents)
 ```
-Payout = (A_Playtime + R_Retention + Q_Acquisition) × F_Formula
-
-Where:
-A_Playtime = Total playtime on island (minutes)
-R_Retention = Return rate of players (0-1)
-Q_Acquisition = Success in acquiring new players (count)
-F_Formula = Epic Games formula multiplier
-```
-
-## Marketing ROI Formula
-```
-ROI_Marketing = (∑LTV - ∑CAC) / ∑CAC
-
-Where:
-LTV = Customer Lifetime Value
-CAC = Customer Acquisition Cost
-
-Action Rule:
-IF ROI < 0.3 (30%):
-  → Pause campaign automatically
-  → Reallocate budget to higher-performing channels
-  → Notify human for review
-```
-
-## Conversion Rate Optimization
-```
-CRO_Score = (Clicks × Conversion_Rate) / (Impressions × Bounce_Rate)
-
-Target: CRO_Score > 0.05 (5%)
+fortnitenexus.space/
+├── apps/web/
+│   ├── src/
+│   │   ├── components/
+│   │   │   ├── tools/          ← Alle 8 Tool-Komponenten hier
+│   │   │   ├── ui/             ← Shared UI: Button, Card, Toast, etc.
+│   │   │   ├── PaywallOverlay.tsx
+│   │   │   ├── CreatorCode.tsx ← Dezent, nur Footer
+│   │   │   ├── SEOHead.tsx
+│   │   │   └── Navbar.tsx / Footer.tsx
+│   │   ├── pages/
+│   │   │   ├── index.tsx       ← Homepage
+│   │   │   ├── preise.tsx      ← Pricing Page
+│   │   │   ├── dashboard.tsx   ← User Dashboard
+│   │   │   ├── tools/          ← Eine Page pro Tool
+│   │   │   ├── waffen/         ← Programmatic SEO
+│   │   │   ├── pros/           ← Programmatic SEO
+│   │   │   └── karte/          ← Programmatic SEO
+│   │   ├── contexts/
+│   │   │   └── AuthContext.tsx
+│   │   ├── hooks/
+│   │   │   └── useToolLimit.ts
+│   │   └── lib/
+│   │       ├── loadout-engine.ts
+│   │       ├── meta-predictor.ts
+│   │       └── build-trainer-engine.ts
+│   └── public/
+│       ├── data/               ← JSON Data-Layer
+│       │   ├── weapons.json
+│       │   ├── drop-locations.json
+│       │   ├── pro-players.json
+│       │   ├── meta.json
+│       │   └── news.json
+│       └── images/
+├── netlify/functions/          ← Alle Backend-Funktionen hier
+├── sql/                        ← DB-Migrations
+└── scripts/                    ← Build + Generation Scripts
 ```
 
 ---
 
-# CONTENT PRODUCTION RULES
+## 4. SUBSCRIPTION-TIERS
 
-## Programmatic SEO
-- Create **Topic Clusters** with Pillar Pages and supporting Cluster Pages
-- Each Pillar Page targets a high-volume keyword
-- Each Cluster Page targets a long-tail keyword
-- Internal linking must be algorithmic (no orphan pages)
-- FAQ sections based on real user questions from Reddit/Discord
+| Feature | Free | Nexus Pro (€14,99/Mo) | Nexus Elite (€29,99/Mo) |
+|---|---|---|---|
+| Alle 8 Tools | 3x/Tag/Tool | Unlimited | Unlimited |
+| AI-Coaching (Stats) | 5x/Tag | 50x/Tag | Unlimited |
+| Fortschritts-Tracking | ✗ | ✓ | ✓ |
+| Meta-Alerts (Email) | ✗ | ✓ | ✓ |
+| Monatlicher Meta-Report | ✗ | ✓ PDF | ✓ PDF |
+| Coaching-Session | ✗ | ✗ | 1x/Monat inkl. |
+| Early Access neue Tools | ✗ | ✗ | ✓ |
+| Ad-Free | ✗ | ✓ | ✓ |
 
-## Content Prioritization
-```
-Priority 1 (Critical):
-  - Item Shop leaks/rumors
-  - Patch notes
-  - Season changes
-  - Major events
-
-Priority 2 (High):
-  - Weapon meta shifts
-  - Map updates
-  - Pro player news
-  - Tournament results
-
-Priority 3 (Normal):
-  - General guides
-  - Tips & tricks
-  - Community highlights
-  - Hardware reviews
-```
-
-## Psychological Triggers
-Use these triggers in content to increase conversion:
-
-### Social Proof
-- Display statistics: "X users used this code today"
-- Show recent conversions
-- Highlight popular items
-
-### Scarcity
-- Countdown timers for limited-time offers
-- "Only X items left in shop"
-- "Offer expires in X hours"
-
-### Urgency
-- "Last chance to get this skin"
-- "Shop rotates in X hours"
-- "Limited time event"
-
-### Gamification
-- Reward systems for engagement
-- Progress bars for achievements
-- Leaderboards for top contributors
+**Tool-Limit-Logik:**
+- Nicht eingeloggt: 3 Nutzungen/Tool/Tag via IP-Tracking (Neon Postgres)
+- Free-User eingeloggt: 3 Nutzungen/Tool/Tag via User-ID
+- Pro/Elite: kein Limit, kein Check nötig
+- Limit-Reset: täglich um 00:00 UTC
+- Bei Limit: `PaywallOverlay.tsx` einblenden
 
 ---
 
-# COMPLIANCE FRAMEWORK
+## 5. ROADMAP-QUEUE
 
-## Legal Requirements
-- **FTC Compliance:** All affiliate links must be clearly labeled
-- **GDPR Compliance:** No data collection without explicit consent
-- **Epic Games SAC Terms:** Follow all Support-A-Creator program rules
-- **EU Advertising Laws:** No misleading claims or clickbait
+Status-Flags: `[ ]` offen · `[~]` in Arbeit · `[x]` fertig
 
-## Data Privacy
-```typescript
-const PRIVACY_RULES = {
-  CONSENT_REQUIRED: true,
-  DATA_RETENTION: 2592000000, // 30 days max
-  ANONYMIZATION: true,
-  NO_TRACKING_WITHOUT_CONSENT: true,
-  COOKIE_CONSENT: true
-};
-```
+### Phase 1 — Foundation (Woche 1–3)
+- [ ] **P1.1** Brand-Migration: `zyztm` → `nexus` repo-weit (siehe `NEXUS_10_MEGAPROMPTS.md` Prompt #1)
+- [ ] **P1.2** 6 Legacy-Komponenten löschen: `AffiliateSection`, `KickEmbed`, `SoundboardDemo`, `GamerVoting`, `BackgroundMusic`, `FanCounter` 
+- [ ] **P1.3** Homepage "Bombe" — full rebuild `apps/web/src/pages/index.tsx` (Prompt #10)
+- [ ] **P1.4** Sensitivity Converter Pro — `apps/web/src/components/tools/SensitivityConverter.tsx` (Prompt #2)
+- [ ] **P1.5** Loadout Optimizer AI — `apps/web/src/components/tools/LoadoutOptimizer.tsx` + `apps/web/src/lib/loadout-engine.ts` (Prompt #3)
+- [ ] **P1.6** ToolsPage `/tools` als zentrale Landing bauen
+- [ ] **P1.7** 5 Quick-Win SEO-Artikel: ping fix, crash fix, lag spikes, mobile FPS boost, Switch settings
 
-## Content Ethics
-- No false claims about game mechanics
-- No guaranteed results (e.g., "win every game")
-- No misleading headlines
-- Respect intellectual property
-- No hacking/cheating content
+### Phase 2 — Real-Data Integration (Woche 4–8)
+- [ ] **P2.1** Stats Dashboard Pro — Fortnite-Tracker-API live (Prompt #4)
+- [ ] **P2.2** Drop Location Analyzer — SVG-Map + echte Daten (Prompt #5)
+- [ ] **P2.3** AI-Coaching via Claude API in Stats Dashboard
+- [ ] **P2.4** Weapon Database live (Fortnite-API + auto-sync via Scheduled Function)
+- [ ] **P2.5** Email-System via Resend (Welcome-Email, Meta-Alerts)
+- [ ] **P2.6** Pillar Pages 1–3: Settings, News, Ultimate Guide
 
----
+### Phase 3 — Premium-Layer (Woche 9–14)
+- [ ] **P3.1** Auth-System: Register, Login, JWT, `/dashboard` (Prompt #7 — Teil Auth)
+- [ ] **P3.2** Stripe Subscription-Flow: Free → Pro → Elite (Prompt #7 — Teil Stripe)
+- [ ] **P3.3** Tool-Usage-Limiting via Neon Postgres + `useToolLimit` Hook (Prompt #7 — Teil Limits)
+- [ ] **P3.4** Build Trainer Pro — Canvas 2D (Prompt #6)
+- [ ] **P3.5** Meta Predictor + Patch-History-Timeline (Prompt #9)
+- [ ] **P3.6** Digitale Produkte Shop (Guide PDF, Sensitivity Pack, Coaching-Buchung)
+- [ ] **P3.7** Pillar Pages 4–6: Weapons, Ranked, Maps
+- [ ] **P3.8** Core Web Vitals Audit: LCP <2s, CLS <0.05, Bundle <150KB
 
-# MCP SERVER INTEGRATION REQUIREMENTS
-
-## Required MCP Servers
-1. **SE Ranking** - Keyword research, backlink analysis
-2. **Google Search Console** - Ranking monitoring, indexing
-3. **Brave Search / Exa** - Gaming leaks research
-4. **Firecrawl** - Competitor scraping
-
-## MCP Usage Protocol
-```
-BEFORE creating content:
-  1. Query SE Ranking for keyword difficulty
-  2. Check GSC for current rankings
-  3. Search Brave for recent leaks/news
-  4. Scrape competitors for content gaps
-
-AFTER publishing content:
-  1. Monitor GSC for indexing status
-  2. Track rankings in SE Ranking
-  3. Analyze competitor responses
-  4. Adjust strategy based on data
-```
+### Phase 4 — SEO-Skalierung (Woche 15–24)
+- [ ] **P4.1** Programmatic SEO Engine: 200x `/waffen/[slug]` (Prompt #8)
+- [ ] **P4.2** Programmatic SEO: 150x `/pros/[slug]-settings` (Prompt #8)
+- [ ] **P4.3** Programmatic SEO: 150x `/sensitivity/[game1]-zu-[game2]` (Prompt #8)
+- [ ] **P4.4** Programmatic SEO: 500x `/karte/[slug]` (Prompt #8)
+- [ ] **P4.5** Rotation Planner Tool (nach Phase 3 als Bonus)
+- [ ] **P4.6** Keybind Optimizer Tool (nach Phase 3 als Bonus)
+- [ ] **P4.7** Content-Velocity: 10 Artikel/Woche (KI-generiert + human-edited)
+- [ ] **P4.8** Plausible Analytics einbinden (DSGVO-konform)
 
 ---
 
-# TESTING REQUIREMENTS
+## 6. SEO-STANDARDS (gilt für jede neue Seite)
 
-## Test-Driven Development (TDD)
-Every monetization feature MUST have:
-- Unit tests (Jest)
-- Integration tests
-- E2E tests (Playwright)
-- Affiliate link validation tests
-- Conversion flow tests
+Jede Seite die du erstellst MUSS folgendes haben:
 
-## Critical Test Scenarios
-```typescript
-const CRITICAL_TESTS = [
-  'SAC code copy-to-clipboard',
-  'Affiliate link click tracking',
-  'Conversion attribution',
-  'Mobile responsiveness',
-  'Page load performance',
-  'SEO meta tags',
-  'Schema markup validation',
-  'Cookie consent flow'
-];
+```tsx
+// In apps/web/src/components/SEOHead.tsx nutzen:
+<SEOHead
+  title="[Keyword-optimierter Title, ≤60 Zeichen] | Fortnite Nexus"
+  description="[Spezifische Beschreibung, ≤160 Zeichen, enthält Haupt-Keyword]"
+  canonical="https://fortnitenexus.space/[pfad]"
+  schema={schemaOrgObject} // WebApplication, Article, oder BreadcrumbList
+/>
+```
+
+**URL-Slugs:** immer lowercase, Bindestriche statt Underscores, Deutsch  
+**H1:** genau einer pro Seite, enthält Haupt-Keyword  
+**Interne Links:** jede Seite verlinkt mindestens auf 2 andere Seiten  
+**Alt-Texte:** jedes `<img>` hat `alt=""` (beschreibend, nicht leer)  
+**Schema.org Typen:**
+- Tool-Seiten: `WebApplication` 
+- Guide-Artikel: `Article` + `BreadcrumbList` 
+- Programmatic Pages: `Article` + `BreadcrumbList` 
+- Homepage: `WebSite` + `SoftwareApplication` 
+
+---
+
+## 7. QUALITÄTS-CHECKLISTE (vor jedem Commit)
+
+```
+[ ] pnpm run build läuft fehlerfrei durch
+[ ] pnpm run typecheck — kein TypeScript-Fehler
+[ ] grep -ri "zyztm" apps/ — Ergebnis ist LEER
+[ ] Alle neuen Komponenten haben vollständige TypeScript-Typen
+[ ] Alle neuen Netlify Functions haben Input-Validation
+[ ] Alle neuen Netlify Functions haben Error-Handling (try/catch)
+[ ] Alle neuen API-Keys bleiben server-side (niemals im Frontend-Bundle)
+[ ] Mobile-Test: Neue UI auf 375px Viewport geprüft
+[ ] Neue Tools: mind. 5 Playwright-Tests geschrieben
+[ ] SEO: Title, Description, Canonical, H1 vorhanden
 ```
 
 ---
 
-# KPI MONITORING
+## 8. REFERENZ-DOKUMENTE
 
-## Key Performance Indicators
-```typescript
-const KPIS = {
-  MONETIZATION: {
-    SAC_REVENUE: 'Monthly SAC code revenue',
-    AFFILIATE_REVENUE: 'Monthly affiliate revenue',
-    CONVERSION_RATE: 'Free to premium conversion',
-    ARPU: 'Average Revenue Per User',
-    LTV: 'Customer Lifetime Value',
-    CAC: 'Customer Acquisition Cost'
-  },
-  TRAFFIC: {
-    ORGANIC_TRAFFIC: 'Google search traffic',
-    SOCIAL_TRAFFIC: 'Social media referrals',
-    DIRECT_TRAFFIC: 'Direct navigation',
-    REFERRAL_TRAFFIC: 'External links'
-  },
-  ENGAGEMENT: {
-    PAGE_VIEWS_PER_SESSION: 'Average pages per visit',
-    TIME_ON_SITE: 'Average session duration',
-    BOUNCE_RATE: 'Single-page sessions',
-    RETURN_VISITORS: 'Returning user percentage'
-  },
-  TECHNICAL: {
-    PAGE_LOAD_TIME: 'Average page load',
-    LCP: 'Largest Contentful Paint',
-    FID: 'First Input Delay',
-    CLS: 'Cumulative Layout Shift',
-    ERROR_RATE: 'JavaScript errors'
-  }
-};
-```
-
-## Automated Optimization
-```
-IF ANY KPI falls below threshold:
-  1. Log alert to monitoring system
-  2. Analyze root cause
-  3. Implement automatic fix if possible
-  4. Escalate to human if critical
-```
+| Dokument | Inhalt |
+|---|---|
+| `NEXUS_10_MEGAPROMPTS.md` | Vollständige Baupläne für alle 10 Haupt-Aufgaben |
+| `NEXUS_MEGA_PLAN.md` | Ursprüngliche Vision, Revenue-Ziele, Anti-Regeln |
+| `SEO_KRIEGSSTRATEGIE.md` | Keyword-Universum, Pillar-Struktur, Content-Velocity |
+| `WEBSITE_ARCHITEKTUR.md` | UX-Blueprint, Navigation, Conversion-Funnel |
+| `MEGA_MONETARISIERUNG.md` | Digitale Produkte, Pricing-Details |
+| `sql/` | Alle Datenbank-Migrations in Reihenfolge |
 
 ---
 
-# AUTOMATION RULES
+## 9. ZIEL-METRIKEN (12 Monate)
 
-## Item Shop Tracker
-- Daily fetch at 00:00 UTC
-- Compare with historical data
-- Identify rare items
-- Generate ratings with SAC code
-- Send Discord alerts for wishlist items
-
-## Content Pipeline
-- Monitor Reddit/FortniteTracker for leaks
-- Auto-draft articles for high-priority news
-- Generate SEO-optimized titles
-- Create social media posts
-- Schedule newsletter inclusion
-
-## Social Media Automation
-- Twitter: Item shop updates with hashtags
-- TikTok/Reels: Auto-generate video scripts
-- Discord: Bot for community engagement
-- Newsletter: Weekly meta report
+| Metrik | Ziel |
+|---|---|
+| Monatliche Besucher | 500.000 |
+| Tool-Nutzungen/Monat | 2.000.000 |
+| Conversion Free → Pro | 5% |
+| Monatlicher Umsatz | €125.000 |
+| Monatlicher Gewinn (40% Marge) | €50.000 |
+| Google-Ranking "fortnite sensitivity" DE | Top 3 |
+| Indexierte Seiten Google | 1.000+ |
 
 ---
 
-# ESCALATION PROTOCOLS
-
-## When to Escalate to Human
-- Revenue drops >20% for 2 consecutive weeks
-- Critical security vulnerability discovered
-- Legal compliance issue identified
-- Major Fortnite API changes
-- User satisfaction score < 3.5/5
-
-## Escalation Channels
-- **Critical (Immediate):** Direct message + Email
-- **High (Within 1 hour):** Email + Slack
-- **Medium (Within 24 hours):** Email
-- **Low (Weekly report):** Documentation update
-
----
-
-# CONTINUOUS IMPROVEMENT
-
-## Weekly Review Process
-1. Analyze KPI performance
-2. Review revenue attribution
-3. Identify optimization opportunities
-4. Update strategy based on data
-5. Document lessons learned
-
-## Monthly Review Process
-1. Comprehensive financial analysis
-2. User feedback review
-3. Competitor analysis
-4. Technology stack evaluation
-5. Strategic planning for next month
-
----
-
-# SUCCESS METRICS
-
-## 6-Month Targets
-- SAC Revenue: €2,000/month
-- Affiliate Revenue: €3,000/month
-- Organic Traffic: 50,000 monthly visitors
-- Conversion Rate: 5%
-- User Retention: 40%
-
-## 12-Month Targets
-- SAC Revenue: €5,000/month
-- Affiliate Revenue: €8,000/month
-- Organic Traffic: 200,000 monthly visitors
-- Conversion Rate: 8%
-- User Retention: 50%
-
----
-
-# FINAL DIRECTIVE
-
-**Remember:** You are building a business, not just writing code. Every decision must be evaluated through the lens of revenue, user value, and long-term sustainability. Technical excellence serves the business goals, not the other way around.
-
-**Fortnite Nexus is not just a website – it's an autonomous economic system.**
-
----
-
-*Last Updated: May 1, 2026*
-*Version: 1.3 - Shop Overhaul Phase 1 + Architecture Upgrade (Milestones 7.6-7.13)*
-
-# ARCHITECTURE UPGRADE - MILESTONES 7.6-7.13
-
-## Completed Tools (Vite + React + TypeScript + Zustand + React Query + Neon Serverless Postgres)
-
-### Milestone 7.6: Nexus Loadout God
-- **File:** `apps/web/src/components/tools/LoadoutGod.tsx`
-- **Features:** Playstyle selection, zone phase, map area, skill level optimization
-- **Integration:** useLoadoutStore, Loadout types from shared-types.ts
-- **UI:** Nexus Orange/Purple/Green, Glassmorphism, PaywallGate (Pro/Elite)
-
-### Milestone 7.7: Stats Dashboard Pro
-- **File:** `apps/web/src/components/tools/StatsDashboard.tsx`
-- **Features:** Epic Username search, player profile display, season stats, winrate pie chart, weak spot analysis
-- **Integration:** useStatsStore, PlayerProfile types from shared-types.ts, Recharts
-- **UI:** Nexus Orange/Purple/Green, Glassmorphism, PaywallGate (Pro)
-
-### Milestone 7.8: Sensitivity Converter Pro
-- **File:** `apps/web/src/components/tools/SensitivityConverterPro.tsx`
-- **Features:** Cross-game conversion (7 games), playstyle adjustment, DPI slider, eDPI/cm360 calculation
-- **Integration:** useNexusStore, SensitivityProfile types from shared-types.ts
-- **UI:** Nexus Orange/Purple/Green, Glassmorphism, PaywallGate (Pro)
-
-### Milestone 7.9: Drop Location Analyzer
-- **File:** `apps/web/src/components/tools/DropLocationAnalyzer.tsx`
-- **Features:** Mode selection (4 modes), min winrate filter, POI data with loot tier, early fight probability
-- **Integration:** useNexusStore, DropSpot/GameMode types from shared-types.ts
-- **UI:** Nexus Orange/Purple/Green, Glassmorphism, PaywallGate (Pro/Elite)
-
-### Milestone 7.10: Meta Predictor
-- **File:** `apps/web/src/components/tools/MetaPredictor.tsx`
-- **Features:** Chapter 7 Season 2 meta data, tier system (SS-S-A-B-C), winrate delta, predicted change, synergy display
-- **Integration:** useNexusStore, WeaponMetaEntry types from shared-types.ts
-- **UI:** Nexus Orange/Purple/Green, Glassmorphism, PaywallGate (Pro/Elite)
-
-### Milestone 7.11: Rotation Planner
-- **File:** `apps/web/src/components/tools/RotationPlanner.tsx`
-- **Features:** Mode selection, target zone phase slider, rotation plans with mobility items, risk level, estimated time
-- **Integration:** useNexusStore, RotationPlan/GameMode types from shared-types.ts
-- **UI:** Nexus Orange/Purple/Green, Glassmorphism, PaywallGate (Pro/Elite)
-
-### Milestone 7.12: Build Trainer
-- **File:** `apps/web/src/components/tools/BuildTrainer.tsx`
-- **Features:** 4 Build Drills, Timer-based training, Session History, Score Tracking
-- **Integration:** useNexusStore, DrillSession types from shared-types.ts
-- **UI:** Nexus Orange/Purple/Green, Glassmorphism, PaywallGate (Pro)
-
-### Milestone 7.13: Keybind Optimizer
-- **File:** `apps/web/src/components/tools/KeybindOptimizer.tsx`
-- **Features:** 4 Playstyles, Hand Size selection, Hardware selection, Pro Similarity Score
-- **Integration:** useNexusStore, KeybindProfile/Playstyle types from shared-types.ts
-- **UI:** Nexus Orange/Purple/Green, Glassmorphism, PaywallGate (Pro/Elite)
-
-## Shop Overhaul - Phase 1
-
-### ShopPage.tsx - High-Conversion E-Commerce
-- **File:** `apps/web/src/pages/ShopPage.tsx`
-- **Features:** Strong Hero with "Die Tools der Pros" energy, Nexus Neon Colors, Glassmorphism UI, Testimonials Section (3 testimonials), FAQ Section mit Schema.org Markup, Exit-Intent Popup (10% Rabatt Code NEXUS10), Trust Signals & Scarcity
-- **Conversion Elements:** Exit Intent Detection (mouseleave event), FAQ Accordion mit Check/X icons, Testimonials mit Star ratings, Trust Indicators (Sofort-Auslieferung, Sichere Zahlung, 72h Download-Garantie), Schema.org FAQ Markup, 10% Rabatt Code NEXUS10
-- **UI:** Nexus Green/Purple/Orange, Glassmorphism mit backdrop-blur, Strong hover effects
-- **Brand Rules:** No mention of streamer names, only "Fortnite Nexus" and "NEXUS Community Code"
-
-### ProductCard.tsx - Epic Product Cards
-- **File:** `apps/web/src/components/shop/ProductCard.tsx`
-- **Features:** Nexus Neon Colors, Glassmorphism mit backdrop-blur, Strong hover effects mit nexus-orange shadow, Badge Icons (Flame, Crown, TrendingUp, Star), Nexus Green Price Display, Nexus Orange CTA Button
-- **UI:** Nexus Green/Purple/Orange, Glassmorphism, Epic hover effects
-
-## Shared Components
-- **PaywallGate:** Feature gating for free/pro/elite tiers
-- **MetaBadge:** Season and last updated display
-- **FlexCard:** Loadout sharing with branding
-
-## State Management (Zustand)
-- **nexus-store:** Global app state (user, subscription, meta system)
-- **loadout-store:** Loadout optimization state
-- **stats-store:** Player stats and search history
-
-## React Query Hooks
-- **usePlayerStats:** Player stats fetching
-- **useLoadout:** Loadout data fetching
-- **useGlobalMeta:** Global meta data fetching
-
-## Type Definitions
-- **shared-types.ts:** Complete TypeScript definitions for all tools (nexus.ts)
-  - Core entities (PlayerProfile, Loadout, DropSpot, WeaponMetaEntry, RotationPlan, etc.)
-  - Meta system (WeaponMetaEntry, MetaTier)
-  - Drop location (DropSpot, GameMode)
-  - Rotation (RotationPlan, GameMode)
-  - User & Subscription (NexusUser, SubscriptionTier)
-  - Flex card (FlexCard)
-  - Global app state (NexusAppState)
-  - Utility types
-  - DrillSession (Build Trainer)
-  - KeybindProfile (Keybind Optimizer)
-
-## Commits
-- 6e5c3b1: Architecture upgrade - shared types, state management, components
-- 46fd813: Complete type definitions upgrade - nexus.ts implementation
-- c7ab663: Nexus Loadout God - Milestone 7.6 Complete
-- 07183a0: Stats Dashboard Pro - Milestone 7.7 Complete
-- 3da623a: Fix - restore workspace dependency for Netlify deploy
-- 454bbbc: Sensitivity Converter Pro - Milestone 7.8 Complete
-- 542a9b4: Drop Location Analyzer - Milestone 7.9 Complete
-- 1c15b0c: Meta Predictor - Milestone 7.10 Complete
-- 008e040: docs(agents): Update with Milestone 7.6-7.10 completion
-- f1c398c: Rotation Planner - Milestone 7.11 Complete
-- 06d86de: Build Trainer - Milestone 7.12 Complete
-- 0e3c55c: Keybind Optimizer - Milestone 7.13 Complete (Architecture Upgrade Complete)
-- 723e530: ShopPage Nexus Design Update
-- 676b2a4: Shop Complete Overhaul Phase 1
-
----
+*Fortnite Nexus · fortnitenexus.space · Creator-Code: nexus*  
+*Zuletzt aktualisiert: Mai 2026 · Version 2.0*  
+*"Andere bauen Communities. Wir bauen Werkzeuge."*
