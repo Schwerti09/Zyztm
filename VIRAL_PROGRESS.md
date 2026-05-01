@@ -168,6 +168,18 @@ node scripts/tiktok-script-generator.mjs               # Auto (Hidden Gem wenn s
 
 Phase 5 ist komplett. Alle viralen Wachstums-Phasen sind abgeschlossen.
 
+**AGENTS.md Implementation (abgeschlossen):**
+| Task | Status | Script |
+|------|--------|--------|
+| MCP Integration: SE Ranking | ✅ | `scripts/seo-research.mjs` |
+| MCP Integration: Google Search Console | ✅ | `scripts/seo-research.mjs` |
+| MCP Integration: Brave Search/Exa | ✅ | `scripts/seo-research.mjs` |
+| MCP Integration: Firecrawl | ✅ | `scripts/seo-research.mjs` |
+| Content Pipeline Automation | ✅ | `scripts/content-pipeline.mjs` |
+| KPI Monitoring System | ✅ | `scripts/kpi-monitor.mjs` |
+| Item Shop Tracker | ✅ | `scripts/item-shop-tracker.mjs` |
+| Social Media Automation | ✅ | Phases 3-4 (Twitter, TikTok, Discord, Newsletter) |
+
 **Optionale Erweiterungen:**
 - Cross-Platform Analytics Dashboard (Twitter/Discord/Reddit/TikTok)
 - TikTok Video Rendering (automatische Video-Generierung)
@@ -229,6 +241,10 @@ apps/
 ## GIT LOG (letzte relevante Commits)
 
 ```
+[AGENTS.md] feat(automation): Item Shop Tracker — Daily fetch, historical comparison, rare items, SAC ratings, Discord alerts
+[AGENTS.md] feat(kpi): KPI Monitoring System — Monetization, Traffic, Engagement, Technical KPIs with threshold alerts
+[AGENTS.md] feat(mcp): Content Pipeline Automation — Auto-draft articles from leaks, SEO title generation, social posts, newsletter scheduling
+[AGENTS.md] feat(mcp): SEO Research Script — MCP Usage Protocol placeholder (SE Ranking, GSC, Brave Search, Firecrawl)
 [Phase 5D] feat(phase5d): Wishlist-Store Migration zu Neon DB — DB client, SQL schema, async store with JSON fallback, Discord Bot updated
 [Phase 5C] feat(phase5c): Discord Bot Hosting — Railway/Fly.io configs (railway.json, Procfile, README hosting guide)
 [Phase 5B] feat(phase5b): Newsletter Resend-Integration — Resend API Client für E-Mail-Versand, --send Flag implemented
