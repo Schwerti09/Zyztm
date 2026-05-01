@@ -134,11 +134,11 @@ export default function App() {
           {/* Classic */}
           <Route path="/classic" component={ClassicPage} />
           {/* Guide / Runbook routes (language-prefixed for SEO) */}
-          <LanguageRoute path="/guide/:slug" component={GuidePage} />
-          <LanguageRoute path="/guides/:category" component={HubPage} />
+          <Route path="/:lang/guide/:slug" component={GuidePage} />
+          <Route path="/:lang/guides/:category" component={HubPage} />
           {/* News routes */}
-          <LanguageRoute path="/news/:slug" component={NewsArticlePage} />
-          <LanguageRoute path="/news" component={NewsPage} />
+          <Route path="/:lang/news/:slug" component={NewsArticlePage} />
+          <Route path="/:lang/news" component={NewsPage} />
         </Switch>
       </Suspense>
     </>
