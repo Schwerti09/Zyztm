@@ -33,7 +33,7 @@ importers:
 
   apps/api:
     dependencies:
-      '@zyztm/shared-types':
+      '@nexus/shared-types':
         specifier: workspace:*
         version: link:../../packages/shared-types
       cors:
@@ -103,6 +103,9 @@ importers:
       '@neondatabase/serverless':
         specifier: ^0.10.4
         version: 0.10.4
+      '@nexus/shared-types':
+        specifier: workspace:*
+        version: link:../../packages/shared-types
       '@radix-ui/react-dialog':
         specifier: ^1.0.5
         version: 1.1.15(@types/react-dom@18.3.7(@types/react@18.3.28))(@types/react@18.3.28)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
@@ -118,9 +121,6 @@ importers:
       '@tanstack/react-query':
         specifier: ^5.36.0
         version: 5.90.21(react@18.3.1)
-      '@zyztm/shared-types':
-        specifier: workspace:*
-        version: link:../../packages/shared-types
       framer-motion:
         specifier: ^11.2.0
         version: 11.18.2(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
