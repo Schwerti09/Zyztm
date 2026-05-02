@@ -40,20 +40,16 @@ const OrdersPage = lazy(() => import('./pages/OrdersPage'));
 
 // Pro Tools
 const ToolsPage = lazy(() => import('./pages/ToolsPage'));
-const SensitivityConverterPage = lazy(
-  () => import('./pages/tools/SensitivityConverterPage'),
-);
-const LoadoutOptimizerPage = lazy(
-  () => import('./pages/tools/LoadoutOptimizerPage'),
-);
+const SensitivityConverterPage = lazy(() => import('./pages/tools/SensitivityConverterPage'));
+const LoadoutOptimizerPage = lazy(() => import('./pages/tools/LoadoutOptimizerPage'));
 const StatsDashboardPage = lazy(() => import('./pages/tools/StatsDashboardPage'));
 const DropLocationsPage = lazy(() => import('./pages/tools/DropLocationsPage'));
-const BuildTrainerPage = lazy(() => import('./pages/tools/BuildTrainerPage'));
 const MetaPredictorPage = lazy(() => import('./pages/tools/MetaPredictorPage'));
 const KeybindOptimizerPage = lazy(() => import('./pages/tools/KeybindOptimizerPage'));
 const RotationPlannerPage = lazy(() => import('./pages/tools/RotationPlannerPage'));
 
 // Pillar Pages
+const BuildTrainerPage = lazy(() => import('./pages/BuildTrainerPage'));
 const SettingsGuidePage = lazy(() => import('./pages/SettingsGuidePage'));
 const UltimateGuidePage = lazy(() => import('./pages/UltimateGuidePage'));
 
