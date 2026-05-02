@@ -27,7 +27,7 @@ Transform Fortnite Nexus into an autonomous economic system that works 24/7 to g
 ## Support-A-Creator (SAC) Program
 ```typescript
 const SAC_CONFIG = {
-  CREATOR_CODE: 'ZYZTM', // Primary creator code
+  CREATOR_CODE: 'nexus', // Primary creator code
   PROVISION_RATE: 0.05, // 5% commission on in-game purchases
   TARGET_USERS: {
     CONSERVATIVE: 10000, // 10k active users
@@ -384,7 +384,7 @@ Die folgenden 10 Masterplan-Dokumente enthalten die vollständige Strategie für
 ```
 apps/web/index.html - Update title, meta tags, JSON-LD
 apps/web/src/components/HeroSection.tsx - Neutralize hero content
-apps/web/src/components/AboutZyztm.tsx - Rename to AboutNexus.tsx, rewrite content
+apps/web/src/components/AboutNexus.tsx - Rename to AboutNexus.tsx, rewrite content
 apps/web/src/components/Navbar.tsx - Update branding
 apps/web/src/components/Footer.tsx - Update copyright and links
 ```
@@ -1374,7 +1374,7 @@ CREATE TABLE referral_rewards (
 5. Begin creator marketplace development
 
 ## Partner Responsibilities
-- **Zyztm:** Content creation, community management, social media, creator outreach
+- **Nexus:** Content creation, community management, social media, creator outreach
 - **AI Partner:** Technical development, automation, analytics, system architecture
 
 ## Communication
@@ -1388,7 +1388,7 @@ CREATE TABLE referral_rewards (
 # Appendix: File Structure
 
 ```
-zyztm/
+nexus/
 ├── apps/
 │   ├── web/
 │   │   ├── src/
@@ -1397,7 +1397,7 @@ zyztm/
 │   │   │   │   ├── NEW: CreatorCard.tsx
 │   │   │   │   ├── NEW: CreatorLeaderboard.tsx
 │   │   │   │   ├── NEW: CreatorProfile.tsx
-│   │   │   │   ├── NEW: AboutNexus.tsx (replace AboutZyztm.tsx)
+│   │   │   │   ├── NEW: AboutNexus.tsx (replace AboutNexus.tsx)
 │   │   │   │   ├── NEW: StatsChecker.tsx
 │   │   │   │   ├── NEW: StatsGraph.tsx
 │   │   │   │   ├── NEW: Leaderboard.tsx

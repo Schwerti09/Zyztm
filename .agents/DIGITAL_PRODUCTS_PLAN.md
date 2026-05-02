@@ -213,13 +213,13 @@ Blog Posts        (Free PDF)         (€4.99)            oder
 ```
 Pro Settings Pack PDF:
   Seite 3: "Support the Creator"
-  "Nutze Code ZYZTM im Item Shop – kostet dich nichts, 
+  "Nutze Code nexus im Item Shop – kostet dich nichts, 
    hilft uns neue Guides zu erstellen"
   
 Creator Setup Guide Video:
   0:00-0:15 Intro mit SAC-Code
   8:30 Mid-Roll Reminder
-  Outro: "Vergiss nicht: ZYZTM"
+  Outro: "Vergiss nicht: nexus"
 ```
 
 ---
@@ -455,7 +455,7 @@ Was du bekommst:
 Fragen? Antworte einfach auf diese Email.
 
 Support the Creator:
-Nutze Code ZYZTM im Item Shop! 💙
+Nutze Code nexus im Item Shop! 💙
 
 - Das Fortnite Nexus Team
 ```
