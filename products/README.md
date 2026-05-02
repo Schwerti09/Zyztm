@@ -330,4 +330,4 @@ Brauche noch:
 **Fortnite Nexus Digital Products v1.0**
 © 2026 Fortnite Nexus.
 
-**Code `ZYZTM` 💜**
+**Code `nexus` 💜**

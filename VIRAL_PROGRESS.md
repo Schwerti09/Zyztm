@@ -270,7 +270,7 @@ d8f5dba feat(phase3e): OG-Image Generator + 5 SVG OG-Images
 6791c57 feat(phase3c): Newsletter System — Signup + Function + Report + Cron
 bcde1c8 feat(phase3b): Discord Bot — /shop /wishlist /challenge + Auto-Alerts
 0d9b3b1 feat(phase3a): Twitter Auto-Post + fix /v2/shop API migration
-824ec47 fix: remove all ZYZTM/SAC references
+824ec47 fix: remove all nexus/SAC references
 3e86fd2 feat(viral): Canvas Share System + MetaTags + ShareButton + Viral Landing
 30f34f1 Phase 1: Live Data + Programmatic SEO (DEPLOYED)
 ```
