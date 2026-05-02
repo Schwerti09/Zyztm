@@ -176,7 +176,7 @@ products/
 - Discord Premium-Channels
 - Archiv aller Issues
 - Early-Access Patches & Leaks
-- Monthly Q&A mit TimoZyztm
+- Monthly Q&A mit TimoNexus
 
 **Zielgruppe:** Competitive Spieler, Tournament-Players
 

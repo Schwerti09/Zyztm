@@ -12,7 +12,7 @@ const sidebarContents = [
     {
         id: 'sac_reminder',
         label: 'SAC-Reminder',
-        content: 'Nutze Creator Code: ZYZTM',
+        content: 'Nutze Creator Code: nexus',
         sticky: true,
         position: 'top'
     },

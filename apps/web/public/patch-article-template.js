@@ -103,7 +103,7 @@ function generateArticleStructure(patch) {
             }
         ],
         cta: {
-            sac_code: 'ZYZTM',
+            sac_code: 'nexus',
             newsletter: true,
             discord: true
         }
@@ -187,7 +187,7 @@ function generateEmotionalArc(patch) {
             competitive_advantage: patch.competitive_advantage
         },
         action: {
-            sac_code_reminder: 'ZYZTM',
+            sac_code_reminder: 'nexus',
             newsletter_signup: true,
             community_join: true
         }

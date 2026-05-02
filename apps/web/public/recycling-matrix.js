@@ -208,7 +208,7 @@ async function generateRedditPost(patchData) {
 async function generateNewsletter(patchData) {
     return {
         subject: `🚨 ${patchData.version} Patch Notes sind da!`,
-        body: `Die wichtigsten Änderungen:\n- ${patchData.buffs[0]} wurde um 20% bufft\n- ${patchData.nerfs[0]} wurde nerft\n- ${patchData.new_items[0]} hinzugefügt\n\nFull Analysis: https://fortnitenexus.space/news/patch-notes/${patchData.version.toLowerCase().replace(/ /g, '-')}\n\nNutze Creator Code: ZYZTM`,
+        body: `Die wichtigsten Änderungen:\n- ${patchData.buffs[0]} wurde um 20% bufft\n- ${patchData.nerfs[0]} wurde nerft\n- ${patchData.new_items[0]} hinzugefügt\n\nFull Analysis: https://fortnitenexus.space/news/patch-notes/${patchData.version.toLowerCase().replace(/ /g, '-')}\n\nNutze Creator Code: nexus`,
         cta: 'Full Guide lesen'
     };
 }
@@ -242,7 +242,7 @@ async function generateTikTokScript(patchData) {
             },
             cta: {
                 time: '46-60s',
-                text: `Full Guide mit allen Tips im Link in Bio. Nutze Creator Code ZYZTM!`
+                text: `Full Guide mit allen Tips im Link in Bio. Nutze Creator Code nexus!`
             }
         }
     };

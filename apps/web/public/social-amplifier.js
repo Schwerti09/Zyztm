@@ -93,7 +93,7 @@ function generateTikTokScript(patch) {
             },
             cta: {
                 time: '46-60s',
-                text: `Full Guide mit allen Tips im Link in Bio. Nutze Creator Code ZYZTM!`
+                text: `Full Guide mit allen Tips im Link in Bio. Nutze Creator Code nexus!`
             }
         }
     };

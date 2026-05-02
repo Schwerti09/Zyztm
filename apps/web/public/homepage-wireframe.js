@@ -30,7 +30,7 @@ const heroSection = {
     ],
     hero_visual: {
         image: 'fortnite-hero-image.jpg',
-        overlay: 'Nutze Creator Code: ZYZTM'
+        overlay: 'Nutze Creator Code: nexus'
     }
 };
 
