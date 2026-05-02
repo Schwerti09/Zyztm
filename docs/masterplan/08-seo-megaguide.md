@@ -392,7 +392,7 @@ Ja, Battle Royale ist komplett kostenlos. Es gibt aber In-Game-Käufe für kosme
 
 ### Was ist der Creator Code?
 
-Der Creator Code ist "ZYZTM" – nutze ihn im Item Shop für Support.
+Der Creator Code ist "nexus" – nutze ihn im Item Shop für Support.
 
 ### Wie verbessere ich meinen Aim?
 
@@ -445,5 +445,5 @@ V-Bucks sind die In-Game-Währung für kosmetische Items und Battle Pass.
 ---
 
 *Zuletzt aktualisiert: April 28, 2026*  
-*Creator Code: ZYZTM*  
+*Creator Code: nexus*  
 *Folge uns auf [Twitter](https://twitter.com/fortnitenexus) für wöchliche Updates!*

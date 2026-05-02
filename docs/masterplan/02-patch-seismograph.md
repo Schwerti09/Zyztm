@@ -292,7 +292,7 @@ Sag uns was du vom Patch hältst! 👇
 "Hier sind die 3 Waffen die du jetzt nutzen musst: [Waffe 1], [Waffe 2], [Waffe 3]."
 
 **Sekunde 46-60 (CTA):**
-"Full Guide mit allen Tips im Link in Bio. Nutze Creator Code ZYZTM!"
+"Full Guide mit allen Tips im Link in Bio. Nutze Creator Code nexus!"
 
 ---
 
@@ -444,7 +444,7 @@ Epic Games hat gerade den größten Patch der Saison veröffentlicht – und er 
 *Verlinke zu: /de/guide/fortnite-ultimate-guide-2026*
 
 **CTA:**
-Nutze Creator Code **ZYZTM** im Item Shop für Support! Melde dich für unseren Newsletter an für wöchentliche Meta-Updates.
+Nutze Creator Code **nexus** im Item Shop für Support! Melde dich für unseren Newsletter an für wöchentliche Meta-Updates.
 
 ---
 

@@ -16,31 +16,31 @@ Du bist Monetarisierungs-Stratege der Gaming-Websites von 0 auf €50k/Monat geb
 - **Position:** Direkt unter CTA-Buttons
 - **Display:** Prominent, animiert
 - **Dismiss:** Nein (immer sichtbar)
-- **Text:** "Nutze Creator Code: ZYZTM im Item Shop"
+- **Text:** "Nutze Creator Code: nexus im Item Shop"
 
 ### Kontext 2: Guide Pages
 - **Position:** Nach Direct Answer Sektion
 - **Display:** Compact, inline
 - **Dismiss:** Ja (24 Stunden)
-- **Text:** "Support uns mit Creator Code: ZYZTM"
+- **Text:** "Support uns mit Creator Code: nexus"
 
 ### Kontext 3: Item Shop Tracker
 - **Position:** Neben Item Shop Display
 - **Display:** Highlighted, prominent
 - **Dismiss:** Nein (kontext-relevant)
-- **Text:** "Nutze Code: ZYZTM für Support"
+- **Text:** "Nutze Code: nexus für Support"
 
 ### Kontext 4: Checkout Flow
 - **Position:** Vor finaler Kaufbestätigung
 - **Display:** Final CTA
 - **Dismiss:** Nein (kritisch für Conversion)
-- **Text:** "Vergiss nicht: ZYZTM im Item Shop"
+- **Text:** "Vergiss nicht: nexus im Item Shop"
 
 ### Kontext 5: Footer
 - **Position:** Vor Footer-Links
 - **Display:** Subtle, persistent
 - **Dismiss:** Ja (24 Stunden)
-- **Text:** "Creator Code: ZYZTM"
+- **Text:** "Creator Code: nexus"
 
 ## Smart Display Logic (max 3x/Session, 5 Min Interval)
 

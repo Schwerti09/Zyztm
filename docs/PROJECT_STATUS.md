@@ -118,7 +118,7 @@ Alle unter `products/` – Build-Script: `products/build-all.ps1`
 - [ ] `supabase-client.ts` löschen (Dead Code)
 - [ ] SEO-Optimierung der Produkt-Landingpages
 - [ ] Discord Webhook für Bestellbenachrichtigungen
-- [ ] SAC Code ZYZTM Reminder-System
+- [ ] SAC Code nexus Reminder-System
 - [ ] Affiliate-Links Integration
 
 ---

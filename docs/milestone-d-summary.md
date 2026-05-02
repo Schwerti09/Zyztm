@@ -85,7 +85,7 @@
 ### Conversion Readiness
 
 **Support-A-Creator (SAC) Program:**
-- ✅ SAC Code ZYZTM ist im System
+- ✅ SAC Code nexus ist im System
 - ✅ SAC Reminder Component existiert
 - ⚠️ Keine konsequente Platzierung auf allen Seiten
 - ⚠️ Keine Analytics für SAC Conversions

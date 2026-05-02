@@ -422,7 +422,7 @@ Tools
 
 **Hero-Visual:**
 - Fortnite-spezifisches Hero-Image (Map oder Waffen)
-- Overlay mit SAC-Code: "Nutze Creator Code: ZYZTM"
+- Overlay mit SAC-Code: "Nutze Creator Code: nexus"
 
 ## "Frisch gepatch" Widget
 

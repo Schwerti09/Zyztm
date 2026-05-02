@@ -37,8 +37,8 @@
 | `ELEVENLABS_VOICE_ID` | – | Voice-Auswahl |
 | `DISCORD_WEBHOOK_URL` | – | Discord-Benachrichtigungen |
 | `AFFILIATE_AMAZON_ID` | – | Amazon PartnerNet Links |
-| `STREAMCHARTS_URL` | `https://streamscharts.com/channels/zyztm/clips` | Clip-Scraper |
-| `TIKTOK_HANDLE` | `zyztm` | TikTok Clip-Fetcher |
+| `STREAMCHARTS_URL` | `https://streamscharts.com/channels/nexus/clips` | Clip-Scraper |
+| `TIKTOK_HANDLE` | `nexus` | TikTok Clip-Fetcher |
 
 ## ❌ NICHT MEHR BENÖTIGT (Supabase entfernt)
 

@@ -16,7 +16,7 @@ Alle Social Media Kanäle aus der Website entfernt gemäß User-Anforderung (Use
 - `apps/web/src/components/Navbar.tsx`: Discord JOIN NOW Buttons (Desktop + Mobile) entfernt
 
 ### YouTube Problem behoben
-**Problem:** YouTube Module zeigten oft keine Inhalte oder nur "zyztm"
+**Problem:** YouTube Module zeigten oft keine Inhalte oder nur "nexus"
 **Lösung:** User-Agent zu RSS Fallback in `netlify/functions/youtube-latest.js` hinzugefügt und leere videos array bei Fehler zurückgegeben
 
 ### Prompt 1 (SEO-Strategie) umgesetzt

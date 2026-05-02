@@ -140,7 +140,7 @@
 
 ### Neue Features
 - **Hero Section Enhancement**
-  - SAC Code Reminder (Creator Code: ZYZTM) mit Copy-to-Clipboard Funktion
+  - SAC Code Reminder (Creator Code: nexus) mit Copy-to-Clipboard Funktion
   - NEXUS IQ Primary CTA (Battle DNA Analyse)
   - Quick Access CTAs (Guides, Tools, News)
 - **Nexus Scanner → NEXUS IQ Funnel**
