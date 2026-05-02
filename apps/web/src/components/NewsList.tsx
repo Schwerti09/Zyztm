@@ -17,6 +17,9 @@ export default function NewsList({ category, limit, featured }: NewsListProps) {
   const [selectedCategory, setSelectedCategory] = useState(category || 'all');
   const [showFeatured, setShowFeatured] = useState(featured || false);
 
+  console.log('NewsList props:', { category, limit, featured });
+  console.log('NEWS_ARTICLES:', NEWS_ARTICLES);
+
   let articles = NEWS_ARTICLES;
 
   if (showFeatured) {
@@ -28,6 +31,8 @@ export default function NewsList({ category, limit, featured }: NewsListProps) {
   if (limit) {
     articles = articles.slice(0, limit);
   }
+
+  console.log('Filtered articles:', articles);
 
   const categories = ['all', 'patch_notes', 'item_shop', 'events', 'competitions', 'tips', 'leaks', 'videos'];
 
