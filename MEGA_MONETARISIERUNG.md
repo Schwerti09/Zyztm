@@ -25,7 +25,7 @@ Ein System mit 7 Einnahmeströmen die sich gegenseitig verstärken, keine Abhän
 
 **Integration:**
 - `apps/web/src/components/CreatorCode.tsx` – SAC-Programm integriert
-- Creator Code von NEXUS auf ZYZTM geändert
+- Creator Code von NEXUS auf nexus geändert
 - Dismiss-Funktion hinzugefügt
 - Tracking für SAC Code Copy und Dismiss
 
