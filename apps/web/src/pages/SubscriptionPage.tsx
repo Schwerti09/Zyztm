@@ -9,6 +9,7 @@ import { Link } from 'wouter';
 import { motion } from 'framer-motion';
 import { Check, Crown, Zap, ArrowRight, Shield } from 'lucide-react';
 import VisualEffectsLayer from '../components/visuals/VisualEffectsLayer';
+import { useAuth } from '../contexts/AuthContext';
 
 const plans = [
   {
@@ -28,6 +29,7 @@ const plans = [
     ctaText: "JETZT PRO WERDEN",
     popular: true,
     icon: Zap,
+    stripePlan: "pro_monthly",
   },
   {
     name: "Nexus Elite",
@@ -46,17 +48,52 @@ const plans = [
     ctaText: "ELITE WERDEN",
     popular: false,
     icon: Crown,
+    stripePlan: "elite_monthly",
   },
 ];
 
 export default function SubscriptionPage() {
   const [selectedPlan, setSelectedPlan] = useState<string | null>(null);
+  const [isLoading, setIsLoading] = useState(false);
+  const { user, isAuthenticated } = useAuth();
 
-  const handleSubscribe = (planName: string) => {
-    setSelectedPlan(planName);
-    // TODO: Integrate Stripe Checkout Session for Subscription
-    // window.location.href = `/checkout/subscription?plan=${planName.toLowerCase()}`;
-    console.log(`Subscribe to ${planName}`);
+  const handleSubscribe = async (stripePlan: string) => {
+    if (!isAuthenticated || !user) {
+      window.location.href = '/login';
+      return;
+    }
+
+    setIsLoading(true);
+    setSelectedPlan(stripePlan);
+
+    try {
+      const response = await fetch('/.netlify/functions/create-subscription-checkout', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          plan: stripePlan,
+          userId: user.id,
+          email: user.email,
+        }),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error || 'Checkout failed');
+      }
+
+      // Redirect to Stripe Checkout
+      window.location.href = data.url;
+    } catch (error) {
+      console.error('Subscription error:', error);
+      alert('Fehler beim Starten des Checkout-Prozesses. Bitte versuche es erneut.');
+      setSelectedPlan(null);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -179,14 +216,15 @@ export default function SubscriptionPage() {
 
               {/* CTA Button */}
               <button
-                onClick={() => handleSubscribe(plan.name)}
+                onClick={() => plan.stripePlan && handleSubscribe(plan.stripePlan)}
+                disabled={isLoading}
                 className={`w-full py-4 text-lg font-bold rounded-2xl transition-all hover:scale-105 flex items-center justify-center gap-2 ${
                   plan.popular
                     ? 'bg-gradient-to-r from-nexus-orange to-orange-500 text-black'
                     : 'bg-gradient-to-r from-nexus-purple to-purple-500 text-white'
-                }`}
+                } ${isLoading && selectedPlan === plan.stripePlan ? 'opacity-50 cursor-not-allowed' : ''}`}
               >
-                {plan.ctaText}
+                {isLoading && selectedPlan === plan.stripePlan ? 'Laden...' : plan.ctaText}
                 <ArrowRight className="w-5 h-5" />
               </button>
             </motion.div>

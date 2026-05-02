@@ -27,6 +27,8 @@ const ClassicPage = lazy(() => import('./pages/ClassicPage'));
 const SubscriptionPage = lazy(() => import('./pages/SubscriptionPage'));
 const RegisterPage = lazy(() => import('./pages/RegisterPage'));
 const LoginPage = lazy(() => import('./pages/LoginPage'));
+const SubscriptionSuccessPage = lazy(() => import('./pages/SubscriptionSuccessPage'));
+const SubscriptionCancelPage = lazy(() => import('./pages/SubscriptionCancelPage'));
 
 // Digital Products Shop
 const ShopPage = lazy(() => import('./pages/ShopPage'));
@@ -146,6 +148,8 @@ export default function App() {
           <Route path="/creators" component={CreatorsPage} />
           {/* Subscription */}
           <Route path="/subscription" component={SubscriptionPage} />
+          <Route path="/subscription/success" component={SubscriptionSuccessPage} />
+          <Route path="/subscription/cancel" component={SubscriptionCancelPage} />
           {/* Classic */}
           <Route path="/classic" component={ClassicPage} />
           {/* Guide / Runbook routes (language-prefixed for SEO) */}
