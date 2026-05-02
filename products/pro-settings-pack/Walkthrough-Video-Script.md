@@ -259,9 +259,9 @@ powercfg -duplicatescheme e9a42b02-d5df-448d-aa00-03f14749eb61
 
 **Voice-Over:**
 
-> "Und wenn ihr ne kleine Geste machen wollt: nutzt Code ZYZTM im Item Shop. Kostet euch nichts extra, supportet aber den Channel und macht weitere Pro-Packs möglich."
+> "Und wenn ihr ne kleine Geste machen wollt: nutzt Code nexus im Item Shop. Kostet euch nichts extra, supportet aber den Channel und macht weitere Pro-Packs möglich."
 
-**Screen:** Code "ZYZTM" mit Pulse-Animation
+**Screen:** Code "nexus" mit Pulse-Animation
 
 **Voice-Over:**
 
@@ -272,7 +272,7 @@ powercfg -duplicatescheme e9a42b02-d5df-448d-aa00-03f14749eb61
 **End-Card:**
 - "Pro Settings Pack v2.1"
 - "Fortnite Nexus · fortnitenexus.com"
-- "Code ZYZTM ✨"
+- "Code nexus ✨"
 
 ---
 

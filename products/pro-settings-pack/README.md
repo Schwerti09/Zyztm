@@ -182,7 +182,7 @@ Dieses Pack ist ausschließlich für deinen persönlichen Gebrauch lizenziert.
 
 Wenn dir das Pack hilft, freuen wir uns über drei Dinge:
 
-1. **Code `ZYZTM` im Fortnite Item Shop** verwenden – kostet dich nichts extra, supportet den Channel
+1. **Code `nexus` im Fortnite Item Shop** verwenden – kostet dich nichts extra, supportet den Channel
 2. **Discord-Beitritt** – aktive Community, weitere Pro-Tipps
 3. **Review hinterlassen** auf fortnitenexus.com/shop – hilft anderen Spielern
 

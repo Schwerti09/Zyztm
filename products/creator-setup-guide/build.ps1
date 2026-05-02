@@ -177,7 +177,7 @@ Tag 7: First Stream!
 Jede neue OBS-Version, Plattform-Aenderung etc. wird per Email gesendet.
 
 (c) 2026 Fortnite Nexus
-Code "ZYZTM" im Item Shop = Support 💜
+Code "nexus" im Item Shop = Support 💜
 
 Build: $BuildDate
 "@ | Out-File -Encoding UTF8 "$BuildDir\README.txt"

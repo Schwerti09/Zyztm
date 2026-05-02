@@ -647,7 +647,7 @@ Bei Problemen mit dem Pack:
 *© 2026 Fortnite Nexus. Alle Rechte vorbehalten.*
 *Fortnite ist ein Trademark von Epic Games. Wir sind nicht mit Epic Games verbunden.*
 
-**Support the Creator: Code `ZYZTM` im Item Shop verwenden ✨**
+**Support the Creator: Code `nexus` im Item Shop verwenden ✨**
 
 ---
 

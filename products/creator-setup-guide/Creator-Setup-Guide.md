@@ -498,6 +498,6 @@ Bei jedem Major-Plattform-Update (Twitch, YouTube, OBS) bekommst du Updates per 
 **Fortnite Nexus Creator Setup Guide v1.0**
 © 2026 Fortnite Nexus. Personal Use Only.
 
-**Code `ZYZTM` 💜**
+**Code `nexus` 💜**
 
 Frohe Streams! 🎬

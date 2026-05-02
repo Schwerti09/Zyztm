@@ -290,7 +290,7 @@ _______________________________________________________
 
 ### Option B: Discord (schneller)
 1. Tritt unserem Discord bei: [discord.gg/fortnitenexus](https://discord.gg/fortnitenexus)
-2. DM an `@TimoZyztm`
+2. DM an `@TimoNexus`
 3. Briefing + VOD-Link senden
 
 ---
@@ -313,4 +313,4 @@ _______________________________________________________
 **Fortnite Nexus VOD Review Briefing v1.0**
 © 2026 Fortnite Nexus. Confidential.
 
-**Code `ZYZTM` 💜**
+**Code `nexus` 💜**

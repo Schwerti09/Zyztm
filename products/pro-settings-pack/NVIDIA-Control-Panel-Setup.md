@@ -255,4 +255,4 @@ AMD-Setup-Guide kommt in v2.2 separat.
 💬 **Discord:** discord.gg/fortnitenexus
 🌐 **Updates:** fortnitenexus.com/shop
 
-**Support the Creator: Code `ZYZTM` ✨**
+**Support the Creator: Code `nexus` ✨**

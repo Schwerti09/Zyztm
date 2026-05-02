@@ -330,6 +330,6 @@ Beste Grüße,
 **Fortnite Nexus Monetarisierung-Guide v1.0**
 © 2026 Fortnite Nexus. Personal Use Only.
 
-**Code `ZYZTM` 💜**
+**Code `nexus` 💜**
 
 Frohe Einnahmen! 💰
