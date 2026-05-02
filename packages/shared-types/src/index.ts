@@ -223,7 +223,7 @@ export const COIN_PACKAGES: CoinPackage[] = [
 ];
 
 export const ALL_CARDS: Card[] = [
-  { id: 'c1', name: 'Zyztm Legend', rarity: 'legendary', emoji: '👑', description: 'Der König des Fortnite' },
+  { id: 'c1', name: 'Nexus Legend', rarity: 'legendary', emoji: '👑', description: 'Der König des Fortnite' },
   { id: 'c2', name: 'Victory Royale', rarity: 'legendary', emoji: '🏆', description: 'Unbesiegbar in der Arena' },
   { id: 'c3', name: 'Neon Striker', rarity: 'epic', emoji: '⚡', description: 'Schneller als das Licht' },
   { id: 'c4', name: 'Stream Demon', rarity: 'epic', emoji: '😈', description: 'Absolute Dominanz live' },
@@ -242,5 +242,5 @@ export const ALL_CARDS: Card[] = [
   { id: 'c17', name: 'Sub Badge', rarity: 'common', emoji: '⭐', description: 'Treuer Subscriber' },
   { id: 'c18', name: 'Hype Train', rarity: 'rare', emoji: '🚂', description: 'Bringt immer den Hype' },
   { id: 'c19', name: 'Night Owl', rarity: 'common', emoji: '🦉', description: 'Schaut die Late Night Streams' },
-  { id: 'c20', name: 'Diggah Card', rarity: 'epic', emoji: '🤝', description: 'Echter Zyztm Diggah' },
+  { id: 'c20', name: 'Diggah Card', rarity: 'epic', emoji: '🤝', description: 'Echter Nexus Diggah' },
 ];
