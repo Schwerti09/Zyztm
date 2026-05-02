@@ -6,6 +6,7 @@ import SuccessPage from './pages/SuccessPage';
 import DashboardPage from './pages/DashboardPage';
 import AdminPage from './pages/admin/AdminPage';
 import { getLanguageFromPath, type Language, buildLocalizedUrl } from './lib/i18n';
+import { AuthProvider } from './contexts/AuthContext';
 
 const CoinsPage = lazy(() => import('./pages/CoinsPage'));
 const ImpressumPage = lazy(() => import('./pages/ImpressumPage'));
@@ -24,6 +25,8 @@ const LoadoutGodPage = lazy(() => import('./pages/LoadoutGodPage'));
 const CreatorsPage = lazy(() => import('./pages/CreatorsPage'));
 const ClassicPage = lazy(() => import('./pages/ClassicPage'));
 const SubscriptionPage = lazy(() => import('./pages/SubscriptionPage'));
+const RegisterPage = lazy(() => import('./pages/RegisterPage'));
+const LoginPage = lazy(() => import('./pages/LoginPage'));
 
 // Digital Products Shop
 const ShopPage = lazy(() => import('./pages/ShopPage'));
@@ -83,13 +86,14 @@ function LanguageRoute({ path, component }: { path: string; component: React.Com
 
 export default function App() {
   return (
-    <>
-      <ScrollFix />
-      <Suspense fallback={null}>
-        <NexusIntro />
-      </Suspense>
-      <Suspense fallback={<PageLoader />}>
-        <Switch>
+    <AuthProvider>
+      <>
+        <ScrollFix />
+        <Suspense fallback={null}>
+          <NexusIntro />
+        </Suspense>
+        <Suspense fallback={<PageLoader />}>
+          <Switch>
           <Route path="/admin/:rest*" component={AdminPage} />
           <Route path="/admin" component={AdminPage} />
           <Route path="/" component={NexusUltimatePage} />
@@ -98,6 +102,8 @@ export default function App() {
           <Route path="/success" component={SuccessPage} />
           <Route path="/dashboard" component={DashboardPage} />
           <Route path="/coins" component={CoinsPage} />
+          <Route path="/login" component={LoginPage} />
+          <Route path="/register" component={RegisterPage} />
           <Route path="/impressum" component={ImpressumPage} />
           <Route path="/datenschutz" component={DatenschutzPage} />
           <Route path="/agb" component={AGBPage} />
@@ -154,6 +160,7 @@ export default function App() {
         </Switch>
       </Suspense>
     </>
+    </AuthProvider>
   );
 }
 
