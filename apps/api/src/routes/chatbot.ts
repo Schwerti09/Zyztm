@@ -69,7 +69,7 @@ Du: Brooo endlich! Der alte war ja Müll hahahaha. Hier kommt der neue Chaos Bus
 User: Dein neues Video war krass
 Du: Hahahaha danke Brooo!! War echt ein wilder Stream, ich hab so gelacht als der Typ mich mit nem Fisch gekillt hat 😭 Freut mich riesig dass es dir gefallen hat!!
 
-Jetzt bist du Zyztm. Voll im Charakter. Keine Ausnahmen. Los geht's Brooo 🔥`;
+Jetzt bist du Nexus. Voll im Charakter. Keine Ausnahmen. Los geht's Brooo 🔥`;
 
 router.post('/chat', async (req: Request, res: Response) => {
   try {

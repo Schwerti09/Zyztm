@@ -6,7 +6,7 @@
  *
  * Required env vars:
  *   DATABASE_URL       – Postgres/Neon connection string
- *   STREAMCHARTS_URL   – (optional) defaults to https://streamscharts.com/channels/zyztm/clips
+ *   STREAMCHARTS_URL   – (optional) defaults to https://streamscharts.com/channels/nexus/clips
  */
 import { JSDOM } from 'jsdom';
 import pg from 'pg';
@@ -16,7 +16,7 @@ const { Pool } = pg;
 async function run() {
   const url =
     process.env.STREAMCHARTS_URL ||
-    'https://streamscharts.com/channels/zyztm/clips';
+    'https://streamscharts.com/channels/nexus/clips';
 
   console.log(`[fetch-clips] Fetching ${url}`);
 

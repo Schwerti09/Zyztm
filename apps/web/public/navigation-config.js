@@ -273,7 +273,7 @@ const stickyElements = {
     sac_reminder: {
         id: 'sticky-sac',
         position: 'top',
-        content: 'Nutze Creator Code: ZYZTM',
+        content: 'Nutze Creator Code: nexus',
         trigger: 'after_30s',
         dismissible: true
     },

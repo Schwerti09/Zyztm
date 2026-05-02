@@ -85,14 +85,14 @@ $$ language 'plpgsql';
 CREATE TRIGGER update_creators_updated_at BEFORE UPDATE ON creators
     FOR EACH ROW EXECUTE FUNCTION update_updated_at_column();
 
--- Insert default creator (Zyztm as first creator)
+-- Insert default creator (Nexus as first creator)
 INSERT INTO creators (name, creator_code, display_name, bio, social_links, is_verified, revenue_share_percentage)
 VALUES (
-  'Zyztm',
-  'JOJOJO',
-  'Zyztm',
+  'Nexus',
+  'nexus',
+  'Nexus',
   '#1 Fortnite Creator - Pro Streamer & Content Creator',
-  '{"kick": "https://kick.com/zyztm", "youtube": "https://www.youtube.com/@Zyztm", "tiktok": "https://www.tiktok.com/@zyztm"}'::jsonb,
+  '{"kick": "https://kick.com/nexus", "youtube": "https://www.youtube.com/@FortniteNexusDE", "tiktok": "https://www.tiktok.com/@nexus"}'::jsonb,
   true,
   50.00
 ) ON CONFLICT (creator_code) DO NOTHING;

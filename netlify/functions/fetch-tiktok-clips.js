@@ -1,5 +1,5 @@
 /**
- * Netlify Scheduled Function – fetch latest TikTok clips for @zyztm.
+ * Netlify Scheduled Function – fetch latest TikTok clips for @nexus.
  * Runs once daily (configured in netlify.toml).
  *
  * This function attempts to extract video IDs from TikTok's public profile
@@ -8,13 +8,13 @@
  *
  * Required env vars:
  *   DATABASE_URL  – Postgres/Neon connection string
- *   TIKTOK_HANDLE – (optional) defaults to zyztm
+ *   TIKTOK_HANDLE – (optional) defaults to nexus
  */
 import pg from 'pg';
 
 const { Pool } = pg;
 
-const TIKTOK_HANDLE = process.env.TIKTOK_HANDLE ?? 'zyztm';
+const TIKTOK_HANDLE = process.env.TIKTOK_HANDLE ?? 'nexus';
 
 async function fetchTikTokVideos() {
   const url = `https://www.tiktok.com/@${TIKTOK_HANDLE}`;

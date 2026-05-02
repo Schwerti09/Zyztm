@@ -20,7 +20,7 @@
  *   DATABASE_URL — für Shop-Historie in Neon DB
  */
 
-const SAC_CODE = 'ZYZTM';
+const SAC_CODE = 'nexus';
 const DOMAIN = 'https://fortnitenexus.space';
 
 // ─── Fortnite API Fetch ───────────────────────────────────────────────────────
