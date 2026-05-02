@@ -2,7 +2,6 @@
  * NewsList Component
  * Displays a list of news articles with filtering and pagination
  */
-'use client';
 
 import { useState } from 'react';
 import { Link } from 'wouter';
