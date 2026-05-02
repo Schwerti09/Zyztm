@@ -269,4 +269,4 @@ Falls dir XP-Grind zu langweilig ist: Tournament-Modi anschauen (im Discord). Mi
 
 **Fortnite Nexus XP Optimization Guide v2.1**
 © 2026 Fortnite Nexus. Personal Use Only.
-**Code `ZYZTM` 💜**
+**Code `nexus` 💜**

@@ -257,4 +257,4 @@ Plus eigene Recherche im Discord.
 **Fortnite Nexus Secret Missions Map v2.1**
 © 2026 Fortnite Nexus. Personal Use Only.
 
-**Code `ZYZTM` 💜**
+**Code `nexus` 💜**

@@ -284,7 +284,7 @@ Alle Subscriber haben Zugang zu:
 - `#premium-tips` (3-5 neue Tips pro Woche)
 - `#cash-cup-strategy` (Pro-Discussion)
 - `#meta-deepdives` (Datamining-Discoveries)
-- `#monthly-q&a` (Live-Session mit TimoZyztm jeden 1. Sonntag)
+- `#monthly-q&a` (Live-Session mit TimoNexus jeden 1. Sonntag)
 
 > Discord-Invite-Link: in der Subscription-Email!
 
@@ -315,12 +315,12 @@ Alle bisherigen Reports auf [fortnitenexus.com/reports/archive](https://fortnite
 
 ---
 
-## 💜 Code "ZYZTM"
+## 💜 Code "nexus"
 
 Wenn dir der Report wertvoll ist – nutze unser SAC-Code im Item Shop. Kostet dich nichts, supportet aber den Channel und macht weiter Reports möglich.
 
 ```
-ITEM SHOP CODE: ZYZTM
+ITEM SHOP CODE: nexus
 ```
 
 ---
