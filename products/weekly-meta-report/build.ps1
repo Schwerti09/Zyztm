@@ -62,7 +62,7 @@ Premium-Channels nur fuer Subscriber:
 - Discord: discord.gg/fortnitenexus
 
 (c) 2026 Fortnite Nexus
-Code "ZYZTM" 💜
+Code "nexus" 💜
 
 Build: $BuildDate
 "@ | Out-File -Encoding UTF8 "$BuildDir\README.txt"

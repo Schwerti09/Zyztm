@@ -217,7 +217,7 @@ Du bekommst diese Checklist **jede Season neu** – kostenlos, automatisch per E
 
 Wenn dir die Checklist hilft:
 
-- 🌟 **Code `ZYZTM`** im Item Shop
+- 🌟 **Code `nexus`** im Item Shop
 - 💬 **Discord:** [discord.gg/fortnitenexus](https://discord.gg/fortnitenexus)
 - 📺 **YouTube:** Subscribe für Weekly-Updates
 
