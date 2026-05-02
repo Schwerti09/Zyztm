@@ -171,7 +171,7 @@ WOCHE 2 (gleicher Pattern, aber Edits-Focus)
 
 ### "Wer macht das Review?"
 
-Aktuell: **TimoZyztm** (3 Jahre Cash-Cup-Experience, Top 5% DACH-Ranked).
+Aktuell: **TimoNexus** (3 Jahre Cash-Cup-Experience, Top 5% DACH-Ranked).
 
 > Wenn die Nachfrage steigt, erweitern wir das Team. Du kannst im Briefing-Fragebogen einen bestimmten Reviewer wünschen, sobald mehrere verfügbar sind.
 
@@ -287,7 +287,7 @@ Sollten wir die 48h überschreiten (bei vollen Slots möglich):
 
 ## 🌟 Reviews von zufriedenen Kunden
 
-> "TimoZyztm hat in 30 Min mehr identifiziert als ich in 6 Monaten alleine. Bin von Champion auf Unreal in 4 Wochen." – **Marc S., 22, Berlin**
+> "TimoNexus hat in 30 Min mehr identifiziert als ich in 6 Monaten alleine. Bin von Champion auf Unreal in 4 Wochen." – **Marc S., 22, Berlin**
 
 > "Das war meine beste €30-Investition für Fortnite. Meine Build-Speed ist messbar besser." – **Lena K., 19, Wien**
 
@@ -306,6 +306,6 @@ Sollten wir die 48h überschreiten (bei vollen Slots möglich):
 **1-on-1 VOD Review Service v1.0**
 © 2026 Fortnite Nexus. Personal Use Only.
 
-**Code `ZYZTM` 💜**
+**Code `nexus` 💜**
 
 Schauen wir uns dein Gameplay an! 🎯

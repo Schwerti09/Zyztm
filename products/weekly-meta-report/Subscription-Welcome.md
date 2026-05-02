@@ -32,7 +32,7 @@ date: "April 2026"
 - `#premium-tips` – 3-5 neue Tips pro Woche
 - `#cash-cup-strategy` – Pro-Discussion
 - `#meta-deepdives` – Datamining-Discoveries
-- `#monthly-q&a` – Live-Session mit TimoZyztm jeden 1. Sonntag
+- `#monthly-q&a` – Live-Session mit TimoNexus jeden 1. Sonntag
 
 **Wie beitreten:**
 1. Discord-Account aktivieren: [discord.gg/fortnitenexus](https://discord.gg/fortnitenexus)
@@ -73,7 +73,7 @@ Login mit der Email, mit der du gekauft hast.
 Falls du zu den ersten 100 Subscribern gehörst (was wahrscheinlich ist):
 
 ✨ **OG-Subscriber-Badge** in Discord
-✨ **Direkter Zugang zu TimoZyztm** in `#og-subscribers`
+✨ **Direkter Zugang zu TimoNexus** in `#og-subscribers`
 ✨ **Lifetime-Locked-Price** (wenn der Preis später steigt, du behältst €7.99/Monat)
 ✨ **Exclusive Q&A-Sessions** (vor öffentlichen)
 
@@ -133,7 +133,7 @@ Damit du die Qualität verstehen kannst:
 
 ### Wer schreibt?
 
-**Hauptsächlich:** TimoZyztm (3 Jahre Cash-Cup-Player, Top 5% DACH)
+**Hauptsächlich:** TimoNexus (3 Jahre Cash-Cup-Player, Top 5% DACH)
 **Gelegentlich:** Gast-Beiträge von eingeladenen Pros (mit Ankündigung)
 
 ### Wie viel Arbeit pro Issue?
@@ -147,11 +147,11 @@ Damit du die Qualität verstehen kannst:
 
 ---
 
-## 💜 Code "ZYZTM"
+## 💜 Code "nexus"
 
 Wenn der Report dir wertvoll ist (und ich hoffe das ist er!):
 
-- Nutze Code **ZYZTM** im Fortnite Item Shop
+- Nutze Code **nexus** im Fortnite Item Shop
 - Kostet dich nichts extra
 - Supportet den Channel + ermöglicht Reports
 
@@ -170,7 +170,7 @@ Inhalt-Preview:
 
 **Welcome to the family! 🎯**
 
-TimoZyztm
+TimoNexus
 Founder, Fortnite Nexus
 
 ---

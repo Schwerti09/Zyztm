@@ -55,7 +55,7 @@ Subject: "VOD Briefing - Bestellnummer #XXXXX"
 
 Oder DISCORD (schneller):
 1. discord.gg/fortnitenexus beitreten
-2. DM an @TimoZyztm
+2. DM an @TimoNexus
 
 ## Schritt 4: Warten (24-48h)
 Du bekommst eine Email wenn dein Review bereit ist.
@@ -71,7 +71,7 @@ Email: support@fortnitenexus.com
 Discord: discord.gg/fortnitenexus
 
 (c) 2026 Fortnite Nexus
-Code "ZYZTM" im Item Shop = Support 💜
+Code "nexus" im Item Shop = Support 💜
 
 Build: $BuildDate
 "@ | Out-File -Encoding UTF8 "$BuildDir\README.txt"
