@@ -4,14 +4,12 @@ import { Toast, useToastController } from '../components/Toast';
 const LiveBar = lazy(() => import('../components/LiveBar'));
 const Navbar = lazy(() => import('../components/Navbar'));
 const HeroSection = lazy(() => import('../components/HeroSection'));
-const KickEmbed = lazy(() => import('../components/KickEmbed'));
 const CreatorCode = lazy(() => import('../components/CreatorCode'));
 const ProductGrid = lazy(() => import('../components/ProductGrid'));
 const NeuralSynthesizer = lazy(() => import('../components/NeuralSynthesizer'));
 const NexusBro = lazy(() => import('../components/NexusBro'));
 const NewsSection = lazy(() => import('../components/NewsSection'));
 const MediaGallery = lazy(() => import('../components/MediaGallery'));
-const GamerVoting = lazy(() => import('../components/GamerVoting'));
 const Footer = lazy(() => import('../components/Footer'));
 const ParticleField = lazy(() => import('../components/ParticleField'));
 const ThumbnailSnake = lazy(() => import('../components/ThumbnailSnake'));
@@ -31,12 +29,8 @@ const WeaponDatabase = lazy(() => import('../components/WeaponDatabase'));
 const TierListBuilder = lazy(() => import('../components/TierListBuilder'));
 const CreatorMarketplace = lazy(() => import('../components/CreatorMarketplace'));
 const SubscriptionPlans = lazy(() => import('../components/SubscriptionPlans'));
-const AffiliateSection = lazy(() => import('../components/AffiliateSection'));
 const GlobalEmpire = lazy(() => import('../components/GlobalEmpire'));
 const RundgangTour = lazy(() => import('../components/RundgangTour'));
-const SoundboardDemo = lazy(() => import('../components/SoundboardDemo'));
-const BackgroundMusic = lazy(() => import('../components/BackgroundMusic'));
-const FanCounter = lazy(() => import('../components/FanCounter'));
 const ClutchReel = lazy(() => import('../components/ClutchReel'));
 const NewsletterSignup = lazy(() => import('../components/newsletter/NewsletterSignup'));
 
@@ -54,23 +48,19 @@ export default function MainPage() {
   return (
     <div className="min-h-screen bg-bg-dark relative">
       <Suspense fallback={<SectionLoader />}>
-        <BackgroundMusic />
         <ParticleField />
         <ThumbnailSnake />
         <div className="relative z-10">
           <LiveBar />
           <Navbar />
           <main className="pt-24">
-            <Suspense fallback={<SectionLoader />}><FanCounter /></Suspense>
             <HeroSection />
             <AboutNexus />
             <CreatorMarketplace />
             <SubscriptionPlans />
-            <AffiliateSection />
             <GlobalEmpire />
             <Suspense fallback={<SectionLoader />}><ClutchReel /></Suspense>
             <ProductGrid />
-            <SoundboardDemo />
             <CommunitySpotlight />
             <NewsSection />
             <HotRightNow />
