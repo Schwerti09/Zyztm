@@ -18,6 +18,7 @@ const HubPage = lazy(() => import('./pages/HubPage'));
 const NewsPage = lazy(() => import('./pages/NewsPage'));
 const NewsArticlePage = lazy(() => import('./pages/NewsArticlePage'));
 const NexusIQPage = lazy(() => import('./pages/NexusIQPage'));
+const NexusUltimatePage = lazy(() => import('./pages/NexusUltimatePage'));
 const FortniteSpacePage = lazy(() => import('./pages/FortniteSpacePage'));
 const LoadoutGodPage = lazy(() => import('./pages/LoadoutGodPage'));
 const CreatorsPage = lazy(() => import('./pages/CreatorsPage'));
@@ -87,8 +88,9 @@ export default function App() {
         <Switch>
           <Route path="/admin/:rest*" component={AdminPage} />
           <Route path="/admin" component={AdminPage} />
-          <Route path="/" component={FortniteSpacePage} />
+          <Route path="/" component={NexusUltimatePage} />
           <Route path="/classic" component={MainPage} />
+          <Route path="/space" component={FortniteSpacePage} />
           <Route path="/success" component={SuccessPage} />
           <Route path="/dashboard" component={DashboardPage} />
           <Route path="/coins" component={CoinsPage} />
