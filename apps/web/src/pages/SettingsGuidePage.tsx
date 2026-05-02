@@ -3,41 +3,38 @@
  * Complete guide for Fortnite settings optimization
  */
 
-import { lazy, Suspense } from 'react';
+import { lazy, Suspense, useEffect } from 'react';
 import { Link } from 'wouter';
-import SEOHead from '../components/SEOHead';
 
 const Footer = lazy(() => import('../components/Footer'));
 
-const schemaOrg = {
-  '@context': 'https://schema.org',
-  '@type': 'Article',
-  headline: 'Fortnite Settings Guide 2026 - Die ultimative Einstellungs-Optimierung',
-  description: 'Die besten Fortnite Settings für PC, Controller, Mobile und Konsolen. Sensitivity, Keybinds, Grafik und Audio für maximale Performance.',
-  author: {
-    '@type': 'Organization',
-    name: 'Fortnite Nexus',
-  },
-  publisher: {
-    '@type': 'Organization',
-    name: 'Fortnite Nexus',
-    logo: {
-      '@type': 'ImageObject',
-      url: 'https://fortnitenexus.space/logo.png',
-    },
-  },
-};
-
 export default function SettingsGuidePage() {
+  useEffect(() => {
+    document.title = 'Fortnite Settings Guide 2026 | Die ultimative Einstellungs-Optimierung';
+    
+    // Set meta description
+    const metaDescription = document.querySelector('meta[name="description"]');
+    if (metaDescription) {
+      metaDescription.setAttribute('content', 'Die besten Fortnite Settings für PC, Controller, Mobile und Konsolen. Sensitivity, Keybinds, Grafik und Audio für maximale Performance.');
+    } else {
+      const meta = document.createElement('meta');
+      meta.name = 'description';
+      meta.content = 'Die besten Fortnite Settings für PC, Controller, Mobile und Konsolen. Sensitivity, Keybinds, Grafik und Audio für maximale Performance.';
+      document.head.appendChild(meta);
+    }
+
+    // Set canonical URL
+    let canonical = document.querySelector<HTMLLinkElement>('link[rel="canonical"]');
+    if (!canonical) {
+      canonical = document.createElement('link');
+      canonical.rel = 'canonical';
+      document.head.appendChild(canonical);
+    }
+    canonical.setAttribute('href', 'https://fortnitenexus.space/settings-guide');
+  }, []);
+
   return (
     <>
-      <SEOHead
-        title="Fortnite Settings Guide 2026 | Die ultimative Einstellungs-Optimierung"
-        description="Die besten Fortnite Settings für PC, Controller, Mobile und Konsolen. Sensitivity, Keybinds, Grafik und Audio für maximale Performance."
-        canonical="https://fortnitenexus.space/settings-guide"
-        schema={schemaOrg}
-      />
-
       <div className="min-h-screen bg-gradient-to-br from-zinc-950 via-black to-zinc-950">
         {/* Hero Section */}
         <div className="relative overflow-hidden">

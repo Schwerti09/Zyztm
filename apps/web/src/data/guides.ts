@@ -3402,7 +3402,7 @@ export const GUIDES: GuideData[] = [
       },
       {
         heading: 'Frame Rate High',
-        text: 'Frame Rate High gibt smoothes Gameplay wenn dein Gerät es unterstützt. High Frame Rate ist wichtig für Competitive-Play auf Mobile.',
+        body: 'Frame Rate High gibt smoothes Gameplay wenn dein Gerät es unterstützt. High Frame Rate ist wichtig für Competitive-Play auf Mobile.',
       },
       {
         heading: 'Hintergrund-Apps schließen',

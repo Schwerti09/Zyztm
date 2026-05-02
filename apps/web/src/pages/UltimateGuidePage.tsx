@@ -3,41 +3,38 @@
  * Complete Fortnite guide for all skill levels
  */
 
-import { lazy, Suspense } from 'react';
+import { lazy, Suspense, useEffect } from 'react';
 import { Link } from 'wouter';
-import SEOHead from '../components/SEOHead';
 
 const Footer = lazy(() => import('../components/Footer'));
 
-const schemaOrg = {
-  '@context': 'https://schema.org',
-  '@type': 'Article',
-  headline: 'Fortnite Ultimate Guide 2026 - Der komplette Guide für alle Skill-Levels',
-  description: 'Der ultimative Fortnite Guide für Anfänger bis Pro-Spieler. Building, Aim, Rotation, Meta und Strategien für Chapter 6 Season 2.',
-  author: {
-    '@type': 'Organization',
-    name: 'Fortnite Nexus',
-  },
-  publisher: {
-    '@type': 'Organization',
-    name: 'Fortnite Nexus',
-    logo: {
-      '@type': 'ImageObject',
-      url: 'https://fortnitenexus.space/logo.png',
-    },
-  },
-};
-
 export default function UltimateGuidePage() {
+  useEffect(() => {
+    document.title = 'Fortnite Ultimate Guide 2026 | Der komplette Guide für alle Skill-Levels';
+    
+    // Set meta description
+    const metaDescription = document.querySelector('meta[name="description"]');
+    if (metaDescription) {
+      metaDescription.setAttribute('content', 'Der ultimative Fortnite Guide für Anfänger bis Pro-Spieler. Building, Aim, Rotation, Meta und Strategien für Chapter 6 Season 2.');
+    } else {
+      const meta = document.createElement('meta');
+      meta.name = 'description';
+      meta.content = 'Der ultimative Fortnite Guide für Anfänger bis Pro-Spieler. Building, Aim, Rotation, Meta und Strategien für Chapter 6 Season 2.';
+      document.head.appendChild(meta);
+    }
+
+    // Set canonical URL
+    let canonical = document.querySelector<HTMLLinkElement>('link[rel="canonical"]');
+    if (!canonical) {
+      canonical = document.createElement('link');
+      canonical.rel = 'canonical';
+      document.head.appendChild(canonical);
+    }
+    canonical.setAttribute('href', 'https://fortnitenexus.space/ultimate-guide');
+  }, []);
+
   return (
     <>
-      <SEOHead
-        title="Fortnite Ultimate Guide 2026 | Der komplette Guide für alle Skill-Levels"
-        description="Der ultimative Fortnite Guide für Anfänger bis Pro-Spieler. Building, Aim, Rotation, Meta und Strategien für Chapter 6 Season 2."
-        canonical="https://fortnitenexus.space/ultimate-guide"
-        schema={schemaOrg}
-      />
-
       <div className="min-h-screen bg-gradient-to-br from-zinc-950 via-black to-zinc-950">
         {/* Hero Section */}
         <div className="relative overflow-hidden">
