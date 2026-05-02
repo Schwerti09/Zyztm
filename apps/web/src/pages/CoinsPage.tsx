@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'wouter';
-import { COIN_PACKAGES } from '@zyztm/shared-types';
+import { COIN_PACKAGES } from '@nexus/shared-types';
 import { useStore } from '../store/useStore';
 import { showToast } from '../components/Toast';
 

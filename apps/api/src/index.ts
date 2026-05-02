@@ -61,7 +61,7 @@ app.use('/api/live-stats', liveStatsRouter);
 app.use('/api/check', checkRouter);
 
 app.listen(PORT, () => {
-  console.log(`🚀 Zyztm API running on port ${PORT}`);
+  console.log(`🚀 Nexus API running on port ${PORT}`);
 });
 
 export default app;

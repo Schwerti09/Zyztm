@@ -204,7 +204,7 @@ export interface NexusUser {
   id: string;
   username: string;
   tier: Tier;
-  nexusCode?: string;                // ZYZTM Support Code
+  nexusCode?: string;                // nexus Support Code
   savedLoadouts: number;
   lastActive: Date;
   preferences: {

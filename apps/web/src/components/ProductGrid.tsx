@@ -1,6 +1,6 @@
 import { useRef, useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { PRODUCTS } from '@zyztm/shared-types';
+import { PRODUCTS } from '@nexus/shared-types';
 import { useStore } from '../store/useStore';
 import { showToast } from './Toast';
 

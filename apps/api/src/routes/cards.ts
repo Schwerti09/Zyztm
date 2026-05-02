@@ -1,6 +1,6 @@
 import { Router, Request, Response } from 'express';
 import { z } from 'zod';
-import { ALL_CARDS } from '@zyztm/shared-types';
+import { ALL_CARDS } from '@nexus/shared-types';
 
 const router = Router();
 

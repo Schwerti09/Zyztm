@@ -3,7 +3,7 @@ import { eq, sql } from 'drizzle-orm';
 import { z } from 'zod';
 import { db } from '../db';
 import { users, coinTransactions, purchases, voiceCredits, cardBoosterPacks } from '../db/schema';
-import { PRODUCTS, ALL_CARDS } from '@zyztm/shared-types';
+import { PRODUCTS, ALL_CARDS } from '@nexus/shared-types';
 import { resolveUser } from '../utils/resolveUser';
 
 const router = Router();

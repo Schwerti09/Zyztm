@@ -3,7 +3,7 @@ import { eq, sql } from 'drizzle-orm';
 import { db } from '../../db';
 import { purchases } from '../../db/schema';
 import { requireAdmin } from './middleware';
-import { PRODUCTS } from '@zyztm/shared-types';
+import { PRODUCTS } from '@nexus/shared-types';
 
 const router = Router();
 

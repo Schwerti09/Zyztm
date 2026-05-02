@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useStore } from '../store/useStore';
-import type { ChatMessage } from '@zyztm/shared-types';
+import type { ChatMessage } from '@nexus/shared-types';
 
 type Mood = 'chill' | 'tryhard' | 'lustig';
 

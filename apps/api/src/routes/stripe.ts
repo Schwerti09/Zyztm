@@ -2,7 +2,7 @@ import { Router, Request, Response } from 'express';
 import Stripe from 'stripe';
 import { z } from 'zod';
 import { eq, sql } from 'drizzle-orm';
-import { PRODUCTS, COIN_PACKAGES } from '@zyztm/shared-types';
+import { PRODUCTS, COIN_PACKAGES } from '@nexus/shared-types';
 import { db } from '../db';
 import { users, coinTransactions, purchases } from '../db/schema';
 import { resolveUser } from '../utils/resolveUser';
@@ -86,7 +86,7 @@ router.post('/create-coin-checkout', async (req: Request, res: Response) => {
             currency: 'eur',
             product_data: {
               name: `${pkg.emoji} ${pkg.name} – ${totalCoins} JOJOJO Coins`,
-              description: `${pkg.coins} Coins${pkg.bonus ? ` + ${pkg.bonus} Bonus-Coins` : ''} für dein Zyztm-Konto`,
+              description: `${pkg.coins} Coins${pkg.bonus ? ` + ${pkg.bonus} Bonus-Coins` : ''} für dein Nexus-Konto`,
             },
             unit_amount: pkg.price,
           },
