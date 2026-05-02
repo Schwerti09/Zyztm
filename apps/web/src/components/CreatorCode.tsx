@@ -14,7 +14,7 @@ export default function CreatorCode() {
   const [dismissed, setDismissed] = useState(false);
   const [displayCount, setDisplayCount] = useState(0);
   const [lastDisplay, setLastDisplay] = useState<number | null>(null);
-  const code = 'ZYZTM';
+  const code = 'nexus';
 
   const handleCopy = async () => {
     try {

@@ -1,5 +1,5 @@
 {
-  "name": "@zyztm/discord-bot",
+  "name": "@nexus/discord-bot",
   "version": "1.0.0",
   "type": "module",
   "private": true,

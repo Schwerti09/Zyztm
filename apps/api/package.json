@@ -1,5 +1,5 @@
 {
-  "name": "@zyztm/api",
+  "name": "@nexus/api",
   "version": "1.0.0",
   "scripts": {
     "dev": "tsx watch src/index.ts",
@@ -8,7 +8,7 @@
     "type-check": "tsc --noEmit"
   },
   "dependencies": {
-    "@zyztm/shared-types": "workspace:*",
+    "@nexus/shared-types": "workspace:*",
     "cors": "^2.8.5",
     "dotenv": "^16.4.0",
     "drizzle-orm": "^0.30.0",
