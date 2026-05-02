@@ -7,6 +7,7 @@ CREATE TABLE IF NOT EXISTS users (
   password TEXT NOT NULL,
   username TEXT UNIQUE NOT NULL,
   tier TEXT NOT NULL DEFAULT 'free' CHECK (tier IN ('free', 'pro', 'elite')),
+  stripe_customer_id TEXT UNIQUE,
   created_at TIMESTAMP DEFAULT NOW(),
   updated_at TIMESTAMP DEFAULT NOW()
 );
@@ -14,6 +15,7 @@ CREATE TABLE IF NOT EXISTS users (
 -- Index for faster email lookups
 CREATE INDEX IF NOT EXISTS idx_users_email ON users(email);
 CREATE INDEX IF NOT EXISTS idx_users_username ON users(username);
+CREATE INDEX IF NOT EXISTS idx_users_stripe_customer ON users(stripe_customer_id);
 
 -- Function to update updated_at timestamp
 CREATE OR REPLACE FUNCTION update_updated_at_column()
