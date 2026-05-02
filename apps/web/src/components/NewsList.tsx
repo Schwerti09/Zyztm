@@ -3,7 +3,7 @@
  * Displays a list of news articles with filtering and pagination
  */
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link } from 'wouter';
 import { NEWS_ARTICLES, getNewsArticlesByCategory, getFeaturedNews, type NewsArticle } from '../data/news';
 
@@ -16,9 +16,12 @@ interface NewsListProps {
 export default function NewsList({ category, limit, featured }: NewsListProps) {
   const [selectedCategory, setSelectedCategory] = useState(category || 'all');
   const [showFeatured, setShowFeatured] = useState(featured || false);
+  const [currentLang, setCurrentLang] = useState('de');
 
-  console.log('NewsList props:', { category, limit, featured });
-  console.log('NEWS_ARTICLES:', NEWS_ARTICLES);
+  useEffect(() => {
+    const lang = window.location.pathname.split('/')[1] || 'de';
+    setCurrentLang(lang);
+  }, []);
 
   let articles = NEWS_ARTICLES;
 
@@ -31,8 +34,6 @@ export default function NewsList({ category, limit, featured }: NewsListProps) {
   if (limit) {
     articles = articles.slice(0, limit);
   }
-
-  console.log('Filtered articles:', articles);
 
   const categories = ['all', 'patch_notes', 'item_shop', 'events', 'competitions', 'tips', 'leaks', 'videos'];
 
@@ -68,7 +69,7 @@ export default function NewsList({ category, limit, featured }: NewsListProps) {
       {/* News Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {articles.map((article) => (
-          <NewsCard key={article.id} article={article} />
+          <NewsCard key={article.id} article={article} currentLang={currentLang} />
         ))}
       </div>
 
@@ -81,9 +82,9 @@ export default function NewsList({ category, limit, featured }: NewsListProps) {
   );
 }
 
-function NewsCard({ article }: { article: NewsArticle }) {
+function NewsCard({ article, currentLang }: { article: NewsArticle; currentLang: string }) {
   return (
-    <Link href={`/news/${article.slug}`}>
+    <Link href={`/${currentLang}/news/${article.slug}`}>
       <a className="group flex flex-col h-full bg-bg-card/60 border border-white/10 rounded-2xl overflow-hidden hover:border-neon-blue/50 hover:bg-bg-card transition-all duration-200">
         {article.imageUrl && (
           <div className="relative h-48 bg-bg-darker overflow-hidden">
