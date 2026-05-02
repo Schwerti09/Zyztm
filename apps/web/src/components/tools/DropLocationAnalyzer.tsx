@@ -9,6 +9,7 @@ import { useNexusStore } from '../../stores/nexus-store';
 import PaywallGate from '../shared/PaywallGate';
 import MetaBadge from '../shared/MetaBadge';
 import type { DropSpot, GameMode } from '../../lib/shared-types';
+import { DROP_LOCATIONS, type DropLocation, type LocationCategory } from '../../data/drop-locations';
 
 const MODES: { value: GameMode; label: string }[] = [
   { value: 'ranked_solo', label: 'Ranked Solo' },
@@ -17,80 +18,32 @@ const MODES: { value: GameMode; label: string }[] = [
   { value: 'cash_cup', label: 'Cash Cup' },
 ];
 
-const POI_DATA: DropSpot[] = [
-  { 
-    poiName: "The Yacht", 
-    map: "Chapter7_Map", 
-    mode: "zero_build_duos", 
-    season: "C7S2", 
-    avgPlacement: 12.4, 
-    winrate: 28.7, 
-    lootTier: "god", 
-    earlyFightProbability: 85,
-    recommendation: "Perfekt für aggressive Teams mit guter Mobility. Hohes Loot, aber sehr heiß."
-  },
-  { 
-    poiName: "Reality Falls", 
-    map: "Chapter7_Map", 
-    mode: "ranked_solo", 
-    season: "C7S2", 
-    avgPlacement: 8.9, 
-    winrate: 32.1, 
-    lootTier: "high", 
-    earlyFightProbability: 45,
-    recommendation: "Sichere Rotation in die Zone. Gutes Balance aus Loot und Survival."
-  },
-  { 
-    poiName: "The Underworld", 
-    map: "Chapter7_Map", 
-    mode: "reload", 
-    season: "C7S2", 
-    avgPlacement: 15.2, 
-    winrate: 24.8, 
-    lootTier: "high", 
-    earlyFightProbability: 92,
-    recommendation: "Nur für sehr aggressive Spieler. Extrem hohes Fight-Potenzial."
-  },
-  { 
-    poiName: "Lavish Lair", 
-    map: "Chapter7_Map", 
-    mode: "cash_cup", 
-    season: "C7S2", 
-    avgPlacement: 6.8, 
-    winrate: 41.3, 
-    lootTier: "god", 
-    earlyFightProbability: 60,
-    recommendation: "Top Choice für Cash Cups. Sehr starkes Late-Game Positioning."
-  },
-  { 
-    poiName: "Eclipsed Estate", 
-    map: "Chapter7_Map", 
-    mode: "ranked_solo", 
-    season: "C7S2", 
-    avgPlacement: 11.3, 
-    winrate: 29.5, 
-    lootTier: "medium", 
-    earlyFightProbability: 35,
-    recommendation: "Sicherer Drop für Controller-Spieler. Gute Rotation ins Mid-Game."
-  },
+const PLAY_STYLES: { value: 'aggressive' | 'balanced' | 'passive'; label: string }[] = [
+  { value: 'aggressive', label: 'Aggressiv' },
+  { value: 'balanced', label: 'Balanced' },
+  { value: 'passive', label: 'Passiv' },
 ];
+
+const CATEGORY_COLORS: Record<LocationCategory, string> = {
+  hot: '#ef4444',
+  mid: '#f59e0b',
+  safe: '#10b981',
+  remote: '#8b5cf6',
+};
 
 export default function DropLocationAnalyzer() {
   const { user } = useNexusStore();
   const [selectedMode, setSelectedMode] = useState<GameMode>('ranked_solo');
-  const [minWinrate, setMinWinrate] = useState(20);
+  const [selectedPlayStyle, setSelectedPlayStyle] = useState<'aggressive' | 'balanced' | 'passive'>('balanced');
+  const [minWinrate, setMinWinrate] = useState(7);
+  const [selectedLocation, setSelectedLocation] = useState<DropLocation | null>(null);
 
   const filteredSpots = useMemo(() => {
-    return POI_DATA
-      .filter(spot => spot.mode === selectedMode && spot.winrate >= minWinrate)
-      .sort((a, b) => b.winrate - a.winrate);
-  }, [selectedMode, minWinrate]);
-
-  const getLootColor = (tier: string) => {
-    if (tier === 'god') return 'text-yellow-400';
-    if (tier === 'high') return 'text-nexus-green';
-    return 'text-zinc-400';
-  };
+    return DROP_LOCATIONS
+      .filter(loc => loc.winRate >= minWinrate)
+      .filter(loc => loc.recommendedFor.includes(selectedPlayStyle))
+      .sort((a, b) => b.winRate - a.winRate);
+  }, [minWinrate, selectedPlayStyle]);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-zinc-950 via-black to-zinc-950 pb-20">
@@ -101,14 +54,69 @@ export default function DropLocationAnalyzer() {
             <div>
               <h1 className="text-6xl font-black tracking-tighter text-nexus-green">DROP</h1>
               <h2 className="text-5xl font-black text-nexus-orange -mt-3">LOCATION ANALYZER</h2>
-              <p className="text-zinc-400 mt-2">Wissenschaftlich fundierte Drop-Strategien • Chapter 7 Season 2</p>
+              <p className="text-zinc-400 mt-2">Wissenschaftlich fundierte Drop-Strategien • Chapter 6 Season 2</p>
             </div>
-            <MetaBadge season="C7S2" lastUpdated="Live Meta" />
+            <MetaBadge season="C6S2" lastUpdated="Live Meta" />
           </div>
         </div>
       </div>
 
       <div className="max-w-7xl mx-auto px-6 pt-10">
+        {/* SVG Map */}
+        <div className="glass rounded-3xl p-8 mb-10 bg-black/50 backdrop-blur-sm">
+          <h3 className="text-2xl font-bold mb-6 text-white">INTERAKTIVE MAP</h3>
+          <div className="relative w-full aspect-[16/9] bg-zinc-900 rounded-2xl overflow-hidden">
+            <svg viewBox="0 0 100 100" className="w-full h-full">
+              {/* Map Background */}
+              <rect width="100" height="100" fill="#1a1a2e" />
+              
+              {/* Grid Lines */}
+              {[0, 20, 40, 60, 80, 100].map((x) => (
+                <line key={`v-${x}`} x1={x} y1={0} x2={x} y2={100} stroke="#2a2a4e" strokeWidth="0.5" />
+              ))}
+              {[0, 20, 40, 60, 80, 100].map((y) => (
+                <line key={`h-${y}`} x1={0} y1={y} x2={100} y2={y} stroke="#2a2a4e" strokeWidth="0.5" />
+              ))}
+              
+              {/* Drop Locations */}
+              {DROP_LOCATIONS.map((loc) => (
+                <g key={loc.id} onClick={() => setSelectedLocation(loc)} className="cursor-pointer">
+                  <circle
+                    cx={loc.x}
+                    cy={loc.y}
+                    r={4 + loc.contestLevel * 0.5}
+                    fill={CATEGORY_COLORS[loc.category]}
+                    fillOpacity={0.6}
+                    stroke={CATEGORY_COLORS[loc.category]}
+                    strokeWidth={1}
+                    className={selectedLocation?.id === loc.id ? 'animate-pulse' : ''}
+                  />
+                  <text
+                    x={loc.x}
+                    y={loc.y - 6}
+                    fontSize="3"
+                    fill="white"
+                    textAnchor="middle"
+                    className="pointer-events-none"
+                  >
+                    {loc.name}
+                  </text>
+                </g>
+              ))}
+            </svg>
+          </div>
+          
+          {/* Legend */}
+          <div className="flex gap-6 mt-4 text-sm">
+            {Object.entries(CATEGORY_COLORS).map(([key, color]) => (
+              <div key={key} className="flex items-center gap-2">
+                <div className="w-3 h-3 rounded-full" style={{ backgroundColor: color }} />
+                <span className="text-zinc-400 capitalize">{key}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+
         <div className="glass rounded-3xl p-8 mb-10 bg-black/50 backdrop-blur-sm">
           <div className="flex flex-col md:flex-row gap-8">
             <div className="flex-1">
@@ -131,14 +139,33 @@ export default function DropLocationAnalyzer() {
             </div>
 
             <div className="flex-1">
+              <label className="block text-zinc-400 text-sm mb-3">SPIELSTIL</label>
+              <div className="flex flex-wrap gap-3">
+                {PLAY_STYLES.map((style) => (
+                  <button
+                    key={style.value}
+                    onClick={() => setSelectedPlayStyle(style.value)}
+                    className={`px-8 py-4 rounded-2xl font-semibold transition-all ${
+                      selectedPlayStyle === style.value 
+                        ? 'bg-nexus-purple text-white shadow-xl' 
+                        : 'bg-zinc-900 hover:bg-zinc-800 border border-zinc-700'
+                    }`}
+                  >
+                    {style.label}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            <div className="flex-1">
               <label className="block text-zinc-400 text-sm mb-3">
                 MINDEST WINRATE: <span className="text-nexus-green">{minWinrate}%</span>
               </label>
               <input
                 type="range"
-                min={10}
-                max={50}
-                step={5}
+                min={4}
+                max={15}
+                step={1}
                 value={minWinrate}
                 onChange={(e) => setMinWinrate(parseInt(e.target.value))}
                 className="w-full accent-nexus-orange"
@@ -147,37 +174,77 @@ export default function DropLocationAnalyzer() {
           </div>
         </div>
 
+        {/* Selected Location Detail */}
+        {selectedLocation && (
+          <div className="glass rounded-3xl p-8 mb-10 bg-black/50 backdrop-blur-sm border-2 border-nexus-orange">
+            <div className="flex justify-between items-start mb-6">
+              <div>
+                <h3 className="text-3xl font-bold text-white">{selectedLocation.name}</h3>
+                <div className={`text-sm font-medium mt-1`} style={{ color: CATEGORY_COLORS[selectedLocation.category] }}>
+                  {selectedLocation.category.toUpperCase()}
+                </div>
+              </div>
+              <button onClick={() => setSelectedLocation(null)} className="text-zinc-400 hover:text-white">
+                ✕
+              </button>
+            </div>
+            <p className="text-zinc-300 mb-6">{selectedLocation.description}</p>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+              <div className="bg-zinc-900 rounded-xl p-4">
+                <div className="text-zinc-400 text-sm">Win Rate</div>
+                <div className="text-2xl font-bold text-nexus-green">{selectedLocation.winRate}%</div>
+              </div>
+              <div className="bg-zinc-900 rounded-xl p-4">
+                <div className="text-zinc-400 text-sm">Loot Score</div>
+                <div className="text-2xl font-bold text-nexus-orange">{selectedLocation.lootScore}/10</div>
+              </div>
+              <div className="bg-zinc-900 rounded-xl p-4">
+                <div className="text-zinc-400 text-sm">Contest</div>
+                <div className="text-2xl font-bold text-red-400">{selectedLocation.contestLevel}/10</div>
+              </div>
+              <div className="bg-zinc-900 rounded-xl p-4">
+                <div className="text-zinc-400 text-sm">Rotation</div>
+                <div className="text-2xl font-bold text-nexus-purple">{selectedLocation.rotationScore}/10</div>
+              </div>
+            </div>
+          </div>
+        )}
+
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {filteredSpots.length > 0 ? (
-            filteredSpots.map((spot, index) => (
-              <div key={index} className="glass rounded-3xl p-8 hover:border-nexus-orange/50 transition-all group bg-black/50 backdrop-blur-sm">
+            filteredSpots.map((loc, index) => (
+              <div key={loc.id} className="glass rounded-3xl p-8 hover:border-nexus-orange/50 transition-all group bg-black/50 backdrop-blur-sm cursor-pointer" onClick={() => setSelectedLocation(loc)}>
                 <div className="flex justify-between items-start mb-6">
                   <div>
-                    <div className="text-2xl font-bold text-white">{spot.poiName}</div>
-                    <div className={`text-sm font-medium mt-1 ${getLootColor(spot.lootTier)}`}>
-                      {spot.lootTier.toUpperCase()} LOOT
+                    <div className="text-2xl font-bold text-white">{loc.name}</div>
+                    <div className={`text-sm font-medium mt-1`} style={{ color: CATEGORY_COLORS[loc.category] }}>
+                      {loc.category.toUpperCase()}
                     </div>
                   </div>
                   <div className="text-right">
-                    <div className="text-4xl font-black text-nexus-green">{spot.winrate}%</div>
+                    <div className="text-4xl font-black text-nexus-green">{loc.winRate}%</div>
                     <div className="text-xs text-zinc-500">WINRATE</div>
                   </div>
                 </div>
 
                 <div className="space-y-4 text-sm">
                   <div className="flex justify-between">
-                    <span className="text-zinc-400">Durchschnittlicher Platz</span>
-                    <span className="font-medium">#{spot.avgPlacement}</span>
+                    <span className="text-zinc-400">Loot Score</span>
+                    <span className="font-medium">{loc.lootScore}/10</span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-zinc-400">Early Fight Chance</span>
-                    <span className="font-medium">{spot.earlyFightProbability}%</span>
+                    <span className="text-zinc-400">Contest Level</span>
+                    <span className="font-medium">{loc.contestLevel}/10</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-zinc-400">Rotation Score</span>
+                    <span className="font-medium">{loc.rotationScore}/10</span>
                   </div>
                 </div>
 
                 <div className="mt-8 pt-6 border-t border-zinc-800">
                   <p className="text-zinc-300 text-sm leading-relaxed">
-                    {spot.recommendation}
+                    {loc.description}
                   </p>
                 </div>
 
