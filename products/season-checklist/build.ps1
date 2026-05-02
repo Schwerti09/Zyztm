@@ -60,7 +60,7 @@ Vielen Dank fuer deinen Kauf!
 Du bekommst automatisch jede Season die neue Version per Email.
 Falls du keine Email erhaelst: support@fortnitenexus.com
 
-## Code "ZYZTM" im Item Shop = Support den Channel!
+## Code "nexus" im Item Shop = Support den Channel!
 
 (c) 2026 Fortnite Nexus
 "@ | Out-File -Encoding UTF8 "$BuildDir\README.txt"
