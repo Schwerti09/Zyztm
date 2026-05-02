@@ -48,6 +48,10 @@ const MetaPredictorPage = lazy(() => import('./pages/tools/MetaPredictorPage'));
 const KeybindOptimizerPage = lazy(() => import('./pages/tools/KeybindOptimizerPage'));
 const RotationPlannerPage = lazy(() => import('./pages/tools/RotationPlannerPage'));
 
+// Pillar Pages
+const SettingsGuidePage = lazy(() => import('./pages/SettingsGuidePage'));
+const UltimateGuidePage = lazy(() => import('./pages/UltimateGuidePage'));
+
 // Live Data & Programmatic SEO
 const ShopLivePage = lazy(() => import('./pages/ShopLivePage'));
 const ProsHubPage = lazy(() => import('./pages/ProsHubPage'));
@@ -144,6 +148,9 @@ export default function App() {
           {/* News routes */}
           <Route path="/:lang/news/:slug" component={NewsArticlePage} />
           <Route path="/:lang/news" component={NewsPage} />
+          {/* Pillar Pages */}
+          <Route path="/settings-guide" component={SettingsGuidePage} />
+          <Route path="/ultimate-guide" component={UltimateGuidePage} />
         </Switch>
       </Suspense>
     </>
