@@ -12,6 +12,18 @@ import MetaBadge from '../shared/MetaBadge';
 import type { PlayerProfile, WeakSpotAnalysis } from '../../lib/shared-types';
 import { PieChart, Pie, Cell, Tooltip, ResponsiveContainer } from 'recharts';
 
+interface AIRecommendation {
+  category: string;
+  title: string;
+  description: string;
+  priority: string;
+}
+
+interface AICoachingResponse {
+  recommendations: AIRecommendation[];
+  summary: string;
+}
+
 const COLORS = ['#ff6b00', '#8b5cf6', '#10b981', '#f97316'];
 
 export default function StatsDashboardPro() {
@@ -20,6 +32,8 @@ export default function StatsDashboardPro() {
   
   const [usernameInput, setUsernameInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const [aiCoaching, setAiCoaching] = useState<AICoachingResponse | null>(null);
+  const [isAiLoading, setIsAiLoading] = useState(false);
 
   const handleSearch = async () => {
     if (!usernameInput.trim()) return;
@@ -27,6 +41,39 @@ export default function StatsDashboardPro() {
     await fetchPlayerStats(usernameInput.trim());
     addToSearchHistory(usernameInput.trim());
     setIsLoading(false);
+  };
+
+  const handleAiCoaching = async () => {
+    if (!currentPlayerProfile) return;
+    
+    setIsAiLoading(true);
+    try {
+      const response = await fetch('/.netlify/functions/ai-coaching', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          stats: {
+            kd: currentPlayerProfile.seasonStats.kd,
+            winRate: currentPlayerProfile.seasonStats.winrate,
+            matchesPlayed: currentPlayerProfile.seasonStats.matchesPlayed,
+            avgDamage: currentPlayerProfile.seasonStats.avgDamage,
+            nexusScore: currentPlayerProfile.nexusScore,
+            weakSpots: currentPlayerProfile.weakSpots,
+          },
+        }),
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        setAiCoaching(data);
+      }
+    } catch (error) {
+      console.error('AI Coaching Error:', error);
+    } finally {
+      setIsAiLoading(false);
+    }
   };
 
   useEffect(() => {
@@ -184,11 +231,50 @@ export default function StatsDashboardPro() {
         <PaywallGate requiredTier="pro">
           <div className="mt-12 glass rounded-3xl p-8 bg-black/50 backdrop-blur-sm">
             <h3 className="text-2xl font-bold mb-6 text-nexus-purple">Pro Insights</h3>
-            <p className="text-zinc-300 leading-relaxed">
+            <p className="text-zinc-300 leading-relaxed mb-6">
               Dein Loadout Performance Tracking, detaillierte Heatmaps und Vergleich mit Top 1% Spielern sind nur für Pro & Elite User verfügbar.
             </p>
+            
+            {/* AI Coaching Button */}
+            <button
+              onClick={handleAiCoaching}
+              disabled={isAiLoading}
+              className="w-full py-4 bg-nexus-purple hover:bg-purple-600 text-white font-bold rounded-2xl transition disabled:opacity-50 disabled:cursor-not-allowed"
+            >
+              {isAiLoading ? 'AI Coach analysiert...' : 'AI Coaching starten (Claude)'}
+            </button>
           </div>
         </PaywallGate>
+
+        {/* AI Coaching Results */}
+        {aiCoaching && (
+          <div className="mt-8 glass rounded-3xl p-8 bg-black/50 backdrop-blur-sm border-2 border-nexus-purple">
+            <h3 className="text-2xl font-bold mb-6 text-nexus-purple">🤖 AI COACHING ERGEBNISSE</h3>
+            
+            <div className="mb-6 p-4 bg-nexus-purple/10 rounded-xl border border-nexus-purple/30">
+              <p className="text-zinc-300 leading-relaxed">{aiCoaching.summary}</p>
+            </div>
+            
+            <div className="space-y-4">
+              {aiCoaching.recommendations.map((rec, index) => (
+                <div key={index} className="p-4 bg-zinc-900 rounded-xl border border-zinc-800">
+                  <div className="flex items-center justify-between mb-2">
+                    <span className="text-nexus-purple font-semibold">{rec.category}</span>
+                    <span className={`text-xs px-2 py-1 rounded-full ${
+                      rec.priority === 'high' ? 'bg-red-500/20 text-red-400' :
+                      rec.priority === 'medium' ? 'bg-yellow-500/20 text-yellow-400' :
+                      'bg-green-500/20 text-green-400'
+                    }`}>
+                      {rec.priority.toUpperCase()}
+                    </span>
+                  </div>
+                  <h4 className="text-white font-semibold mb-1">{rec.title}</h4>
+                  <p className="text-zinc-400 text-sm">{rec.description}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );
