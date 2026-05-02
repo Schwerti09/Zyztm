@@ -4,6 +4,7 @@ import { useLocation } from 'wouter';
 import { useStore } from '../store/useStore';
 import { ALL_CARDS } from '@nexus/shared-types';
 import type { Card } from '@nexus/shared-types';
+import { useAuth } from '../contexts/AuthContext';
 
 /* ─── Rarity config ───────────────────────────────────────────────────────── */
 const rarityColors: Record<string, string> = {
@@ -264,9 +265,29 @@ const STATIC_FEED_ITEMS: FeedItem[] = [
 export default function DashboardPage() {
   const [, navigate] = useLocation();
   const { credits, coins, cards, setCards } = useStore();
+  const { isAuthenticated, isLoading } = useAuth();
   const [packOpening, setPackOpening] = useState(false);
   const [newCards, setNewCards] = useState<Card[]>([]);
   const [activeTab, setActiveTab] = useState<'collection' | 'activity' | 'achievements'>('collection');
+
+  // Auth check - redirect to login if not authenticated
+  useEffect(() => {
+    if (!isLoading && !isAuthenticated) {
+      window.location.href = '/login';
+    }
+  }, [isAuthenticated, isLoading]);
+
+  if (isLoading) {
+    return (
+      <div className="min-h-screen bg-bg-dark flex items-center justify-center">
+        <div className="font-cyber text-neon-pink animate-pulse">LOADING…</div>
+      </div>
+    );
+  }
+
+  if (!isAuthenticated) {
+    return null; // Will redirect
+  }
 
   const [achievements] = useState<Achievement[]>([
     { id: 'first_pack', icon: '🃏', label: 'Pack Opener', unlocked: cards.length > 0, color: '#ffd700' },
