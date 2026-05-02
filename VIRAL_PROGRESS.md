@@ -251,6 +251,16 @@ apps/
 ## GIT LOG (letzte relevante Commits)
 
 ```
+[Deploy Fix] fix(deploy): sync pnpm lockfile after brand migration
+[Phase 1.1] feat(p1.1): Brand-Migration zyztm → nexus - MEGA_MONETARISIERUNG.md
+[Phase 1.1] feat(p1.1): Brand-Migration zyztm → nexus - VOD Review Products
+[Phase 1.1] feat(p1.1): Brand-Migration zyztm → nexus - Docs & Products
+[Phase 1.1] feat(p1.1): Brand-Migration zyztm → nexus - Config & Scripts
+[Phase 1.1] feat(p1.1): Brand-Migration zyztm → nexus - Shared Types
+[Phase 1.1] feat(p1.1): Brand-Migration zyztm → nexus - Components & Pages
+[Phase 1.1] feat(p1.1): Brand-Migration zyztm → nexus - API Routes
+[Phase 1.1] feat(p1.1): Brand-Migration zyztm → nexus - Package Names
+[Phase 1.1] feat(p1.1): Brand-Migration zyztm → nexus - Core Files
 [Deploy Fix] fix(deploy): sync pnpm lockfile for discord bot Neon dependency
 [Sitemap] fix(sitemap): Legal Pages zur Sitemap hinzugefügt (impressum, datenschutz, agb, ueber-uns/team)
 [Legal] feat(legal): Legal Pages — Impressum, Datenschutz, AGB, Über Uns/Team (Rolf Schwertfechter, Barklandsweg 1, 26553 Dornum, USt-IdNr.DE275823159)
